@@ -14,6 +14,7 @@
         <dependency>
             <groupId>org.rxjava.apikit</groupId>
             <artifactId>rxjava-apikit-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
