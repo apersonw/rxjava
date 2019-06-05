@@ -1,0 +1,22 @@
+<!--#set(ParamClassInfo classInfo)-->
+<!--#set(PropertyInfo attr)-->
+<!--#set(JavaScriptParamClassWrapper wrapper)-->
+<!--#set(TypeInfo type)-->
+$!{wrapper.imports}
+
+/**
+$!{wrapper.comment(" * ")}
+*/
+interface $!{classInfo.name} {
+<!--#for(attr : wrapper.properties)-->
+
+<!--		#if(attr.javadocInfo)-->
+	/**
+$!{wrapper.formatComment(attr.javadocInfo,"	 * ")}
+	 */
+<!--		#end-->
+    $!{attr.name}?:$!{wrapper.toTypeString(attr.typeInfo)};
+<!--#end-->
+}
+
+export default $!{classInfo.name};

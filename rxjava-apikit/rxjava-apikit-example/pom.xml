@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.rxjava.apikit</groupId>
+        <artifactId>rxjava-apikit</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>rxjava-apikit-example</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <module.name>example</module.name>
+        <module.Name>Example</module.Name>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.rxjava.apikit</groupId>
+            <artifactId>rxjava-apikit-tool</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <!-- 使用netty作为启动容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-reactor-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.rxjava.apikit</groupId>
+                <artifactId>rxjava-apikit-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <groups>
+                        <group implementation="org.rxjava.apikit.plugin.bean.Group">
+                            <rootPackage>org.rxjava.apikit.${module.name}.client</rootPackage>
+                            <apiType>client</apiType>
+                            <tasks>
+                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
+                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <outPath>${module.name}/java/rxjava-apis-${module.name}-client/src/main/java
+                                    </outPath>
+                                    <deleteUris>org</deleteUris>
+                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
+                                        <outRootPackage>org.rxjava.api.client.${module.name}</outRootPackage>
+                                    </task>
+                                </task>
+                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
+                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <outPath>${module.name}/js/rxjava-apis-${module.name}-client</outPath>
+                                    <deleteUris>org</deleteUris>
+                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
+                                        <outRootPackage/>
+                                        <serviceId>${module.name}</serviceId>
+                                    </task>
+                                </task>
+                            </tasks>
+                        </group>
+                        <group implementation="org.rxjava.apikit.plugin.bean.Group">
+                            <rootPackage>org.rxjava.apikit.${module.name}.dashboard</rootPackage>
+                            <tasks>
+                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
+                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <outPath>${module.name}/java/rxjava-apis-${module.name}-dashboard/src/main/java
+                                    </outPath>
+                                    <deleteUris>org</deleteUris>
+                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
+                                        <outRootPackage>org.rxjava.api.dashboard.${module.name}</outRootPackage>
+                                    </task>
+                                </task>
+                            </tasks>
+                        </group>
+                    </groups>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

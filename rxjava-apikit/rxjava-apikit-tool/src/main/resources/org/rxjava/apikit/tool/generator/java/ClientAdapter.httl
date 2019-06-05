@@ -1,0 +1,58 @@
+<!--#set(ApiClassInfo classInfo)-->
+<!--#set(JavaApiWrapper wrapper)-->
+<!--#set(ApiMethodInfo method)-->
+<!--#set(ApiMethodParamInfo param)-->
+<!--#set(TypeInfo type)-->
+package $!{wrapper.getFullDistPackage()};
+
+import reactor.core.publisher.Mono;
+
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.Future;
+
+
+import org.rxjava.apikit.client.*;
+
+$!{wrapper.imports}
+
+public class $!{wrapper.getDistClassName()} {
+private ClientAdapter clientAdapter;
+
+    public $!{wrapper.getDistClassName()}() {
+    }
+
+    public $!{wrapper.getDistClassName()}(ClientAdapter clientAdapter) {
+        this.clientAdapter = clientAdapter;
+    }
+
+    <!--#for(method : classInfo.methodInfos)-->
+    public Mono<$!{wrapper.resultData(method)}> $!{method.name}($!{wrapper.params(method)}) {
+        Map<String, Object> _uriVariables = new HashMap<>();
+        <!--#for(param : method.pathParams)-->
+        _uriVariables.put("$!{param.getName()}", $!{param.getName()});
+        <!--#end-->
+        String _url = ApiUtils.expandUriComponent("$!{method.url}", _uriVariables);
+
+        <!--#if(method.formParams)-->
+        <!--#set(param = method.formParams[0])-->
+        List<Entry<String, Object>> _form = $!{param.name}.encode("", new ArrayList<>());
+        return clientAdapter.request("$!{method.type.name()}", _url, _form, _$!{method.index}Type);
+        <!--#else-->
+        return clientAdapter.request("$!{method.type.name()}", _url, null, _$!{method.index}Type);
+        <!--#end-->
+    }
+    <!--#end-->
+
+    public void setclientAdapter(ClientAdapter clientAdapter) {
+        this.clientAdapter = clientAdapter;
+    }
+
+    public ClientAdapter getclientAdapter() {
+        return clientAdapter;
+    }
+
+    <!--#for(method : classInfo.methodInfos)-->
+        $!{wrapper.resultTypeString(method,"    ")}
+    <!--#end-->
+}

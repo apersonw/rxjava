@@ -1,0 +1,18 @@
+package org.rxjava.apikit.tool.info;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author happy
+ */
+@Getter
+@Setter
+public class AnnotationInfo {
+    private TypeInfo typeInfo;
+
+    private List<String> args = new ArrayList<>();
+}
