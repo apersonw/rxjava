@@ -4,12 +4,9 @@ import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.rxjava.apikit.client.ClientAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerExchangeFilterFunction;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpMethod;
-import org.springframework.lang.Nullable;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -37,22 +34,10 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     private Function<Object, String> typeConvert;
     private String token;
 
-    @Autowired(required = false)
-    @Nullable
-    private LoadBalancerExchangeFilterFunction lbFunction;
-
     @PostConstruct
     public void init() {
-        if (lbFunction != null) {
-            //走注册中心负载均衡，若是在k8s中则可将负载均衡去掉
-            webClient = webClientBuilder.baseUrl("http://" + serviceId + "/")
-                    .filter(lbFunction)
-                    .build();
-        } else {
-            log.info("缺少负载均衡！");
-            webClient = webClientBuilder.baseUrl("http://" + serviceId + "/")
-                    .build();
-        }
+        webClient = webClientBuilder.baseUrl("http://" + serviceId + "/")
+                .build();
     }
 
     private ReactiveHttpClientAdapter(WebClient.Builder webClientBuilder, String serviceId) {

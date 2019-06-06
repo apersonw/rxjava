@@ -46,12 +46,12 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         PathContainer path = request.getPath().pathWithinApplication();
         String pathValue = path.value();
         //微服务接口不走登陆检查
-        if (pathValue.startsWith("/serve")) {
+        if (pathValue.startsWith("/inner")) {
             return super.handle(exchange, handler);
         }
 
         Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
-        RequestMapping requestMapping = handlerMethod.getMethodAnnotation(RequestMapping.class);
+//        RequestMapping requestMapping = handlerMethod.getMethodAnnotation(RequestMapping.class);
 
         //检查是否需要登陆
         if (methodAnnotation == null || methodAnnotation.value()) {

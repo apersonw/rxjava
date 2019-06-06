@@ -6,12 +6,9 @@
     <groupId>org.rxjava</groupId>
     <artifactId>rxjava-parent</artifactId>
     <packaging>pom</packaging>
-    <version>${project.release.version}</version>
+    <version>${project.deploy.version}</version>
     <properties>
-        <project.release.version>1.0.0-SNAPSHOT</project.release.version>
-        <!--通用配置名-->
-        <cloud.config.name>http://config:8888/</cloud.config.name>
-
+        <project.deploy.version>1.0.0-SNAPSHOT</project.deploy.version>
         <!--项目编译版本-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -329,9 +326,15 @@
     <!--maven上传到中央仓库信息-->
     <profiles>
         <profile>
-            <id>release</id>
+            <id>snapshot</id>
             <properties>
-                <project.release.version>1.0.0</project.release.version>
+                <project.deploy.version>1.0.0-SNAPSHOT</project.deploy.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <project.deploy.version>1.0.0</project.deploy.version>
             </properties>
         </profile>
     </profiles>
