@@ -12,4 +12,11 @@
         <module.name>example</module.name>
         <module.Name>Example</module.Name>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-apikit-tool</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
