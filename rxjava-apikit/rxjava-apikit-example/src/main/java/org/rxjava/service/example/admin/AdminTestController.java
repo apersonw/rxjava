@@ -1,7 +1,7 @@
-package org.rxjava.apikit.example.dashboard;
+package org.rxjava.service.example.admin;
 
 import org.rxjava.apikit.core.Login;
-import org.rxjava.apikit.example.form.TestForm;
+import org.rxjava.service.example.form.TestForm;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -33,7 +33,7 @@ public class AdminTestController {
 
     public static void main(String[] args) throws ClassNotFoundException {
         ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
-        Class<?> adminTestController = systemClassLoader.loadClass("org.rxjava.apikit.example.dashboard.AdminTestController");
+        Class<?> adminTestController = systemClassLoader.loadClass("org.rxjava.service.example.admin.AdminTestController");
         Package aPackage = adminTestController.getPackage();
         String name1 = adminTestController.getName();
         String name2 = adminTestController.getSimpleName();

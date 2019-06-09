@@ -1,4 +1,4 @@
-package org.rxjava.apikit.example.form;
+package org.rxjava.service.example.form;
 
 import lombok.Getter;
 import lombok.Setter;

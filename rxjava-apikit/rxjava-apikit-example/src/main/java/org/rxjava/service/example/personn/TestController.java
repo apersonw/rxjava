@@ -1,7 +1,7 @@
-package org.rxjava.apikit.example.client;
+package org.rxjava.service.example.personn;
 
 import org.rxjava.apikit.core.Login;
-import org.rxjava.apikit.example.form.TestForm;
+import org.rxjava.service.example.form.TestForm;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package org.rxjava.apikit.example;
+package org.rxjava.service.example;
 
 import java.util.HashMap;
 import java.util.Map;

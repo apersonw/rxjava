@@ -1,4 +1,4 @@
-package org.rxjava.apikit.example;
+package org.rxjava.service.example;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

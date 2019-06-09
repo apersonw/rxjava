@@ -1,4 +1,4 @@
-package org.rxjava.apikit.example;
+package org.rxjava.service.example;
 
 /**
  * @author happy 2019-05-11 22:25

@@ -13,7 +13,6 @@
     <modules>
         <module>rxjava-apikit-core</module>
         <module>rxjava-apikit-tool</module>
-        <module>rxjava-apikit-example</module>
         <module>rxjava-apikit-maven-plugin</module>
     </modules>
 </project>

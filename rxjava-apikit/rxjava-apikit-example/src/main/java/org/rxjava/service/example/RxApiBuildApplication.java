@@ -1,4 +1,4 @@
-package org.rxjava.apikit.build;
+package org.rxjava.service.example;
 
 import org.rxjava.apikit.tool.ApiGenerateManager;
 import org.rxjava.apikit.tool.generator.impl.JavaClientApiGenerator;
@@ -44,7 +44,7 @@ public class RxApiBuildApplication implements CommandLineRunner {
         javaScriptApiGenerator.setServiceId("example");
 
         //初始化api生成管理器
-        ApiGenerateManager apiGenerateManager = new ApiGenerateManager(javaSourceDir, "org.rxjava.apikit.example");
+        ApiGenerateManager apiGenerateManager = new ApiGenerateManager(javaSourceDir, "org.rxjava.service.example");
 
         //开始生成java客户端Api
         apiGenerateManager.generate(javaClientApiGenerator);

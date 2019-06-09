@@ -18,7 +18,7 @@
     </prerequisites>
     <dependencies>
         <dependency>
-            <groupId>org.rxjava.apikit</groupId>
+            <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-tool</artifactId>
             <version>${project.version}</version>
         </dependency>
