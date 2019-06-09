@@ -1,4 +1,4 @@
-package org.rxjava.service.example.personn;
+package org.rxjava.service.example.person;
 
 import org.rxjava.apikit.core.Login;
 import org.rxjava.service.example.form.TestForm;

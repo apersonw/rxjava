@@ -84,15 +84,6 @@
                                         <outRootPackage>org.rxjava.api.${module.name}.inner</outRootPackage>
                                     </task>
                                 </task>
-                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
-                                    <outPath>${module.name}/js/rxjava-apis-${module.name}-inner</outPath>
-                                    <deleteUris>org</deleteUris>
-                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
-                                        <outRootPackage/>
-                                        <serviceId>${module.name}</serviceId>
-                                    </task>
-                                </task>
                             </tasks>
                         </group>
                     </groups>
