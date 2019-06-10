@@ -6,7 +6,7 @@
         <artifactId>rxjava-service-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>rxjava-apikit-example</artifactId>
+    <artifactId>rxjava-example</artifactId>
     <packaging>jar</packaging>
     <properties>
         <module.name>example</module.name>
@@ -18,5 +18,6 @@
             <artifactId>rxjava-apikit-tool</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
     </dependencies>
 </project>
