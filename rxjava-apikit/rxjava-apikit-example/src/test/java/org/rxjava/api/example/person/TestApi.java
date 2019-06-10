@@ -1,4 +1,4 @@
-package org.rxjava.api.example.admin;
+package org.rxjava.api.example.person;
 
 import reactor.core.publisher.Mono;
 
@@ -10,20 +10,20 @@ import org.rxjava.apikit.client.*;
 
 import org.rxjava.api.example.form.TestForm;
 
-public class AdminTestApi {
+public class TestApi {
 	private ClientAdapter clientAdapter;
 
-	public AdminTestApi() {
+	public TestApi() {
 	}
 
-	public AdminTestApi(ClientAdapter clientAdapter) {
+	public TestApi(ClientAdapter clientAdapter) {
 		this.clientAdapter = clientAdapter;
 	}
 
 	public Mono<Integer> testPath(String id, TestForm form) {
 		Map<String, Object> _uriVariables = new HashMap<>();
 		_uriVariables.put("id", id);
-		String _url = ApiUtils.expandUriComponent("admin/testPath/{id}", _uriVariables);
+		String _url = ApiUtils.expandUriComponent("person/testPath/{id}", _uriVariables);
 
 		List<Entry<String, Object>> _form = form.encode("", new ArrayList<>());
 		return clientAdapter.request("GET", _url, _form, _0Type);

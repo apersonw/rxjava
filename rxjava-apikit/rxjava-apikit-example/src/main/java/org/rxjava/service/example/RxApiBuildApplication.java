@@ -13,7 +13,6 @@ import java.io.File;
 /**
  * @author happy
  */
-@SpringBootApplication
 public class RxApiBuildApplication implements CommandLineRunner {
     /**
      * 构建api

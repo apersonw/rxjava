@@ -16,7 +16,7 @@ import java.util.Arrays;
  * 注释说明
  */
 @RestController
-@RequestMapping("dashboard")
+@RequestMapping("admin")
 public class AdminTestController {
 
     /**

@@ -48,7 +48,7 @@ var AdminTestApi =
             value: function testPath(id, form) {
                 var _path = {};
                 _path["id"] = id;
-                return _get(_getPrototypeOf(AdminTestApi.prototype), "_request", this).call(this, "example", "GET", "dashboard/testPath/{id}", _path, form);
+                return _get(_getPrototypeOf(AdminTestApi.prototype), "_request", this).call(this, "example", "GET", "admin/testPath/{id}", _path, form);
             }
         }]);
 

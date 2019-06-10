@@ -12,7 +12,7 @@ declare class TestApi extends AbstractApi {
      * 
     *
      * <div class='http-info'>http 说明<ul>
-     * <li><b>Uri:</b>client/testPath/{id}</li>
+     * <li><b>Uri:</b>person/testPath/{id}</li>
      * <li><b>PathVariable:</b> string id</li>
      * <li><b>Form:</b>TestFormtestPath</li>
      * <li><b>Model:</b> number</li>

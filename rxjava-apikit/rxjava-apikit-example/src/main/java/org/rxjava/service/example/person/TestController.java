@@ -14,7 +14,7 @@ import javax.validation.Valid;
  * @author happy
  */
 @RestController
-@RequestMapping("client")
+@RequestMapping("person")
 public class TestController {
 
     /**

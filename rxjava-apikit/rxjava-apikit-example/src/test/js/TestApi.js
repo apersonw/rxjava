@@ -48,7 +48,7 @@ var TestApi =
             value: function testPath(id, form) {
                 var _path = {};
                 _path["id"] = id;
-                return _get(_getPrototypeOf(TestApi.prototype), "_request", this).call(this, "example", "GET", "client/testPath/{id}", _path, form);
+                return _get(_getPrototypeOf(TestApi.prototype), "_request", this).call(this, "example", "GET", "person/testPath/{id}", _path, form);
             }
         }]);
 
