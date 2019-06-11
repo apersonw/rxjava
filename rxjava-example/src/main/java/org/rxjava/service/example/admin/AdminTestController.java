@@ -1,6 +1,6 @@
 package org.rxjava.service.example.admin;
 
-import org.rxjava.apikit.core.Login;
+import org.rxjava.common.core.annotation.Login;
 import org.rxjava.service.example.form.TestForm;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;

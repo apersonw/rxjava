@@ -14,6 +14,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.rxjava.common.core.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.ReactiveAdapterRegistry;
@@ -111,21 +113,22 @@ public abstract class BaseRxJavaWebFluxConfigurer implements WebFluxConfigurer {
         configurer.defaultCodecs().jackson2JsonDecoder(jackson2JsonDecoder(objectMapper()));
     }
 
-    @Bean
-    public ReactiveAdapterRegistry customWebFluxAdapterRegistry() {
-        return new ReactiveAdapterRegistry();
-    }
-
-    /**
-     * 注入登陆信息参数解析器
-     */
-    @Bean
-    public LoginInfoArgumentResolver loginInfoArgumentResolver() {
-        return new LoginInfoArgumentResolver(customWebFluxAdapterRegistry());
-    }
-
-    @Override
-    public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
-        configurer.addCustomResolver(loginInfoArgumentResolver());
-    }
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public ReactiveAdapterRegistry customWebFluxAdapterRegistry() {
+//        return new ReactiveAdapterRegistry();
+//    }
+//
+//    /**
+//     * 注入登陆信息参数解析器
+//     */
+//    @Bean
+//    public LoginInfoArgumentResolver loginInfoArgumentResolver() {
+//        return new LoginInfoArgumentResolver();
+//    }
+//
+//    @Override
+//    public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
+//        configurer.addCustomResolver(loginInfoArgumentResolver());
+//    }
 }

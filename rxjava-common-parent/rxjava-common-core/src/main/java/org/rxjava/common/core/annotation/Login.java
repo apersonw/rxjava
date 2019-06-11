@@ -3,8 +3,8 @@ package org.rxjava.common.core.annotation;
 import java.lang.annotation.*;
 
 /**
- * 登陆注解
- * 默认为必须登陆
+ * 是否登陆注解
+ * 默认为需要登陆
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

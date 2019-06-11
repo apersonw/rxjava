@@ -16,10 +16,5 @@
             <artifactId>rxjava-common-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.rxjava</groupId>
-            <artifactId>rxjava-common-bus</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>

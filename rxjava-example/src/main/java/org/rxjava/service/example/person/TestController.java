@@ -1,6 +1,6 @@
 package org.rxjava.service.example.person;
 
-import org.rxjava.apikit.core.Login;
+import org.rxjava.common.core.annotation.Login;
 import org.rxjava.service.example.form.TestForm;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

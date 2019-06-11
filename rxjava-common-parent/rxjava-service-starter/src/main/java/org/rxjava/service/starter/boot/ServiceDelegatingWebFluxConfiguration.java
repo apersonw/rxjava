@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.core.ReactiveAdapterRegistry;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.config.DelegatingWebFluxConfiguration;
+import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer;
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
@@ -44,6 +46,25 @@ public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConf
         handler.setMessageWriters(serverCodecConfigurer.getWriters());
         handler.setViewResolvers(viewResolversProvider.getIfAvailable(Collections::emptyList));
         return handler;
+    }
+
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public ReactiveAdapterRegistry customWebFluxAdapterRegistry() {
+//        return new ReactiveAdapterRegistry();
+//    }
+
+    /**
+     * 注入登陆信息参数解析器
+     */
+    @Bean
+    public LoginInfoArgumentResolver loginInfoArgumentResolver() {
+        return new LoginInfoArgumentResolver(webFluxAdapterRegistry());
+    }
+
+    @Override
+    public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
+        configurer.addCustomResolver(loginInfoArgumentResolver());
     }
 
 }

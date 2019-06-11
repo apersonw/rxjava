@@ -9,7 +9,6 @@ import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.reactive.HandlerResult;
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerAdapter;
@@ -45,15 +44,13 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         ServerHttpRequest request = exchange.getRequest();
         PathContainer path = request.getPath().pathWithinApplication();
         String pathValue = path.value();
-        //微服务接口不走登陆检查
+        //内部接口不做登陆检查
         if (pathValue.startsWith("/inner")) {
             return super.handle(exchange, handler);
         }
 
-        Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
-//        RequestMapping requestMapping = handlerMethod.getMethodAnnotation(RequestMapping.class);
-
         //检查是否需要登陆
+        Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
         if (methodAnnotation == null || methodAnnotation.value()) {
 
             String loginInfoJson = request.getHeaders().getFirst(LOGIN_INFO);
