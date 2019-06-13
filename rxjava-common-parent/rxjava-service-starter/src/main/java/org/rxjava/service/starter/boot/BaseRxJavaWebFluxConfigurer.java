@@ -35,6 +35,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * @author happy 2019-05-13 01:30
+ * 基本配置信息
  */
 public abstract class BaseRxJavaWebFluxConfigurer implements WebFluxConfigurer {
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
@@ -54,9 +55,7 @@ public abstract class BaseRxJavaWebFluxConfigurer implements WebFluxConfigurer {
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = JsonUtils.create();
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        objectMapper
-                .registerModule(new ParameterNamesModule())
-                .registerModule(new Jdk8Module());
+        objectMapper.registerModule(new ParameterNamesModule()).registerModule(new Jdk8Module());
 
         DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
         DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
@@ -112,23 +111,4 @@ public abstract class BaseRxJavaWebFluxConfigurer implements WebFluxConfigurer {
         configurer.defaultCodecs().jackson2JsonEncoder(jackson2JsonEncoder(objectMapper()));
         configurer.defaultCodecs().jackson2JsonDecoder(jackson2JsonDecoder(objectMapper()));
     }
-
-//    @Bean
-//    @ConditionalOnMissingBean
-//    public ReactiveAdapterRegistry customWebFluxAdapterRegistry() {
-//        return new ReactiveAdapterRegistry();
-//    }
-//
-//    /**
-//     * 注入登陆信息参数解析器
-//     */
-//    @Bean
-//    public LoginInfoArgumentResolver loginInfoArgumentResolver() {
-//        return new LoginInfoArgumentResolver();
-//    }
-//
-//    @Override
-//    public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
-//        configurer.addCustomResolver(loginInfoArgumentResolver());
-//    }
 }

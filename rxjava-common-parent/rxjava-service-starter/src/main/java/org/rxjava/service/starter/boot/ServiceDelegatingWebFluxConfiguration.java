@@ -48,12 +48,6 @@ public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConf
         return handler;
     }
 
-//    @Bean
-//    @ConditionalOnMissingBean
-//    public ReactiveAdapterRegistry customWebFluxAdapterRegistry() {
-//        return new ReactiveAdapterRegistry();
-//    }
-
     /**
      * 注入登陆信息参数解析器
      */

@@ -1,6 +1,5 @@
 package org.rxjava.security.example;
 
-import org.rxjava.common.core.annotation.Login;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -17,7 +16,6 @@ public class MessageController {
         this.messages = messages;
     }
 
-    @Login(false)
     @GetMapping("/message")
     public Mono<String> message() {
         return this.messages.findMessage();
