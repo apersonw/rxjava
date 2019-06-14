@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono;
 public class DynamicallyWebFluxSecurityConfig {
     @Autowired
     private DynamicallySecurityContextRepository dynamicallySecurityContextRepository;
+
     @Bean
     public SecurityWebFilterChain securitygWebFilterChain(ServerHttpSecurity http) {
         return http
