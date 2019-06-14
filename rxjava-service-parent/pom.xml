@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>rxjava-service-parent</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <module.type>service</module.type>
+        <module.Type>Service</module.Type>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.rxjava</groupId>

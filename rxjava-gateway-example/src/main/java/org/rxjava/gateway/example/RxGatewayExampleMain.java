@@ -1,4 +1,4 @@
-package org.rxjava.service.example;
+package org.rxjava.gateway.example;
 
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 /**
  * @author happy 2019-05-06 13:57
  */
-public class RxExampleMain {
+public class RxGatewayExampleMain {
     public static void main(String[] args) {
         try {
             URLClassLoader cl = (URLClassLoader) ClassLoader.getSystemClassLoader();
@@ -34,6 +34,6 @@ public class RxExampleMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        RxExampleApplication.main(args);
+        RxGatewayExampleApplication.main(args);
     }
 }
