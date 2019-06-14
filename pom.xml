@@ -368,7 +368,8 @@
         <url>https://github.com/apersonw/rxjava.git</url>
         <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>
         <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>
-    </scm>
+      <tag>1.0.0</tag>
+  </scm>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
