@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.apache.maven.project.MavenProject;
-import org.apache.maven.shared.dependency.tree.DependencyTreeBuilderException;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.rxjava.apikit.plugin.bean.Group;
 
@@ -14,7 +13,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -69,7 +67,7 @@ public class MavenUtils {
     }
 
 
-    private static URLClassLoader getUrlClassLoader(MavenProject project) throws DependencyResolutionRequiredException, DependencyTreeBuilderException {
+    private static URLClassLoader getUrlClassLoader(MavenProject project) throws DependencyResolutionRequiredException {
         List<String> compileClasspathElements = project.getCompileClasspathElements();
         List<String> systemClasspathElements = project.getSystemClasspathElements();
         ClassRealm classLoader = (ClassRealm) MavenUtils.class.getClassLoader();
