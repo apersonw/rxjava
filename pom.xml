@@ -7,7 +7,7 @@
     <version>1.0.2-SNAPSHOT</version>
     <modules>
         <module>rxjava-spring</module>
-<!--        <module>rxjava-service</module>-->
+        <module>rxjava-service</module>
         <module>rxjava-gateway</module>
         <module>rxjava-apikit</module>
         <module>rxjava-example</module>

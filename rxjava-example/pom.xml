@@ -9,9 +9,9 @@
     <artifactId>rxjava-example</artifactId>
     <packaging>pom</packaging>
     <modules>
-<!--        <module>rxjava-apikit-example</module>-->
+        <module>rxjava-apikit-example</module>
         <module>rxjava-gateway-example</module>
-<!--        <module>rxjava-service-example</module>-->
+        <module>rxjava-service-example</module>
         <module>rxjava-security-dynamically-example</module>
     </modules>
 </project>
