@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>org.rxjava</groupId>
-            <artifactId>rxjava-gateway-starter</artifactId>
+            <artifactId>rxjava-spring-gateway-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
