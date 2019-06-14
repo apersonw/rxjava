@@ -4,7 +4,7 @@
     <groupId>org.rxjava</groupId>
     <artifactId>rxjava-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <properties>
         <project.deploy.version>1.0.0-SNAPSHOT</project.deploy.version>
         <!--项目编译版本-->
@@ -485,7 +485,7 @@
     </developers>
 
     <scm>
-        <tag>rxjava-parent-1.0.0</tag>
+        <tag>master</tag>
         <url>https://github.com/apersonw/rxjava.git</url>
         <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>
         <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>
