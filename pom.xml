@@ -4,7 +4,7 @@
     <groupId>org.rxjava</groupId>
     <artifactId>rxjava</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <modules>
         <module>rxjava-spring</module>
         <module>rxjava-service</module>
