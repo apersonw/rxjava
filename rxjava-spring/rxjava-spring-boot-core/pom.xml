@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-spring</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>rxjava-spring-boot-core</artifactId>
     <packaging>jar</packaging>
@@ -12,6 +12,7 @@
         <dependency>
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-core</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <!--断言核心库-->
         <dependency>
