@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rxjava-apikit-core" />
+        <module name="rxjava-apikit-tool" />
+        <module name="rxjava-spring-core" />
+        <module name="rxjava-spring-gateway-starter" />
+        <module name="rxjava-gateway-example" />
+        <module name="rxjava-apikit-example" />
+        <module name="rxjava-spring-service-starter" />
+        <module name="rxjava-spring-cloud-starter-bus" />
+        <module name="rxjava-apikit-maven-plugin" />
+        <module name="rxjava-service-example" />
+        <module name="rxjava-security-dynamically-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rxjava-apikit" target="1.8" />
+      <module name="rxjava-apikit-core" target="1.8" />
+      <module name="rxjava-apikit-example" target="1.8" />
+      <module name="rxjava-apikit-maven-plugin" target="1.8" />
+      <module name="rxjava-apikit-parent" target="1.8" />
+      <module name="rxjava-apikit-tool" target="1.8" />
+      <module name="rxjava-common-bus" target="1.8" />
+      <module name="rxjava-common-core" target="1.8" />
+      <module name="rxjava-common-parent" target="1.8" />
+      <module name="rxjava-example" target="1.8" />
+      <module name="rxjava-gateway-example" target="1.8" />
+      <module name="rxjava-gateway-parent" target="1.8" />
+      <module name="rxjava-gateway-starter" target="1.8" />
+      <module name="rxjava-parent" target="1.8" />
+      <module name="rxjava-security-dynamically-demo" target="1.8" />
+      <module name="rxjava-security-example" target="1.8" />
+      <module name="rxjava-service-example" target="1.8" />
+      <module name="rxjava-service-parent" target="1.8" />
+      <module name="rxjava-service-starter" target="1.8" />
+      <module name="rxjava-spring-cloud-starter-bus" target="1.8" />
+      <module name="rxjava-spring-core" target="1.8" />
+      <module name="rxjava-spring-gateway-starter" target="1.8" />
+      <module name="rxjava-spring-parent" target="1.8" />
+      <module name="rxjava-spring-service-starter" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="TypeScriptCompiler">
+    <option name="recompileOnChanges" value="true" />
+    <option name="typeScriptCompilerParams" value="--sourceMap true" />
+    <option name="useConfig" value="true" />
+  </component>
+</project>

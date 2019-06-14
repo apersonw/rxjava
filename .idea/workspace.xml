@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d66dd849-9ae6-4756-a027-6d033a9b52c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/rxjava-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rxjava-parent/pom.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/rxjava-parent/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit/rxjava-apikit-maven-plugin/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit/rxjava-apikit-example/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit/rxjava-apikit-tool/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit/rxjava-apikit-core/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-common-parent/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-common-parent/rxjava-gateway-starter/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-common-parent/rxjava-common-bus/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-common-parent/rxjava-service-starter/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-common-parent/rxjava-common-core/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-service-parent/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-gateway-parent/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-example/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-security-example/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-security-dynamically-demo/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-spring-parent/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-common-bus/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-spring-core/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-spring-cloud-starter-bus/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-spring-service-starter/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-spring-gateway-starter/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit-parent/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit-core/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit-tool/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit-maven-plugin/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-apikit-example/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-service-example/target/" />
+    <ignored path="$PROJECT_DIR$/rxjava-gateway-example/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rxjava-parent/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1103">
+              <caret line="396" column="29" selection-start-line="396" selection-start-column="29" selection-end-line="396" selection-end-column="29" />
+            </state>
+          </provider>
+          <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>project.rdeploy.version</find>
+      <find>project.release.version</find>
+      <find>org.rxjava.apikit</find>
+      <find>release</find>
+      <find>io.projectreactor</find>
+      <find>reactor-core</find>
+      <find>jackson</find>
+      <find>commons-collections4.version</find>
+      <find>validation-api</find>
+      <find>com.google.guava.version</find>
+      <find>guava.version</find>
+      <find>org.springframework</find>
+      <find>security</find>
+      <find>springWebFilterChain</find>
+      <find>webFluxAdapterRegistry</find>
+      <find>customWebFluxAdapterRegistry</find>
+      <find>Login.cl</find>
+      <find>findByUsername</find>
+      <find>userdetails</find>
+      <find>Filter</find>
+      <find>SecurityWebFilterChain</find>
+      <find>Dispatcher</find>
+      <find>Started DynamicallyExampleApplication</find>
+      <find>spring-boot-starter</find>
+      <find>WebFluxConfigurationSupport</find>
+      <find>rxjava-common</find>
+      <find>spring-boot-devtools.version</find>
+      <find>spring-boot-dependencies.version</find>
+      <find>project.deploy.version</find>
+      <find>scm</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>project.deploy.version</replace>
+      <replace>project.rdeploy.version</replace>
+      <replace>spring-boot.version</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/rxjava-apikit/rxjava-apikit-tool</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/rxjava-common-parent/rxjava-auth-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/src/main/java/org/rxjava/security/example/entity/User.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/src/main/java/org/rxjava/security/example/LoginServerWebExchangeMatcher.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/src/main/java/org/rxjava/security/example/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/src/main/java/org/rxjava/security/example/HelloWebfluxMethodApplication.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/controller/DemoController.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/src/main/java/org/rxjava/security/example/JWTUtil.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/repository/SecurityContextRepository.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/config/AuthenticationManager.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/DynamicallyExampleApplication.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/repository/DynamicallySecurityContextRepository.java" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/config/DynamicallyWebFluxSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/rxjava-common-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-parent/rxjava-common-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-common-bus/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-common-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-service-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-service-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-gateway-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-maven-plugin/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-tool/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-example/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-security-example/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/security/example/HelloWebfluxMethodApplication.java" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/service/example/HelloWebfluxMethodApplication.java" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/assembly/config/release/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/assembly/config/release/Dockerfile" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release/startup.sh" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/src/main/resources/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/src/main/java/org/rxjava/gateway/example/RxExampleApplication.java" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/src/main/java/org/rxjava/gateway/example/RxExampleMain.java" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-service-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/assembly/config/release/startup.sh" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/service/example/RxExampleMain.java" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/service/example/RxExampleApplication.java" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/build.sh" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/build.sh" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-parent/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rxjava" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rxjava" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../Software/android" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release" />
+      <recent name="$PROJECT_DIR$/rxjava-gateway-example/src/main" />
+      <recent name="$PROJECT_DIR$/rxjava-gateway-example/src" />
+      <recent name="$PROJECT_DIR$/rxjava-gateway-example" />
+      <recent name="$PROJECT_DIR$/rxjava-service-example" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.rxjava.service.example" />
+      <recent name="org.rxjava.common.core.annotation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rxjava-service-example/src" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+    <option name="contentProportion" value="0.20869565" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.DynamicallyExampleApplication">
+    <configuration name="DynamicallyExampleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rxjava-security-dynamically-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.rxjava.security.dynamically.example.DynamicallyExampleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleAppliaction" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rxjava-apikit-example" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.rxjava.service.example.ExampleAppliaction" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RxGatewayExampleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rxjava-gateway-example" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.rxjava.gateway.example.RxGatewayExampleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RxServiceExampleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rxjava-service-example" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.rxjava.service.example.RxServiceExampleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.DynamicallyExampleApplication" />
+      <item itemvalue="Spring Boot.RxGatewayExampleApplication" />
+      <item itemvalue="Spring Boot.ExampleAppliaction" />
+      <item itemvalue="Spring Boot.RxServiceExampleApplication" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d66dd849-9ae6-4756-a027-6d033a9b52c8" name="Default Changelist" comment="" />
+      <created>1559731541268</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559731541268</updated>
+      <workItem from="1559731542474" duration="3630000" />
+      <workItem from="1559735976928" duration="3783000" />
+      <workItem from="1559800480515" duration="205000" />
+      <workItem from="1559801779248" duration="1344000" />
+      <workItem from="1559841988102" duration="2692000" />
+      <workItem from="1559846087978" duration="2077000" />
+      <workItem from="1559848583974" duration="3878000" />
+      <workItem from="1559910210868" duration="1012000" />
+      <workItem from="1560061579449" duration="774000" />
+      <workItem from="1560088944712" duration="7353000" />
+      <workItem from="1560104411833" duration="131000" />
+      <workItem from="1560104551636" duration="64000" />
+      <workItem from="1560104626057" duration="1117000" />
+      <workItem from="1560106184441" duration="621000" />
+      <workItem from="1560177523711" duration="1335000" />
+      <workItem from="1560182308117" duration="6774000" />
+      <workItem from="1560216733856" duration="18129000" />
+      <workItem from="1560264991628" duration="1924000" />
+      <workItem from="1560267538067" duration="6254000" />
+      <workItem from="1560304411193" duration="13416000" />
+      <workItem from="1560389591314" duration="39409000" />
+      <workItem from="1560520700199" duration="2366000" />
+    </task>
+    <task id="LOCAL-00001" summary="1.init">
+      <created>1559731755637</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559731755637</updated>
+    </task>
+    <task id="LOCAL-00002" summary="common-parent">
+      <created>1559736126549</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559736126549</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1.init">
+      <created>1559737099606</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559737099606</updated>
+    </task>
+    <task id="LOCAL-00004" summary="增加通用库">
+      <created>1559801799733</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559801799733</updated>
+    </task>
+    <task id="LOCAL-00005" summary="修改名称">
+      <created>1559844552138</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1559844552138</updated>
+    </task>
+    <task id="LOCAL-00006" summary="调整相关包的一些依赖关系">
+      <created>1560105354994</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560105354994</updated>
+    </task>
+    <task id="LOCAL-00007" summary="调整相关包的一些依赖关系">
+      <created>1560105735169</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560105735169</updated>
+    </task>
+    <task id="LOCAL-00008" summary="inner模块不生成js">
+      <created>1560106404302</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1560106404302</updated>
+    </task>
+    <task id="LOCAL-00009" summary="测试生成器">
+      <created>1560182395318</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1560182395318</updated>
+    </task>
+    <task id="LOCAL-00010" summary="例子工程放到根节点">
+      <created>1560183901373</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1560183901373</updated>
+    </task>
+    <task id="LOCAL-00011" summary="spring security example">
+      <created>1560189641900</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1560189641900</updated>
+    </task>
+    <task id="LOCAL-00012" summary="spring security example">
+      <created>1560242103271</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1560242103271</updated>
+    </task>
+    <task id="LOCAL-00013" summary="spring security dynamically demo">
+      <created>1560412935700</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1560412935700</updated>
+    </task>
+    <task id="LOCAL-00014" summary="module structure modify">
+      <created>1560504438190</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1560504438190</updated>
+    </task>
+    <task id="LOCAL-00015" summary="module structure modify">
+      <created>1560510652691</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1560510652691</updated>
+    </task>
+    <task id="LOCAL-00016" summary="module structure modify">
+      <created>1560510823375</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1560510823375</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="118288000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49185666" visible="true" weight="0.2753358" />
+      <window_info id="Structure" order="1" sideWeight="0.5081433" side_tool="true" weight="0.26495728" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Run Dashboard" order="0" weight="0.47015706" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.62198955" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.460733" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4993895" visible="true" weight="0.58743453" />
+      <window_info anchor="bottom" id="Docker" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50061053" side_tool="true" weight="0.55183244" />
+      <window_info anchor="bottom" id="Statistic" order="12" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="16" weight="0.32984293" />
+      <window_info anchor="bottom" id="Messages" order="17" weight="0.32984293" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="18" />
+      <window_info anchor="bottom" id="Tail" order="19" />
+      <window_info anchor="bottom" id="TypeScript" order="20" />
+      <window_info anchor="right" id="JSF" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24969475" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32967034" />
+      <window_info anchor="right" id="JDT AST" order="5" />
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="CDI" order="8" />
+      <window_info anchor="right" id="Mongo Explorer" order="9" />
+      <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="right" id="Palette&#9;" order="11" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info anchor="right" id="RestServices" order="13" />
+      <window_info anchor="right" id="Bean Validation" order="14" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49185666" visible="true" weight="0.3986569" />
+      <window_info id="Structure" order="1" sideWeight="0.5081433" side_tool="true" weight="0.26495728" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Run Dashboard" order="0" weight="0.43350786" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.62198955" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.3853403" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4993895" weight="0.55183244" />
+      <window_info anchor="bottom" id="Docker" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50061053" side_tool="true" weight="0.55183244" />
+      <window_info anchor="bottom" id="Statistic" order="12" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="16" weight="0.32984293" />
+      <window_info anchor="bottom" id="Messages" order="17" weight="0.32984293" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="18" />
+      <window_info anchor="bottom" id="Tail" order="19" />
+      <window_info anchor="bottom" id="TypeScript" order="20" />
+      <window_info anchor="right" id="JSF" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24969475" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32967034" />
+      <window_info anchor="right" id="JDT AST" order="5" />
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="CDI" order="8" />
+      <window_info anchor="right" id="Mongo Explorer" order="9" />
+      <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="right" id="Palette&#9;" order="11" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info anchor="right" id="RestServices" order="13" />
+      <window_info anchor="right" id="Bean Validation" order="14" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="common-parent" />
+    <MESSAGE value="1.init" />
+    <MESSAGE value="增加通用库" />
+    <MESSAGE value="修改名称" />
+    <MESSAGE value="调整相关包的一些依赖关系" />
+    <MESSAGE value="inner模块不生成js" />
+    <MESSAGE value="测试生成器" />
+    <MESSAGE value="例子工程放到根节点" />
+    <MESSAGE value="spring security example" />
+    <MESSAGE value="spring security dynamically demo" />
+    <MESSAGE value="module structure modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="module structure modify" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.4.RELEASE/spring-security-web-5.1.4.RELEASE-sources.jar!/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>getPort()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>beanNames.length</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.context.getbean</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ExpressionUtils.convertTypedValue(context, typedResultValue, expectedResultType)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getAnnotatedElement().getAnnotations()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getAnnotatedElement()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>methodParameter.getMethodAnnotations()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>methodParameter.getParameterIndex()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.getHeaders()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="watch">
+      <expression>
+        <expression-string>this.httpBasic</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="setValue">
+      <expression>
+        <expression-string>&quot;hello&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;admin&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webflux/5.1.5.RELEASE/spring-webflux-5.1.5.RELEASE-sources.jar!/org/springframework/web/reactive/config/WebFluxConfigurationSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="80" column="64" lean-forward="true" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
+          <folding>
+            <element signature="e#4985#4986#0" expanded="true" />
+            <element signature="e#5022#5023#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.4.RELEASE/spring-security-web-5.1.4.RELEASE-sources.jar!/org/springframework/security/web/server/context/ServerSecurityContextRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webflux/5.1.5.RELEASE/spring-webflux-5.1.5.RELEASE-sources.jar!/org/springframework/web/reactive/DispatcherHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-143">
+          <caret line="114" column="37" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-core/src/main/java/org/rxjava/common/core/api/ReactiveHttpClientAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/config/DynamicallyWebFluxSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/controller/DemoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-security-dynamically-demo/src/main/java/org/rxjava/security/dynamically/example/DynamicallyExampleApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-cloud-starter-bus/src/main/java/org/rxjava/common/bus/BusEmitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-cloud-starter-bus/src/main/java/org/rxjava/common/bus/RxBusConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-service-starter/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-apikit-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-apikit-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/eclipse/jdt/org.eclipse.jdt.core/3.13.100/org.eclipse.jdt.core-3.13.100.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.core.resources/3.13.300/org.eclipse.core.resources-3.13.300.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-apikit-tool/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-apikit-example/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-apikit-maven-plugin/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/security/example/service/UserService.java" />
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/assembly/bin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/target/classes/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/target/docker-bin/startup.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/target/docker-bin/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/assembly/config/release/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/assembly/config/release/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="22" lean-forward="true" selection-end-line="11" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/main/java/org/rxjava/gateway/example/RxGatewayExampleMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/main/java/org/rxjava/gateway/example/RxGatewayExampleApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/assembly/bin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/target/docker-bin/startup.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/src/assembly/config/release/startup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="40" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/assembly/config/release/startup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="89" selection-start-line="1" selection-start-column="89" selection-end-line="1" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/service/example/RxServiceExampleMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/src/main/java/org/rxjava/service/example/RxServiceExampleApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-example/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-service-example/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-cloud-starter-bus/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-spring-gateway-starter/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-gateway-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rxjava-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1103">
+          <caret line="396" column="29" selection-start-line="396" selection-start-column="29" selection-end-line="396" selection-end-column="29" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArquillianSettingsConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>rxjava-gateway-example</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

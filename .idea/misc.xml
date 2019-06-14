@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/rxjava-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-service-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-security-dynamically-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-cloud-starter-bus/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-service-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-spring-gateway-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-core/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-tool/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-maven-plugin/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-apikit-example/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-service-example/pom.xml" />
+        <option value="$PROJECT_DIR$/rxjava-gateway-example/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>IconsUsabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>InternationalizationJava</id>
+          </State>
+          <State>
+            <id>J2ME issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java EE</id>
+          </State>
+          <State>
+            <id>Java language level issuesJava</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>LoggingJava</id>
+          </State>
+          <State>
+            <id>MessagesCorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>PerformanceLintAndroid</id>
+          </State>
+          <State>
+            <id>SecurityJava</id>
+          </State>
+          <State>
+            <id>SecurityLintAndroid</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+          <State>
+            <id>UI Form</id>
+          </State>
+          <State>
+            <id>UsabilityLintAndroid</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>
