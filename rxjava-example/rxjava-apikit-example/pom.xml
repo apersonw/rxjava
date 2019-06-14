@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-service</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.3</version>
         <relativePath>../../rxjava-service/pom.xml</relativePath>
     </parent>
     <artifactId>rxjava-apikit-example</artifactId>
