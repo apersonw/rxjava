@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-tool</artifactId>
-            <version>1.0.1</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
