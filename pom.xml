@@ -365,7 +365,6 @@
     </developers>
 
     <scm>
-        <tag>rxjava-1.0.6</tag>
         <url>https://github.com/apersonw/rxjava.git</url>
         <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>
         <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>
