@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>rxjava-apikit-maven-plugin</artifactId>
@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-tool</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -63,4 +63,8 @@
             </plugin>
         </plugins>
     </build>
+
+  <scm>
+    <tag>rxjava-apikit-maven-plugin-1.0.1</tag>
+  </scm>
 </project>
