@@ -5,7 +5,7 @@
 
 ### 一、模块说明
 
-- rxjava-apikit：Api生成器
+- rxjava-apikit：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
 - rxjava-example：例子工程
 - rxjava-gateway：网关项目pom
 - rxjava-service：微服务项目pom
