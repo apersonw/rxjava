@@ -23,7 +23,7 @@ public class RxApiBuildApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         //模块绝对路径
-        String moduleAbsolutePath = getModuleAbsolutePath("rxjava-example");
+        String moduleAbsolutePath = getModuleAbsolutePath("rxjava-apikit-example");
         //java源码文件夹
         String javaSourceDir = new File(moduleAbsolutePath, "src/main/java/").getAbsolutePath();
         //设置Java生成后的文件夹路径
@@ -57,7 +57,7 @@ public class RxApiBuildApplication implements CommandLineRunner {
     private String getModuleAbsolutePath(String module) {
         File root = new File(module);
         if (!root.exists()) {
-            root = new File("rxjava/", module);
+            root = new File("rxjava-example/", module);
         }
         if (!root.exists()) {
             root = new File(".");
