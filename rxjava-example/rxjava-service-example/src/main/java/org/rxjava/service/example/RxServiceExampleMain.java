@@ -9,10 +9,10 @@ import java.nio.file.Paths;
 import java.util.function.Consumer;
 
 /**
- * @author happy 2019-05-06 13:57
+ * @author happy 2019-03-17 22:23
  */
 public class RxServiceExampleMain {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         try {
             URLClassLoader cl = (URLClassLoader) ClassLoader.getSystemClassLoader();
             Method addURL = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
@@ -34,6 +34,6 @@ public class RxServiceExampleMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        RxServiceExampleApplication.main(args);
+        RxServiceExampleAppliaction.main(args);
     }
 }

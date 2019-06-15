@@ -7,7 +7,7 @@
         <version>1.0.4-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>rxjava-security-dynamically-example</artifactId>
+    <artifactId>rxjava-security-example</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>

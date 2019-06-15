@@ -1,6 +1,6 @@
-server:
-  port: 8080
 spring:
+  application:
+    name: rxjava-service-example
   data:
     mongodb:
       uri: mongodb://127.0.0.1:27017
@@ -17,3 +17,5 @@ spring:
         prefetch: 1
         default-requeue-rejected: true
         auto-startup: true
+server:
+  port: 8080
