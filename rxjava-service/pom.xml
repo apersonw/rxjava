@@ -11,6 +11,7 @@
     <properties>
         <module.type>service</module.type>
         <module.Type>Service</module.Type>
+        <git.url>git@github.com:apersonw/rxjava-apis.git</git.url>
     </properties>
     <dependencies>
         <dependency>
@@ -32,7 +33,7 @@
                             <apiType>person</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <url>${git.url}</url>
                                     <outPath>${module.name}/java/rxjava-apis-${module.name}-person/src/main/java
                                     </outPath>
                                     <deleteUris>org</deleteUris>
@@ -41,7 +42,7 @@
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <url>${git.url}</url>
                                     <outPath>${module.name}/js/rxjava-apis-${module.name}-person</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
@@ -56,7 +57,7 @@
                             <apiType>admin</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <url>${git.url}</url>
                                     <outPath>${module.name}/java/rxjava-apis-${module.name}-admin/src/main/java</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
@@ -64,7 +65,7 @@
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <url>${git.url}</url>
                                     <outPath>${module.name}/js/rxjava-apis-${module.name}-admin</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
@@ -79,7 +80,7 @@
                             <apiType>inner</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>git@github.com:apersonw/rxjava-apis.git</url>
+                                    <url>${git.url}</url>
                                     <outPath>${module.name}/java/rxjava-apis-${module.name}-inner/src/main/java</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
