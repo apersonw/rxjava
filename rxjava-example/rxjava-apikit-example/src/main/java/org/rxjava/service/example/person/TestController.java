@@ -26,6 +26,6 @@ public class TestController {
             @PathVariable String id,
             @Valid TestForm form
     ) {
-        return Mono.empty();
+        return Mono.just(100);
     }
 }

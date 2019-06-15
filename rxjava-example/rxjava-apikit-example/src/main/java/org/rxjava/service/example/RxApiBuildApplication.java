@@ -11,6 +11,7 @@ import java.io.File;
 
 /**
  * @author happy
+ * 手动构建api
  */
 public class RxApiBuildApplication implements CommandLineRunner {
     /**

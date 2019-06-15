@@ -8,8 +8,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @author happy 2019-05-10 18:06
  */
 @SpringBootApplication
-public class ExampleAppliaction {
+public class RxServiceExampleAppliaction {
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ExampleAppliaction.class).web(WebApplicationType.REACTIVE).run(args);
+        new SpringApplicationBuilder(RxServiceExampleAppliaction.class).web(WebApplicationType.REACTIVE).run(args);
     }
 }
