@@ -7,17 +7,18 @@
 
 ### 一、模块说明
 
-- rxjava-apikit：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
-- rxjava-example：例子工程
-- rxjava-gateway：网关项目pom
-- rxjava-service：微服务项目pom
-- rxjava-spring：对spring的一些整合
+- [rxjava-apikit](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit)：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
+- [rxjava-example](https://mvnrepository.com/artifact/org.rxjava/rxjava-example)：例子工程
+- [rxjava-gateway](https://mvnrepository.com/artifact/org.rxjava/rxjava-gateway)：网关项目pom
+- [rxjava-service](https://mvnrepository.com/artifact/org.rxjava/rxjava-service)：微服务项目pom
+- [rxjava-spring](https://mvnrepository.com/artifact/org.rxjava/rxjava-spring)：对spring的一些整合
+- [rxjava](https://mvnrepository.com/artifact/org.rxjava/rxjava)：依赖管理pom 
 
 ### 二、Api生成器说明
 
-- rxjava-apikit-core：一些默认约定，如适配器
-- rxjava-apikit-maven-plugin：maven插件，可直接执行命令生成api
-- rxjava-apikit-tool：Api生成器实现代码
+- [rxjava-apikit-core](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-core)：一些默认约定，如适配器
+- [rxjava-apikit-maven-plugin](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-maven-plugin)：maven插件，可直接执行命令生成api
+- [rxjava-apikit-tool](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-tool)：Api生成器实现代码
 
 ### 三、例子工程说明
 
