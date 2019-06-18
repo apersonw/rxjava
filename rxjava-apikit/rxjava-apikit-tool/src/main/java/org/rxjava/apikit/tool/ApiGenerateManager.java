@@ -49,30 +49,28 @@ public class ApiGenerateManager {
     private Context context;
     private String[] srcPaths;
 
-    /**
-     * 开始执行各种分析器
-     */
-    private void analyse() {
-        //转换包路径为绝对路径
-        rootDirPath = LocalPathUtils.packToPath(javaSourceDir, rootPackage).getAbsolutePath();
-        //设置上下文
-        context = new Context();
-        context.setJavaFilePath(javaSourceDir);
-        context.setRootPackage(rootPackage);
-
-        //分析控制器信息并保存到上下文
-        new ControllerAnalyse().analyse(context);
-        //分析参数类型信息并保存到上下文
-        new ParamClassAnalyse().analyse(context);
-    }
-
     public void generate(Generator generator) throws Exception {
         generator.generate(context);
     }
 
-    public ApiGenerateManager(String javaSourceDir, String rootPackage) {
-        this.javaSourceDir = javaSourceDir;
-        this.rootPackage = rootPackage;
-        analyse();
+    /**
+     * 开始分析指定文件夹指定包的api及param信息
+     *
+     * @param javaSourceDir 源码文件夹路径
+     * @param rootPackage   java包路径
+     * @return api生成管理器
+     */
+    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage) {
+        ApiGenerateManager manager = new ApiGenerateManager();
+        manager.javaSourceDir = javaSourceDir;
+        manager.rootPackage = rootPackage;
+        //获取java源码的文件夹路径
+        manager.rootDirPath = LocalPathUtils.packToPath(javaSourceDir, rootPackage).getAbsolutePath();
+        manager.context = Context.create(rootPackage, javaSourceDir);
+        //分析控制器信息并保存到上下文
+        ControllerAnalyse.create().analyse(manager.context);
+        //分析参数类型信息并保存到上下文
+        ParamClassAnalyse.create().analyse(manager.context);
+        return manager;
     }
 }

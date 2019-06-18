@@ -9,6 +9,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -28,6 +29,8 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     private WebClient webClient;
     private WebClient.Builder webClientBuilder;
     private String serviceId;
+    private String host;
+    private String port;
     /**
      * 类型转换函数
      */
@@ -36,11 +39,30 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
 
     @PostConstruct
     public void init() {
-        webClient = webClientBuilder.baseUrl("http://" + serviceId + "/")
-                .build();
+        if (!StringUtils.isEmpty(host)) {
+            if (!StringUtils.isEmpty(port)) {
+                port = ":" + port;
+            }
+            webClient = webClientBuilder.baseUrl("http://" + host + port + serviceId + "/").build();
+            return;
+        }
+        webClient = webClientBuilder.baseUrl("http://" + serviceId + "/").build();
     }
 
+    /**
+     * k8s通过serviceId访问,http://serviceId/
+     */
     private ReactiveHttpClientAdapter(WebClient.Builder webClientBuilder, String serviceId) {
+        this.serviceId = serviceId;
+        this.webClientBuilder = webClientBuilder;
+    }
+
+    /**
+     * 通过主机端口访问,http://host:port/serviceId/
+     */
+    private ReactiveHttpClientAdapter(WebClient.Builder webClientBuilder, String host, String port, String serviceId) {
+        this.host = host;
+        this.port = port;
         this.serviceId = serviceId;
         this.webClientBuilder = webClientBuilder;
     }

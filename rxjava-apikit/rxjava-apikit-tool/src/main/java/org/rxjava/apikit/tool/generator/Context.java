@@ -21,6 +21,14 @@ import java.util.TreeMap;
 @Setter
 @Getter
 public class Context {
+
+    public static Context create(String rootPackage, String javaFilePath) {
+        Context context = new Context();
+        context.rootPackage = rootPackage;
+        context.javaFilePath = javaFilePath;
+        return context;
+    }
+
     /**
      * 包信息
      */
@@ -38,11 +46,11 @@ public class Context {
      */
     private Map<String, BuilderWrapper<ParamClassInfo>> paramClassWrapperMap;
 
-    private TreeMap<String, ParamClassInfo> fullNameMessageMap = new TreeMap<>(Comparator.comparing(r -> r));
+    private TreeMap<String, ParamClassInfo> fullNameParamClassInfoMap = new TreeMap<>(Comparator.comparing(r -> r));
 
-    public void addMessage(ClassInfo key, ParamClassInfo paramClassInfo) {
+    public void addParamClassInfo(ClassInfo key, ParamClassInfo paramClassInfo) {
         paramClassMap.put(key, paramClassInfo);
-        fullNameMessageMap.put(key.getFullName(), paramClassInfo);
+        fullNameParamClassInfoMap.put(key.getFullName(), paramClassInfo);
     }
 
     private TreeMap<ClassInfo, ParamClassInfo> paramClassMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));

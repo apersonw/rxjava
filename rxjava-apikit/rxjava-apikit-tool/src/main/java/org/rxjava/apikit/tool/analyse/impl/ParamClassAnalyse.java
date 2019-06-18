@@ -34,6 +34,10 @@ public class ParamClassAnalyse implements MessageAnalyse {
             Class.class, Object.class, void.class, Void.class
     );
 
+    public static ParamClassAnalyse create(){
+        return new ParamClassAnalyse();
+    }
+
     @Override
     public void analyse(Context context) {
         this.context = context;
@@ -64,7 +68,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
         classInfoSet.addAll(Objects.requireNonNull(classInfoList));
         analysDeque.addAll(classInfoList);
         handler();
-        paramClassMap.forEach(context::addMessage);
+        paramClassMap.forEach(context::addParamClassInfo);
     }
 
     /**

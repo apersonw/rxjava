@@ -43,16 +43,20 @@ import java.util.stream.Stream;
 public class ControllerAnalyse implements Analyse {
     private Context context;
 
+    public static ControllerAnalyse create(){
+        return new ControllerAnalyse();
+    }
+
     /**
      * 开始扫描根包下的类文件
      */
     @Override
     public void analyse(Context context) {
         this.context = context;
-        FastClasspathScanner fastClasspathScanner = new FastClasspathScanner(context.getRootPackage());
-        fastClasspathScanner.addClassLoader(ControllerAnalyse.class.getClassLoader());
-        fastClasspathScanner.matchAllClasses(this::analyseClass);
-        fastClasspathScanner.scan();
+        FastClasspathScanner scanner = new FastClasspathScanner(context.getRootPackage());
+        scanner.addClassLoader(ControllerAnalyse.class.getClassLoader());
+        scanner.matchAllClasses(this::analyseClass);
+        scanner.scan();
     }
 
     /**
@@ -65,13 +69,12 @@ public class ControllerAnalyse implements Analyse {
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
                 : "";
-        String classPackageName = cls.getPackage().getName();
 
-        //检查类是否在root包路径下并且拥有Controller注解
+        String classPackageName = cls.getPackage().getName();
+        //分析指定root包路径且拥有controller注解的类
         if (classPackageName.startsWith(context.getRootPackage()) && controllerAnnotation != null) {
             //分析类下的Api信息
             ApiClassInfo apiInfo = new ApiClassInfo();
-            //方法名
             apiInfo.setName(cls.getSimpleName());
             //包名
             apiInfo.setPackageName(classPackageName);

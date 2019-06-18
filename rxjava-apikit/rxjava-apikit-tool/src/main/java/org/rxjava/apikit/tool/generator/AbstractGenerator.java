@@ -101,6 +101,7 @@ public abstract class AbstractGenerator implements Generator {
         this.context = context;
         this.builderWrappers = initParamClassWrapper();
 
+        //通过api类信息生成api
         for (ApiClassInfo apiInfo : context.apis.getValues()) {
             try {
                 generateApiFile(apiInfo);
@@ -109,6 +110,7 @@ public abstract class AbstractGenerator implements Generator {
             }
         }
 
+        //通过param类信息生成参数类信息
         for (BuilderWrapper<ParamClassInfo> builderWrapper : builderWrappers) {
             try {
                 generateParamFile(builderWrapper);

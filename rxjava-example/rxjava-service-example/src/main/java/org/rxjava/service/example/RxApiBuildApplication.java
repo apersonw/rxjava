@@ -42,14 +42,14 @@ public class RxApiBuildApplication implements CommandLineRunner {
         javaScriptApiGenerator.setOutPath(jsOutPath);
         javaScriptApiGenerator.setServiceId("example");
 
-        //初始化api生成管理器
-        ApiGenerateManager apiGenerateManager = new ApiGenerateManager(javaSourceDir, "org.rxjava.service.example");
+        //分析api和param
+        ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourceDir, "org.rxjava.service.example");
 
-        //开始生成java客户端Api
-        apiGenerateManager.generate(javaClientApiGenerator);
+        //生成java客户端Api
+        manager.generate(javaClientApiGenerator);
 
-        //开始生成java script客户端Api
-        apiGenerateManager.generate(javaScriptApiGenerator);
+        //生成java script客户端Api
+        manager.generate(javaScriptApiGenerator);
     }
 
     /**

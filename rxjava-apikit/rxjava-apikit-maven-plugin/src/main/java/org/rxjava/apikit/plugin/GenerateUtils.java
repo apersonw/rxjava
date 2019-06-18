@@ -66,7 +66,7 @@ public class GenerateUtils {
                     gitGenerator.setGitBranch(gitTask.getBranch());
 
                     //初始化api生成管理器
-                    ApiGenerateManager manager = new ApiGenerateManager(javaSourcePath, rootPackage);
+                    ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourcePath, rootPackage);
                     Generator generator = createGenerator(gitTask.getTask(), apiType);
                     gitGenerator.setGenerator((AbstractGenerator) generator);
 
