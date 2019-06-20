@@ -7,6 +7,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,26 +32,32 @@ public class FileRenameUtils {
 
         Path source = Paths.get("/Users/happy/DeskTop/img");
         Path dist = Paths.get("/Users/happy/DeskTop/img_py");
-        handler(source, dist);
+        handler(source, dist, "@", "Select");
     }
 
-    private static void handler(Path source, Path dist) {
+    private static void handler(Path source, Path dist, String split, String suffix) {
         try {
             if (Files.isDirectory(source)) {
                 Files.list(source).forEach(child -> {
                     Path fileName = child.getFileName();
                     String pinyinName = toPinyin(fileName.getFileName().toString());
+                    if (StringUtils.isNoneEmpty(split, suffix)) {
+                        pinyinName = pinyinName.replace(split, suffix + split);
+                    }
                     handler(child, dist.resolve(pinyinName));
                 });
             } else {
-                String pinyinName = toPinyin(dist.getFileName().toString());
-
+                String pinyinName = toPinyin(dist.getFileName().toString()) + suffix;
                 Files.createDirectories(dist.getParent());
                 Files.copy(source, dist.resolveSibling(pinyinName), StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    private static void handler(Path source, Path dist) {
+        handler(source, dist, "", "");
     }
 
     public static String toPinyin(String name) {
