@@ -7,7 +7,7 @@
         <version>1.0.4-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>rxjava-security-example</artifactId>
+    <artifactId>rxjava-service-security</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>

@@ -11,6 +11,6 @@
     <modules>
         <module>rxjava-service-example</module>
         <module>rxjava-gateway-example</module>
-        <module>rxjava-security-example</module>
+        <module>rxjava-service-security</module>
     </modules>
 </project>
