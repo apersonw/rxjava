@@ -1,4 +1,4 @@
-package org.rxjava.security.dynamically.example.controller;
+package org.rxjava.security.example.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,6 @@
-package org.rxjava.security.dynamically.example.config;
+package org.rxjava.security.example.config;
 
-import org.rxjava.security.dynamically.example.repository.DynamicallySecurityContextRepository;
+import org.rxjava.security.example.repository.DynamicallySecurityContextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

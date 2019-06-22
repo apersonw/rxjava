@@ -1,4 +1,4 @@
-package org.rxjava.security.dynamically.example.config;
+package org.rxjava.security.example.config;
 
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;

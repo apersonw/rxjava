@@ -1,4 +1,4 @@
-package org.rxjava.security.dynamically.example;
+package org.rxjava.security.example;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

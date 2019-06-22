@@ -1,7 +1,7 @@
-package org.rxjava.security.dynamically.example.repository;
+package org.rxjava.security.example.repository;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.security.dynamically.example.config.AuthenticationManager;
+import org.rxjava.security.example.config.AuthenticationManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
