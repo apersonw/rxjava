@@ -6,6 +6,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.UUIDUtils;
+import org.rxjava.security.example.entity.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -82,23 +83,13 @@ public class DemoController {
     }
 
     /**
-     * 拥有权限
+     * 拥有权限(方法不好用，是阻塞的，而且没法覆盖默认的)
      */
     @GetMapping("hasPermission")
     @PreAuthorize("hasPermission(#id,'edit')")
     public Mono<String> hasPermission(
-            String id
-    ) {
-        return Mono.just(UUID.randomUUID().toString());
-    }
-
-    /**
-     * 拥有权限
-     */
-    @GetMapping("hasPrivilege")
-    @PreAuthorize("hasPrivilege(#id,'edit')")
-    public Mono<String> hasPrivilege(
-            String id
+            String id,
+            Permission permission
     ) {
         return Mono.just(UUID.randomUUID().toString());
     }
