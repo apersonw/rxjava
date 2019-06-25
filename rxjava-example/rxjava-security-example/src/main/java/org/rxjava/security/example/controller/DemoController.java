@@ -58,17 +58,48 @@ public class DemoController {
         return Mono.just(UUID.randomUUID().toString());
     }
 
-    /**
-     * 用户权限测试
-     */
-    @GetMapping("userEditTest")
-    @PreAuthorize("hasPermission(#user, 'edit')")
-    public Mono<String> userEditTest() {
-        return Mono.just(UUID.randomUUID().toString());
-    }
-
     private String newToken() {
         String uuid = UUIDUtils.randomUUIDToBase64();
         return uuid + RandomStringUtils.randomAlphanumeric(TOKEN_LENGTH - uuid.length());
+    }
+
+    /**
+     * 拥有角色
+     */
+    @GetMapping("hasRole")
+    @PreAuthorize("hasRole('USER')")
+    public Mono<String> hasRole() {
+        return Mono.just(UUID.randomUUID().toString());
+    }
+
+    /**
+     * 拥有以下其中一个角色
+     */
+    @GetMapping("hasAnyRole")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public Mono<String> hasAnyRole() {
+        return Mono.just(UUID.randomUUID().toString());
+    }
+
+    /**
+     * 拥有权限
+     */
+    @GetMapping("hasPermission")
+    @PreAuthorize("hasPermission(#id,'edit')")
+    public Mono<String> hasPermission(
+            String id
+    ) {
+        return Mono.just(UUID.randomUUID().toString());
+    }
+
+    /**
+     * 拥有权限
+     */
+    @GetMapping("hasPrivilege")
+    @PreAuthorize("hasPrivilege(#id,'edit')")
+    public Mono<String> hasPrivilege(
+            String id
+    ) {
+        return Mono.just(UUID.randomUUID().toString());
     }
 }

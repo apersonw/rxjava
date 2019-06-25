@@ -104,7 +104,7 @@ public abstract class BaseRxJavaWebFluxConfigurer implements WebFluxConfigurer {
     }
 
     /**
-     * 配置http消息编解码
+     * 配置自定义HTTP消息读取器和写入器或覆盖内置的读取器和编写器。配置的读取器和写入器将用于带注释的控制器和功能端点。
      */
     @Override
     public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {

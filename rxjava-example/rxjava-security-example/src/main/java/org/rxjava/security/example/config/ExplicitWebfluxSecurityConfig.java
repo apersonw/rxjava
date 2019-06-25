@@ -3,6 +3,7 @@ package org.rxjava.security.example.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -39,6 +41,9 @@ public class ExplicitWebfluxSecurityConfig {
     @Autowired
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
+    @Autowired
+    private ReactiveUserDetailsService reactiveUserDetailsService;
+
     /**
      * token授权过滤器
      */
@@ -51,7 +56,6 @@ public class ExplicitWebfluxSecurityConfig {
 
     /**
      * 将token转换为JwtAuthenticationToken
-     * @return
      */
     private Function<ServerWebExchange, Mono<Authentication>> tokenAuthenticationConverter() {
         return serverWebExchange -> {
@@ -66,13 +70,13 @@ public class ExplicitWebfluxSecurityConfig {
 
     /**
      * 从redis中获取loginInfo转换为JwtAuthenticationToken
-     * @return
      */
     private ReactiveAuthenticationManager tokenAuthenticationManager() {
         return authentication -> {
             String token = (String) authentication.getCredentials();
             return reactiveRedisTemplate.opsForValue()
                     .get(token)
+                    .switchIfEmpty(Mono.defer(() -> Mono.error(LoginRuntimeException.of("未找到token"))))
                     .map(loginInfoStr -> {
                         LoginInfo loginInfo = null;
                         try {
@@ -82,14 +86,9 @@ public class ExplicitWebfluxSecurityConfig {
                         }
                         return loginInfo;
                     })
-                    .map(loginInfo -> {
-                        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                                .username(loginInfo.getUserId())
-                                .password("test")
-                                .roles("USER")
-                                .build();
-                        return new JwtAuthenticationToken(userDetails, token, userDetails.getAuthorities());
-                    });
+                    .flatMap(loginInfo -> reactiveUserDetailsService.findByUsername(loginInfo.getUserId())
+                            .map(userDetails -> new JwtAuthenticationToken(userDetails, token, userDetails.getAuthorities()))
+                    );
         };
     }
 
@@ -105,9 +104,13 @@ public class ExplicitWebfluxSecurityConfig {
                 .authenticationEntryPoint((exchange, e) -> Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED)))
                 .accessDeniedHandler((exchange, e) -> Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN)))
                 .and()
+                //禁用缓存
+                .headers().cache().disable().and()
+                //取消csrf
                 .csrf().disable()
-                .addFilterAt(tokenAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
+                .formLogin().disable()
                 .logout().disable()
+                .addFilterAt(tokenAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
                 .build();
     }
 }

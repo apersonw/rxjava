@@ -56,6 +56,9 @@ public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConf
         return new LoginInfoArgumentResolver(webFluxAdapterRegistry());
     }
 
+    /**
+     * 自定义方法参数配置解析器
+     */
     @Override
     public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
         configurer.addCustomResolver(loginInfoArgumentResolver());
