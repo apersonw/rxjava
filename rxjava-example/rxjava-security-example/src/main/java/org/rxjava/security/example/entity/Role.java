@@ -28,7 +28,8 @@ public class Role {
      * 角色名称
      */
     @Indexed(unique = true)
-    private String name;
+    private String rolename;
+    private String englishName;
     /**
      * 创建日期
      */

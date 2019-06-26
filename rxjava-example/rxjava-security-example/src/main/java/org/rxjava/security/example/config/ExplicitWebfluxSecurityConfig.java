@@ -2,8 +2,8 @@ package org.rxjava.security.example.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
+import org.rxjava.security.example.entity.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
@@ -15,10 +15,10 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -39,16 +39,13 @@ import java.util.function.Function;
 @EnableSwagger2WebFlux
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public class ExplicitWebfluxSecurityConfig {
+public class ExplicitWebfluxSecurityConfig implements WebFluxConfigurer {
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
-
-    @Autowired
-    private ReactiveUserDetailsService reactiveUserDetailsService;
 
     /**
      * token授权过滤器
@@ -61,12 +58,11 @@ public class ExplicitWebfluxSecurityConfig {
     }
 
     /**
-     * 将token转换为JwtAuthenticationToken
+     * 将token转换为JwtAuthenticationToken对象，实际上里面只存了token
      */
     private Function<ServerWebExchange, Mono<Authentication>> tokenAuthenticationConverter() {
         return serverWebExchange -> {
-            String authorization = serverWebExchange.getRequest()
-                    .getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
+            String authorization = serverWebExchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
             if (StringUtils.isEmpty(authorization)) {
                 return Mono.empty();
             }
@@ -83,17 +79,20 @@ public class ExplicitWebfluxSecurityConfig {
             return reactiveRedisTemplate.opsForValue()
                     .get(token)
                     .switchIfEmpty(Mono.defer(() -> Mono.error(LoginRuntimeException.of("未找到token"))))
-                    .map(loginInfoStr -> {
-                        LoginInfo loginInfo = null;
+                    .map(securityUserStr -> {
+                        SecurityUser securityUser = null;
                         try {
-                            loginInfo = objectMapper.readValue(loginInfoStr, LoginInfo.class);
+                            securityUser = objectMapper.readValue(securityUserStr, SecurityUser.class);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        return loginInfo;
+                        return securityUser;
                     })
-                    .flatMap(loginInfo -> reactiveUserDetailsService.findByUsername(loginInfo.getUserId())
-                            .map(userDetails -> new JwtAuthenticationToken(userDetails, token, userDetails.getAuthorities()))
+                    .map(securityUser -> new JwtAuthenticationToken(
+                                    securityUser,
+                                    token,
+                                    securityUser.getAuthorities()
+                            )
                     );
         };
     }
@@ -102,7 +101,7 @@ public class ExplicitWebfluxSecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
                 .authorizeExchange()
-                .pathMatchers("/login").permitAll()
+                .pathMatchers("/loginByPhoneSms").permitAll()
                 .pathMatchers("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**").permitAll()
                 .anyExchange().authenticated()
                 .and()
@@ -112,7 +111,7 @@ public class ExplicitWebfluxSecurityConfig {
                 .accessDeniedHandler((exchange, e) -> Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN)))
                 .and()
                 //禁用缓存
-//                .headers().cache().disable().and()
+                .headers().cache().disable().and()
                 //取消csrf
                 .csrf().disable()
                 .formLogin().disable()
@@ -121,6 +120,7 @@ public class ExplicitWebfluxSecurityConfig {
                 .build();
     }
 
+    /**********************Api文档*************************/
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)

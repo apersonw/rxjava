@@ -9,6 +9,7 @@ import java.util.Collection;
 
 /**
  * @author happy 2019-06-23 23:10
+ * jwt认证
  */
 public class JwtAuthenticationToken extends AbstractAuthenticationToken {
     private UserDetails principal;
@@ -27,11 +28,17 @@ public class JwtAuthenticationToken extends AbstractAuthenticationToken {
         setAuthenticated(true);
     }
 
+    /**
+     * 凭证即为token
+     */
     @Override
     public Object getCredentials() {
         return jwtToken;
     }
 
+    /**
+     * UserDetails
+     */
     @Override
     public Object getPrincipal() {
         return principal;

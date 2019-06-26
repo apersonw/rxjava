@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
  */
 @Repository
 public interface ManagerAuthRepository extends ReactiveSortingRepository<ManagerAuth, String>, SpecialManagerAuthRepository {
-    Mono<ManagerAuth> findByIdentityTypeAndIdentifierAndCredential(String identityType, String identifier, String credential);
+    Mono<ManagerAuth> findByIdentityTypeAndIdentifier(String identityType, String identifier);
 }
 
 interface SpecialManagerAuthRepository {
