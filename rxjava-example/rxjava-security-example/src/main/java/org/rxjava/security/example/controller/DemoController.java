@@ -2,6 +2,8 @@ package org.rxjava.security.example.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
@@ -12,6 +14,7 @@ import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -21,6 +24,7 @@ import java.util.UUID;
 /**
  * @author happy 2019-06-13 13:13
  */
+@Api(value = "Swagger test Controller", description = "learn how to use swagger")
 @RestController
 public class DemoController {
     private static final int TOKEN_LENGTH = 32;
@@ -32,6 +36,7 @@ public class DemoController {
     /**
      * 登陆
      */
+    @ApiOperation("测试登陆接口")
     @PostMapping("login")
     public Mono<String> login() {
         String token = newToken();

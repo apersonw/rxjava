@@ -9,9 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.PermissionEvaluator;
-import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
-import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -24,6 +21,13 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 import java.io.IOException;
 import java.util.function.Function;
@@ -32,6 +36,7 @@ import java.util.function.Function;
  * @author happy 2019-06-23 15:45
  * 明确的权限配置
  */
+@EnableSwagger2WebFlux
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 public class ExplicitWebfluxSecurityConfig {
@@ -98,6 +103,7 @@ public class ExplicitWebfluxSecurityConfig {
         return http
                 .authorizeExchange()
                 .pathMatchers("/login").permitAll()
+                .pathMatchers("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**").permitAll()
                 .anyExchange().authenticated()
                 .and()
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
@@ -112,6 +118,25 @@ public class ExplicitWebfluxSecurityConfig {
                 .formLogin().disable()
                 .logout().disable()
                 .addFilterAt(tokenAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
+                .build();
+    }
+
+    @Bean
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("org.rxjava"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Swagger构建RESTful API")
+                .description("")
+                .termsOfServiceUrl("")
+                .version("1.0")
                 .build();
     }
 }
