@@ -55,7 +55,7 @@ public class RxJavaWebFluxSecurityConfig {
     public AuthenticationWebFilter authenticationFilter(ReactiveAuthenticationManager reactiveAuthenticationManager) {
         AuthenticationWebFilter filter = new AuthenticationWebFilter(reactiveAuthenticationManager);
         filter.setServerAuthenticationConverter(this::authenticationConverter);
-        filter.setAuthenticationFailureHandler((exchange, exception) -> Mono.error(exception));
+        filter.setAuthenticationFailureHandler((exchange, exception) -> LoginRuntimeException.mono("401 unauthorized"));
         filter.setAuthenticationSuccessHandler(new CustomServerAuthenticationSuccessHandler());
         return filter;
     }

@@ -1,14 +1,16 @@
 package org.rxjava.service.example.inner;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.service.LoginInfoService;
+import org.rxjava.service.example.form.CheckPermissionForm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ReactiveRedisTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.net.URLDecoder;
+import javax.validation.Valid;
 
 /**
  * @author happy 2019-06-29 22:39
@@ -17,25 +19,16 @@ import java.net.URLDecoder;
 @RequestMapping("inner")
 public class InnerLoginInfoController {
     @Autowired
-    private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
-    @Autowired
-    private ObjectMapper objectMapper;
+    private LoginInfoService loginInfoService;
 
-    @PostMapping("checkToken/{token}")
+    @GetMapping("checkToken/{token}")
     public Mono<LoginInfo> checkToken(@PathVariable String token) {
-        return reactiveRedisTemplate
-                .opsForValue()
-                .get(token)
-                .map(loginInfoStr -> {
-                    LoginInfo loginInfo = null;
-                    try {
-                        String decode = URLDecoder.decode(loginInfoStr, "utf8");
-                        loginInfo = objectMapper.readValue(decode, LoginInfo.class);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    return loginInfo;
-                });
+        return loginInfoService.checkToken(token);
+    }
+
+    @GetMapping("checkPermission")
+    public Mono<Boolean> checkPermission(@Valid CheckPermissionForm form) {
+        return loginInfoService.checkPermission(form.getUserAuthId(), form.getPath(), form.getMethod());
     }
 
     @GetMapping("hello")

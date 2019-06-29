@@ -4,6 +4,7 @@ import org.rxjava.api.example.inner.InnerLoginInfoApi;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -21,7 +22,11 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
      */
     @Override
     public Mono<LoginInfo> checkToken(String token) {
-        return innerLoginInfoApi.checkToken(token).cast(LoginInfo.class);
+        return innerLoginInfoApi.checkToken(token).map(r->{
+            LoginInfo loginInfo = new LoginInfo();
+            BeanUtils.copyProperties(r,loginInfo);
+            return loginInfo;
+        });
     }
 
 }
