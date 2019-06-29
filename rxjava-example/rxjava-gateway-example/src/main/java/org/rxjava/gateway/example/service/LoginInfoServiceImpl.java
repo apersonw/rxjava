@@ -23,7 +23,7 @@ public class LoginInfoServiceImpl implements LoginInfoService {
 
     /**
      * 1、获取loginInfo
-     * 2、检查permission
+     * 2、检查permission(可选)
      * 3、返回loginInfo
      */
     @Override
