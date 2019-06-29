@@ -1,8 +1,8 @@
 package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
+import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.server.RequestPath;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.Authentication;
@@ -23,6 +24,7 @@ import reactor.core.publisher.Mono;
 /**
  * @author happy 2019-06-29 03:30
  */
+@EnableWebFluxSecurity
 public class RxJavaWebFluxSecurityConfig {
 
     /**
@@ -39,13 +41,9 @@ public class RxJavaWebFluxSecurityConfig {
         return authentication -> {
             AuthenticationToken authenticationToken = (AuthenticationToken) authentication;
             String token = authenticationToken.getToken();
-            String requestPath = authenticationToken.getRequestPath();
-            String methodValue = authenticationToken.getMethodValue();
             return loginInfoService
-                    .checkPermission(token, requestPath, methodValue)
-                    .switchIfEmpty(LoginRuntimeException.mono("not found"))
-                    .filter(loginInfo -> !loginInfo.isForbidden())
-                    .switchIfEmpty(LoginRuntimeException.mono("forbidden"))
+                    .checkToken(token)
+                    .switchIfEmpty(LoginRuntimeException.mono("401 unauthorized"))
                     .map(loginInfo -> new AuthenticationToken(authenticationToken.getToken(), loginInfo));
         };
     }

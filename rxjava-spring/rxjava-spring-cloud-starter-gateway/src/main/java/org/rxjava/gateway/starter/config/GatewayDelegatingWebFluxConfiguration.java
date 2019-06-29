@@ -1,4 +1,4 @@
-package org.rxjava.service.starter.boot;
+package org.rxjava.gateway.starter.config;
 
 import org.rxjava.common.core.exception.JsonResponseStatusExceptionHandler;
 import org.springframework.beans.factory.ObjectProvider;
@@ -10,6 +10,8 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.config.DelegatingWebFluxConfiguration;
+import org.springframework.web.reactive.config.WebFluxConfigurationSupport;
+import org.springframework.web.reactive.handler.WebFluxResponseStatusExceptionHandler;
 import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer;
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.reactive.result.view.ViewResolver;
@@ -25,15 +27,7 @@ import java.util.List;
  */
 @Configuration
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 12)
-public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConfiguration {
-
-    @Override
-    @Bean
-    @ConditionalOnMissingBean
-    protected RequestMappingHandlerAdapter createRequestMappingHandlerAdapter() {
-        return new SecurityRequestMappingHandlerAdapter();
-    }
-
+public class GatewayDelegatingWebFluxConfiguration extends WebFluxConfigurationSupport {
     /**
      * 注入json响应状态异常处理器
      */
@@ -48,21 +42,4 @@ public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConf
         handler.setViewResolvers(viewResolversProvider.getIfAvailable(Collections::emptyList));
         return handler;
     }
-
-    /**
-     * 注入登陆信息参数解析器
-     */
-    @Bean
-    public LoginInfoArgumentResolver loginInfoArgumentResolver() {
-        return new LoginInfoArgumentResolver(webFluxAdapterRegistry());
-    }
-
-    /**
-     * 自定义方法参数配置解析器
-     */
-    @Override
-    public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
-        configurer.addCustomResolver(loginInfoArgumentResolver());
-    }
-
 }

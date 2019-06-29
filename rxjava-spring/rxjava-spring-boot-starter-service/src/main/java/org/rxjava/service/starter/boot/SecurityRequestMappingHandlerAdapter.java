@@ -3,10 +3,13 @@ package org.rxjava.service.starter.boot;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.rxjava.common.core.annotation.Check;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
+import org.rxjava.common.core.service.LoginInfoService;
 import org.rxjava.common.core.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.method.HandlerMethod;
@@ -27,6 +30,8 @@ import static org.rxjava.service.starter.boot.LoginInfoArgumentResolver.LOGIN_RE
 public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerAdapter {
     private static final Logger log = LogManager.getLogger();
     private static final String LOGIN_INFO = "loginInfo";
+    @Autowired
+    private LoginInfoService loginInfoService;
 
     SecurityRequestMappingHandlerAdapter() {
         super();
@@ -44,14 +49,14 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         ServerHttpRequest request = exchange.getRequest();
         PathContainer path = request.getPath().pathWithinApplication();
         String pathValue = path.value();
-        //内部接口不做登陆检查
+        //服务间内部接口不做检查
         if (pathValue.startsWith("/inner")) {
             return super.handle(exchange, handler);
         }
 
         //检查是否需要登陆
-        Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
-        if (methodAnnotation == null || methodAnnotation.value()) {
+        Login login = handlerMethod.getMethodAnnotation(Login.class);
+        if (login == null || login.value()) {
 
             String loginInfoJson = request.getHeaders().getFirst(LOGIN_INFO);
             LoginInfo loginInfo = parseLoginJson(loginInfoJson);
@@ -61,7 +66,17 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
             }
             //请求参数注入登陆信息对象
             exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, loginInfo);
-            //todo:其他的一些诸如权限检查
+
+            Check check = handlerMethod.getMethodAnnotation(Check.class);
+            if (check != null && check.value()) {
+
+                String methodValue = request.getMethodValue();
+                return loginInfoService
+                        .checkPermission(loginInfo.getUserAuthId(), pathValue, methodValue)
+                        .filter(r -> r)
+                        .switchIfEmpty(LoginRuntimeException.mono("403 forbidden"))
+                        .flatMap(r -> super.handle(exchange, handler));
+            }
         }
         return super.handle(exchange, handler);
     }

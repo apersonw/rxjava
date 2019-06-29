@@ -1,5 +1,6 @@
 package org.rxjava.service.example.person;
 
+import org.rxjava.common.core.annotation.Check;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.service.example.form.TestForm;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,5 +28,15 @@ public class TestController {
             @Valid TestForm form
     ) {
         return Mono.just(100);
+    }
+
+    /**
+     * 路径权限检查
+     */
+    @Check(true)
+    @GetMapping("checkTest")
+    public Mono<String> checkTest(
+    ) {
+        return Mono.just("checkOk");
     }
 }

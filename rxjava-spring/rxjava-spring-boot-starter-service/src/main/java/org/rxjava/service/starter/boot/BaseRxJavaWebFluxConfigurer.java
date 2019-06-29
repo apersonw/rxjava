@@ -13,6 +13,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
+import org.rxjava.common.core.service.LoginInfoService;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -41,6 +43,15 @@ public abstract class BaseRxJavaWebFluxConfigurer implements WebFluxConfigurer {
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "HH:mm:ss.SSS";
+
+    /**
+     * 默认校验均不通过，客户端需要自行实现
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public LoginInfoService loginInfoService() {
+        return new DefaultLoginInfoServiceImpl();
+    }
 
     @Bean
     @Primary

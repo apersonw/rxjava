@@ -14,14 +14,10 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 public class AuthenticationToken extends AbstractAuthenticationToken {
     private String token;
     private LoginInfo loginInfo;
-    private String requestPath;
-    private String methodValue;
 
     public AuthenticationToken(String token, String requestPath, String methodValue) {
         super(null);
         this.token = token;
-        this.requestPath = requestPath;
-        this.methodValue = methodValue;
     }
 
     public AuthenticationToken(String token, LoginInfo loginInfo) {

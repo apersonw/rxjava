@@ -38,7 +38,7 @@ public class AuthController {
         }
         return reactiveRedisTemplate
                 .opsForValue()
-                .set("token", loginInfoJson, Duration.ofSeconds(10))
+                .set("token", loginInfoJson, Duration.ofSeconds(30))
                 .map(r -> "token");
     }
 }

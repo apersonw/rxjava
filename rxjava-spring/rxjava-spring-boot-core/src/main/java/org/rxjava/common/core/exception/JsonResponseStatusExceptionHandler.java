@@ -1,10 +1,7 @@
-package org.rxjava.service.starter.boot;
+package org.rxjava.common.core.exception;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.rxjava.common.core.exception.ErrorMessage;
-import org.rxjava.common.core.exception.ErrorMessageException;
-import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.rxjava.common.core.utils.ErrorMessageUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
@@ -25,10 +22,10 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.reactive.handler.WebFluxResponseStatusExceptionHandler;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
-import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -40,7 +37,7 @@ import java.util.Locale;
  * @author happy 2019-04-18 00:47
  * Json响应状态异常处理器
  */
-public class JsonResponseStatusExceptionHandler extends ResponseStatusExceptionHandler implements ErrorWebExceptionHandler, InitializingBean, MessageSourceAware {
+public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExceptionHandler implements ErrorWebExceptionHandler, InitializingBean, MessageSourceAware {
     private static final Logger log = LogManager.getLogger();
     private List<HttpMessageWriter<?>> messageWriters = Collections.emptyList();
     private List<ViewResolver> viewResolvers = Collections.emptyList();

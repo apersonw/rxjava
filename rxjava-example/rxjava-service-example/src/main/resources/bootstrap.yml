@@ -18,4 +18,4 @@ spring:
         default-requeue-rejected: true
         auto-startup: true
 server:
-  port: 8080
+  port: 8081
