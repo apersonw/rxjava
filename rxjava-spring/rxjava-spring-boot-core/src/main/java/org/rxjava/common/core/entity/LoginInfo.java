@@ -1,6 +1,8 @@
 package org.rxjava.common.core.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -22,4 +24,8 @@ public class LoginInfo {
      * 用户授权Id
      */
     private String userAuthId;
+    /**
+     * 是否禁止访问
+     */
+    private boolean forbidden = false;
 }

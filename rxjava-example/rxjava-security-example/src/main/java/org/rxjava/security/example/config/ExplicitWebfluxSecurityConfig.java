@@ -98,7 +98,7 @@ public class ExplicitWebfluxSecurityConfig implements WebFluxConfigurer {
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
                 .authorizeExchange()
                 .pathMatchers("/loginByPhoneSms").permitAll()
