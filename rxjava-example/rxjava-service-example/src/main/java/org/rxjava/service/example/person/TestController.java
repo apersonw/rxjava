@@ -33,7 +33,7 @@ public class TestController {
     /**
      * 路径权限检查
      */
-    @Check(true)
+    @Check
     @GetMapping("checkTest")
     public Mono<String> checkTest(
     ) {

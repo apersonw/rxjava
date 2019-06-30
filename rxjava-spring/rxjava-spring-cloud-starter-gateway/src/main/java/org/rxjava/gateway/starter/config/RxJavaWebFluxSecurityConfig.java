@@ -43,6 +43,7 @@ public class RxJavaWebFluxSecurityConfig {
             String token = authenticationToken.getToken();
             return loginInfoService
                     .checkToken(token)
+                    .switchIfEmpty(LoginRuntimeException.mono("401 unauthorized"))
                     .map(loginInfo -> new AuthenticationToken(authenticationToken.getToken(), loginInfo));
         };
     }

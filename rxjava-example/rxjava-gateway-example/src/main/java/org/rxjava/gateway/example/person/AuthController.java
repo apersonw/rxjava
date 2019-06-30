@@ -1,5 +1,6 @@
 package org.rxjava.gateway.example.person;
 
+import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class AuthController {
     @Autowired
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
+    @Login(false)
     @GetMapping("login")
     public Mono<String> login() {
         LoginInfo loginInfo = new LoginInfo();

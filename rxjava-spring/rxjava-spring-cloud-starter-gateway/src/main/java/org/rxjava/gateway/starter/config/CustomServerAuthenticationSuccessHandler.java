@@ -1,5 +1,7 @@
 package org.rxjava.gateway.starter.config;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -22,33 +24,37 @@ public class CustomServerAuthenticationSuccessHandler implements ServerAuthentic
      */
     @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
+        ServerWebExchange exchange = webFilterExchange.getExchange();
+        WebFilterChain chain = webFilterExchange.getChain();
+
+        ServerHttpRequest request = exchange.getRequest();
         AuthenticationToken authenticationToken = (AuthenticationToken) authentication;
         LoginInfo loginInfo = authenticationToken.getLoginInfo();
-        return Mono.justOrEmpty(loginInfo)
-                .map(l -> {
-                    String loginInfoJson = null;
-                    try {
-                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                    return loginInfoJson;
-                })
-                .map(loginInfoJson -> {
-                    ServerWebExchange exchange = webFilterExchange.getExchange();
-                    WebFilterChain chain = webFilterExchange.getChain();
 
-                    ServerHttpRequest request = exchange.getRequest();
-                    ServerHttpRequest host = request
-                            .mutate()
-                            .header("loginInfo", loginInfoJson)
-                            .build();
-                    ServerWebExchange build = exchange
-                            .mutate()
-                            .request(host)
-                            .build();
-                    return chain.filter(build);
-                })
-                .then();
+        if (ObjectUtils.isEmpty(loginInfo)) {
+            return chain.filter(exchange);
+        }
+
+        String loginInfoJson = null;
+        try {
+            loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        if (StringUtils.isEmpty(loginInfoJson)) {
+            return chain.filter(exchange);
+        }
+
+        ServerHttpRequest host = request
+                .mutate()
+                .header("loginInfo", loginInfoJson)
+                .build();
+        ServerWebExchange build = exchange
+                .mutate()
+                .request(host)
+                .build();
+
+        return chain.filter(build);
     }
 }

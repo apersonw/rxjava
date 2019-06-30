@@ -17,7 +17,7 @@ public class DefaultLoginInfoServiceImpl implements LoginInfoService {
     }
 
     /**
-     * 访问权限校验(默认校验通过)
+     * 访问权限校验(默认校验未通过)
      */
     @Override
     public Mono<Boolean> checkPermission(String userAuthId, String path, String method) {
