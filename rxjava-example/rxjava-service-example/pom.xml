@@ -19,11 +19,6 @@
             <artifactId>rxjava-apikit-tool</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-tools</artifactId>
-            <version>1.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
     </dependencies>
     <profiles>
         <profile>
