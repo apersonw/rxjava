@@ -1,4 +1,4 @@
-package org.rxjava.gateway.example.controller;
+package org.rxjava.gateway.example.person;
 
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.utils.JsonUtils;

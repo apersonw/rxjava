@@ -1,4 +1,4 @@
-package org.rxjava.gateway.starter.config;
+package org.rxjava.service.starter.boot;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -13,8 +13,15 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
+import org.rxjava.common.core.service.LoginInfoService;
 import org.rxjava.common.core.utils.JsonUtils;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
+import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
@@ -26,12 +33,28 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 /**
- * @author happy 2019-06-29 14:19
+ * @author happy 2019-05-13 01:30
+ * WebFluxConfigurer
  */
 public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "HH:mm:ss.SSS";
+
+    /**
+     * 默认校验均不通过，客户端需要自行实现
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public LoginInfoService loginInfoService() {
+        return new DefaultLoginInfoServiceImpl();
+    }
+
+    @Bean
+    @Primary
+    ReactiveRedisTemplate<String, String> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
+        return new ReactiveRedisTemplate<>(factory, RedisSerializationContext.string());
+    }
 
     /**
      * 配置时间格式解析

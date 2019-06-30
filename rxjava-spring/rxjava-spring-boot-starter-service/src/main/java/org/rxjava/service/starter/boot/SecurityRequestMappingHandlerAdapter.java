@@ -25,7 +25,7 @@ import static org.rxjava.service.starter.boot.LoginInfoArgumentResolver.LOGIN_RE
 
 /**
  * @author happy 2019-04-16 23:05
- * 安全请求映射处理适配器
+ * 请求映射适配器
  */
 public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerAdapter {
     private static final Logger log = LogManager.getLogger();
@@ -50,7 +50,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         PathContainer path = request.getPath().pathWithinApplication();
         String pathValue = path.value();
         //服务间内部接口不做检查
-        if (pathValue.startsWith("/inner")) {
+        if (pathValue.startsWith("/inner/")) {
             return super.handle(exchange, handler);
         }
 

@@ -2,10 +2,7 @@ package org.rxjava.service.starter.boot;
 
 import org.rxjava.common.core.exception.JsonResponseStatusExceptionHandler;
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.codec.ServerCodecConfigurer;
@@ -14,28 +11,23 @@ import org.springframework.web.reactive.result.method.annotation.ArgumentResolve
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.WebExceptionHandler;
-import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
 
 import java.util.Collections;
 import java.util.List;
 
 /**
  * @author happy 2019-04-16 23:04
- * 覆盖SpringWebFlux默认配置Bean
+ * DelegatingWebFluxConfiguration
  */
-@Configuration
-@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 12)
 public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConfiguration {
 
     @Override
-    @Bean
-    @ConditionalOnMissingBean
     protected RequestMappingHandlerAdapter createRequestMappingHandlerAdapter() {
         return new SecurityRequestMappingHandlerAdapter();
     }
 
     /**
-     * 注入json响应状态异常处理器
+     * 异常处理器(排在所有异常处理器最前面)
      */
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -50,19 +42,12 @@ public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConf
     }
 
     /**
-     * 注入登陆信息参数解析器
-     */
-    @Bean
-    public LoginInfoArgumentResolver loginInfoArgumentResolver() {
-        return new LoginInfoArgumentResolver(webFluxAdapterRegistry());
-    }
-
-    /**
      * 自定义方法参数配置解析器
      */
     @Override
     public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
-        configurer.addCustomResolver(loginInfoArgumentResolver());
+        configurer.addCustomResolver(new LoginInfoArgumentResolver(webFluxAdapterRegistry()));
     }
+
 
 }

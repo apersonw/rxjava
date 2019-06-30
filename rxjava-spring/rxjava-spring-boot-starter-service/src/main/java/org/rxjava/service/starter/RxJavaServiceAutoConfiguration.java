@@ -1,6 +1,6 @@
 package org.rxjava.service.starter;
 
-import org.rxjava.service.starter.boot.BaseRxJavaWebFluxConfigurer;
+import org.rxjava.service.starter.boot.RxJavaWebFluxConfigurer;
 import org.rxjava.service.starter.boot.ServiceDelegatingWebFluxConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -11,15 +11,12 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
 /**
  * @author happy 2019-04-09 01:32
- * 通用自动配置starter
+ * RxJava微服务自动装配
  */
 @Configuration
-@Import({
-        ServiceDelegatingWebFluxConfiguration.class
-})
 @EnableDiscoveryClient
 @EnableMongoAuditing
+@Import({ServiceDelegatingWebFluxConfiguration.class, RxJavaWebFluxConfigurer.class})
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
-public class RxJavaServiceAutoConfiguration extends BaseRxJavaWebFluxConfigurer {
-
+public class RxJavaServiceAutoConfiguration {
 }

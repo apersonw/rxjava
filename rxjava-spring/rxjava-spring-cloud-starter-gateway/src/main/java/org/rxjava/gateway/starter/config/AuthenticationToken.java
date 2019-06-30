@@ -15,7 +15,7 @@ public class AuthenticationToken extends AbstractAuthenticationToken {
     private String token;
     private LoginInfo loginInfo;
 
-    public AuthenticationToken(String token, String requestPath, String methodValue) {
+    public AuthenticationToken(String token) {
         super(null);
         this.token = token;
     }

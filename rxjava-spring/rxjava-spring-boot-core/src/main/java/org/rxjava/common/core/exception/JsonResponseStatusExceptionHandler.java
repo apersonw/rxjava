@@ -107,6 +107,7 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
 
         errorMessage.setPath(request.getPath().pathWithinApplication().value());
 
+        //处理消息国际化
         ErrorMessageUtils.handlerI18n(errorMessage, messageAccessor);
 
         ServerHttpResponse response = exchange.getResponse();

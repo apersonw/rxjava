@@ -1,4 +1,4 @@
-package org.rxjava.gateway.example.controller;
+package org.rxjava.gateway.example.person;
 
 import org.rxjava.common.core.annotation.Check;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("demo")
 public class DemoController {
 
-    @Check(true)
+    @Check
     @GetMapping("hello")
     public Mono<String> hello() {
         return Mono.just("hello boy");

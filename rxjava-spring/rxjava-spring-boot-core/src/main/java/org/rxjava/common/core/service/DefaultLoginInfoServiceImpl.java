@@ -21,6 +21,6 @@ public class DefaultLoginInfoServiceImpl implements LoginInfoService {
      */
     @Override
     public Mono<Boolean> checkPermission(String userAuthId, String path, String method) {
-        return Mono.just(true);
+        return Mono.just(false);
     }
 }

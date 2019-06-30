@@ -39,4 +39,4 @@
 - rxjava-spring-boot-core：主要是一些注解，常用实体类，异常处理，包装了mongo分页，以及一些帮助类
 - rxjava-spring-boot-starter-service：整合了spring自动配置，时间格式统一处理，登陆请求拦截，异常统一处理
 - rxjava-spring-cloud-starter-bus：做了一些消息总线的基础约定
-- rxjava-spring-cloud-starter-gateway：未来将做一些网关的统一配置整合
+- rxjava-spring-cloud-starter-gateway：做了一些网关的一些基础配置

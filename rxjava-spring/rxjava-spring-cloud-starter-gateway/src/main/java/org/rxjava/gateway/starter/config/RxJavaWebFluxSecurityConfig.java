@@ -43,7 +43,6 @@ public class RxJavaWebFluxSecurityConfig {
             String token = authenticationToken.getToken();
             return loginInfoService
                     .checkToken(token)
-                    .switchIfEmpty(LoginRuntimeException.mono("401 unauthorized"))
                     .map(loginInfo -> new AuthenticationToken(authenticationToken.getToken(), loginInfo));
         };
     }
@@ -69,17 +68,14 @@ public class RxJavaWebFluxSecurityConfig {
         if (StringUtils.isEmpty(authorization)) {
             return Mono.empty();
         }
-        RequestPath path = request.getPath();
-        String pathValue = path.value();
-        String methodValue = request.getMethodValue();
-        return Mono.just(new AuthenticationToken(authorization, pathValue, methodValue));
+        return Mono.just(new AuthenticationToken(authorization));
     }
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http, AuthenticationWebFilter authenticationFilter) {
         return http
                 .authorizeExchange()
-                .pathMatchers("/auth/**").permitAll()
+                .pathMatchers("/**").permitAll()
                 .anyExchange().authenticated()
                 .and()
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
