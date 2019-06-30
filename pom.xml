@@ -4,7 +4,7 @@
     <groupId>org.rxjava</groupId>
     <artifactId>rxjava</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.5</version>
     <modules>
         <module>rxjava-spring</module>
         <module>rxjava-service</module>
@@ -402,7 +402,7 @@
         <url>https://github.com/apersonw/rxjava.git</url>
         <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>
         <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>rxjava-1.0.5</tag>
   </scm>
 
     <parent>

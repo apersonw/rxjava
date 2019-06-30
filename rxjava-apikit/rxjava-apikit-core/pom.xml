@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-apikit</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.0.5</version>
     </parent>
     <artifactId>rxjava-apikit-core</artifactId>
     <packaging>jar</packaging>
