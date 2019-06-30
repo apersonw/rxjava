@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-service</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
         <relativePath>../../rxjava-service/pom.xml</relativePath>
     </parent>
     <artifactId>rxjava-service-example</artifactId>
