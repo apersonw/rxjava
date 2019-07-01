@@ -1,6 +1,7 @@
 package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.StringUtils;
+import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
@@ -43,7 +44,7 @@ public class RxJavaWebFluxSecurityConfig {
             String token = authenticationToken.getToken();
             return loginInfoService
                     .checkToken(token)
-                    .switchIfEmpty(LoginRuntimeException.mono("401 unauthorized"))
+                    .switchIfEmpty(Mono.just(new LoginInfo()))
                     .map(loginInfo -> new AuthenticationToken(authenticationToken.getToken(), loginInfo));
         };
     }
