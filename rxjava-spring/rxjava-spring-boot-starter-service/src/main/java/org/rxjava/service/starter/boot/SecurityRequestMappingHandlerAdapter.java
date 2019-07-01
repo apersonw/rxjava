@@ -72,7 +72,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
 
                 String methodValue = request.getMethodValue();
                 return loginInfoService
-                        .checkPermission(loginInfo.getUserAuthId(), pathValue, methodValue)
+                        .checkPermission(loginInfo.getUserId(), pathValue, methodValue)
                         .filter(r -> r)
                         .switchIfEmpty(LoginRuntimeException.mono("403 forbidden"))
                         .flatMap(r -> super.handle(exchange, handler));
