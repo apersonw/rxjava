@@ -19,7 +19,7 @@
         <java.version>1.8</java.version>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>1.0.1.RELEASE</spring-cloud-kubernetes.version>
+        <spring-cloud-kubernetes.version>1.0.2.RELEASE</spring-cloud-kubernetes.version>
         <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
         <de.codecentric.version>2.1.5</de.codecentric.version>
         <spring-boot.version>${de.codecentric.version}.RELEASE</spring-boot.version>
@@ -254,11 +254,6 @@
                 <groupId>com.belerweb</groupId>
                 <artifactId>pinyin4j</artifactId>
                 <version>${pinyin4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>3.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
