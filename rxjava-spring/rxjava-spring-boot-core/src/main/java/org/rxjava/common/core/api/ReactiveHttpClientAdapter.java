@@ -30,7 +30,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     private WebClient.Builder webClientBuilder;
     private String serviceId;
     private String host;
-    private String port = "8080";
+    private String port;
     /**
      * 类型转换函数
      */
@@ -51,11 +51,12 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     }
 
     /**
-     * k8s通过serviceId访问,http://serviceId/
+     * k8s通过serviceId访问,http://serviceId:port/
      */
     private ReactiveHttpClientAdapter(WebClient.Builder webClientBuilder, String serviceId) {
         this.serviceId = serviceId;
         this.webClientBuilder = webClientBuilder;
+        this.port = "8080";
     }
 
     /**
