@@ -39,13 +39,14 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
 
     @PostConstruct
     public void init() {
+        port = ":" + port;
+
         if (!StringUtils.isEmpty(host)) {
-            if (!StringUtils.isEmpty(port)) {
-                port = ":" + port;
-            }
+
             webClient = webClientBuilder.baseUrl("http://" + host + port + serviceId + "/").build();
             return;
         }
+
         webClient = webClientBuilder.baseUrl("http://" + serviceId + port + "/").build();
     }
 
