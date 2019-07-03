@@ -30,7 +30,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     private WebClient.Builder webClientBuilder;
     private String serviceId;
     private String host;
-    private String port;
+    private String port = "8080";
     /**
      * 类型转换函数
      */
@@ -46,7 +46,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
             webClient = webClientBuilder.baseUrl("http://" + host + port + serviceId + "/").build();
             return;
         }
-        webClient = webClientBuilder.baseUrl("http://" + serviceId + "/").build();
+        webClient = webClientBuilder.baseUrl("http://" + serviceId + port + "/").build();
     }
 
     /**
