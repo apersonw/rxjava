@@ -45,7 +45,7 @@ public class RxGatewayExampleApplication {
             WebClient.Builder webClientBuilder
     ) {
         return ReactiveHttpClientAdapter.build(
-                conversionService, webClientBuilder, "localhost:8081"
+                conversionService, webClientBuilder, "localhost", "8081", ""
         );
     }
 

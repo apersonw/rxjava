@@ -85,6 +85,21 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     }
 
     /**
+     * 构建HttpClient适配器
+     *
+     * @param conversionService 安全的类型转换服务
+     * @param webClientBuilder  构建WebClient的Builder
+     * @param serviceId         注册中心的ServiceId
+     * @return ReactiveHttpClientAdapter
+     */
+    public static ReactiveHttpClientAdapter build(ConversionService conversionService, WebClient.Builder webClientBuilder, String host, String port, String serviceId) {
+        ReactiveHttpClientAdapter adapter = new ReactiveHttpClientAdapter(webClientBuilder, host, port, serviceId);
+
+        adapter.typeConvert = o -> conversionService.convert(o, String.class);
+        return adapter;
+    }
+
+    /**
      * 发起http请求
      *
      * @param method     {@link org.rxjava.apikit.core.HttpMethodType}

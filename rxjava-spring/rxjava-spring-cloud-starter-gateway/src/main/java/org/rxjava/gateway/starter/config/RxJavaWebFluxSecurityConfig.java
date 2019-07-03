@@ -5,10 +5,12 @@ import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.server.RequestPath;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -21,11 +23,18 @@ import org.springframework.security.web.server.context.NoOpServerSecurityContext
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static java.util.regex.Pattern.*;
+
 /**
  * @author happy 2019-06-29 03:30
  */
 @EnableWebFluxSecurity
 public class RxJavaWebFluxSecurityConfig {
+    @Autowired
+    private LoginInfoService loginInfoService;
 
     /**
      * 默认校验均不通过，客户端需要自行实现
@@ -37,15 +46,8 @@ public class RxJavaWebFluxSecurityConfig {
     }
 
     @Bean
-    public ReactiveAuthenticationManager reactiveAuthenticationManager(LoginInfoService loginInfoService) {
-        return authentication -> {
-            AuthenticationToken authenticationToken = (AuthenticationToken) authentication;
-            String token = authenticationToken.getToken();
-            return loginInfoService
-                    .checkToken(token)
-                    .switchIfEmpty(Mono.just(new LoginInfo()))
-                    .map(loginInfo -> new AuthenticationToken(authenticationToken.getToken(), loginInfo));
-        };
+    public ReactiveAuthenticationManager reactiveAuthenticationManager() {
+        return Mono::just;
     }
 
     /**
@@ -61,21 +63,27 @@ public class RxJavaWebFluxSecurityConfig {
     }
 
     /**
-     * 检查token是否存在
+     * Token换LoginInfo
      */
     private Mono<Authentication> authenticationConverter(ServerWebExchange serverWebExchange) {
         ServerHttpRequest request = serverWebExchange.getRequest();
         String authorization = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
+
         if (StringUtils.isEmpty(authorization)) {
             return Mono.empty();
         }
-        return Mono.just(new AuthenticationToken(authorization));
+
+        return loginInfoService
+                .checkToken(authorization)
+                .map(loginInfo -> new AuthenticationToken(authorization));
     }
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http, AuthenticationWebFilter authenticationFilter) {
         return http
                 .authorizeExchange()
+                .pathMatchers("/**/inner/**").denyAll()
+                .pathMatchers("/inner/**").denyAll()
                 .pathMatchers("/**").permitAll()
                 .anyExchange().authenticated()
                 .and()
