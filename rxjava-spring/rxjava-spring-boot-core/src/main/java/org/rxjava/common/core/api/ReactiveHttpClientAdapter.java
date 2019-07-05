@@ -60,6 +60,18 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     }
 
     /**
+     * k8s通过serviceId访问,http://serviceId:port/
+     */
+    private ReactiveHttpClientAdapter(WebClient.Builder webClientBuilder, String serviceId, String port) {
+        this.serviceId = serviceId;
+        this.webClientBuilder = webClientBuilder;
+        this.port = port;
+        if (StringUtils.isEmpty(port)) {
+            this.port = "8080";
+        }
+    }
+
+    /**
      * 通过主机端口访问,http://host:port/serviceId/
      */
     private ReactiveHttpClientAdapter(WebClient.Builder webClientBuilder, String host, String port, String serviceId) {
@@ -78,7 +90,19 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
      * @return ReactiveHttpClientAdapter
      */
     public static ReactiveHttpClientAdapter build(ConversionService conversionService, WebClient.Builder webClientBuilder, String serviceId) {
-        ReactiveHttpClientAdapter adapter = new ReactiveHttpClientAdapter(webClientBuilder, serviceId);
+        return build(conversionService, webClientBuilder, serviceId, "8080");
+    }
+
+    /**
+     * 构建HttpClient适配器
+     *
+     * @param conversionService 安全的类型转换服务
+     * @param webClientBuilder  构建WebClient的Builder
+     * @param serviceId         注册中心的ServiceId
+     * @return ReactiveHttpClientAdapter
+     */
+    public static ReactiveHttpClientAdapter build(ConversionService conversionService, WebClient.Builder webClientBuilder, String serviceId, String port) {
+        ReactiveHttpClientAdapter adapter = new ReactiveHttpClientAdapter(webClientBuilder, serviceId, port);
 
         adapter.typeConvert = o -> conversionService.convert(o, String.class);
         return adapter;

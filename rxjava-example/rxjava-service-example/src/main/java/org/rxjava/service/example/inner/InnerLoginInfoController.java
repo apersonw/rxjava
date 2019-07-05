@@ -22,8 +22,8 @@ public class InnerLoginInfoController {
     private LoginInfoService loginInfoService;
 
     @GetMapping("checkToken/{token}")
-    public Mono<LoginInfo> checkToken(@PathVariable String token) {
-        return loginInfoService.checkToken(token);
+    public Mono<LoginInfo> checkToken(@PathVariable String token, @PathVariable String loginType) {
+        return loginInfoService.checkToken(token, loginType);
     }
 
     @GetMapping("checkPermission")

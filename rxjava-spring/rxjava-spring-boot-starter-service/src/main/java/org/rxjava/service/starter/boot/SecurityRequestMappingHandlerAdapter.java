@@ -49,7 +49,8 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         ServerHttpRequest request = exchange.getRequest();
         PathContainer path = request.getPath().pathWithinApplication();
         String pathValue = path.value();
-        //服务间内部接口不做检查
+
+        //微服务彼此间接口不注入登陆信息
         if (pathValue.startsWith("/inner/")) {
             return super.handle(exchange, handler);
         }

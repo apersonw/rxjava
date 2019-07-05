@@ -1,16 +1,16 @@
 package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
+import org.rxjava.common.core.type.LoginType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.server.RequestPath;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -23,15 +23,15 @@ import org.springframework.security.web.server.context.NoOpServerSecurityContext
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.util.regex.Pattern.*;
+import static java.util.regex.Pattern.compile;
 
 /**
  * @author happy 2019-06-29 03:30
  */
 @EnableWebFluxSecurity
+@Import({CheckTokenConfig.class})
 public class RxJavaWebFluxSecurityConfig {
     @Autowired
     private LoginInfoService loginInfoService;
@@ -73,8 +73,27 @@ public class RxJavaWebFluxSecurityConfig {
             return Mono.empty();
         }
 
+        String loginType = LoginType.PERSON.name();
+        String pathValue = request.getPath().value();
+
+        //检查路径是否走管理
+        Pattern adminPattern = compile("/admin/");
+        boolean adminFind = adminPattern.matcher(pathValue).find();
+        if (adminFind) {
+            loginType = LoginType.ADMIN.name();
+        }
+
+        if (!adminFind) {
+            //检查路径是否走第三方
+            Pattern thirdPattern = compile("/third/");
+            boolean thirdFind = thirdPattern.matcher(pathValue).find();
+            if (thirdFind) {
+                loginType = LoginType.THIRD.name();
+            }
+        }
+
         return loginInfoService
-                .checkToken(authorization)
+                .checkToken(authorization, loginType)
                 .map(loginInfo -> new AuthenticationToken(authorization));
     }
 

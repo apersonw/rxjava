@@ -12,7 +12,7 @@ public class DefaultLoginInfoServiceImpl implements LoginInfoService {
      * Token检查
      */
     @Override
-    public Mono<LoginInfo> checkToken(String token) {
+    public Mono<LoginInfo> checkToken(String token, String loginType) {
         return Mono.empty();
     }
 

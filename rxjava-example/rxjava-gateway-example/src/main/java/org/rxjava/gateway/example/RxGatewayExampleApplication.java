@@ -3,6 +3,7 @@ package org.rxjava.gateway.example;
 import org.rxjava.api.example.inner.InnerLoginInfoApi;
 import org.rxjava.apikit.client.ClientAdapter;
 import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
+import org.rxjava.gateway.starter.config.CheckTokenConfig;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,19 +39,18 @@ public class RxGatewayExampleApplication {
     }
 
     @Bean
-    @Qualifier("userClientAdapter")
-    public ClientAdapter userClientAdapter(
+    @Qualifier("authClientAdapter")
+    public ClientAdapter authClientAdapter(
             @Qualifier("webFluxConversionService")
                     ConversionService conversionService,
-            WebClient.Builder webClientBuilder
+            WebClient.Builder webClientBuilder,
+            CheckTokenConfig checkTokenConfig
     ) {
-        return ReactiveHttpClientAdapter.build(
-                conversionService, webClientBuilder, "localhost", "8081", ""
-        );
+        return ReactiveHttpClientAdapter.build(conversionService, webClientBuilder, checkTokenConfig.getServiceId(), checkTokenConfig.getPort());
     }
 
     @Bean
-    public InnerLoginInfoApi innerLoginInfoApi(@Qualifier("userClientAdapter") ClientAdapter clientAdapter) {
+    public InnerLoginInfoApi innerLoginInfoApi(@Qualifier("authClientAdapter") ClientAdapter clientAdapter) {
         InnerLoginInfoApi api = new InnerLoginInfoApi();
         api.setclientAdapter(clientAdapter);
         return api;

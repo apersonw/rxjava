@@ -28,4 +28,8 @@ public class LoginInfo {
      * 是否禁止访问
      */
     private boolean forbidden = false;
+    /**
+     * 登陆类型
+     */
+    private String loginType;
 }

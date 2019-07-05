@@ -23,7 +23,7 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
     private ObjectMapper objectMapper;
 
     @Override
-    public Mono<LoginInfo> checkToken(String token) {
+    public Mono<LoginInfo> checkToken(String token, String loginType) {
         return reactiveRedisTemplate
                 .opsForValue()
                 .get(token)
@@ -32,6 +32,7 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
                     try {
                         String decode = URLDecoder.decode(loginInfoStr, "utf8");
                         loginInfo = objectMapper.readValue(decode, LoginInfo.class);
+                        loginInfo.setLoginType(loginType);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

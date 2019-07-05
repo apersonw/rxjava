@@ -17,3 +17,6 @@ spring:
         prefetch: 1
         default-requeue-rejected: true
         auto-startup: true
+checktoken:
+  service-id: localhost
+  port: 8081

@@ -16,6 +16,7 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
 import org.rxjava.common.core.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -50,6 +51,9 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
         return new DefaultLoginInfoServiceImpl();
     }
 
+    /**
+     * Redis Bean
+     */
     @Bean
     @Primary
     ReactiveRedisTemplate<String, String> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
@@ -57,25 +61,20 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     }
 
     /**
-     * 配置时间格式解析
+     * 配置ObjectMapper支持日期时间
      */
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = JsonUtils.create();
+        //字段值为null则不输出
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        //注册参数名称模块和jdk8摸块
         objectMapper.registerModule(new ParameterNamesModule()).registerModule(new Jdk8Module());
 
-        DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
-        DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(TIME_FORMAT);
-
+        //序列和反序列日期格式支持
         JavaTimeModule javaTimeModule = new JavaTimeModule();
-        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(dataFormatter));
-        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(dataFormatter));
 
-        javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(timeFormatter));
-        javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(timeFormatter));
-
+        DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
         javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(dataTimeFormatter));
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(dataTimeFormatter));
 
@@ -85,7 +84,6 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
                 return Instant.from(dataTimeFormatter.parse(jsonParser.getText()));
             }
         });
-
         javaTimeModule.addSerializer(Instant.class, new JsonSerializer<Instant>() {
             @Override
             public void serialize(Instant value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
@@ -94,29 +92,33 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
             }
         });
 
+        DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(dataFormatter));
+        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(dataFormatter));
+
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(TIME_FORMAT);
+        javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(timeFormatter));
+        javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(timeFormatter));
+
         objectMapper.registerModule(javaTimeModule);
+
+        //配置SimpleDateFormat格式为严格
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
         simpleDateFormat.setLenient(false);
         objectMapper.setDateFormat(simpleDateFormat);
+
         return objectMapper;
     }
 
-    @Bean
-    Jackson2JsonEncoder jackson2JsonEncoder(ObjectMapper mapper) {
-        return new Jackson2JsonEncoder(mapper);
-    }
-
-    @Bean
-    Jackson2JsonDecoder jackson2JsonDecoder(ObjectMapper mapper) {
-        return new Jackson2JsonDecoder(mapper);
-    }
+    @Autowired
+    private ObjectMapper objectMapper;
 
     /**
-     * 配置自定义HTTP消息读取器和写入器或覆盖内置的读取器和编写器。配置的读取器和写入器将用于带注释的控制器和功能端点。
+     * 配置json序列化和反序列化
      */
     @Override
     public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {
-        configurer.defaultCodecs().jackson2JsonEncoder(jackson2JsonEncoder(objectMapper()));
-        configurer.defaultCodecs().jackson2JsonDecoder(jackson2JsonDecoder(objectMapper()));
+        configurer.defaultCodecs().jackson2JsonEncoder(new Jackson2JsonEncoder(objectMapper));
+        configurer.defaultCodecs().jackson2JsonDecoder(new Jackson2JsonDecoder(objectMapper));
     }
 }
