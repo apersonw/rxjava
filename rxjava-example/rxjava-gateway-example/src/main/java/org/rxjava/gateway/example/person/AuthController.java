@@ -28,9 +28,7 @@ public class AuthController {
     @GetMapping("login")
     public Mono<String> login() {
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setUserAuthId("userAuthId");
         loginInfo.setUserId("userId");
-        loginInfo.setIdentityType("PHONE");
 
         String loginInfoJson;
         try {

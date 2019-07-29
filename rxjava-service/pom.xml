@@ -19,6 +19,11 @@
             <artifactId>rxjava-spring-boot-starter-service</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-spring-cloud-starter-bus</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

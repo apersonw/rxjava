@@ -28,7 +28,6 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
                 return innerLoginInfoApi.checkToken(token,loginType).map(r -> {
                     LoginInfo loginInfo = new LoginInfo();
                     BeanUtils.copyProperties(r, loginInfo);
-                    loginInfo.setLoginType(loginType);
                     return loginInfo;
                 });
             //todo:待写token校验逻辑

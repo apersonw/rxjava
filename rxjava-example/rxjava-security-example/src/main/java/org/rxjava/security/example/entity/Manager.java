@@ -1,7 +1,7 @@
 package org.rxjava.security.example.entity;
 
 import lombok.Data;
-import org.rxjava.common.core.entity.Resource;
+import org.rxjava.common.core.entity.Image;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -27,7 +27,7 @@ public class Manager {
     /**
      * 头像
      */
-    private Resource avatar;
+    private Image avatar;
     /**
      * 创建日期
      */

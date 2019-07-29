@@ -3,11 +3,11 @@ package org.rxjava.common.core.entity;
 import lombok.Data;
 
 /**
- * @author happy 2019-03-21 00:29
- * 资源
+ * @author happy 2019-07-16 22:36
+ * 视频
  */
 @Data
-public class Resource {
+public class Video {
     /**
      * 宽：单位像素
      */
@@ -17,7 +17,7 @@ public class Resource {
      */
     private int height;
     /**
-     * 资源Key
+     * 存储Key
      */
     private String key;
 }

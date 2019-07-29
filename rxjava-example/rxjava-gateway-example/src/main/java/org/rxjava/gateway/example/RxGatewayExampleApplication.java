@@ -2,6 +2,7 @@ package org.rxjava.gateway.example;
 
 import org.rxjava.api.example.inner.InnerLoginInfoApi;
 import org.rxjava.apikit.client.ClientAdapter;
+import org.rxjava.common.bus.EnableBus;
 import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
 import org.rxjava.gateway.starter.config.CheckTokenConfig;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,6 +18,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 /**
  * @author happy 2019-06-11 01:04
  */
+@EnableBus
 @SpringBootApplication
 public class RxGatewayExampleApplication {
     public static void main(String[] args) {

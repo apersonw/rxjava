@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * @author happy 2019-04-22 15:47
- * 键值对
+ * 键值对对象
  */
 @Data
 public class KeyValue<K, V> {

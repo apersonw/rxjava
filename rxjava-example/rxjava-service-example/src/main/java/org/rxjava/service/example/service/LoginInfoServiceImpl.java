@@ -32,7 +32,6 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
                     try {
                         String decode = URLDecoder.decode(loginInfoStr, "utf8");
                         loginInfo = objectMapper.readValue(decode, LoginInfo.class);
-                        loginInfo.setLoginType(loginType);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
