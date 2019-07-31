@@ -20,8 +20,8 @@
 
         <!--依赖版本-->
         <spring-cloud-kubernetes.version>1.0.2.RELEASE</spring-cloud-kubernetes.version>
-        <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
-        <de.codecentric.version>2.1.5</de.codecentric.version>
+        <spring-cloud-dependencies.version>Greenwich.SR2</spring-cloud-dependencies.version>
+        <de.codecentric.version>2.1.6</de.codecentric.version>
         <spring-boot.version>${de.codecentric.version}.RELEASE</spring-boot.version>
         <com.google.guava.version>27.0-jre</com.google.guava.version>
         <lombok.version>1.18.8</lombok.version>
