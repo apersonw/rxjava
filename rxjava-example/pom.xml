@@ -14,5 +14,6 @@
         <module>rxjava-security-example</module>
         <module>rxjava-restdocs-example</module>
         <module>rxjava-utils-example</module>
+        <module>rxjava-service-manager</module>
     </modules>
 </project>

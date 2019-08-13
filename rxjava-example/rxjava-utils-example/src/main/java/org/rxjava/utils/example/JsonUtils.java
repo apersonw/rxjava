@@ -2,12 +2,14 @@ package org.rxjava.utils.example;
 
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * JsonUtils线程安全的单例
  */
 public class JsonUtils {
-    private static final ConcurrentHashMap<String, VolatileReference<JsonUtils>> JSONUTILLIST = new ConcurrentHashMap<>();
+    private static final ConcurrentMap<String, VolatileReference<JsonUtils>> JSONUTILLIST = new ConcurrentHashMap<>();
+
     public static JsonUtils getJsonutils() throws ClassNotFoundException {
         VolatileReference<JsonUtils> reference = JSONUTILLIST.get("default");
 
@@ -28,7 +30,8 @@ public class JsonUtils {
                 jsonUtils = reference.getValue();
                 // double check
                 if (jsonUtils == null) {
-                    jsonUtils = UtilsBeanFactory.createBean(JsonUtils.class, new Properties()); // slowly
+                    // get from factory, it't slowly
+                    jsonUtils = UtilsBeanFactory.createBean(JsonUtils.class, new Properties());
                     reference.setValue(jsonUtils);
                 }
             }

@@ -28,10 +28,10 @@ public class UtilsBeanFactory {
             for (int i = inits.size() - 1; i >= 0; i --) { // reverse init order.
                 try {
                     Object object = inits.get(i);
-                    Method method = object.getClass().getMethod(INITED_METHOD, new Class<?>[0]);
+                    Method method = object.getClass().getMethod(INITED_METHOD);
                     if (Modifier.isPublic(method.getModifiers())
                             && ! Modifier.isStatic(method.getModifiers())) {
-                        method.invoke(object, new Object[0]);
+                        method.invoke(object);
                     }
                 } catch (NoSuchMethodException e) {
                 }
@@ -79,9 +79,9 @@ public class UtilsBeanFactory {
                                     if (! face.isAssignableFrom(wrapperClass)) {
                                         throw new IllegalStateException("The wrapper class " + wrapperClass.getName() + " must be implements interface " + face.getName() + ", config key: " + key + WRAPPER_KEY_SUFFIX);
                                     }
-                                    Constructor<?> constructor = wrapperClass.getConstructor(new Class<?>[] { face });
+                                    Constructor<?> constructor = wrapperClass.getConstructor(face);
                                     if (Modifier.isPublic(constructor.getModifiers())) {
-                                        Object wrapperInstance = constructor.newInstance(new Object[] {instance});
+                                        Object wrapperInstance = constructor.newInstance(instance);
                                         boolean wrapperValid = injectInstance(wrapperInstance, properties, key, caches, instances, inits);
                                         if (wrapperValid) {
                                             instance = wrapperInstance;
@@ -101,7 +101,7 @@ public class UtilsBeanFactory {
                     }
                 }
             }
-            if (instance == new Object()) {
+            if (instance.equals(new Object())) {
                 return null;
             }
             instances.put(property + "=" + value, instance);
@@ -136,7 +136,7 @@ public class UtilsBeanFactory {
                         && method.getParameterTypes().length == 1) {
                     Class<?> parameterType = method.getParameterTypes()[0];
                     if (Map.class.equals(parameterType) && SET_PROPERTIES_METHOD.equals(name)) {
-                        method.invoke(object, new Object[] { instances });
+                        method.invoke(object, instances);
                     } else {
                         String property = name.substring(3, 4).toLowerCase() + name.substring(4);
                         String key = property;
@@ -181,7 +181,7 @@ public class UtilsBeanFactory {
                             }
                         }
                         if (obj != null) {
-                            method.invoke(object, new Object[] { obj });
+                            method.invoke(object, obj);
                             if (method.isAnnotationPresent(Optional.class)) {
                                 useOptional = true;
                                 hasOptional = true;
@@ -201,10 +201,10 @@ public class UtilsBeanFactory {
                 return false;
             }
             try {
-                Method method = object.getClass().getMethod(INIT_METHOD, new Class<?>[0]);
+                Method method = object.getClass().getMethod(INIT_METHOD);
                 if (Modifier.isPublic(method.getModifiers())
                         && ! Modifier.isStatic(method.getModifiers())) {
-                    method.invoke(object, new Object[0]);
+                    method.invoke(object);
                 }
             } catch (NoSuchMethodException e) {
             }
