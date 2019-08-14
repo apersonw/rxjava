@@ -20,6 +20,8 @@
 - [rxjava-apikit-maven-plugin](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-maven-plugin)：maven插件，可直接执行命令生成api
 - [rxjava-apikit-tool](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-tool)：Api生成器实现代码
 
+<div style="color: red">ssh方式有时候会出现Auth fail问题，建议暂时使用https方式</div>
+
 ### 三、例子工程说明
 
 - rxjava-gateway-example：主要示例了如何创建api网关，以及演示了如何使用token换取loginInfo，并注入到router的微服务请求参数中
