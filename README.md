@@ -20,7 +20,7 @@
 - [rxjava-apikit-maven-plugin](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-maven-plugin)：maven插件，可直接执行命令生成api
 - [rxjava-apikit-tool](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-tool)：Api生成器实现代码
 
-<font color=red>ssh方式有时候会出现Auth fail问题，建议暂时使用https方式</font>
+<font color="red">ssh方式有时候会出现Auth fail问题，建议暂时使用https方式</font>
 
 ### 三、例子工程说明
 
