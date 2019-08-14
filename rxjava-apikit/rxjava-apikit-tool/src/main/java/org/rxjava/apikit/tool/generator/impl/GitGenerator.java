@@ -24,6 +24,7 @@ import org.springframework.util.StringUtils;
 import org.eclipse.jgit.awtui.AwtCredentialsProvider;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -176,5 +177,21 @@ public class GitGenerator implements Generator {
     @Override
     public void setVersion(String version) {
 
+    }
+
+    public static void main(String[] args) throws IOException, GitAPIException {
+        //测试能否克隆仓库
+        CredentialsProvider cp;
+        cp = new ChainingCredentialsProvider(new NetRCCredentialsProvider(), new AwtCredentialsProvider());
+
+        Path tempDir = Files.createTempDirectory("apikit-git");
+        try (Git git = Git.cloneRepository()
+                .setURI("https://github.com/apersonw/rxjava-apis.git")
+                .setDirectory(tempDir.toFile())
+                .setBranch("master")
+                .setCredentialsProvider(cp)
+                .call()) {
+            System.out.println(git.status());
+        }
     }
 }

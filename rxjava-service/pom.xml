@@ -11,7 +11,8 @@
     <properties>
         <module.type>service</module.type>
         <module.Type>Service</module.Type>
-        <git.url>git@github.com:apersonw/rxjava-apis.git</git.url>
+<!--        <git.url>git@github.com:apersonw/rxjava-apis.git</git.url>-->
+        <git.url>https://github.com/apersonw/rxjava-apis.git</git.url>
     </properties>
     <dependencies>
         <dependency>
