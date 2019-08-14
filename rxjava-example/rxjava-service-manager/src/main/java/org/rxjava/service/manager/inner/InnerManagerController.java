@@ -23,7 +23,8 @@ public class InnerManagerController {
     @GetMapping("authentication")
     public Mono<ManagerModel> authentication(
             @Valid AuthenticationForm form
-            ) {
-        return Mono.just(new ManagerModel());
+    ) {
+        return managerService
+                .tokenToManagerModel(form.getToken(), form.getPath(), form.getMethod());
     }
 }

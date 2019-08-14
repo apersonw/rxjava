@@ -14,11 +14,6 @@
     <artifactId>rxjava-gateway-example</artifactId>
     <packaging>jar</packaging>
     <dependencies>
-        <dependency>
-            <groupId>org.rxjava</groupId>
-            <artifactId>rxjava-apis-example-inner</artifactId>
-            <version>1.0.3</version>
-        </dependency>
     </dependencies>
 
     <profiles>
