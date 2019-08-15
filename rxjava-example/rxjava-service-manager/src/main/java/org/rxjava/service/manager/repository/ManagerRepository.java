@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
 
@@ -15,6 +16,7 @@ import javax.annotation.PostConstruct;
  */
 @Repository
 public interface ManagerRepository extends ReactiveSortingRepository<Manager, String>, SpecialManagerRepository {
+    Mono<Manager> findByPhone(String phone);
 }
 
 interface SpecialManagerRepository {

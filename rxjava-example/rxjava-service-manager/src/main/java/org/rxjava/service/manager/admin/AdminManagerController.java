@@ -3,17 +3,17 @@ package org.rxjava.service.manager.admin;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.service.manager.entity.Permission;
 import org.rxjava.service.manager.entity.Role;
+import org.rxjava.service.manager.form.LoginByPhoneSmsForm;
 import org.rxjava.service.manager.model.ManagerModel;
 import org.rxjava.service.manager.service.ManagerService;
 import org.rxjava.service.manager.service.PermissionService;
 import org.rxjava.service.manager.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("admin")
@@ -26,6 +26,14 @@ public class AdminManagerController {
     private PermissionService permissionService;
 
     @Login(false)
+    @PostMapping("login")
+    public Mono<String> loginByPhoneSms(
+            @Valid LoginByPhoneSmsForm form
+    ) {
+        return managerService
+                .loginByPhoneSms(form.getPhone(), form.getSms());
+    }
+
     @GetMapping("token/manager")
     public Mono<ManagerModel> getTokenManager(
             @RequestParam String managerId
@@ -33,7 +41,6 @@ public class AdminManagerController {
         return managerService.findModelById(managerId);
     }
 
-    @Login(false)
     @GetMapping("token/roles")
     public Flux<Role> getTokenRoleList(
             @RequestParam String managerId
@@ -41,7 +48,6 @@ public class AdminManagerController {
         return roleService.findListByManagerId(managerId);
     }
 
-    @Login(false)
     @GetMapping("token/permissions")
     public Flux<Permission> getTokenPermissionList(
             @RequestParam String managerId
@@ -49,7 +55,6 @@ public class AdminManagerController {
         return permissionService.findListByManagerId(managerId);
     }
 
-    @Login(false)
     @GetMapping("permissions")
     public Flux<Permission> getPermissionList(
     ) {
