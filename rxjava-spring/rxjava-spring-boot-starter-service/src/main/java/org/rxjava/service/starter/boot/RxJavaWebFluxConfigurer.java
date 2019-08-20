@@ -43,15 +43,6 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     private static final String TIME_FORMAT = "HH:mm:ss.SSS";
 
     /**
-     * 默认校验均不通过，客户端需要自行实现
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    public LoginInfoService loginInfoService() {
-        return new DefaultLoginInfoServiceImpl();
-    }
-
-    /**
      * Redis Bean
      */
     @Bean

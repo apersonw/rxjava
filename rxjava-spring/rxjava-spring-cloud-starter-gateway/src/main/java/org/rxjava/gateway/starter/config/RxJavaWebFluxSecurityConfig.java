@@ -2,6 +2,7 @@ package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.exception.LoginRuntimeException;
+import org.rxjava.common.core.exception.UnauthorizedException;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
 import org.rxjava.common.core.type.LoginType;
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
@@ -23,6 +25,7 @@ import org.springframework.security.web.server.context.NoOpServerSecurityContext
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.compile;
@@ -31,7 +34,6 @@ import static java.util.regex.Pattern.compile;
  * @author happy 2019-06-29 03:30
  */
 @EnableWebFluxSecurity
-@Import({CheckTokenConfig.class})
 public class RxJavaWebFluxSecurityConfig {
     @Autowired
     private LoginInfoService loginInfoService;
@@ -57,7 +59,7 @@ public class RxJavaWebFluxSecurityConfig {
     public AuthenticationWebFilter authenticationFilter(ReactiveAuthenticationManager reactiveAuthenticationManager) {
         AuthenticationWebFilter filter = new AuthenticationWebFilter(reactiveAuthenticationManager);
         filter.setServerAuthenticationConverter(this::authenticationConverter);
-        filter.setAuthenticationFailureHandler((exchange, exception) -> LoginRuntimeException.mono("401 unauthorized"));
+        filter.setAuthenticationFailureHandler((exchange, exception) -> UnauthorizedException.mono("401 unauthorized"));
         filter.setAuthenticationSuccessHandler(new CustomServerAuthenticationSuccessHandler());
         return filter;
     }
@@ -73,30 +75,17 @@ public class RxJavaWebFluxSecurityConfig {
             return Mono.empty();
         }
 
-        String loginType = LoginType.PERSON.name();
         String pathValue = request.getPath().value();
-
-        //检查路径是否走管理
-        Pattern adminPattern = compile("/admin/");
-        boolean adminFind = adminPattern.matcher(pathValue).find();
-        if (adminFind) {
-            loginType = LoginType.ADMIN.name();
-        }
-
-        if (!adminFind) {
-            //检查路径是否走第三方
-            Pattern thirdPattern = compile("/third/");
-            boolean thirdFind = thirdPattern.matcher(pathValue).find();
-            if (thirdFind) {
-                loginType = LoginType.THIRD.name();
-            }
-        }
+        String httpMethod = Objects.requireNonNull(request.getMethod()).name();
 
         return loginInfoService
-                .checkToken(authorization, loginType)
-                .map(loginInfo -> new AuthenticationToken(authorization));
+                .checkToken(authorization, pathValue, httpMethod)
+                .map(loginInfo -> new AuthenticationToken(authorization, loginInfo));
     }
 
+    /**
+     * inner仅允许微服务彼此间调用
+     */
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http, AuthenticationWebFilter authenticationFilter) {
         return http

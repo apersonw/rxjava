@@ -16,7 +16,7 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
      * Token校验
      */
     @Override
-    public Mono<LoginInfo> checkToken(String token, String loginType) {
+    public Mono<LoginInfo> checkToken(String token, String httpPath,String httpMethod) {
         return Mono.just(new LoginInfo());
     }
 

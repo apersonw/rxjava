@@ -3,7 +3,6 @@ package org.rxjava.service.starter.boot;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.rxjava.common.core.annotation.Check;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.exception.LoginRuntimeException;
@@ -30,8 +29,6 @@ import static org.rxjava.service.starter.boot.LoginInfoArgumentResolver.LOGIN_RE
 public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerAdapter {
     private static final Logger log = LogManager.getLogger();
     private static final String LOGIN_INFO = "loginInfo";
-    @Autowired
-    private LoginInfoService loginInfoService;
 
     SecurityRequestMappingHandlerAdapter() {
         super();
@@ -67,17 +64,6 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
             }
             //请求参数注入登陆信息对象
             exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, loginInfo);
-
-            Check check = handlerMethod.getMethodAnnotation(Check.class);
-            if (check != null && check.value()) {
-
-                String methodValue = request.getMethodValue();
-                return loginInfoService
-                        .checkPermission(loginInfo.getUserId(), pathValue, methodValue)
-                        .filter(r -> r)
-                        .switchIfEmpty(LoginRuntimeException.mono("403 forbidden"))
-                        .flatMap(r -> super.handle(exchange, handler));
-            }
         }
         return super.handle(exchange, handler);
     }
