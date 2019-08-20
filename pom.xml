@@ -10,7 +10,6 @@
         <module>rxjava-service</module>
         <module>rxjava-gateway</module>
         <module>rxjava-apikit</module>
-        <module>rxjava-example</module>
     </modules>
     <properties>
         <!--项目编译版本-->
