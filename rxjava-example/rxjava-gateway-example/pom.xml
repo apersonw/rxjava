@@ -5,7 +5,6 @@
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-gateway</artifactId>
         <version>1.0.6-SNAPSHOT</version>
-        <relativePath>../../rxjava-gateway/pom.xml</relativePath>
     </parent>
     <properties>
         <module.name>example</module.name>

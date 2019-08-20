@@ -3,9 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.rxjava</groupId>
-        <artifactId>rxjava-service</artifactId>
+        <artifactId>rxjava</artifactId>
         <version>1.0.6-SNAPSHOT</version>
-        <relativePath>../rxjava-service/pom.xml</relativePath>
     </parent>
     <artifactId>rxjava-gateway</artifactId>
     <packaging>pom</packaging>
@@ -18,6 +17,16 @@
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-spring-cloud-starter-gateway</artifactId>
             <version>${project.parent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
