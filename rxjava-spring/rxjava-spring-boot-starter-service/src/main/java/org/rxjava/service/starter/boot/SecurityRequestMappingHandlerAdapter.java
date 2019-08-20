@@ -5,10 +5,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.entity.LoginInfo;
-import org.rxjava.common.core.exception.LoginRuntimeException;
-import org.rxjava.common.core.service.LoginInfoService;
+import org.rxjava.common.core.exception.LoginInfoException;
 import org.rxjava.common.core.utils.JsonUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.method.HandlerMethod;
@@ -47,12 +45,12 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         PathContainer path = request.getPath().pathWithinApplication();
         String pathValue = path.value();
 
-        //微服务彼此间接口不注入登陆信息
+        //微服务彼此间接口不注入登陆信息(信息均需要明确传入)
         if (pathValue.startsWith("/inner/")) {
             return super.handle(exchange, handler);
         }
 
-        //检查是否需要登陆
+        //检查接口方法是否需要登陆
         Login login = handlerMethod.getMethodAnnotation(Login.class);
         if (login == null || login.value()) {
 
@@ -60,7 +58,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
             LoginInfo loginInfo = parseLoginJson(loginInfoJson);
 
             if (loginInfo == null) {
-                throw LoginRuntimeException.of("未登录:" + request.getPath());
+                throw LoginInfoException.of("登录信息不能为空");
             }
             //请求参数注入登陆信息对象
             exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, loginInfo);

@@ -2,7 +2,7 @@ package org.rxjava.security.example.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.exception.LoginRuntimeException;
+import org.rxjava.common.core.exception.LoginInfoException;
 import org.rxjava.security.example.entity.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -78,7 +78,7 @@ public class ExplicitWebfluxSecurityConfig implements WebFluxConfigurer {
             String token = (String) authentication.getCredentials();
             return reactiveRedisTemplate.opsForValue()
                     .get(token)
-                    .switchIfEmpty(Mono.defer(() -> Mono.error(LoginRuntimeException.of("未找到token"))))
+                    .switchIfEmpty(Mono.defer(() -> Mono.error(LoginInfoException.of("未找到token"))))
                     .map(securityUserStr -> {
                         SecurityUser securityUser = null;
                         try {

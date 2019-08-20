@@ -8,16 +8,17 @@ import java.util.stream.Stream;
 
 /**
  * @author happy 2019-04-18 01:22
+ * 登录信息异常错误
  */
-public class LoginRuntimeException extends RuntimeException {
+public class LoginInfoException extends RuntimeException {
 
     private ErrorMessage errorMessage;
 
-    public LoginRuntimeException(String message) {
+    public LoginInfoException(String message) {
         super(message);
     }
 
-    private LoginRuntimeException(String[] codes, Object[] arguments, String defaultMessage, Throwable cause) {
+    private LoginInfoException(String[] codes, Object[] arguments, String defaultMessage, Throwable cause) {
         super(MessageFormat.format(
                 "codes:{0},args:{1}, defaultMessage:{2}",
                 ArrayUtils.toString(codes),
@@ -27,15 +28,15 @@ public class LoginRuntimeException extends RuntimeException {
         this.errorMessage = new ErrorMessage(codes, arguments, defaultMessage);
     }
 
-    public static LoginRuntimeException of(String message) {
-        return new LoginRuntimeException(message);
+    public static LoginInfoException of(String message) {
+        return new LoginInfoException(message);
     }
 
-    private static LoginRuntimeException parseCode(String code, String... argsCode) {
-        return new LoginRuntimeException(code, argsCode);
+    private static LoginInfoException parseCode(String code, String... argsCode) {
+        return new LoginInfoException(code, argsCode);
     }
 
-    private LoginRuntimeException(String code, String... argsCodes) {
+    private LoginInfoException(String code, String... argsCodes) {
         this(new String[]{code}, Stream.of(argsCodes).map(DefaultError::new).toArray(DefaultError[]::new), null, null);
     }
 

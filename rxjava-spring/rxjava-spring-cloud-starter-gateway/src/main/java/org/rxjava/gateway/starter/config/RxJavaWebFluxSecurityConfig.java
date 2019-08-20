@@ -1,17 +1,13 @@
 package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.exception.LoginRuntimeException;
 import org.rxjava.common.core.exception.UnauthorizedException;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
-import org.rxjava.common.core.type.LoginType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
@@ -24,9 +20,6 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
-import java.util.Objects;
-import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.compile;
 

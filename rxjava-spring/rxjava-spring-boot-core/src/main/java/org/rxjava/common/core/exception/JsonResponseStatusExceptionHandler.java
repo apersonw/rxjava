@@ -92,7 +92,7 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
             RequestPath path = request.getPath();
             log.info("http status:{},reason:{},path:{},method:{}", status, responseStatusException.getReason(), path, request.getMethodValue());
             log.debug("http status:{},reason:{}", status, responseStatusException.getReason(), ex);
-        } else if (ex instanceof LoginRuntimeException) {
+        } else if (ex instanceof LoginInfoException) {
             status = HttpStatus.UNAUTHORIZED;
             errorMessage = new ErrorMessage("unauthorized");
             log.info("http status:{},reason:{}", status, "需要登录");
