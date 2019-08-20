@@ -75,11 +75,8 @@ public class RxJavaWebFluxSecurityConfig {
             return Mono.empty();
         }
 
-        String pathValue = request.getPath().value();
-        String httpMethod = Objects.requireNonNull(request.getMethod()).name();
-
         return loginInfoService
-                .checkToken(authorization, pathValue, httpMethod)
+                .checkToken(serverWebExchange)
                 .map(loginInfo -> new AuthenticationToken(authorization, loginInfo));
     }
 

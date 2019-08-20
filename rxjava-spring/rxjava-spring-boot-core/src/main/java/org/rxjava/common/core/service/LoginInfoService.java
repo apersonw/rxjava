@@ -2,6 +2,7 @@ package org.rxjava.common.core.service;
 
 import org.rxjava.common.core.entity.LoginInfo;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
@@ -11,9 +12,6 @@ public interface LoginInfoService {
 
     /**
      * token校验
-     * @param token 密钥
-     * @param httpPath 请求路径
-     * @param httpMethod 请求方法
      */
-    Mono<LoginInfo> checkToken(String token, String httpPath, String httpMethod);
+    Mono<LoginInfo> checkToken(ServerWebExchange serverWebExchange);
 }

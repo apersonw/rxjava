@@ -4,6 +4,7 @@ import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
@@ -16,7 +17,7 @@ public class LoginInfoServiceImpl extends DefaultLoginInfoServiceImpl implements
      * Token校验
      */
     @Override
-    public Mono<LoginInfo> checkToken(String token, String httpPath,String httpMethod) {
+    public Mono<LoginInfo> checkToken(ServerWebExchange serverWebExchange) {
         return Mono.just(new LoginInfo());
     }
 

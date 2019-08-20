@@ -12,8 +12,4 @@ public class LoginInfo {
      * 用户Id
      */
     private String userId;
-    /**
-     * 第三方Id
-     */
-    private String thirdId;
 }
