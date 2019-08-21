@@ -20,7 +20,7 @@ import java.net.URLEncoder;
  */
 public class CustomServerAuthenticationSuccessHandler implements ServerAuthenticationSuccessHandler {
     /**
-     * 将登陆信息注入请求头
+     * 鉴权成功后，将loginInfo注入请求头中
      */
     @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {

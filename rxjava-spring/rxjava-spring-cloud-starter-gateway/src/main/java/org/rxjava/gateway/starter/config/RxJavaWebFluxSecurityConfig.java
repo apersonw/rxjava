@@ -1,7 +1,6 @@
 package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.exception.UnauthorizedException;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
-import static java.util.regex.Pattern.compile;
 
 /**
  * @author happy 2019-06-29 03:30
@@ -52,7 +49,7 @@ public class RxJavaWebFluxSecurityConfig {
     public AuthenticationWebFilter authenticationFilter(ReactiveAuthenticationManager reactiveAuthenticationManager) {
         AuthenticationWebFilter filter = new AuthenticationWebFilter(reactiveAuthenticationManager);
         filter.setServerAuthenticationConverter(this::authenticationConverter);
-        filter.setAuthenticationFailureHandler((exchange, exception) -> UnauthorizedException.mono("401 unauthorized"));
+        filter.setAuthenticationFailureHandler(new CustomServerAuthenticationFailureHandler());
         filter.setAuthenticationSuccessHandler(new CustomServerAuthenticationSuccessHandler());
         return filter;
     }
