@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.entity.LoginInfo;
-import org.rxjava.common.core.exception.LoginInfoException;
+import org.rxjava.common.core.exception.UnauthorizedException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -58,7 +58,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
             LoginInfo loginInfo = parseLoginJson(loginInfoJson);
 
             if (loginInfo == null) {
-                throw LoginInfoException.of("登录信息不能为空");
+                throw UnauthorizedException.of("unauthorized");
             }
             //请求参数注入登陆信息对象
             exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, loginInfo);
