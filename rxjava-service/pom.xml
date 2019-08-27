@@ -26,6 +26,25 @@
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>mock</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <excludes>
+                            <exclude>cloud/</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
     <build>
         <plugins>
             <plugin>
