@@ -9,5 +9,10 @@
     <artifactId>rxjava-spring-mock-starter</artifactId>
     <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-spring-boot-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 </project>
