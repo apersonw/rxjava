@@ -32,17 +32,13 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                        <filtering>true</filtering>
-                        <excludes>
-                            <exclude>cloud/</exclude>
-                        </excludes>
-                    </resource>
-                </resources>
-            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.rxjava</groupId>
+                    <artifactId>rxjava-spring-mock-starter</artifactId>
+                    <version>${project.parent.version}</version>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
     <build>

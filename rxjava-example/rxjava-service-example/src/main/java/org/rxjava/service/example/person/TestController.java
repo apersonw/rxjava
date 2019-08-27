@@ -1,7 +1,6 @@
 package org.rxjava.service.example.person;
 
-import org.rxjava.common.core.annotation.Check;
-import org.rxjava.common.core.annotation.Login;
+import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.service.example.form.TestForm;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,6 @@ public class TestController {
     /**
      * 路径变量测试
      */
-    @Login(false)
     @GetMapping("testPath/{id}")
     public Mono<Integer> testPath(
             @PathVariable String id,
@@ -33,9 +31,9 @@ public class TestController {
     /**
      * 路径权限检查
      */
-    @Check
     @GetMapping("checkTest")
     public Mono<String> checkTest(
+            LoginInfo loginInfo
     ) {
         return Mono.just("checkOk");
     }
