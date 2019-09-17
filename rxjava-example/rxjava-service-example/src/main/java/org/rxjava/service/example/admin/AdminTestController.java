@@ -18,7 +18,6 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("admin")
 public class AdminTestController {
-
     /**
      * 路径变量测试
      */
