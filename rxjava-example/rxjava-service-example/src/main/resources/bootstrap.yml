@@ -17,5 +17,9 @@ spring:
         prefetch: 1
         default-requeue-rejected: true
         auto-startup: true
+  cloud:
+    kubernetes:
+      config:
+        enabled: false
 server:
   port: 8081

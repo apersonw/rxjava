@@ -186,7 +186,6 @@ local.properties
 .nfs*
 ### macOS template
 # General
-.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -268,3 +267,7 @@ typings/
 
 # dotenv environment variables file
 .env
+rxjava-apikit/rxjava-apikit-core/src/main/resources/
+rxjava-apikit/rxjava-apikit-maven-plugin/src/main/resources/
+rxjava-spring/rxjava-spring-boot-core/src/main/resources/
+rxjava-spring/rxjava-spring-cloud-starter-bus/src/main/resources/
