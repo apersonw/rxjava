@@ -48,6 +48,4 @@ public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConf
     public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
         configurer.addCustomResolver(new LoginInfoArgumentResolver(webFluxAdapterRegistry()));
     }
-
-
 }
