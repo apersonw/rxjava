@@ -64,4 +64,15 @@ public class GoodsController {
     ) {
         return goodsService.findGroupList(groupCategoryId);
     }
+
+    /**
+     * 查询分组
+     */
+    @Login(false)
+    @GetMapping("group/{groupId}")
+    public Mono<Group> findGroup(
+            @PathVariable String groupId
+    ) {
+        return goodsService.findGroup(groupId);
+    }
 }

@@ -1,10 +1,17 @@
 package org.rxjava.service.example.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
+
+import static org.springframework.data.mongodb.core.index.IndexDirection.DESCENDING;
 
 /**
  * 分组商品
@@ -21,7 +28,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class GroupGoods {
     @Id
     private String id;
+    @Indexed
     private String groupId;
+    @Indexed
     private String goodsId;
     /**
      * 商品名称
@@ -35,4 +44,9 @@ public class GroupGoods {
      * 售价
      */
     private long salePrice;
+    @CreatedDate
+    @Indexed(direction = DESCENDING)
+    private LocalDateTime createDate;
+    @LastModifiedDate
+    private LocalDateTime updateDate;
 }

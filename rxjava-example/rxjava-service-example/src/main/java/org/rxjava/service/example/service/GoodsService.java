@@ -44,7 +44,7 @@ public class GoodsService {
      * 搜索商品列表
      */
     public Flux<Goods> searchGoodsList(SearchGoodsListForm form) {
-        return Flux.empty();
+        return goodsRepository.findAll();
     }
 
     /**
@@ -53,5 +53,12 @@ public class GoodsService {
     public Flux<Group> findGroupList(String groupCategoryId) {
         return groupRepository
                 .findAllByGroupCategoryId(groupCategoryId);
+    }
+
+    /**
+     * 查询分组
+     */
+    public Mono<Group> findGroup(String groupId) {
+        return groupRepository.findById(groupId);
     }
 }
