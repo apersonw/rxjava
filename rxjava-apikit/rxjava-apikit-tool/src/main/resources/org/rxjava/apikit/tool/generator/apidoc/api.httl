@@ -1,0 +1,9 @@
+<!--#set(ApiClassInfo classInfo)-->
+<!--#set(ApiMethodInfo method)-->
+
+##异步方法
+<!--#for(method : classInfo.methodInfos)-->
+$!{method.name}
+$!{method.url}
+<!--#end-->
+##循环结束

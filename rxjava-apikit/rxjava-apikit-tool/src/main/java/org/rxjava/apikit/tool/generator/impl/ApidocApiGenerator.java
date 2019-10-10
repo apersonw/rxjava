@@ -29,19 +29,13 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
 
     @Override
     public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
-//        ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
-//        File jsFile = createApiFile(wrapper, "js");
-//        File dFile = createApiFile(wrapper, "d.ts");
-//        executeModule(
-//                wrapper,
-//                getTemplateFile("Api.httl"),
-//                jsFile
-//        );
-//        executeModule(
-//                wrapper,
-//                getTemplateFile("Api.d.httl"),
-//                dFile
-//        );
+        ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
+        File apiFile = createApiFile(wrapper, "js");
+        executeModule(
+                wrapper,
+                getTemplateFile("api.httl"),
+                apiFile
+        );
     }
 
     private String getTemplateFile(String name) {
