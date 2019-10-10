@@ -1,8 +1,12 @@
 package org.rxjava.common.core.tools;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -12,7 +16,7 @@ import reactor.core.publisher.Mono;
  */
 public class RequestTool {
 
-    public Mono<String> get(String requestUrl) {
+    public Mono<JsonNode> get(String requestUrl) {
         return get(requestUrl, new LinkedMultiValueMap<>());
     }
 
@@ -20,7 +24,7 @@ public class RequestTool {
      * get请求
      * 路径参数
      */
-    public Mono<String> get(String requestUrl, MultiValueMap<String, String> params) {
+    public Mono<JsonNode> get(String requestUrl, MultiValueMap<String, String> params) {
         return WebClient.create(requestUrl)
                 .method(HttpMethod.GET)
                 .uri(uriBuilder -> {
@@ -30,11 +34,17 @@ public class RequestTool {
                     return uriBuilder.queryParams(params).build();
                 })
                 .retrieve()
-                .bodyToMono(String.class);
+                .bodyToMono(String.class)
+                .map(jsonStr -> {
+                    if (StringUtils.isEmpty(jsonStr)) {
+                        return JsonNodeFactory.instance.missingNode();
+                    }
+                    return JsonUtils.deserialize(jsonStr, JsonNode.class);
+                });
     }
 
     public Mono<String> post(String requestUrl) {
-        return get(requestUrl, new LinkedMultiValueMap<>());
+        return post(requestUrl, new LinkedMultiValueMap<>());
     }
 
     /**
@@ -50,6 +60,7 @@ public class RequestTool {
     }
 
     public static void main(String[] args) {
-        new RequestTool().get("https://www.baidu.com").block();
+        JsonNode block = new RequestTool().get("https://qy-h5-dev.billbear.cn/api/javahotel/cityList").block();
+        System.out.println(block);
     }
 }
