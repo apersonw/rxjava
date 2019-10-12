@@ -28,6 +28,10 @@ public class Group {
      * 分组名称，如某某主题，某某秒杀
      */
     private String name;
+    /**
+     * 组排序号
+     */
+    private int sort;
     @CreatedDate
     @Indexed(direction = DESCENDING)
     private LocalDateTime createDate;
