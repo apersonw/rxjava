@@ -7,6 +7,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import lombok.Data;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.service.example.form.QrcodeCreateForm;
 import org.rxjava.service.example.type.ImageType;
 import org.springframework.core.io.ByteArrayResource;
@@ -22,13 +23,13 @@ import java.io.ByteArrayOutputStream;
 /**
  * 订单
  */
-@Data
 @RestController
 public class OrderController {
 
     /**
      * 生成二维码
      */
+    @Ignore
     @GetMapping("qrcode")
     public Mono<ResponseEntity<ByteArrayResource>> createQrcode(
             @Valid QrcodeCreateForm form

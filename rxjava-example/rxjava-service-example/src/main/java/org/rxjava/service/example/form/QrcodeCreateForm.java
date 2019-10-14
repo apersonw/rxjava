@@ -12,10 +12,6 @@ public class QrcodeCreateForm {
      */
     private String type = ImageType.png.name();
     /**
-     * 图片类型
-     */
-    private ImageType imageType;
-    /**
      * 二维码类型
      *
      * @see BarcodeFormat

@@ -175,7 +175,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             paramClassInfo.sortPropertys();
             return paramClassInfo;
         } catch (Throwable th) {
-            log.info("分析message错误,classInfo:{}", classInfo, th);
+            log.error("分析message错误,classInfo:{}", classInfo, th);
             throw new RuntimeException(th);
         }
     }

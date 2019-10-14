@@ -9,6 +9,7 @@ import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.analyse.Analyse;
@@ -43,7 +44,7 @@ import java.util.stream.Stream;
 public class ControllerAnalyse implements Analyse {
     private Context context;
 
-    public static ControllerAnalyse create(){
+    public static ControllerAnalyse create() {
         return new ControllerAnalyse();
     }
 
@@ -83,7 +84,7 @@ public class ControllerAnalyse implements Analyse {
             List<ApiMethodInfo> apiMethodInfos = Flux
                     .just(cls.getMethods())
                     //过滤掉非接口方法
-                    .filter(method -> AnnotationUtils.getAnnotation(method, RequestMapping.class) != null)
+                    .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
                     .map(method -> this.analyseMethod(method, classMappingPath))
                     //根据方法名称排序
                     .sort((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
