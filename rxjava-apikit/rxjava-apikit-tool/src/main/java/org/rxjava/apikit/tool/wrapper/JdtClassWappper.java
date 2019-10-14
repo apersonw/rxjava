@@ -20,6 +20,10 @@ public class JdtClassWappper {
     protected CompilationUnit node;
     protected TypeDeclaration type;
 
+    public JdtClassWappper(String path, Class cls) throws IOException {
+        this(Paths.get(path, cls.getPackage().getName().split("\\.")).resolve(cls.getSimpleName() + ".java"), cls);
+    }
+
     public JdtClassWappper(Path javaFilePath, Class cls) throws IOException {
         String code = IOUtils.toString(javaFilePath.toUri(), "UTF-8");
 
