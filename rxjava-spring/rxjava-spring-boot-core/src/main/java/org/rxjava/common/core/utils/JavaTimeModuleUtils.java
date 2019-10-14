@@ -39,9 +39,19 @@ public class JavaTimeModuleUtils {
     }
 
     /**
+     * 添加日期时间格式解析支持
+     */
+    public static void addAllFormatter(){
+        addTimeFormatter();
+        addInstantFormatter();
+        addDateTimeFormatter();
+        addDateFormatter();
+    }
+
+    /**
      * 添加日期时间格式支持
      */
-    public static void addDateTimeFormatter() {
+    private static void addDateTimeFormatter() {
         DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
         javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(dataTimeFormatter));
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(dataTimeFormatter));
@@ -50,7 +60,7 @@ public class JavaTimeModuleUtils {
     /**
      * 添加日期格式支持
      */
-    public static void addDateFormatter() {
+    private static void addDateFormatter() {
         DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT).withZone(ZoneId.systemDefault());
         javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(dataFormatter));
         javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(dataFormatter));
@@ -59,7 +69,7 @@ public class JavaTimeModuleUtils {
     /**
      * 添加时间格式支持
      */
-    public static void addTimeFormatter() {
+    private static void addTimeFormatter() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(TIME_FORMAT).withZone(ZoneId.systemDefault());
         javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(timeFormatter));
         javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(timeFormatter));
@@ -68,7 +78,7 @@ public class JavaTimeModuleUtils {
     /**
      * 添加Instant格式支持
      */
-    public static void addInstantFormatter(){
+    private static void addInstantFormatter(){
         DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
         javaTimeModule.addDeserializer(Instant.class, new JsonDeserializer<Instant>() {
             @Override

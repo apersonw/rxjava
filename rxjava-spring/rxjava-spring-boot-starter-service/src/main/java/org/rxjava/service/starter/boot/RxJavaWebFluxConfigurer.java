@@ -48,10 +48,7 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         //添加json日期时间序列化和反序列化格式支持
-        JavaTimeModuleUtils.addDateFormatter();
-        JavaTimeModuleUtils.addDateTimeFormatter();
-        JavaTimeModuleUtils.addInstantFormatter();
-        JavaTimeModuleUtils.addTimeFormatter();
+        JavaTimeModuleUtils.addAllFormatter();
 
         //注册模块
         objectMapper
