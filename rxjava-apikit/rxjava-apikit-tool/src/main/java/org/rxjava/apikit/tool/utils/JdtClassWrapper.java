@@ -1,4 +1,4 @@
-package org.rxjava.apikit.tool.wrapper;
+package org.rxjava.apikit.tool.utils;
 
 import org.apache.commons.io.IOUtils;
 import org.eclipse.jdt.core.dom.*;
@@ -6,6 +6,7 @@ import org.rxjava.apikit.tool.info.JavadocInfo;
 
 import java.io.IOException;
 import java.lang.reflect.Modifier;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,56 +14,66 @@ import java.util.*;
 
 /**
  * @author happy
- * Java Development Tools Class Wapper
- * Java开发工具类
+ * Java Development Tools
+ * Java开发工具类包装
  */
-public class JdtClassWappper {
-    protected CompilationUnit node;
-    protected TypeDeclaration type;
+public class JdtClassWrapper {
+    /**
+     * 类型声明
+     */
+    private TypeDeclaration typeDeclaration;
 
-    public JdtClassWappper(String path, Class cls) throws IOException {
-        this(Paths.get(path, cls.getPackage().getName().split("\\.")).resolve(cls.getSimpleName() + ".java"), cls);
+    public JdtClassWrapper(String filePath, Class cls) {
+        this(Paths.get(filePath, cls.getPackage().getName().split("\\.")).resolve(cls.getSimpleName() + ".java"));
     }
 
-    public JdtClassWappper(Path javaFilePath, Class cls) throws IOException {
-        String code = IOUtils.toString(javaFilePath.toUri(), "UTF-8");
+    public JdtClassWrapper(Path javaFilePath) {
+        //将文件转为源码字符串
+        String srcCode;
+        try {
+            srcCode = IOUtils.toString(javaFilePath.toUri(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("IO文件转字符串源码异常", e);
+        }
 
+        //抽象语法树解析源文件
         ASTParser parser = ASTParser.newParser(AST.JLS9);
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
-        parser.setSource(code.toCharArray());
+        parser.setSource(srcCode.toCharArray());
         CompilationUnit node = (CompilationUnit) parser.createAST(null);
 
-        Optional first = node
-                .types()
+        //获取第一个public类
+        List types = node.types();
+        List<TypeDeclaration> typeDeclarations = new ArrayList<>();
+        if (!types.isEmpty()) {
+            for (Object type : types) {
+                TypeDeclaration typeDeclaration = (TypeDeclaration) type;
+                typeDeclarations.add(typeDeclaration);
+            }
+        }
+        Optional<TypeDeclaration> first = typeDeclarations
                 .stream()
-                .filter(t -> {
-                    TypeDeclaration type = (TypeDeclaration) t;
-                    return Modifier.isPublic(type.getModifiers());
-                })
+                .filter(t -> Modifier.isPublic(t.getModifiers()))
                 .findFirst();
 
         if (!first.isPresent()) {
-            throw new RuntimeException("未找到主类");
+            throw new RuntimeException("未找到类");
         }
 
-        TypeDeclaration type = (TypeDeclaration) first.get();
-        this.node = node;
-        this.type = type;
+        TypeDeclaration typeDeclaration = first.get();
+        this.typeDeclaration = typeDeclaration;
     }
 
-    public static Optional<JdtClassWappper> check(Class clazz, String path) throws IOException {
+    public static Optional<JdtClassWrapper> getOptionalJavadocInfo(Class clazz, String path) {
         Path javaFilePath = Paths.get(path, (clazz.getPackage().getName()).split("\\.")).resolve(clazz.getSimpleName() + ".java");
         if (Files.exists(javaFilePath)) {
-            return Optional.of(new JdtClassWappper(javaFilePath, clazz));
+            return Optional.of(new JdtClassWrapper(javaFilePath));
         }
         return Optional.empty();
     }
 
-    public JavadocInfo getClassComment() {
-        return transform(type.getJavadoc());
-    }
-
-    protected static JavadocInfo transform(Javadoc javadoc) {
+    private static JavadocInfo transform(Javadoc javadoc) {
         if (javadoc == null) {
             return null;
         }
@@ -73,7 +84,7 @@ public class JdtClassWappper {
             String tagName = tagElement.getTagName();
 
             List fragments = tagElement.fragments();
-            ArrayList<String> fragmentsInfo = new ArrayList<>();
+            List<String> fragmentsInfo = new ArrayList<>();
             for (Object fragment : fragments) {
                 if (fragment instanceof TextElement) {
                     TextElement textElement = (TextElement) fragment;
@@ -87,9 +98,16 @@ public class JdtClassWappper {
         return javadocInfo;
     }
 
+    public JavadocInfo getClassComment(){
+        return transform(typeDeclaration.getJavadoc());
+    }
+
+    /**
+     * 获取字段注释信息
+     */
     public JavadocInfo getFieldComment(String name) {
         Optional<FieldDeclaration> methodOpt = Arrays
-                .stream(type.getFields())
+                .stream(typeDeclaration.getFields())
                 .filter(fieldDeclaration -> Objects.equals(fieldDeclaration.fragments().get(0).toString(), name))
                 .findFirst();
 

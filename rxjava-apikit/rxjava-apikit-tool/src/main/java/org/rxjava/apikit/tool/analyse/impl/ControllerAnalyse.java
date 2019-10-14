@@ -11,13 +11,10 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
-import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.analyse.Analyse;
-import org.rxjava.apikit.tool.info.ApiClassInfo;
-import org.rxjava.apikit.tool.info.ApiMethodInfo;
-import org.rxjava.apikit.tool.info.ApiMethodParamInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
-import org.rxjava.apikit.tool.wrapper.JdtClassWappper;
+import org.rxjava.apikit.tool.generator.Context;
+import org.rxjava.apikit.tool.info.*;
+import org.rxjava.apikit.tool.utils.JdtClassWrapper;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -29,7 +26,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
@@ -66,7 +62,7 @@ public class ControllerAnalyse implements Analyse {
      * 分析Controller类信息
      */
     private void analyseClass(Class cls) {
-        //检查类是否处于root包路径下
+        //检查类是否处于root包下
         String classPackageName = cls.getPackage().getName();
         if (!classPackageName.startsWith(context.getRootPackage())) {
             return;
@@ -84,13 +80,9 @@ public class ControllerAnalyse implements Analyse {
         //包名
         apiClassInfo.setPackageName(classPackageName);
 
-        //分析类注释
-        try {
-            JdtClassWappper jdtClassWappper = new JdtClassWappper(this.context.getJavaFilePath(),cls);
-            System.out.println(jdtClassWappper);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //从源码类获取注释信息
+        JavadocInfo javadocInfo = new JdtClassWrapper(this.context.getJavaFilePath(), cls).getClassComment();
+        apiClassInfo.setJavadocInfo(javadocInfo);
 
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))

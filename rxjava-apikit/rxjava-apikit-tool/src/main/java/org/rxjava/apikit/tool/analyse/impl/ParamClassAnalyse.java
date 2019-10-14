@@ -5,7 +5,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.rxjava.apikit.tool.analyse.MessageAnalyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.*;
-import org.rxjava.apikit.tool.wrapper.JdtClassWappper;
+import org.rxjava.apikit.tool.utils.JdtClassWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -34,7 +34,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             Class.class, Object.class, void.class, Void.class
     );
 
-    public static ParamClassAnalyse create(){
+    public static ParamClassAnalyse create() {
         return new ParamClassAnalyse();
     }
 
@@ -122,13 +122,14 @@ public class ParamClassAnalyse implements MessageAnalyse {
         try {
             Class clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getName());
 
-            Optional<JdtClassWappper> jdtClassWappperOpt = JdtClassWappper.check(clazz, context.getJavaFilePath());
 
             ParamClassInfo paramClassInfo = new ParamClassInfo();
             paramClassInfo.setPackageName(classInfo.getPackageName());
             paramClassInfo.setName(classInfo.getName());
             paramClassInfo.setClazz(clazz);
-            jdtClassWappperOpt.ifPresent(jdtClassWappper -> paramClassInfo.setJavadocInfo(jdtClassWappper.getClassComment()));
+            //设置注释
+            Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(clazz, context.getJavaFilePath());
+            optionalJdtClassWrapper.ifPresent(jdtClassWrapper -> paramClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment()));
 
             Type genericSuperclass = clazz.getGenericSuperclass();
             if (genericSuperclass != null && !genericSuperclass.equals(Object.class)) {
@@ -160,8 +161,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
                             if (!nameSet.contains(name)) {
                                 PropertyInfo propertyInfo = new PropertyInfo(name, typeInfo);
 
-                                jdtClassWappperOpt
-                                        .ifPresent(jdtClassWappper -> propertyInfo.setJavadocInfo(jdtClassWappper.getFieldComment(name)));
+                                optionalJdtClassWrapper.ifPresent(javadocInfo -> propertyInfo.setJavadocInfo(javadocInfo.getFieldComment(name)));
                                 paramClassInfo.add(propertyInfo);
                                 nameSet.add(name);
                             }
