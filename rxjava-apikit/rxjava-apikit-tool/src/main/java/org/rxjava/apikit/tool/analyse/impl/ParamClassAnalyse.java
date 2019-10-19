@@ -122,13 +122,12 @@ public class ParamClassAnalyse implements MessageAnalyse {
         try {
             Class clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getName());
 
-
             ParamClassInfo paramClassInfo = new ParamClassInfo();
             paramClassInfo.setPackageName(classInfo.getPackageName());
             paramClassInfo.setName(classInfo.getName());
             paramClassInfo.setClazz(clazz);
             //设置注释
-            Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(clazz, context.getJavaFilePath());
+            Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(context.getJavaFilePath(), clazz);
             optionalJdtClassWrapper.ifPresent(jdtClassWrapper -> paramClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment()));
 
             Type genericSuperclass = clazz.getGenericSuperclass();

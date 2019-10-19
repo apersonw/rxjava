@@ -6,7 +6,10 @@ import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
-import org.rxjava.apikit.tool.wrapper.*;
+import org.rxjava.apikit.tool.wrapper.ApidocApiWrapper;
+import org.rxjava.apikit.tool.wrapper.ApidocParamClassWrapper;
+import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
+import org.rxjava.apikit.tool.wrapper.JavaScriptApiWrapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +27,7 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
     @Override
     public void generateBaseFile() throws Exception {
         generateIndexFile();
-//        generatePackageFile();
+        generatePackageFile();
     }
 
     @Override
@@ -51,18 +54,12 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
 
     @Override
     public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) throws Exception {
-//        File jsFile = createParamClassFile(wrapper, "js");
-//        File dFile = createParamClassFile(wrapper, "d.ts");
-//        executeModule(
-//                wrapper,
-//                getTemplateFile("ParamClass.httl"),
-//                jsFile
-//        );
-//        executeModule(
-//                wrapper,
-//                getTemplateFile("ParamClass.d.httl"),
-//                dFile
-//        );
+        File paramClassFile = createParamClassFile(wrapper, "js");
+        executeModule(
+                wrapper,
+                getTemplateFile("paramClass.httl"),
+                paramClassFile
+        );
     }
 
     /**

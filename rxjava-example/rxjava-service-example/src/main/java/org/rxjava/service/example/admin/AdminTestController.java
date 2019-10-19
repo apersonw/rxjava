@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 /**
+ * 测试管理
  * @author happy 2019-05-18 23:11
- * 注释说明
  */
 @RestController
 @RequestMapping("admin")

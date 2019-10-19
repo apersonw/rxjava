@@ -81,8 +81,8 @@ public class ControllerAnalyse implements Analyse {
         apiClassInfo.setPackageName(classPackageName);
 
         //从源码类获取注释信息
-        JavadocInfo javadocInfo = new JdtClassWrapper(this.context.getJavaFilePath(), cls).getClassComment();
-        apiClassInfo.setJavadocInfo(javadocInfo);
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
+        apiClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment());
 
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
@@ -94,7 +94,7 @@ public class ControllerAnalyse implements Analyse {
                 .just(cls.getMethods())
                 //过滤掉非接口方法
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
-                .map(method -> this.analyseMethod(method, classMappingPath))
+                .map(method -> this.analyseMethod(method, classMappingPath, jdtClassWrapper))
                 //根据方法名称排序
                 .sort((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
                 .collectList()
@@ -107,7 +107,7 @@ public class ControllerAnalyse implements Analyse {
     /**
      * 分析Controller类方法
      */
-    private ApiMethodInfo analyseMethod(Method method, String parentPath) {
+    private ApiMethodInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
@@ -115,6 +115,7 @@ public class ControllerAnalyse implements Analyse {
         ApiMethodInfo methodInfo = new ApiMethodInfo();
         methodInfo.setTypes(toMethodTypes(requestMethods));
         methodInfo.setName(method.getName());
+        methodInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
 
         String curPath = toPath(parentPath, pathArray);
         methodInfo.setUrl(curPath);

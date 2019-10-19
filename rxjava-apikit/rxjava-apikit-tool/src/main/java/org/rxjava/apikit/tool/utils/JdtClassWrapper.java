@@ -61,16 +61,25 @@ public class JdtClassWrapper {
             throw new RuntimeException("未找到类");
         }
 
-        TypeDeclaration typeDeclaration = first.get();
-        this.typeDeclaration = typeDeclaration;
+        this.typeDeclaration = first.get();
     }
 
-    public static Optional<JdtClassWrapper> getOptionalJavadocInfo(Class clazz, String path) {
+    public static Optional<JdtClassWrapper> getOptionalJavadocInfo(String path, Class clazz) {
         Path javaFilePath = Paths.get(path, (clazz.getPackage().getName()).split("\\.")).resolve(clazz.getSimpleName() + ".java");
         if (Files.exists(javaFilePath)) {
             return Optional.of(new JdtClassWrapper(javaFilePath));
         }
         return Optional.empty();
+    }
+
+    public JavadocInfo getMethodComment(String name) {
+        Optional<MethodDeclaration> methodDeclarationOptional = Arrays.stream(typeDeclaration.getMethods()).filter((methodDeclaration) -> Objects.equals(methodDeclaration.getName().getIdentifier(), name)).findFirst();
+        if (!methodDeclarationOptional.isPresent()) {
+            throw new RuntimeException("没有在源文件中找到方法:" + name);
+        } else {
+            MethodDeclaration methodDeclaration = methodDeclarationOptional.get();
+            return transform(methodDeclaration.getJavadoc());
+        }
     }
 
     private static JavadocInfo transform(Javadoc javadoc) {
@@ -98,7 +107,7 @@ public class JdtClassWrapper {
         return javadocInfo;
     }
 
-    public JavadocInfo getClassComment(){
+    public JavadocInfo getClassComment() {
         return transform(typeDeclaration.getJavadoc());
     }
 

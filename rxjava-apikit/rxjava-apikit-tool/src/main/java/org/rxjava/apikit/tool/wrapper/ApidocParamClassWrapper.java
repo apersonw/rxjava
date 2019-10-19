@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * @author zuoge85 on 15/6/14.
- */
 public class ApidocParamClassWrapper extends JavaScriptWrapper<ParamClassInfo> {
     public ApidocParamClassWrapper(Context context, ParamClassInfo paramClassInfo, String rootPackage) {
         super(context, paramClassInfo, rootPackage);
