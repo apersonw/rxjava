@@ -207,11 +207,14 @@ public class TypeInfo implements Cloneable {
      * Message 和其他非上面声明类型都不属于basic type
      */
     public enum Type {
+        /**
+         * 无
+         */
         VOID, BOOLEAN, BYTE, SHORT, INT, LONG, FLOAT,
         DOUBLE, STRING, DATE,
         OTHER;
 
-        private static final ImmutableMap<String, Type> typeMap = ImmutableMap.<String, Type>builder()
+        private static final ImmutableMap<String, Type> TYPE_MAP = ImmutableMap.<String, Type>builder()
                 .put(void.class.getSimpleName(), VOID)
                 .put(boolean.class.getSimpleName(), BOOLEAN)
                 .put(byte.class.getSimpleName(), BYTE)
@@ -240,7 +243,7 @@ public class TypeInfo implements Cloneable {
                 .put(LocalTime.class.getName(), DATE)
                 .build();
 
-        private static final ImmutableMap<Class, Type> typeClassMap = ImmutableMap.<Class, Type>builder()
+        private static final ImmutableMap<Class, Type> TYPE_CLASS_MAP = ImmutableMap.<Class, Type>builder()
                 .put(void.class, VOID)
                 .put(boolean.class, BOOLEAN)
                 .put(byte.class, BYTE)
@@ -269,7 +272,7 @@ public class TypeInfo implements Cloneable {
                 .put(LocalTime.class, DATE)
                 .build();
 
-        private static final ImmutableMap<Type, Class> classMap = ImmutableMap.<Type, Class>builder()
+        private static final ImmutableMap<Type, Class> CLASS_MAP = ImmutableMap.<Type, Class>builder()
                 .put(VOID, Void.class)
                 .put(BOOLEAN, Boolean.class)
                 .put(BYTE, Byte.class)
@@ -302,11 +305,11 @@ public class TypeInfo implements Cloneable {
         }
 
         public Class toClass() {
-            return classMap.get(this);
+            return CLASS_MAP.get(this);
         }
 
         public String getPrimitiveName() {
-            Class aClass = classMap.get(this);
+            Class aClass = CLASS_MAP.get(this);
             if (aClass != null) {
                 Class<?> primitive = ClassUtils.wrapperToPrimitive(aClass);
                 return primitive == null ? aClass.getSimpleName() : primitive.getSimpleName();
@@ -316,7 +319,7 @@ public class TypeInfo implements Cloneable {
         }
 
         public static Type form(String name) {
-            Type type = typeMap.get(name);
+            Type type = TYPE_MAP.get(name);
             if (type == null) {
                 return OTHER;
             }
@@ -324,7 +327,7 @@ public class TypeInfo implements Cloneable {
         }
 
         public static Type form(Class cls) {
-            Type type = typeClassMap.get(cls);
+            Type type = TYPE_CLASS_MAP.get(cls);
             if (type == null) {
                 return OTHER;
             }

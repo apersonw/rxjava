@@ -40,10 +40,10 @@ public class JavaScriptWrapper<T extends ClassInfo> extends BuilderWrapper<T> {
     }
 
     public String toJavaScriptString(TypeInfo.Type type) {
-        return typeMap.get(type);
+        return TYPE_MAP.get(type);
     }
 
-    private static final ImmutableMap<TypeInfo.Type, String> typeMap
+    private static final ImmutableMap<TypeInfo.Type, String> TYPE_MAP
             = ImmutableMap.<TypeInfo.Type, String>builder()
             .put(TypeInfo.Type.VOID, "void")
             .put(TypeInfo.Type.BOOLEAN, "boolean")

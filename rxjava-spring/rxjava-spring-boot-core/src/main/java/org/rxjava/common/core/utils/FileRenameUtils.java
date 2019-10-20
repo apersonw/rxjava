@@ -20,12 +20,12 @@ import java.util.stream.Collectors;
  * @author happy 2019-06-20 14:41
  */
 public class FileRenameUtils {
-    public static final HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+    public static final HanyuPinyinOutputFormat FORMAT = new HanyuPinyinOutputFormat();
 
     static {
-        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-        format.setVCharType(HanyuPinyinVCharType.WITH_V);
+        FORMAT.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        FORMAT.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+        FORMAT.setVCharType(HanyuPinyinVCharType.WITH_V);
     }
 
     public static void main(String[] args) {
@@ -64,7 +64,7 @@ public class FileRenameUtils {
         return name.chars().mapToObj((int r) -> {
             try {
                 char ch = (char) r;
-                String[] pinyins = PinyinHelper.toHanyuPinyinStringArray(ch, format);
+                String[] pinyins = PinyinHelper.toHanyuPinyinStringArray(ch, FORMAT);
                 if (ArrayUtils.isEmpty(pinyins)) {
                     return Character.toString(ch);
                 } else {

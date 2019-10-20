@@ -59,18 +59,6 @@ public class JsonUtils {
         }
     }
 
-//    public static <T> T deserialize(String json, final Type type) {
-//        try {
-//            return MAPPER.readValue(json, new TypeReference<Object>() {
-//                public Type getType() {
-//                    return type;
-//                }
-//            });
-//        } catch (IOException e) {
-//            throw new RuntimeException(e.getMessage(), e);
-//        }
-//    }
-
     public static <T> T deserialize(String json, Class<?> parentClass, Class<?>... elementClasses) {
         try {
             JavaType javaType = MAPPER.getTypeFactory().constructParametricType(
