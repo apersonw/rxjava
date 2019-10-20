@@ -36,7 +36,7 @@ public class RequestTool {
                 .retrieve()
                 .bodyToMono(String.class)
                 .map(jsonStr -> {
-                    if (StringUtils.isEmpty(jsonStr)) {
+                    if (StringUtils.isEmpty(jsonStr) || !(jsonStr.startsWith("[") || jsonStr.startsWith("{"))) {
                         return JsonNodeFactory.instance.missingNode();
                     }
                     return JsonUtils.deserialize(jsonStr, JsonNode.class);
