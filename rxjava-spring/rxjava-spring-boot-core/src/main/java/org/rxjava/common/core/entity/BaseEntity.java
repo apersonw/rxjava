@@ -1,6 +1,8 @@
 package org.rxjava.common.core.entity;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
@@ -14,8 +16,9 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
 /**
  * @author happy 2019/10/20 02:10
  */
+@Getter
+@Setter
 @Document
-@Data
 public class BaseEntity {
     private String id;
     @Version
