@@ -1,6 +1,7 @@
 package org.rxjava.service.example.person;
 
 import org.rxjava.common.core.annotation.Login;
+import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.service.example.entity.Goods;
 import org.rxjava.service.example.entity.Group;
 import org.rxjava.service.example.entity.GroupGoods;
@@ -29,7 +30,8 @@ public class GoodsController {
     public Flux<Goods> searchGoodsList(
             @Valid SearchGoodsListForm form
     ) {
-        return goodsService.searchGoodsList(form);
+        return goodsService.searchGoodsList(form)
+                .switchIfEmpty(Mono.error(ErrorMessageException.of("error")));
     }
 
     /**

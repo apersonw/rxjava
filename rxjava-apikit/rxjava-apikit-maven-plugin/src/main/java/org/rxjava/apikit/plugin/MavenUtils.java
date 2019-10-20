@@ -1,6 +1,8 @@
 package org.rxjava.apikit.plugin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.apache.maven.project.MavenProject;
@@ -24,7 +26,7 @@ public class MavenUtils {
     public static final ObjectMapper mapper = new ObjectMapper();
 
     static {
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        mapper.enableDefaultTyping(BasicPolymorphicTypeValidator.builder().build(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
 
     public static void generate(MavenProject project, Group group, String sourcePath, String[] srcPaths) {
