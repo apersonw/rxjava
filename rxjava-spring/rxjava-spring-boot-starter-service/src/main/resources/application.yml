@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        data.mongodb.core.ReactiveMongoTemplate: DEBUG
+        context.support: TRACE
+        web: INFO
+        boot:
+          autoconfigure:
+            logging: DEBUG
+    httl: INFO
