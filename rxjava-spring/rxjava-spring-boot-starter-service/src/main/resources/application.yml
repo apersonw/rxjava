@@ -10,3 +10,7 @@ logging:
           autoconfigure:
             logging: DEBUG
     httl: INFO
+spring:
+  http:
+    encoding:
+      force: true
