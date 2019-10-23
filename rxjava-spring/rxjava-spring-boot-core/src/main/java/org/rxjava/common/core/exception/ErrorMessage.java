@@ -40,7 +40,7 @@ public class ErrorMessage implements MessageSourceResolvable {
     }
 
     public ErrorMessage(String code, String... argCode) {
-        this(code, Stream.of(argCode)
+        this(code, (Object[]) Stream.of(argCode)
                 .map(DefaultError::new)
                 .toArray(DefaultError[]::new));
     }

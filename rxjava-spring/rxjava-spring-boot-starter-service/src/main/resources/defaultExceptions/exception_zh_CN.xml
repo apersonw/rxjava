@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <comment>异常消息</comment>
+    <comment>默认异常异常消息</comment>
+    <entry key="error">系统错误</entry>
 </properties>

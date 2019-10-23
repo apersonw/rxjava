@@ -45,7 +45,8 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasenames(
-                "classpath:exceptions/exception"
+                "classpath:exceptions/exception",
+                "classpath:defaultExceptions/exception"
         );
         messageSource.setUseCodeAsDefaultMessage(true);
         messageSource.setCacheSeconds(99999999);
