@@ -30,8 +30,7 @@ public class GoodsController {
     public Flux<Goods> searchGoodsList(
             @Valid SearchGoodsListForm form
     ) {
-        return goodsService.searchGoodsList(form)
-                .switchIfEmpty(Mono.error(ErrorMessageException.of("error")));
+        return goodsService.searchGoodsList(form);
     }
 
     /**
