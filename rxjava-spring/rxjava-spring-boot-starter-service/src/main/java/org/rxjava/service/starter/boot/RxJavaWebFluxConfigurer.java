@@ -9,6 +9,7 @@ import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
@@ -35,6 +36,20 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     @Primary
     ReactiveRedisTemplate<String, String> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
         return new ReactiveRedisTemplate<>(factory, RedisSerializationContext.string());
+    }
+
+    /**
+     * 使用指定的资源访问指定的名称，异常消息国际化处理
+     */
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasenames(
+                "classpath:exceptions/exception"
+        );
+        messageSource.setUseCodeAsDefaultMessage(true);
+        messageSource.setCacheSeconds(99999999);
+        return messageSource;
     }
 
     /**

@@ -164,7 +164,7 @@ public class UtilsBeanFactory {
                                 if (idx == 0) {
                                     obj = null;
                                 } else if (idx < values.length) {
-                                    obj = (Object[]) Array.newInstance(componentType, idx);
+                                    obj = Array.newInstance(componentType, idx);
                                     System.arraycopy(objs, 0, obj, 0, idx);
                                 } else {
                                     obj = objs;
