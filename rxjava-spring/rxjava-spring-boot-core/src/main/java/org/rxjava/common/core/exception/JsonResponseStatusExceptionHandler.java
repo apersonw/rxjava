@@ -79,13 +79,13 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
         ErrorMessage errorMessage;
         ServerHttpRequest request = exchange.getRequest();
 
-        //不可处理的实体错误
+        //参数异常错误
         if (throwable instanceof WebExchangeBindException) {
             WebExchangeBindException webExchangeBindException = (WebExchangeBindException) throwable;
             status = HttpStatus.UNPROCESSABLE_ENTITY;
             errorMessage = transform(webExchangeBindException.getBindingResult());
 
-            log.info("BindException:", throwable);
+            log.info("WebExchangeBindException:", throwable);
         } else if (throwable instanceof ErrorMessageException) {
             ErrorMessageException errorMessageException = (ErrorMessageException) throwable;
             status = HttpStatus.UNPROCESSABLE_ENTITY;
