@@ -122,9 +122,9 @@ public class ControllerAnalyse implements Analyse {
 
         Type type = method.getGenericReturnType();
 
-        analyseReturnInfo(type, methodInfo);
-
         analyseMethodParamsInfo(method, methodInfo);
+
+        analyseReturnInfo(type, methodInfo);
 
         return methodInfo;
     }
