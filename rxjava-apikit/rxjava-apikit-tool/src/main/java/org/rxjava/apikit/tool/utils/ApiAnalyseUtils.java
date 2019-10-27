@@ -69,7 +69,7 @@ public class ApiAnalyseUtils {
 
     public enum ParamType {
         /**
-         * 无
+         * 基本类型
          */
         VOID,
         BOOLEAN,
