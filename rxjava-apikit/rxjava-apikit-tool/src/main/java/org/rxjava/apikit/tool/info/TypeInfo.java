@@ -51,6 +51,7 @@ public class TypeInfo implements Cloneable {
      * 是否是泛型的变量类型
      */
     private boolean isGeneric = false;
+
     /**
      * 是否对象
      */
