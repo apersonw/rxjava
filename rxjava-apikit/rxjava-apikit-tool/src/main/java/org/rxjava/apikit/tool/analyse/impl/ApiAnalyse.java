@@ -9,7 +9,7 @@ import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.tool.generator.ApiContext;
 import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.type.ApiType;
-import org.rxjava.apikit.tool.utils.ApiAnalyseUtils;
+import org.rxjava.apikit.tool.utils.ClassAnalyseUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 import java.lang.reflect.Method;
@@ -132,7 +131,7 @@ public class ApiAnalyse {
 
             Type parameterizedType = parameter.getParameterizedType();
 
-            ParamInfo paramInfo = ApiAnalyseUtils.analyseParamInfo(parameterizedType);
+            ParamInfo paramInfo = ClassAnalyseUtils.analyse(parameterizedType);
             InputParamInfo inputParamInfo = new InputParamInfo();
             BeanUtils.copyProperties(paramInfo, inputParamInfo);
 
@@ -159,7 +158,7 @@ public class ApiAnalyse {
      */
     private void analyseOutputParam(ControllerMethodInfo controllerMethodInfo, Method method) {
         Type genericReturnType = method.getGenericReturnType();
-        ParamInfo paramInfo = ApiAnalyseUtils.analyseParamInfo(genericReturnType);
+        ParamInfo paramInfo = ClassAnalyseUtils.analyse(genericReturnType);
         controllerMethodInfo.setReturnParamInfo(paramInfo);
     }
 
@@ -167,7 +166,7 @@ public class ApiAnalyse {
         Method method = ApiAnalyse.class.getMethod("test");
         Type genericReturnType = method.getGenericReturnType();
 
-        ParamInfo paramInfo = ApiAnalyseUtils.analyseParamInfo(genericReturnType);
+        ParamInfo paramInfo = ClassAnalyseUtils.analyse(genericReturnType);
 
         System.out.println(paramInfo);
     }

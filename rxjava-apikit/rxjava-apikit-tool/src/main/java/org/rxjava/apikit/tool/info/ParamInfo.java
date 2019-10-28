@@ -5,23 +5,28 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author happy 2019/10/27 17:52
  */
 @Getter
 @Setter
-public class ParamInfo extends ClassBaseInfo{
+public class ParamInfo extends ClassBaseInfo {
     /**
-     * 原始或包装类型
+     * 参数字段名
      */
-    private boolean primitiveOrWrapper;
+    private String fieldName;
     /**
-     * 数组
+     * 基本类型
      */
-    private boolean array;
+    private boolean baseType;
     /**
      * 子参数信息
      */
-    private List<ParamInfo> childParamInfo=new ArrayList<>();
+    private List<ParamInfo> childParamInfo;
+    /**
+     * 泛型中的实际类型列表
+     */
+    private Map<String, ParamInfo> actualTypes;
 }
