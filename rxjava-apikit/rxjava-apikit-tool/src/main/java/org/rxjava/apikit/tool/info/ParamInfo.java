@@ -14,19 +14,21 @@ import java.util.Map;
 @Setter
 public class ParamInfo extends ClassBaseInfo {
     /**
+     * 是否数组
+     */
+    private boolean array;
+    /**
      * 参数字段名
      */
     private String fieldName;
     /**
-     * 基本类型
-     */
-    private boolean baseType;
-    /**
      * 子参数信息
+     * 为null则说明是不再分析的类型
      */
     private List<ParamInfo> childParamInfo;
     /**
      * 泛型中的实际类型列表
+     * 非null则说明是泛型
      */
     private Map<String, ParamInfo> actualTypes;
 }

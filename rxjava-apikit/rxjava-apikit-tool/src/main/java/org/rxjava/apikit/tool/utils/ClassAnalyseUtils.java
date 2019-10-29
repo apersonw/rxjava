@@ -1,6 +1,7 @@
 package org.rxjava.apikit.tool.utils;
 
 import com.google.common.collect.ImmutableMap;
+import org.rxjava.apikit.tool.analyse.impl.ApiAnalyse;
 import org.rxjava.apikit.tool.info.ParamInfo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -14,13 +15,13 @@ import java.util.*;
 
 /**
  * @author happy 2019/10/27 19:16
- * 类信息分析帮助类
+ * 类分析器
  */
 public class ClassAnalyseUtils {
 
     /**
      * 分析参数类型
-     * 原始类型(Class)、参数化类型(ParameterizedType)、数组类型(GenericArrayType)、类型变量(TypeVariable)、基本类型(Class);
+     * 原始类型(Class)、参数化类型(ParameterizedType)、数组类型(GenericArrayType)、类型变量(TypeVariable)
      */
     public static ParamInfo analyse(Type returnType) {
         ParamInfo paramInfo = new ParamInfo();
@@ -41,6 +42,11 @@ public class ClassAnalyseUtils {
      */
     private static void analyseClass(Type returnType, ParamInfo paramInfo) {
         Class cls = (Class) returnType;
+        //获取数组的元素类型
+        if (cls.isArray()) {
+            cls = cls.getComponentType();
+            paramInfo.setArray(true);
+        }
         paramInfo.setName(cls.getName());
         paramInfo.setSimpleName(cls.getSimpleName());
         Package clsPackage = cls.getPackage();
@@ -48,7 +54,7 @@ public class ClassAnalyseUtils {
 
         //分析类变量信息
         Field[] declaredFields = cls.getDeclaredFields();
-        BaseType baseType = BaseType.MAP.get(cls.getName());
+        BaseType baseType = BaseType.IMMUTABLE_MAP.get(cls.getName());
         //非基本类型，继续分析
         if (null == baseType) {
             List<ParamInfo> childParamInfo = new ArrayList<>();
@@ -70,8 +76,6 @@ public class ClassAnalyseUtils {
                 childParamInfo.add(fieldParamInnfo);
             }
             paramInfo.setChildParamInfo(childParamInfo);
-        } else {
-            paramInfo.setBaseType(true);
         }
     }
 
@@ -84,8 +88,10 @@ public class ClassAnalyseUtils {
         //获取<>中实际类型,可能会存在多个泛型，例如Map<K,V>,所以会返回Type[]数组；
         Type[] actualTypeArguments = parameterzedType.getActualTypeArguments();
 
+        //分析Map<>的Map类型
         ParamInfo paramInfo = analyse(parameterzedType.getRawType());
 
+        //分析<>里面的类型
         Map<String, ParamInfo> actualTypes = new HashMap<>();
         for (Type actualTypeArgument : actualTypeArguments) {
             ParamInfo actualType = analyse(actualTypeArgument);
@@ -121,12 +127,14 @@ public class ClassAnalyseUtils {
         STRING,
         DATE,
         MONO,
-        FLUX;
+        FLUX,
+        MAP,
+        LIST;
 
         /**
-         * 9种基本类型
+         * 以下类型均不再往下继续分析
          */
-        private static final ImmutableMap<String, BaseType> MAP = ImmutableMap.<String, BaseType>builder()
+        private static final ImmutableMap<String, BaseType> IMMUTABLE_MAP = ImmutableMap.<String, BaseType>builder()
                 .put(void.class.getSimpleName(), VOID)
                 //1种真值类型
                 .put(boolean.class.getSimpleName(), BOOLEAN)
@@ -160,6 +168,9 @@ public class ClassAnalyseUtils {
                 //2中响应式编程包装类型
                 .put(Mono.class.getName(), MONO)
                 .put(Flux.class.getName(), FLUX)
+                //Map和List类型均不再往下分析了
+                .put(Map.class.getName(),MAP)
+                .put(List.class.getName(),LIST)
                 .build();
     }
 }

@@ -23,9 +23,7 @@ import javax.validation.Valid;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,8 +34,8 @@ import java.util.stream.Stream;
 public class ApiAnalyse {
     private ApiContext newContext;
 
-    public String test() {
-        return "";
+    public TestInfo[] test() {
+        return new TestInfo[]{};
     }
 
     /**

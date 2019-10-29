@@ -12,6 +12,7 @@ import lombok.Setter;
 public class ClassBaseInfo {
     /**
      * 所在包(org.rxjava.apikit.tool.info)
+     * 包名为null代表为基本类型：如int,long等
      */
     private String packageName;
     /**

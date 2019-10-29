@@ -11,11 +11,10 @@ import java.util.Map;
  */
 @Getter
 @Setter
-public class TestInfo<T> {
+public class TestInfo {
     private String id;
     private int num;
     private boolean ok;
     private List<String> list;
     private Map<String, String> map;
-    private T a;
 }

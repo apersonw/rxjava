@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @RequestMapping("/admin/")
 public class TestController {
     @GetMapping("aslkasdfsf")
-    public Mono<TestInfo<String>> test(@PathVariable String id) {
+    public Mono<TestInfo> test(@PathVariable String id) {
         return Mono.empty();
     }
 }
