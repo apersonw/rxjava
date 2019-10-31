@@ -17,6 +17,11 @@
             <artifactId>rxjava-apikit-tool</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-apikit-stream-tool</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>

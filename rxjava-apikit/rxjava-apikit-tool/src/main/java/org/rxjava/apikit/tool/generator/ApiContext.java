@@ -1,6 +1,10 @@
 package org.rxjava.apikit.tool.generator;
 
 import lombok.Data;
+import org.rxjava.apikit.tool.info.ControllerInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author happy 2019/10/26 22:03
@@ -8,8 +12,5 @@ import lombok.Data;
  */
 @Data
 public class ApiContext {
-    /**
-     * 待分析包路径
-     */
-    private String analysePackage;
+    private List<ControllerInfo> controllerInfos=new ArrayList<>();
 }

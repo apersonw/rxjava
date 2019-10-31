@@ -30,8 +30,7 @@ public class ClassAnalyseUtils {
         } else if (returnType instanceof ParameterizedType) {
             paramInfo = analyseParameterizedType(returnType);
         } else if (returnType instanceof GenericArrayType) {
-            GenericArrayType genericArrayType = (GenericArrayType) returnType;
-            System.out.println(genericArrayType);
+            //泛型数组类型
         }
         return paramInfo;
     }
@@ -64,7 +63,6 @@ public class ClassAnalyseUtils {
                 ParamInfo fieldParamInnfo;
                 if (genericType instanceof TypeVariable) {
                     TypeVariable typeVariable = (TypeVariable) genericType;
-                    System.out.println(typeVariable.getTypeName());
                     //类型变量，即泛型中的变量；例如：T、K、V等变量，可以表示任何类；在这需要强调的是，TypeVariable代表着泛型中的变量，而ParameterizedType则代表整个泛型；
                     fieldParamInnfo = new ParamInfo();
                 } else {
