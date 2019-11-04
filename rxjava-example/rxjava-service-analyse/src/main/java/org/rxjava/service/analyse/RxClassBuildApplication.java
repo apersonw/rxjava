@@ -52,36 +52,8 @@ public class RxClassBuildApplication implements CommandLineRunner {
     public void runStream(String... args) {
         ApikitContext apikitContext = new ApikitContext();
         apikitContext.setAnalysePackage("org.rxjava.service.analyse");
-        List<ControllerInfo> controllerInfoList = ApikitApplication.builder().build().start().collectList()
+        ApikitApplication.builder().build().start()
                 .subscriberContext(context -> context.put("apikitContext", apikitContext)).block();
-
-        List<ApidocGroupModel> apidocGroupModels = new ArrayList<>();
-        controllerInfoList.forEach(controllerInfo -> {
-            ApidocGroupModel apidocGroupModel = new ApidocGroupModel();
-            apidocGroupModel.setGroupName(controllerInfo.getSimpleName());
-            List<ApidocModel> apidocModels = new ArrayList<>();
-            controllerInfo.getMethodInfos().forEach(methodInfo -> {
-                ApidocModel apidocModel = new ApidocModel();
-                apidocModel.setMethodName(methodInfo.getMethodName());
-
-                List<ParamModel> inputParamModels = methodInfo.getInputParamInfos().stream().map(inputParamInfo -> {
-                    ParamModel paramModel = new ParamModel();
-                    paramModel.setField(inputParamInfo.getFieldName());
-                    paramModel.setType(inputParamInfo.getSimpleName());
-                    if (inputParamInfo.isPathVariable() || inputParamInfo.isValid()) {
-                        paramModel.setNotEmpty(true);
-                    }
-                    return paramModel;
-                }).collect(Collectors.toList());
-
-                apidocModel.setInputs(inputParamModels);
-                apidocModels.add(apidocModel);
-            });
-            apidocGroupModel.setApidocModels(apidocModels);
-            apidocGroupModels.add(apidocGroupModel);
-        });
-
-        System.out.println(apidocGroupModels);
     }
 
     /**
