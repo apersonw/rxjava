@@ -103,12 +103,14 @@ public class ApikitScan {
         controllerInfo.setApiType(apiType);
 
         //获取控制器方法列表
-        List<MethodInfo> controllerMethodInfos = Arrays.stream(cls.getMethods())
+        List<MethodInfo> methodInfos = Arrays.stream(cls.getMethods())
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
                 .map(method -> this.analyseMethod(method, classMappingPath))
                 //根据方法名称排序
                 .sorted((m1, m2) -> StringUtils.compare(m1.getMethodName(), m2.getMethodName()))
                 .collect(Collectors.toList());
+
+        controllerInfo.setMethodInfos(methodInfos);
         controllerInfoList.add(controllerInfo);
     }
 
