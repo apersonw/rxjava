@@ -2,25 +2,39 @@ package org.rxjava.apikit.stream.tool.scan;
 
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import lombok.Getter;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.stream.tool.ApikitContext;
 import org.rxjava.apikit.stream.tool.info.ControllerInfo;
+import org.rxjava.apikit.stream.tool.info.InputParamInfo;
 import org.rxjava.apikit.stream.tool.info.MethodInfo;
+import org.rxjava.apikit.stream.tool.info.ParamInfo;
 import org.rxjava.apikit.stream.tool.type.ApiType;
+import org.rxjava.apikit.stream.tool.utils.ClassAnalyseUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -53,6 +67,11 @@ public class ApikitScan {
                 .flatMapMany(controllerInfos -> Flux.fromIterable(controllerInfos));
     }
 
+    /**
+     * 分析类信息
+     *
+     * @param cls 待分析的类
+     */
     private void analyseClass(Class cls) {
         //仅分析指定包下类
         String classPackageName = cls.getPackage().getName();
@@ -93,22 +112,83 @@ public class ApikitScan {
         controllerInfoList.add(controllerInfo);
     }
 
+    /**
+     * 分析方法信息
+     *
+     * @param method           待分析的方法
+     * @param classMappingPath 类上的映射路径
+     * @return 方法分析结果
+     */
     private MethodInfo analyseMethod(Method method, String classMappingPath) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] methodPathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
-        MethodInfo controllerMethodInfo = new MethodInfo();
-        controllerMethodInfo.setMethodName(method.getName());
+        MethodInfo methodInfo = new MethodInfo();
+        methodInfo.setMethodName(method.getName());
         String requestUrl = toRequestUrl(classMappingPath, methodPathArray);
-        controllerMethodInfo.setRequestUrl(requestUrl);
+        methodInfo.setRequestUrl(requestUrl);
 
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
         HttpMethodType[] httpMethodTypes = toHttpMethodTypes(requestMethods);
-        controllerMethodInfo.setHttpMethodTypes(httpMethodTypes);
+        methodInfo.setHttpMethodTypes(httpMethodTypes);
 
-//        analyseInputParam(controllerMethodInfo, method);
+        analyseInputParam(method, methodInfo);
 
-//        analyseOutputParam(controllerMethodInfo, method);
-        return controllerMethodInfo;
+//        analyseOutputParam(methodInfo, method);
+        return methodInfo;
+    }
+
+    /**
+     * 分析Controller类方法入参信息
+     * @param method 待分析方法
+     * @param methodInfo
+     */
+    /**
+     * 三、分析输入参数
+     */
+    private void analyseInputParam(Method method, MethodInfo methodInfo) {
+        Parameter[] parameters = method.getParameters();
+        ParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
+        String[] parameterNames = discoverer.getParameterNames(method);
+        for (int i = 0; i < parameters.length; i++) {
+            Parameter parameter = parameters[i];
+            if (parameter.isVarArgs()) {
+                throw new RuntimeException("不支持varArgs参数");
+            }
+
+            Type parameterizedType = parameter.getParameterizedType();
+
+            ParamInfo paramInfo = ClassAnalyseUtils.analyse(parameterizedType);
+            InputParamInfo inputParamInfo = new InputParamInfo();
+            BeanUtils.copyProperties(paramInfo, inputParamInfo);
+            //设置参数名
+            String parameterName = parameterNames[i];
+            inputParamInfo.setFieldName(parameterName);
+
+            //是否有路径注解
+            AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
+            if (MapUtils.isNotEmpty(pathVarAnnotationAttributes)) {
+                inputParamInfo.setPathVariable(true);
+            }
+            //是否有验证注解
+            Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
+            if (validAnnotation != null) {
+                inputParamInfo.setValid(true);
+            }
+            if (inputParamInfo.isValid() && inputParamInfo.isPathVariable()) {
+                throw new RuntimeException("同一参数不能同时有路径注解和验证注解");
+            }
+
+            methodInfo.addInputParams(inputParamInfo);
+        }
+    }
+
+    /**
+     * 四、分析输出参数
+     */
+    private void analyseOutputParam(MethodInfo methodInfo, Method method) {
+        Type genericReturnType = method.getGenericReturnType();
+        ParamInfo paramInfo = ClassAnalyseUtils.analyse(genericReturnType);
+        methodInfo.setReturnParamInfo(paramInfo);
     }
 
     /**
