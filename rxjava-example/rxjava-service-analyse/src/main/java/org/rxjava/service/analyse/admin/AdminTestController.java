@@ -24,7 +24,13 @@ public class AdminTestController {
     }
 
     /**
-     * 参数
+     * 参数类注释
+     *
+     * @param first
+     * @param id       第二个
+     * @param name     第三个
+     * @param listTest 第四个
+     * @param form     第五个
      */
     @GetMapping("paramTest")
     public void paramTest(

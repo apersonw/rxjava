@@ -6,6 +6,7 @@ import org.rxjava.apikit.core.HttpMethodType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author happy 2019/10/26 22:32
@@ -38,6 +39,10 @@ public class MethodInfo {
      * 输入参数信息列表
      */
     private List<ParamInfo> inputParamInfos = new ArrayList<>();
+    /**
+     * 输入字段参数注释信息
+     */
+    private Map<String, FieldCommentInfo> inputFieldCommentInfoMap;
     /**
      * 输出参数信息
      */

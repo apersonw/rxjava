@@ -9,13 +9,9 @@ import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.stream.tool.ApikitContext;
 import org.rxjava.apikit.stream.tool.analyse.CommentAnalyse;
-import org.rxjava.apikit.stream.tool.info.CommentInfo;
-import org.rxjava.apikit.stream.tool.info.ControllerInfo;
-import org.rxjava.apikit.stream.tool.info.MethodInfo;
-import org.rxjava.apikit.stream.tool.info.ParamInfo;
+import org.rxjava.apikit.stream.tool.info.*;
 import org.rxjava.apikit.stream.tool.type.ApiType;
 import org.rxjava.apikit.stream.tool.utils.ClassAnalyseUtils;
-import org.rxjava.apikit.stream.tool.utils.CommentUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.core.ParameterNameDiscoverer;
@@ -93,15 +89,15 @@ public class ApikitScan {
         }
 
         //分析控制器类注释信息
-        CommentInfo commentInfo = new CommentAnalyse().analyse(this.sourceCodeAbsolutePath, cls);
+        ClassCommentInfo classCommentInfo = new CommentAnalyse().analyse(this.sourceCodeAbsolutePath, cls);
 
         //开始分析控制器
         ControllerInfo controllerInfo = new ControllerInfo();
         controllerInfo.setName(cls.getName());
         controllerInfo.setSimpleName(cls.getSimpleName());
         controllerInfo.setPackageName(classPackageName);
-        controllerInfo.setCommentName(commentInfo.getComment());
-        controllerInfo.setCommentDesc(commentInfo.getDesc());
+        controllerInfo.setCommentName(classCommentInfo.getComment());
+        controllerInfo.setCommentDesc(classCommentInfo.getDesc());
         //获取控制器类mapping路径
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
@@ -118,7 +114,7 @@ public class ApikitScan {
         //获取控制器方法列表
         List<MethodInfo> methodInfos = Arrays.stream(cls.getMethods())
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
-                .map(method -> this.analyseMethod(method, classMappingPath, commentInfo.getMethodCommentsMap()))
+                .map(method -> this.analyseMethod(method, classMappingPath, classCommentInfo.getMethodCommentMap()))
                 //根据方法名称排序
                 .sorted((m1, m2) -> StringUtils.compare(m1.getMethodName(), m2.getMethodName()))
                 .collect(Collectors.toList());
@@ -135,17 +131,20 @@ public class ApikitScan {
      * @param classMappingPath 类上的映射路径
      * @return 方法分析结果
      */
-    private MethodInfo analyseMethod(Method method, String classMappingPath, Map<String, CommentInfo> methodCommentsMap) {
+    private MethodInfo analyseMethod(Method method, String classMappingPath, Map<String, MethodCommentInfo> methodCommentsMap) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] methodPathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         MethodInfo methodInfo = new MethodInfo();
 
         //分析方法注释信息
         Optional.ofNullable(methodCommentsMap).ifPresent(m -> {
-            CommentInfo commentInfo = m.get(method.getName());
-            Optional.ofNullable(commentInfo).ifPresent(c -> {
+            MethodCommentInfo methodCommentInfo = m.get(method.getName());
+            Optional.ofNullable(methodCommentInfo).ifPresent(c -> {
                 methodInfo.setCommentName(c.getComment());
                 methodInfo.setCommentDesc(c.getDesc());
+                Optional.ofNullable(c.getFieldCommentInfoMap()).ifPresent(f -> {
+                    methodInfo.setInputFieldCommentInfoMap(f);
+                });
             });
         });
 

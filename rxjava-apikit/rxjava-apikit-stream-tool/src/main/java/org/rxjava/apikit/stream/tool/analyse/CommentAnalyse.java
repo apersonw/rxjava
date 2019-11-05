@@ -1,6 +1,6 @@
 package org.rxjava.apikit.stream.tool.analyse;
 
-import org.rxjava.apikit.stream.tool.info.CommentInfo;
+import org.rxjava.apikit.stream.tool.info.ClassCommentInfo;
 import org.rxjava.apikit.stream.tool.utils.CommentUtils;
 import org.rxjava.apikit.stream.tool.utils.FilePathUtils;
 
@@ -13,7 +13,7 @@ public class CommentAnalyse {
     /**
      * 分析
      */
-    public CommentInfo analyse(String srcMainJavaPath, Class cls) {
+    public ClassCommentInfo analyse(String srcMainJavaPath, Class cls) {
         Path sourceCodeAbsolutePath = FilePathUtils.getSourceCodeAbsolutePath(srcMainJavaPath, cls);
         return CommentUtils.parseClass(sourceCodeAbsolutePath);
     }

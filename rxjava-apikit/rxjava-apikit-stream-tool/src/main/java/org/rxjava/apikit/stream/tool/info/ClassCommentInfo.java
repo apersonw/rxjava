@@ -6,11 +6,11 @@ import lombok.Setter;
 import java.util.Map;
 
 /**
- * 注释信息
+ * 类注释信息
  */
 @Getter
 @Setter
-public class CommentInfo {
+public class ClassCommentInfo {
     /**
      * 注释
      */
@@ -21,8 +21,6 @@ public class CommentInfo {
     private String desc;
     /**
      * 方法注释Map
-     * key: 方法名
-     * value: 注释信息
      */
-    private Map<String, CommentInfo> commentInfoMap;
+    private Map<String, MethodCommentInfo> methodCommentMap;
 }

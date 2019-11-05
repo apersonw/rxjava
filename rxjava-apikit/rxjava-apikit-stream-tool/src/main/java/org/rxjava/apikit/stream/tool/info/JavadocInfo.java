@@ -2,6 +2,7 @@ package org.rxjava.apikit.stream.tool.info;
 
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimaps;
+import org.springframework.util.CollectionUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ public class JavadocInfo {
     /**
      * 获取注释第一行
      */
-    public String getFirstRow(){
+    public String getFirstRow() {
         if (tags.isEmpty()) {
             return "请设置控制器中文名";
         }
@@ -38,7 +39,7 @@ public class JavadocInfo {
     /**
      * 获取注释第二行描述
      */
-    public String getSecendRow(){
+    public String getSecendRow() {
         if (tags.isEmpty()) {
             return "";
         }
@@ -51,6 +52,26 @@ public class JavadocInfo {
             return "";
         }
         return tagValues.get(1);
+    }
+
+    /**
+     * 获取输入参数注释信息
+     */
+    public void getInputParamComments(Map<String, FieldCommentInfo> fieldCommentInfoMap) {
+        if (tags.isEmpty()) {
+            return;
+        }
+        List<List<String>> tagsList = tags.get("@param");
+        if (tagsList.isEmpty()) {
+            return;
+        }
+        tagsList.forEach(tag -> {
+            if (!CollectionUtils.isEmpty(tag) && tag.size() > 1) {
+                FieldCommentInfo fieldCommentInfo = new FieldCommentInfo();
+                fieldCommentInfo.setComment(tag.get(1));
+                fieldCommentInfoMap.put(tag.get(0), fieldCommentInfo);
+            }
+        });
     }
 
     public void add(String tagName, List<String> fragmentsInfo) {

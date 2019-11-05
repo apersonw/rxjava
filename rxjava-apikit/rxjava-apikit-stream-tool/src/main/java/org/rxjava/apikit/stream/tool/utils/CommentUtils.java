@@ -1,10 +1,11 @@
 package org.rxjava.apikit.stream.tool.utils;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ClassPathUtils;
 import org.eclipse.jdt.core.dom.*;
-import org.rxjava.apikit.stream.tool.info.CommentInfo;
+import org.rxjava.apikit.stream.tool.info.ClassCommentInfo;
+import org.rxjava.apikit.stream.tool.info.FieldCommentInfo;
 import org.rxjava.apikit.stream.tool.info.JavadocInfo;
+import org.rxjava.apikit.stream.tool.info.MethodCommentInfo;
 import org.rxjava.apikit.stream.tool.test.AdminTestController;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class CommentUtils {
     public static void main(String[] args) {
         //从源码类获取注释信息
         Path sourceCodeAbsolutePath = FilePathUtils.getSourceCodeAbsolutePath("/Users/happy/liexiong/rxjava/rxjava-apikit/rxjava-apikit-stream-tool/src/main/java", AdminTestController.class);
-        CommentInfo commentInfo = CommentUtils.parseClass(sourceCodeAbsolutePath);
+        ClassCommentInfo classCommentInfo = CommentUtils.parseClass(sourceCodeAbsolutePath);
     }
 
     /**
@@ -36,17 +37,32 @@ public class CommentUtils {
      *
      * @param javaFileAbsolutePath Java文件绝对路径
      */
-    public static CommentInfo parseClass(Path javaFileAbsolutePath) {
+    public static ClassCommentInfo parseClass(Path javaFileAbsolutePath) {
         CommentUtils commentUtils = new CommentUtils(javaFileAbsolutePath);
-        CommentInfo commentInfo = new CommentInfo();
+        ClassCommentInfo classCommentInfo = new ClassCommentInfo();
         JavadocInfo classComment = commentUtils.getClassComment();
         Optional.ofNullable(classComment).ifPresent(c -> {
             String firstRow = c.getFirstRow();
             String secendRow = c.getSecendRow();
-            commentInfo.setComment(firstRow);
-            commentInfo.setDesc(secendRow);
+            classCommentInfo.setComment(firstRow);
+            classCommentInfo.setDesc(secendRow);
         });
-        return commentInfo;
+        Map<String, MethodCommentInfo> classCommentInfoMap = new HashMap<>();
+        for (MethodDeclaration methodDeclaration : commentUtils.typeDeclaration.getMethods()) {
+            JavadocInfo javadocInfo = transform(methodDeclaration.getJavadoc());
+            String comment = javadocInfo.getFirstRow();
+            String desc = javadocInfo.getSecendRow();
+            MethodCommentInfo methodCommentInfo = new MethodCommentInfo();
+            methodCommentInfo.setComment(comment);
+            methodCommentInfo.setDesc(desc);
+            classCommentInfoMap.put(methodDeclaration.getName().getFullyQualifiedName(), methodCommentInfo);
+
+            Map<String, FieldCommentInfo> fieldCommentInfoMap = new HashMap<>();
+            javadocInfo.getInputParamComments(fieldCommentInfoMap);
+            methodCommentInfo.setFieldCommentInfoMap(fieldCommentInfoMap);
+        }
+        classCommentInfo.setMethodCommentMap(classCommentInfoMap);
+        return classCommentInfo;
     }
 
     private CommentUtils(String filePath, Class cls) {
