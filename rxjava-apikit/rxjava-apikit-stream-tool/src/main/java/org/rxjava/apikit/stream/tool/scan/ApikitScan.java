@@ -8,11 +8,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.stream.tool.ApikitContext;
+import org.rxjava.apikit.stream.tool.analyse.CommentAnalyse;
+import org.rxjava.apikit.stream.tool.info.CommentInfo;
 import org.rxjava.apikit.stream.tool.info.ControllerInfo;
 import org.rxjava.apikit.stream.tool.info.MethodInfo;
 import org.rxjava.apikit.stream.tool.info.ParamInfo;
 import org.rxjava.apikit.stream.tool.type.ApiType;
 import org.rxjava.apikit.stream.tool.utils.ClassAnalyseUtils;
+import org.rxjava.apikit.stream.tool.utils.CommentUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.core.ParameterNameDiscoverer;
@@ -31,10 +34,7 @@ import javax.validation.Valid;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,7 +42,14 @@ import java.util.stream.Stream;
  * api工具扫描器
  */
 public class ApikitScan {
+    /**
+     * 待分析的包
+     */
     private String analysePackage;
+    /**
+     * 源码的src/main/java绝对路径
+     */
+    private String sourceCodeAbsolutePath;
     /**
      * 控制器信息列表
      */
@@ -56,6 +63,7 @@ public class ApikitScan {
         return Mono.subscriberContext()
                 .map(context -> {
                     ApikitContext apikitContext = context.get("apikitContext");
+                    this.sourceCodeAbsolutePath = apikitContext.getSrcMainJavaPath();
                     String analysePackage = apikitContext.getAnalysePackage();
                     this.analysePackage = analysePackage;
                     FastClasspathScanner scanner = new FastClasspathScanner(analysePackage);
@@ -84,11 +92,16 @@ public class ApikitScan {
             return;
         }
 
+        //分析控制器类注释信息
+        CommentInfo commentInfo = new CommentAnalyse().analyse(this.sourceCodeAbsolutePath, cls);
+
         //开始分析控制器
         ControllerInfo controllerInfo = new ControllerInfo();
         controllerInfo.setName(cls.getName());
         controllerInfo.setSimpleName(cls.getSimpleName());
         controllerInfo.setPackageName(classPackageName);
+        controllerInfo.setCommentName(commentInfo.getComment());
+        controllerInfo.setCommentDesc(commentInfo.getDesc());
         //获取控制器类mapping路径
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
@@ -111,6 +124,7 @@ public class ApikitScan {
                 .collect(Collectors.toList());
 
         controllerInfo.setMethodInfos(methodInfos);
+
         controllerInfoList.add(controllerInfo);
     }
 
@@ -134,8 +148,7 @@ public class ApikitScan {
         methodInfo.setHttpMethodTypes(httpMethodTypes);
 
         analyseInputParam(method, methodInfo);
-
-//        analyseOutputParam(methodInfo, method);
+        analyseOutputParam(methodInfo, method);
         return methodInfo;
     }
 

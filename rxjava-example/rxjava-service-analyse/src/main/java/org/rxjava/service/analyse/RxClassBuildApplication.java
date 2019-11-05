@@ -32,10 +32,10 @@ public class RxClassBuildApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        //模块绝对路径
-//        String moduleAbsolutePath = getModuleAbsolutePath("rxjava-service-analyse");
-//        //java源码文件夹
-//        String javaSourceDir = new File(moduleAbsolutePath, "src/main/java/").getAbsolutePath();
+        //模块绝对路径
+        String moduleAbsolutePath = getModuleAbsolutePath("rxjava-service-analyse");
+        //java源码文件夹
+        String javaSourceDir = new File(moduleAbsolutePath, "src/main/java/").getAbsolutePath();
 //        //设置Java生成后的文件夹路径
 //        String javaOutPath = new File(moduleAbsolutePath, "src/test/java/").getAbsolutePath();
 //        //设置Js生成后的文件夹路径
@@ -46,12 +46,13 @@ public class RxClassBuildApplication implements CommandLineRunner {
 //        //分析
 //        ApiBuilder apiBuilder = new ApiBuilder();
 //        apiBuilder.build("org.rxjava.service.analyse",javaOutPath);
-        runStream();
+        runStream(javaSourceDir);
     }
 
-    public void runStream(String... args) {
+    private void runStream(String javaSourceDir) {
         ApikitContext apikitContext = new ApikitContext();
         apikitContext.setAnalysePackage("org.rxjava.service.analyse");
+        apikitContext.setSrcMainJavaPath(javaSourceDir);
         ApikitApplication.builder().build().start()
                 .subscriberContext(context -> context.put("apikitContext", apikitContext)).block();
     }

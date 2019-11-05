@@ -20,4 +20,12 @@ public class ControllerInfo extends ClassInfo {
      * inner:内部
      */
     private ApiType apiType;
+    /**
+     * 控制器注释名称
+     */
+    private String commentName;
+    /**
+     * 控制器描述
+     */
+    private String commentDesc;
 }
