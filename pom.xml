@@ -4,7 +4,7 @@
     <groupId>org.rxjava</groupId>
     <artifactId>rxjava</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.7</version>
+    <version>1.0.7-SNAPSHOT</version>
     <modules>
         <module>rxjava-spring</module>
         <module>rxjava-service</module>
@@ -18,7 +18,7 @@
         <java.version>1.8</java.version>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>1.1.0.BUILD-SNAPSHOT</spring-cloud-kubernetes.version>
+        <spring-cloud-kubernetes.version>1.0.3.RELEASE</spring-cloud-kubernetes.version>
         <spring-cloud-dependencies.version>Greenwich.SR3</spring-cloud-dependencies.version>
         <de.codecentric.version>2.1.8</de.codecentric.version>
         <spring-boot.version>${de.codecentric.version}.RELEASE</spring-boot.version>
@@ -37,7 +37,6 @@
         <commons-text.version>1.6</commons-text.version>
         <jackson.version>2.10.0.pr1</jackson.version>
         <pinyin4j.version>2.5.0</pinyin4j.version>
-        <swagger.version>3.0.0-SNAPSHOT</swagger.version>
 
         <!--插件版本-->
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>

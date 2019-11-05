@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-gateway</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.7-SNAPSHOT</version>
     </parent>
     <properties>
         <module.name>example</module.name>
