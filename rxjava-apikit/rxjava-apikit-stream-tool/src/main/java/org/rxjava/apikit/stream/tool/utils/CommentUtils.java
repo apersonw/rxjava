@@ -60,6 +60,9 @@ public class CommentUtils {
             Map<String, FieldCommentInfo> fieldCommentInfoMap = new HashMap<>();
             javadocInfo.getInputParamComments(fieldCommentInfoMap);
             methodCommentInfo.setFieldCommentInfoMap(fieldCommentInfoMap);
+
+            String returnParamComment = javadocInfo.getReturnParamComment();
+            methodCommentInfo.setReturnComment(returnParamComment);
         }
         classCommentInfo.setMethodCommentMap(classCommentInfoMap);
         return classCommentInfo;

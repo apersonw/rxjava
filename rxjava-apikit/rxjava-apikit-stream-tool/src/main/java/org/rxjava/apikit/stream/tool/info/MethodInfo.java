@@ -47,6 +47,10 @@ public class MethodInfo {
      * 输出参数信息
      */
     private ParamInfo returnParamInfo;
+    /**
+     * 返回值注释信息
+     */
+    private String returnComment;
 
     public void addInputParams(ParamInfo inputParamInfo) {
         inputParamInfos.add(inputParamInfo);

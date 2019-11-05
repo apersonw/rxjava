@@ -145,6 +145,7 @@ public class ApikitScan {
                 Optional.ofNullable(c.getFieldCommentInfoMap()).ifPresent(f -> {
                     methodInfo.setInputFieldCommentInfoMap(f);
                 });
+                methodInfo.setReturnComment(c.getReturnComment());
             });
         });
 

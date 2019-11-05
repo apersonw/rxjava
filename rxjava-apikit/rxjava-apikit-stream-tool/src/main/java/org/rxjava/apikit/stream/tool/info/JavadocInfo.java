@@ -74,6 +74,20 @@ public class JavadocInfo {
         });
     }
 
+    /**
+     * 获取返回值参数注释信息
+     */
+    public String getReturnParamComment() {
+        if (tags.isEmpty()) {
+            return "";
+        }
+        List<List<String>> tagsList = tags.get("@return");
+        if (tagsList.isEmpty()) {
+            return "";
+        }
+        return tagsList.get(0).get(0);
+    }
+
     public void add(String tagName, List<String> fragmentsInfo) {
         tags.put(tagName, fragmentsInfo);
     }

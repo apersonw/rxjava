@@ -23,4 +23,8 @@ public class MethodCommentInfo {
      * 字段map信息
      */
     private Map<String, FieldCommentInfo> fieldCommentInfoMap;
+    /**
+     * 返回值注释
+     */
+    private String returnComment;
 }
