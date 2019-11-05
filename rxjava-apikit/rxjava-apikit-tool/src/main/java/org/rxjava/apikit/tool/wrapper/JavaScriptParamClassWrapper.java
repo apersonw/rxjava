@@ -12,11 +12,7 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-/**
- * @author zuoge85 on 15/6/14.
- */
 public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInfo> {
     public JavaScriptParamClassWrapper(Context context, ParamClassInfo paramClassInfo, String rootPackage) {
         super(context, paramClassInfo, rootPackage);
@@ -26,7 +22,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
         return Mono
                 .justOrEmpty(classInfo.getSuperType())
                 .map(TypeInfo::getFullName)
-                .filter(fullName -> context.getMessageWrapper(fullName)!=null)
+                .filter(fullName -> context.getMessageWrapper(fullName) != null)
                 .map(fullName -> context.getMessageWrapper(fullName))
                 .flatMapMany(w -> {
                     TypeInfo superType = w.getClassInfo().getSuperType();

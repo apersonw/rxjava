@@ -1,0 +1,7 @@
+<!--#set(List<String> nameList)-->
+
+##method方法
+<!--#for(name : nameList)-->
+$!{name}
+<!--#end-->
+##循环结束

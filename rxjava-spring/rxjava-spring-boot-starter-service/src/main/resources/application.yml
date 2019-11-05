@@ -1,0 +1,18 @@
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        #控制台打印mongodb操作数据库的日志信息
+        data.mongodb.core.ReactiveMongoTemplate: DEBUG
+        context.support: TRACE
+        web: INFO
+        boot:
+          autoconfigure:
+            logging: DEBUG
+    #控制台打印httl模板引擎日志信息
+    httl: INFO
+spring:
+  http:
+    encoding:
+      force: true

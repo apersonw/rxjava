@@ -1,8 +1,8 @@
 package org.rxjava.apikit.plugin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
-import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.rxjava.apikit.plugin.bean.Group;
@@ -21,10 +21,10 @@ import java.util.stream.Stream;
  * @author happy 2019-01-05 15:40
  */
 public class MavenUtils {
-    public static final ObjectMapper mapper = new ObjectMapper();
+    public static final ObjectMapper MAPPER = new ObjectMapper();
 
     static {
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        MAPPER.enableDefaultTyping(BasicPolymorphicTypeValidator.builder().build(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
 
     public static void generate(MavenProject project, Group group, String sourcePath, String[] srcPaths) {
@@ -60,7 +60,7 @@ public class MavenUtils {
 
     public final static String serialize(Object o) {
         try {
-            return mapper.writeValueAsString(o);
+            return MAPPER.writeValueAsString(o);
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
@@ -81,10 +81,6 @@ public class MavenUtils {
                 ),
                 Stream.of(classLoader.getURLs())
         ).toArray(URL[]::new);
-
-        SystemStreamLog log = new SystemStreamLog();
-//        log.info("urls:");
-//        log.info(Arrays.toString(urls));
 
         return apiClassRealm
                 .map(classRealm -> new URLClassLoader(urls, classRealm))

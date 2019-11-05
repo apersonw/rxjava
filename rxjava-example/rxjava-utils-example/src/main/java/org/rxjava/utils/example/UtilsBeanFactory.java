@@ -164,7 +164,7 @@ public class UtilsBeanFactory {
                                 if (idx == 0) {
                                     obj = null;
                                 } else if (idx < values.length) {
-                                    obj = (Object[]) Array.newInstance(componentType, idx);
+                                    obj = Array.newInstance(componentType, idx);
                                     System.arraycopy(objs, 0, obj, 0, idx);
                                 } else {
                                     obj = objs;
@@ -244,8 +244,9 @@ public class UtilsBeanFactory {
     }
 
     private static Class<?> forName(String name) throws ClassNotFoundException {
-        if (StringUtils.isEmpty(name))
+        if (StringUtils.isEmpty(name)) {
             return null;
+        }
         String key = name;
         Class<?> clazz = CLASS_CACHE.get(key);
         if (clazz == null) {
@@ -254,28 +255,30 @@ public class UtilsBeanFactory {
                 int i = (name.length() - index) / 2;
                 name = name.substring(0, index);
                 StringBuilder sb = new StringBuilder();
-                while (i-- > 0)
+                while (i-- > 0) {
                     sb.append("["); // int[][]
-                if ("void".equals(name))
+                }
+                if ("void".equals(name)) {
                     sb.append("V");
-                else if ("boolean".equals(name))
+                } else if ("boolean".equals(name)) {
                     sb.append("Z");
-                else if ("byte".equals(name))
+                } else if ("byte".equals(name)) {
                     sb.append("B");
-                else if ("char".equals(name))
+                } else if ("char".equals(name)) {
                     sb.append("C");
-                else if ("double".equals(name))
+                } else if ("double".equals(name)) {
                     sb.append("D");
-                else if ("float".equals(name))
+                } else if ("float".equals(name)) {
                     sb.append("F");
-                else if ("int".equals(name))
+                } else if ("int".equals(name)) {
                     sb.append("I");
-                else if ("long".equals(name))
+                } else if ("long".equals(name)) {
                     sb.append("J");
-                else if ("short".equals(name))
+                } else if ("short".equals(name)) {
                     sb.append("S");
-                else
+                } else {
                     sb.append('L').append(name).append(';');
+                }
                 name = sb.toString();
             }
             clazz = Class.forName(name, true, Thread.currentThread().getContextClassLoader());

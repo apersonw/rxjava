@@ -40,67 +40,76 @@ import java.util.Locale;
 public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExceptionHandler implements ErrorWebExceptionHandler, InitializingBean, MessageSourceAware {
     private static final Logger log = LogManager.getLogger();
     private List<HttpMessageWriter<?>> messageWriters = Collections.emptyList();
+    /**
+     * 设置视图解析器为空
+     */
     private List<ViewResolver> viewResolvers = Collections.emptyList();
     private MessageSourceAccessor messageAccessor;
 
+    /**
+     * 解析并处理异常消息
+     */
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable throwable) {
+        //检查响应是否待发
         if (exchange.getResponse().isCommitted()) {
             return Mono.error(throwable);
         }
 
-        return renderErrorResponse(exchange, throwable)
+        ErrorMessage errorMessage = toErrorMessage(exchange, throwable);
+
+        return ServerResponse.status(errorMessage.getStatus())
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .body(BodyInserters.fromObject(errorMessage))
                 .flatMap(response -> write(exchange, response));
     }
 
-    private Mono<? extends Void> write(ServerWebExchange exchange,
+    private Mono<Void> write(ServerWebExchange exchange,
                                        ServerResponse response) {
         exchange.getResponse().getHeaders()
                 .setContentType(response.headers().getContentType());
         return response.writeTo(exchange, serverResponseContext);
     }
 
-    protected Mono<ServerResponse> renderErrorResponse(ServerWebExchange exchange, Throwable throwable) {
-        ErrorMessage errorMessage = toErrorMessage(exchange, throwable);
-
-        return ServerResponse.status(errorMessage.getStatus())
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .body(BodyInserters.fromObject(errorMessage));
-    }
-
-    public ErrorMessage toErrorMessage(ServerWebExchange exchange, Throwable ex) {
+    /**
+     * 将异常转为ErrorMessage包装
+     */
+    private ErrorMessage toErrorMessage(ServerWebExchange exchange, Throwable throwable) {
         HttpStatus status;
         ErrorMessage errorMessage;
         ServerHttpRequest request = exchange.getRequest();
-        if (ex instanceof WebExchangeBindException) {
-            WebExchangeBindException bindEx = (WebExchangeBindException) ex;
-            status = HttpStatus.UNPROCESSABLE_ENTITY;
-            errorMessage = transform(bindEx.getBindingResult());
 
-            log.info("BindException:", ex);
-        } else if (ex instanceof ErrorMessageException) {
-            ErrorMessageException errorMessageException = (ErrorMessageException) ex;
+        //参数异常错误
+        if (throwable instanceof WebExchangeBindException) {
+            WebExchangeBindException webExchangeBindException = (WebExchangeBindException) throwable;
+            status = HttpStatus.UNPROCESSABLE_ENTITY;
+            errorMessage = transform(webExchangeBindException.getBindingResult());
+
+            log.info("WebExchangeBindException:", throwable);
+        } else if (throwable instanceof ErrorMessageException) {
+            ErrorMessageException errorMessageException = (ErrorMessageException) throwable;
             status = HttpStatus.UNPROCESSABLE_ENTITY;
             errorMessage = errorMessageException.getErrorMessage();
 
-            log.info("ErrorMessageException:", ex);
-        } else if (ex instanceof ResponseStatusException) {
-            ResponseStatusException responseStatusException = (ResponseStatusException) ex;
+            log.info("ErrorMessageException:", throwable);
+        } else if (throwable instanceof ResponseStatusException) {
+            ResponseStatusException responseStatusException = (ResponseStatusException) throwable;
             status = responseStatusException.getStatus();
             errorMessage = new ErrorMessage(responseStatusException.getReason());
 
             RequestPath path = request.getPath();
             log.info("http status:{},reason:{},path:{},method:{}", status, responseStatusException.getReason(), path, request.getMethodValue());
-            log.debug("http status:{},reason:{}", status, responseStatusException.getReason(), ex);
-        } else if (ex instanceof UnauthorizedException) {
+            log.debug("http status:{},reason:{}", status, responseStatusException.getReason(), throwable);
+        } else if (throwable instanceof UnauthorizedException) {
+            //未登陆错误
             status = HttpStatus.UNAUTHORIZED;
             errorMessage = new ErrorMessage("unauthorized");
             log.info("http status:{},reason:{}", status, "需要登陆");
-            log.debug("http status:{},reason:{}", status, "需要登陆", ex);
+            log.debug("http status:{},reason:{}", status, "需要登陆", throwable);
         } else {
             status = HttpStatus.INTERNAL_SERVER_ERROR;
-            log.info("Error:", ex);
-            errorMessage = new ErrorMessage("server.error", (Object) ex.getMessage());
+            log.info("Error:", throwable);
+            errorMessage = new ErrorMessage("server.error", (Object) throwable.getMessage());
         }
         errorMessage.setStatus(status.value());
         errorMessage.setTimestamp(LocalDateTime.now());
@@ -109,13 +118,10 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
 
         //处理消息国际化
         ErrorMessageUtils.handlerI18n(errorMessage, messageAccessor);
-
-        ServerHttpResponse response = exchange.getResponse();
-        response.setStatusCode(status);
         return errorMessage;
     }
 
-    public static ErrorMessage transform(BindingResult bindingResult) {
+    private static ErrorMessage transform(BindingResult bindingResult) {
         ErrorMessage errorMessage = new ErrorMessage("server.validator");
 
         for (ObjectError error : bindingResult.getAllErrors()) {

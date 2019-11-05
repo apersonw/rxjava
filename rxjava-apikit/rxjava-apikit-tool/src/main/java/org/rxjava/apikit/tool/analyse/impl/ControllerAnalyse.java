@@ -9,13 +9,12 @@ import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
-import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.analyse.Analyse;
-import org.rxjava.apikit.tool.info.ApiClassInfo;
-import org.rxjava.apikit.tool.info.ApiMethodInfo;
-import org.rxjava.apikit.tool.info.ApiMethodParamInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.generator.Context;
+import org.rxjava.apikit.tool.info.*;
+import org.rxjava.apikit.tool.utils.JdtClassWrapper;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -43,7 +42,7 @@ import java.util.stream.Stream;
 public class ControllerAnalyse implements Analyse {
     private Context context;
 
-    public static ControllerAnalyse create(){
+    public static ControllerAnalyse create() {
         return new ControllerAnalyse();
     }
 
@@ -60,45 +59,55 @@ public class ControllerAnalyse implements Analyse {
     }
 
     /**
-     * 分析接口类信息
+     * 分析Controller类信息
      */
     private void analyseClass(Class cls) {
-        //获取类上controller注解，requestMapping路径，以及类包名
+        //检查类是否处于root包下
+        String classPackageName = cls.getPackage().getName();
+        if (!classPackageName.startsWith(context.getRootPackage())) {
+            return;
+        }
+
+        //检查类上是否有Controller注解
         Controller controllerAnnotation = AnnotationUtils.getAnnotation(cls, Controller.class);
+        if (controllerAnnotation == null) {
+            return;
+        }
+
+        //分析类下的Api信息
+        ApiClassInfo apiClassInfo = new ApiClassInfo();
+        apiClassInfo.setName(cls.getSimpleName());
+        //包名
+        apiClassInfo.setPackageName(classPackageName);
+
+        //从源码类获取注释信息
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
+        apiClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment());
+
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
                 : "";
 
-        String classPackageName = cls.getPackage().getName();
-        //分析指定root包路径且拥有controller注解的类
-        if (classPackageName.startsWith(context.getRootPackage()) && controllerAnnotation != null) {
-            //分析类下的Api信息
-            ApiClassInfo apiInfo = new ApiClassInfo();
-            apiInfo.setName(cls.getSimpleName());
-            //包名
-            apiInfo.setPackageName(classPackageName);
+        //分析Api方法
+        List<ApiMethodInfo> apiMethodInfos = Flux
+                .just(cls.getMethods())
+                //过滤掉非接口方法
+                .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
+                .map(method -> this.analyseMethod(method, classMappingPath, jdtClassWrapper))
+                //根据方法名称排序
+                .sort((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
+                .collectList()
+                .block();
 
-            //分析Api方法
-            List<ApiMethodInfo> apiMethodInfos = Flux
-                    .just(cls.getMethods())
-                    //过滤掉非接口方法
-                    .filter(method -> AnnotationUtils.getAnnotation(method, RequestMapping.class) != null)
-                    .map(method -> this.analyseMethod(method, classMappingPath))
-                    //根据方法名称排序
-                    .sort((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
-                    .collectList()
-                    .block();
-
-            Objects.requireNonNull(apiMethodInfos).forEach(apiInfo::addApiMethod);
-            context.addApi(apiInfo);
-        }
+        Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
+        context.addApi(apiClassInfo);
     }
 
     /**
-     * 分析接口类方法
+     * 分析Controller类方法
      */
-    private ApiMethodInfo analyseMethod(Method method, String parentPath) {
+    private ApiMethodInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
@@ -106,21 +115,22 @@ public class ControllerAnalyse implements Analyse {
         ApiMethodInfo methodInfo = new ApiMethodInfo();
         methodInfo.setTypes(toMethodTypes(requestMethods));
         methodInfo.setName(method.getName());
+        methodInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
 
         String curPath = toPath(parentPath, pathArray);
         methodInfo.setUrl(curPath);
 
         Type type = method.getGenericReturnType();
 
-        analyseReturnInfo(type, methodInfo);
-
         analyseMethodParamsInfo(method, methodInfo);
+
+        analyseReturnInfo(type, methodInfo);
 
         return methodInfo;
     }
 
     /**
-     * 分析接口类方法入参信息
+     * 分析Controller类方法入参信息
      */
     private void analyseMethodParamsInfo(Method method, ApiMethodInfo apiMethodInfo) {
         Parameter[] parameters = method.getParameters();
@@ -172,7 +182,7 @@ public class ControllerAnalyse implements Analyse {
     }
 
     /**
-     * 分析接口类方法出参信息
+     * 分析Controller类方法出参信息
      */
     private void analyseReturnInfo(Type type, ApiMethodInfo apiMethodInfo) {
         if (type == null) {

@@ -20,6 +20,21 @@ public class JavadocInfo {
             new LinkedHashMap<>(), ArrayList::new
     );
 
+    /**
+     * 获取注释第一行
+     */
+    public String getFirstRow(){
+        if (tags.isEmpty()) {
+            return "请设置控制器中文名";
+        }
+        List<List<String>> tagsList = tags.get(null);
+        if (tagsList.isEmpty()) {
+            return "请设置控制器中文名";
+        }
+        List<String> tagValues = tagsList.get(0);
+        return tagValues.get(0);
+    }
+
     public void add(String tagName, List<String> fragmentsInfo) {
         tags.put(tagName, fragmentsInfo);
     }

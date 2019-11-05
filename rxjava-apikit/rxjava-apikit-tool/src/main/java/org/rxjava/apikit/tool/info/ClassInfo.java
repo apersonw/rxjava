@@ -17,7 +17,7 @@ public class ClassInfo {
     /**
      * Java文档信息
      */
-    private JavadocInfo javadocInfo;
+    protected JavadocInfo javadocInfo;
     /**
      * 包名
      */

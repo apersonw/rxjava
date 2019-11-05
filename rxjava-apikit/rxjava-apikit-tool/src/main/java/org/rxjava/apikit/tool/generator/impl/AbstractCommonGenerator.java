@@ -1,9 +1,7 @@
 package org.rxjava.apikit.tool.generator.impl;
 
-import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
-import org.rxjava.apikit.tool.wrapper.JavaParamClassWrapper;
 
 import java.io.File;
 

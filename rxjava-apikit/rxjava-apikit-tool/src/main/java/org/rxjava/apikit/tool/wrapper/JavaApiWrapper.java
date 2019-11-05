@@ -113,13 +113,6 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
             if (i > 0) {
                 sb.append(", ");
             }
-
-//            if (attributeInfo.isPathVariable()) {
-//                sb.append("@").append(PathVariable.class.getSimpleName()).append(" ");
-//            }
-//            if (attributeInfo.isFormParam()) {
-//                sb.append("@").append(Valid.class.getSimpleName()).append(" ");
-//            }
             sb.append(toJavaTypeString(attributeInfo.getTypeInfo(), false, true));
             sb.append(' ');
             sb.append(attributeInfo.getName());
