@@ -72,7 +72,7 @@ public class ClassAnalyseUtils {
                 fieldParamInnfo.setFieldName(fieldName);
                 childParamInfo.add(fieldParamInnfo);
             }
-            paramInfo.setChildParamInfo(childParamInfo);
+            paramInfo.setChildParamInfos(childParamInfo);
         }
     }
 

@@ -13,6 +13,18 @@ import java.util.Map;
 @Setter
 public class ParamInfo extends ClassInfo {
     /**
+     * 是否有@PathVariable注解
+     */
+    private boolean pathVariable;
+    /**
+     * 是否有@Valid注解
+     */
+    private boolean valid;
+    /**
+     * 是否有@RequestParam注解
+     */
+    private boolean requestParam;
+    /**
      * 是否数组
      */
     private boolean array;
@@ -24,7 +36,7 @@ public class ParamInfo extends ClassInfo {
      * 子参数信息
      * 为null则说明是不再分析的类型
      */
-    private List<ParamInfo> childParamInfo;
+    private List<ParamInfo> childParamInfos;
     /**
      * 泛型中的实际类型列表
      * 非null则说明是泛型

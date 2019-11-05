@@ -9,7 +9,6 @@ import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.stream.tool.ApikitContext;
 import org.rxjava.apikit.stream.tool.info.ControllerInfo;
-import org.rxjava.apikit.stream.tool.info.InputParamInfo;
 import org.rxjava.apikit.stream.tool.info.MethodInfo;
 import org.rxjava.apikit.stream.tool.info.ParamInfo;
 import org.rxjava.apikit.stream.tool.type.ApiType;
@@ -24,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -64,7 +64,7 @@ public class ApikitScan {
                     scanner.scan();
                     return controllerInfoList;
                 })
-                .flatMapMany(controllerInfos -> Flux.fromIterable(controllerInfos));
+                .flatMapMany(Flux::fromIterable);
     }
 
     /**
@@ -160,9 +160,10 @@ public class ApikitScan {
             Type parameterizedType = parameter.getParameterizedType();
 
             ParamInfo paramInfo = ClassAnalyseUtils.analyse(parameterizedType);
-            InputParamInfo inputParamInfo = new InputParamInfo();
+            ParamInfo inputParamInfo = new ParamInfo();
             BeanUtils.copyProperties(paramInfo, inputParamInfo);
             //设置参数名
+            assert parameterNames != null;
             String parameterName = parameterNames[i];
             inputParamInfo.setFieldName(parameterName);
 
@@ -175,6 +176,11 @@ public class ApikitScan {
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
             if (validAnnotation != null) {
                 inputParamInfo.setValid(true);
+            }
+            //是否有RequestParam注解
+            RequestParam requestParamAnnotation = AnnotationUtils.getAnnotation(parameter, RequestParam.class);
+            if (requestParamAnnotation != null) {
+                inputParamInfo.setRequestParam(true);
             }
             if (inputParamInfo.isValid() && inputParamInfo.isPathVariable()) {
                 throw new RuntimeException("同一参数不能同时有路径注解和验证注解");

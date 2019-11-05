@@ -3,6 +3,8 @@ package org.rxjava.apikit.stream.tool.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * 参数
  */
@@ -21,6 +23,10 @@ public class ParamModel {
      * 类型
      */
     private String type;
+    /**
+     * 子类型
+     */
+    private List<ParamModel> childParamModel;
     /**
      * 可为空
      */

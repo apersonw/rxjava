@@ -1,6 +1,5 @@
 package org.rxjava.apikit.stream.tool.info;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.rxjava.apikit.core.HttpMethodType;
@@ -30,13 +29,13 @@ public class MethodInfo {
     /**
      * 输入参数信息列表
      */
-    private List<InputParamInfo> inputParamInfos = new ArrayList<>();
+    private List<ParamInfo> inputParamInfos = new ArrayList<>();
     /**
      * 输出参数信息
      */
     private ParamInfo returnParamInfo;
 
-    public void addInputParams(InputParamInfo inputParamInfo) {
+    public void addInputParams(ParamInfo inputParamInfo) {
         inputParamInfos.add(inputParamInfo);
     }
 }
