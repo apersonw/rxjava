@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.rxjava</groupId>
     <artifactId>rxjava</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.7</version>
     <modules>
         <module>rxjava-spring</module>
         <module>rxjava-service</module>
@@ -402,7 +401,7 @@
         <url>https://github.com/apersonw/rxjava.git</url>
         <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>
         <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>rxjava-1.0.7</tag>
     </scm>
 
     <parent>
