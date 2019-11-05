@@ -118,7 +118,7 @@ public class ApikitScan {
         //获取控制器方法列表
         List<MethodInfo> methodInfos = Arrays.stream(cls.getMethods())
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
-                .map(method -> this.analyseMethod(method, classMappingPath))
+                .map(method -> this.analyseMethod(method, classMappingPath, commentInfo.getMethodCommentsMap()))
                 //根据方法名称排序
                 .sorted((m1, m2) -> StringUtils.compare(m1.getMethodName(), m2.getMethodName()))
                 .collect(Collectors.toList());
@@ -135,10 +135,20 @@ public class ApikitScan {
      * @param classMappingPath 类上的映射路径
      * @return 方法分析结果
      */
-    private MethodInfo analyseMethod(Method method, String classMappingPath) {
+    private MethodInfo analyseMethod(Method method, String classMappingPath, Map<String, CommentInfo> methodCommentsMap) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] methodPathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         MethodInfo methodInfo = new MethodInfo();
+
+        //分析方法注释信息
+        Optional.ofNullable(methodCommentsMap).ifPresent(m -> {
+            CommentInfo commentInfo = m.get(method.getName());
+            Optional.ofNullable(commentInfo).ifPresent(c -> {
+                methodInfo.setCommentName(c.getComment());
+                methodInfo.setCommentDesc(c.getDesc());
+            });
+        });
+
         methodInfo.setMethodName(method.getName());
         String requestUrl = toRequestUrl(classMappingPath, methodPathArray);
         methodInfo.setRequestUrl(requestUrl);

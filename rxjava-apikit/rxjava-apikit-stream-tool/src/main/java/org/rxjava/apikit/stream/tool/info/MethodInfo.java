@@ -19,6 +19,14 @@ public class MethodInfo {
      */
     private String methodName;
     /**
+     * 方法注释名
+     */
+    private String commentName;
+    /**
+     * 方法注释描述
+     */
+    private String commentDesc;
+    /**
      * 请求url
      */
     private String requestUrl;
