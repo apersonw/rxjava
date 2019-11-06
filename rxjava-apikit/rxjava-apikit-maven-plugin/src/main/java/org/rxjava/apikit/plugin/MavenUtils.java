@@ -34,16 +34,13 @@ public class MavenUtils {
             @SuppressWarnings("unchecked")
             Class<GenerateUtils> generateUtilsClass = (Class<GenerateUtils>) loader
                     .loadClass(GenerateUtils.class.getName());
-
             Method generateMethod = generateUtilsClass.getMethod(
                     "generate",
                     String.class,
                     String.class,
                     String[].class
             );
-
             String groupJson = serialize(group);
-
             /*
              * 切换后续操作的classLoad加载器
              */
