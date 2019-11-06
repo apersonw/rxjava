@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-spring</artifactId>
-        <version>1.0.7-SNAPSHOT</version>
+        <version>1.0.8-SNAPSHOT</version>
     </parent>
     <artifactId>rxjava-restdocs-example</artifactId>
     <packaging>jar</packaging>
