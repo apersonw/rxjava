@@ -1,10 +1,7 @@
 package org.rxjava.apikit.plugin;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
-import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.maven.plugin.logging.Log;
@@ -16,7 +13,6 @@ import org.rxjava.apikit.tool.generator.Generator;
 import org.rxjava.apikit.tool.generator.impl.GitGenerator;
 import org.rxjava.apikit.tool.generator.impl.JavaClientApiGenerator;
 import org.rxjava.apikit.tool.generator.impl.JavaScriptApiGenerator;
-import org.rxjava.apikit.tool.utils.JsonUtils;
 
 import java.util.List;
 
@@ -26,7 +22,7 @@ import java.util.List;
 public class GenerateUtils {
     public static <T> T deserialize(String json, Class<T> valueType) {
         try {
-            ObjectMapper objectMapper = new ObjectMapper().enableDefaultTyping(BasicPolymorphicTypeValidator.builder().allowIfSubType(Object.class).build(), ObjectMapper.DefaultTyping.NON_FINAL);
+            ObjectMapper objectMapper = new ObjectMapper().enableDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
             TypeFactory tf = TypeFactory.defaultInstance()
                     .withClassLoader(GenerateUtils.class.getClassLoader());
             objectMapper.setTypeFactory(tf);
