@@ -2,10 +2,12 @@ package org.rxjava.mock.starter;
 
 import org.rxjava.common.core.entity.LoginInfo;
 import org.rxjava.common.core.utils.JsonUtils;
+import org.rxjava.mock.starter.config.MockProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.lang.NonNullApi;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
@@ -20,15 +22,19 @@ import java.util.Objects;
  * Mock自动配置信息，此过滤器注入用户登陆信息
  */
 @Configuration
+@EnableConfigurationProperties({MockProperties.class})
 @Order(1)
 public class RxJavaMockAutoConfiguration implements WebFilter {
 
     private static final String LOGIN_INFO = "loginInfo";
 
+    @Autowired
+    private MockProperties mockProperties;
+
     @Override
     public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setUserId("testUserId");
+        loginInfo.setUserId(mockProperties.getUserId());
 
         String loginInfoJson = null;
         try {
