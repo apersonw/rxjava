@@ -1,7 +1,7 @@
 package org.rxjava.apikit.plugin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.maven.plugin.logging.Log;
@@ -22,7 +22,7 @@ import java.util.List;
 public class GenerateUtils {
     public static <T> T deserialize(String json, Class<T> valueType) {
         try {
-            ObjectMapper objectMapper = new ObjectMapper().enableDefaultTyping(BasicPolymorphicTypeValidator.builder().build(), ObjectMapper.DefaultTyping.NON_FINAL);
+            ObjectMapper objectMapper = new ObjectMapper().enableDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
             TypeFactory tf = TypeFactory.defaultInstance()
                     .withClassLoader(GenerateUtils.class.getClassLoader());
             objectMapper.setTypeFactory(tf);
@@ -30,6 +30,12 @@ public class GenerateUtils {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
         }
+    }
+
+    public static void main(String[] args) {
+        String groupJson = "[\"org.rxjava.apikit.plugin.bean.Group\",{\"tasks\":[\"java.util.ArrayList\",[[\"org.rxjava.apikit.plugin.bean.GitTask\",{\"outPath\":\"example/java/rxjava-apis-example-person/src/main/java\",\"url\":\"https://github.com/apersonw/rxjava-apis.git\",\"user\":null,\"password\":null,\"authorEmail\":\"apikit@rxjava.org\",\"authorName\":\"apikit\",\"task\":[\"org.rxjava.apikit.plugin.bean.JavaClientTask\",{\"outPath\":null,\"nameMaperSource\":null,\"nameMaperDist\":null,\"outRootPackage\":\"org.rxjava.api.person.example\"}],\"branch\":\"master\",\"deleteUris\":[\"java.util.ArrayList\",[\"org\"]]}],[\"org.rxjava.apikit.plugin.bean.GitTask\",{\"outPath\":\"example/js/rxjava-apis-example-person\",\"url\":\"https://github.com/apersonw/rxjava-apis.git\",\"user\":null,\"password\":null,\"authorEmail\":\"apikit@rxjava.org\",\"authorName\":\"apikit\",\"task\":[\"org.rxjava.apikit.plugin.bean.JavaScriptClientTask\",{\"outPath\":null,\"nameMaperSource\":null,\"nameMaperDist\":null,\"outRootPackage\":null,\"serviceId\":\"example\"}],\"branch\":\"master\",\"deleteUris\":[\"java.util.ArrayList\",[\"org\"]]}]]],\"rootPackage\":\"org.rxjava.service.example.person\",\"apiType\":\"person\"}]";
+//        String groupJson = "[\"org.rxjava.apikit.plugin.bean.Group\",{\"tasks\":[],\"rootPackage\":\"org.rxjava.service.example.person\",\"apiType\":\"person\"}]";
+        Group deserialize = GenerateUtils.deserialize(groupJson, Group.class);
     }
 
     public static void generate(String groupJson, String sourcePath, String[] srcPaths) {

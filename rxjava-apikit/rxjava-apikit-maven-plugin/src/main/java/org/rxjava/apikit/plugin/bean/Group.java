@@ -1,6 +1,9 @@
 package org.rxjava.apikit.plugin.bean;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -9,16 +12,10 @@ import java.util.List;
  */
 @Getter
 @Setter
-@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Group {
     private List<Task> tasks;
     private String rootPackage;
     private String apiType;
-    public Group() {
-    }
-    public Group(List<Task> tasks, String rootPackage,String apiType) {
-        this.tasks = tasks;
-        this.rootPackage = rootPackage;
-        this.apiType = apiType;
-    }
 }

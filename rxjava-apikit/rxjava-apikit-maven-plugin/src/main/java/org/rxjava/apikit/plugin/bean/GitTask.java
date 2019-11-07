@@ -1,5 +1,6 @@
 package org.rxjava.apikit.plugin.bean;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import lombok.Setter;
 

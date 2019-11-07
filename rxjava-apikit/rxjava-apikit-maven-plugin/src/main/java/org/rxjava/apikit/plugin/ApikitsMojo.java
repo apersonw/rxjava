@@ -38,16 +38,15 @@ public class ApikitsMojo extends AbstractMojo {
         String sourcePath = compileSourceRoots[0];
 
         try {
-
-            getLog().info("开始执行全部任务" + groups);
-
-            for (Group group : groups) {
-                getLog().info("开始执行第一组" + groups);
-
+            getLog().info("ApikitsMojo任务启动");
+            for (int i = 0; i < groups.size(); i++) {
+                Group group = groups.get(i);
+                int y = i + 1;
+                getLog().info("开始执行第" + y + "组" + group);
                 MavenUtils.generate(project, group, sourcePath, compileSourceRoots);
-
-                getLog().info("结束第一组" + groups);
+                getLog().info("结束第" + y + "组");
             }
+            getLog().info("ApikitsMojo任务执行完毕");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
