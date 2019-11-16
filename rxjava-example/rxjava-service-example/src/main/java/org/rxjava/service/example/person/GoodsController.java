@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
+import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 public class GoodsController {
@@ -30,7 +34,7 @@ public class GoodsController {
     @GetMapping("goodsList")
     public Flux<Goods> searchGoodsList(
             @Valid SearchGoodsListForm form
-            ) {
+    ) {
         return goodsService.searchGoodsList(form);
     }
 

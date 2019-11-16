@@ -12,5 +12,13 @@ public enum BusEventType {
     /**
      * 注册
      */
-    REGISTER
+    REGISTER,
+    /**
+     * 订单付款成功
+     */
+    ORDER_PAY_OK,
+    /**
+     * 订单取消成功
+     */
+    ORDER_CANCEL_OK
 }
