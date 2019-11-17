@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import reactor.core.publisher.Mono;
@@ -30,15 +30,15 @@ public class BusEmitter {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private Mono<Boolean> emit(BusEventType type, Consumer<ObjectNode> consumer) {
+    public Mono<Boolean> emit(BusEventType type, Consumer<ObjectNode> consumer) {
         ObjectNode objectNode = objectMapper.createObjectNode();
         consumer.accept(objectNode);
         return emit(type, objectNode);
     }
 
-    private Mono<Boolean> emit(BusEventType type, JsonNode data) {
+    public Mono<Boolean> emit(BusEventType busEventType, JsonNode data) {
         BusEvent busEvent = BusEvent.builder()
-                .type(type)
+                .type(busEventType)
                 .data(data)
                 .timestamp(System.currentTimeMillis())
                 .service(applicationName)
@@ -49,9 +49,53 @@ public class BusEmitter {
                     try {
                         log.info("busEmitter:{}", busEvent);
                         amqpTemplate.convertAndSend(
-                                RxBusConfiguration.EXCHANGE,
+                                RxBusConfiguration.FANOUT_EXCHANGE,
                                 "",
                                 objectMapper.writeValueAsString(busEvent)
+                        );
+                        return true;
+                    } catch (JsonProcessingException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .publishOn(Schedulers.elastic());
+    }
+
+    /**
+     * 延迟发射
+     */
+    public Mono<Boolean> delayEmit(BusEventType type, Consumer<ObjectNode> consumer, int secend) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        consumer.accept(objectNode);
+        return delayEmit(type, objectNode, secend);
+    }
+
+    /**
+     * 延迟发射
+     */
+    public Mono<Boolean> delayEmit(BusEventType busEventType, JsonNode data, int secend) {
+        BusEvent busEvent = BusEvent.builder()
+                .type(busEventType)
+                .data(data)
+                .timestamp(System.currentTimeMillis())
+                .service(applicationName)
+                .id(UUID.randomUUID().toString().replace("-", ""))
+                .build();
+        return Mono
+                .fromCallable(() -> {
+                    try {
+                        log.info("busEmitter:{}", busEvent);
+                        amqpTemplate.convertAndSend(
+                                RxBusConfiguration.QUEUE_NAME_DELAY_PREFIX + applicationName,
+                                objectMapper.writeValueAsString(busEvent),
+                                message -> {
+                                    MessageProperties messageProperties = message.getMessageProperties();
+                                    if (secend > 0) {
+                                        int expiratime = secend * 1000;
+                                        messageProperties.setExpiration(String.valueOf(expiratime));
+                                    }
+                                    return message;
+                                }
                         );
                         return true;
                     } catch (JsonProcessingException e) {

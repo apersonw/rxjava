@@ -5,20 +5,32 @@ package org.rxjava.common.bus;
  * 总线消息类型
  */
 public enum BusEventType {
+    //应用服务总线消息
     /**
-     * 登陆
+     * 应用订单取消成功
      */
-    LOGIN,
+    APP_ORDER_CANCEL_SUCCESS,
     /**
-     * 注册
+     * 应用订单待发货
      */
-    REGISTER,
+    APP_ORDER_WAIT_DELIVER,
     /**
-     * 订单付款成功
+     * 应用订单发货成功
      */
-    ORDER_PAY_OK,
+    APP_ORDER_SHIP_SUCCESS,
+
+    //订单服务总线消息类型
     /**
-     * 订单取消成功
+     * 支付成功
      */
-    ORDER_CANCEL_OK
+    PAY_SUCCESS,
+    /**
+     * 订单取消开始
+     */
+    ORDER_CANCEL_START,
+
+    //会员卡服务总线消息类型
+
+//    商品服务总线消息类型
+
 }
