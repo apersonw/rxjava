@@ -16,8 +16,4 @@ public class LoginInfo {
      * 合作伙伴Id
      */
     private String partnerId;
-    /**
-     * 会员卡Id
-     */
-    private String cardId;
 }
