@@ -30,7 +30,6 @@ public class GoodsController {
     /**
      * 搜索商品列表
      */
-    @Login(false)
     @GetMapping("goodsList")
     public Flux<Goods> searchGoodsList(
             @Valid SearchGoodsListForm form

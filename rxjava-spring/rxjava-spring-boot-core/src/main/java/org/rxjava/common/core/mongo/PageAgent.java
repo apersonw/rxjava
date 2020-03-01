@@ -23,15 +23,17 @@ public class PageAgent<T> {
     }
 
     public Mono<Page<T>> findPage(Query query, Pageable pageable) {
-        return Mono
-                .zip(
-                        reactiveMongoTemplate.find(query, clazz).collectList(),
-                        reactiveMongoTemplate.count(query, clazz)
-                )
-                .map(z -> {
-                    List<T> goodsList = z.getT1();
-                    Long num = z.getT2();
-                    return new PageImpl<>(goodsList, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), num);
-                });
+        return Mono.subscriberContext()
+                .flatMap(context -> Mono
+                        .zip(
+                                reactiveMongoTemplate.find(query, clazz).collectList(),
+                                reactiveMongoTemplate.count(query, clazz)
+                        )
+                        .map(z -> {
+                            List<T> goodsList = z.getT1();
+                            Long num = z.getT2();
+                            return new PageImpl<>(goodsList, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), num);
+                        })
+                );
     }
 }

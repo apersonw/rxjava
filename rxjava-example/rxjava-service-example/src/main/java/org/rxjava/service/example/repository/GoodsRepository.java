@@ -3,9 +3,12 @@ package org.rxjava.service.example.repository;
 import org.rxjava.common.core.mongo.PageAgent;
 import org.rxjava.service.example.entity.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 
 import javax.annotation.PostConstruct;
 
@@ -17,7 +20,7 @@ public interface GoodsRepository extends ReactiveSortingRepository<Goods, String
 }
 
 interface SpecialGoodsRepository {
-
+    Flux<Goods> findFlux();
 }
 
 class SpecialGoodsRepositoryImpl implements SpecialGoodsRepository {
@@ -29,5 +32,10 @@ class SpecialGoodsRepositoryImpl implements SpecialGoodsRepository {
     @PostConstruct
     private void init() {
         pageAgent = new PageAgent<>(reactiveMongoTemplate, Goods.class);
+    }
+
+    @Override
+    public Flux<Goods> findFlux() {
+        return pageAgent.findPage(new Query(), PageRequest.of(0, 10)).flatMapMany(r -> Flux.fromIterable(r.getContent()));
     }
 }

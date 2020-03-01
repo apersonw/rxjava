@@ -44,7 +44,7 @@ public class GoodsService {
      * 搜索商品列表
      */
     public Flux<Goods> searchGoodsList(SearchGoodsListForm form) {
-        return goodsRepository.findAll();
+        return goodsRepository.findFlux();
     }
 
     /**
