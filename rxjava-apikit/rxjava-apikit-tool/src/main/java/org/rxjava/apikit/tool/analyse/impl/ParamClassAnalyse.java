@@ -30,7 +30,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
     private List<ParamClassInfo> paramClassInfos = new ArrayList<>();
     private ArrayDeque<ClassInfo> analysDeque = new ArrayDeque<>();
     private Map<ClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
-    private Set<Class> typeBack = ImmutableSet.of(
+    private Set<Class<?>> typeBack = ImmutableSet.of(
             Class.class, Object.class, void.class, Void.class
     );
 
@@ -120,7 +120,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
      */
     private ParamClassInfo analyseParamClass(ClassInfo classInfo) {
         try {
-            Class clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getName());
+            Class<?> clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getName());
 
             ParamClassInfo paramClassInfo = new ParamClassInfo();
             paramClassInfo.setPackageName(classInfo.getPackageName());
@@ -136,8 +136,8 @@ public class ParamClassAnalyse implements MessageAnalyse {
                 paramClassInfo.setSuperType(superTypeInfo);
             }
 
-            TypeVariable[] typeParameters = clazz.getTypeParameters();
-            for (TypeVariable typeParameter : typeParameters) {
+            TypeVariable<?>[] typeParameters = clazz.getTypeParameters();
+            for (TypeVariable<?> typeParameter : typeParameters) {
                 paramClassInfo.addTypeParameter(typeParameter.getName());
             }
 

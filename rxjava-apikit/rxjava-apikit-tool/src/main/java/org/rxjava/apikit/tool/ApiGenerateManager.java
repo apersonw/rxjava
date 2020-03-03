@@ -7,8 +7,6 @@ import org.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import org.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.Generator;
-import org.rxjava.apikit.tool.generator.impl.JavaClientApiGenerator;
-import org.rxjava.apikit.tool.generator.impl.JavaScriptApiGenerator;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
 
 /**

@@ -61,7 +61,7 @@ public class ControllerAnalyse implements Analyse {
     /**
      * 分析Controller类信息
      */
-    private void analyseClass(Class cls) {
+    private void analyseClass(Class<?> cls) {
         //检查类是否处于root包下
         String classPackageName = cls.getPackage().getName();
         if (!classPackageName.startsWith(context.getRootPackage())) {

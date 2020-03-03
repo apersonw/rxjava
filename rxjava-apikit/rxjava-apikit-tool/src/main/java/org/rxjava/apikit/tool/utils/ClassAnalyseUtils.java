@@ -40,7 +40,7 @@ public class ClassAnalyseUtils {
      * 原始类型，不仅仅包含我们平常所指的类，还包括枚举、数组、注解等；
      */
     private static void analyseClass(Type returnType, ParamInfo paramInfo) {
-        Class cls = (Class) returnType;
+        Class<?> cls = (Class<?>) returnType;
         //获取数组的元素类型
         if (cls.isArray()) {
             cls = cls.getComponentType();
@@ -62,7 +62,7 @@ public class ClassAnalyseUtils {
 
                 ParamInfo fieldParamInnfo;
                 if (genericType instanceof TypeVariable) {
-                    TypeVariable typeVariable = (TypeVariable) genericType;
+                    TypeVariable<?> typeVariable = (TypeVariable<?>) genericType;
                     //类型变量，即泛型中的变量；例如：T、K、V等变量，可以表示任何类；在这需要强调的是，TypeVariable代表着泛型中的变量，而ParameterizedType则代表整个泛型；
                     fieldParamInnfo = new ParamInfo();
                 } else {
@@ -106,7 +106,7 @@ public class ClassAnalyseUtils {
      */
     private static ParamInfo analyseTypeVariable(Type returnType, ParamInfo parentParamInfo) {
         System.out.println("分析泛型变量");
-        TypeVariable typeVariable = (TypeVariable) returnType;
+        TypeVariable<?> typeVariable = (TypeVariable<?>) returnType;
         return new ParamInfo();
     }
 
