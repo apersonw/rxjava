@@ -1,6 +1,7 @@
 package org.rxjava.apikit.tool.utils;
 
 import org.apache.commons.io.IOUtils;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
 import org.rxjava.apikit.tool.info.JavadocInfo;
 
@@ -23,6 +24,10 @@ public class JdtClassWrapper {
      */
     private AbstractTypeDeclaration typeDeclaration;
 
+    public static void main(String[] args) {
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/happy/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
+    }
+
     public JdtClassWrapper(String filePath, Class<?> cls) {
         this(Paths.get(filePath, cls.getPackage().getName().split("\\.")).resolve(cls.getSimpleName() + ".java"));
     }
@@ -38,9 +43,13 @@ public class JdtClassWrapper {
         }
 
         //抽象语法树解析源文件
+        Map<String,String> options = JavaCore.getOptions();
+        options.put("org.eclipse.jdt.core.compiler.source", "1.8");
+
         ASTParser parser = ASTParser.newParser(AST.JLS9);
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
         parser.setSource(srcCode.toCharArray());
+        parser.setCompilerOptions(options);
         CompilationUnit node = (CompilationUnit) parser.createAST(null);
 
         //获取第一个public类

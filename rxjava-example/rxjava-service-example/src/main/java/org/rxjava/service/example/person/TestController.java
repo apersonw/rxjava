@@ -1,7 +1,9 @@
 package org.rxjava.service.example.person;
 
 import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.service.example.form.TestEnumForm;
 import org.rxjava.service.example.form.TestForm;
+import org.rxjava.service.example.type.ImageType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +38,13 @@ public class TestController {
             LoginInfo loginInfo
     ) {
         return Mono.just("checkOk");
+    }
+
+    /**
+     * 枚举测试
+     */
+    @GetMapping("enumTest")
+    public Mono<String> testEnum(@Valid TestEnumForm form){
+        return Mono.empty();
     }
 }
