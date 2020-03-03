@@ -5,6 +5,7 @@ spring:
     mongodb:
       uri: mongodb://127.0.0.1:27017
       database: rxjava-service-example
+      auto-index-creation: false
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -23,6 +24,8 @@ spring:
         enabled: false
       discovery:
         enabled: false
+    bus:
+      enabled: false
 server:
   port: 8081
 mock:
