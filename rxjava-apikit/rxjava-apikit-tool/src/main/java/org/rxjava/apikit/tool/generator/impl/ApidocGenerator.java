@@ -1,6 +1,7 @@
 package org.rxjava.apikit.tool.generator.impl;
 
 import org.rxjava.apikit.tool.generator.ApiContext;
+import org.rxjava.apikit.tool.info.ClassBaseInfo;
 import org.rxjava.apikit.tool.utils.HttlUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
 
@@ -15,9 +16,7 @@ import java.util.stream.Collectors;
 public class ApidocGenerator {
     public void generator(String javaOutApiPath, ApiContext apiContext) {
         List<String> nameList = apiContext.getControllerInfos().stream()
-                .map(controllerInfo -> {
-                    return controllerInfo.getSimpleName();
-                })
+                .map(ClassBaseInfo::getSimpleName)
                 .collect(Collectors.toList());
 
         Map<String, Object> params = new HashMap<>();
@@ -25,9 +24,7 @@ public class ApidocGenerator {
         File file = LocalPathUtils.packToPath(javaOutApiPath, "test", "api.java");
         try {
             HttlUtils.renderFile(file, params, getTemplateFile("test.httl"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }

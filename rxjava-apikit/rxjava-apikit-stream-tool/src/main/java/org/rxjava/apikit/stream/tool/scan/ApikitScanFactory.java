@@ -7,7 +7,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
-import org.rxjava.apikit.stream.tool.ApikitContext;
+import org.rxjava.apikit.stream.tool.Context;
 import org.rxjava.apikit.stream.tool.analyse.CommentAnalyse;
 import org.rxjava.apikit.stream.tool.info.*;
 import org.rxjava.apikit.stream.tool.type.ApiType;
@@ -19,14 +19,15 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
@@ -35,9 +36,39 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * api工具扫描器
+ * api工具扫描器工厂
  */
-public class ApikitScan {
+@Getter
+public class ApikitScanFactory implements Serializable {
+    private ApikitScanFactory() {
+        throw new RuntimeException("禁止反射破坏单例");
+    }
+
+    private ApikitScanFactory(Context context) {
+        this.analysePackage = context.getAnalysePackage();
+        this.sourceCodeAbsolutePath = context.getSrcMainJavaPath();
+        this.context = context;
+    }
+
+    /**
+     * 禁止序列化破坏单例
+     */
+    private Object readResolve() {
+        return ApikitScanFactory.LazyHolder.lazy(context);
+    }
+
+    private static class LazyHolder {
+        private static ApikitScanFactory lazy(Context context) {
+            return new ApikitScanFactory(context);
+        }
+    }
+
+    public static ApikitScanFactory getInstance(Context context) {
+        ApikitScanFactory apikitScanFactory = LazyHolder.lazy(context);
+        apikitScanFactory.controllerInfoList = new ArrayList<>();
+        return apikitScanFactory;
+    }
+
     /**
      * 待分析的包
      */
@@ -46,29 +77,22 @@ public class ApikitScan {
      * 源码的src/main/java绝对路径
      */
     private String sourceCodeAbsolutePath;
+
     /**
      * 控制器信息列表
      */
-    @Getter
-    private List<ControllerInfo> controllerInfoList = new ArrayList<>();
+    private List<ControllerInfo> controllerInfoList;
+    private Context context;
 
     /**
      * 扫描待分析包下的类并开始分析
      */
     public Flux<ControllerInfo> scan() {
-        return Mono.subscriberContext()
-                .map(context -> {
-                    ApikitContext apikitContext = context.get("apikitContext");
-                    this.sourceCodeAbsolutePath = apikitContext.getSrcMainJavaPath();
-                    String analysePackage = apikitContext.getAnalysePackage();
-                    this.analysePackage = analysePackage;
-                    FastClasspathScanner scanner = new FastClasspathScanner(analysePackage);
-                    scanner.addClassLoader(ApikitScan.class.getClassLoader());
-                    scanner.matchAllClasses(this::analyseClass);
-                    scanner.scan();
-                    return controllerInfoList;
-                })
-                .flatMapMany(Flux::fromIterable);
+        FastClasspathScanner scanner = new FastClasspathScanner(analysePackage);
+        scanner.addClassLoader(ApikitScanFactory.class.getClassLoader());
+        scanner.matchAllClasses(this::analyseClass);
+        scanner.scan();
+        return Flux.fromIterable(this.controllerInfoList);
     }
 
     /**
@@ -142,9 +166,7 @@ public class ApikitScan {
             Optional.ofNullable(methodCommentInfo).ifPresent(c -> {
                 methodInfo.setCommentName(c.getComment());
                 methodInfo.setCommentDesc(c.getDesc());
-                Optional.ofNullable(c.getFieldCommentInfoMap()).ifPresent(f -> {
-                    methodInfo.setInputFieldCommentInfoMap(f);
-                });
+                Optional.ofNullable(c.getFieldCommentInfoMap()).ifPresent(methodInfo::setInputFieldCommentInfoMap);
                 methodInfo.setReturnComment(c.getReturnComment());
             });
         });
@@ -158,7 +180,7 @@ public class ApikitScan {
         methodInfo.setHttpMethodTypes(httpMethodTypes);
 
         analyseInputParam(method, methodInfo);
-        analyseOutputParam(methodInfo, method);
+        analyseOutputParam(method, methodInfo);
         return methodInfo;
     }
 
@@ -197,7 +219,8 @@ public class ApikitScan {
             }
             //是否有验证注解
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
-            if (validAnnotation != null) {
+            Validated validatedAnnotation = AnnotationUtils.getAnnotation(parameter, Validated.class);
+            if (validAnnotation != null || validatedAnnotation != null) {
                 inputParamInfo.setValid(true);
             }
             //是否有RequestParam注解
@@ -216,7 +239,7 @@ public class ApikitScan {
     /**
      * 四、分析输出参数
      */
-    private void analyseOutputParam(MethodInfo methodInfo, Method method) {
+    private void analyseOutputParam(Method method, MethodInfo methodInfo) {
         Type genericReturnType = method.getGenericReturnType();
         ParamInfo paramInfo = ClassAnalyseUtils.analyse(genericReturnType);
         methodInfo.setReturnParamInfo(paramInfo);

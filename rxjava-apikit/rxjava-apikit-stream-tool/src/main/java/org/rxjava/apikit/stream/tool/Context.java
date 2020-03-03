@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * api工具上下文
+ * 上下文
  */
 @Getter
 @Setter
-public class ApikitContext {
+public class Context {
     /**
      * 分析包路径
      */
