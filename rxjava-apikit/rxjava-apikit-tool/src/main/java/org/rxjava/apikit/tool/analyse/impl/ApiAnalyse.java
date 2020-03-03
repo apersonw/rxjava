@@ -131,6 +131,7 @@ public class ApiAnalyse {
             InputParamInfo inputParamInfo = new InputParamInfo();
             BeanUtils.copyProperties(paramInfo, inputParamInfo);
             //设置参数名
+            assert parameterNames != null;
             String parameterName = parameterNames[i];
             inputParamInfo.setFieldName(parameterName);
 

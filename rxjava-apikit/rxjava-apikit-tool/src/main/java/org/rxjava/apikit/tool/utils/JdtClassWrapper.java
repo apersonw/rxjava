@@ -21,9 +21,9 @@ public class JdtClassWrapper {
     /**
      * 类型声明
      */
-    private TypeDeclaration typeDeclaration;
+    private AbstractTypeDeclaration typeDeclaration;
 
-    public JdtClassWrapper(String filePath, Class cls) {
+    public JdtClassWrapper(String filePath, Class<?> cls) {
         this(Paths.get(filePath, cls.getPackage().getName().split("\\.")).resolve(cls.getSimpleName() + ".java"));
     }
 
@@ -44,27 +44,23 @@ public class JdtClassWrapper {
         CompilationUnit node = (CompilationUnit) parser.createAST(null);
 
         //获取第一个public类
-        List types = node.types();
-        List<TypeDeclaration> typeDeclarations = new ArrayList<>();
-        if (!types.isEmpty()) {
-            for (Object type : types) {
-                TypeDeclaration typeDeclaration = (TypeDeclaration) type;
-                typeDeclarations.add(typeDeclaration);
-            }
-        }
-        Optional<TypeDeclaration> first = typeDeclarations
-                .stream()
-                .filter(t -> Modifier.isPublic(t.getModifiers()))
+        List<?> types = node.types();
+
+        Optional<?> first = types.stream()
+                .filter(type -> (type instanceof TypeDeclaration || type instanceof EnumDeclaration)
+                        && Modifier.isPublic(((AbstractTypeDeclaration) type).getModifiers())
+                )
                 .findFirst();
 
         if (!first.isPresent()) {
             throw new RuntimeException("未找到类");
+        } else {
+            this.typeDeclaration = (AbstractTypeDeclaration) first.get();
         }
 
-        this.typeDeclaration = first.get();
     }
 
-    public static Optional<JdtClassWrapper> getOptionalJavadocInfo(String path, Class clazz) {
+    public static Optional<JdtClassWrapper> getOptionalJavadocInfo(String path, Class<?> clazz) {
         Path javaFilePath = Paths.get(path, (clazz.getPackage().getName()).split("\\.")).resolve(clazz.getSimpleName() + ".java");
         if (Files.exists(javaFilePath)) {
             return Optional.of(new JdtClassWrapper(javaFilePath));
@@ -73,7 +69,7 @@ public class JdtClassWrapper {
     }
 
     public JavadocInfo getMethodComment(String name) {
-        Optional<MethodDeclaration> methodDeclarationOptional = Arrays.stream(typeDeclaration.getMethods()).filter((methodDeclaration) -> Objects.equals(methodDeclaration.getName().getIdentifier(), name)).findFirst();
+        Optional<MethodDeclaration> methodDeclarationOptional = Arrays.stream(((TypeDeclaration) this.typeDeclaration).getMethods()).filter((methodDeclaration) -> Objects.equals(methodDeclaration.getName().getIdentifier(), name)).findFirst();
         if (!methodDeclarationOptional.isPresent()) {
             throw new RuntimeException("没有在源文件中找到方法:" + name);
         } else {
@@ -87,12 +83,12 @@ public class JdtClassWrapper {
             return null;
         }
         JavadocInfo javadocInfo = new JavadocInfo();
-        List tags = javadoc.tags();
+        List<?> tags = javadoc.tags();
         for (Object tag : tags) {
             TagElement tagElement = (TagElement) tag;
             String tagName = tagElement.getTagName();
 
-            List fragments = tagElement.fragments();
+            List<?> fragments = tagElement.fragments();
             List<String> fragmentsInfo = new ArrayList<>();
             for (Object fragment : fragments) {
                 if (fragment instanceof TextElement) {
@@ -116,13 +112,28 @@ public class JdtClassWrapper {
      */
     public JavadocInfo getFieldComment(String name) {
         Optional<FieldDeclaration> methodOpt = Arrays
-                .stream(typeDeclaration.getFields())
+                .stream(((TypeDeclaration) typeDeclaration).getFields())
                 .filter(fieldDeclaration -> Objects.equals(fieldDeclaration.fragments().get(0).toString(), name))
                 .findFirst();
 
         if (methodOpt.isPresent()) {
             FieldDeclaration fieldDeclaration = methodOpt.get();
             return transform(fieldDeclaration.getJavadoc());
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 获取枚举注释信息
+     */
+    public JavadocInfo getEnumElementComment(String name) {
+        EnumDeclaration type = (EnumDeclaration) this.typeDeclaration;
+        List<?> list = type.enumConstants();
+        Optional<?> methodOpt = list.stream().filter((enumConstantDeclarationx) -> Objects.equals(((EnumConstantDeclaration) enumConstantDeclarationx).getName().getFullyQualifiedName(), name)).findFirst();
+        if (methodOpt.isPresent()) {
+            EnumConstantDeclaration enumConstantDeclaration = (EnumConstantDeclaration) methodOpt.get();
+            return transform(enumConstantDeclaration.getJavadoc());
         } else {
             return null;
         }
