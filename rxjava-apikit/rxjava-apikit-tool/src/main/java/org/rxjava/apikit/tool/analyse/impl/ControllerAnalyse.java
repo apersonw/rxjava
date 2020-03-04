@@ -191,7 +191,7 @@ public class ControllerAnalyse implements Analyse {
         TypeInfo resultType = TypeInfo.form(type);
 
         /*
-         * 真真正正的返回类型
+         * 最后的返回类型
          */
         Class<?> cls = null;
         try {

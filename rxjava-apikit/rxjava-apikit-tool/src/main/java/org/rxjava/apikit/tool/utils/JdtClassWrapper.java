@@ -25,7 +25,7 @@ public class JdtClassWrapper {
     private AbstractTypeDeclaration typeDeclaration;
 
     public static void main(String[] args) {
-        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/happy/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/wugang/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
     }
 
     public JdtClassWrapper(String filePath, Class<?> cls) {
@@ -43,7 +43,7 @@ public class JdtClassWrapper {
         }
 
         //抽象语法树解析源文件
-        Map<String,String> options = JavaCore.getOptions();
+        Map<String, String> options = JavaCore.getOptions();
         //设置源码兼容模式为1.8
         options.put(JavaCore.COMPILER_SOURCE, "1.8");
 
@@ -63,7 +63,7 @@ public class JdtClassWrapper {
                 .findFirst();
 
         if (!first.isPresent()) {
-            throw new RuntimeException("未找到类");
+            throw new RuntimeException("未找到类:" + srcCode);
         } else {
             this.typeDeclaration = (AbstractTypeDeclaration) first.get();
         }
