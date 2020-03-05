@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Setter
 public class TestEnumForm {
     private ImageType imageType;
+    private String id;
 }

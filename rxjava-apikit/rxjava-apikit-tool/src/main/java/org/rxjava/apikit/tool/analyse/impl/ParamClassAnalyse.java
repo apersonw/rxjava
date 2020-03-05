@@ -81,7 +81,16 @@ public class ParamClassAnalyse implements MessageAnalyse {
             add(classInfo, paramClassInfo);
 
             //如果有超类，则将超类信息也放入
-            List<TypeInfo> typeInfos = paramClassInfo.getProperties().stream().map(FieldInfo::getTypeInfo).collect(Collectors.toList());
+            List<TypeInfo> typeInfos = new ArrayList<>();
+            //todo:枚举类分析
+            List<TypeInfo> enumTypeInfos = new ArrayList<>();
+            paramClassInfo.getProperties().forEach(propertyInfo -> {
+                if (propertyInfo.getTypeInfo().isEnum()) {
+                    enumTypeInfos.add(propertyInfo.getTypeInfo());
+                }else {
+                    typeInfos.add(propertyInfo.getTypeInfo());
+                }
+            });
             if (paramClassInfo.getSuperType() != null) {
                 typeInfos.add(paramClassInfo.getSuperType());
             }
@@ -130,6 +139,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(context.getJavaFilePath(), clazz);
             optionalJdtClassWrapper.ifPresent(jdtClassWrapper -> paramClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment()));
 
+            //获取类的超类
             Type genericSuperclass = clazz.getGenericSuperclass();
             if (genericSuperclass != null && !genericSuperclass.equals(Object.class)) {
                 TypeInfo superTypeInfo = TypeInfo.form(genericSuperclass);
@@ -141,6 +151,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
                 paramClassInfo.addTypeParameter(typeParameter.getName());
             }
 
+            //通过方法获取类型字段名称
             Set<String> nameSet = new HashSet<>();
             for (Method method : clazz.getDeclaredMethods()) {
                 if (Modifier.isPublic(method.getModifiers())

@@ -51,7 +51,10 @@ public class TypeInfo implements Cloneable {
      * 是否是泛型的变量类型
      */
     private boolean isGeneric = false;
-
+    /**
+     * 是否枚举类
+     */
+    private boolean isEnum = false;
     /**
      * 是否对象
      */
@@ -87,7 +90,19 @@ public class TypeInfo implements Cloneable {
 
         if (type instanceof Class) {
             Class cls = (Class) type;
-            if (ClassUtils.isPrimitiveOrWrapper(cls)) {
+            //判断是否枚举类
+            if (cls.isEnum()) {
+                TypeInfo typeInfo = new TypeInfo();
+                typeInfo.setType(Type.form(cls));
+                typeInfo.setPackageName(cls.getPackage().getName());
+                typeInfo.setClassName(cls.getSimpleName());
+                typeInfo.setArray(false);
+                typeInfo.setTypeArguments(new ArrayList<>());
+                typeInfo.setInside(false);
+                typeInfo.setGeneric(false);
+                typeInfo.setEnum(true);
+                return typeInfo;
+            } else if (ClassUtils.isPrimitiveOrWrapper(cls)) {
                 return TypeInfo.formBaseType(cls.getName(), false);
             } else if (cls.isArray()) {
                 TypeInfo typeInfo = form(cls.getComponentType());
@@ -157,7 +172,7 @@ public class TypeInfo implements Cloneable {
         typeInfo.isInside = false;
 
         if (!typeInfo.type.isBaseType()) {
-            throw new RuntimeException("错误的类型,不是base类型:" + name);
+            throw new RuntimeException("错误的类型,不是原始类型或原始包装类型:" + name);
         }
         return typeInfo;
     }
@@ -202,7 +217,7 @@ public class TypeInfo implements Cloneable {
      * 7. double *(64位浮点数)*
      * 8. String
      * 9. Date
-     * 10. enum 枚举类型，只支持简单枚举类型
+     * 10. enum 枚举类型
      * 11. Message类型
      * <p>
      * Message 和其他非上面声明类型都不属于basic type
