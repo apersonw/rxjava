@@ -25,7 +25,7 @@ public class JdtClassWrapper {
     private AbstractTypeDeclaration typeDeclaration;
 
     public static void main(String[] args) {
-        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/wugang/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/happy/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
     }
 
     public JdtClassWrapper(String filePath, Class<?> cls) {
