@@ -87,7 +87,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             paramClassInfo.getProperties().forEach(propertyInfo -> {
                 if (propertyInfo.getTypeInfo().isEnum()) {
                     enumTypeInfos.add(propertyInfo.getTypeInfo());
-                }else {
+                } else {
                     typeInfos.add(propertyInfo.getTypeInfo());
                 }
             });
