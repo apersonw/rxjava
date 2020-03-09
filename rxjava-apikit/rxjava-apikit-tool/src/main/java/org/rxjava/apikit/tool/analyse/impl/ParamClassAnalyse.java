@@ -72,7 +72,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
     }
 
     /**
-     * 开始分析类型信息
+     * 开始处理分析到的方法参数类信息
      */
     private void handler() {
         ClassInfo classInfo;
@@ -82,14 +82,8 @@ public class ParamClassAnalyse implements MessageAnalyse {
 
             //如果有超类，则将超类信息也放入
             List<TypeInfo> typeInfos = new ArrayList<>();
-            //todo:枚举类分析
-            List<TypeInfo> enumTypeInfos = new ArrayList<>();
             paramClassInfo.getProperties().forEach(propertyInfo -> {
-                if (propertyInfo.getTypeInfo().isEnum()) {
-                    enumTypeInfos.add(propertyInfo.getTypeInfo());
-                } else {
-                    typeInfos.add(propertyInfo.getTypeInfo());
-                }
+                typeInfos.add(propertyInfo.getTypeInfo());
             });
             if (paramClassInfo.getSuperType() != null) {
                 typeInfos.add(paramClassInfo.getSuperType());
@@ -102,7 +96,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
                         findTypes(type, types);
                         return types;
                     })
-                    .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
+                    .filter(typeInfo -> TypeInfo.Type.OTHER.equals(typeInfo.getType()))
                     .filter(typeInfo -> !typeInfo.isCollection())
                     .filter(typeInfo -> !typeInfo.isGeneric())
                     .filter(typeInfo -> !typeInfo.isObject())
