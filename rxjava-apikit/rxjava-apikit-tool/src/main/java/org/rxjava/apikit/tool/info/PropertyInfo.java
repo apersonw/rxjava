@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 public class PropertyInfo extends FieldInfo {
 
-    private Javadoc javadoc;
+    private JavadocInfo javadocInfo;
 
     public PropertyInfo(String name, TypeInfo typeInfo) {
         super(name, typeInfo);

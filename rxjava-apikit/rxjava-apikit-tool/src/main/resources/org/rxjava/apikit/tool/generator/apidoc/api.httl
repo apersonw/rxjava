@@ -2,8 +2,8 @@
 <!--#set(ApiMethodInfo method)-->
 
 ##设置第一个tag为null的字符串为控制器Controller中文名称
-<!--#if(classInfo.javadoc)-->
-$!{classInfo.javadoc.firstRow}
+<!--#if(classInfo.javadocInfo)-->
+$!{classInfo.javadocInfo.firstRow}
 <!--#else-->
 请输入控制器名称
 <!--#end-->

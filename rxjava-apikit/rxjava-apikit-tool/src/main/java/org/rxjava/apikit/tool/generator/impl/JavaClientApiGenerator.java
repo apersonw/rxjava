@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.generator.impl;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.rxjava.apikit.tool.info.ApiClass;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaApiWrapper;
@@ -35,7 +35,7 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
      * 生成java客户端Api文件
      */
     @Override
-    public void generateApiFile(ApiClass apiInfo) throws Exception {
+    public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
         JavaApiWrapper wrapper = new JavaApiWrapper(
                 context, apiInfo, outRootPackage, apiNameMaper
         );

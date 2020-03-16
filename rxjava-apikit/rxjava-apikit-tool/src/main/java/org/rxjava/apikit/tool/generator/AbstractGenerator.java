@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
 import org.rxjava.apikit.tool.generator.impl.DefaultPackageNameMapper;
 import org.rxjava.apikit.tool.generator.impl.PatternNameMaper;
-import org.rxjava.apikit.tool.info.ApiClass;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import reactor.core.publisher.Flux;
@@ -102,7 +102,7 @@ public abstract class AbstractGenerator implements Generator {
         this.builderWrappers = initParamClassWrapper();
 
         //通过api类信息生成api
-        for (ApiClass apiInfo : context.apis.getValues()) {
+        for (ApiClassInfo apiInfo : context.apis.getValues()) {
             try {
                 generateApiFile(apiInfo);
             } catch (Exception e) {
@@ -124,7 +124,7 @@ public abstract class AbstractGenerator implements Generator {
 
     public abstract void generateBaseFile() throws Exception;
 
-    public abstract void generateApiFile(ApiClass apiInfo) throws Exception;
+    public abstract void generateApiFile(ApiClassInfo apiInfo) throws Exception;
 
     protected abstract BuilderWrapper<ParamClassInfo> createParamClassWarpper(ParamClassInfo paramClassInfo, String distPack, String distName);
 

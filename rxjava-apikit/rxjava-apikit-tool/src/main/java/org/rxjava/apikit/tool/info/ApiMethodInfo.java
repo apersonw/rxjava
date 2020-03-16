@@ -43,19 +43,19 @@ public class ApiMethodInfo {
     /**
      * 参数列表
      */
-    private ArrayList<ApiInputClass> params = new ArrayList<>();
+    private ArrayList<ApiInputClassInfo> params = new ArrayList<>();
     /**
      * 路径参数列表
      */
-    private ArrayList<ApiInputClass> pathParams = new ArrayList<>();
+    private ArrayList<ApiInputClassInfo> pathParams = new ArrayList<>();
     /**
      * 表单参数列表
      */
-    private ArrayList<ApiInputClass> formParams = new ArrayList<>();
+    private ArrayList<ApiInputClassInfo> formParams = new ArrayList<>();
     /**
      * java注释信息
      */
-    private Javadoc comment;
+    private JavadocInfo comment;
     /**
      * 是否需要登陆
      */
@@ -65,7 +65,7 @@ public class ApiMethodInfo {
         return types.length > 0 ? types[0] : null;
     }
 
-    public void addParam(ApiInputClass param) {
+    public void addParam(ApiInputClassInfo param) {
         params.add(param);
         if (param.isPathVariable()) {
             pathParams.add(param);

@@ -7,9 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
-import org.rxjava.apikit.tool.info.ApiClass;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
-import org.rxjava.apikit.tool.info.ApiInputClass;
+import org.rxjava.apikit.tool.info.ApiInputClassInfo;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
 import org.rxjava.apikit.tool.utils.NameUtils;
@@ -26,12 +26,12 @@ import java.util.stream.Collectors;
  */
 @Getter
 @Setter
-public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClass> {
+public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
     private String packageName;
 
     private NameMaper nameMaper;
 
-    public JavaScriptApiWrapper(Context context, ApiClass classInfo, String rootPackage, NameMaper nameMaper, String serviceId) {
+    public JavaScriptApiWrapper(Context context, ApiClassInfo classInfo, String rootPackage, NameMaper nameMaper, String serviceId) {
         super(context, classInfo, rootPackage);
         this.nameMaper = nameMaper;
         this.setServiceId(serviceId);
@@ -53,9 +53,9 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClass> {
 
     public String params(ApiMethodInfo method, boolean isType) {
         StringBuilder sb = new StringBuilder();
-        ArrayList<ApiInputClass> params = method.getParams();
+        ArrayList<ApiInputClassInfo> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
-            ApiInputClass attributeInfo = params.get(i);
+            ApiInputClassInfo attributeInfo = params.get(i);
             if (attributeInfo.isFormParam() || attributeInfo.isPathVariable()) {
                 if (sb.length() > 0) {
                     sb.append(", ");
@@ -151,8 +151,8 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClass> {
 
         Map<String, String> stringStringMap = CommentUtils.toMap(method.getComment());
 
-        ArrayList<ApiInputClass> params = method.getParams();
-        for (ApiInputClass attributeInfo : params) {
+        ArrayList<ApiInputClassInfo> params = method.getParams();
+        for (ApiInputClassInfo attributeInfo : params) {
             if (attributeInfo.isPathVariable()) {
                 String name = attributeInfo.getName();
                 String txt = stringStringMap.get(name);
@@ -197,16 +197,16 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClass> {
 
         sb.append(start).append("</ul>\n").append(start).append("</div>\n");
 
-        Map<String, ApiInputClass> paramMap = method
+        Map<String, ApiInputClassInfo> paramMap = method
                 .getParams()
                 .stream()
-                .collect(Collectors.toMap(ApiInputClass::getName, r -> r));
+                .collect(Collectors.toMap(ApiInputClassInfo::getName, r -> r));
 
         if (method.getComment() != null) {
             List<List<String>> param = method.getComment().get("@param");
             if (CollectionUtils.isNotEmpty(param)) {
                 param.stream().filter(r -> r.size() > 1).forEach(list -> {
-                    ApiInputClass methodParamInfo = paramMap.get(list.get(0));
+                    ApiInputClassInfo methodParamInfo = paramMap.get(list.get(0));
                     if (methodParamInfo != null) {
                         sb.append(start).append("@param ")
                                 .append(list.get(0))

@@ -75,14 +75,14 @@ public class ControllerAnalyse implements Analyse {
         }
 
         //分析类下的Api信息
-        ApiClass apiClass = new ApiClass();
-        apiClass.setName(cls.getSimpleName());
+        ApiClassInfo apiClassInfo = new ApiClassInfo();
+        apiClassInfo.setName(cls.getSimpleName());
         //包名
-        apiClass.setPackageName(classPackageName);
+        apiClassInfo.setPackageName(classPackageName);
 
         //从源码类获取注释信息
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
-        apiClass.setJavadoc(jdtClassWrapper.getClassComment());
+        apiClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment());
 
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
@@ -100,8 +100,8 @@ public class ControllerAnalyse implements Analyse {
                 .collectList()
                 .block();
 
-        Objects.requireNonNull(apiMethodInfos).forEach(apiClass::addApiMethod);
-        context.addApi(apiClass);
+        Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
+        context.addApi(apiClassInfo);
     }
 
     /**
@@ -148,7 +148,7 @@ public class ControllerAnalyse implements Analyse {
             }
 
             Type pType = parameter.getParameterizedType();
-            ApiInputClass fieldInfo = new ApiInputClass(paramName, TypeInfo.form(pType));
+            ApiInputClassInfo fieldInfo = new ApiInputClassInfo(paramName, TypeInfo.form(pType));
 
             //检查参数是否路径参数
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);

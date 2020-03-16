@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.generator.Context;
-import org.rxjava.apikit.tool.info.Javadoc;
+import org.rxjava.apikit.tool.info.JavadocInfo;
 import org.rxjava.apikit.tool.info.ClassInfo;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
@@ -100,15 +100,15 @@ public class BuilderWrapper<T extends ClassInfo> {
     }
 
     public String comment(String start) {
-        Javadoc comment = classInfo.getJavadoc();
+        JavadocInfo comment = classInfo.getJavadocInfo();
         return CommentUtils.getComment(comment, start);
     }
 
-    public static String formatBaseComment(Javadoc comment, String start) {
+    public static String formatBaseComment(JavadocInfo comment, String start) {
         return CommentUtils.getBaseComment(comment, start);
     }
 
-    public static String formatComment(Javadoc comment, String start) {
+    public static String formatComment(JavadocInfo comment, String start) {
         return CommentUtils.getComment(comment, start);
     }
 }

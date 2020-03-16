@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.generator.impl;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.apikit.tool.info.ApiClass;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -29,7 +29,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
      * 生成Api类文件
      */
     @Override
-    public void generateApiFile(ApiClass apiInfo) throws Exception {
+    public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
         JavaScriptApiWrapper wrapper = new JavaScriptApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
         File jsFile = createApiFile(wrapper, "js");
         File dFile = createApiFile(wrapper, "d.ts");

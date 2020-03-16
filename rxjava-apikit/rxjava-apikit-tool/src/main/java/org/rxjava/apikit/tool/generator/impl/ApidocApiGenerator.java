@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.generator.impl;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.apikit.tool.info.ApiClass;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -31,7 +31,7 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
     }
 
     @Override
-    public void generateApiFile(ApiClass apiInfo) throws Exception {
+    public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
         ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
         File apiFile = createApiFile(wrapper, "js");
         executeModule(

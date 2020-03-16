@@ -10,11 +10,11 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class ApiInputClass extends FieldInfo {
+public class ApiInputClassInfo extends FieldInfo {
     private boolean pathVariable = false;
     private boolean formParam = false;
 
-    public ApiInputClass(String name, TypeInfo typeInfo) {
+    public ApiInputClassInfo(String name, TypeInfo typeInfo) {
         super(name, typeInfo);
     }
 }

@@ -3,7 +3,7 @@ package org.rxjava.apikit.tool.utils;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
-import org.rxjava.apikit.tool.info.Javadoc;
+import org.rxjava.apikit.tool.info.JavadocInfo;
 
 import java.io.IOException;
 import java.lang.reflect.Modifier;
@@ -78,7 +78,7 @@ public class JdtClassWrapper {
         return Optional.empty();
     }
 
-    public Javadoc getMethodComment(String name) {
+    public JavadocInfo getMethodComment(String name) {
         Optional<MethodDeclaration> methodDeclarationOptional = Arrays.stream(((TypeDeclaration) this.typeDeclaration).getMethods()).filter((methodDeclaration) -> Objects.equals(methodDeclaration.getName().getIdentifier(), name)).findFirst();
         if (!methodDeclarationOptional.isPresent()) {
             throw new RuntimeException("没有在源文件中找到方法:" + name);
@@ -88,11 +88,11 @@ public class JdtClassWrapper {
         }
     }
 
-    private static org.rxjava.apikit.tool.info.Javadoc transform(org.eclipse.jdt.core.dom.Javadoc javadoc) {
+    private static JavadocInfo transform(org.eclipse.jdt.core.dom.Javadoc javadoc) {
         if (javadoc == null) {
             return null;
         }
-        org.rxjava.apikit.tool.info.Javadoc javadocInfo = new Javadoc();
+        JavadocInfo javadocInfo = new JavadocInfo();
         List<?> tags = javadoc.tags();
         for (Object tag : tags) {
             TagElement tagElement = (TagElement) tag;
@@ -113,14 +113,14 @@ public class JdtClassWrapper {
         return javadocInfo;
     }
 
-    public Javadoc getClassComment() {
+    public JavadocInfo getClassComment() {
         return transform(typeDeclaration.getJavadoc());
     }
 
     /**
      * 获取字段注释信息
      */
-    public Javadoc getFieldComment(String name) {
+    public JavadocInfo getFieldComment(String name) {
         Optional<FieldDeclaration> methodOpt = Arrays
                 .stream(((TypeDeclaration) typeDeclaration).getFields())
                 .filter(fieldDeclaration -> Objects.equals(fieldDeclaration.fragments().get(0).toString(), name))
@@ -137,7 +137,7 @@ public class JdtClassWrapper {
     /**
      * 获取枚举注释信息
      */
-    public org.rxjava.apikit.tool.info.Javadoc getEnumElementComment(String name) {
+    public JavadocInfo getEnumElementComment(String name) {
         EnumDeclaration type = (EnumDeclaration) this.typeDeclaration;
         List<?> list = type.enumConstants();
         Optional<?> methodOpt = list.stream().filter((enumConstantDeclarationx) -> Objects.equals(((EnumConstantDeclaration) enumConstantDeclarationx).getName().getFullyQualifiedName(), name)).findFirst();

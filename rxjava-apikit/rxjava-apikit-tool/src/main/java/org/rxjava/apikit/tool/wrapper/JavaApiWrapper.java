@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
-import org.rxjava.apikit.tool.info.ApiClass;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
-import org.rxjava.apikit.tool.info.ApiInputClass;
+import org.rxjava.apikit.tool.info.ApiInputClassInfo;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import reactor.core.publisher.Flux;
 
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Setter
 @Getter
-public class JavaApiWrapper extends JavaWrapper<ApiClass> {
+public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
 
     /**
      * Api名称映射
@@ -107,9 +107,9 @@ public class JavaApiWrapper extends JavaWrapper<ApiClass> {
      */
     public String params(ApiMethodInfo method) {
         StringBuilder sb = new StringBuilder();
-        List<ApiInputClass> params = method.getParams();
+        List<ApiInputClassInfo> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
-            ApiInputClass attributeInfo = params.get(i);
+            ApiInputClassInfo attributeInfo = params.get(i);
             if (i > 0) {
                 sb.append(", ");
             }
@@ -120,7 +120,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClass> {
         return sb.toString();
     }
 
-    public JavaApiWrapper(Context context, ApiClass classInfo, String rootPackage, NameMaper apiNameMaper) {
+    public JavaApiWrapper(Context context, ApiClassInfo classInfo, String rootPackage, NameMaper apiNameMaper) {
         super(context, classInfo, rootPackage);
         this.apiNameMaper = apiNameMaper;
     }
