@@ -17,7 +17,6 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author happy
@@ -44,7 +43,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
         //获取待分析的参数类信息
         List<ClassInfo> classInfoList = Flux
                 .fromIterable(context.getApis().getValues())
-                .flatMapIterable(ApiClassInfo::getMethodInfos)
+                .flatMapIterable(ApiClass::getMethodInfos)
                 .flatMapIterable(m -> {
                     List<TypeInfo> types = new ArrayList<>();
                     types.add(m.getResultDataType());
@@ -131,7 +130,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             paramClassInfo.setClazz(clazz);
             //设置注释
             Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(context.getJavaFilePath(), clazz);
-            optionalJdtClassWrapper.ifPresent(jdtClassWrapper -> paramClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment()));
+            optionalJdtClassWrapper.ifPresent(jdtClassWrapper -> paramClassInfo.setJavadoc(jdtClassWrapper.getClassComment()));
 
             //获取类的超类
             Type genericSuperclass = clazz.getGenericSuperclass();
@@ -165,7 +164,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
                             if (!nameSet.contains(name)) {
                                 PropertyInfo propertyInfo = new PropertyInfo(name, typeInfo);
 
-                                optionalJdtClassWrapper.ifPresent(javadocInfo -> propertyInfo.setJavadocInfo(javadocInfo.getFieldComment(name)));
+                                optionalJdtClassWrapper.ifPresent(javadocInfo -> propertyInfo.setJavadoc(javadocInfo.getFieldComment(name)));
                                 paramClassInfo.add(propertyInfo);
                                 nameSet.add(name);
                             }

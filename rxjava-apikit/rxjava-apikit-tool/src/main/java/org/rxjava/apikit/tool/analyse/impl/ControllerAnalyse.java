@@ -75,14 +75,14 @@ public class ControllerAnalyse implements Analyse {
         }
 
         //分析类下的Api信息
-        ApiClassInfo apiClassInfo = new ApiClassInfo();
-        apiClassInfo.setName(cls.getSimpleName());
+        ApiClass apiClass = new ApiClass();
+        apiClass.setName(cls.getSimpleName());
         //包名
-        apiClassInfo.setPackageName(classPackageName);
+        apiClass.setPackageName(classPackageName);
 
         //从源码类获取注释信息
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
-        apiClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment());
+        apiClass.setJavadoc(jdtClassWrapper.getClassComment());
 
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
@@ -100,8 +100,8 @@ public class ControllerAnalyse implements Analyse {
                 .collectList()
                 .block();
 
-        Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
-        context.addApi(apiClassInfo);
+        Objects.requireNonNull(apiMethodInfos).forEach(apiClass::addApiMethod);
+        context.addApi(apiClass);
     }
 
     /**

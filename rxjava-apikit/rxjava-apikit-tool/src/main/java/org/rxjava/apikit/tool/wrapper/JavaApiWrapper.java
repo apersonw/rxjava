@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
-import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.ApiClass;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
 import org.rxjava.apikit.tool.info.ApiInputClass;
 import org.rxjava.apikit.tool.info.TypeInfo;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Setter
 @Getter
-public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
+public class JavaApiWrapper extends JavaWrapper<ApiClass> {
 
     /**
      * Api名称映射
@@ -120,7 +120,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
         return sb.toString();
     }
 
-    public JavaApiWrapper(Context context, ApiClassInfo classInfo, String rootPackage, NameMaper apiNameMaper) {
+    public JavaApiWrapper(Context context, ApiClass classInfo, String rootPackage, NameMaper apiNameMaper) {
         super(context, classInfo, rootPackage);
         this.apiNameMaper = apiNameMaper;
     }

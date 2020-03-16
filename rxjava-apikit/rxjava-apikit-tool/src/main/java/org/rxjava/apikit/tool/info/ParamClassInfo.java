@@ -3,7 +3,6 @@ package org.rxjava.apikit.tool.info;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
-import org.eclipse.jdt.core.dom.Javadoc;
 import org.eclipse.jdt.core.dom.TagElement;
 import org.eclipse.jdt.core.dom.TextElement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -27,15 +26,15 @@ public class ParamClassInfo extends ClassInfo {
     protected TypeDeclaration type;
     private List<String> typeParameters = new ArrayList<>();
 
-    public JavadocInfo getClassComment() {
+    public Javadoc getClassComment() {
         return transform(type.getJavadoc());
     }
 
-    protected static JavadocInfo transform(Javadoc javadoc) {
+    protected static Javadoc transform(org.eclipse.jdt.core.dom.Javadoc javadoc) {
         if (javadoc == null) {
             return null;
         }
-        JavadocInfo javadocInfo = new JavadocInfo();
+        Javadoc javadocInfo = new Javadoc();
         List tags = javadoc.tags();
         for (Object tag : tags) {
             TagElement tagElement = (TagElement) tag;

@@ -11,7 +11,7 @@ import java.util.Map;
  * @author happy
  * Api类信息
  */
-public class ApiClassInfo extends ClassInfo {
+public class ApiClass extends ClassInfo {
     /**
      * url作为key的map
      */

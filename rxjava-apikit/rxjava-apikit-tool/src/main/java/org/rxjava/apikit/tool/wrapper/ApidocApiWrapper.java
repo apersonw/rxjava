@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
-import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.ApiClass;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
 import org.rxjava.apikit.tool.info.ApiInputClass;
 import org.rxjava.apikit.tool.info.TypeInfo;
@@ -26,12 +26,12 @@ import java.util.stream.Collectors;
  */
 @Getter
 @Setter
-public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
+public class ApidocApiWrapper extends JavaScriptWrapper<ApiClass> {
     private String packageName;
 
     private NameMaper nameMaper;
 
-    public ApidocApiWrapper(Context context, ApiClassInfo classInfo, String rootPackage, NameMaper nameMaper, String serviceId) {
+    public ApidocApiWrapper(Context context, ApiClass classInfo, String rootPackage, NameMaper nameMaper, String serviceId) {
         super(context, classInfo, rootPackage);
         this.nameMaper = nameMaper;
         this.setServiceId(serviceId);

@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.generator;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.ApiClass;
 import org.rxjava.apikit.tool.info.ClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.info.PackageInfo;
@@ -32,7 +32,7 @@ public class Context {
     /**
      * 包信息
      */
-    protected PackageInfo<ApiClassInfo> apis = new PackageInfo<>();
+    protected PackageInfo<ApiClass> apis = new PackageInfo<>();
     /**
      * 主包路径
      */
@@ -55,7 +55,7 @@ public class Context {
 
     private TreeMap<ClassInfo, ParamClassInfo> paramClassMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));
 
-    public void addApi(ApiClassInfo apiInfo) {
+    public void addApi(ApiClass apiInfo) {
         apis.add(apiInfo.getPackageName(), apiInfo);
     }
 

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  *
  * @author happy
  */
-public class JavadocInfo {
+public class Javadoc {
 
     /**
      * List<Map.Entry<String, List<String>>> 结构是 tagName -> fragments list

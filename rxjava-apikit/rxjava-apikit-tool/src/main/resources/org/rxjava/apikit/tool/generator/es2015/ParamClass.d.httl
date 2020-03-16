@@ -10,9 +10,9 @@ $!{wrapper.comment(" * ")}
 interface $!{classInfo.name} {
 <!--#for(attr : wrapper.properties)-->
 
-<!--		#if(attr.javadocInfo)-->
+<!--		#if(attr.javadoc)-->
 	/**
-$!{wrapper.formatComment(attr.javadocInfo,"	 * ")}
+$!{wrapper.formatComment(attr.javadoc,"	 * ")}
 	 */
 <!--		#end-->
     $!{attr.name}?:$!{wrapper.toTypeString(attr.typeInfo)};
