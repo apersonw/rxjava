@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
-import org.rxjava.apikit.tool.info.ApiMethodInfo;
+import org.rxjava.apikit.tool.info.ApiMethodClassInfo;
 import org.rxjava.apikit.tool.info.ApiInputClassInfo;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import reactor.core.publisher.Flux;
@@ -70,7 +70,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
     /**
      * 结果类型字符串
      */
-    public String resultTypeString(ApiMethodInfo method, String start) {
+    public String resultTypeString(ApiMethodClassInfo method, String start) {
         StringBuilder sb = new StringBuilder(start);
         sb.append("private static final ApiType _").append(method.getIndex()).append("Type = ");
         resultTypeString(sb, method.getReturnClass());
@@ -78,7 +78,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
         return sb.toString();
     }
 
-    public String resultData(ApiMethodInfo method) {
+    public String resultData(ApiMethodClassInfo method) {
         StringBuilder sb = new StringBuilder();
         TypeInfo resultType = method.getResultDataType();
         sb.append(toJavaTypeString(resultType, true, true));
@@ -105,7 +105,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
     /**
      * 获取api方法参数字符串
      */
-    public String params(ApiMethodInfo method) {
+    public String params(ApiMethodClassInfo method) {
         StringBuilder sb = new StringBuilder();
         List<ApiInputClassInfo> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {

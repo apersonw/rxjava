@@ -8,7 +8,7 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
-import org.rxjava.apikit.tool.info.ApiMethodInfo;
+import org.rxjava.apikit.tool.info.ApiMethodClassInfo;
 import org.rxjava.apikit.tool.info.ApiInputClassInfo;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
@@ -47,11 +47,11 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
     }
 
-    public String params(ApiMethodInfo method) {
+    public String params(ApiMethodClassInfo method) {
         return params(method, false);
     }
 
-    public String params(ApiMethodInfo method, boolean isType) {
+    public String params(ApiMethodClassInfo method, boolean isType) {
         StringBuilder sb = new StringBuilder();
         ArrayList<ApiInputClassInfo> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
@@ -142,7 +142,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         return sb.toString();
     }
 
-    public String requestComment(ApiMethodInfo method, String start) {
+    public String requestComment(ApiMethodClassInfo method, String start) {
         StringBuilder sb = new StringBuilder(start);
         sb.append("<div class='http-info'>http 说明")
                 .append("<ul>\n");
@@ -228,7 +228,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         return StringUtils.stripEnd(sb.toString(), null);
     }
 
-    public String resultTypeString(ApiMethodInfo method) {
+    public String resultTypeString(ApiMethodClassInfo method) {
         String returnType = toTypeString(method.getReturnClass());
         return StringEscapeUtils.escapeHtml4(returnType);
     }

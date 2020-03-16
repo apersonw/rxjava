@@ -90,7 +90,7 @@ public class ControllerAnalyse implements Analyse {
                 : "";
 
         //分析Api方法
-        List<ApiMethodInfo> apiMethodInfos = Flux
+        List<ApiMethodClassInfo> apiMethodClassInfos = Flux
                 .just(cls.getMethods())
                 //过滤掉非接口方法
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
@@ -100,19 +100,19 @@ public class ControllerAnalyse implements Analyse {
                 .collectList()
                 .block();
 
-        Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
+        Objects.requireNonNull(apiMethodClassInfos).forEach(apiClassInfo::addApiMethod);
         context.addApi(apiClassInfo);
     }
 
     /**
      * 分析Controller类方法
      */
-    private ApiMethodInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
+    private ApiMethodClassInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
 
-        ApiMethodInfo methodInfo = new ApiMethodInfo();
+        ApiMethodClassInfo methodInfo = new ApiMethodClassInfo();
         methodInfo.setTypes(toMethodTypes(requestMethods));
         methodInfo.setName(method.getName());
         methodInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
@@ -132,7 +132,7 @@ public class ControllerAnalyse implements Analyse {
     /**
      * 分析Controller类方法入参信息
      */
-    private void analyseInputClass(Method method, ApiMethodInfo apiMethodInfo) {
+    private void analyseInputClass(Method method, ApiMethodClassInfo apiMethodClassInfo) {
         Parameter[] parameters = method.getParameters();
         Paranamer info = new CachingParanamer(new AnnotationParanamer(new BytecodeReadingParanamer()));
         String[] parameterNames = info.lookupParameterNames(method);
@@ -177,16 +177,16 @@ public class ControllerAnalyse implements Analyse {
             if (fieldInfo.getTypeInfo().getType() == TypeInfo.Type.VOID) {
                 throw new RuntimeException("void 类型只能用于返回值");
             }
-            apiMethodInfo.addParam(fieldInfo);
+            apiMethodClassInfo.addParam(fieldInfo);
         }
     }
 
     /**
      * 分析Controller类方法出参信息
      */
-    private void analyseReturnClass(Type type, ApiMethodInfo apiMethodInfo) {
+    private void analyseReturnClass(Type type, ApiMethodClassInfo apiMethodClassInfo) {
         if (type == null) {
-            throw new RuntimeException("返回类型不能为空!" + apiMethodInfo);
+            throw new RuntimeException("返回类型不能为空!" + apiMethodClassInfo);
         }
         TypeInfo resultType = TypeInfo.form(type);
 
@@ -211,21 +211,21 @@ public class ControllerAnalyse implements Analyse {
             TypeInfo realResultType = resultType.getTypeArguments().get(0);
 
             if (isSingle) {
-                apiMethodInfo.setReturnClass(realResultType);
+                apiMethodClassInfo.setReturnClass(realResultType);
 
-                apiMethodInfo.setResultDataType(realResultType);
+                apiMethodClassInfo.setResultDataType(realResultType);
             } else {
                 TypeInfo realResultTypeArray = realResultType.clone();
                 realResultTypeArray.setArray(true);
 
-                apiMethodInfo.setReturnClass(realResultTypeArray);
+                apiMethodClassInfo.setReturnClass(realResultTypeArray);
 
 
-                apiMethodInfo.setResultDataType(realResultTypeArray);
+                apiMethodClassInfo.setResultDataType(realResultTypeArray);
             }
         } else {
-            apiMethodInfo.setReturnClass(resultType);
-            apiMethodInfo.setResultDataType(resultType);
+            apiMethodClassInfo.setReturnClass(resultType);
+            apiMethodClassInfo.setResultDataType(resultType);
         }
     }
 

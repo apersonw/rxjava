@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  */
 @Setter
 @Getter
-public class ApiMethodInfo {
+public class ApiMethodClassInfo {
     /**
      * 索引号
      */
