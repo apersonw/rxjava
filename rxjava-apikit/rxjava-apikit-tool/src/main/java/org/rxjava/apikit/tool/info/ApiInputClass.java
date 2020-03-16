@@ -6,15 +6,15 @@ import lombok.Setter;
 
 /**
  * @author happy
- * Api方法参数信息
+ * Api方法输入类
  */
 @Setter
 @Getter
-public class ApiMethodParamInfo extends FieldInfo {
+public class ApiInputClass extends FieldInfo {
     private boolean pathVariable = false;
     private boolean formParam = false;
 
-    public ApiMethodParamInfo(String name, TypeInfo typeInfo) {
+    public ApiInputClass(String name, TypeInfo typeInfo) {
         super(name, typeInfo);
     }
 }

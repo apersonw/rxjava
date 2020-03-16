@@ -35,7 +35,7 @@ public class ApiMethodInfo {
     /**
      * 原始类型
      */
-    private TypeInfo resultType;
+    private TypeInfo returnClass;
     /**
      * 返回值的类型
      */
@@ -43,15 +43,15 @@ public class ApiMethodInfo {
     /**
      * 参数列表
      */
-    private ArrayList<ApiMethodParamInfo> params = new ArrayList<>();
+    private ArrayList<ApiInputClass> params = new ArrayList<>();
     /**
      * 路径参数列表
      */
-    private ArrayList<ApiMethodParamInfo> pathParams = new ArrayList<>();
+    private ArrayList<ApiInputClass> pathParams = new ArrayList<>();
     /**
      * 表单参数列表
      */
-    private ArrayList<ApiMethodParamInfo> formParams = new ArrayList<>();
+    private ArrayList<ApiInputClass> formParams = new ArrayList<>();
     /**
      * java注释信息
      */
@@ -65,7 +65,7 @@ public class ApiMethodInfo {
         return types.length > 0 ? types[0] : null;
     }
 
-    public void addParam(ApiMethodParamInfo param) {
+    public void addParam(ApiInputClass param) {
         params.add(param);
         if (param.isPathVariable()) {
             pathParams.add(param);

@@ -9,7 +9,7 @@ import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
-import org.rxjava.apikit.tool.info.ApiMethodParamInfo;
+import org.rxjava.apikit.tool.info.ApiInputClass;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
 import org.rxjava.apikit.tool.utils.NameUtils;
@@ -53,9 +53,9 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
     public String params(ApiMethodInfo method, boolean isType) {
         StringBuilder sb = new StringBuilder();
-        ArrayList<ApiMethodParamInfo> params = method.getParams();
+        ArrayList<ApiInputClass> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
-            ApiMethodParamInfo attributeInfo = params.get(i);
+            ApiInputClass attributeInfo = params.get(i);
             if (attributeInfo.isFormParam() || attributeInfo.isPathVariable()) {
                 if (sb.length() > 0) {
                     sb.append(", ");
@@ -151,8 +151,8 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
         Map<String, String> stringStringMap = CommentUtils.toMap(method.getComment());
 
-        ArrayList<ApiMethodParamInfo> params = method.getParams();
-        for (ApiMethodParamInfo attributeInfo : params) {
+        ArrayList<ApiInputClass> params = method.getParams();
+        for (ApiInputClass attributeInfo : params) {
             if (attributeInfo.isPathVariable()) {
                 String name = attributeInfo.getName();
                 String txt = stringStringMap.get(name);
@@ -185,7 +185,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
             }
         }
 
-        String returnType = toTypeString(method.getResultType());
+        String returnType = toTypeString(method.getReturnClass());
 
         sb.append(start).append("<li><b>Model:</b> ").append("").append(
                 StringEscapeUtils.escapeHtml4(returnType)
@@ -197,16 +197,16 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
         sb.append(start).append("</ul>\n").append(start).append("</div>\n");
 
-        Map<String, ApiMethodParamInfo> paramMap = method
+        Map<String, ApiInputClass> paramMap = method
                 .getParams()
                 .stream()
-                .collect(Collectors.toMap(ApiMethodParamInfo::getName, r -> r));
+                .collect(Collectors.toMap(ApiInputClass::getName, r -> r));
 
         if (method.getComment() != null) {
             List<List<String>> param = method.getComment().get("@param");
             if (CollectionUtils.isNotEmpty(param)) {
                 param.stream().filter(r -> r.size() > 1).forEach(list -> {
-                    ApiMethodParamInfo methodParamInfo = paramMap.get(list.get(0));
+                    ApiInputClass methodParamInfo = paramMap.get(list.get(0));
                     if (methodParamInfo != null) {
                         sb.append(start).append("@param ")
                                 .append(list.get(0))
@@ -229,7 +229,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
     }
 
     public String resultTypeString(ApiMethodInfo method) {
-        String returnType = toTypeString(method.getResultType());
+        String returnType = toTypeString(method.getReturnClass());
         return StringEscapeUtils.escapeHtml4(returnType);
     }
 

@@ -6,7 +6,7 @@ import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
-import org.rxjava.apikit.tool.info.ApiMethodParamInfo;
+import org.rxjava.apikit.tool.info.ApiInputClass;
 import org.rxjava.apikit.tool.info.TypeInfo;
 import reactor.core.publisher.Flux;
 
@@ -73,7 +73,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
     public String resultTypeString(ApiMethodInfo method, String start) {
         StringBuilder sb = new StringBuilder(start);
         sb.append("private static final ApiType _").append(method.getIndex()).append("Type = ");
-        resultTypeString(sb, method.getResultType());
+        resultTypeString(sb, method.getReturnClass());
         sb.append(";");
         return sb.toString();
     }
@@ -107,9 +107,9 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
      */
     public String params(ApiMethodInfo method) {
         StringBuilder sb = new StringBuilder();
-        List<ApiMethodParamInfo> params = method.getParams();
+        List<ApiInputClass> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
-            ApiMethodParamInfo attributeInfo = params.get(i);
+            ApiInputClass attributeInfo = params.get(i);
             if (i > 0) {
                 sb.append(", ");
             }

@@ -122,9 +122,9 @@ public class ControllerAnalyse implements Analyse {
 
         Type type = method.getGenericReturnType();
 
-        analyseMethodParamsInfo(method, methodInfo);
+        analyseInputClass(method, methodInfo);
 
-        analyseReturnInfo(type, methodInfo);
+        analyseReturnClass(type, methodInfo);
 
         return methodInfo;
     }
@@ -132,7 +132,7 @@ public class ControllerAnalyse implements Analyse {
     /**
      * 分析Controller类方法入参信息
      */
-    private void analyseMethodParamsInfo(Method method, ApiMethodInfo apiMethodInfo) {
+    private void analyseInputClass(Method method, ApiMethodInfo apiMethodInfo) {
         Parameter[] parameters = method.getParameters();
         Paranamer info = new CachingParanamer(new AnnotationParanamer(new BytecodeReadingParanamer()));
         String[] parameterNames = info.lookupParameterNames(method);
@@ -148,7 +148,7 @@ public class ControllerAnalyse implements Analyse {
             }
 
             Type pType = parameter.getParameterizedType();
-            ApiMethodParamInfo fieldInfo = new ApiMethodParamInfo(paramName, TypeInfo.form(pType));
+            ApiInputClass fieldInfo = new ApiInputClass(paramName, TypeInfo.form(pType));
 
             //检查参数是否路径参数
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
@@ -184,7 +184,7 @@ public class ControllerAnalyse implements Analyse {
     /**
      * 分析Controller类方法出参信息
      */
-    private void analyseReturnInfo(Type type, ApiMethodInfo apiMethodInfo) {
+    private void analyseReturnClass(Type type, ApiMethodInfo apiMethodInfo) {
         if (type == null) {
             throw new RuntimeException("返回类型不能为空!" + apiMethodInfo);
         }
@@ -211,20 +211,20 @@ public class ControllerAnalyse implements Analyse {
             TypeInfo realResultType = resultType.getTypeArguments().get(0);
 
             if (isSingle) {
-                apiMethodInfo.setResultType(realResultType);
+                apiMethodInfo.setReturnClass(realResultType);
 
                 apiMethodInfo.setResultDataType(realResultType);
             } else {
                 TypeInfo realResultTypeArray = realResultType.clone();
                 realResultTypeArray.setArray(true);
 
-                apiMethodInfo.setResultType(realResultTypeArray);
+                apiMethodInfo.setReturnClass(realResultTypeArray);
 
 
                 apiMethodInfo.setResultDataType(realResultTypeArray);
             }
         } else {
-            apiMethodInfo.setResultType(resultType);
+            apiMethodInfo.setReturnClass(resultType);
             apiMethodInfo.setResultDataType(resultType);
         }
     }
