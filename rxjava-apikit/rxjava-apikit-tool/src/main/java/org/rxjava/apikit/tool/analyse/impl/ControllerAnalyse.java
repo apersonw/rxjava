@@ -76,6 +76,7 @@ public class ControllerAnalyse implements Analyse {
 
         //分析类下的Api信息
         ApiClassInfo apiClassInfo = new ApiClassInfo();
+        //Api名称
         apiClassInfo.setName(cls.getSimpleName());
         //包名
         apiClassInfo.setPackageName(classPackageName);
@@ -89,16 +90,14 @@ public class ControllerAnalyse implements Analyse {
                 ? requestMappingAnnotation.path()[0]
                 : "";
 
-        //分析Api方法
-        List<ApiMethodClassInfo> apiMethodClassInfos = Flux
-                .just(cls.getMethods())
-                //过滤掉非接口方法
-                .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class) && null == AnnotationUtils.getAnnotation(method, Ignore.class))
+        List<ApiMethodClassInfo> apiMethodClassInfos = Arrays
+                .stream(cls.getMethods())
+                .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class)
+                        && null == AnnotationUtils.getAnnotation(method, Ignore.class)
+                )
                 .map(method -> this.analyseMethod(method, classMappingPath, jdtClassWrapper))
-                //根据方法名称排序
-                .sort((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
-                .collectList()
-                .block();
+                .sorted((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
+                .collect(Collectors.toList());
 
         Objects.requireNonNull(apiMethodClassInfos).forEach(apiClassInfo::addApiMethod);
         context.addApi(apiClassInfo);
@@ -112,21 +111,22 @@ public class ControllerAnalyse implements Analyse {
         String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
 
-        ApiMethodClassInfo methodInfo = new ApiMethodClassInfo();
-        methodInfo.setTypes(toMethodTypes(requestMethods));
-        methodInfo.setName(method.getName());
-        methodInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
+        ApiMethodClassInfo apiMethodClassInfo = new ApiMethodClassInfo();
+        apiMethodClassInfo.setTypes(toMethodTypes(requestMethods));
+        apiMethodClassInfo.setName(method.getName());
+        apiMethodClassInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
 
-        String curPath = toPath(parentPath, pathArray);
-        methodInfo.setUrl(curPath);
+        //访问路径
+        String accessPath = toPath(parentPath, pathArray);
+        apiMethodClassInfo.setUrl(accessPath);
 
         Type type = method.getGenericReturnType();
 
-        analyseInputClass(method, methodInfo);
+        analyseInputClass(method, apiMethodClassInfo);
 
-        analyseReturnClass(type, methodInfo);
+        analyseReturnClass(type, apiMethodClassInfo);
 
-        return methodInfo;
+        return apiMethodClassInfo;
     }
 
     /**

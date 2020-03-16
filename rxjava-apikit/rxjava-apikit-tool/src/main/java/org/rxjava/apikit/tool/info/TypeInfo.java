@@ -42,19 +42,19 @@ public class TypeInfo implements Cloneable {
     /**
      * 是否数组
      */
-    private boolean isArray;
+    private boolean array;
     /**
      * 是否包内，也就是需要进行包转换
      */
-    private boolean isInside = false;
+    private boolean inside = false;
     /**
      * 是否是泛型的变量类型
      */
-    private boolean isGeneric = false;
+    private boolean generic = false;
     /**
      * 是否枚举类
      */
-    private boolean isEnum = false;
+    private boolean enumClass = false;
     /**
      * 是否对象
      */
@@ -65,14 +65,14 @@ public class TypeInfo implements Cloneable {
     public TypeInfo() {
     }
 
-    public TypeInfo(Type type, String packageName, String className, boolean isArray, List<TypeInfo> typeArguments, boolean isInside, boolean isGeneric) {
+    public TypeInfo(Type type, String packageName, String className, boolean array, List<TypeInfo> typeArguments, boolean inside, boolean generic) {
         this.type = type;
         this.packageName = packageName;
         this.className = className;
-        this.isArray = isArray;
+        this.array = array;
         this.typeArguments = typeArguments;
-        this.isInside = isInside;
-        this.isGeneric = isGeneric;
+        this.inside = inside;
+        this.generic = generic;
     }
 
     public String getFullName() {
@@ -100,7 +100,7 @@ public class TypeInfo implements Cloneable {
                 typeInfo.setTypeArguments(new ArrayList<>());
                 typeInfo.setInside(false);
                 typeInfo.setGeneric(false);
-                typeInfo.setEnum(true);
+                typeInfo.setEnumClass(true);
                 return typeInfo;
             } else if (ClassUtils.isPrimitiveOrWrapper(cls)) {
                 return TypeInfo.formBaseType(cls.getName(), false);
@@ -158,9 +158,9 @@ public class TypeInfo implements Cloneable {
     public static TypeInfo formGeneric(String name, boolean isArray) {
         TypeInfo typeInfo = new TypeInfo();
         typeInfo.type = Type.OTHER;
-        typeInfo.isArray = isArray;
-        typeInfo.isInside = false;
-        typeInfo.isGeneric = true;
+        typeInfo.array = isArray;
+        typeInfo.inside = false;
+        typeInfo.generic = true;
         typeInfo.className = name;
         return typeInfo;
     }
@@ -168,8 +168,8 @@ public class TypeInfo implements Cloneable {
     public static TypeInfo formBaseType(String name, boolean isArray) {
         TypeInfo typeInfo = new TypeInfo();
         typeInfo.type = Type.form(name);
-        typeInfo.isArray = isArray;
-        typeInfo.isInside = false;
+        typeInfo.array = isArray;
+        typeInfo.inside = false;
 
         if (!typeInfo.type.isBaseType()) {
             throw new RuntimeException("错误的类型,不是原始类型或原始包装类型:" + name);
@@ -195,7 +195,7 @@ public class TypeInfo implements Cloneable {
     }
 
     public void setArray(boolean array) {
-        this.isArray = array;
+        this.array = array;
     }
 
     public boolean isBytes() {
