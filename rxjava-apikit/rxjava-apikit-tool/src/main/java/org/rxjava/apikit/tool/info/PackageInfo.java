@@ -1,5 +1,6 @@
 package org.rxjava.apikit.tool.info;
 
+import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 
@@ -16,11 +17,19 @@ public class PackageInfo<T extends ClassInfo> {
             new ConcurrentSkipListMap<>(), CopyOnWriteArrayList::new
     );
 
-    public void add(String pack, T t) {
-        multimap.put(pack, t);
+    public void add(String packageName, T t) {
+        multimap.put(packageName, t);
     }
 
     public Collection<T> getValues() {
         return multimap.values();
+    }
+
+    public static void main(String[] args) {
+        ListMultimap<String, Object> multimap = Multimaps.newListMultimap(new ConcurrentSkipListMap<>(), CopyOnWriteArrayList::new);
+        multimap.put("hello", "hi");
+        multimap.put("hello", "hia");
+        multimap.put("hello", "hi");
+        System.out.println(multimap.values());
     }
 }
