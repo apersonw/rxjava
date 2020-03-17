@@ -46,21 +46,21 @@ public class Context {
      */
     private Map<String, BuilderWrapper<ParamClassInfo>> paramClassWrapperMap;
 
-    private TreeMap<String, ParamClassInfo> fullNameParamClassInfoMap = new TreeMap<>(Comparator.comparing(r -> r));
+    private TreeMap<String, ParamClassInfo> fullNameParamMap = new TreeMap<>(Comparator.comparing(r -> r));
 
     public void addParamClassInfo(ClassInfo key, ParamClassInfo paramClassInfo) {
-        paramClassMap.put(key, paramClassInfo);
-        fullNameParamClassInfoMap.put(key.getFullName(), paramClassInfo);
+        paramMap.put(key, paramClassInfo);
+        fullNameParamMap.put(key.getFullName(), paramClassInfo);
     }
 
-    private TreeMap<ClassInfo, ParamClassInfo> paramClassMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));
+    private TreeMap<ClassInfo, ParamClassInfo> paramMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));
 
     public void addApi(ApiClassInfo apiInfo) {
         apis.add(apiInfo.getPackageName(), apiInfo);
     }
 
     public Collection<ParamClassInfo> getParamClassInfos() {
-        return paramClassMap.values();
+        return paramMap.values();
     }
 
     public BuilderWrapper<ParamClassInfo> getMessageWrapper(String fullName) {
