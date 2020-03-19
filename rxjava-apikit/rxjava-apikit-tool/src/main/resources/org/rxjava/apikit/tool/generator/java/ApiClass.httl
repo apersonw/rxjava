@@ -44,11 +44,11 @@ public class $!{wrapper.getDistClassName()} {
     }
     <!--#end-->
 
-    public void setclientAdapter(ClientAdapter clientAdapter) {
+    public void setClientAdapter(ClientAdapter clientAdapter) {
         this.clientAdapter = clientAdapter;
     }
 
-    public ClientAdapter getclientAdapter() {
+    public ClientAdapter getClientAdapter() {
         return clientAdapter;
     }
 
