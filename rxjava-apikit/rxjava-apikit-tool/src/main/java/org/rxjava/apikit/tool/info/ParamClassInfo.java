@@ -26,15 +26,15 @@ public class ParamClassInfo extends ClassInfo {
     protected TypeDeclaration type;
     private List<String> typeParameters = new ArrayList<>();
 
-    public JavadocInfo getClassComment() {
+    public JavaDocInfo getClassComment() {
         return transform(type.getJavadoc());
     }
 
-    protected static JavadocInfo transform(org.eclipse.jdt.core.dom.Javadoc javadoc) {
+    protected static JavaDocInfo transform(org.eclipse.jdt.core.dom.Javadoc javadoc) {
         if (javadoc == null) {
             return null;
         }
-        JavadocInfo javadocInfo = new JavadocInfo();
+        JavaDocInfo javadocInfo = new JavaDocInfo();
         List tags = javadoc.tags();
         for (Object tag : tags) {
             TagElement tagElement = (TagElement) tag;

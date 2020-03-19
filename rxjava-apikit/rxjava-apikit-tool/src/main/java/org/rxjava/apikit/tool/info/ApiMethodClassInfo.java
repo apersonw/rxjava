@@ -55,7 +55,7 @@ public class ApiMethodClassInfo {
     /**
      * java注释信息
      */
-    private JavadocInfo comment;
+    private JavaDocInfo comment;
     /**
      * 是否需要登陆
      */

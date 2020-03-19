@@ -1,7 +1,7 @@
 package org.rxjava.apikit.tool.utils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.apikit.tool.info.JavadocInfo;
+import org.rxjava.apikit.tool.info.JavaDocInfo;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ public class CommentUtils {
     /**
      * 获取注释不包含tag的内容
      */
-    public static String getCommentNoTag(JavadocInfo comment, String start) {
+    public static String getCommentNoTag(JavaDocInfo comment, String start) {
         if (comment == null) {
             return start;
         }
@@ -35,7 +35,7 @@ public class CommentUtils {
     /**
      * 获取注释不带tabName的内容
      */
-    public static String getBaseComment(JavadocInfo comment, String start) {
+    public static String getBaseComment(JavaDocInfo comment, String start) {
         if (comment == null) {
             return start;
         }
@@ -58,7 +58,7 @@ public class CommentUtils {
     /**
      * 格式化注释
      */
-    private static void formatCommentItem(JavadocInfo comment, String start, StringBuilder sb, String tagName) {
+    private static void formatCommentItem(JavaDocInfo comment, String start, StringBuilder sb, String tagName) {
         List<List<String>> fragments = comment.getTags().get(tagName);
         sb.append(fragments.stream().flatMap(Collection::stream).collect(Collectors.joining("\n" + start)));
     }
@@ -66,7 +66,7 @@ public class CommentUtils {
     /**
      * 获取注释
      */
-    public static String getComment(JavadocInfo comment, String start) {
+    public static String getComment(JavaDocInfo comment, String start) {
         if (comment == null) {
             return start;
         }
@@ -89,7 +89,7 @@ public class CommentUtils {
     /**
      * 转化注释为map
      */
-    public static Map<String, String> toMap(JavadocInfo comment) {
+    public static Map<String, String> toMap(JavaDocInfo comment) {
         if (comment == null) {
             return Collections.emptyMap();
         }
