@@ -17,7 +17,7 @@ import org.rxjava.apikit.client.*;
 $!{wrapper.imports}
 
 public class $!{wrapper.getDistClassName()} {
-private ClientAdapter clientAdapter;
+    private ClientAdapter clientAdapter;
 
     public $!{wrapper.getDistClassName()}() {
     }

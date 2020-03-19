@@ -40,7 +40,7 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
                 context, apiInfo, outRootPackage, apiNameMaper
         );
         File file = createApiFile(wrapper, "java");
-        executeModule(wrapper, "/org/rxjava/apikit/tool/generator/java/ClientAdapter.httl", file);
+        executeModule(wrapper, "/org/rxjava/apikit/tool/generator/java/ApiClass.httl", file);
     }
 
     /**
