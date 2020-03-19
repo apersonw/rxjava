@@ -1,7 +1,7 @@
 <!--#set(ApiClassInfo classInfo)-->
 <!--#set(JavaApiWrapper wrapper)-->
-<!--#set(ApiMethodInfo method)-->
-<!--#set(ApiMethodParamInfo param)-->
+<!--#set(ApiMethodClassInfo method)-->
+<!--#set(ApiInputClassInfo param)-->
 <!--#set(TypeInfo type)-->
 package $!{wrapper.getFullDistPackage()};
 
