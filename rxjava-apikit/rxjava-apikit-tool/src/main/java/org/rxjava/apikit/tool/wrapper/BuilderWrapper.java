@@ -47,7 +47,7 @@ public class BuilderWrapper<T extends ClassInfo> {
     }
 
     public String getDistClassName() {
-        return classInfo.getName();
+        return classInfo.getClassName();
     }
 
     public String getFullDistPackage() {
@@ -96,11 +96,11 @@ public class BuilderWrapper<T extends ClassInfo> {
     }
 
     public String getSourceFullName() {
-        return classInfo.getPackageName() + "." + classInfo.getName();
+        return classInfo.getPackageName() + "." + classInfo.getClassName();
     }
 
     public String comment(String start) {
-        JavaDocInfo comment = classInfo.getJavadocInfo();
+        JavaDocInfo comment = classInfo.getJavaDocInfo();
         return CommentUtils.getComment(comment, start);
     }
 

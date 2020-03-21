@@ -15,31 +15,31 @@ public class ApiClassInfo extends ClassInfo {
     /**
      * url作为key的map
      */
-    private Map<String, Map<HttpMethodType, ApiMethodClassInfo>> methodUrlMap = new HashMap<>();
+    private Map<String, Map<HttpMethodType, ApiMethodInfo>> methodUrlMap = new HashMap<>();
     /**
      * 方法名methodName作为key的map
      */
-    private Map<String, ApiMethodClassInfo> methodNameMap = new HashMap<>();
+    private Map<String, ApiMethodInfo> methodNameMap = new HashMap<>();
     /**
      * api方法列表
      */
-    private List<ApiMethodClassInfo> methodInfos = new ArrayList<>();
+    private List<ApiMethodInfo> methodInfos = new ArrayList<>();
     /**
      * 添加api方法信息
      */
-    public void addApiMethod(ApiMethodClassInfo apiMethodClassInfo) {
-        Map<HttpMethodType, ApiMethodClassInfo> map = methodUrlMap.computeIfAbsent(apiMethodClassInfo.getUrl(), k -> new HashMap<>());
-        if (map.put(apiMethodClassInfo.getType(), apiMethodClassInfo) != null) {
-            throw new RuntimeException(apiMethodClassInfo + "apiMethodInfo严重错误,重复的定义:url" + apiMethodClassInfo.getUrl() + ",type:" + apiMethodClassInfo.getType());
+    public void addApiMethod(ApiMethodInfo apiMethodInfo) {
+        Map<HttpMethodType, ApiMethodInfo> map = methodUrlMap.computeIfAbsent(apiMethodInfo.getUrl(), k -> new HashMap<>());
+        if (map.put(apiMethodInfo.getType(), apiMethodInfo) != null) {
+            throw new RuntimeException(apiMethodInfo + "apiMethodInfo严重错误,重复的定义:url" + apiMethodInfo.getUrl() + ",type:" + apiMethodInfo.getType());
         }
-        if (methodNameMap.put(apiMethodClassInfo.getName(), apiMethodClassInfo) != null) {
-            throw new RuntimeException(apiMethodClassInfo + "apiMethodInfo严重错误,重复的函数名称" + apiMethodClassInfo.getName() + ",type:" + apiMethodClassInfo.getType());
+        if (methodNameMap.put(apiMethodInfo.getName(), apiMethodInfo) != null) {
+            throw new RuntimeException(apiMethodInfo + "apiMethodInfo严重错误,重复的函数名称" + apiMethodInfo.getName() + ",type:" + apiMethodInfo.getType());
         }
-        apiMethodClassInfo.setIndex(methodInfos.size());
-        methodInfos.add(apiMethodClassInfo);
+        apiMethodInfo.setIndex(methodInfos.size());
+        methodInfos.add(apiMethodInfo);
     }
 
-    public List<ApiMethodClassInfo> getMethodInfos() {
+    public List<ApiMethodInfo> getMethodInfos() {
         return methodInfos;
     }
 }

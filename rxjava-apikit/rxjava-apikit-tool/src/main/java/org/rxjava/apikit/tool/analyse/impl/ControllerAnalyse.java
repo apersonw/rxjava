@@ -77,20 +77,20 @@ public class ControllerAnalyse implements Analyse {
         //分析类下的Api信息
         ApiClassInfo apiClassInfo = new ApiClassInfo();
         //Api名称
-        apiClassInfo.setName(cls.getSimpleName());
+        apiClassInfo.setClassName(cls.getSimpleName());
         //包名
         apiClassInfo.setPackageName(classPackageName);
 
         //从源码类获取注释信息
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
-        apiClassInfo.setJavadocInfo(jdtClassWrapper.getClassComment());
+        apiClassInfo.setJavaDocInfo(jdtClassWrapper.getClassComment());
 
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
                 : "";
 
-        List<ApiMethodClassInfo> apiMethodClassInfos = Arrays
+        List<ApiMethodInfo> apiMethodInfos = Arrays
                 .stream(cls.getMethods())
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class)
                         && null == AnnotationUtils.getAnnotation(method, Ignore.class)
@@ -99,40 +99,40 @@ public class ControllerAnalyse implements Analyse {
                 .sorted((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
                 .collect(Collectors.toList());
 
-        Objects.requireNonNull(apiMethodClassInfos).forEach(apiClassInfo::addApiMethod);
+        Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
         context.addApi(apiClassInfo);
     }
 
     /**
      * 分析Controller类方法
      */
-    private ApiMethodClassInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
+    private ApiMethodInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
         String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
 
-        ApiMethodClassInfo apiMethodClassInfo = new ApiMethodClassInfo();
-        apiMethodClassInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
-        apiMethodClassInfo.setName(method.getName());
-        apiMethodClassInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
+        ApiMethodInfo apiMethodInfo = new ApiMethodInfo();
+        apiMethodInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
+        apiMethodInfo.setName(method.getName());
+        apiMethodInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
 
         //访问路径
         String accessPath = toPath(parentPath, pathArray);
-        apiMethodClassInfo.setUrl(accessPath);
+        apiMethodInfo.setUrl(accessPath);
 
         Type type = method.getGenericReturnType();
 
-        analyseInputClass(method, apiMethodClassInfo);
+        analyseInputClass(method, apiMethodInfo);
 
-        analyseReturnClass(type, apiMethodClassInfo);
+        analyseReturnClass(type, apiMethodInfo);
 
-        return apiMethodClassInfo;
+        return apiMethodInfo;
     }
 
     /**
      * 分析Controller类方法入参信息
      */
-    private void analyseInputClass(Method method, ApiMethodClassInfo apiMethodClassInfo) {
+    private void analyseInputClass(Method method, ApiMethodInfo apiMethodInfo) {
         Parameter[] parameters = method.getParameters();
         Paranamer info = new CachingParanamer(new AnnotationParanamer(new BytecodeReadingParanamer()));
         String[] parameterNames = info.lookupParameterNames(method);
@@ -177,16 +177,16 @@ public class ControllerAnalyse implements Analyse {
             if (fieldInfo.getTypeInfo().getType() == TypeInfo.Type.VOID) {
                 throw new RuntimeException("void 类型只能用于返回值");
             }
-            apiMethodClassInfo.addParam(fieldInfo);
+            apiMethodInfo.addParam(fieldInfo);
         }
     }
 
     /**
      * 分析Controller类方法出参信息
      */
-    private void analyseReturnClass(Type type, ApiMethodClassInfo apiMethodClassInfo) {
+    private void analyseReturnClass(Type type, ApiMethodInfo apiMethodInfo) {
         if (type == null) {
-            throw new RuntimeException("返回类型不能为空!" + apiMethodClassInfo);
+            throw new RuntimeException("返回类型不能为空!" + apiMethodInfo);
         }
         TypeInfo resultType = TypeInfo.form(type);
 
@@ -211,21 +211,21 @@ public class ControllerAnalyse implements Analyse {
             TypeInfo realResultType = resultType.getTypeArguments().get(0);
 
             if (isSingle) {
-                apiMethodClassInfo.setReturnClass(realResultType);
+                apiMethodInfo.setReturnClass(realResultType);
 
-                apiMethodClassInfo.setResultDataType(realResultType);
+                apiMethodInfo.setResultDataType(realResultType);
             } else {
                 TypeInfo realResultTypeArray = realResultType.clone();
                 realResultTypeArray.setArray(true);
 
-                apiMethodClassInfo.setReturnClass(realResultTypeArray);
+                apiMethodInfo.setReturnClass(realResultTypeArray);
 
 
-                apiMethodClassInfo.setResultDataType(realResultTypeArray);
+                apiMethodInfo.setResultDataType(realResultTypeArray);
             }
         } else {
-            apiMethodClassInfo.setReturnClass(resultType);
-            apiMethodClassInfo.setResultDataType(resultType);
+            apiMethodInfo.setReturnClass(resultType);
+            apiMethodInfo.setResultDataType(resultType);
         }
     }
 

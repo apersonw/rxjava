@@ -12,10 +12,11 @@ import java.util.stream.Stream;
 
 /**
  * @author happy
+ * Api方法信息
  */
 @Setter
 @Getter
-public class ApiMethodClassInfo {
+public class ApiMethodInfo {
     /**
      * 索引号
      */

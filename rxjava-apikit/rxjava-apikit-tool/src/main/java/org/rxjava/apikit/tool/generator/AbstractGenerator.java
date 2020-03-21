@@ -79,7 +79,7 @@ public abstract class AbstractGenerator implements Generator {
                     String distPackage = packageNameMapper.apply(sourceRootPackage, sourcePackage);
                     Set<String> nameSet = names.computeIfAbsent(distPackage, k -> new HashSet<>());
 
-                    String distName = classNameMapper.apply(nameSet, paramClassInfo.getPackageName(), paramClassInfo.getName());
+                    String distName = classNameMapper.apply(nameSet, paramClassInfo.getPackageName(), paramClassInfo.getClassName());
                     nameSet.add(distName);
 
                     return createParamClassWarpper(paramClassInfo, distPackage, distName);

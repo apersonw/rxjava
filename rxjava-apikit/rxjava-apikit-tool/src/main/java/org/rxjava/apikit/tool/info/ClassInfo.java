@@ -17,7 +17,7 @@ public class ClassInfo {
     /**
      * Java文档信息
      */
-    protected JavaDocInfo javadocInfo;
+    protected JavaDocInfo javaDocInfo;
     /**
      * 包名
      */
@@ -25,14 +25,14 @@ public class ClassInfo {
     /**
      * 类名
      */
-    private String name;
+    private String className;
 
     public String getFullName() {
-        return packageName + "." + name;
+        return packageName + "." + className;
     }
 
-    public ClassInfo(String packageName, String name) {
+    public ClassInfo(String packageName, String className) {
         this.packageName = packageName;
-        this.name = name;
+        this.className = className;
     }
 }
