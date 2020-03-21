@@ -114,7 +114,7 @@ public class ControllerAnalyse implements Analyse {
         ApiMethodInfo apiMethodInfo = new ApiMethodInfo();
         apiMethodInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
         apiMethodInfo.setName(method.getName());
-        apiMethodInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
+        apiMethodInfo.setJavaDocInfo(jdtClassWrapper.getMethodComment(method.getName()));
 
         //访问路径
         String accessPath = toPath(parentPath, pathArray);

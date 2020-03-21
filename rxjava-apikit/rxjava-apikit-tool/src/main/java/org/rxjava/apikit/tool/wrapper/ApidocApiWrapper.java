@@ -149,7 +149,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
         sb.append(start).append("<li><b>Uri:</b>").append(method.getUrl()).append("</li>\n");
 
-        Map<String, String> stringStringMap = CommentUtils.toMap(method.getComment());
+        Map<String, String> stringStringMap = CommentUtils.toMap(method.getJavaDocInfo());
 
         ArrayList<ApiInputClassInfo> params = method.getParams();
         for (ApiInputClassInfo attributeInfo : params) {
@@ -202,8 +202,8 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 .stream()
                 .collect(Collectors.toMap(ApiInputClassInfo::getName, r -> r));
 
-        if (method.getComment() != null) {
-            List<List<String>> param = method.getComment().get("@param");
+        if (method.getJavaDocInfo() != null) {
+            List<List<String>> param = method.getJavaDocInfo().get("@param");
             if (CollectionUtils.isNotEmpty(param)) {
                 param.stream().filter(r -> r.size() > 1).forEach(list -> {
                     ApiInputClassInfo methodParamInfo = paramMap.get(list.get(0));
