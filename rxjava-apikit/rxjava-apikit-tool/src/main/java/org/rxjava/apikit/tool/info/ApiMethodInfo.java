@@ -22,9 +22,9 @@ public class ApiMethodInfo {
      */
     private int index;
     /**
-     * 函数名
+     * 方法名
      */
-    private String name;
+    private String methodName;
     /**
      * 方法请求url
      */

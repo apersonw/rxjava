@@ -61,11 +61,11 @@ public class ParamClassInfo extends ClassInfo {
 
     public void add(PropertyInfo attributeInfo) {
         properties.add(attributeInfo);
-        propertiesMap.put(attributeInfo.getName(), attributeInfo);
+        propertiesMap.put(attributeInfo.getFieldName(), attributeInfo);
     }
 
     public void sortPropertys() {
-        properties.sort(Comparator.comparing(FieldInfo::getName));
+        properties.sort(Comparator.comparing(FieldInfo::getFieldName));
     }
 
 

@@ -32,8 +32,8 @@ public class ApiClassInfo extends ClassInfo {
         if (map.put(apiMethodInfo.getType(), apiMethodInfo) != null) {
             throw new RuntimeException(apiMethodInfo + "apiMethodInfo严重错误,重复的定义:url" + apiMethodInfo.getUrl() + ",type:" + apiMethodInfo.getType());
         }
-        if (methodNameMap.put(apiMethodInfo.getName(), apiMethodInfo) != null) {
-            throw new RuntimeException(apiMethodInfo + "apiMethodInfo严重错误,重复的函数名称" + apiMethodInfo.getName() + ",type:" + apiMethodInfo.getType());
+        if (methodNameMap.put(apiMethodInfo.getMethodName(), apiMethodInfo) != null) {
+            throw new RuntimeException(apiMethodInfo + "apiMethodInfo严重错误,重复的函数名称" + apiMethodInfo.getMethodName() + ",type:" + apiMethodInfo.getType());
         }
         apiMethodInfo.setIndex(methodInfos.size());
         methodInfos.add(apiMethodInfo);

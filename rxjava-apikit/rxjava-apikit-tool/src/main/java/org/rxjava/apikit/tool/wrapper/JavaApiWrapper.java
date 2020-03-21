@@ -115,7 +115,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
             }
             sb.append(toJavaTypeString(attributeInfo.getTypeInfo(), false, true));
             sb.append(' ');
-            sb.append(attributeInfo.getName());
+            sb.append(attributeInfo.getFieldName());
         }
         return sb.toString();
     }

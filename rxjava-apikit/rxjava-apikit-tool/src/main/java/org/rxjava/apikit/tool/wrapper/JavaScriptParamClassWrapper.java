@@ -38,7 +38,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
         return Flux
                 .fromIterable(classInfo.getProperties())
                 .mergeWith(getUpper())
-                .distinct(FieldInfo::getName)
+                .distinct(FieldInfo::getFieldName)
                 .collectList()
                 .block();
     }
@@ -48,7 +48,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
         Flux
                 .fromIterable(classInfo.getProperties())
                 .mergeWith(getUpper())
-                .distinct(FieldInfo::getName)
+                .distinct(FieldInfo::getFieldName)
                 .map(FieldInfo::getTypeInfo)
                 .flatMapIterable(type -> {
                     List<TypeInfo> types = new ArrayList<>();
@@ -100,7 +100,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
             if (i > 0) {
                 sb.append(',');
             }
-            sb.append(info.getName());
+            sb.append(info.getFieldName());
         }
         return sb.toString();
     }
@@ -113,7 +113,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
             if (i > 0) {
                 sb.append(',');
             }
-            sb.append(info.getName());
+            sb.append(info.getFieldName());
             sb.append(":");
             sb.append(toTypeString(info.getTypeInfo()));
         }

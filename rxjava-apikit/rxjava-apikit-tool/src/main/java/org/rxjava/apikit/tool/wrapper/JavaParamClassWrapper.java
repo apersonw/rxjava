@@ -47,7 +47,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
         Flux
                 .fromIterable(classInfo.getProperties())
                 .mergeWith(getSupper())
-                .distinct(FieldInfo::getName)
+                .distinct(FieldInfo::getFieldName)
                 .map(FieldInfo::getTypeInfo)
                 .flatMapIterable(type -> {
                     List<TypeInfo> types = new ArrayList<>();
@@ -107,7 +107,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
             sb.append('\n');
             TypeInfo sourceTypeInfo = attr.getTypeInfo();
             TypeInfo typeInfo = sourceTypeInfo;
-            String name = attr.getName();
+            String name = attr.getFieldName();
             if (typeInfo.isCollection()) {
                 if (CollectionUtils.isEmpty(typeInfo.getTypeArguments())) {
                     throw new RuntimeException("List 类型参数不明确:" + attr.getTypeInfo());

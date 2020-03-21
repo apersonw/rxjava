@@ -96,7 +96,7 @@ public class ControllerAnalyse implements Analyse {
                         && null == AnnotationUtils.getAnnotation(method, Ignore.class)
                 )
                 .map(method -> this.analyseMethod(method, classMappingPath, jdtClassWrapper))
-                .sorted((m1, m2) -> StringUtils.compare(m1.getName(), m2.getName()))
+                .sorted((m1, m2) -> StringUtils.compare(m1.getMethodName(), m2.getMethodName()))
                 .collect(Collectors.toList());
 
         Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
@@ -113,7 +113,7 @@ public class ControllerAnalyse implements Analyse {
 
         ApiMethodInfo apiMethodInfo = new ApiMethodInfo();
         apiMethodInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
-        apiMethodInfo.setName(method.getName());
+        apiMethodInfo.setMethodName(method.getName());
         apiMethodInfo.setJavaDocInfo(jdtClassWrapper.getMethodComment(method.getName()));
 
         //访问路径

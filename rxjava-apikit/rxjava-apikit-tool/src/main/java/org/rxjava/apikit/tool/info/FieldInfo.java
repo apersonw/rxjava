@@ -20,14 +20,14 @@ public class FieldInfo {
     /**
      * 字段名
      */
-    private String name;
+    private String fieldName;
     /**
      * 字段注解
      */
     private List<AnnotationInfo> annotations = new ArrayList<>();
 
-    public FieldInfo(String name, TypeInfo typeInfo) {
-        this.name = name;
+    public FieldInfo(String fieldName, TypeInfo typeInfo) {
+        this.fieldName = fieldName;
         this.typeInfo = typeInfo;
     }
 }

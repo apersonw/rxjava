@@ -60,7 +60,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 if (sb.length() > 0) {
                     sb.append(", ");
                 }
-                sb.append(attributeInfo.getName());
+                sb.append(attributeInfo.getFieldName());
                 if (isType) {
                     sb.append(":");
                     sb.append(toTypeString(attributeInfo.getTypeInfo()));
@@ -154,7 +154,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         ArrayList<ApiInputClassInfo> params = method.getParams();
         for (ApiInputClassInfo attributeInfo : params) {
             if (attributeInfo.isPathVariable()) {
-                String name = attributeInfo.getName();
+                String name = attributeInfo.getFieldName();
                 String txt = stringStringMap.get(name);
                 sb.append(start).append("<li><b>PathVariable:</b> ")
                         .append(
@@ -163,7 +163,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                                 )
                         )
                         .append(" ")
-                        .append(attributeInfo.getName());
+                        .append(attributeInfo.getFieldName());
 
                 if (StringUtils.isNotEmpty(txt)) {
                     sb.append(" ");
@@ -180,7 +180,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                                 )
                         )
                         .append("")
-                        .append(method.getName())
+                        .append(method.getMethodName())
                         .append("</li>\n");
             }
         }
@@ -200,7 +200,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         Map<String, ApiInputClassInfo> paramMap = method
                 .getParams()
                 .stream()
-                .collect(Collectors.toMap(ApiInputClassInfo::getName, r -> r));
+                .collect(Collectors.toMap(ApiInputClassInfo::getFieldName, r -> r));
 
         if (method.getJavaDocInfo() != null) {
             List<List<String>> param = method.getJavaDocInfo().get("@param");
