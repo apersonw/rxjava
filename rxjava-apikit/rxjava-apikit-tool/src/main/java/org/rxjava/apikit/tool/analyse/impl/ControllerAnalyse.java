@@ -112,7 +112,7 @@ public class ControllerAnalyse implements Analyse {
         RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
 
         ApiMethodClassInfo apiMethodClassInfo = new ApiMethodClassInfo();
-        apiMethodClassInfo.setTypes(toMethodTypes(requestMethods));
+        apiMethodClassInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
         apiMethodClassInfo.setName(method.getName());
         apiMethodClassInfo.setComment(jdtClassWrapper.getMethodComment(method.getName()));
 

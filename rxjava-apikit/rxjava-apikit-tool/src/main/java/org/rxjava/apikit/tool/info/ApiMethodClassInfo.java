@@ -31,7 +31,7 @@ public class ApiMethodClassInfo {
     /**
      * Http请求方法类型,默认为Get
      */
-    private HttpMethodType[] types = new HttpMethodType[]{HttpMethodType.GET};
+    private HttpMethodType[] httpMethodTypes = new HttpMethodType[]{HttpMethodType.GET};
     /**
      * 原始类型
      */
@@ -62,7 +62,7 @@ public class ApiMethodClassInfo {
     private boolean login = true;
 
     public HttpMethodType getType() {
-        return types.length > 0 ? types[0] : null;
+        return httpMethodTypes.length > 0 ? httpMethodTypes[0] : null;
     }
 
     public void addParam(ApiInputClassInfo param) {
