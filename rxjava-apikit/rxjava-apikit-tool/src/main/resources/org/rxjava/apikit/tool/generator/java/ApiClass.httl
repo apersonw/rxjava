@@ -2,7 +2,7 @@
 <!--#set(JavaApiWrapper wrapper)-->
 <!--#set(ApiMethodInfo method)-->
 <!--#set(ApiInputClassInfo param)-->
-<!--#set(TypeInfo type)-->
+<!--#set(ClassTypeInfo type)-->
 package $!{wrapper.getFullDistPackage()};
 
 import reactor.core.publisher.Mono;
