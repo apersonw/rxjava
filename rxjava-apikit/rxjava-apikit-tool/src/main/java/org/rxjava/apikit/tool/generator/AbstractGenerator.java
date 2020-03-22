@@ -6,11 +6,13 @@ import org.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
 import org.rxjava.apikit.tool.generator.impl.DefaultPackageNameMapper;
 import org.rxjava.apikit.tool.generator.impl.PatternNameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.EnumParamClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import reactor.core.publisher.Flux;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author happy
@@ -51,6 +53,10 @@ public abstract class AbstractGenerator implements Generator {
      * 参数类信息构建包装器列表
      */
     protected List<BuilderWrapper<ParamClassInfo>> builderWrappers;
+    /**
+     * 参数类信息构建包装器列表
+     */
+    protected List<BuilderWrapper<EnumParamClassInfo>> builderEnumWrappers;
     /**
      * 消息名称maper
      */
@@ -94,15 +100,44 @@ public abstract class AbstractGenerator implements Generator {
     }
 
     /**
+     * 初始化枚举参数类包装器
+     */
+    private List<BuilderWrapper<EnumParamClassInfo>> initEnumParamClassWrapper() {
+        Collection<EnumParamClassInfo> enumParamClassInfos = context.getEnumParamClassInfos();
+        String sourceRootPackage = context.getRootPackage();
+        Map<String, Set<String>> names = new HashMap<>();
+        Map<String, BuilderWrapper<EnumParamClassInfo>> enumParamClassInfoMap = new HashMap<>();
+        List<BuilderWrapper<EnumParamClassInfo>> builderWrappers = enumParamClassInfos.stream()
+                .map(classTypeInfo -> {
+                    String sourcePackage = classTypeInfo.getPackageName();
+
+                    //组成完整包路径
+                    String distPackage = packageNameMapper.apply(sourceRootPackage, sourcePackage);
+                    Set<String> nameSet = names.computeIfAbsent(distPackage, k -> new HashSet<>());
+
+                    String distName = classNameMapper.apply(nameSet, classTypeInfo.getPackageName(), classTypeInfo.getClassName());
+                    nameSet.add(distName);
+
+                    return createEnumParamClassWarpper(classTypeInfo, distPackage, distName);
+                })
+                .collect(Collectors.toList());
+        builderWrappers.forEach(item -> enumParamClassInfoMap.put(item.getSourceFullName(), item));
+        context.setEnumParamClassWrapperMap(enumParamClassInfoMap);
+        return builderWrappers;
+    }
+
+    /**
      * 生成Api文件
      */
     @Override
     public void generate(Context context) throws Exception {
         this.context = context;
         this.builderWrappers = initParamClassWrapper();
+        this.builderEnumWrappers = initEnumParamClassWrapper();
 
         //通过api类信息生成api
-        for (ApiClassInfo apiInfo : context.apis.getValues()) {
+        Collection<ApiClassInfo> values = context.apis.getValues();
+        for (ApiClassInfo apiInfo : values) {
             try {
                 generateApiFile(apiInfo);
             } catch (Exception e) {
@@ -120,13 +155,13 @@ public abstract class AbstractGenerator implements Generator {
         }
 
         //通过EnumParamInfo类信息生成参数类信息
-//        for (BuilderWrapper<ParamClassInfo> builderWrapper : builderWrappers) {
-//            try {
-//                generateEnumParamFile(builderWrapper);
-//            } catch (Exception e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
+        for (BuilderWrapper<EnumParamClassInfo> builderWrapper : builderEnumWrappers) {
+            try {
+                generateEnumParamFile(builderWrapper);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         generateBaseFile();
     }
@@ -137,6 +172,10 @@ public abstract class AbstractGenerator implements Generator {
 
     protected abstract BuilderWrapper<ParamClassInfo> createParamClassWarpper(ParamClassInfo paramClassInfo, String distPack, String distName);
 
+    protected abstract BuilderWrapper<EnumParamClassInfo> createEnumParamClassWarpper(EnumParamClassInfo paramClassInfo, String distPack, String distName);
+
     public abstract void generateParamFile(BuilderWrapper<ParamClassInfo> builderWrapper) throws Exception;
+
+    public abstract void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) throws Exception;
 
 }

@@ -3,6 +3,7 @@ package org.rxjava.apikit.tool.generator.impl;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.EnumParamClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -64,6 +65,11 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
         );
     }
 
+    @Override
+    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) throws Exception {
+        //todo:
+    }
+
     /**
      * 创建参数类包装器
      */
@@ -72,6 +78,12 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
         JavaScriptParamClassWrapper javaScriptParamClassWrapper = new JavaScriptParamClassWrapper(context, paramClassInfo, outRootPackage);
         javaScriptParamClassWrapper.setDistFolder(distPack);
         return javaScriptParamClassWrapper;
+    }
+
+    @Override
+    protected BuilderWrapper<EnumParamClassInfo> createEnumParamClassWarpper(EnumParamClassInfo paramClassInfo, String distPack, String distName) {
+        //todo
+        return null;
     }
 
     private String getTemplateFile(String name) {

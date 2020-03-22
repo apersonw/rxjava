@@ -180,7 +180,7 @@ public class ParamClassAnalyse implements Analyse {
             paramClassInfo.sortPropertys();
             return paramClassInfo;
         } catch (Throwable th) {
-            log.error("分析message错误,classInfo:{}", classInfo, th);
+            log.error("分析param错误,classInfo:{}", classInfo, th);
             throw new RuntimeException(th);
         }
     }

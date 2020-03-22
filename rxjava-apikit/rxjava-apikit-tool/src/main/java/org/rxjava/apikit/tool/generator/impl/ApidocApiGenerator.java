@@ -3,6 +3,7 @@ package org.rxjava.apikit.tool.generator.impl;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.EnumParamClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -53,6 +54,12 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
     }
 
     @Override
+    protected BuilderWrapper<EnumParamClassInfo> createEnumParamClassWarpper(EnumParamClassInfo paramClassInfo, String distPack, String distName) {
+        //todo:
+        return null;
+    }
+
+    @Override
     public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) throws Exception {
         File paramClassFile = createParamClassFile(wrapper, "js");
         executeModule(
@@ -60,6 +67,11 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
                 getTemplateFile("paramClass.httl"),
                 paramClassFile
         );
+    }
+
+    @Override
+    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) throws Exception {
+        //todo:
     }
 
     /**
