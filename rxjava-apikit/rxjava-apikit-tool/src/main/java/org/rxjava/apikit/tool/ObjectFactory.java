@@ -1,7 +1,6 @@
 package org.rxjava.apikit.tool;
 
 import org.rxjava.apikit.tool.analyse.Analyse;
-import org.rxjava.apikit.tool.analyse.MessageAnalyse;
 import org.rxjava.apikit.tool.generator.Context;
 
 /**
@@ -25,5 +24,5 @@ public interface ObjectFactory {
      * 消息分析器
      * @return 分析器
      */
-    MessageAnalyse createMessageAnalyse();
+    Analyse createMessageAnalyse();
 }

@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.analyse.impl;
 
 import com.google.common.collect.ImmutableSet;
 import org.apache.commons.collections4.CollectionUtils;
-import org.rxjava.apikit.tool.analyse.MessageAnalyse;
+import org.rxjava.apikit.tool.analyse.Analyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.utils.JdtClassWrapper;
@@ -22,7 +22,7 @@ import java.util.*;
  * @author happy
  * 参数类的类型分析器
  */
-public class ParamClassAnalyse implements MessageAnalyse {
+public class ParamClassAnalyse implements Analyse {
     private static final Logger log = LoggerFactory.getLogger(ParamClassAnalyse.class);
     private Context context;
     private Set<ClassInfo> classInfoSet = new HashSet<>();
