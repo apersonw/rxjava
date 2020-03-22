@@ -43,7 +43,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
         //获取待分析的参数类信息
         List<ClassInfo> classInfoList = Flux
                 .fromIterable(context.getApis().getValues())
-                .flatMapIterable(ApiClassInfo::getMethodInfos)
+                .flatMapIterable(ApiClassInfo::getApiMethodInfoList)
                 .flatMapIterable(m -> {
                     List<TypeInfo> types = new ArrayList<>();
                     types.add(m.getResultDataType());

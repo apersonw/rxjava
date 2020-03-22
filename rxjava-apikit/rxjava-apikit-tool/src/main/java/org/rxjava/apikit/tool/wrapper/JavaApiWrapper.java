@@ -31,7 +31,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
      */
     public String imports() {
         StringBuilder sb = new StringBuilder();
-        Flux.fromIterable(classInfo.getMethodInfos())
+        Flux.fromIterable(classInfo.getApiMethodInfoList())
                 .flatMapIterable(methodInfo -> {
                     List<TypeInfo> types = new ArrayList<>();
                     types.add(methodInfo.getResultDataType());

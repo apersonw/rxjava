@@ -98,7 +98,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         int myLevel = getMyLevel();
 
         Flux
-                .fromIterable(classInfo.getMethodInfos())
+                .fromIterable(classInfo.getApiMethodInfoList())
                 .flatMapIterable(methodInfo -> {
                     List<TypeInfo> types = new ArrayList<>();
                     types.add(methodInfo.getResultDataType());
