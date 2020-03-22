@@ -74,7 +74,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
     }
 
     /**
-     * 开始处理分析到的方法参数类信息
+     * 开始处理分析到的方法参数类属性信息
      */
     private void handler() {
         ClassInfo classInfo;
@@ -111,7 +111,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             Objects.requireNonNull(propertyClassInfoList).forEach(propertyClassInfo -> {
                 //3、检查属性类信息是否已分析过
                 if (classInfoSet.add(propertyClassInfo)) {
-                    //4、将获取到且未分析过的属性类信息列表放到待分析队列中
+                    //4、将获取到且未分析过的属性类信息放到待分析队列中
                     analysDeque.addFirst(propertyClassInfo);
                 }
             });
