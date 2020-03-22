@@ -16,10 +16,10 @@ import java.util.List;
 
 /**
  * @author happy
- * 类型信息
+ * 类的类型信息
  */
 @Data
-public class TypeInfo implements Cloneable{
+public class ClassTypeInfo implements Cloneable{
 
     /**
      * 类型
@@ -36,7 +36,7 @@ public class TypeInfo implements Cloneable{
     /**
      * 参数类型
      */
-    private List<TypeInfo> typeArguments = new ArrayList<>();
+    private List<ClassTypeInfo> typeArguments = new ArrayList<>();
     /**
      * 是否数组
      */
@@ -61,10 +61,10 @@ public class TypeInfo implements Cloneable{
         return isOtherType() && getFullName().equals(Object.class.getName());
     }
 
-    public TypeInfo() {
+    public ClassTypeInfo() {
     }
 
-    public TypeInfo(Type type, String packageName, String className, boolean array, List<TypeInfo> typeArguments, boolean inside, boolean generic) {
+    public ClassTypeInfo(Type type, String packageName, String className, boolean array, List<ClassTypeInfo> typeArguments, boolean inside, boolean generic) {
         this.type = type;
         this.packageName = packageName;
         this.className = className;
@@ -81,17 +81,17 @@ public class TypeInfo implements Cloneable{
         return packageName + "." + className;
     }
 
-    public List<TypeInfo> getTypeArguments() {
+    public List<ClassTypeInfo> getTypeArguments() {
         return typeArguments;
     }
 
-    public static TypeInfo form(java.lang.reflect.Type type) {
+    public static ClassTypeInfo form(java.lang.reflect.Type type) {
 
         if (type instanceof Class) {
             Class cls = (Class) type;
             //判断是否枚举类
             if (cls.isEnum()) {
-                TypeInfo typeInfo = new TypeInfo();
+                ClassTypeInfo typeInfo = new ClassTypeInfo();
                 typeInfo.setType(Type.form(cls));
                 typeInfo.setPackageName(cls.getPackage().getName());
                 typeInfo.setClassName(cls.getSimpleName());
@@ -102,33 +102,33 @@ public class TypeInfo implements Cloneable{
                 typeInfo.setEnumClass(true);
                 return typeInfo;
             } else if (ClassUtils.isPrimitiveOrWrapper(cls)) {
-                return TypeInfo.formBaseType(cls.getName(), false);
+                return ClassTypeInfo.formBaseType(cls.getName(), false);
             } else if (cls.isArray()) {
-                TypeInfo typeInfo = form(cls.getComponentType());
+                ClassTypeInfo typeInfo = form(cls.getComponentType());
                 typeInfo.setArray(true);
                 return typeInfo;
             } else {
                 Type t = Type.form(cls);
                 if (!t.isBaseType()) {
-                    return new TypeInfo(t, cls.getPackage().getName(), cls.getSimpleName(), false, new ArrayList<>(), false, false);
+                    return new ClassTypeInfo(t, cls.getPackage().getName(), cls.getSimpleName(), false, new ArrayList<>(), false, false);
                 } else {
-                    return TypeInfo.formBaseType(cls.getName(), false);
+                    return ClassTypeInfo.formBaseType(cls.getName(), false);
                 }
             }
         } else if (type instanceof java.lang.reflect.ParameterizedType) {
             java.lang.reflect.ParameterizedType paramType = (java.lang.reflect.ParameterizedType) type;
             Class rawType = (Class) paramType.getRawType();
 
-            TypeInfo typeInfo = form(rawType);
+            ClassTypeInfo typeInfo = form(rawType);
             java.lang.reflect.Type[] arguments = paramType.getActualTypeArguments();
             for (java.lang.reflect.Type typeArgument : arguments) {
-                TypeInfo typeArgumentInfo = form(typeArgument);
+                ClassTypeInfo typeArgumentInfo = form(typeArgument);
                 typeInfo.addArguments(typeArgumentInfo);
             }
             return typeInfo;
         } else if (type instanceof TypeVariable) {
             TypeVariable typeVar = (TypeVariable) type;
-            return TypeInfo.formGeneric(typeVar.getName(), false);
+            return ClassTypeInfo.formGeneric(typeVar.getName(), false);
         }
         throw new RuntimeException("暂时不支持的类型，分析失败:" + type);
     }
@@ -150,12 +150,12 @@ public class TypeInfo implements Cloneable{
         }
     }
 
-    public void addArguments(TypeInfo typeInfo) {
+    public void addArguments(ClassTypeInfo typeInfo) {
         typeArguments.add(typeInfo);
     }
 
-    public static TypeInfo formGeneric(String name, boolean isArray) {
-        TypeInfo typeInfo = new TypeInfo();
+    public static ClassTypeInfo formGeneric(String name, boolean isArray) {
+        ClassTypeInfo typeInfo = new ClassTypeInfo();
         typeInfo.type = Type.OTHER;
         typeInfo.array = isArray;
         typeInfo.inside = false;
@@ -164,8 +164,8 @@ public class TypeInfo implements Cloneable{
         return typeInfo;
     }
 
-    public static TypeInfo formBaseType(String name, boolean isArray) {
-        TypeInfo typeInfo = new TypeInfo();
+    public static ClassTypeInfo formBaseType(String name, boolean isArray) {
+        ClassTypeInfo typeInfo = new ClassTypeInfo();
         typeInfo.type = Type.form(name);
         typeInfo.array = isArray;
         typeInfo.inside = false;
@@ -185,9 +185,9 @@ public class TypeInfo implements Cloneable{
     }
 
     @Override
-    public TypeInfo clone() {
+    public ClassTypeInfo clone() {
         try {
-            return (TypeInfo) super.clone();
+            return (ClassTypeInfo) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }

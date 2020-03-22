@@ -21,7 +21,7 @@ public class ParamClassInfo extends ClassInfo {
     /**
      * 父类类型信息
      */
-    private TypeInfo superType;
+    private ClassTypeInfo superType;
     private Class clazz;
     protected TypeDeclaration type;
     private List<String> typeParameters = new ArrayList<>();

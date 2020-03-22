@@ -5,7 +5,7 @@ import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.FieldInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.info.PropertyInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -25,11 +25,11 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
     private Flux<PropertyInfo> getSupper() {
         return Mono
                 .justOrEmpty(classInfo.getSuperType())
-                .map(TypeInfo::getFullName)
+                .map(ClassTypeInfo::getFullName)
                 .filter(fullName -> context.getMessageWrapper(fullName) != null)
                 .map(fullName -> context.getMessageWrapper(fullName))
                 .flatMapMany(w -> {
-                    TypeInfo superType = w.getClassInfo().getSuperType();
+                    ClassTypeInfo superType = w.getClassInfo().getSuperType();
                     Flux<PropertyInfo> flux = Flux.fromIterable(w.getClassInfo().getProperties());
                     if (superType != null) {
                         flux.mergeWith(getSupper());
@@ -50,14 +50,14 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                 .distinct(FieldInfo::getFieldName)
                 .map(FieldInfo::getTypeInfo)
                 .flatMapIterable(type -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
-                .map(TypeInfo::getFullName)
+                .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
                 .filter(fullName -> context.getMessageWrapper(fullName) != null)
@@ -89,7 +89,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
     }
 
     public String superInfo() {
-        TypeInfo superType = classInfo.getSuperType();
+        ClassTypeInfo superType = classInfo.getSuperType();
 
         if (superType != null) {
             return "extends " + toJavaTypeString(superType, false, true);
@@ -105,14 +105,14 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
         StringBuilder sb = new StringBuilder();
         for (PropertyInfo attr : classInfo.getProperties()) {
             sb.append('\n');
-            TypeInfo sourceTypeInfo = attr.getTypeInfo();
-            TypeInfo typeInfo = sourceTypeInfo;
+            ClassTypeInfo sourceTypeInfo = attr.getTypeInfo();
+            ClassTypeInfo typeInfo = sourceTypeInfo;
             String name = attr.getFieldName();
             if (typeInfo.isCollection()) {
                 if (CollectionUtils.isEmpty(typeInfo.getTypeArguments())) {
                     throw new RuntimeException("List 类型参数不明确:" + attr.getTypeInfo());
                 }
-                TypeInfo childTypeInfo = typeInfo.getTypeArguments().get(0);
+                ClassTypeInfo childTypeInfo = typeInfo.getTypeArguments().get(0);
                 typeInfo = childTypeInfo.clone();
                 typeInfo.setArray(true);
             }

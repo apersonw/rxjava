@@ -3,7 +3,7 @@ package org.rxjava.apikit.tool.wrapper;
 import com.google.common.collect.ImmutableMap;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.ClassInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 
 import java.util.Date;
 import java.util.List;
@@ -16,17 +16,17 @@ class JavaWrapper<T extends ClassInfo> extends BuilderWrapper<T> {
         super(context, classInfo, rootPackage);
     }
 
-    String toJavaTypeString(TypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments) {
+    String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments) {
         return toJavaTypeString(typeInfo, isWrap, isArrayList, isTypeArguments, isArrayList);
     }
 
     /**
      * 参数类型是否处理数组
      */
-    private String toJavaTypeString(TypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments, boolean isChildArrayList) {
+    private String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments, boolean isChildArrayList) {
         StringBuilder sb = new StringBuilder();
-        TypeInfo.Type type = typeInfo.getType();
-        if (type == TypeInfo.Type.BYTE && typeInfo.isArray()) {
+        ClassTypeInfo.Type type = typeInfo.getType();
+        if (type == ClassTypeInfo.Type.BYTE && typeInfo.isArray()) {
             sb.append("byte[]");
         } else if (isArrayList && typeInfo.isArray()) {
             toJavaArrayTypeString(typeInfo, sb, isWrap, true);
@@ -38,11 +38,11 @@ class JavaWrapper<T extends ClassInfo> extends BuilderWrapper<T> {
         } else {
             sb.append(toJavaString(type));
         }
-        List<TypeInfo> typeArguments = typeInfo.getTypeArguments();
+        List<ClassTypeInfo> typeArguments = typeInfo.getTypeArguments();
         if (!typeArguments.isEmpty() && isTypeArguments) {
             sb.append('<');
             for (int i = 0; i < typeArguments.size(); i++) {
-                TypeInfo typeArgument = typeArguments.get(i);
+                ClassTypeInfo typeArgument = typeArguments.get(i);
                 if (i > 0) {
                     sb.append(',');
                 }
@@ -56,50 +56,50 @@ class JavaWrapper<T extends ClassInfo> extends BuilderWrapper<T> {
     /**
      * 处理数组
      */
-    private void toJavaArrayTypeString(TypeInfo typeInfo, StringBuilder sb, boolean isWrap, boolean isArrayList) {
+    private void toJavaArrayTypeString(ClassTypeInfo typeInfo, StringBuilder sb, boolean isWrap, boolean isArrayList) {
         sb.append("java.util.ArrayList");
         sb.append('<');
         sb.append(toJavaTypeString(typeInfo, true, false));
         sb.append('>');
     }
 
-    public String toJavaTypeString(TypeInfo typeInfo, boolean isWrap, boolean isArrayList) {
+    public String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList) {
         return toJavaTypeString(typeInfo, isWrap, isArrayList, true);
     }
 
-    private static String toJavaWrapString(TypeInfo.Type type) {
+    private static String toJavaWrapString(ClassTypeInfo.Type type) {
         return TYPE_WRAP_MAP.get(type).getSimpleName();
     }
 
-    private static final ImmutableMap<TypeInfo.Type, Class> TYPE_WRAP_MAP
-            = ImmutableMap.<TypeInfo.Type, Class>builder()
-            .put(TypeInfo.Type.VOID, Void.class)
-            .put(TypeInfo.Type.BOOLEAN, Boolean.class)
-            .put(TypeInfo.Type.BYTE, Byte.class)
-            .put(TypeInfo.Type.SHORT, Short.class)
-            .put(TypeInfo.Type.INT, Integer.class)
-            .put(TypeInfo.Type.LONG, Long.class)
-            .put(TypeInfo.Type.FLOAT, Float.class)
-            .put(TypeInfo.Type.DOUBLE, Double.class)
-            .put(TypeInfo.Type.DATE, Date.class)
-            .put(TypeInfo.Type.STRING, String.class)
+    private static final ImmutableMap<ClassTypeInfo.Type, Class> TYPE_WRAP_MAP
+            = ImmutableMap.<ClassTypeInfo.Type, Class>builder()
+            .put(ClassTypeInfo.Type.VOID, Void.class)
+            .put(ClassTypeInfo.Type.BOOLEAN, Boolean.class)
+            .put(ClassTypeInfo.Type.BYTE, Byte.class)
+            .put(ClassTypeInfo.Type.SHORT, Short.class)
+            .put(ClassTypeInfo.Type.INT, Integer.class)
+            .put(ClassTypeInfo.Type.LONG, Long.class)
+            .put(ClassTypeInfo.Type.FLOAT, Float.class)
+            .put(ClassTypeInfo.Type.DOUBLE, Double.class)
+            .put(ClassTypeInfo.Type.DATE, Date.class)
+            .put(ClassTypeInfo.Type.STRING, String.class)
             .build();
 
-    private static String toJavaString(TypeInfo.Type type) {
+    private static String toJavaString(ClassTypeInfo.Type type) {
         return TYPE_MAP.get(type).getSimpleName();
     }
 
-    private static final ImmutableMap<TypeInfo.Type, Class> TYPE_MAP
-            = ImmutableMap.<TypeInfo.Type, Class>builder()
-            .put(TypeInfo.Type.VOID, void.class)
-            .put(TypeInfo.Type.BOOLEAN, boolean.class)
-            .put(TypeInfo.Type.BYTE, byte.class)
-            .put(TypeInfo.Type.SHORT, short.class)
-            .put(TypeInfo.Type.INT, int.class)
-            .put(TypeInfo.Type.LONG, long.class)
-            .put(TypeInfo.Type.FLOAT, float.class)
-            .put(TypeInfo.Type.DOUBLE, double.class)
-            .put(TypeInfo.Type.DATE, Date.class)
-            .put(TypeInfo.Type.STRING, String.class)
+    private static final ImmutableMap<ClassTypeInfo.Type, Class> TYPE_MAP
+            = ImmutableMap.<ClassTypeInfo.Type, Class>builder()
+            .put(ClassTypeInfo.Type.VOID, void.class)
+            .put(ClassTypeInfo.Type.BOOLEAN, boolean.class)
+            .put(ClassTypeInfo.Type.BYTE, byte.class)
+            .put(ClassTypeInfo.Type.SHORT, short.class)
+            .put(ClassTypeInfo.Type.INT, int.class)
+            .put(ClassTypeInfo.Type.LONG, long.class)
+            .put(ClassTypeInfo.Type.FLOAT, float.class)
+            .put(ClassTypeInfo.Type.DOUBLE, double.class)
+            .put(ClassTypeInfo.Type.DATE, Date.class)
+            .put(ClassTypeInfo.Type.STRING, String.class)
             .build();
 }

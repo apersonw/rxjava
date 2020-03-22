@@ -1,8 +1,6 @@
 package org.rxjava.apikit.tool.info;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.rxjava.apikit.core.HttpMethodType;
 
@@ -36,11 +34,11 @@ public class ApiMethodInfo {
     /**
      * 原始类型
      */
-    private TypeInfo returnClass;
+    private ClassTypeInfo returnClass;
     /**
      * 返回值的类型
      */
-    private TypeInfo resultDataType;
+    private ClassTypeInfo resultDataType;
     /**
      * 参数列表
      */
@@ -79,27 +77,27 @@ public class ApiMethodInfo {
         }
     }
 
-    protected void findTypes(TypeInfo type, List<TypeInfo> list) {
+    protected void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {
         list.add(type);
         if (CollectionUtils.isNotEmpty(type.getTypeArguments())) {
             type.getTypeArguments().forEach(t -> findTypes(t, list));
         }
     }
 
-    public List<TypeInfo> getAllTypes() {
+    public List<ClassTypeInfo> getAllTypes() {
         return Stream.of(this)
                 .flatMap(m -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     types.add(m.getResultDataType());
                     m.getParams().forEach(p -> types.add(p.getTypeInfo()));
                     return types.stream();
                 })
                 .flatMap(type -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     findTypes(type, types);
                     return types.stream();
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
                 .distinct()
