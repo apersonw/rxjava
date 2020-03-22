@@ -1,0 +1,25 @@
+<!--#set(ParamClassInfo classInfo)-->
+<!--#set(PropertyInfo attr)-->
+<!--#set(JavaParamClassWrapper wrapper)-->
+<!--#set(ClassTypeInfo type)-->
+package $!{wrapper.getFullDistPackage()};
+
+import lombok.Getter;
+import lombok.Setter;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.AbstractMap.SimpleImmutableEntry;
+$!{wrapper.imports}
+
+@Getter
+@Setter
+public class $!{wrapper.getDistClassName()}$!{wrapper.typeParameters} $!{wrapper.superInfo} {
+
+<!--#for(attr : classInfo.properties)-->
+private $!{wrapper.toJavaTypeString(attr.typeInfo, false, true)} $!{attr.fieldName};
+<!--#end-->
+
+public List<Entry<String, Object>> encode(String $parent, List<Entry<String, Object>> $list) {
+    $!{wrapper.encodeCode("        ", "$parent")}
+}
+}

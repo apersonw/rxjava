@@ -9,6 +9,7 @@ import org.rxjava.apikit.tool.generator.Context;
 public class EnumClassAnalyse implements Analyse {
     @Override
     public void analyse(Context context) {
+
     }
     public static EnumClassAnalyse create() {
         return new EnumClassAnalyse();
