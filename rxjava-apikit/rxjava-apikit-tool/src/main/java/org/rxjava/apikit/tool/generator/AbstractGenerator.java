@@ -119,6 +119,15 @@ public abstract class AbstractGenerator implements Generator {
             }
         }
 
+        //通过EnumParamInfo类信息生成参数类信息
+//        for (BuilderWrapper<ParamClassInfo> builderWrapper : builderWrappers) {
+//            try {
+//                generateEnumParamFile(builderWrapper);
+//            } catch (Exception e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+
         generateBaseFile();
     }
 
@@ -129,4 +138,5 @@ public abstract class AbstractGenerator implements Generator {
     protected abstract BuilderWrapper<ParamClassInfo> createParamClassWarpper(ParamClassInfo paramClassInfo, String distPack, String distName);
 
     public abstract void generateParamFile(BuilderWrapper<ParamClassInfo> builderWrapper) throws Exception;
+
 }
