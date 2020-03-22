@@ -1,5 +1,6 @@
 package org.rxjava.apikit.tool.info;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
@@ -14,8 +15,7 @@ import java.util.stream.Stream;
  * @author happy
  * Api方法信息
  */
-@Setter
-@Getter
+@Data
 public class ApiMethodInfo {
     /**
      * 索引号

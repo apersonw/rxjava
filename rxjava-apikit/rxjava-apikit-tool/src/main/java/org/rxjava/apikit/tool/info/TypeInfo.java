@@ -1,8 +1,7 @@
 package org.rxjava.apikit.tool.info;
 
 import com.google.common.collect.ImmutableMap;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.apache.commons.lang3.ClassUtils;
 
 import java.lang.reflect.TypeVariable;
@@ -19,9 +18,8 @@ import java.util.List;
  * @author happy
  * 类型信息
  */
-@Setter
-@Getter
-public class TypeInfo implements Cloneable {
+@Data
+public class TypeInfo implements Cloneable{
 
     /**
      * 类型
@@ -55,6 +53,7 @@ public class TypeInfo implements Cloneable {
      * 是否枚举类
      */
     private boolean enumClass = false;
+
     /**
      * 是否对象
      */

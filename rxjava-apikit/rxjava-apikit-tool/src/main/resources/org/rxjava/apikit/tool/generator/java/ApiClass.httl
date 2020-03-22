@@ -26,7 +26,7 @@ public class $!{wrapper.getDistClassName()} {
         this.clientAdapter = clientAdapter;
     }
 
-    <!--#for(method : classInfo.methodInfos)-->
+    <!--#for(method : classInfo.apiMethodList)-->
     public Mono<$!{wrapper.resultData(method)}> $!{method.methodName}($!{wrapper.params(method)}) {
         Map<String, Object> _uriVariables = new HashMap<>();
         <!--#for(param : method.pathParams)-->
@@ -52,7 +52,7 @@ public class $!{wrapper.getDistClassName()} {
         return clientAdapter;
     }
 
-    <!--#for(method : classInfo.methodInfos)-->
+    <!--#for(method : classInfo.apiMethodList)-->
         $!{wrapper.resultTypeString(method,"    ")}
     <!--#end-->
 }
