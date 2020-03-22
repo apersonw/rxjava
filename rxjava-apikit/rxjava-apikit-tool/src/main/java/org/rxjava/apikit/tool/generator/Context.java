@@ -2,16 +2,10 @@ package org.rxjava.apikit.tool.generator;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.rxjava.apikit.tool.info.ApiClassInfo;
-import org.rxjava.apikit.tool.info.ClassInfo;
-import org.rxjava.apikit.tool.info.ParamClassInfo;
-import org.rxjava.apikit.tool.info.PackageInfo;
+import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 上下文
@@ -45,12 +39,20 @@ public class Context {
      * 消息包装map
      */
     private Map<String, BuilderWrapper<ParamClassInfo>> paramClassWrapperMap;
+    /**
+     * 枚举类
+     */
+    private Set<ClassTypeInfo> enumInfoSet = new HashSet<>();
 
     private TreeMap<String, ParamClassInfo> fullNameParamMap = new TreeMap<>(Comparator.comparing(r -> r));
 
     public void addParamClassInfo(ClassInfo key, ParamClassInfo paramClassInfo) {
         paramMap.put(key, paramClassInfo);
         fullNameParamMap.put(key.getFullName(), paramClassInfo);
+    }
+
+    public void addEnumClassInfo() {
+
     }
 
     private TreeMap<ClassInfo, ParamClassInfo> paramMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));

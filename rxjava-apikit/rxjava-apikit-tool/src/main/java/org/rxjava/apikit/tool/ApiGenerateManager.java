@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
+import org.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
 import org.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.Generator;
@@ -33,10 +34,6 @@ public class ApiGenerateManager {
      * 文件扩展名
      */
     private String fileSuffix = ".java";
-    /**
-     * 对象工厂
-     */
-    private ObjectFactory objectFactory;
     /**
      * 需要分析的包文件夹路径
      */
@@ -69,6 +66,8 @@ public class ApiGenerateManager {
         ControllerAnalyse.create().analyse(manager.context);
         //分析参数类型信息并保存到上下文
         ParamClassAnalyse.create().analyse(manager.context);
+        //分析枚举类型信息并保存到上下文
+        EnumClassAnalyse.create().analyse(manager.context);
         return manager;
     }
 }

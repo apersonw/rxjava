@@ -26,6 +26,7 @@ public class ParamClassAnalyse implements Analyse {
     private static final Logger log = LoggerFactory.getLogger(ParamClassAnalyse.class);
     private Context context;
     private Set<ClassInfo> classInfoSet = new HashSet<>();
+    private Set<ClassTypeInfo> enumInfoSet = new HashSet<>();
     private List<ParamClassInfo> paramClassInfos = new ArrayList<>();
     private ArrayDeque<ClassInfo> analysDeque = new ArrayDeque<>();
     private Map<ClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
@@ -58,10 +59,7 @@ public class ParamClassAnalyse implements Analyse {
                     findTypes(classTypeInfo, classTypeInfoList);
                     return classTypeInfoList;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
-                .filter(typeInfo -> !typeInfo.isCollection())
-                .filter(typeInfo -> !typeInfo.isGeneric())
-                .filter(typeInfo -> !typeInfo.isObject())
+                .filter(this::filterClassTypeInfo)
                 .map(typeInfo -> new ClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
                 .distinct()
                 .collectList()
@@ -71,6 +69,7 @@ public class ParamClassAnalyse implements Analyse {
         analysDeque.addAll(classInfoList);
         handler();
         paramClassMap.forEach(context::addParamClassInfo);
+        this.context.setEnumInfoSet(this.enumInfoSet);
     }
 
     /**
@@ -99,10 +98,7 @@ public class ParamClassAnalyse implements Analyse {
                         findTypes(classTypeInfo, classTypeInfos);
                         return classTypeInfos;
                     })
-                    .filter(typeInfo -> ClassTypeInfo.Type.OTHER.equals(typeInfo.getType()))
-                    .filter(typeInfo -> !typeInfo.isCollection())
-                    .filter(typeInfo -> !typeInfo.isGeneric())
-                    .filter(typeInfo -> !typeInfo.isObject())
+                    .filter(this::filterClassTypeInfo)
                     .map(typeInfo -> new ClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
                     .distinct()
                     .collectList()
@@ -194,5 +190,17 @@ public class ParamClassAnalyse implements Analyse {
         if (CollectionUtils.isNotEmpty(type.getTypeArguments())) {
             type.getTypeArguments().forEach(t -> findTypes(t, list));
         }
+    }
+
+    private boolean filterClassTypeInfo(ClassTypeInfo classTypeInfo) {
+        if (classTypeInfo.isEnumClass()) {
+            this.enumInfoSet.add(classTypeInfo);
+            return false;
+        }
+
+        return ClassTypeInfo.Type.OTHER.equals(classTypeInfo.getType())
+                && !classTypeInfo.isCollection()
+                && !classTypeInfo.isGeneric()
+                && !classTypeInfo.isObject();
     }
 }
