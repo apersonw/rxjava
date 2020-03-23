@@ -34,6 +34,6 @@ public class RxServiceManagerMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        RxServiceManagerAppliaction.main(args);
+        RxServiceManagerApplication.main(args);
     }
 }

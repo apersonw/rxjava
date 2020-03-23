@@ -34,6 +34,6 @@ public class RxRestDocsExampleMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        RxRestDocsExampleAppliaction.main(args);
+        RxRestDocsExampleApplication.main(args);
     }
 }

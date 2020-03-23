@@ -34,6 +34,6 @@ public class RxServiceExampleMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        RxServiceExampleAppliaction.main(args);
+        RxServiceExampleApplication.main(args);
     }
 }
