@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 public class AnnotationInfo {
-    private TypeInfo typeInfo;
+    private ClassTypeInfo typeInfo;
 
     private List<String> args = new ArrayList<>();
 }

@@ -1,7 +1,7 @@
 <!--#set(ParamClassInfo classInfo)-->
 <!--#set(PropertyInfo attr)-->
 <!--#set(JavaParamClassWrapper wrapper)-->
-<!--#set(TypeInfo type)-->
+<!--#set(ClassTypeInfo type)-->
 package $!{wrapper.getFullDistPackage()};
 
 import lombok.Getter;
@@ -16,7 +16,7 @@ $!{wrapper.imports}
 public class $!{wrapper.getDistClassName()}$!{wrapper.typeParameters} $!{wrapper.superInfo} {
 
 <!--#for(attr : classInfo.properties)-->
-private $!{wrapper.toJavaTypeString(attr.typeInfo, false, true)} $!{attr.name};
+private $!{wrapper.toJavaTypeString(attr.typeInfo, false, true)} $!{attr.fieldName};
 <!--#end-->
 
 public List<Entry<String, Object>> encode(String $parent, List<Entry<String, Object>> $list) {

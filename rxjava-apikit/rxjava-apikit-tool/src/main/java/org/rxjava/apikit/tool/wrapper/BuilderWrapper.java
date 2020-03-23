@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.JavaDocInfo;
 import org.rxjava.apikit.tool.info.ClassInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
 
 import java.util.List;
@@ -88,7 +88,7 @@ public class BuilderWrapper<T extends ClassInfo> {
         }
     }
 
-    void findTypes(TypeInfo type, List<TypeInfo> list) {
+    void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {
         list.add(type);
         if (CollectionUtils.isNotEmpty(type.getTypeArguments())) {
             type.getTypeArguments().forEach(t -> findTypes(t, list));

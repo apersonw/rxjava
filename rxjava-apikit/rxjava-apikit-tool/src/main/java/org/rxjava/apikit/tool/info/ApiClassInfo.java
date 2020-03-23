@@ -23,7 +23,7 @@ public class ApiClassInfo extends ClassInfo {
     /**
      * api方法列表
      */
-    private List<ApiMethodInfo> methodInfos = new ArrayList<>();
+    private List<ApiMethodInfo> apiMethodList = new ArrayList<>();
     /**
      * 添加api方法信息
      */
@@ -35,11 +35,11 @@ public class ApiClassInfo extends ClassInfo {
         if (methodNameMap.put(apiMethodInfo.getMethodName(), apiMethodInfo) != null) {
             throw new RuntimeException(apiMethodInfo + "apiMethodInfo严重错误,重复的函数名称" + apiMethodInfo.getMethodName() + ",type:" + apiMethodInfo.getType());
         }
-        apiMethodInfo.setIndex(methodInfos.size());
-        methodInfos.add(apiMethodInfo);
+        apiMethodInfo.setIndex(apiMethodList.size());
+        apiMethodList.add(apiMethodInfo);
     }
 
-    public List<ApiMethodInfo> getMethodInfos() {
-        return methodInfos;
+    public List<ApiMethodInfo> getApiMethodList() {
+        return apiMethodList;
     }
 }

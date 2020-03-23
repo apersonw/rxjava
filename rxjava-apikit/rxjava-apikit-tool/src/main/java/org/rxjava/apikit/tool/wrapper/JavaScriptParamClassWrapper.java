@@ -5,7 +5,7 @@ import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.FieldInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.info.PropertyInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -21,11 +21,11 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
     private Flux<PropertyInfo> getUpper() {
         return Mono
                 .justOrEmpty(classInfo.getSuperType())
-                .map(TypeInfo::getFullName)
+                .map(ClassTypeInfo::getFullName)
                 .filter(fullName -> context.getMessageWrapper(fullName) != null)
                 .map(fullName -> context.getMessageWrapper(fullName))
                 .flatMapMany(w -> {
-                    TypeInfo superType = w.getClassInfo().getSuperType();
+                    ClassTypeInfo superType = w.getClassInfo().getSuperType();
                     Flux<PropertyInfo> flux = Flux.fromIterable(w.getClassInfo().getProperties());
                     if (superType != null) {
                         flux.mergeWith(getUpper());
@@ -51,17 +51,17 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                 .distinct(FieldInfo::getFieldName)
                 .map(FieldInfo::getTypeInfo)
                 .flatMapIterable(type -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     findTypes(type, types);
                     if (classInfo.getSuperType() != null) {
                         findTypes(classInfo.getSuperType(), types);
                     }
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
-                .map(TypeInfo::getFullName)
+                .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
                 .filter(fullName -> context.getMessageWrapper(fullName) != null)

@@ -16,7 +16,7 @@ public class FieldInfo {
     /**
      * 类型信息
      */
-    private TypeInfo typeInfo;
+    private ClassTypeInfo typeInfo;
     /**
      * 字段名
      */
@@ -26,7 +26,7 @@ public class FieldInfo {
      */
     private List<AnnotationInfo> annotations = new ArrayList<>();
 
-    public FieldInfo(String fieldName, TypeInfo typeInfo) {
+    public FieldInfo(String fieldName, ClassTypeInfo typeInfo) {
         this.fieldName = fieldName;
         this.typeInfo = typeInfo;
     }

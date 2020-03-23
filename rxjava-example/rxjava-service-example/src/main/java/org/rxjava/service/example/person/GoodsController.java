@@ -17,6 +17,9 @@ import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 
+/**
+ * 商品控制器
+ */
 @RestController
 @Slf4j
 public class GoodsController {

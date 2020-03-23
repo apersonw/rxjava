@@ -13,7 +13,10 @@ import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.tool.analyse.Analyse;
 import org.rxjava.apikit.tool.generator.Context;
-import org.rxjava.apikit.tool.info.*;
+import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.ApiInputClassInfo;
+import org.rxjava.apikit.tool.info.ApiMethodInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.utils.JdtClassWrapper;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -148,7 +151,7 @@ public class ControllerAnalyse implements Analyse {
             }
 
             Type pType = parameter.getParameterizedType();
-            ApiInputClassInfo fieldInfo = new ApiInputClassInfo(paramName, TypeInfo.form(pType));
+            ApiInputClassInfo fieldInfo = new ApiInputClassInfo(paramName, ClassTypeInfo.form(pType));
 
             //检查参数是否路径参数
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
@@ -174,7 +177,7 @@ public class ControllerAnalyse implements Analyse {
                     throw new RuntimeException("表单对象不支持数组!" + fieldInfo);
                 }
             }
-            if (fieldInfo.getTypeInfo().getType() == TypeInfo.Type.VOID) {
+            if (fieldInfo.getTypeInfo().getType() == ClassTypeInfo.Type.VOID) {
                 throw new RuntimeException("void 类型只能用于返回值");
             }
             apiMethodInfo.addParam(fieldInfo);
@@ -188,7 +191,7 @@ public class ControllerAnalyse implements Analyse {
         if (type == null) {
             throw new RuntimeException("返回类型不能为空!" + apiMethodInfo);
         }
-        TypeInfo resultType = TypeInfo.form(type);
+        ClassTypeInfo resultType = ClassTypeInfo.form(type);
 
         /*
          * 最后的返回类型
@@ -208,14 +211,14 @@ public class ControllerAnalyse implements Analyse {
                 throw new RuntimeException("返回参数的类型变量数只能是1！!" + resultType);
             }
             boolean isSingle = Mono.class.isAssignableFrom(cls);
-            TypeInfo realResultType = resultType.getTypeArguments().get(0);
+            ClassTypeInfo realResultType = resultType.getTypeArguments().get(0);
 
             if (isSingle) {
                 apiMethodInfo.setReturnClass(realResultType);
 
                 apiMethodInfo.setResultDataType(realResultType);
             } else {
-                TypeInfo realResultTypeArray = realResultType.clone();
+                ClassTypeInfo realResultTypeArray = realResultType.clone();
                 realResultTypeArray.setArray(true);
 
                 apiMethodInfo.setReturnClass(realResultTypeArray);

@@ -14,7 +14,7 @@ public class ApiInputClassInfo extends FieldInfo {
     private boolean pathVariable = false;
     private boolean formParam = false;
 
-    public ApiInputClassInfo(String name, TypeInfo typeInfo) {
+    public ApiInputClassInfo(String name, ClassTypeInfo typeInfo) {
         super(name, typeInfo);
     }
 }

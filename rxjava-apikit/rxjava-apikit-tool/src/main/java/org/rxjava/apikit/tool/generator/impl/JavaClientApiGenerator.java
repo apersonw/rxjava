@@ -3,9 +3,11 @@ package org.rxjava.apikit.tool.generator.impl;
 import lombok.Getter;
 import lombok.Setter;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
+import org.rxjava.apikit.tool.info.EnumParamClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaApiWrapper;
+import org.rxjava.apikit.tool.wrapper.JavaEnumParamClassWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaParamClassWrapper;
 
 import java.io.File;
@@ -56,6 +58,16 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
         );
     }
 
+    @Override
+    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> wrapper) throws Exception {
+        File file = createParamClassFile(wrapper, "java");
+        executeModule(
+                wrapper,
+                "/org/rxjava/apikit/tool/generator/java/EnumParamClass.httl",
+                file
+        );
+    }
+
     /**
      * 创建Java类包装器
      * @param paramClassInfo 参数类信息
@@ -67,5 +79,18 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
         JavaParamClassWrapper javaClassWrapper = new JavaParamClassWrapper(context, paramClassInfo, outRootPackage);
         javaClassWrapper.setDistFolder(distPack);
         return javaClassWrapper;
+    }
+
+    /**
+     * 创建Java枚举类包装器
+     * @param enumParamClassInfo 参数类信息
+     * @param distPack 发布的包文件夹名
+     * @param fileName 文件名
+     */
+    @Override
+    protected JavaEnumParamClassWrapper createEnumParamClassWarpper(EnumParamClassInfo enumParamClassInfo, String distPack, String fileName) {
+        JavaEnumParamClassWrapper javaEnumParamClassWrapper = new JavaEnumParamClassWrapper(context, enumParamClassInfo, outRootPackage);
+        javaEnumParamClassWrapper.setDistFolder(distPack);
+        return javaEnumParamClassWrapper;
     }
 }

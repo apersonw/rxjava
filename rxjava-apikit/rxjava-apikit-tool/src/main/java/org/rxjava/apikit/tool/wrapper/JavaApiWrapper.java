@@ -7,7 +7,7 @@ import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
 import org.rxjava.apikit.tool.info.ApiInputClassInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
@@ -31,22 +31,22 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
      */
     public String imports() {
         StringBuilder sb = new StringBuilder();
-        Flux.fromIterable(classInfo.getMethodInfos())
+        Flux.fromIterable(classInfo.getApiMethodList())
                 .flatMapIterable(methodInfo -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     types.add(methodInfo.getResultDataType());
                     methodInfo.getParams().forEach(p -> types.add(p.getTypeInfo()));
                     return types;
                 })
                 .flatMapIterable(type -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
-                .map(TypeInfo::getFullName)
+                .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
                 .filter(fullName -> context.getMessageWrapper(fullName) != null)
@@ -80,12 +80,12 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
 
     public String resultData(ApiMethodInfo method) {
         StringBuilder sb = new StringBuilder();
-        TypeInfo resultType = method.getResultDataType();
+        ClassTypeInfo resultType = method.getResultDataType();
         sb.append(toJavaTypeString(resultType, true, true));
         return sb.toString();
     }
 
-    private void resultTypeString(StringBuilder sb, TypeInfo resultType) {
+    private void resultTypeString(StringBuilder sb, ClassTypeInfo resultType) {
         if (resultType.isArray()) {
             sb.append(" ApiUtils.type(java.util.ArrayList.class, ").append(toJavaTypeString(resultType, true, false, false)).append(".class");
         } else {
@@ -94,7 +94,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
         if (resultType.getTypeArguments().isEmpty()) {
             sb.append(")");
         } else {
-            for (TypeInfo typeArgument : resultType.getTypeArguments()) {
+            for (ClassTypeInfo typeArgument : resultType.getTypeArguments()) {
                 sb.append(",");
                 resultTypeString(sb, typeArgument);
             }

@@ -10,7 +10,7 @@ import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
 import org.rxjava.apikit.tool.info.ApiInputClassInfo;
-import org.rxjava.apikit.tool.info.TypeInfo;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
 import org.rxjava.apikit.tool.utils.NameUtils;
 import reactor.core.publisher.Flux;
@@ -98,22 +98,22 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         int myLevel = getMyLevel();
 
         Flux
-                .fromIterable(classInfo.getMethodInfos())
+                .fromIterable(classInfo.getApiMethodList())
                 .flatMapIterable(methodInfo -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     types.add(methodInfo.getResultDataType());
                     methodInfo.getParams().forEach(p -> types.add(p.getTypeInfo()));
                     return types;
                 })
                 .flatMapIterable(type -> {
-                    List<TypeInfo> types = new ArrayList<>();
+                    List<ClassTypeInfo> types = new ArrayList<>();
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
-                .map(TypeInfo::getFullName)
+                .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
                 .filter(fullName -> context.getMessageWrapper(fullName) != null)

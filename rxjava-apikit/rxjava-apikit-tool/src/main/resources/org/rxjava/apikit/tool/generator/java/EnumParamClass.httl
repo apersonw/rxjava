@@ -1,0 +1,6 @@
+<!--#set(JavaEnumParamClassWrapper wrapper)-->
+package $!{wrapper.getFullDistPackage()};
+
+public enum $!{wrapper.getDistClassName()} {
+
+}

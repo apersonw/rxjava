@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.analyse.impl;
 
 import com.google.common.collect.ImmutableSet;
 import org.apache.commons.collections4.CollectionUtils;
-import org.rxjava.apikit.tool.analyse.MessageAnalyse;
+import org.rxjava.apikit.tool.analyse.Analyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.utils.JdtClassWrapper;
@@ -22,10 +22,11 @@ import java.util.*;
  * @author happy
  * 参数类的类型分析器
  */
-public class ParamClassAnalyse implements MessageAnalyse {
+public class ParamClassAnalyse implements Analyse {
     private static final Logger log = LoggerFactory.getLogger(ParamClassAnalyse.class);
     private Context context;
     private Set<ClassInfo> classInfoSet = new HashSet<>();
+    private Set<ClassTypeInfo> enumInfoSet = new HashSet<>();
     private List<ParamClassInfo> paramClassInfos = new ArrayList<>();
     private ArrayDeque<ClassInfo> analysDeque = new ArrayDeque<>();
     private Map<ClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
@@ -40,25 +41,25 @@ public class ParamClassAnalyse implements MessageAnalyse {
     @Override
     public void analyse(Context context) {
         this.context = context;
-        //获取待分析的参数类信息
+        //1、获取待分析的参数类信息
+        //2、获得待分析的参数类属性类信息
+        //3、过滤掉集合类、泛型类、对象类
+        //4、转换为ClassInfo类型
         List<ClassInfo> classInfoList = Flux
                 .fromIterable(context.getApis().getValues())
-                .flatMapIterable(ApiClassInfo::getMethodInfos)
-                .flatMapIterable(m -> {
-                    List<TypeInfo> types = new ArrayList<>();
-                    types.add(m.getResultDataType());
-                    m.getParams().forEach(p -> types.add(p.getTypeInfo()));
-                    return types;
+                .flatMapIterable(ApiClassInfo::getApiMethodList)
+                .flatMapIterable(apiMethodInfo -> {
+                    List<ClassTypeInfo> classTypeInfoList = new ArrayList<>();
+                    classTypeInfoList.add(apiMethodInfo.getResultDataType());
+                    apiMethodInfo.getParams().forEach(param -> classTypeInfoList.add(param.getTypeInfo()));
+                    return classTypeInfoList;
                 })
-                .flatMapIterable(type -> {
-                    List<TypeInfo> types = new ArrayList<>();
-                    findTypes(type, types);
-                    return types;
+                .flatMapIterable(classTypeInfo -> {
+                    List<ClassTypeInfo> classTypeInfoList = new ArrayList<>();
+                    findTypes(classTypeInfo, classTypeInfoList);
+                    return classTypeInfoList;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(TypeInfo.Type.OTHER))
-                .filter(typeInfo -> !typeInfo.isCollection())
-                .filter(typeInfo -> !typeInfo.isGeneric())
-                .filter(typeInfo -> !typeInfo.isObject())
+                .filter(this::filterClassTypeInfo)
                 .map(typeInfo -> new ClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
                 .distinct()
                 .collectList()
@@ -68,45 +69,46 @@ public class ParamClassAnalyse implements MessageAnalyse {
         analysDeque.addAll(classInfoList);
         handler();
         paramClassMap.forEach(context::addParamClassInfo);
+        this.context.setEnumInfoSet(this.enumInfoSet);
     }
 
     /**
-     * 开始处理分析到的方法参数类信息
+     * 开始处理分析到的方法参数类属性信息
      */
     private void handler() {
         ClassInfo classInfo;
         while ((classInfo = analysDeque.poll()) != null) {
-            ParamClassInfo paramClassInfo = analyseParamClass(classInfo);
+            ParamClassInfo paramClassInfo = analyseClassInfo(classInfo);
             add(classInfo, paramClassInfo);
 
-            //如果有超类，则将超类信息也放入
-            List<TypeInfo> typeInfos = new ArrayList<>();
+            //1、获得属性类的类型信息
+            //2、如果有超类，则将超类的属性类的类型信息也放入
+            List<ClassTypeInfo> propertyClassTypeInfoList = new ArrayList<>();
             paramClassInfo.getProperties().forEach(propertyInfo -> {
-                typeInfos.add(propertyInfo.getTypeInfo());
+                propertyClassTypeInfoList.add(propertyInfo.getTypeInfo());
             });
             if (paramClassInfo.getSuperType() != null) {
-                typeInfos.add(paramClassInfo.getSuperType());
+                propertyClassTypeInfoList.add(paramClassInfo.getSuperType());
             }
 
-            List<ClassInfo> paramInfos = Flux
-                    .fromIterable(typeInfos)
-                    .flatMapIterable(type -> {
-                        List<TypeInfo> types = new ArrayList<>();
-                        findTypes(type, types);
-                        return types;
+            List<ClassInfo> propertyClassInfoList = Flux
+                    .fromIterable(propertyClassTypeInfoList)
+                    .flatMapIterable(classTypeInfo -> {
+                        List<ClassTypeInfo> classTypeInfos = new ArrayList<>();
+                        findTypes(classTypeInfo, classTypeInfos);
+                        return classTypeInfos;
                     })
-                    .filter(typeInfo -> TypeInfo.Type.OTHER.equals(typeInfo.getType()))
-                    .filter(typeInfo -> !typeInfo.isCollection())
-                    .filter(typeInfo -> !typeInfo.isGeneric())
-                    .filter(typeInfo -> !typeInfo.isObject())
+                    .filter(this::filterClassTypeInfo)
                     .map(typeInfo -> new ClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
                     .distinct()
                     .collectList()
                     .block();
 
-            Objects.requireNonNull(paramInfos).forEach(paramInfo -> {
-                if (classInfoSet.add(paramInfo)) {
-                    analysDeque.addFirst(paramInfo);
+            Objects.requireNonNull(propertyClassInfoList).forEach(propertyClassInfo -> {
+                //3、检查属性类信息是否已分析过
+                if (classInfoSet.add(propertyClassInfo)) {
+                    //4、将获取到且未分析过的属性类信息放到待分析队列中
+                    analysDeque.addFirst(propertyClassInfo);
                 }
             });
         }
@@ -118,9 +120,9 @@ public class ParamClassAnalyse implements MessageAnalyse {
     }
 
     /**
-     * 分析参数类信息
+     * 分析类信息
      */
-    private ParamClassInfo analyseParamClass(ClassInfo classInfo) {
+    private ParamClassInfo analyseClassInfo(ClassInfo classInfo) {
         try {
             Class<?> clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getClassName());
 
@@ -135,7 +137,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
             //获取类的超类
             Type genericSuperclass = clazz.getGenericSuperclass();
             if (genericSuperclass != null && !genericSuperclass.equals(Object.class)) {
-                TypeInfo superTypeInfo = TypeInfo.form(genericSuperclass);
+                ClassTypeInfo superTypeInfo = ClassTypeInfo.form(genericSuperclass);
                 paramClassInfo.setSuperType(superTypeInfo);
             }
 
@@ -153,7 +155,7 @@ public class ParamClassAnalyse implements MessageAnalyse {
                         && (method.getName().startsWith("get") || method.getName().startsWith("is"))
                 ) {
                     try {
-                        TypeInfo typeInfo = TypeInfo.form(method.getGenericReturnType());
+                        ClassTypeInfo typeInfo = ClassTypeInfo.form(method.getGenericReturnType());
                         PropertyDescriptor propertyDescriptor = BeanUtils.findPropertyForMethod(method);
                         if (propertyDescriptor != null) {
                             if (typeInfo == null) {
@@ -178,15 +180,27 @@ public class ParamClassAnalyse implements MessageAnalyse {
             paramClassInfo.sortPropertys();
             return paramClassInfo;
         } catch (Throwable th) {
-            log.error("分析message错误,classInfo:{}", classInfo, th);
+            log.error("分析param错误,classInfo:{}", classInfo, th);
             throw new RuntimeException(th);
         }
     }
 
-    private void findTypes(TypeInfo type, List<TypeInfo> list) {
+    private void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {
         list.add(type);
         if (CollectionUtils.isNotEmpty(type.getTypeArguments())) {
             type.getTypeArguments().forEach(t -> findTypes(t, list));
         }
+    }
+
+    private boolean filterClassTypeInfo(ClassTypeInfo classTypeInfo) {
+        if (classTypeInfo.isEnumClass()) {
+            this.enumInfoSet.add(classTypeInfo);
+            return false;
+        }
+
+        return ClassTypeInfo.Type.OTHER.equals(classTypeInfo.getType())
+                && !classTypeInfo.isCollection()
+                && !classTypeInfo.isGeneric()
+                && !classTypeInfo.isObject();
     }
 }
