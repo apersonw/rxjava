@@ -3,6 +3,7 @@ package org.rxjava.common.core.api;
 import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.rxjava.apikit.client.ClientAdapter;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.ConversionService;
@@ -135,6 +136,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
     public <T> Mono<T> request(String method, String uri, List<Map.Entry<String, Object>> form, Type returnType) {
 
         ParameterizedTypeReference<T> typeRef = new ParameterizedTypeReference<T>() {
+            @NotNull
             @Override
             public Type getType() {
                 return returnType;

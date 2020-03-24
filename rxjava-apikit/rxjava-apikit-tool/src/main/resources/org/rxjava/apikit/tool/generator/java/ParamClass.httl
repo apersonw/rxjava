@@ -14,7 +14,6 @@ $!{wrapper.imports}
 @Getter
 @Setter
 public class $!{wrapper.getDistClassName()}$!{wrapper.typeParameters} $!{wrapper.superInfo} {
-
 <!--#for(attr : classInfo.properties)-->
 private $!{wrapper.toJavaTypeString(attr.typeInfo, false, true)} $!{attr.fieldName};
 <!--#end-->

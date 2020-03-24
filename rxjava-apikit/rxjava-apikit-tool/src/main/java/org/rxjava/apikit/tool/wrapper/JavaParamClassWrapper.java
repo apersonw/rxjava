@@ -26,8 +26,8 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
         return Mono
                 .justOrEmpty(classInfo.getSuperType())
                 .map(ClassTypeInfo::getFullName)
-                .filter(fullName -> context.getMessageWrapper(fullName) != null)
-                .map(fullName -> context.getMessageWrapper(fullName))
+                .filter(fullName -> context.getParamWrapper(fullName) != null)
+                .map(fullName -> context.getParamWrapper(fullName))
                 .flatMapMany(w -> {
                     ClassTypeInfo superType = w.getClassInfo().getSuperType();
                     Flux<PropertyInfo> flux = Flux.fromIterable(w.getClassInfo().getProperties());
@@ -60,8 +60,8 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
-                .filter(fullName -> context.getMessageWrapper(fullName) != null)
-                .map(fullName -> context.getMessageWrapper(fullName))
+                .filter(fullName -> context.getParamOrEnumWrapper(fullName) != null)
+                .map(fullName -> context.getParamOrEnumWrapper(fullName))
                 .filter(w -> !w.getDistPackage().equals(getDistPackage()))
                 .doOnNext(r -> sb.append("import ").append(r.getDistPackage()).append(".").append(r.getDistClassName()).append(";\n"))
                 .collectList()
@@ -98,6 +98,9 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
         }
     }
 
+    /**
+     * 编码
+     */
     public String encodeCode(String start, String parentName) {
         if (classInfo.hasGenerics()) {
             return "throw new RuntimeException(\"不支持泛型\");";
@@ -148,7 +151,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                             .append("));\n");
                     sb.append(start).append("}\n");
                 }
-            } else if (typeInfo.isOtherType()) {
+            } else if (typeInfo.isOtherType() && !typeInfo.isEnumClass()) {
                 sb.append(start).append(" if (").append(name).append(" != null) {\n");
                 sb.append(start).append("    ").append(name).append(".encode(").append(parentName).append(" + \"").append(name).append(".\", $list);");
                 sb.append(start).append("}\n");

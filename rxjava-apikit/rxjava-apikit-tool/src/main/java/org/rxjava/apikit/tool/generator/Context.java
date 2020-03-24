@@ -2,6 +2,7 @@ package org.rxjava.apikit.tool.generator;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.ObjectUtils;
 import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 
@@ -75,8 +76,16 @@ public class Context {
         return enumParamMap.values();
     }
 
-    public BuilderWrapper<ParamClassInfo> getMessageWrapper(String fullName) {
+    public BuilderWrapper<ParamClassInfo> getParamWrapper(String fullName) {
         return paramClassWrapperMap.get(fullName);
+    }
+
+    public BuilderWrapper<? extends ClassInfo> getParamOrEnumWrapper(String fullName) {
+        BuilderWrapper<ParamClassInfo> paramClassInfoBuilderWrapper = paramClassWrapperMap.get(fullName);
+        if (ObjectUtils.isEmpty(paramClassInfoBuilderWrapper)) {
+            return enumParamClassWrapperMap.get(fullName);
+        }
+        return paramClassInfoBuilderWrapper;
     }
 
 }

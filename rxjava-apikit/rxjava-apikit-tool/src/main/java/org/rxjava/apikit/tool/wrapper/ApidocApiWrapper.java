@@ -116,8 +116,8 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
-                .filter(fullName -> context.getMessageWrapper(fullName) != null)
-                .map(fullName -> context.getMessageWrapper(fullName))
+                .filter(fullName -> context.getParamWrapper(fullName) != null)
+                .map(fullName -> context.getParamWrapper(fullName))
                 .filter(w -> !w.getDistFolder().equals(getDistFolder()))
                 .doOnNext(r -> {
                     String name = r.getDistClassName();

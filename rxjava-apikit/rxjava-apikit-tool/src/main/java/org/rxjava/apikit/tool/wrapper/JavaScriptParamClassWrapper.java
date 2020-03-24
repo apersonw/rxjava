@@ -22,8 +22,8 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
         return Mono
                 .justOrEmpty(classInfo.getSuperType())
                 .map(ClassTypeInfo::getFullName)
-                .filter(fullName -> context.getMessageWrapper(fullName) != null)
-                .map(fullName -> context.getMessageWrapper(fullName))
+                .filter(fullName -> context.getParamWrapper(fullName) != null)
+                .map(fullName -> context.getParamWrapper(fullName))
                 .flatMapMany(w -> {
                     ClassTypeInfo superType = w.getClassInfo().getSuperType();
                     Flux<PropertyInfo> flux = Flux.fromIterable(w.getClassInfo().getProperties());
@@ -64,8 +64,8 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
-                .filter(fullName -> context.getMessageWrapper(fullName) != null)
-                .map(fullName -> context.getMessageWrapper(fullName))
+                .filter(fullName -> context.getParamWrapper(fullName) != null)
+                .map(fullName -> context.getParamWrapper(fullName))
                 .doOnNext(r -> {
                     String distPackage = getDistPackage();
                     String proTypeName = r.getDistClassName();
