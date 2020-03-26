@@ -14,9 +14,6 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 public class TestForm extends TestSuperForm {
-    @NotNull
-    @NotEmpty
-    private String id;
     private ObjectId objectId;
     private TestEnumType testEnumType;
 }

@@ -1,6 +1,7 @@
 package org.rxjava.service.example.person;
 
 import org.rxjava.service.example.form.TestForm;
+import org.rxjava.service.example.model.OpResult;
 import org.rxjava.service.example.model.TestModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +22,15 @@ public class TestController {
      * 路径变量测试
      */
     @GetMapping("path/{id}")
-    public Mono<TestModel> testPath(
+    public Mono<OpResult<TestModel>> testPath(
             @PathVariable String id,
             @Valid TestForm form
     ) {
-        return Mono.just(new TestModel());
+        TestModel testModel = new TestModel();
+        testModel.setId("haha");
+        testModel.setName("我是testModel");
+        OpResult<TestModel> opResult = new OpResult<>();
+        opResult.setData(testModel);
+        return Mono.just(opResult);
     }
 }
