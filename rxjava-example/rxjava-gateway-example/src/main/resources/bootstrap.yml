@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: rxjava-gateway-example
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017
+      database: rxjava-gateway-example
+      auto-index-creation: false
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 10
+        prefetch: 1
+        default-requeue-rejected: true
+        auto-startup: true
+  cloud:
+    kubernetes:
+      config:
+        enabled: false
+      discovery:
+        enabled: false
+    bus:
+      enabled: false
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+          custom: true
+server:
+  port: 8080
+mock:
+  userId: alkjqwerpoiuasdf
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
