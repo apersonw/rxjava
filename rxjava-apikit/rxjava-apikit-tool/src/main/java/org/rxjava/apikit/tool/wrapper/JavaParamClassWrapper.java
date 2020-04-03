@@ -44,8 +44,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
     public String imports() {
         StringBuilder sb = new StringBuilder();
 
-        Flux
-                .fromIterable(classInfo.getProperties())
+        Flux.fromIterable(classInfo.getProperties())
                 .mergeWith(getSupper())
                 .distinct(FieldInfo::getFieldName)
                 .map(FieldInfo::getTypeInfo)
@@ -57,6 +56,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                 .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
+                .filter(ClassTypeInfo::isObjectId)
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
@@ -127,7 +127,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                             .append(name)
                             .append("));\n");
                     sb.append(start).append("}\n");
-                } else if (typeInfo.isOtherType()) {
+                } else if (typeInfo.isOtherType() && typeInfo.isObjectId()) {
                     sb.append(start).append(" if (").append(name).append(" != null && (!").append(name).append(".isEmpty())) {\n");
                     sb.append(start).append("for (int i = 0; i < ").append(name).append(".size(); i++) {\n");
                     sb.append(start).append("    ").append(name).append(".get(i).encode(").append(parentName).append(" + \"")
@@ -137,7 +137,7 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                 } else if (typeInfo.isString()) {
                     sb.append(start).append(" if (").append(name).append(" != null && (!").append(name).append(".isEmpty())) {\n");
                     sb.append(start).append("for (int i = 0; i < ").append(name).append(".size(); i++) {\n");
-                    sb.append("$list.add(new SimpleImmutableEntry<>(" + parentName + " + \"")
+                    sb.append("$list.add(new SimpleImmutableEntry<>(").append(parentName).append(" + \"")
                             .append(name).append("\", ")
                             .append(name)
                             .append(".get(i)));\n");
@@ -145,13 +145,13 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                     sb.append(start).append("}\n");
                 } else {
                     sb.append(start).append(" if (").append(name).append(" != null && (!").append(name).append(".isEmpty())) {\n");
-                    sb.append("$list.add(new SimpleImmutableEntry<>(" + parentName + " + \"")
+                    sb.append("$list.add(new SimpleImmutableEntry<>(").append(parentName).append(" + \"")
                             .append(name).append("\", ")
                             .append(name)
                             .append("));\n");
                     sb.append(start).append("}\n");
                 }
-            } else if (typeInfo.isOtherType() && !typeInfo.isEnumClass()) {
+            } else if (typeInfo.isOtherType() && !typeInfo.isEnumClass() && typeInfo.isObjectId()) {
                 sb.append(start).append(" if (").append(name).append(" != null) {\n");
                 sb.append(start).append("    ").append(name).append(".encode(").append(parentName).append(" + \"").append(name).append(".\", $list);");
                 sb.append(start).append("}\n");

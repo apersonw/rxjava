@@ -43,7 +43,7 @@ public class ParamClassAnalyse implements Analyse {
         this.context = context;
         //1、获取待分析的参数类信息
         //2、获得待分析的参数类属性类信息
-        //3、过滤掉集合类、泛型类、对象类
+        //3、过滤掉集合类、泛型类、对象类、ObjectId类
         //4、转换为ClassInfo类型
         List<ClassInfo> classInfoList = Flux
                 .fromIterable(context.getApis().getValues())
@@ -201,6 +201,7 @@ public class ParamClassAnalyse implements Analyse {
         return ClassTypeInfo.Type.OTHER.equals(classTypeInfo.getType())
                 && !classTypeInfo.isCollection()
                 && !classTypeInfo.isGeneric()
-                && !classTypeInfo.isObject();
+                && !classTypeInfo.isObject()
+                && classTypeInfo.isObjectId();
     }
 }

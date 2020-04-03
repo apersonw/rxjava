@@ -3,6 +3,7 @@ package org.rxjava.apikit.tool.info;
 import com.google.common.collect.ImmutableMap;
 import lombok.Data;
 import org.apache.commons.lang3.ClassUtils;
+import org.bson.types.ObjectId;
 
 import java.lang.reflect.TypeVariable;
 import java.time.Instant;
@@ -59,6 +60,13 @@ public class ClassTypeInfo implements Cloneable{
      */
     public boolean isObject() {
         return isOtherType() && getFullName().equals(Object.class.getName());
+    }
+
+    /**
+     * 是否ObjectId
+     */
+    public boolean isObjectId() {
+        return !isOtherType() || !getFullName().equals(ObjectId.class.getName());
     }
 
     public ClassTypeInfo() {

@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleImmutableEntry;
+import org.bson.types.ObjectId;
 $!{wrapper.imports}
 
 @Getter
