@@ -30,6 +30,8 @@ public class TestController {
         TestModel testModel = new TestModel();
         testModel.setId("haha");
         testModel.setName("我是testModel");
+        log.info("TestController id:{}",id);
+        log.info("TestController objectId:{}",form.getObjectId());
         log.info("TestController testPath:{}",testModel);
         return Mono.just(testModel);
     }
