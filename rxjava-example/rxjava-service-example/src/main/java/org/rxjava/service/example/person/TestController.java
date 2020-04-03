@@ -1,5 +1,6 @@
 package org.rxjava.service.example.person;
 
+import lombok.extern.slf4j.Slf4j;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.model.TestModel;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("mergeTestPath")
+@Slf4j
 public class TestController {
 
     /**
@@ -28,6 +30,7 @@ public class TestController {
         TestModel testModel = new TestModel();
         testModel.setId("haha");
         testModel.setName("我是testModel");
+        log.info("TestController testPath:{}",testModel);
         return Mono.just(testModel);
     }
 }

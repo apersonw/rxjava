@@ -60,24 +60,37 @@ public class EnumClassAnalyse implements Analyse {
      */
     private EnumParamClassInfo analyseClassInfo(ClassInfo classInfo) {
         try {
-            Class<?> clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getClassName());
+            Class enumClass = Class.forName(classInfo.getPackageName() + "." + classInfo.getClassName());
+            Enum[] enumConstants = (Enum[]) enumClass.getEnumConstants();
 
             EnumParamClassInfo enumParamClassInfo = new EnumParamClassInfo();
             enumParamClassInfo.setPackageName(classInfo.getPackageName());
             enumParamClassInfo.setClassName(classInfo.getClassName());
-            enumParamClassInfo.setClazz(clazz);
+            enumParamClassInfo.setClazz(enumClass);
+
+            //设置枚举常量信息
+            List<EnumConstantInfo> enumConstantInfos = Arrays.stream(enumConstants)
+                    .map(a -> {
+                        EnumConstantInfo enumConstantInfo = new EnumConstantInfo();
+                        enumConstantInfo.setName(a.name());
+                        enumConstantInfo.setOrdinal(a.ordinal());
+                        return enumConstantInfo;
+                    })
+                    .collect(Collectors.toList());
+            enumParamClassInfo.setEnumConstantInfos(enumConstantInfos);
+
             //设置注释
-            Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(context.getJavaFilePath(), clazz);
+            Optional<JdtClassWrapper> optionalJdtClassWrapper = JdtClassWrapper.getOptionalJavadocInfo(context.getJavaFilePath(), enumClass);
             optionalJdtClassWrapper.ifPresent(jdtClassWrapper -> enumParamClassInfo.setJavaDocInfo(jdtClassWrapper.getClassComment()));
 
             //获取类的超类
-            Type genericSuperclass = clazz.getGenericSuperclass();
+            Type genericSuperclass = enumClass.getGenericSuperclass();
             if (genericSuperclass != null && !genericSuperclass.equals(Object.class)) {
                 ClassTypeInfo superTypeInfo = ClassTypeInfo.form(genericSuperclass);
                 enumParamClassInfo.setSuperType(superTypeInfo);
             }
 
-            TypeVariable<?>[] typeParameters = clazz.getTypeParameters();
+            TypeVariable<?>[] typeParameters = enumClass.getTypeParameters();
             for (TypeVariable<?> typeParameter : typeParameters) {
                 enumParamClassInfo.addTypeParameter(typeParameter.getName());
             }

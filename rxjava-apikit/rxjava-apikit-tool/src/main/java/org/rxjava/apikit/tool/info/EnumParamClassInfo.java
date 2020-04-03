@@ -25,6 +25,10 @@ public class EnumParamClassInfo extends ClassInfo {
     private Class clazz;
     protected TypeDeclaration type;
     private List<String> typeParameters = new ArrayList<>();
+    /**
+     * 枚举常量信息
+     */
+    private List<EnumConstantInfo> enumConstantInfos;
 
     public JavaDocInfo getClassComment() {
         return transform(type.getJavadoc());
