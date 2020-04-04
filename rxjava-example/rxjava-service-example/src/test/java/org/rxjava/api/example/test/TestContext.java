@@ -11,12 +11,11 @@ import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-//@Import(RxJavaWebFluxConfigurer.class)
 public class TestContext {
 
     @Bean
     public ClientAdapter clientAdapter() {
-        return ReactiveHttpClientAdapter.build(new DefaultFormattingConversionService(), WebClient.builder(), "rxjava-service-example");
+        return ReactiveHttpClientAdapter.build(new DefaultFormattingConversionService(), WebClient.builder(), "localhost");
     }
 
     @Bean

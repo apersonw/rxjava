@@ -31,7 +31,6 @@ public class ApikitsMojo extends AbstractMojo {
                 .filter(str -> !str.contains("generated-sources/annotations"))
                 .toArray(String[]::new);
 
-
         if (compileSourceRoots.length > 1) {
             throw new RuntimeException("Multiple compileSourceRoot is not supported");
         }

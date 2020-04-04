@@ -1,8 +1,11 @@
 package org.rxjava.service.example.person;
 
 import lombok.extern.slf4j.Slf4j;
+import org.rxjava.service.example.entity.Example;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.model.TestModel;
+import org.rxjava.service.example.repository.ExampleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,9 @@ import javax.validation.Valid;
 @Slf4j
 public class TestController {
 
+    @Autowired
+    private ExampleRepository exampleRepository;
+
     /**
      * 路径变量测试
      */
@@ -33,6 +39,8 @@ public class TestController {
         log.info("TestController id:{}",id);
         log.info("TestController objectId:{}",form.getObjectId());
         log.info("TestController testPath:{}",testModel);
-        return Mono.just(testModel);
+        Example example = new Example();
+        example.setName("我是测试人员");
+        return exampleRepository.save(example).thenReturn(testModel);
     }
 }
