@@ -35,16 +35,11 @@ public class ApikitsMojo extends AbstractMojo {
             throw new RuntimeException("Multiple compileSourceRoot is not supported");
         }
         String sourcePath = compileSourceRoots[0];
-
         try {
-
             getLog().info("开始执行全部任务:" + groups);
-
             for (Group group : groups) {
                 getLog().info("开始执行第一组:" + group);
-
                 MavenUtils.generate(project, group, sourcePath, compileSourceRoots);
-
                 getLog().info("结束第一组:" + group);
             }
         } catch (Exception e) {
