@@ -1,18 +1,20 @@
 package org.rxjava.apikit.client;
 
-/**
- * @author happy
- */
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author happy
+ */
 public class ApiUtils {
     /**
      * 正则表达式名称
@@ -23,9 +25,10 @@ public class ApiUtils {
      * 展开Uri组件
      */
     public static String expandUriComponent(String url, Map<String, ?> uriVariables) {
-        if (url == null) {
-            return null;
+        if (StringUtils.isEmpty(url)) {
+            return "";
         } else if (url.indexOf(123) == -1) {
+            //若是未找到{则直接返回url
             return url;
         } else {
             Matcher matcher = NAMES_PATTERN.matcher(url);
@@ -34,16 +37,16 @@ public class ApiUtils {
             String replacement;
             for (sb = new StringBuffer(); matcher.find(); matcher.appendReplacement(sb, replacement)) {
                 String match = matcher.group(1);
-                String variableName = getVariableName(match);
-                Object variableValue = uriVariables.get(variableName);
-                if (variableValue == null) {
+                String varName = getVariableName(match);
+                Object varValue = uriVariables.get(varName);
+                if (varValue == null) {
                     throw new RuntimeException("协议定义错误，需要参数未找到");
                 }
 
-                String variableValueString = getVariableValueAsString(variableValue);
+                String varValueString = getVarValueAsString(varValue);
 
                 try {
-                    replacement = Matcher.quoteReplacement(URLEncoder.encode(variableValueString, "utf8"));
+                    replacement = Matcher.quoteReplacement(URLEncoder.encode(varValueString, "utf8"));
                 } catch (UnsupportedEncodingException var10) {
                     throw new RuntimeException(var10);
                 }
@@ -52,6 +55,12 @@ public class ApiUtils {
             matcher.appendTail(sb);
             return sb.toString();
         }
+    }
+
+    public static void main(String[] args) {
+        Map<String, Object> _uriVariables = new HashMap<>();
+        _uriVariables.put("id", "testId");
+        String _url = ApiUtils.expandUriComponent("mergeTestPath/path/{id}", _uriVariables);
     }
 
     /**
@@ -65,7 +74,7 @@ public class ApiUtils {
     /**
      * 获取变量值并转化为字符串
      */
-    private static String getVariableValueAsString(Object variableValue) {
+    private static String getVarValueAsString(Object variableValue) {
         if (variableValue != null) {
             if (variableValue instanceof List) {
                 List list = (List) variableValue;

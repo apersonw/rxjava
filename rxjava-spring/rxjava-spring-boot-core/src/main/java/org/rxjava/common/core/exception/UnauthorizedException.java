@@ -6,6 +6,9 @@ import reactor.core.publisher.Mono;
 import java.text.MessageFormat;
 import java.util.stream.Stream;
 
+/**
+ * 未授权异常
+ */
 public class UnauthorizedException extends RuntimeException {
     private ErrorMessage errorMessage;
 

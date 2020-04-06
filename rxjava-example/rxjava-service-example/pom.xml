@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava-service</artifactId>
-        <version>1.0.8-SNAPSHOT</version>
+        <version>1.0.9-SNAPSHOT</version>
     </parent>
     <artifactId>rxjava-service-example</artifactId>
     <packaging>jar</packaging>

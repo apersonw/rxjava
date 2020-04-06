@@ -2,6 +2,7 @@ package org.rxjava.common.core.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 
 import java.time.LocalDateTime;
 
@@ -15,15 +16,15 @@ public class LoginInfo {
     /**
      * 用户Id
      */
-    private String userId;
+    private ObjectId userId;
     /**
      * 用户登陆信息对应的token
      */
     private String token;
     /**
-     * 合作伙伴Id
+     * 应用Id
      */
-    private String partnerId;
+    private ObjectId appId;
     /**
      * 过期时间
      */

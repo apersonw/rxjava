@@ -6,6 +6,9 @@ import reactor.core.publisher.Mono;
 import java.text.MessageFormat;
 import java.util.stream.Stream;
 
+/**
+ * 禁止异常
+ */
 public class ForbiddenException extends RuntimeException {
     private ErrorMessage errorMessage;
 

@@ -2,7 +2,9 @@ package org.rxjava.common.core.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.rxjava.common.core.status.EntityStatus;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -14,14 +16,26 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
 
 /**
  * @author happy 2019/10/20 02:10
+ * 修改为通用实体
  */
 @Getter
 @Setter
 @Document
-public class BaseEntity {
+public class CommonEntity {
+    /**
+     * 实体Id
+     */
+    @Id
     private String id;
+    /**
+     * 乐观锁
+     */
     @Version
     private long version;
+    /**
+     * 实体状态
+     */
+    private EntityStatus entityStatus = EntityStatus.INIT;
     /**
      * 创建日期
      */

@@ -4,13 +4,19 @@ import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.rxjava.apikit.client.ApiType;
+import org.rxjava.apikit.client.ApiUtils;
 import org.rxjava.apikit.client.ClientAdapter;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.ResolvableType;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ReactiveHttpInputMessage;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
+import org.springframework.web.reactive.function.BodyExtractor;
+import org.springframework.web.reactive.function.BodyExtractors;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -184,5 +190,4 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
         return retrieve
                 .bodyToMono(typeRef);
     }
-
 }

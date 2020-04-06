@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 /**
  * @author happy
- * 客户端适配器
+ * Api适配器
  */
 public interface ClientAdapter {
     /**

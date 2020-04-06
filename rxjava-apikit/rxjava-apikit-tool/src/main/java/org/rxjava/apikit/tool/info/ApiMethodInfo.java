@@ -72,9 +72,9 @@ public class ApiMethodInfo {
         if (param.isFormParam()) {
             formParams.add(param);
         }
-        if (formParams.size() > 1) {
-            throw new RuntimeException("分析错误！暂时只支持单表单");
-        }
+//        if (formParams.size() > 1) {
+//            throw new RuntimeException("分析错误！暂时只支持单表单");
+//        }
     }
 
     protected void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {

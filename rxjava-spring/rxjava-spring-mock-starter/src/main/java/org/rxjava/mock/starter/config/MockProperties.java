@@ -2,6 +2,7 @@ package org.rxjava.mock.starter.config;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(
@@ -10,5 +11,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 public class MockProperties {
-    private String userId;
+    private ObjectId userId;
 }

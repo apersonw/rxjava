@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 public class DefaultLoginInfoServiceImpl implements LoginInfoService {
     /**
      * Token检查
+     * 默认不返回登陆信息
      */
     @Override
     public Mono<LoginInfo> checkToken(ServerWebExchange serverWebExchange) {
