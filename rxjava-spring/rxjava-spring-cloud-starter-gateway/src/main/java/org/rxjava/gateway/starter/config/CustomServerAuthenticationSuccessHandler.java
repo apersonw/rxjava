@@ -3,6 +3,7 @@ package org.rxjava.gateway.starter.config;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.core.Authentication;
@@ -35,26 +36,32 @@ public class CustomServerAuthenticationSuccessHandler implements ServerAuthentic
             return chain.filter(exchange);
         }
 
-        String loginInfoJson = null;
-        try {
-            loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        return Mono.just(loginInfo)
+                .map(a -> {
+                    String loginInfoJson;
+                    try {
+                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        throw ErrorMessageException.of("不支持的编码异常");
+                    }
+                    return loginInfoJson;
+                })
+                .flatMap(loginInfoJson -> {
+                    if (StringUtils.isEmpty(loginInfoJson)) {
+                        return chain.filter(exchange);
+                    }
+                    ServerHttpRequest host = request
+                            .mutate()
+                            .header("loginInfo", loginInfoJson)
+                            .build();
+                    ServerWebExchange build = exchange
+                            .mutate()
+                            .request(host)
+                            .build();
 
-        if (StringUtils.isEmpty(loginInfoJson)) {
-            return chain.filter(exchange);
-        }
+                    return chain.filter(build);
+                });
 
-        ServerHttpRequest host = request
-                .mutate()
-                .header("loginInfo", loginInfoJson)
-                .build();
-        ServerWebExchange build = exchange
-                .mutate()
-                .request(host)
-                .build();
-
-        return chain.filter(build);
     }
 }

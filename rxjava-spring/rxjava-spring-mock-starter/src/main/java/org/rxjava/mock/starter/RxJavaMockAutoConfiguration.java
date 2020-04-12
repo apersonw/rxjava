@@ -1,6 +1,8 @@
 package org.rxjava.mock.starter;
 
+import org.jetbrains.annotations.NotNull;
 import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.rxjava.mock.starter.config.MockProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,28 +33,35 @@ public class RxJavaMockAutoConfiguration implements WebFilter {
     @Autowired
     private MockProperties mockProperties;
 
+    @NotNull
     @Override
-    public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
+    public Mono<Void> filter(@NotNull ServerWebExchange serverWebExchange, @NotNull WebFilterChain webFilterChain) {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setUserId(mockProperties.getUserId());
 
-        String loginInfoJson = null;
-        try {
-            loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        return Mono.just(loginInfo)
+                .map(a -> {
+                    String loginInfoJson;
+                    try {
+                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        throw ErrorMessageException.of("不支持的编码异常");
+                    }
+                    return loginInfoJson;
+                })
+                .flatMap(loginInfoJson -> {
+                    ServerHttpRequest request = serverWebExchange.getRequest();
+                    ServerHttpRequest host = request
+                            .mutate()
+                            .header(LOGIN_INFO, Objects.requireNonNull(loginInfoJson))
+                            .build();
+                    ServerWebExchange build = serverWebExchange
+                            .mutate()
+                            .request(host)
+                            .build();
 
-        ServerHttpRequest request = serverWebExchange.getRequest();
-        ServerHttpRequest host = request
-                .mutate()
-                .header(LOGIN_INFO, Objects.requireNonNull(loginInfoJson))
-                .build();
-        ServerWebExchange build = serverWebExchange
-                .mutate()
-                .request(host)
-                .build();
-
-        return webFilterChain.filter(build);
+                    return webFilterChain.filter(build);
+                });
     }
 }
