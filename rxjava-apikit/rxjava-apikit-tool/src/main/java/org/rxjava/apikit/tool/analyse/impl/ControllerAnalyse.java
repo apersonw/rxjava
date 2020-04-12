@@ -60,14 +60,22 @@ public class ControllerAnalyse implements Analyse {
         this.context = context;
         try (ScanResult scanResult =
                      new ClassGraph()
-                             .verbose()
-                             .enableAllInfo()
                              .whitelistPackages(context.getRootPackage())
+                             .enableAnnotationInfo()
                              .addClassLoader(ControllerAnalyse.class.getClassLoader())
                              .scan()) {
-            scanResult.getAllClasses().forEach(classInfo -> {
-                this.analyseClass(classInfo.loadClass());
-            });
+            scanResult.getAllClasses()
+                    .filter(classInfo -> {
+                        //检查类是否处于root包下
+                        String classPackageName = classInfo.getName();
+                        if (!classPackageName.startsWith(context.getRootPackage())) {
+                            return false;
+                        }
+
+                        //检查类上是否有Controller注解
+                        return classInfo.getAnnotationInfo(Controller.class.getName()) != null;
+                    })
+                    .forEach(classInfo -> this.analyseClass(classInfo.loadClass()));
         }
     }
 
@@ -75,24 +83,12 @@ public class ControllerAnalyse implements Analyse {
      * 分析Controller类信息
      */
     private void analyseClass(Class<?> cls) {
-        //检查类是否处于root包下
-        String classPackageName = cls.getPackage().getName();
-        if (!classPackageName.startsWith(context.getRootPackage())) {
-            return;
-        }
-
-        //检查类上是否有Controller注解
-        Controller controllerAnnotation = AnnotationUtils.getAnnotation(cls, Controller.class);
-        if (controllerAnnotation == null) {
-            return;
-        }
-
         //分析类下的Api信息
         ApiClassInfo apiClassInfo = new ApiClassInfo();
         //Api名称
         apiClassInfo.setClassName(cls.getSimpleName());
         //包名
-        apiClassInfo.setPackageName(classPackageName);
+        apiClassInfo.setPackageName(cls.getPackage().getName());
 
         //从源码类获取注释信息
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
