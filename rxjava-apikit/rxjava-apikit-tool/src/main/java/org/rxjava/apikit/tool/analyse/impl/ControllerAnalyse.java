@@ -5,10 +5,7 @@ import com.thoughtworks.paranamer.BytecodeReadingParanamer;
 import com.thoughtworks.paranamer.CachingParanamer;
 import com.thoughtworks.paranamer.Paranamer;
 import httl.util.CollectionUtils;
-import io.github.classgraph.AnnotationInfo;
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.ScanResult;
+import io.github.classgraph.*;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -75,30 +72,34 @@ public class ControllerAnalyse implements Analyse {
                         //检查类上是否有Controller注解
                         return classInfo.getAnnotationInfo(Controller.class.getName()) != null;
                     })
-                    .forEach(classInfo -> this.analyseClass(classInfo.loadClass()));
+                    .forEach(classInfo -> this.analyseClass(classInfo.loadClass(),classInfo));
         }
     }
 
     /**
      * 分析Controller类信息
      */
-    private void analyseClass(Class<?> cls) {
+    private void analyseClass(Class<?> cls, ClassInfo classInfo) {
         //分析类下的Api信息
         ApiClassInfo apiClassInfo = new ApiClassInfo();
         //Api名称
-        apiClassInfo.setClassName(cls.getSimpleName());
+        apiClassInfo.setClassName(classInfo.getSimpleName());
         //包名
-        apiClassInfo.setPackageName(cls.getPackage().getName());
+        apiClassInfo.setPackageName(classInfo.getPackageName());
 
         //从源码类获取注释信息
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
         apiClassInfo.setJavaDocInfo(jdtClassWrapper.getClassComment());
 
-        RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(cls, RequestMapping.class);
+        RequestMapping requestMappingAnnotation = (RequestMapping)classInfo.getAnnotationInfo(RequestMapping.class.getName()).loadClassAndInstantiate();
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
                 : "";
 
+//        MethodInfoList methodInfoList = classInfo.getMethodInfo();
+//        methodInfoList.forEach(methodInfo -> {
+//
+//        });
         List<ApiMethodInfo> apiMethodInfos = Arrays
                 .stream(cls.getMethods())
                 .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class)
