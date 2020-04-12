@@ -30,7 +30,7 @@
         <commons-io.version>2.6</commons-io.version>
         <javassist.version>3.23.1-GA</javassist.version>
         <paranamer.version>2.8</paranamer.version>
-        <fast-classpath-scanner.version>2.18.1</fast-classpath-scanner.version>
+        <classgraph.version>4.8.69</classgraph.version>
         <org.eclipse.jgit.version>5.5.1.201910021850-r</org.eclipse.jgit.version>
         <org.eclipse.jdt.core.version>3.19.0</org.eclipse.jdt.core.version>
         <httl.version>1.0.11</httl.version>
@@ -191,9 +191,9 @@
             </dependency>
             <!--快速扫描指定包路径下的类的库-->
             <dependency>
-                <groupId>io.github.lukehutch</groupId>
-                <artifactId>fast-classpath-scanner</artifactId>
-                <version>${fast-classpath-scanner.version}</version>
+                <groupId>io.github.classgraph</groupId>
+                <artifactId>classgraph</artifactId>
+                <version>${classgraph.version}</version>
             </dependency>
             <!--获取java类参数信息的库-->
             <dependency>

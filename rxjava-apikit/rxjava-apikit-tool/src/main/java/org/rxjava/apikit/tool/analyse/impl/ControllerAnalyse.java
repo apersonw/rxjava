@@ -5,7 +5,10 @@ import com.thoughtworks.paranamer.BytecodeReadingParanamer;
 import com.thoughtworks.paranamer.CachingParanamer;
 import com.thoughtworks.paranamer.Paranamer;
 import httl.util.CollectionUtils;
-import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
+import io.github.classgraph.AnnotationInfo;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
+import io.github.classgraph.ScanResult;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -55,10 +58,17 @@ public class ControllerAnalyse implements Analyse {
     @Override
     public void analyse(Context context) {
         this.context = context;
-        FastClasspathScanner scanner = new FastClasspathScanner(context.getRootPackage());
-        scanner.addClassLoader(ControllerAnalyse.class.getClassLoader());
-        scanner.matchAllClasses(this::analyseClass);
-        scanner.scan();
+        try (ScanResult scanResult =
+                     new ClassGraph()
+                             .verbose()
+                             .enableAllInfo()
+                             .whitelistPackages(context.getRootPackage())
+                             .addClassLoader(ControllerAnalyse.class.getClassLoader())
+                             .scan()) {
+            scanResult.getAllClasses().forEach(classInfo -> {
+                this.analyseClass(classInfo.loadClass());
+            });
+        }
     }
 
     /**
