@@ -60,8 +60,8 @@ public class ControllerAnalyse implements Analyse {
         this.context = context;
         try (ScanResult scanResult =
                      new ClassGraph()
-                             .whitelistPackages(context.getRootPackage())
                              .enableAnnotationInfo()
+                             .whitelistPackages(context.getRootPackage())
                              .addClassLoader(ControllerAnalyse.class.getClassLoader())
                              .scan()) {
             scanResult.getAllClasses()
