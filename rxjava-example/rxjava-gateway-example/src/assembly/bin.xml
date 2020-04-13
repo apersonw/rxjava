@@ -19,6 +19,9 @@
             <includes>
                 <include>${project.groupId}:*</include>
             </includes>
+            <excludes>
+                <exclude>${project.groupId}:fenglin-spring-boot-starter-service-mock</exclude>
+            </excludes>
             <outputDirectory>lib</outputDirectory>
             <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
