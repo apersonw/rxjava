@@ -31,8 +31,7 @@ public class TestController {
     public Mono<TestModel> testPath(
             @PathVariable String id,
             @Valid TestForm form,
-            @Valid TestMultForm multForm,
-            @RequestPart("file") FilePart filePart
+            @Valid TestMultForm multForm
     ) {
         TestModel testModel = new TestModel();
         testModel.setId("haha");

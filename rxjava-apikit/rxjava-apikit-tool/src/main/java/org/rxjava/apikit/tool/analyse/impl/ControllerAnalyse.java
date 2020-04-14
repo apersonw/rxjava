@@ -22,6 +22,7 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,7 +58,7 @@ public class ControllerAnalyse implements Analyse {
         this.context = context;
         try (ScanResult scanResult =
                      new ClassGraph()
-                             .enableAnnotationInfo()
+                             .enableAllInfo()
                              .whitelistPackages(context.getRootPackage())
                              .addClassLoader(ControllerAnalyse.class.getClassLoader())
                              .scan()) {
@@ -72,14 +73,14 @@ public class ControllerAnalyse implements Analyse {
                         //检查类上是否有Controller注解
                         return classInfo.getAnnotationInfo(Controller.class.getName()) != null;
                     })
-                    .forEach(classInfo -> this.analyseClass(classInfo.loadClass(),classInfo));
+                    .forEach(this::analyseClass);
         }
     }
 
     /**
      * 分析Controller类信息
      */
-    private void analyseClass(Class<?> cls, ClassInfo classInfo) {
+    private void analyseClass(ClassInfo classInfo) {
         //分析类下的Api信息
         ApiClassInfo apiClassInfo = new ApiClassInfo();
         //Api名称
@@ -88,27 +89,25 @@ public class ControllerAnalyse implements Analyse {
         apiClassInfo.setPackageName(classInfo.getPackageName());
 
         //从源码类获取注释信息
-        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), cls);
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), classInfo.loadClass());
         apiClassInfo.setJavaDocInfo(jdtClassWrapper.getClassComment());
 
-        RequestMapping requestMappingAnnotation = (RequestMapping)classInfo.getAnnotationInfo(RequestMapping.class.getName()).loadClassAndInstantiate();
+        RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(classInfo.loadClass(), RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
                 : "";
 
-//        MethodInfoList methodInfoList = classInfo.getMethodInfo();
-//        methodInfoList.forEach(methodInfo -> {
-//
-//        });
-        List<ApiMethodInfo> apiMethodInfos = Arrays
-                .stream(cls.getMethods())
-                .filter(method -> null != AnnotationUtils.getAnnotation(method, RequestMapping.class)
-                        && null == AnnotationUtils.getAnnotation(method, Ignore.class)
-                )
-                .map(method -> this.analyseMethod(method, classMappingPath, jdtClassWrapper))
+        MethodInfoList methodInfoList = classInfo.getMethodInfo();
+        List<ApiMethodInfo> apiMethodInfos = methodInfoList
+                .stream()
+                .filter(methodInfo -> {
+                    AnnotationInfo methodInfoAnnotationInfo = methodInfo.getAnnotationInfo(RequestMapping.class.getName());
+                    AnnotationInfo ignoreAnnotation = methodInfo.getAnnotationInfo(Ignore.class.getName());
+                    return null != methodInfoAnnotationInfo && null == ignoreAnnotation;
+                })
+                .map(methodInfo -> this.analyseMethod(methodInfo, classMappingPath, jdtClassWrapper))
                 .sorted((m1, m2) -> StringUtils.compare(m1.getMethodName(), m2.getMethodName()))
                 .collect(Collectors.toList());
-
         Objects.requireNonNull(apiMethodInfos).forEach(apiClassInfo::addApiMethod);
         context.addApi(apiClassInfo);
     }
@@ -116,24 +115,25 @@ public class ControllerAnalyse implements Analyse {
     /**
      * 分析Controller类方法
      */
-    private ApiMethodInfo analyseMethod(Method method, String parentPath, JdtClassWrapper jdtClassWrapper) {
+    private ApiMethodInfo analyseMethod(MethodInfo methodInfo, String parentPath, JdtClassWrapper jdtClassWrapper) {
+        Method method = methodInfo.loadClassAndGetMethod();
+
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(method, RequestMapping.class);
-        String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
-        RequestMethod[] requestMethods = (RequestMethod[]) annotationAttributes.get("method");
+        RequestMethod[] requestMethods = (RequestMethod[]) Objects.requireNonNull(annotationAttributes).get("method");
 
         ApiMethodInfo apiMethodInfo = new ApiMethodInfo();
         apiMethodInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
-        apiMethodInfo.setMethodName(method.getName());
-        apiMethodInfo.setJavaDocInfo(jdtClassWrapper.getMethodComment(method.getName()));
+        apiMethodInfo.setMethodName(methodInfo.getName());
+        apiMethodInfo.setJavaDocInfo(jdtClassWrapper.getMethodComment(methodInfo.getName()));
 
         //访问路径
+        String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
         String accessPath = toPath(parentPath, pathArray);
         apiMethodInfo.setUrl(accessPath);
 
-        Type type = method.getGenericReturnType();
-
         analyseInputClass(method, apiMethodInfo);
 
+        Type type = method.getGenericReturnType();
         analyseReturnClass(type, apiMethodInfo);
 
         return apiMethodInfo;
@@ -158,36 +158,36 @@ public class ControllerAnalyse implements Analyse {
             }
 
             Type pType = parameter.getParameterizedType();
-            ApiInputClassInfo fieldInfo = new ApiInputClassInfo(paramName, ClassTypeInfo.form(pType));
+            ApiInputClassInfo apiInputClassInfo = new ApiInputClassInfo(paramName, ClassTypeInfo.form(pType));
 
             //检查参数是否路径参数
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
             if (MapUtils.isNotEmpty(pathVarAnnotationAttributes)) {
-                fieldInfo.setPathVariable(true);
+                apiInputClassInfo.setPathVariable(true);
             }
 
             //检查是否表单校验参数
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
             if (validAnnotation != null) {
-                fieldInfo.setFormParam(true);
+                apiInputClassInfo.setFormParam(true);
             }
             //过滤掉可选参数
-            if (!fieldInfo.isFormParam() && !fieldInfo.isPathVariable()) {
+            if (!apiInputClassInfo.isFormParam() && !apiInputClassInfo.isPathVariable()) {
                 continue;
             }
 
-            if (fieldInfo.isFormParam() && fieldInfo.isPathVariable()) {
-                throw new RuntimeException("参数不能同时是路径参数和form" + fieldInfo);
+            if (apiInputClassInfo.isFormParam() && apiInputClassInfo.isPathVariable()) {
+                throw new RuntimeException("参数不能同时是路径参数和form" + apiInputClassInfo);
             }
-            if (fieldInfo.isFormParam()) {
-                if (fieldInfo.getTypeInfo().isArray()) {
-                    throw new RuntimeException("表单对象不支持数组!" + fieldInfo);
+            if (apiInputClassInfo.isFormParam()) {
+                if (apiInputClassInfo.getTypeInfo().isArray()) {
+                    throw new RuntimeException("表单对象不支持数组!" + apiInputClassInfo);
                 }
             }
-            if (fieldInfo.getTypeInfo().getType() == ClassTypeInfo.Type.VOID) {
+            if (apiInputClassInfo.getTypeInfo().getType() == ClassTypeInfo.Type.VOID) {
                 throw new RuntimeException("void 类型只能用于返回值");
             }
-            apiMethodInfo.addParam(fieldInfo);
+            apiMethodInfo.addParam(apiInputClassInfo);
         }
     }
 
@@ -198,6 +198,7 @@ public class ControllerAnalyse implements Analyse {
         if (type == null) {
             throw new RuntimeException("返回类型不能为空!" + apiMethodInfo);
         }
+
         ClassTypeInfo resultType = ClassTypeInfo.form(type);
 
         /*

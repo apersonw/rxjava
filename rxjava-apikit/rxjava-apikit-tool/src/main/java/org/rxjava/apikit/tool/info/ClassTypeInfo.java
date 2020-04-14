@@ -96,7 +96,7 @@ public class ClassTypeInfo implements Cloneable{
     public static ClassTypeInfo form(java.lang.reflect.Type type) {
 
         if (type instanceof Class) {
-            Class cls = (Class) type;
+            Class<?> cls = (Class<?>) type;
             //判断是否枚举类
             if (cls.isEnum()) {
                 ClassTypeInfo typeInfo = new ClassTypeInfo();
@@ -125,7 +125,7 @@ public class ClassTypeInfo implements Cloneable{
             }
         } else if (type instanceof java.lang.reflect.ParameterizedType) {
             java.lang.reflect.ParameterizedType paramType = (java.lang.reflect.ParameterizedType) type;
-            Class rawType = (Class) paramType.getRawType();
+            Class<?> rawType = (Class<?>) paramType.getRawType();
 
             ClassTypeInfo typeInfo = form(rawType);
             java.lang.reflect.Type[] arguments = paramType.getActualTypeArguments();
@@ -135,10 +135,10 @@ public class ClassTypeInfo implements Cloneable{
             }
             return typeInfo;
         } else if (type instanceof TypeVariable) {
-            TypeVariable typeVar = (TypeVariable) type;
+            TypeVariable<?> typeVar = (TypeVariable<?>) type;
             return ClassTypeInfo.formGeneric(typeVar.getName(), false);
         }
-        throw new RuntimeException("暂时不支持的类型，分析失败:" + type);
+        throw new RuntimeException("暂不支持的类型，分析失败:" + type);
     }
 
     public boolean isOtherType() {

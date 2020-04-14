@@ -19,7 +19,10 @@ $!{wrapper.imports}
 public class $!{wrapper.getDistClassName()} {
     private ClientAdapter clientAdapter;
 
-    public $!{wrapper.getDistClassName()}() {
+    /**
+    * 必须注入适配器
+    */
+    private $!{wrapper.getDistClassName()}() {
     }
 
     public $!{wrapper.getDistClassName()}(ClientAdapter clientAdapter) {
@@ -43,14 +46,6 @@ public class $!{wrapper.getDistClassName()} {
         <!--#end-->
     }
     <!--#end-->
-
-    public void setClientAdapter(ClientAdapter clientAdapter) {
-        this.clientAdapter = clientAdapter;
-    }
-
-    public ClientAdapter getClientAdapter() {
-        return clientAdapter;
-    }
 
     <!--#for(method : classInfo.apiMethodList)-->
         $!{wrapper.resultTypeString(method,"    ")}
