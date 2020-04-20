@@ -60,11 +60,7 @@ public class RxJavaWebFluxSecurityConfig {
     private Mono<Authentication> authenticationConverter(ServerWebExchange serverWebExchange) {
         ServerHttpRequest request = serverWebExchange.getRequest();
         String authorization = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-
-        if (StringUtils.isEmpty(authorization)) {
-            return Mono.empty();
-        }
-
+        //token为空的情况由微服务自行检查
         return loginInfoService
                 .checkToken(serverWebExchange)
                 .map(loginInfo -> new AuthenticationToken(authorization, loginInfo));
