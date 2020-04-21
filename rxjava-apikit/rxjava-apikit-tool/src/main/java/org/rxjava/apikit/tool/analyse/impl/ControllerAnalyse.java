@@ -162,7 +162,7 @@ public class ControllerAnalyse implements Analyse {
             //检查参数是否路径参数
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
             if (MapUtils.isNotEmpty(pathVarAnnotationAttributes)) {
-                apiInputClassInfo.setPathVariable(true);
+                apiInputClassInfo.setPathParam(true);
             }
 
             AnnotationAttributes requestParamAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, RequestParam.class);
@@ -170,20 +170,24 @@ public class ControllerAnalyse implements Analyse {
                 apiInputClassInfo.setRequestParam(true);
             }
 
-            //检查是否表单校验参数
+            //检查是否校验参数和json参数对象
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
             if (validAnnotation != null) {
-                apiInputClassInfo.setFormParam(true);
+                apiInputClassInfo.setValidParam(true);
+                RequestBody requestBodyAnnotation = AnnotationUtils.getAnnotation(parameter, RequestBody.class);
+                if (null != requestBodyAnnotation) {
+                    apiInputClassInfo.setJsonParam(true);
+                }
             }
             //过滤掉可选参数
-            if (!apiInputClassInfo.isFormParam() && !apiInputClassInfo.isPathVariable()&&!apiInputClassInfo.isRequestParam()) {
+            if (!apiInputClassInfo.isValidParam() && !apiInputClassInfo.isPathParam() && !apiInputClassInfo.isRequestParam()) {
                 continue;
             }
 
-            if (apiInputClassInfo.isFormParam() && apiInputClassInfo.isPathVariable()) {
+            if (apiInputClassInfo.isValidParam() && apiInputClassInfo.isPathParam()) {
                 throw new RuntimeException("参数不能同时是路径参数和form" + apiInputClassInfo);
             }
-            if (apiInputClassInfo.isFormParam()) {
+            if (apiInputClassInfo.isValidParam()) {
                 if (apiInputClassInfo.getTypeInfo().isArray()) {
                     throw new RuntimeException("表单对象不支持数组!" + apiInputClassInfo);
                 }

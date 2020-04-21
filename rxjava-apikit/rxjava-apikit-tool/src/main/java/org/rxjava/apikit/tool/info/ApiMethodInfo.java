@@ -40,7 +40,7 @@ public class ApiMethodInfo {
      */
     private ClassTypeInfo resultDataType;
     /**
-     * 参数列表
+     * 所有的参数
      */
     private List<ApiInputClassInfo> params = new ArrayList<>();
     /**
@@ -48,9 +48,9 @@ public class ApiMethodInfo {
      */
     private List<ApiInputClassInfo> pathParams = new ArrayList<>();
     /**
-     * 表单参数列表
+     * 验证参数列表
      */
-    private List<ApiInputClassInfo> formParams = new ArrayList<>();
+    private List<ApiInputClassInfo> validParams = new ArrayList<>();
     /**
      * 请求参数列表
      */
@@ -70,18 +70,15 @@ public class ApiMethodInfo {
 
     public void addParam(ApiInputClassInfo param) {
         params.add(param);
-        if (param.isPathVariable()) {
+        if (param.isPathParam()) {
             pathParams.add(param);
         }
-        if (param.isFormParam()) {
-            formParams.add(param);
+        if (param.isValidParam()) {
+            validParams.add(param);
         }
         if (param.isRequestParam()) {
             requestParams.add(param);
         }
-//        if (formParams.size() > 1) {
-//            throw new RuntimeException("分析错误！暂时只支持单表单");
-//        }
     }
 
     protected void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {
