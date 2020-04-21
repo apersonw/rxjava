@@ -92,6 +92,7 @@ public class ControllerAnalyse implements Analyse {
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), classInfo.loadClass());
         apiClassInfo.setJavaDocInfo(jdtClassWrapper.getClassComment());
 
+        //此处注释判断使用spring的注解帮助类可以获取到更多的信息
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(classInfo.loadClass(), RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
@@ -101,8 +102,9 @@ public class ControllerAnalyse implements Analyse {
         List<ApiMethodInfo> apiMethodInfos = methodInfoList
                 .stream()
                 .filter(methodInfo -> {
-                    AnnotationInfo methodInfoAnnotationInfo = methodInfo.getAnnotationInfo(RequestMapping.class.getName());
-                    AnnotationInfo ignoreAnnotation = methodInfo.getAnnotationInfo(Ignore.class.getName());
+                    Method method = methodInfo.loadClassAndGetMethod();
+                    RequestMapping methodInfoAnnotationInfo = AnnotationUtils.getAnnotation(method, RequestMapping.class);
+                    Ignore ignoreAnnotation = AnnotationUtils.getAnnotation(method, Ignore.class);
                     return null != methodInfoAnnotationInfo && null == ignoreAnnotation;
                 })
                 .map(methodInfo -> this.analyseMethod(methodInfo, classMappingPath, jdtClassWrapper))
