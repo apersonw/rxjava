@@ -25,11 +25,11 @@ import java.util.*;
 public class ParamClassAnalyse implements Analyse {
     private static final Logger log = LoggerFactory.getLogger(ParamClassAnalyse.class);
     private Context context;
-    private Set<ClassInfo> classInfoSet = new HashSet<>();
+    private Set<CommonClassInfo> classInfoSet = new HashSet<>();
     private Set<ClassTypeInfo> enumInfoSet = new HashSet<>();
     private List<ParamClassInfo> paramClassInfos = new ArrayList<>();
-    private ArrayDeque<ClassInfo> analysDeque = new ArrayDeque<>();
-    private Map<ClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
+    private ArrayDeque<CommonClassInfo> analysDeque = new ArrayDeque<>();
+    private Map<CommonClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
     private Set<Class<?>> typeBack = ImmutableSet.of(
             Class.class, Object.class, void.class, Void.class
     );
@@ -45,7 +45,7 @@ public class ParamClassAnalyse implements Analyse {
         //2、获得待分析的参数类属性类信息
         //3、过滤掉集合类、泛型类、对象类、ObjectId类
         //4、转换为ClassInfo类型
-        List<ClassInfo> classInfoList = Flux
+        List<CommonClassInfo> classInfoList = Flux
                 .fromIterable(context.getApis().getValues())
                 .flatMapIterable(ApiClassInfo::getApiMethodList)
                 .flatMapIterable(apiMethodInfo -> {
@@ -60,7 +60,7 @@ public class ParamClassAnalyse implements Analyse {
                     return classTypeInfoList;
                 })
                 .filter(this::filterClassTypeInfo)
-                .map(typeInfo -> new ClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
+                .map(typeInfo -> new CommonClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
                 .distinct()
                 .collectList()
                 .block();
@@ -76,7 +76,7 @@ public class ParamClassAnalyse implements Analyse {
      * 开始处理分析到的方法参数类属性信息
      */
     private void handler() {
-        ClassInfo classInfo;
+        CommonClassInfo classInfo;
         while ((classInfo = analysDeque.poll()) != null) {
             ParamClassInfo paramClassInfo = analyseClassInfo(classInfo);
             add(classInfo, paramClassInfo);
@@ -91,7 +91,7 @@ public class ParamClassAnalyse implements Analyse {
                 propertyClassTypeInfoList.add(paramClassInfo.getSuperType());
             }
 
-            List<ClassInfo> propertyClassInfoList = Flux
+            List<CommonClassInfo> propertyClassInfoList = Flux
                     .fromIterable(propertyClassTypeInfoList)
                     .flatMapIterable(classTypeInfo -> {
                         List<ClassTypeInfo> classTypeInfos = new ArrayList<>();
@@ -99,7 +99,7 @@ public class ParamClassAnalyse implements Analyse {
                         return classTypeInfos;
                     })
                     .filter(this::filterClassTypeInfo)
-                    .map(typeInfo -> new ClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
+                    .map(typeInfo -> new CommonClassInfo(typeInfo.getPackageName(), typeInfo.getClassName()))
                     .distinct()
                     .collectList()
                     .block();
@@ -114,7 +114,7 @@ public class ParamClassAnalyse implements Analyse {
         }
     }
 
-    private void add(ClassInfo classInfo, ParamClassInfo paramClassInfo) {
+    private void add(CommonClassInfo classInfo, ParamClassInfo paramClassInfo) {
         paramClassMap.put(classInfo, paramClassInfo);
         paramClassInfos.add(paramClassInfo);
     }
@@ -122,7 +122,7 @@ public class ParamClassAnalyse implements Analyse {
     /**
      * 分析类信息
      */
-    private ParamClassInfo analyseClassInfo(ClassInfo classInfo) {
+    private ParamClassInfo analyseClassInfo(CommonClassInfo classInfo) {
         try {
             Class<?> clazz = Class.forName(classInfo.getPackageName() + "." + classInfo.getClassName());
 

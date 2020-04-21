@@ -20,10 +20,6 @@ import javax.validation.Valid;
 @RequestMapping("mergeTestPath")
 @Slf4j
 public class TestController {
-
-    @Autowired
-    private ExampleRepository exampleRepository;
-
     /**
      * 路径变量测试
      */
@@ -33,14 +29,15 @@ public class TestController {
             @Valid TestForm form,
             @Valid TestMultForm multForm
     ) {
-        TestModel testModel = new TestModel();
-        testModel.setId("haha");
-        testModel.setName("我是testModel");
-        log.info("TestController id:{}", id);
-        log.info("TestController objectId:{}", form.getObjectId());
-        log.info("TestController testPath:{}", testModel);
-        Example example = new Example();
-        example.setName("我是测试人员");
-        return exampleRepository.save(example).thenReturn(testModel);
+//        TestModel testModel = new TestModel();
+//        testModel.setId("haha");
+//        testModel.setName("我是testModel");
+//        log.info("TestController id:{}", id);
+//        log.info("TestController objectId:{}", form.getObjectId());
+//        log.info("TestController testPath:{}", testModel);
+//        Example example = new Example();
+//        example.setName("我是测试人员");
+//        return exampleRepository.save(example).thenReturn(testModel);
+        return Mono.empty();
     }
 }

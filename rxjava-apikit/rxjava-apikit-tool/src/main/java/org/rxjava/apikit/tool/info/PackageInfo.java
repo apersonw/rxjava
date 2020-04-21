@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * @author happy
  */
-public class PackageInfo<T extends ClassInfo> {
+public class PackageInfo<T extends CommonClassInfo> {
 
     private Multimap<String, T> multimap = Multimaps.newListMultimap(
             new ConcurrentSkipListMap<>(), CopyOnWriteArrayList::new

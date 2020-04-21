@@ -2,13 +2,13 @@ package org.rxjava.apikit.tool.wrapper;
 
 import com.google.common.collect.ImmutableMap;
 import org.rxjava.apikit.tool.generator.Context;
-import org.rxjava.apikit.tool.info.ClassInfo;
+import org.rxjava.apikit.tool.info.CommonClassInfo;
 import org.rxjava.apikit.tool.info.ClassTypeInfo;
 
 /**
  * @author happy 2019-05-09 23:04
  */
-public class JavaScriptWrapper<T extends ClassInfo> extends BuilderWrapper<T> {
+public class JavaScriptWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
 
     public JavaScriptWrapper(Context context, T classInfo, String rootPackage) {
         super(context, classInfo, rootPackage);

@@ -8,14 +8,15 @@ import lombok.Setter;
 
 /**
  * @author happy
+ * 通用类信息
  */
 @Setter
 @Getter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class ClassInfo {
+public class CommonClassInfo {
     /**
-     * Java文档信息
+     * 类上的JavaDoc
      */
     protected JavaDocInfo javaDocInfo;
     /**
@@ -31,7 +32,7 @@ public class ClassInfo {
         return packageName + "." + className;
     }
 
-    public ClassInfo(String packageName, String className) {
+    public CommonClassInfo(String packageName, String className) {
         this.packageName = packageName;
         this.className = className;
     }

@@ -5,11 +5,7 @@ import org.rxjava.apikit.tool.analyse.Analyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.utils.JdtClassWrapper;
-import org.springframework.beans.BeanUtils;
 
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.*;
@@ -20,15 +16,15 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class EnumClassAnalyse implements Analyse {
-    private Map<ClassInfo, EnumParamClassInfo> enumParamClassMap = new HashMap<>();
-    private ArrayDeque<ClassInfo> analysDeque = new ArrayDeque<>();
+    private Map<CommonClassInfo, EnumParamClassInfo> enumParamClassMap = new HashMap<>();
+    private ArrayDeque<CommonClassInfo> analysDeque = new ArrayDeque<>();
     private Context context;
 
     @Override
     public void analyse(Context context) {
         this.context = context;
         Set<ClassTypeInfo> enumInfoSet = context.getEnumInfoSet();
-        List<ClassInfo> classInfos = enumInfoSet.stream().map(classTypeInfo -> new ClassInfo(classTypeInfo.getPackageName(), classTypeInfo.getClassName())).collect(Collectors.toList());
+        List<CommonClassInfo> classInfos = enumInfoSet.stream().map(classTypeInfo -> new CommonClassInfo(classTypeInfo.getPackageName(), classTypeInfo.getClassName())).collect(Collectors.toList());
         analysDeque.addAll(classInfos);
         handler();
         enumParamClassMap.forEach(context::addEnumParamClassInfo);
@@ -48,7 +44,7 @@ public class EnumClassAnalyse implements Analyse {
      * 开始处理分析到的枚举类
      */
     private void handler() {
-        ClassInfo classInfo;
+        CommonClassInfo classInfo;
         while ((classInfo = analysDeque.poll()) != null) {
             EnumParamClassInfo enumParamClassInfo = analyseClassInfo(classInfo);
             enumParamClassMap.put(classInfo, enumParamClassInfo);
@@ -58,7 +54,7 @@ public class EnumClassAnalyse implements Analyse {
     /**
      * 分析类信息
      */
-    private EnumParamClassInfo analyseClassInfo(ClassInfo classInfo) {
+    private EnumParamClassInfo analyseClassInfo(CommonClassInfo classInfo) {
         try {
             Class enumClass = Class.forName(classInfo.getPackageName() + "." + classInfo.getClassName());
             Enum[] enumConstants = (Enum[]) enumClass.getEnumConstants();

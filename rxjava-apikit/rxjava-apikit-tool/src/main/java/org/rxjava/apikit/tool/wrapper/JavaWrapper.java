@@ -2,7 +2,7 @@ package org.rxjava.apikit.tool.wrapper;
 
 import com.google.common.collect.ImmutableMap;
 import org.rxjava.apikit.tool.generator.Context;
-import org.rxjava.apikit.tool.info.ClassInfo;
+import org.rxjava.apikit.tool.info.CommonClassInfo;
 import org.rxjava.apikit.tool.info.ClassTypeInfo;
 
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author happy
  */
-class JavaWrapper<T extends ClassInfo> extends BuilderWrapper<T> {
+class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
     JavaWrapper(Context context, T classInfo, String rootPackage) {
         super(context, classInfo, rootPackage);
     }

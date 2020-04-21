@@ -51,18 +51,18 @@ public class Context {
 
     private TreeMap<String, ParamClassInfo> fullNameParamMap = new TreeMap<>(Comparator.comparing(r -> r));
 
-    public void addParamClassInfo(ClassInfo key, ParamClassInfo paramClassInfo) {
+    public void addParamClassInfo(CommonClassInfo key, ParamClassInfo paramClassInfo) {
         paramMap.put(key, paramClassInfo);
         fullNameParamMap.put(key.getFullName(), paramClassInfo);
     }
 
-    public void addEnumParamClassInfo(ClassInfo key, EnumParamClassInfo enumParamClassInfo) {
+    public void addEnumParamClassInfo(CommonClassInfo key, EnumParamClassInfo enumParamClassInfo) {
         enumParamMap.put(key, enumParamClassInfo);
     }
 
-    private TreeMap<ClassInfo, ParamClassInfo> paramMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));
+    private TreeMap<CommonClassInfo, ParamClassInfo> paramMap = new TreeMap<>(Comparator.comparing(CommonClassInfo::getFullName));
 
-    private TreeMap<ClassInfo, EnumParamClassInfo> enumParamMap = new TreeMap<>(Comparator.comparing(ClassInfo::getFullName));
+    private TreeMap<CommonClassInfo, EnumParamClassInfo> enumParamMap = new TreeMap<>(Comparator.comparing(CommonClassInfo::getFullName));
 
     public void addApi(ApiClassInfo apiInfo) {
         apis.add(apiInfo.getPackageName(), apiInfo);
@@ -80,7 +80,7 @@ public class Context {
         return paramClassWrapperMap.get(fullName);
     }
 
-    public BuilderWrapper<? extends ClassInfo> getParamOrEnumWrapper(String fullName) {
+    public BuilderWrapper<? extends CommonClassInfo> getParamOrEnumWrapper(String fullName) {
         BuilderWrapper<ParamClassInfo> paramClassInfoBuilderWrapper = paramClassWrapperMap.get(fullName);
         if (ObjectUtils.isEmpty(paramClassInfoBuilderWrapper)) {
             return enumParamClassWrapperMap.get(fullName);

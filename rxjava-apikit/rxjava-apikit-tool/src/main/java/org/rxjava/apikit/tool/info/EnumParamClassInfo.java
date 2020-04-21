@@ -15,7 +15,7 @@ import java.util.*;
  */
 @Getter
 @Setter
-public class EnumParamClassInfo extends ClassInfo {
+public class EnumParamClassInfo extends CommonClassInfo {
     private List<PropertyInfo> properties = new ArrayList<>();
     private Map<String, PropertyInfo> propertiesMap = new HashMap<>();
     /**

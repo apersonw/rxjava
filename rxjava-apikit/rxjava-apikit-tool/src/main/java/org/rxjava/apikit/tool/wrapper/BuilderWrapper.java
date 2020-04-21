@@ -6,7 +6,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.JavaDocInfo;
-import org.rxjava.apikit.tool.info.ClassInfo;
+import org.rxjava.apikit.tool.info.CommonClassInfo;
 import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
 
@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Setter
 @Getter
-public class BuilderWrapper<T extends ClassInfo> {
+public class BuilderWrapper<T extends CommonClassInfo> {
     /**
      * 类信息
      */
