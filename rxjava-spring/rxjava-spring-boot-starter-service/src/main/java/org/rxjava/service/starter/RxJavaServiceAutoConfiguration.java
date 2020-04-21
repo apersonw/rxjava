@@ -1,5 +1,6 @@
 package org.rxjava.service.starter;
 
+import org.rxjava.service.starter.boot.CustomMongoConfiguration;
 import org.rxjava.service.starter.boot.RxJavaWebFluxConfigurer;
 import org.rxjava.service.starter.boot.ServiceDelegatingWebFluxConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -16,7 +17,7 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @Configuration
 @EnableDiscoveryClient
 @EnableMongoAuditing
-@Import({ServiceDelegatingWebFluxConfiguration.class, RxJavaWebFluxConfigurer.class})
+@Import({ServiceDelegatingWebFluxConfiguration.class, RxJavaWebFluxConfigurer.class, CustomMongoConfiguration.class,})
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 public class RxJavaServiceAutoConfiguration {
 }

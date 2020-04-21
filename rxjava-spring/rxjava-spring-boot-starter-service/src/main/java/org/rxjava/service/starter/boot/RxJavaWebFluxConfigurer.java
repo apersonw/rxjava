@@ -1,24 +1,27 @@
 package org.rxjava.service.starter.boot;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.rxjava.common.core.utils.JavaTimeModuleUtils;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
+import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
+import org.springframework.web.reactive.function.client.WebClient;
 
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author happy 2019-05-13 01:30
@@ -39,6 +42,15 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     }
 
     /**
+     * WebClient增加负载均衡
+     */
+    @Bean
+    @LoadBalanced
+    public WebClient.Builder loadBalancedWebClientBuilder() {
+        return WebClient.builder();
+    }
+
+    /**
      * 使用指定的资源访问指定的名称，异常消息国际化处理
      */
     @Bean
@@ -53,31 +65,21 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
         return messageSource;
     }
 
-    /**
-     * 配置ObjectMapper
-     */
     @Bean
     @Primary
     public ObjectMapper objectMapper() {
-        ObjectMapper objectMapper = JsonUtils.create();
-        //字段值为null则不输出
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return JsonUtils.create();
+    }
 
-        //添加json日期时间序列化和反序列化格式支持
-        JavaTimeModuleUtils.addAllFormatter();
-
-        //注册模块
-        objectMapper
-                .registerModule(new ParameterNamesModule())
-                .registerModule(new Jdk8Module())
-                .registerModule(JavaTimeModuleUtils.getJavaTimeModule());
-
-        //配置SimpleDateFormat格式为日期时间格式
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(JavaTimeModuleUtils.getDATE_TIME_FORMAT());
-        simpleDateFormat.setLenient(false);
-        objectMapper.setDateFormat(simpleDateFormat);
-
-        return objectMapper;
+    @Bean
+    public FormattingConversionService formattingConversionService() {
+        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
+        conversionService.addFormatterForFieldAnnotation(new NumberFormatAnnotationFormatterFactory());
+        DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
+        registrar.setDateFormatter(DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_FORMAT()));
+        registrar.setDateTimeFormatter(DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_TIME_FORMAT()));
+        registrar.registerFormatters(conversionService);
+        return conversionService;
     }
 
     /**

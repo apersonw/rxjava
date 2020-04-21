@@ -5,6 +5,7 @@ import java.lang.annotation.*;
 /**
  * 是否登陆注解
  * 默认为需要登陆
+ * @author happy
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -3,11 +3,14 @@ package org.rxjava.common.core.annotation;
 import java.lang.annotation.*;
 
 /**
- * 认证授权检查
+ * 鉴权
+ * 默认需要鉴权
+ *
+ * @author happy
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Check {
+public @interface Auth {
     boolean value() default true;
 }
