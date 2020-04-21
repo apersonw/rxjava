@@ -2,6 +2,7 @@ package org.rxjava.service.example.person;
 
 import lombok.extern.slf4j.Slf4j;
 import org.rxjava.service.example.entity.Example;
+import org.rxjava.service.example.form.TestBodyForm;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.form.TestMultForm;
 import org.rxjava.service.example.model.TestModel;
@@ -28,6 +29,7 @@ public class TestController {
     public Mono<TestModel> testPath(
             @PathVariable String id,
             @RequestParam String testId,
+            @Valid @RequestBody TestBodyForm testBodyForm,
             @Valid Map<String,String> mapTest,
             @Valid TestForm form,
             @Valid TestMultForm multForm
