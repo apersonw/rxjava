@@ -40,7 +40,7 @@ public class GitGenerator implements Generator {
 
     private AbstractGenerator generator;
     private String gitUser;
-    private String getPassword;
+    private String gitPassword;
 
     /**
      * 对应git  user.name
@@ -66,7 +66,7 @@ public class GitGenerator implements Generator {
         if (StringUtils.isEmpty(gitUser)) {
             cp = new ChainingCredentialsProvider(new NetRCCredentialsProvider(), new AwtCredentialsProvider());
         } else {
-            cp = new UsernamePasswordCredentialsProvider(gitUser, getPassword);
+            cp = new UsernamePasswordCredentialsProvider(gitUser, gitPassword);
         }
         log.info("开始 git clone");
 
@@ -186,12 +186,12 @@ public class GitGenerator implements Generator {
 
         Path tempDir = Files.createTempDirectory("apikit-git");
         try (Git git = Git.cloneRepository()
-                .setURI("https://github.com/apersonw/rxjava-apis.git")
+                .setURI("git@code.aliyun.com:fenglin/fenglin-api-javademo.git")
                 .setDirectory(tempDir.toFile())
                 .setBranch("master")
                 .setCredentialsProvider(cp)
                 .call()) {
-            System.out.println(git.status());
+            System.out.println("结束");
         }
     }
 }

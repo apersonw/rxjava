@@ -67,7 +67,7 @@ public class GenerateUtils {
                     //设置git信息
                     gitGenerator.setGitUrl(gitTask.getUrl());
                     gitGenerator.setGitUser(gitTask.getUser());
-                    gitGenerator.setGetPassword(gitTask.getPassword());
+                    gitGenerator.setGitPassword(gitTask.getPassword());
                     gitGenerator.setGitEmail(gitTask.getAuthorEmail());
                     gitGenerator.setGitName(gitTask.getAuthorName());
                     gitGenerator.setGitBranch(gitTask.getBranch());
