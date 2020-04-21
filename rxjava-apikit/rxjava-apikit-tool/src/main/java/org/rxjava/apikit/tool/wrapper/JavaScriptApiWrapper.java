@@ -56,7 +56,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         List<ApiInputClassInfo> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
             ApiInputClassInfo attributeInfo = params.get(i);
-            if (attributeInfo.isFormParam() || attributeInfo.isPathVariable()) {
+            if (attributeInfo.isValidParam() || attributeInfo.isPathParam()) {
                 if (sb.length() > 0) {
                     sb.append(", ");
                 }
@@ -153,7 +153,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
         List<ApiInputClassInfo> params = method.getParams();
         for (ApiInputClassInfo attributeInfo : params) {
-            if (attributeInfo.isPathVariable()) {
+            if (attributeInfo.isPathParam()) {
                 String name = attributeInfo.getFieldName();
                 String txt = stringStringMap.get(name);
                 sb.append(start).append("<li><b>PathVariable:</b> ")
@@ -172,7 +172,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                     sb.append("</span>");
                 }
                 sb.append("</li>\n");
-            } else if (attributeInfo.isFormParam()) {
+            } else if (attributeInfo.isValidParam()) {
                 sb.append(start).append("<li><b>Form:</b>")
                         .append(
                                 StringEscapeUtils.escapeHtml4(
