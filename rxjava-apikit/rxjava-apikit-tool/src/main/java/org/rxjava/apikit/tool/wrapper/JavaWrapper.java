@@ -25,8 +25,8 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
      */
     private String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments, boolean isChildArrayList) {
         StringBuilder sb = new StringBuilder();
-        ClassTypeInfo.Type type = typeInfo.getType();
-        if (type == ClassTypeInfo.Type.BYTE && typeInfo.isArray()) {
+        ClassTypeInfo.TypeEnum type = typeInfo.getType();
+        if (type == ClassTypeInfo.TypeEnum.BYTE && typeInfo.isArray()) {
             sb.append("byte[]");
         } else if (isArrayList && typeInfo.isArray()) {
             toJavaArrayTypeString(typeInfo, sb, isWrap, true);
@@ -67,39 +67,39 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
         return toJavaTypeString(typeInfo, isWrap, isArrayList, true);
     }
 
-    private static String toJavaWrapString(ClassTypeInfo.Type type) {
+    private static String toJavaWrapString(ClassTypeInfo.TypeEnum type) {
         return TYPE_WRAP_MAP.get(type).getSimpleName();
     }
 
-    private static final ImmutableMap<ClassTypeInfo.Type, Class> TYPE_WRAP_MAP
-            = ImmutableMap.<ClassTypeInfo.Type, Class>builder()
-            .put(ClassTypeInfo.Type.VOID, Void.class)
-            .put(ClassTypeInfo.Type.BOOLEAN, Boolean.class)
-            .put(ClassTypeInfo.Type.BYTE, Byte.class)
-            .put(ClassTypeInfo.Type.SHORT, Short.class)
-            .put(ClassTypeInfo.Type.INT, Integer.class)
-            .put(ClassTypeInfo.Type.LONG, Long.class)
-            .put(ClassTypeInfo.Type.FLOAT, Float.class)
-            .put(ClassTypeInfo.Type.DOUBLE, Double.class)
-            .put(ClassTypeInfo.Type.DATE, Date.class)
-            .put(ClassTypeInfo.Type.STRING, String.class)
+    private static final ImmutableMap<ClassTypeInfo.TypeEnum, Class> TYPE_WRAP_MAP
+            = ImmutableMap.<ClassTypeInfo.TypeEnum, Class>builder()
+            .put(ClassTypeInfo.TypeEnum.VOID, Void.class)
+            .put(ClassTypeInfo.TypeEnum.BOOLEAN, Boolean.class)
+            .put(ClassTypeInfo.TypeEnum.BYTE, Byte.class)
+            .put(ClassTypeInfo.TypeEnum.SHORT, Short.class)
+            .put(ClassTypeInfo.TypeEnum.INT, Integer.class)
+            .put(ClassTypeInfo.TypeEnum.LONG, Long.class)
+            .put(ClassTypeInfo.TypeEnum.FLOAT, Float.class)
+            .put(ClassTypeInfo.TypeEnum.DOUBLE, Double.class)
+            .put(ClassTypeInfo.TypeEnum.DATE, Date.class)
+            .put(ClassTypeInfo.TypeEnum.STRING, String.class)
             .build();
 
-    private static String toJavaString(ClassTypeInfo.Type type) {
+    private static String toJavaString(ClassTypeInfo.TypeEnum type) {
         return TYPE_MAP.get(type).getSimpleName();
     }
 
-    private static final ImmutableMap<ClassTypeInfo.Type, Class> TYPE_MAP
-            = ImmutableMap.<ClassTypeInfo.Type, Class>builder()
-            .put(ClassTypeInfo.Type.VOID, void.class)
-            .put(ClassTypeInfo.Type.BOOLEAN, boolean.class)
-            .put(ClassTypeInfo.Type.BYTE, byte.class)
-            .put(ClassTypeInfo.Type.SHORT, short.class)
-            .put(ClassTypeInfo.Type.INT, int.class)
-            .put(ClassTypeInfo.Type.LONG, long.class)
-            .put(ClassTypeInfo.Type.FLOAT, float.class)
-            .put(ClassTypeInfo.Type.DOUBLE, double.class)
-            .put(ClassTypeInfo.Type.DATE, Date.class)
-            .put(ClassTypeInfo.Type.STRING, String.class)
+    private static final ImmutableMap<ClassTypeInfo.TypeEnum, Class> TYPE_MAP
+            = ImmutableMap.<ClassTypeInfo.TypeEnum, Class>builder()
+            .put(ClassTypeInfo.TypeEnum.VOID, void.class)
+            .put(ClassTypeInfo.TypeEnum.BOOLEAN, boolean.class)
+            .put(ClassTypeInfo.TypeEnum.BYTE, byte.class)
+            .put(ClassTypeInfo.TypeEnum.SHORT, short.class)
+            .put(ClassTypeInfo.TypeEnum.INT, int.class)
+            .put(ClassTypeInfo.TypeEnum.LONG, long.class)
+            .put(ClassTypeInfo.TypeEnum.FLOAT, float.class)
+            .put(ClassTypeInfo.TypeEnum.DOUBLE, double.class)
+            .put(ClassTypeInfo.TypeEnum.DATE, Date.class)
+            .put(ClassTypeInfo.TypeEnum.STRING, String.class)
             .build();
 }

@@ -20,11 +20,11 @@ public class JavaScriptWrapper<T extends CommonClassInfo> extends BuilderWrapper
 
     public String toTypeString(ClassTypeInfo typeInfo, boolean isArray) {
         StringBuilder sb = new StringBuilder();
-        ClassTypeInfo.Type type = typeInfo.getType();
+        ClassTypeInfo.TypeEnum type = typeInfo.getType();
         if (typeInfo.isCollection()) {
             ClassTypeInfo typeInfoArg = typeInfo.getTypeArguments().get(0);
             return toTypeString(typeInfoArg, true);
-        } else if (type == ClassTypeInfo.Type.OTHER) {
+        } else if (type == ClassTypeInfo.TypeEnum.OTHER) {
             if (typeInfo.isGeneric()) {
                 sb.append("Object");
             } else {
@@ -39,21 +39,21 @@ public class JavaScriptWrapper<T extends CommonClassInfo> extends BuilderWrapper
         return sb.toString();
     }
 
-    public String toJavaScriptString(ClassTypeInfo.Type type) {
+    public String toJavaScriptString(ClassTypeInfo.TypeEnum type) {
         return TYPE_MAP.get(type);
     }
 
-    private static final ImmutableMap<ClassTypeInfo.Type, String> TYPE_MAP
-            = ImmutableMap.<ClassTypeInfo.Type, String>builder()
-            .put(ClassTypeInfo.Type.VOID, "void")
-            .put(ClassTypeInfo.Type.BOOLEAN, "boolean")
-            .put(ClassTypeInfo.Type.BYTE, "number")
-            .put(ClassTypeInfo.Type.SHORT, "number")
-            .put(ClassTypeInfo.Type.INT, "number")
-            .put(ClassTypeInfo.Type.LONG, "number")
-            .put(ClassTypeInfo.Type.FLOAT, "number")
-            .put(ClassTypeInfo.Type.DOUBLE, "number")
-            .put(ClassTypeInfo.Type.DATE, "Date")
-            .put(ClassTypeInfo.Type.STRING, "string")
+    private static final ImmutableMap<ClassTypeInfo.TypeEnum, String> TYPE_MAP
+            = ImmutableMap.<ClassTypeInfo.TypeEnum, String>builder()
+            .put(ClassTypeInfo.TypeEnum.VOID, "void")
+            .put(ClassTypeInfo.TypeEnum.BOOLEAN, "boolean")
+            .put(ClassTypeInfo.TypeEnum.BYTE, "number")
+            .put(ClassTypeInfo.TypeEnum.SHORT, "number")
+            .put(ClassTypeInfo.TypeEnum.INT, "number")
+            .put(ClassTypeInfo.TypeEnum.LONG, "number")
+            .put(ClassTypeInfo.TypeEnum.FLOAT, "number")
+            .put(ClassTypeInfo.TypeEnum.DOUBLE, "number")
+            .put(ClassTypeInfo.TypeEnum.DATE, "Date")
+            .put(ClassTypeInfo.TypeEnum.STRING, "string")
             .build();
 }

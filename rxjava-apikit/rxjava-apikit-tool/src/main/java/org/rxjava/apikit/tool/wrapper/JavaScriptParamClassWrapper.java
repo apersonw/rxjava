@@ -49,7 +49,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                 .fromIterable(classInfo.getProperties())
                 .mergeWith(getUpper())
                 .distinct(FieldInfo::getFieldName)
-                .map(FieldInfo::getTypeInfo)
+                .map(FieldInfo::getClassTypeInfo)
                 .flatMapIterable(type -> {
                     List<ClassTypeInfo> types = new ArrayList<>();
                     findTypes(type, types);
@@ -58,7 +58,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                     }
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
                 .map(ClassTypeInfo::getFullName)
@@ -115,7 +115,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
             }
             sb.append(info.getFieldName());
             sb.append(":");
-            sb.append(toTypeString(info.getTypeInfo()));
+            sb.append(toTypeString(info.getClassTypeInfo()));
         }
         return sb.toString();
     }

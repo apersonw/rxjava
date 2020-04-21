@@ -14,7 +14,7 @@ public class PropertyInfo extends FieldInfo {
 
     private JavaDocInfo javadocInfo;
 
-    public PropertyInfo(String name, ClassTypeInfo typeInfo) {
-        super(name, typeInfo);
+    public PropertyInfo(String name, ClassTypeInfo classTypeInfo) {
+        super(name, classTypeInfo);
     }
 }

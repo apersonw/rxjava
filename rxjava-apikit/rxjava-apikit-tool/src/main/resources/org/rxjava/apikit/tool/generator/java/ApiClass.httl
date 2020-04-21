@@ -37,8 +37,8 @@ public class $!{wrapper.getDistClassName()} {
         <!--#end-->
         String _url = ApiUtils.expandUriComponent("$!{method.url}", _uriVariables);
 
-        <!--#if(method.formParams)-->
-        <!--#set(param = method.formParams[0])-->
+        <!--#if(method.validParams)-->
+        <!--#set(param = method.validParams[0])-->
         List<Entry<String, Object>> _form = $!{param.fieldName}.encode("", new ArrayList<>());
         return clientAdapter.request("$!{method.type.name()}", _url, _form, _$!{method.index}Type);
         <!--#else-->

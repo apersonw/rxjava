@@ -63,7 +63,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 sb.append(attributeInfo.getFieldName());
                 if (isType) {
                     sb.append(":");
-                    sb.append(toTypeString(attributeInfo.getTypeInfo()));
+                    sb.append(toTypeString(attributeInfo.getClassTypeInfo()));
                 }
             }
         }
@@ -102,7 +102,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 .flatMapIterable(methodInfo -> {
                     List<ClassTypeInfo> types = new ArrayList<>();
                     types.add(methodInfo.getResultDataType());
-                    methodInfo.getParams().forEach(p -> types.add(p.getTypeInfo()));
+                    methodInfo.getParams().forEach(p -> types.add(p.getClassTypeInfo()));
                     return types;
                 })
                 .flatMapIterable(type -> {
@@ -110,7 +110,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
                 .map(ClassTypeInfo::getFullName)
@@ -159,7 +159,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 sb.append(start).append("<li><b>PathVariable:</b> ")
                         .append(
                                 StringEscapeUtils.escapeHtml4(
-                                        toTypeString(attributeInfo.getTypeInfo())
+                                        toTypeString(attributeInfo.getClassTypeInfo())
                                 )
                         )
                         .append(" ")
@@ -176,7 +176,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                 sb.append(start).append("<li><b>Form:</b>")
                         .append(
                                 StringEscapeUtils.escapeHtml4(
-                                        toTypeString(attributeInfo.getTypeInfo())
+                                        toTypeString(attributeInfo.getClassTypeInfo())
                                 )
                         )
                         .append("")

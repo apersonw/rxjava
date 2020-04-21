@@ -16,7 +16,7 @@ public class ApiInputClassInfo extends FieldInfo {
     private boolean requestParam = false;
     private boolean jsonParam = false;
 
-    public ApiInputClassInfo(String name, ClassTypeInfo typeInfo) {
-        super(name, typeInfo);
+    public ApiInputClassInfo(String name, ClassTypeInfo classTypeInfo) {
+        super(name, classTypeInfo);
     }
 }

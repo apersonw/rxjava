@@ -16,7 +16,7 @@ $!{wrapper.imports}
 @Setter
 public class $!{wrapper.getDistClassName()}$!{wrapper.typeParameters} $!{wrapper.superInfo} {
 <!--#for(attr : classInfo.properties)-->
-private $!{wrapper.toJavaTypeString(attr.typeInfo, false, true)} $!{attr.fieldName};
+private $!{wrapper.toJavaTypeString(attr.classTypeInfo, false, true)} $!{attr.fieldName};
 <!--#end-->
 
 public List<Entry<String, Object>> encode(String $parent, List<Entry<String, Object>> $list) {

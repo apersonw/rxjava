@@ -149,13 +149,14 @@ public class ControllerAnalyse implements Analyse {
         for (int i = 0, parametersLength = parameters.length; i < parametersLength; i++) {
             Parameter parameter = parameters[i];
             if (parameter.isVarArgs()) {
-                throw new RuntimeException("暂时不支持可变参数 varargs");
+                throw new RuntimeException("暂不支持可变参数 varargs");
             }
             String paramName = parameterNames[i];
             if (paramName == null) {
                 throw new RuntimeException("请修改编译选项，保留方法参数名称");
             }
 
+            //泛型
             Type pType = parameter.getParameterizedType();
             ApiInputClassInfo apiInputClassInfo = new ApiInputClassInfo(paramName, ClassTypeInfo.form(pType));
 
@@ -188,11 +189,11 @@ public class ControllerAnalyse implements Analyse {
                 throw new RuntimeException("参数不能同时是路径参数和form" + apiInputClassInfo);
             }
             if (apiInputClassInfo.isValidParam()) {
-                if (apiInputClassInfo.getTypeInfo().isArray()) {
+                if (apiInputClassInfo.getClassTypeInfo().isArray()) {
                     throw new RuntimeException("表单对象不支持数组!" + apiInputClassInfo);
                 }
             }
-            if (apiInputClassInfo.getTypeInfo().getType() == ClassTypeInfo.Type.VOID) {
+            if (apiInputClassInfo.getClassTypeInfo().getType() == ClassTypeInfo.TypeEnum.VOID) {
                 throw new RuntimeException("void 类型只能用于返回值");
             }
             apiMethodInfo.addParam(apiInputClassInfo);

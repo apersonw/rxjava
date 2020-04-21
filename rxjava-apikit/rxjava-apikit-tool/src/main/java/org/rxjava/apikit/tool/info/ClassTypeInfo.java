@@ -5,6 +5,8 @@ import lombok.Data;
 import org.apache.commons.lang3.ClassUtils;
 import org.bson.types.ObjectId;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -17,15 +19,14 @@ import java.util.List;
 
 /**
  * @author happy
- * 类的类型信息
+ * 类类型信息
  */
 @Data
-public class ClassTypeInfo implements Cloneable{
-
+public class ClassTypeInfo implements Cloneable {
     /**
      * 类型
      */
-    private Type type;
+    private TypeEnum type;
     /**
      * 包名
      */
@@ -47,7 +48,7 @@ public class ClassTypeInfo implements Cloneable{
      */
     private boolean inside = false;
     /**
-     * 是否是泛型的变量类型
+     * 是否泛型变量
      */
     private boolean generic = false;
     /**
@@ -72,7 +73,7 @@ public class ClassTypeInfo implements Cloneable{
     public ClassTypeInfo() {
     }
 
-    public ClassTypeInfo(Type type, String packageName, String className, boolean array, List<ClassTypeInfo> typeArguments, boolean inside, boolean generic) {
+    public ClassTypeInfo(TypeEnum type, String packageName, String className, boolean array, List<ClassTypeInfo> typeArguments, boolean inside, boolean generic) {
         this.type = type;
         this.packageName = packageName;
         this.className = className;
@@ -93,48 +94,54 @@ public class ClassTypeInfo implements Cloneable{
         return typeArguments;
     }
 
-    public static ClassTypeInfo form(java.lang.reflect.Type type) {
-
+    public static ClassTypeInfo form(Type type) {
         if (type instanceof Class) {
+            //raw type：原始类型，对应Class,这里的Class不仅仅指平常所指的类，还包括数组、接口、注解、枚举等结构。
+            //primitive types：基本类型，仍然对应Class
             Class<?> cls = (Class<?>) type;
-            //判断是否枚举类
             if (cls.isEnum()) {
-                ClassTypeInfo typeInfo = new ClassTypeInfo();
-                typeInfo.setType(Type.form(cls));
-                typeInfo.setPackageName(cls.getPackage().getName());
-                typeInfo.setClassName(cls.getSimpleName());
-                typeInfo.setArray(false);
-                typeInfo.setTypeArguments(new ArrayList<>());
-                typeInfo.setInside(false);
-                typeInfo.setGeneric(false);
-                typeInfo.setEnumClass(true);
-                return typeInfo;
+                //枚举类型
+                ClassTypeInfo classTypeInfo = new ClassTypeInfo();
+                classTypeInfo.setType(TypeEnum.OTHER);
+                classTypeInfo.setPackageName(cls.getPackage().getName());
+                classTypeInfo.setClassName(cls.getSimpleName());
+                classTypeInfo.setArray(false);
+                classTypeInfo.setTypeArguments(new ArrayList<>());
+                classTypeInfo.setInside(false);
+                classTypeInfo.setGeneric(false);
+                classTypeInfo.setEnumClass(true);
+                return classTypeInfo;
             } else if (ClassUtils.isPrimitiveOrWrapper(cls)) {
-                return ClassTypeInfo.formBaseType(cls.getName(), false);
+                //原始类型（int，boolean等）或包装类型（String，Integer等）
+                return ClassTypeInfo.formBaseType(cls);
             } else if (cls.isArray()) {
+                //若是数组，则分析数组中的组件类型
                 ClassTypeInfo typeInfo = form(cls.getComponentType());
                 typeInfo.setArray(true);
                 return typeInfo;
             } else {
-                Type t = Type.form(cls);
+                TypeEnum t = TypeEnum.form(cls);
                 if (!t.isBaseType()) {
                     return new ClassTypeInfo(t, cls.getPackage().getName(), cls.getSimpleName(), false, new ArrayList<>(), false, false);
                 } else {
-                    return ClassTypeInfo.formBaseType(cls.getName(), false);
+                    return ClassTypeInfo.formBaseType(cls);
                 }
             }
-        } else if (type instanceof java.lang.reflect.ParameterizedType) {
-            java.lang.reflect.ParameterizedType paramType = (java.lang.reflect.ParameterizedType) type;
+        } else if (type instanceof ParameterizedType) {
+            //泛型分析
+            //ParameterizedType：即常说的泛型，如：List<T>、Map<Integer, String>、List<? extends Number>。
+            ParameterizedType paramType = (ParameterizedType) type;
             Class<?> rawType = (Class<?>) paramType.getRawType();
 
-            ClassTypeInfo typeInfo = form(rawType);
-            java.lang.reflect.Type[] arguments = paramType.getActualTypeArguments();
-            for (java.lang.reflect.Type typeArgument : arguments) {
+            ClassTypeInfo classTypeInfo = form(rawType);
+            Type[] arguments = paramType.getActualTypeArguments();
+            for (Type typeArgument : arguments) {
                 ClassTypeInfo typeArgumentInfo = form(typeArgument);
-                typeInfo.addArguments(typeArgumentInfo);
+                classTypeInfo.addArguments(typeArgumentInfo);
             }
-            return typeInfo;
+            return classTypeInfo;
         } else if (type instanceof TypeVariable) {
+            //TypeVariable:类型变量，如参数化类型中的E、K等类型变量，表示泛指任何类。
             TypeVariable<?> typeVar = (TypeVariable<?>) type;
             return ClassTypeInfo.formGeneric(typeVar.getName(), false);
         }
@@ -142,7 +149,7 @@ public class ClassTypeInfo implements Cloneable{
     }
 
     public boolean isOtherType() {
-        return type == Type.OTHER;
+        return type == TypeEnum.OTHER;
     }
 
     public boolean isCollection() {
@@ -164,7 +171,7 @@ public class ClassTypeInfo implements Cloneable{
 
     public static ClassTypeInfo formGeneric(String name, boolean isArray) {
         ClassTypeInfo typeInfo = new ClassTypeInfo();
-        typeInfo.type = Type.OTHER;
+        typeInfo.type = TypeEnum.OTHER;
         typeInfo.array = isArray;
         typeInfo.inside = false;
         typeInfo.generic = true;
@@ -172,14 +179,15 @@ public class ClassTypeInfo implements Cloneable{
         return typeInfo;
     }
 
-    public static ClassTypeInfo formBaseType(String name, boolean isArray) {
+    /**
+     * 基本类型
+     */
+    public static ClassTypeInfo formBaseType(Class<?> cls) {
         ClassTypeInfo typeInfo = new ClassTypeInfo();
-        typeInfo.type = Type.form(name);
-        typeInfo.array = isArray;
-        typeInfo.inside = false;
+        typeInfo.type = TypeEnum.form(cls);
 
         if (!typeInfo.type.isBaseType()) {
-            throw new RuntimeException("错误的类型,不是原始类型或原始包装类型:" + name);
+            throw new RuntimeException("错误的类型,不是原始类型或原始包装类型:" + cls.getName());
         }
         return typeInfo;
     }
@@ -206,11 +214,11 @@ public class ClassTypeInfo implements Cloneable{
     }
 
     public boolean isBytes() {
-        return isArray() && type == Type.BYTE;
+        return isArray() && type == TypeEnum.BYTE;
     }
 
     public boolean isString() {
-        return type == Type.STRING;
+        return type == TypeEnum.STRING;
     }
 
     /**
@@ -226,10 +234,9 @@ public class ClassTypeInfo implements Cloneable{
      * 9. Date
      * 10. enum 枚举类型
      * 11. Message类型
-     * <p>
      * Message 和其他非上面声明类型都不属于basic type
      */
-    public enum Type {
+    public enum TypeEnum {
         /**
          * 无
          */
@@ -237,7 +244,7 @@ public class ClassTypeInfo implements Cloneable{
         DOUBLE, STRING, DATE,
         OTHER;
 
-        private static final ImmutableMap<String, Type> TYPE_MAP = ImmutableMap.<String, Type>builder()
+        private static final ImmutableMap<String, TypeEnum> TYPE_MAP = ImmutableMap.<String, TypeEnum>builder()
                 .put(void.class.getSimpleName(), VOID)
                 .put(boolean.class.getSimpleName(), BOOLEAN)
                 .put(byte.class.getSimpleName(), BYTE)
@@ -266,7 +273,7 @@ public class ClassTypeInfo implements Cloneable{
                 .put(LocalTime.class.getName(), DATE)
                 .build();
 
-        private static final ImmutableMap<Class, Type> TYPE_CLASS_MAP = ImmutableMap.<Class, Type>builder()
+        private static final ImmutableMap<Class<?>, TypeEnum> TYPE_CLASS_MAP = ImmutableMap.<Class<?>, TypeEnum>builder()
                 .put(void.class, VOID)
                 .put(boolean.class, BOOLEAN)
                 .put(byte.class, BYTE)
@@ -295,7 +302,7 @@ public class ClassTypeInfo implements Cloneable{
                 .put(LocalTime.class, DATE)
                 .build();
 
-        private static final ImmutableMap<Type, Class> CLASS_MAP = ImmutableMap.<Type, Class>builder()
+        private static final ImmutableMap<TypeEnum, Class<?>> CLASS_MAP = ImmutableMap.<TypeEnum, Class<?>>builder()
                 .put(VOID, Void.class)
                 .put(BOOLEAN, Boolean.class)
                 .put(BYTE, Byte.class)
@@ -304,13 +311,11 @@ public class ClassTypeInfo implements Cloneable{
                 .put(LONG, Long.class)
                 .put(FLOAT, Float.class)
                 .put(DOUBLE, Double.class)
-
-
                 .put(STRING, String.class)
                 .put(DATE, Date.class)
                 .build();
 
-        public static boolean isHasNull(Type type) {
+        public static boolean isHasNull(TypeEnum type) {
             return type == STRING || type == DATE ||
                     type == OTHER;
         }
@@ -319,20 +324,16 @@ public class ClassTypeInfo implements Cloneable{
             return isHasNull(this);
         }
 
-        public static boolean isBaseType(Type type) {
-            return type != OTHER;
-        }
-
         public boolean isBaseType() {
-            return isBaseType(this);
+            return this != OTHER;
         }
 
-        public Class toClass() {
+        public Class<?> toClass() {
             return CLASS_MAP.get(this);
         }
 
         public String getPrimitiveName() {
-            Class aClass = CLASS_MAP.get(this);
+            Class<?> aClass = CLASS_MAP.get(this);
             if (aClass != null) {
                 Class<?> primitive = ClassUtils.wrapperToPrimitive(aClass);
                 return primitive == null ? aClass.getSimpleName() : primitive.getSimpleName();
@@ -341,16 +342,8 @@ public class ClassTypeInfo implements Cloneable{
             }
         }
 
-        public static Type form(String name) {
-            Type type = TYPE_MAP.get(name);
-            if (type == null) {
-                return OTHER;
-            }
-            return type;
-        }
-
-        public static Type form(Class cls) {
-            Type type = TYPE_CLASS_MAP.get(cls);
+        public static TypeEnum form(Class<?> cls) {
+            TypeEnum type = TYPE_CLASS_MAP.get(cls);
             if (type == null) {
                 return OTHER;
             }

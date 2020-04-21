@@ -35,7 +35,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
                 .flatMapIterable(methodInfo -> {
                     List<ClassTypeInfo> types = new ArrayList<>();
                     types.add(methodInfo.getResultDataType());
-                    methodInfo.getParams().forEach(p -> types.add(p.getTypeInfo()));
+                    methodInfo.getParams().forEach(p -> types.add(p.getClassTypeInfo()));
                     return types;
                 })
                 .flatMapIterable(type -> {
@@ -43,7 +43,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
                 .map(ClassTypeInfo::getFullName)
@@ -113,7 +113,7 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
             if (i > 0) {
                 sb.append(", ");
             }
-            sb.append(toJavaTypeString(attributeInfo.getTypeInfo(), false, true));
+            sb.append(toJavaTypeString(attributeInfo.getClassTypeInfo(), false, true));
             sb.append(' ');
             sb.append(attributeInfo.getFieldName());
         }

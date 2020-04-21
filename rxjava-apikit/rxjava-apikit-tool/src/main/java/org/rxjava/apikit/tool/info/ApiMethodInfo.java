@@ -93,7 +93,7 @@ public class ApiMethodInfo {
                 .flatMap(m -> {
                     List<ClassTypeInfo> types = new ArrayList<>();
                     types.add(m.getResultDataType());
-                    m.getParams().forEach(p -> types.add(p.getTypeInfo()));
+                    m.getParams().forEach(p -> types.add(p.getClassTypeInfo()));
                     return types.stream();
                 })
                 .flatMap(type -> {
@@ -101,7 +101,7 @@ public class ApiMethodInfo {
                     findTypes(type, types);
                     return types.stream();
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.Type.OTHER))
+                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
                 .filter(typeInfo -> !typeInfo.isCollection())
                 .filter(typeInfo -> !typeInfo.isGeneric())
                 .distinct()

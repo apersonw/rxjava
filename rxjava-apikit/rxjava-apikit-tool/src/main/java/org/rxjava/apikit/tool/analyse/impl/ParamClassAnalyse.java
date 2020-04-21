@@ -51,7 +51,7 @@ public class ParamClassAnalyse implements Analyse {
                 .flatMapIterable(apiMethodInfo -> {
                     List<ClassTypeInfo> classTypeInfoList = new ArrayList<>();
                     classTypeInfoList.add(apiMethodInfo.getResultDataType());
-                    apiMethodInfo.getParams().forEach(param -> classTypeInfoList.add(param.getTypeInfo()));
+                    apiMethodInfo.getParams().forEach(param -> classTypeInfoList.add(param.getClassTypeInfo()));
                     return classTypeInfoList;
                 })
                 .flatMapIterable(classTypeInfo -> {
@@ -85,7 +85,7 @@ public class ParamClassAnalyse implements Analyse {
             //2、如果有超类，则将超类的属性类的类型信息也放入
             List<ClassTypeInfo> propertyClassTypeInfoList = new ArrayList<>();
             paramClassInfo.getProperties().forEach(propertyInfo -> {
-                propertyClassTypeInfoList.add(propertyInfo.getTypeInfo());
+                propertyClassTypeInfoList.add(propertyInfo.getClassTypeInfo());
             });
             if (paramClassInfo.getSuperType() != null) {
                 propertyClassTypeInfoList.add(paramClassInfo.getSuperType());
@@ -198,7 +198,7 @@ public class ParamClassAnalyse implements Analyse {
             return false;
         }
 
-        return ClassTypeInfo.Type.OTHER.equals(classTypeInfo.getType())
+        return ClassTypeInfo.TypeEnum.OTHER.equals(classTypeInfo.getType())
                 && !classTypeInfo.isCollection()
                 && !classTypeInfo.isGeneric()
                 && !classTypeInfo.isObject()
