@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 /**
  * @author happy
@@ -26,6 +27,8 @@ public class TestController {
     @GetMapping("path/{id}")
     public Mono<TestModel> testPath(
             @PathVariable String id,
+            @RequestParam String testId,
+            @Valid Map<String,String> mapTest,
             @Valid TestForm form,
             @Valid TestMultForm multForm
     ) {

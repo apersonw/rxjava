@@ -22,10 +22,7 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -92,7 +89,7 @@ public class ControllerAnalyse implements Analyse {
         JdtClassWrapper jdtClassWrapper = new JdtClassWrapper(this.context.getJavaFilePath(), classInfo.loadClass());
         apiClassInfo.setJavaDocInfo(jdtClassWrapper.getClassComment());
 
-        //此处注释判断使用spring的注解帮助类可以获取到更多的信息
+        //使用spring的注解帮助类可以获取到更多的信息
         RequestMapping requestMappingAnnotation = AnnotationUtils.getAnnotation(classInfo.loadClass(), RequestMapping.class);
         String classMappingPath = (requestMappingAnnotation != null && ArrayUtils.isNotEmpty(requestMappingAnnotation.path()))
                 ? requestMappingAnnotation.path()[0]
@@ -168,13 +165,18 @@ public class ControllerAnalyse implements Analyse {
                 apiInputClassInfo.setPathVariable(true);
             }
 
+            AnnotationAttributes requestParamAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, RequestParam.class);
+            if (MapUtils.isNotEmpty(requestParamAnnotationAttributes)) {
+                apiInputClassInfo.setRequestParam(true);
+            }
+
             //检查是否表单校验参数
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
             if (validAnnotation != null) {
                 apiInputClassInfo.setFormParam(true);
             }
             //过滤掉可选参数
-            if (!apiInputClassInfo.isFormParam() && !apiInputClassInfo.isPathVariable()) {
+            if (!apiInputClassInfo.isFormParam() && !apiInputClassInfo.isPathVariable()&&!apiInputClassInfo.isRequestParam()) {
                 continue;
             }
 

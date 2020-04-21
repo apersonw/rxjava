@@ -42,15 +42,19 @@ public class ApiMethodInfo {
     /**
      * 参数列表
      */
-    private ArrayList<ApiInputClassInfo> params = new ArrayList<>();
+    private List<ApiInputClassInfo> params = new ArrayList<>();
     /**
      * 路径参数列表
      */
-    private ArrayList<ApiInputClassInfo> pathParams = new ArrayList<>();
+    private List<ApiInputClassInfo> pathParams = new ArrayList<>();
     /**
      * 表单参数列表
      */
-    private ArrayList<ApiInputClassInfo> formParams = new ArrayList<>();
+    private List<ApiInputClassInfo> formParams = new ArrayList<>();
+    /**
+     * 请求参数列表
+     */
+    private List<ApiInputClassInfo> requestParams = new ArrayList<>();
     /**
      * java注释信息
      */
@@ -71,6 +75,9 @@ public class ApiMethodInfo {
         }
         if (param.isFormParam()) {
             formParams.add(param);
+        }
+        if (param.isRequestParam()) {
+            requestParams.add(param);
         }
 //        if (formParams.size() > 1) {
 //            throw new RuntimeException("分析错误！暂时只支持单表单");

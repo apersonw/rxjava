@@ -53,9 +53,8 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
     public String params(ApiMethodInfo method, boolean isType) {
         StringBuilder sb = new StringBuilder();
-        ArrayList<ApiInputClassInfo> params = method.getParams();
-        for (int i = 0; i < params.size(); i++) {
-            ApiInputClassInfo attributeInfo = params.get(i);
+        List<ApiInputClassInfo> params = method.getParams();
+        for (ApiInputClassInfo attributeInfo : params) {
             if (attributeInfo.isFormParam() || attributeInfo.isPathVariable()) {
                 if (sb.length() > 0) {
                     sb.append(", ");
@@ -151,7 +150,7 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
         Map<String, String> stringStringMap = CommentUtils.toMap(method.getJavaDocInfo());
 
-        ArrayList<ApiInputClassInfo> params = method.getParams();
+        List<ApiInputClassInfo> params = method.getParams();
         for (ApiInputClassInfo attributeInfo : params) {
             if (attributeInfo.isPathVariable()) {
                 String name = attributeInfo.getFieldName();
