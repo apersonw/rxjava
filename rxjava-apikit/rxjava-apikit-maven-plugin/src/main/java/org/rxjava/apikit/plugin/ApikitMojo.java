@@ -31,8 +31,7 @@ public class ApikitMojo extends AbstractMojo {
 
     @Override
     public void execute() {
-
-        Map pluginContext = getPluginContext();
+        Map<?, ?> pluginContext = getPluginContext();
         MavenProject project = (MavenProject) pluginContext.get("project");
         String[] compileSourceRoots = project
                 .getCompileSourceRoots()
