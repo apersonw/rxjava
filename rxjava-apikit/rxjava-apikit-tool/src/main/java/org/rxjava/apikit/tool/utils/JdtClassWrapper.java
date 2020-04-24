@@ -45,9 +45,9 @@ public class JdtClassWrapper {
         //抽象语法树解析源文件
         Map<String, String> options = JavaCore.getOptions();
         //设置源码兼容模式为1.8
-        options.put(JavaCore.COMPILER_SOURCE, "1.8");
+        options.put(JavaCore.COMPILER_SOURCE, "11");
 
-        ASTParser parser = ASTParser.newParser(AST.JLS9);
+        ASTParser parser = ASTParser.newParser(AST.JLS11);
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
         parser.setSource(srcCode.toCharArray());
         parser.setCompilerOptions(options);
