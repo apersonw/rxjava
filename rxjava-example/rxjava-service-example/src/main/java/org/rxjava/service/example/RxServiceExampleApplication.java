@@ -10,8 +10,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 public class RxServiceExampleApplication {
     public static void main(String[] args) {
-        var test = "";
-        System.out.println(test);
         new SpringApplicationBuilder(RxServiceExampleApplication.class).web(WebApplicationType.REACTIVE).run(args);
     }
 }
