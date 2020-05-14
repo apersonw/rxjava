@@ -50,12 +50,19 @@
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
         <asm.version>8.0.1</asm.version>
+
+        <!--Kotlin增量编译-->
+        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     </properties>
     <dependencies>
         <!--Kotlin库-->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
