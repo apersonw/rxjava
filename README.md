@@ -1,7 +1,7 @@
 #### 如果你觉得还行，请给个star，感谢你的支持🙏
 ## QQ交流群：828300414，加群答案：taro-jd
 
-### 项目已发布到maven中央仓库，当前最新正式版本号为1.0.7，快照版本1.0.8
+### 项目已发布到maven中央仓库，当前最新正式版本号为1.0.8，快照版本1.0.9
 
 ## rxjava项目说明
 
@@ -28,7 +28,6 @@
 
 - rxjava-gateway-example：主要示例了如何创建api网关，以及演示了如何使用token换取loginInfo，并注入到router的微服务请求参数中
 - rxjava-service-example：主要示例了如何创建微服务，以及一些基础性的配置，并演示了如何手动创建api到test文件夹，并示例了k8s的一些基本配置
-- rxjava-security-example：主要示例了如何使用security创建授权微服务，并演示如何认证和授权
 
 ### 四、网关项目pom
 
