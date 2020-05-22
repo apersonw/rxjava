@@ -17,16 +17,19 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
 
 /**
  * @author happy 2019/10/20 02:10
+ * 应用实体
  */
 @Getter
 @Setter
 @Document
-public class CommonEntity {
+public class AppEntity {
     /**
      * 实体Id
      */
     @Id
     private ObjectId id;
+    @Indexed
+    private ObjectId appId;
     /**
      * 乐观锁
      */

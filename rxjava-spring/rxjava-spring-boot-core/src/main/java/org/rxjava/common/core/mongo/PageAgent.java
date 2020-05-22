@@ -1,5 +1,6 @@
 package org.rxjava.common.core.mongo;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -8,7 +9,9 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author happy 2019-04-27 11:06
@@ -24,17 +27,19 @@ public class PageAgent<T> {
     }
 
     public Mono<Page<T>> findPage(Query query, Pageable pageable) {
-        return Mono.subscriberContext()
-                .flatMap(context -> Mono
-                        .zip(
-                                reactiveMongoTemplate.find(query, clazz).collectList(),
-                                reactiveMongoTemplate.count(query, clazz)
-                        )
-                        .map(z -> {
-                            List<T> goodsList = z.getT1();
-                            Long num = z.getT2();
-                            return new PageImpl<>(goodsList, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), num);
-                        })
-                );
+        return reactiveMongoTemplate.count(query, clazz).flatMap(num -> {
+            if (0 == num) {
+                return Mono.just(new ArrayList<T>()).map(getPageFunction(pageable, num));
+            }
+            return reactiveMongoTemplate
+                    .find(query.with(pageable), clazz)
+                    .collectList()
+                    .map(getPageFunction(pageable, num));
+        });
+    }
+
+    @NotNull
+    private Function<List<T>, PageImpl<T>> getPageFunction(Pageable pageable, Long num) {
+        return list -> new PageImpl<>(list, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), num);
     }
 }

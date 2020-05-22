@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.rxjava</groupId>
+        <artifactId>rxjava</artifactId>
+        <version>1.0.9-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rxjava-third</artifactId>
+    <packaging>pom</packaging>
+    <properties>
+        <module.type>third</module.type>
+        <module.Type>Third</module.Type>
+    </properties>
+    <modules>
+        <module>rxjava-third-qiniu</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-spring-boot-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+</project>

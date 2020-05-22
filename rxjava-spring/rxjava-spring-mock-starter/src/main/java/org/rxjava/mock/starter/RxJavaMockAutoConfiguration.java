@@ -1,7 +1,7 @@
 package org.rxjava.mock.starter;
 
 import org.jetbrains.annotations.NotNull;
-import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.info.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.rxjava.mock.starter.config.MockProperties;

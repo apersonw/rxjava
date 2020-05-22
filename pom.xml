@@ -10,6 +10,7 @@
         <module>rxjava-service</module>
         <module>rxjava-gateway</module>
         <module>rxjava-apikit</module>
+        <module>rxjava-third</module>
     </modules>
     <properties>
         <!--项目编译版本-->

@@ -1,7 +1,7 @@
 package org.rxjava.common.core.service;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.info.LoginInfo;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;

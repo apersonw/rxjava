@@ -2,7 +2,7 @@ package org.rxjava.gateway.starter.config;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.info.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;

@@ -2,7 +2,7 @@ package org.rxjava.gateway.starter.config;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.rxjava.common.core.entity.LoginInfo;
+import org.rxjava.common.core.info.LoginInfo;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 
 /**
