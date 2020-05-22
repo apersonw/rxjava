@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  redis:
+    image: 'redis:latest'
+    hostname: redis
+    restart: always
+    ports:
+      - 6379:6379
+  mongodb:
+    image: 'mongo:latest'
+    hostname: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+  mysql:
+    image: 'mysql:latest'
+    hostname: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  nacos:
+    image: 'nacos/nacos-server:latest'
+    hostname: nacos
+    restart: always
+    ports:
+      - 8848:8848
+    links:
+      - mysql
+    environment:
+      - MODE=standalone
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_DB_NAME=nacos
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=root
+  rabbitmq:
+    image: 'rabbitmq:3.8.3-management'
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - 5671:5671
+      - 5672:5672
+      - 4369:4369
+      - 25672:25672
+      - 15671:15671
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin

@@ -24,6 +24,7 @@
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
         <de.codecentric.version>2.2.7</de.codecentric.version>
         <spring-boot.version>${de.codecentric.version}.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <com.google.guava.version>29.0-jre</com.google.guava.version>
         <lombok.version>1.18.12</lombok.version>
         <commons-lang3.version>3.10</commons-lang3.version>
@@ -162,6 +163,14 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
                 <version>${de.codecentric.version}</version>
+            </dependency>
+            <!--Spring Cloud Alibaba 依赖管理-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!--Spring Boot Devtools 依赖管理-->
             <dependency>

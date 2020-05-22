@@ -3,6 +3,7 @@ package org.rxjava.mock.starter;
 import org.jetbrains.annotations.NotNull;
 import org.rxjava.common.core.info.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
+import org.rxjava.common.core.info.UserInfo;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.rxjava.mock.starter.config.MockProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +37,14 @@ public class RxJavaMockAutoConfiguration implements WebFilter {
     @NotNull
     @Override
     public Mono<Void> filter(@NotNull ServerWebExchange serverWebExchange, @NotNull WebFilterChain webFilterChain) {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setUserId(mockProperties.getUserId());
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserId(mockProperties.getUserId());
 
-        return Mono.just(loginInfo)
+        return Mono.just(userInfo)
                 .map(a -> {
                     String loginInfoJson;
                     try {
-                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
+                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(userInfo), "utf8");
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                         throw ErrorMessageException.of("不支持的编码异常");

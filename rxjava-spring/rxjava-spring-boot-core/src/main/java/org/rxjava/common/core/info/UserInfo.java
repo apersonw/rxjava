@@ -18,7 +18,7 @@ public class UserInfo implements LoginInfo {
      */
     private String phone;
     /**
-     * 应用Id
+     * 应用Id(此字段不可为null)
      */
     private ObjectId appId;
 }
