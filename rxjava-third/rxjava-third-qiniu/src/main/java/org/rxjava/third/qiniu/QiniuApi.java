@@ -7,29 +7,66 @@ import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import com.qiniu.util.IOUtils;
 import com.qiniu.util.StringMap;
+import org.apache.commons.lang3.StringUtils;
+import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.rxjava.common.core.utils.UUIDUtils;
 import reactor.core.publisher.Mono;
 
 import java.io.*;
 
-public class QiniuApi {
+/**
+ * 七牛云Api
+ */
+public class QiniuApi implements Serializable {
+    private final String accessKey;
+    private final String secretKey;
+    private final String bucket;
+    private final String token;
+    private final UploadManager uploadManager;
+
+    private QiniuApi() {
+        throw new RuntimeException("禁止反射破坏单例");
+    }
+
+    private QiniuApi(String accessKey, String secretKey, String bucket) {
+        if (StringUtils.isAnyEmpty(accessKey, secretKey, bucket)) {
+            throw ErrorMessageException.of("stringNotEmpty");
+        }
+        this.accessKey = accessKey;
+        this.secretKey = secretKey;
+        this.bucket = bucket;
+
+        //构造一个带指定 Region 对象的配置类
+        Configuration cfg = new Configuration(Region.region0());
+        this.uploadManager = new UploadManager(cfg);
+        //获取凭证
+        Auth auth = Auth.create(accessKey, secretKey);
+        this.token = auth.uploadToken(bucket);
+    }
+
+    public static QiniuApi getInstance(String accessKey, String secretKey, String bucket) {
+        return LazyHolder.lazy(accessKey, secretKey, bucket);
+    }
+
+    private static class LazyHolder {
+        private static QiniuApi lazy(String accessKey, String secretKey, String bucket) {
+            return new QiniuApi(accessKey, secretKey, bucket);
+        }
+    }
+
+    /**
+     * 禁止序列化破坏单例
+     */
+    private Object readResolve() {
+        return LazyHolder.lazy(accessKey, secretKey, bucket);
+    }
+
     /**
      * 七牛云上传文件
      */
     public Mono<DefaultPutRet> uploadFile() throws FileNotFoundException {
-        //构造一个带指定 Region 对象的配置类
-        Configuration cfg = new Configuration(Region.region0());
-        UploadManager uploadManager = new UploadManager(cfg);
-        //获取凭证
-        String accessKey = "qZtdLJlYqO9kMZLJBxjJzmZJsMFc_cJc_0h-KuSI";
-        String secretKey = "t_rKhd0ThyBP-hn_Na_XPAAimnxdM9_Rdifn5DLn";
-        String bucket = "flcloud-dev";
-        Auth auth = Auth.create(accessKey, secretKey);
-        String token = auth.uploadToken(bucket);
-
         BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File("/Users/happy/rxjava/test.txt")));
-
         return Mono.create(monoSink -> {
             try {
                 uploadManager.asyncPut(

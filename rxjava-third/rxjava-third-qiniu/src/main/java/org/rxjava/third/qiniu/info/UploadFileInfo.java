@@ -43,7 +43,7 @@ public class UploadFileInfo {
         return mime;
     }
 
-    public Mono<UploadFileInfo> toMono() {
+    public Mono<UploadFileInfo> init() {
         String id = UUIDUtils.randomUUIDToBase64();
         return Mono.fromCallable(() -> Files.createTempFile("testdev-"+id, ".temp"))
                 .publishOn(Schedulers.elastic())
