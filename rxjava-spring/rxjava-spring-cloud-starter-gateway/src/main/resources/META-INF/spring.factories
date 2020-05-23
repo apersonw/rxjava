@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.rxjava.gateway.starter.RxJavaGatewayAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.rxjava.gateway.starter.RxJavaGatewayAutoConfiguration,\
+org.rxjava.gateway.starter.CustomGatewayDiscoveryClientAutoConfiguration

@@ -1,6 +1,5 @@
 package org.rxjava.gateway.starter.config;
 
-import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.service.DefaultLoginInfoServiceImpl;
 import org.rxjava.common.core.service.LoginInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
