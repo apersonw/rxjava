@@ -1,6 +1,8 @@
 package org.rxjava.service.starter.boot;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.jetbrains.annotations.NotNull;
+import org.rxjava.common.core.http.WebHttp;
 import org.rxjava.common.core.utils.JavaTimeModuleUtils;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,11 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
 import org.springframework.format.support.DefaultFormattingConversionService;
@@ -21,6 +25,8 @@ import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -48,6 +54,14 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     @LoadBalanced
     public WebClient.Builder loadBalancedWebClientBuilder() {
         return WebClient.builder();
+    }
+
+    /**
+     * WebHttp Bean
+     */
+    @Bean
+    public WebHttp webHttp(WebClient.Builder webClientBuilder) {
+        return WebHttp.Builder.buildWebFlux(webClientBuilder);
     }
 
     /**
@@ -80,6 +94,22 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
         registrar.setDateTimeFormatter(DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_TIME_FORMAT()));
         registrar.registerFormatters(conversionService);
         return conversionService;
+    }
+
+    /**
+     * Model格式转换
+     */
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(StringToLocalDateTimeConverter.LOCALDATETIME);
+    }
+
+    public enum StringToLocalDateTimeConverter implements Converter<String, LocalDateTime> {
+        LOCALDATETIME;
+
+        public LocalDateTime convert(@NotNull String text) {
+            return LocalDateTime.parse(text, DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_TIME_FORMAT()).withZone(ZoneId.systemDefault()));
+        }
     }
 
     /**
