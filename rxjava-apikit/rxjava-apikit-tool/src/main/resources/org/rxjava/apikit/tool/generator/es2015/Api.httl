@@ -1,8 +1,8 @@
 <!--#set(ApiClassInfo classInfo)-->
 <!--#set(JavaScriptApiWrapper wrapper)-->
-<!--#set(TypeInfo type)-->
+<!--#set(ClassTypeInfo type)-->
 <!--#set(ApiMethodInfo method)-->
-<!--#set(ApiMethodParamInfo param)-->
+<!--#set(ApiInputClassInfo param)-->
 
 "use strict";
 
@@ -48,21 +48,21 @@ var $!{wrapper.getDistClassName()} =
             return _possibleConstructorReturn(this, _getPrototypeOf($!{wrapper.getDistClassName()}).apply(this, arguments));
         }
 
-        <!--#for(method : classInfo.methodInfos)-->
+        <!--#for(method : classInfo.apiMethodList)-->
         _createClass($!{wrapper.getDistClassName()}, [{
-            key: "$!{method.name}",
-            value: function $!{method.name}($!{wrapper.params(method)}) {
+            key: "$!{method.methodName}",
+            value: function $!{method.methodName}($!{wrapper.params(method)}) {
             <!--#if(method.pathParams)-->
                 var _path = {};
             <!--    #for(param : method.pathParams)-->
-                _path["$!{param.name}"] = $!{param.name};
+                _path["$!{param.fieldName}"] = $!{param.fieldName};
             <!--    #end-->
             <!--#else-->
                 var _path = null;
             <!--#end-->
-            <!--#if(method.formParams)-->
-            <!--#set(param = method.formParams[0])-->
-                return _get(_getPrototypeOf($!{wrapper.getDistClassName()}.prototype), "_request", this).call(this, "$!{wrapper.serviceId}", "$!{method.type.name()}", "$!{method.url}", _path, $!{param.name});
+            <!--#if(method.requestParams)-->
+            <!--#set(param = method.requestParams[0])-->
+                return _get(_getPrototypeOf($!{wrapper.getDistClassName()}.prototype), "_request", this).call(this, "$!{wrapper.serviceId}", "$!{method.type.name()}", "$!{method.url}", _path, $!{param.fieldName});
             <!--#else-->
                 return _get(_getPrototypeOf($!{wrapper.getDistClassName()}.prototype), "_request", this).call(this, "$!{wrapper.serviceId}", "$!{method.type.name()}", "$!{method.url}", _path, null);
             <!--#end-->
