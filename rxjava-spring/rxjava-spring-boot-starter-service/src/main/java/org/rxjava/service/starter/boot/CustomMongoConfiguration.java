@@ -26,7 +26,7 @@ public class CustomMongoConfiguration {
      */
     @EventListener(ApplicationReadyEvent.class)
     public void initIndicesAfterStartup() {
-        log.info("Mongo InitIndicesAfterStartup init");
+        log.info("Mongo initIndicesAfterStartup init");
         long init = System.currentTimeMillis();
         MappingContext<? extends MongoPersistentEntity<?>, MongoPersistentProperty> mappingContext = mongoConverter.getMappingContext();
         if (mappingContext instanceof MongoMappingContext) {
@@ -40,6 +40,6 @@ public class CustomMongoConfiguration {
                 }
             }
         }
-        log.info("Mongo InitIndicesAfterStartup take: {}", (System.currentTimeMillis() - init));
+        log.info("Mongo initIndicesAfterStartup take: {}", (System.currentTimeMillis() - init));
     }
 }
