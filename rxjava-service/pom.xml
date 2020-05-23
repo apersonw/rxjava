@@ -11,8 +11,8 @@
     <properties>
         <module.type>service</module.type>
         <module.Type>Service</module.Type>
-        <git.url>git@github.com:apersonw/rxjava-apis.git</git.url>
-<!--        <git.url>https://github.com/apersonw/rxjava-apis.git</git.url>-->
+<!--        <git.url>git@code.aliyun.com:caomang/caomang-api-app.git</git.url>-->
+<!--        <git.url>https://code.aliyun.com/caomang/caomang-api-app.git</git.url>-->
     </properties>
     <dependencies>
         <dependency>
@@ -89,21 +89,21 @@
                 <configuration>
                     <groups>
                         <group implementation="org.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>org.rxjava.${module.type}.${module.name}.person</rootPackage>
+                            <rootPackage>org.${project.name}.${module.type}.${module.name}.person</rootPackage>
                             <apiType>person</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>${module.name}/java/rxjava-apis-${module.name}-person/src/main/java
+                                    <outPath>java/${project.name}-api-${module.name}-person/src/main/java
                                     </outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
-                                        <outRootPackage>org.rxjava.api.person.${module.name}</outRootPackage>
+                                        <outRootPackage>org.${project.name}.api.person.${module.name}</outRootPackage>
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>${module.name}/js/rxjava-apis-${module.name}-person</outPath>
+                                    <outPath>js/${project.name}-api-${module.name}-person</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
                                         <outRootPackage />
@@ -113,20 +113,20 @@
                             </tasks>
                         </group>
                         <group implementation="org.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>org.rxjava.${module.type}.${module.name}.admin</rootPackage>
+                            <rootPackage>org.${project.name}.${module.type}.${module.name}.admin</rootPackage>
                             <apiType>admin</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>${module.name}/java/rxjava-apis-${module.name}-admin/src/main/java</outPath>
+                                    <outPath>java/${project.name}-api-${module.name}-admin/src/main/java</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
-                                        <outRootPackage>org.rxjava.api.${module.name}.admin</outRootPackage>
+                                        <outRootPackage>org.${project.name}.api.${module.name}.admin</outRootPackage>
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>${module.name}/js/rxjava-apis-${module.name}-admin</outPath>
+                                    <outPath>js/${project.name}-api-${module.name}-admin</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
                                         <outRootPackage />
@@ -136,15 +136,15 @@
                             </tasks>
                         </group>
                         <group implementation="org.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>org.rxjava.${module.type}.${module.name}.inner</rootPackage>
+                            <rootPackage>org.${project.name}.${module.type}.${module.name}.inner</rootPackage>
                             <apiType>inner</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>${module.name}/java/rxjava-apis-${module.name}-inner/src/main/java</outPath>
+                                    <outPath>java/${project.name}-api-${module.name}-inner/src/main/java</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
-                                        <outRootPackage>org.rxjava.api.${module.name}.inner</outRootPackage>
+                                        <outRootPackage>org.${project.name}.api.${module.name}.inner</outRootPackage>
                                     </task>
                                 </task>
                             </tasks>
