@@ -22,7 +22,7 @@ import java.util.List;
 public class GenerateUtils {
     public static <T> T deserialize(String json, Class<T> valueType) {
         try {
-            ObjectMapper objectMapper = new ObjectMapper().enableDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
+            ObjectMapper objectMapper = new ObjectMapper().activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
             TypeFactory tf = TypeFactory.defaultInstance()
                     .withClassLoader(GenerateUtils.class.getClassLoader());
             objectMapper.setTypeFactory(tf);

@@ -24,7 +24,7 @@ public class MavenUtils {
     public static final ObjectMapper MAPPER = new ObjectMapper();
 
     static {
-        MAPPER.enableDefaultTyping(BasicPolymorphicTypeValidator.builder().build(), ObjectMapper.DefaultTyping.NON_FINAL);
+        MAPPER.activateDefaultTyping(BasicPolymorphicTypeValidator.builder().build(), ObjectMapper.DefaultTyping.NON_FINAL);
     }
 
     public static void generate(MavenProject project, Group group, String sourcePath, String[] srcPaths) {
