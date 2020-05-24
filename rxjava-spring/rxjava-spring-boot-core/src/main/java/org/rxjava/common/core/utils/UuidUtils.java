@@ -1,5 +1,6 @@
 package org.rxjava.common.core.utils;
 
+import java.io.Serializable;
 import java.util.Base64;
 import java.util.UUID;
 
@@ -7,19 +8,14 @@ import java.util.UUID;
  * @author happy 2019-01-12 22:41
  * UUID帮助类
  */
-public class UUIDUtils {
-    public static String randomUUIDToBase64() {
+public class UuidUtils implements Serializable {
+    public String randomUuidToBase64() {
         UUID uuid = UUID.randomUUID();
         byte[] uuidArr = asByteArray(uuid);
         return Base64.getUrlEncoder().withoutPadding().encodeToString(uuidArr);
     }
 
-    public static void main(String[] args) {
-        System.out.println(randomUUIDToBase64());
-        System.out.println(randomUUIDToBase64().length());
-    }
-
-    public static byte[] asByteArray(UUID uuid) {
+    public byte[] asByteArray(UUID uuid) {
         long msb = uuid.getMostSignificantBits();
         long lsb = uuid.getLeastSignificantBits();
         byte[] buffer = new byte[16];
@@ -30,11 +26,10 @@ public class UUIDUtils {
         for (int i = 8; i < 16; i++) {
             buffer[i] = (byte) (lsb >>> 8 * (7 - i));
         }
-
         return buffer;
     }
 
-    public static UUID toUUID(byte[] byteArray) {
+    public UUID toUuid(byte[] byteArray) {
 
         long msb = 0;
         long lsb = 0;
@@ -45,5 +40,29 @@ public class UUIDUtils {
             lsb = (lsb << 8) | (byteArray[i] & 0xff);
         }
         return new UUID(msb, lsb);
+    }
+
+    private UuidUtils() {
+        throw new RuntimeException("禁止反射破坏单例");
+    }
+
+    public static UuidUtils getInstance() {
+        return UuidUtils.LazyHolder.lazy();
+    }
+
+    /**
+     * 懒加载
+     */
+    private static class LazyHolder {
+        private static UuidUtils lazy() {
+            return new UuidUtils();
+        }
+    }
+
+    /**
+     * 禁止序列化破坏单例
+     */
+    private Object readResolve() {
+        return UuidUtils.LazyHolder.lazy();
     }
 }

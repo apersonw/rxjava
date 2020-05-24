@@ -16,13 +16,14 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import lombok.Getter;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 /**
  * 日期时间模块帮助类
  */
-public class JavaTimeModuleUtils {
+public class JavaTimeModuleUtils implements Serializable {
     @Getter
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
     @Getter
@@ -30,18 +31,36 @@ public class JavaTimeModuleUtils {
     @Getter
     private static final String TIME_FORMAT = "HH:mm:ss.SSS";
     @Getter
-    private static JavaTimeModule javaTimeModule = new JavaTimeModule();
+    private static final JavaTimeModule JAVA_TIME_MODULE = new JavaTimeModule();
+
+    private JavaTimeModuleUtils() {
+        throw new RuntimeException("禁止反射破坏单例");
+    }
+
+    public static JavaTimeModuleUtils getInstance() {
+        return JavaTimeModuleUtils.LazyHolder.lazy();
+    }
 
     /**
-     * 禁止实例化
+     * 懒加载
      */
-    private JavaTimeModuleUtils() {
+    private static class LazyHolder {
+        private static JavaTimeModuleUtils lazy() {
+            return new JavaTimeModuleUtils();
+        }
+    }
+
+    /**
+     * 禁止序列化破坏单例
+     */
+    private Object readResolve() {
+        return JavaTimeModuleUtils.LazyHolder.lazy();
     }
 
     /**
      * 添加日期时间格式解析支持
      */
-    public static void addAllFormatter(){
+    public static void addAllFormatter() {
         addTimeFormatter();
         addInstantFormatter();
         addDateTimeFormatter();
@@ -53,8 +72,8 @@ public class JavaTimeModuleUtils {
      */
     private static void addDateTimeFormatter() {
         DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
-        javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(dataTimeFormatter));
-        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(dataTimeFormatter));
+        JAVA_TIME_MODULE.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(dataTimeFormatter));
+        JAVA_TIME_MODULE.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(dataTimeFormatter));
     }
 
     /**
@@ -62,8 +81,8 @@ public class JavaTimeModuleUtils {
      */
     private static void addDateFormatter() {
         DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT).withZone(ZoneId.systemDefault());
-        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(dataFormatter));
-        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(dataFormatter));
+        JAVA_TIME_MODULE.addDeserializer(LocalDate.class, new LocalDateDeserializer(dataFormatter));
+        JAVA_TIME_MODULE.addSerializer(LocalDate.class, new LocalDateSerializer(dataFormatter));
     }
 
     /**
@@ -71,22 +90,22 @@ public class JavaTimeModuleUtils {
      */
     private static void addTimeFormatter() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(TIME_FORMAT).withZone(ZoneId.systemDefault());
-        javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(timeFormatter));
-        javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(timeFormatter));
+        JAVA_TIME_MODULE.addDeserializer(LocalTime.class, new LocalTimeDeserializer(timeFormatter));
+        JAVA_TIME_MODULE.addSerializer(LocalTime.class, new LocalTimeSerializer(timeFormatter));
     }
 
     /**
      * 添加Instant格式支持
      */
-    private static void addInstantFormatter(){
+    private static void addInstantFormatter() {
         DateTimeFormatter dataTimeFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withZone(ZoneId.systemDefault());
-        javaTimeModule.addDeserializer(Instant.class, new JsonDeserializer<Instant>() {
+        JAVA_TIME_MODULE.addDeserializer(Instant.class, new JsonDeserializer<Instant>() {
             @Override
             public Instant deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
                 return Instant.from(dataTimeFormatter.parse(jsonParser.getText()));
             }
         });
-        javaTimeModule.addSerializer(Instant.class, new JsonSerializer<Instant>() {
+        JAVA_TIME_MODULE.addSerializer(Instant.class, new JsonSerializer<Instant>() {
             @Override
             public void serialize(Instant value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
                 String str = dataTimeFormatter.format(value);

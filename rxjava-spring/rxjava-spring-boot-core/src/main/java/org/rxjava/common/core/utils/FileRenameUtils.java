@@ -10,6 +10,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,21 +19,15 @@ import java.util.stream.Collectors;
 
 /**
  * @author happy 2019-06-20 14:41
+ * 文件重命名帮助类
  */
-public class FileRenameUtils {
+public class FileRenameUtils implements Serializable {
     public static final HanyuPinyinOutputFormat FORMAT = new HanyuPinyinOutputFormat();
 
     static {
         FORMAT.setCaseType(HanyuPinyinCaseType.LOWERCASE);
         FORMAT.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
         FORMAT.setVCharType(HanyuPinyinVCharType.WITH_V);
-    }
-
-    public static void main(String[] args) {
-
-        Path source = Paths.get("/Users/happy/DeskTop/img");
-        Path dist = Paths.get("/Users/happy/DeskTop/img_py");
-        handler(source, dist, "@", "Select");
     }
 
     private static void handler(Path source, Path dist, String split, String suffix) {
@@ -76,5 +71,29 @@ public class FileRenameUtils {
                 throw new RuntimeException(ex);
             }
         }).collect(Collectors.joining());
+    }
+
+    private FileRenameUtils() {
+        throw new RuntimeException("禁止反射破坏单例");
+    }
+
+    public static FileRenameUtils getInstance() {
+        return FileRenameUtils.LazyHolder.lazy();
+    }
+
+    /**
+     * 懒加载
+     */
+    private static class LazyHolder {
+        private static FileRenameUtils lazy() {
+            return new FileRenameUtils();
+        }
+    }
+
+    /**
+     * 禁止序列化破坏单例
+     */
+    private Object readResolve() {
+        return FileRenameUtils.LazyHolder.lazy();
     }
 }

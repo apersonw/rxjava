@@ -11,13 +11,15 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
  * @author happy 2019-04-16 23:26
+ * JSON帮助类
  */
-public class JsonUtils {
+public class JsonUtils implements Serializable {
     public static final ObjectMapper DEFAULT_MAPPER = new ObjectMapper();
 
     public static ObjectMapper create() {
@@ -35,7 +37,7 @@ public class JsonUtils {
         objectMapper
                 .registerModule(new ParameterNamesModule())
                 .registerModule(new Jdk8Module())
-                .registerModule(JavaTimeModuleUtils.getJavaTimeModule());
+                .registerModule(JavaTimeModuleUtils.getJAVA_TIME_MODULE());
 
         //配置SimpleDateFormat格式为日期时间格式
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(JavaTimeModuleUtils.getDATE_TIME_FORMAT());
