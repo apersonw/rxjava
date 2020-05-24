@@ -19,7 +19,7 @@ import java.util.List;
  * @author happy 2019-04-16 23:26
  * JSON帮助类
  */
-public class JsonUtils implements Serializable {
+public class JsonUtils {
     public static final ObjectMapper DEFAULT_MAPPER = new ObjectMapper();
 
     public static ObjectMapper create() {
