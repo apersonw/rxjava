@@ -6,7 +6,7 @@ package org.rxjava.apikit.core;
  */
 public enum HttpMethodType {
     /**
-     * 获取
+     * 查询
      */
     GET,
     /**
@@ -18,11 +18,11 @@ public enum HttpMethodType {
      */
     PUT,
     /**
-     * 删除
-     */
-    DELETE,
-    /**
      * 部分更新
      */
-    PATCH;
+    PATCH,
+    /**
+     * 删除
+     */
+    DELETE
 }

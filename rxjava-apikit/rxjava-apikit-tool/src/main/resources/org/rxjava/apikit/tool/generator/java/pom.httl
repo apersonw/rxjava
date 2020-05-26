@@ -15,5 +15,9 @@
             <artifactId>rxjava-apikit-core</artifactId>
             <version>1.0.9-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+        </dependency>
     </dependencies>
 </project>
