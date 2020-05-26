@@ -72,7 +72,7 @@ public class JsonUtils {
 
     /**
      * 不能处理复杂情况,和继承情况
-     * 对付一般的List;MyClass; 方式足够了
+     * 对付一般的List,Class方式足够了
      */
     public static <T> T deserialize(String json, TypeReference<T> valueTypeRef) {
         try {

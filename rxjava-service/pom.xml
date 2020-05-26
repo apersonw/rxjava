@@ -99,6 +99,8 @@
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
                                         <outRootPackage>org.${project.name}.api.person.${module.name}</outRootPackage>
+                                        <artifactId>${project.name}-api-${module.name}-person</artifactId>
+                                        <parentVersion>${project.parent.version}</parentVersion>
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
@@ -122,6 +124,8 @@
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
                                         <outRootPackage>org.${project.name}.api.${module.name}.admin</outRootPackage>
+                                        <artifactId>${project.name}-api-${module.name}-admin</artifactId>
+                                        <parentVersion>${project.parent.version}</parentVersion>
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
@@ -145,6 +149,8 @@
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
                                         <outRootPackage>org.${project.name}.api.${module.name}.inner</outRootPackage>
+                                        <artifactId>${project.name}-api-${module.name}-inner</artifactId>
+                                        <parentVersion>${project.parent.version}</parentVersion>
                                     </task>
                                 </task>
                             </tasks>

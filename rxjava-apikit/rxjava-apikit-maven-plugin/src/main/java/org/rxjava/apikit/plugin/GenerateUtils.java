@@ -99,6 +99,8 @@ public class GenerateUtils {
 
             //设置生成的api根包路径
             javaClientApiGenerator.setOutRootPackage(javaClientTask.getOutRootPackage());
+            javaClientApiGenerator.setArtifactId(javaClientTask.getArtifactId());
+            javaClientApiGenerator.setParentVersion(javaClientTask.getParentVersion());
             return javaClientApiGenerator;
         }
         //执行生成js客户端Api任务

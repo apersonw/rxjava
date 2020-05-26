@@ -14,8 +14,7 @@
     </modules>
     <properties>
         <!--项目编译版本-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.encoding>UTF-8</java.encoding>
         <java.version>1.8</java.version>
         <kotlin.version>1.3.72</kotlin.version>
 
@@ -369,7 +368,7 @@
                         <!-- 是否跳过测试 -->
                         <skip>true</skip>
                         <showWarnings>true</showWarnings>
-                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <encoding>${java.encoding}</encoding>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -377,7 +376,7 @@
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>${maven-resources-plugin.version}</version>
                     <configuration>
-                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <encoding>${java.encoding}</encoding>
                     </configuration>
                 </plugin>
                 <plugin>

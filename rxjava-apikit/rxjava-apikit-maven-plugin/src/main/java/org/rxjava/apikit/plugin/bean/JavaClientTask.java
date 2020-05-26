@@ -12,4 +12,6 @@ public class JavaClientTask extends AbstractTask {
     private String nameMaperSource;
     private String nameMaperDist;
     private String outRootPackage;
+    private String artifactId;
+    private String parentVersion;
 }
