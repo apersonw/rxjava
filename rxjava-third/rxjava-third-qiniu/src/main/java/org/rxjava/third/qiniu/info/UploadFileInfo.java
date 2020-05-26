@@ -3,7 +3,7 @@ package org.rxjava.third.qiniu.info;
 import com.qiniu.util.IOUtils;
 import lombok.Cleanup;
 import lombok.Data;
-import org.rxjava.common.core.utils.UUIDUtils;
+import org.rxjava.common.core.utils.UuidUtils;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.DigestUtils;
@@ -44,7 +44,7 @@ public class UploadFileInfo {
     }
 
     public Mono<UploadFileInfo> init() {
-        String id = UUIDUtils.randomUUIDToBase64();
+        String id = UuidUtils.getInstance().randomUuidToBase64();
         return Mono.fromCallable(() -> Files.createTempFile("testdev-"+id, ".temp"))
                 .publishOn(Schedulers.elastic())
                 .subscribeOn(Schedulers.elastic())

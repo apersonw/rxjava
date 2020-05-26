@@ -10,7 +10,7 @@ import com.qiniu.util.StringMap;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.exception.ErrorMessageException;
 import org.rxjava.common.core.utils.JsonUtils;
-import org.rxjava.common.core.utils.UUIDUtils;
+import org.rxjava.common.core.utils.UuidUtils;
 import reactor.core.publisher.Mono;
 
 import java.io.*;
@@ -71,7 +71,7 @@ public class QiniuApi implements Serializable {
             try {
                 uploadManager.asyncPut(
                         IOUtils.toByteArray(bufferedInputStream),
-                        "testdev-" + UUIDUtils.randomUUIDToBase64(),
+                        "testdev-" + UuidUtils.getInstance().randomUuidToBase64(),
                         token,
                         new StringMap().put("testdevname", "testdevname"),
                         null,

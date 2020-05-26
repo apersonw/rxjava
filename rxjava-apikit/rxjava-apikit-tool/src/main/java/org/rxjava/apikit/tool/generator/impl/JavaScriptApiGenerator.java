@@ -8,6 +8,7 @@ import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
+import org.rxjava.apikit.tool.wrapper.JavaEnumParamClassWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaScriptApiWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaScriptParamClassWrapper;
 
@@ -81,9 +82,10 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     }
 
     @Override
-    protected BuilderWrapper<EnumParamClassInfo> createEnumParamClassWarpper(EnumParamClassInfo paramClassInfo, String distPack, String distName) {
-        //todo
-        return null;
+    protected BuilderWrapper<EnumParamClassInfo> createEnumParamClassWarpper(EnumParamClassInfo enumParamClassInfo, String distPack, String distName) {
+        JavaEnumParamClassWrapper javaEnumParamClassWrapper = new JavaEnumParamClassWrapper(context, enumParamClassInfo, outRootPackage);
+        javaEnumParamClassWrapper.setDistFolder(distPack);
+        return javaEnumParamClassWrapper;
     }
 
     private String getTemplateFile(String name) {
