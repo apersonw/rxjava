@@ -1,12 +1,20 @@
 package org.rxjava.service.example.person;
 
 import lombok.extern.slf4j.Slf4j;
+import org.rxjava.api.person.example.TestApi;
+import org.rxjava.apikit.client.ClientAdapter;
+import org.rxjava.common.core.annotation.Login;
+import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
 import org.rxjava.service.example.form.TestBodyForm;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.form.TestMultForm;
 import org.rxjava.service.example.model.TestModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
@@ -22,15 +30,14 @@ public class TestController {
     /**
      * 路径变量测试
      */
-    @GetMapping("path/{id}")
+    @Login(false)
+    @PostMapping("path/{id}")
     public Mono<TestModel> testPath(
             @PathVariable String id,
             @RequestParam String testId,
             @Valid @RequestBody TestBodyForm testBodyForm,
             @Valid TestForm form,
-            @Valid TestMultForm multForm,
-            @RequestPart FilePart filePart,
-            @RequestPart List<FilePart> filePartList
+            @Valid TestMultForm multForm
     ) {
 //        TestModel testModel = new TestModel();
 //        testModel.setId("haha");
@@ -42,5 +49,35 @@ public class TestController {
 //        example.setName("我是测试人员");
 //        return exampleRepository.save(example).thenReturn(testModel);
         return Mono.empty();
+    }
+
+    @Bean
+    public ClientAdapter clientAdapter() {
+        return ReactiveHttpClientAdapter.build(new DefaultFormattingConversionService(), WebClient.builder(), "127.0.0.1", "8080", "");
+    }
+
+    @Bean
+    public TestApi testApi(ClientAdapter clientAdapter) {
+        return new TestApi(clientAdapter);
+    }
+
+    @Autowired
+    private TestApi testApi;
+
+    @Login(false)
+    @GetMapping("testApi")
+    public Mono<String> testApi() {
+        return testApi.testPath(
+                "iiai",
+                "asdfsafsdf",
+                new org.rxjava.api.person.example.form.TestBodyForm(),
+                new org.rxjava.api.person.example.form.TestForm(),
+                new org.rxjava.api.person.example.form.TestMultForm(),
+                null,
+                null)
+                .map(a->{
+                    System.out.println(a);
+                    return a;
+                }).map(org.rxjava.api.person.example.model.TestModel::toString);
     }
 }

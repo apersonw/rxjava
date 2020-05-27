@@ -3,6 +3,7 @@ package org.rxjava.apikit.tool.generator.impl;
 import com.google.common.collect.Iterables;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.LogCommand;
@@ -35,6 +36,7 @@ import java.util.Set;
  */
 @Setter
 @Getter
+@ToString
 public class GitGenerator implements Generator {
     private static final Logger log = LoggerFactory.getLogger(GitGenerator.class);
 

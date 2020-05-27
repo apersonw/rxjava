@@ -11,8 +11,15 @@
     <properties>
         <module.name>example</module.name>
         <module.Name>Example</module.Name>
+        <project.name>rxjava</project.name>
+        <git.url>https://code.aliyun.com/rxjava/rxjava-api-example.git</git.url>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-api-example-person</artifactId>
+            <version>1.0.9-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-tool</artifactId>
