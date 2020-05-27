@@ -78,7 +78,7 @@ public class ApiMethodInfo {
             pathParams.add(param);
         } else if (param.isJsonParam()) {
             if (jsonParams.size() > 0) {
-                throw new RuntimeException("Spring不支持绑定多个json参数");
+                throw new RuntimeException("Spring不支持绑定多个json参数:" + param.toString());
             }
             jsonParams.add(param);
         } else if (param.isRequestParam()) {
