@@ -60,6 +60,10 @@ public class ApiMethodInfo {
      */
     private List<ApiInputClassInfo> jsonParams = new ArrayList<>();
     /**
+     * requestPart参数列表
+     */
+    private List<ApiInputClassInfo> requestPartParams = new ArrayList<>();
+    /**
      * java注释信息
      */
     private JavaDocInfo javaDocInfo;
@@ -85,6 +89,8 @@ public class ApiMethodInfo {
             requestParams.add(param);
         } else if (param.isValidParam()) {
             validParams.add(param);
+        } else if (param.isRequestPartParam()) {
+            requestPartParams.add(param);
         }
     }
 

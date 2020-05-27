@@ -5,10 +5,12 @@ import org.rxjava.service.example.form.TestBodyForm;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.form.TestMultForm;
 import org.rxjava.service.example.model.TestModel;
+import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author happy
@@ -26,7 +28,9 @@ public class TestController {
             @RequestParam String testId,
             @Valid @RequestBody TestBodyForm testBodyForm,
             @Valid TestForm form,
-            @Valid TestMultForm multForm
+            @Valid TestMultForm multForm,
+            @RequestPart FilePart filePart,
+            @RequestPart List<FilePart> filePartList
     ) {
 //        TestModel testModel = new TestModel();
 //        testModel.setId("haha");

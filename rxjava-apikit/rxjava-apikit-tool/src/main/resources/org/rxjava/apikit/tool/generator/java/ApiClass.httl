@@ -10,6 +10,7 @@ import org.bson.types.ObjectId;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.Future;
+import org.rxjava.apikit.client.InputParam;
 
 
 import org.rxjava.apikit.client.*;
@@ -37,28 +38,32 @@ public class $!{wrapper.getDistClassName()} {
         <!--#end-->
         String requestUrl = ApiUtils.expandUriComponent("$!{method.url}", pathParamMap);
 
-        Map<String, Object> requestParamMap = new HashMap<>();
+        Map<String, Object> requestPartParamMap = new HashMap<>();
+        <!--#for(param : method.requestPartParams)-->
+        requestPartParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        <!--#end-->
+
+        InputParam inputParam = new InputParam();
+
+        List<Entry<String, Object>> _paramList = new ArrayList<>();
         <!--#for(param : method.requestParams)-->
-        requestParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
-        <!--#end-->
-
-        Map<String, Object> validParamMap = new HashMap<>();
-        <!--#for(param : method.validParams)-->
-        validParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
-        <!--#end-->
-
-        Map<String, Object> jsonParamMap = new HashMap<>();
-        <!--#for(param : method.jsonParams)-->
-        jsonParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        _paramList.add(new AbstractMap.SimpleImmutableEntry<>("$!{param.getFieldName()}", $!{param.getFieldName()}));
         <!--#end-->
 
         <!--#if(method.validParams)-->
-        <!--#set(param = method.validParams[0])-->
-        List<Entry<String, Object>> _form = $!{param.fieldName}.encode("", new ArrayList<>());
-        return clientAdapter.request("$!{method.type.name()}", requestUrl, _form, _$!{method.index}Type);
-        <!--#else-->
-        return clientAdapter.request("$!{method.type.name()}", requestUrl, null, _$!{method.index}Type);
+        <!--#for(param : method.validParams)-->
+        _paramList.addAll($!{param.fieldName}.encode("", new ArrayList<>()));
         <!--#end-->
+        <!--#end-->
+
+        inputParam.setParamList(_paramList);
+
+        <!--#if(method.jsonParams)-->
+        <!--#set(param = method.jsonParams[0])-->
+        inputParam.setJsonBody($!{param.getFieldName()});
+        <!--#end-->
+
+        return clientAdapter.request("$!{method.type.name()}", requestUrl, inputParam, _$!{method.index}Type);
     }
     <!--#end-->
 

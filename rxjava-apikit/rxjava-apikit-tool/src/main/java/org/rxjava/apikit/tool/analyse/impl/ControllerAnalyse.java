@@ -23,6 +23,7 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -173,17 +174,30 @@ public class ControllerAnalyse implements Analyse {
                 apiInputClassInfo.setRequestParam(true);
             }
 
-            //检查是否有@Valid或@RequestBody注解
+            //检查是否有@Valid或@Validated或@RequestBody注解
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
-            if (validAnnotation != null) {
+            Validated validatedAnnotation = AnnotationUtils.getAnnotation(parameter, Validated.class);
+            if (validAnnotation != null || validatedAnnotation != null) {
                 apiInputClassInfo.setValidParam(true);
                 RequestBody requestBodyAnnotation = AnnotationUtils.getAnnotation(parameter, RequestBody.class);
                 if (null != requestBodyAnnotation) {
                     apiInputClassInfo.setJsonParam(true);
                 }
             }
-            //过滤掉无@PathVariable、@RequestParam、@Valid注解的参数
-            if (!apiInputClassInfo.isValidParam() && !apiInputClassInfo.isPathParam() && !apiInputClassInfo.isRequestParam()) {
+
+            //检查参数是否有@RequestPart注解
+            RequestPart requestPartAnnotation = AnnotationUtils.getAnnotation(parameter, RequestPart.class);
+            if (null != requestPartAnnotation) {
+                apiInputClassInfo.setRequestPartParam(true);
+            }
+
+            //过滤掉无@PathVariable、@RequestParam、@Valid、@RequestPart注解的参数
+            if (!apiInputClassInfo.isValidParam()
+                    && !apiInputClassInfo.isPathParam()
+                    && !apiInputClassInfo.isRequestParam()
+                    && !apiInputClassInfo.isJsonParam()
+                    && !apiInputClassInfo.isRequestPartParam()
+            ) {
                 continue;
             }
 

@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.rxjava.apikit.client.ApiType;
 import org.rxjava.apikit.client.ApiUtils;
 import org.rxjava.apikit.client.ClientAdapter;
+import org.rxjava.apikit.client.InputParam;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.convert.ConversionService;
@@ -135,11 +136,11 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
      *
      * @param method     {@link org.rxjava.apikit.core.HttpMethodType}
      * @param uri        请求的uri地址
-     * @param form       post请求参数
+     * @param inputParam 入参
      * @param returnType 返回值类型
      */
     @Override
-    public <T> Mono<T> request(String method, String uri, List<Map.Entry<String, Object>> form, Type returnType) {
+    public <T> Mono<T> request(String method, String uri, InputParam inputParam, Type returnType) {
 
         ParameterizedTypeReference<T> typeRef = new ParameterizedTypeReference<T>() {
             @NotNull
@@ -150,6 +151,8 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
         };
 
         HttpMethod httpMethod = HttpMethod.valueOf(method);
+
+        List<Map.Entry<String, Object>> form = inputParam.getParamList();
 
         //检查是否post请求
         boolean postData = form != null

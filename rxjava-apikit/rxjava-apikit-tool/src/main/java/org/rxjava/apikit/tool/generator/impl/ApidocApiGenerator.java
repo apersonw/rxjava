@@ -104,10 +104,10 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
         File packageFile = LocalPathUtils.packToPath(outPath, "", "package", ".json");
         ObjectNode packageJson;
         if (packageFile.exists()) {
-            packageJson = (ObjectNode) JsonUtils.MAPPER.readTree(packageFile);
+            packageJson = (ObjectNode) JsonUtils.DEFAULT_MAPPER.readTree(packageFile);
         } else {
             try (InputStream inputStream = JavaScriptApiGenerator.class.getResourceAsStream(getTemplateFile("package.json"))) {
-                packageJson = (ObjectNode) JsonUtils.MAPPER.readTree(inputStream);
+                packageJson = (ObjectNode) JsonUtils.DEFAULT_MAPPER.readTree(inputStream);
             }
         }
 
@@ -125,6 +125,6 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
             }
             packageJson.put("version", prevVersionText);
         }
-        JsonUtils.MAPPER.writerWithDefaultPrettyPrinter().writeValue(packageFile, packageJson);
+        JsonUtils.DEFAULT_MAPPER.writerWithDefaultPrettyPrinter().writeValue(packageFile, packageJson);
     }
 }
