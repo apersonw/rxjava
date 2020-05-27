@@ -230,38 +230,11 @@ public class ClassTypeInfo implements Cloneable {
          */
         VOID, BOOLEAN, BYTE, SHORT, INT, LONG, FLOAT,
         DOUBLE, STRING, DATE,
+        OBJECTID,
         OTHER;
 
-        private static final ImmutableMap<String, TypeEnum> TYPE_MAP = ImmutableMap.<String, TypeEnum>builder()
-                .put(void.class.getSimpleName(), VOID)
-                .put(boolean.class.getSimpleName(), BOOLEAN)
-                .put(byte.class.getSimpleName(), BYTE)
-                .put(short.class.getSimpleName(), SHORT)
-                .put(int.class.getSimpleName(), INT)
-                .put(long.class.getSimpleName(), LONG)
-                .put(float.class.getSimpleName(), FLOAT)
-                .put(double.class.getSimpleName(), DOUBLE)
-                .put(char.class.getSimpleName(), DOUBLE)
-
-                .put(Void.class.getName(), VOID)
-                .put(Boolean.class.getName(), BOOLEAN)
-                .put(Byte.class.getName(), BYTE)
-                .put(Short.class.getName(), SHORT)
-                .put(Integer.class.getName(), INT)
-                .put(Long.class.getName(), LONG)
-                .put(Float.class.getName(), FLOAT)
-                .put(Double.class.getName(), DOUBLE)
-
-                .put(String.class.getName(), STRING)
-                .put(Character.class.getName(), STRING)
-                .put(Date.class.getName(), DATE)
-                .put(Instant.class.getName(), DATE)
-                .put(LocalDateTime.class.getName(), DATE)
-                .put(LocalDate.class.getName(), DATE)
-                .put(LocalTime.class.getName(), DATE)
-                .build();
-
         private static final ImmutableMap<Class<?>, TypeEnum> TYPE_CLASS_MAP = ImmutableMap.<Class<?>, TypeEnum>builder()
+                //基本类型
                 .put(void.class, VOID)
                 .put(boolean.class, BOOLEAN)
                 .put(byte.class, BYTE)
@@ -271,7 +244,7 @@ public class ClassTypeInfo implements Cloneable {
                 .put(float.class, FLOAT)
                 .put(double.class, DOUBLE)
                 .put(char.class, STRING)
-
+                //基本包装类型
                 .put(Void.class, VOID)
                 .put(Boolean.class, BOOLEAN)
                 .put(Byte.class, BYTE)
@@ -280,10 +253,11 @@ public class ClassTypeInfo implements Cloneable {
                 .put(Long.class, LONG)
                 .put(Float.class, FLOAT)
                 .put(Double.class, DOUBLE)
-
+                //系统包装类型
                 .put(String.class, STRING)
                 .put(Character.class, STRING)
                 .put(Date.class, DATE)
+                .put(ObjectId.class, OBJECTID)
                 .put(Instant.class, DATE)
                 .put(LocalDateTime.class, DATE)
                 .put(LocalDate.class, DATE)
@@ -301,6 +275,7 @@ public class ClassTypeInfo implements Cloneable {
                 .put(DOUBLE, Double.class)
                 .put(STRING, String.class)
                 .put(DATE, Date.class)
+                .put(OBJECTID, ObjectId.class)
                 .build();
 
         public boolean isHasNull() {

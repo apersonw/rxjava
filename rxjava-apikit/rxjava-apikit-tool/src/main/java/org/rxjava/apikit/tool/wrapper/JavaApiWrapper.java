@@ -43,9 +43,10 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
-                .filter(typeInfo -> !typeInfo.isCollection())
-                .filter(typeInfo -> !typeInfo.isGeneric())
+                .filter(classTypeInfo -> classTypeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
+                // .filter(typeInfo -> !typeInfo.isCollection())
+                // .filter(typeInfo -> !typeInfo.isGeneric())
+                // .filter(ClassTypeInfo::isObjectId)
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
