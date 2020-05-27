@@ -9,11 +9,13 @@ import lombok.Setter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleImmutableEntry;
+import lombok.ToString;
 import org.bson.types.ObjectId;
 $!{wrapper.imports}
 
 @Getter
 @Setter
+@ToString
 public class $!{wrapper.getDistClassName()}$!{wrapper.typeParameters} $!{wrapper.superInfo} {
 <!--#for(attr : classInfo.properties)-->
 private $!{wrapper.toJavaTypeString(attr.classTypeInfo, false, true)} $!{attr.fieldName};
