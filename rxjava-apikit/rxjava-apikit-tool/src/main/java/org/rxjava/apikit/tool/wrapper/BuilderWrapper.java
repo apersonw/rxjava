@@ -2,6 +2,7 @@ package org.rxjava.apikit.tool.wrapper;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.generator.Context;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @Setter
 @Getter
+@ToString
 public class BuilderWrapper<T extends CommonClassInfo> {
     /**
      * 类信息

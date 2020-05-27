@@ -50,14 +50,9 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
                 .filter(classTypeInfo -> classTypeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
                 // .filter(typeInfo -> !typeInfo.isCollection())
                 // .filter(typeInfo -> !typeInfo.isGeneric())
-                // .filter(ClassTypeInfo::isObjectId)
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
-                .map(a -> {
-                    log.info("JavaApiWrapper->imports:{}", a);
-                    return a;
-                })
                 .filter(fullName -> context.getParamWrapper(fullName) != null)
                 .map(fullName -> context.getParamWrapper(fullName))
                 .filter(w -> !w.getFullDistPackage().equals(getFullDistPackage()))
