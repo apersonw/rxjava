@@ -44,7 +44,6 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
 
     @Override
     public void generateBaseFile() throws Exception {
-        //todo:生成基本文件
         generatePomFile();
         generateIgnoreFile();
     }

@@ -8,6 +8,7 @@ import httl.util.CollectionUtils;
 import io.github.classgraph.*;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.annotation.Ignore;
 import org.rxjava.apikit.core.HttpMethodType;
@@ -160,18 +161,19 @@ public class ControllerAnalyse implements Analyse {
             Type pType = parameter.getParameterizedType();
             ApiInputClassInfo apiInputClassInfo = new ApiInputClassInfo(paramName, ClassTypeInfo.form(pType));
 
-            //检查参数是否路径参数
+            //检查参数是否有@PathVariable注解
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
             if (MapUtils.isNotEmpty(pathVarAnnotationAttributes)) {
                 apiInputClassInfo.setPathParam(true);
             }
 
+            //检查参数是否有@RequestParam注解
             AnnotationAttributes requestParamAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, RequestParam.class);
             if (MapUtils.isNotEmpty(requestParamAnnotationAttributes)) {
                 apiInputClassInfo.setRequestParam(true);
             }
 
-            //检查是否校验参数和json参数对象
+            //检查是否有@Valid或@RequestBody注解
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
             if (validAnnotation != null) {
                 apiInputClassInfo.setValidParam(true);
@@ -180,7 +182,7 @@ public class ControllerAnalyse implements Analyse {
                     apiInputClassInfo.setJsonParam(true);
                 }
             }
-            //过滤掉可选参数
+            //过滤掉无@PathVariable、@RequestParam、@Valid注解的参数
             if (!apiInputClassInfo.isValidParam() && !apiInputClassInfo.isPathParam() && !apiInputClassInfo.isRequestParam()) {
                 continue;
             }

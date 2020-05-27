@@ -3,6 +3,7 @@ package org.rxjava.apikit.tool.info;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author happy
@@ -10,6 +11,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@ToString
 public class ApiInputClassInfo extends FieldInfo {
     private boolean pathParam = false;
     private boolean validParam = false;

@@ -37,6 +37,11 @@ public class $!{wrapper.getDistClassName()} {
         <!--#end-->
         String _url = ApiUtils.expandUriComponent("$!{method.url}", _uriVariables);
 
+        Map<String, Object> _requestVariables = new HashMap<>();
+        <!--#for(param : method.requestParams)-->
+        _requestVariables.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        <!--#end-->
+
         <!--#if(method.validParams)-->
         <!--#set(param = method.validParams[0])-->
         List<Entry<String, Object>> _form = $!{param.fieldName}.encode("", new ArrayList<>());
