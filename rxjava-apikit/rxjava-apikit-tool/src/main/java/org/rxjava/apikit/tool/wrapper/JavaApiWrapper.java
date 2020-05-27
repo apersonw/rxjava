@@ -2,6 +2,8 @@ package org.rxjava.apikit.tool.wrapper;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.NameMaper;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
@@ -19,6 +21,8 @@ import java.util.List;
  */
 @Setter
 @Getter
+@ToString
+@Slf4j
 public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
 
     /**
@@ -50,6 +54,10 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
+                .map(a -> {
+                    log.info("JavaApiWrapper->imports:{}", a);
+                    return a;
+                })
                 .filter(fullName -> context.getParamWrapper(fullName) != null)
                 .map(fullName -> context.getParamWrapper(fullName))
                 .filter(w -> !w.getFullDistPackage().equals(getFullDistPackage()))

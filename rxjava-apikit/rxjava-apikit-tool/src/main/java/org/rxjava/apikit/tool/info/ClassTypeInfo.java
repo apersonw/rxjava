@@ -2,6 +2,7 @@ package org.rxjava.apikit.tool.info;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.Data;
+import lombok.ToString;
 import org.apache.commons.lang3.ClassUtils;
 import org.bson.types.ObjectId;
 

@@ -1,6 +1,8 @@
 package org.rxjava.apikit.tool.wrapper;
 
 import com.google.common.collect.ImmutableMap;
+import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.CommonClassInfo;
 import org.rxjava.apikit.tool.info.ClassTypeInfo;
@@ -11,6 +13,7 @@ import java.util.List;
 /**
  * @author happy
  */
+@Slf4j
 class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
     JavaWrapper(Context context, T classInfo, String rootPackage) {
         super(context, classInfo, rootPackage);
@@ -71,8 +74,8 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
         return TYPE_WRAP_MAP.get(type).getSimpleName();
     }
 
-    private static final ImmutableMap<ClassTypeInfo.TypeEnum, Class> TYPE_WRAP_MAP
-            = ImmutableMap.<ClassTypeInfo.TypeEnum, Class>builder()
+    private static final ImmutableMap<ClassTypeInfo.TypeEnum, Class<?>> TYPE_WRAP_MAP
+            = ImmutableMap.<ClassTypeInfo.TypeEnum, Class<?>>builder()
             .put(ClassTypeInfo.TypeEnum.VOID, Void.class)
             .put(ClassTypeInfo.TypeEnum.BOOLEAN, Boolean.class)
             .put(ClassTypeInfo.TypeEnum.BYTE, Byte.class)
@@ -83,14 +86,15 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
             .put(ClassTypeInfo.TypeEnum.DOUBLE, Double.class)
             .put(ClassTypeInfo.TypeEnum.DATE, Date.class)
             .put(ClassTypeInfo.TypeEnum.STRING, String.class)
+            .put(ClassTypeInfo.TypeEnum.OBJECTID, ObjectId.class)
             .build();
 
     private static String toJavaString(ClassTypeInfo.TypeEnum type) {
         return TYPE_MAP.get(type).getSimpleName();
     }
 
-    private static final ImmutableMap<ClassTypeInfo.TypeEnum, Class> TYPE_MAP
-            = ImmutableMap.<ClassTypeInfo.TypeEnum, Class>builder()
+    private static final ImmutableMap<ClassTypeInfo.TypeEnum, Class<?>> TYPE_MAP
+            = ImmutableMap.<ClassTypeInfo.TypeEnum, Class<?>>builder()
             .put(ClassTypeInfo.TypeEnum.VOID, void.class)
             .put(ClassTypeInfo.TypeEnum.BOOLEAN, boolean.class)
             .put(ClassTypeInfo.TypeEnum.BYTE, byte.class)
@@ -101,5 +105,6 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
             .put(ClassTypeInfo.TypeEnum.DOUBLE, double.class)
             .put(ClassTypeInfo.TypeEnum.DATE, Date.class)
             .put(ClassTypeInfo.TypeEnum.STRING, String.class)
+            .put(ClassTypeInfo.TypeEnum.OBJECTID, ObjectId.class)
             .build();
 }
