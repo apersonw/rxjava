@@ -53,10 +53,10 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
                     findTypes(type, types);
                     return types;
                 })
-                .filter(typeInfo -> typeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
-                .filter(typeInfo -> !typeInfo.isCollection())
-                .filter(typeInfo -> !typeInfo.isGeneric())
-                .filter(ClassTypeInfo::isObjectId)
+                .filter(classTypeInfo -> classTypeInfo.getType().equals(ClassTypeInfo.TypeEnum.OTHER))
+                .filter(classTypeInfo -> !classTypeInfo.isCollection())
+                .filter(classTypeInfo -> !classTypeInfo.isGeneric())
+                .filter(classTypeInfo -> !classTypeInfo.isObjectId())
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())

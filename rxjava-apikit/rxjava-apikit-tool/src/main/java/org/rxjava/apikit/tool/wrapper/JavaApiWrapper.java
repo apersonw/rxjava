@@ -109,13 +109,13 @@ public class JavaApiWrapper extends JavaWrapper<ApiClassInfo> {
         StringBuilder sb = new StringBuilder();
         List<ApiInputClassInfo> params = method.getParams();
         for (int i = 0; i < params.size(); i++) {
-            ApiInputClassInfo attributeInfo = params.get(i);
+            ApiInputClassInfo apiInputClassInfo = params.get(i);
             if (i > 0) {
                 sb.append(", ");
             }
-            sb.append(toJavaTypeString(attributeInfo.getClassTypeInfo(), false, true));
+            sb.append(toJavaTypeString(apiInputClassInfo.getClassTypeInfo(), false, true));
             sb.append(' ');
-            sb.append(attributeInfo.getFieldName());
+            sb.append(apiInputClassInfo.getFieldName());
         }
         return sb.toString();
     }

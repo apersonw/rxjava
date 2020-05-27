@@ -16,29 +16,29 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
         super(context, classInfo, rootPackage);
     }
 
-    String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments) {
-        return toJavaTypeString(typeInfo, isWrap, isArrayList, isTypeArguments, isArrayList);
+    String toJavaTypeString(ClassTypeInfo classTypeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments) {
+        return toJavaTypeString(classTypeInfo, isWrap, isArrayList, isTypeArguments, isArrayList);
     }
 
     /**
      * 参数类型是否处理数组
      */
-    private String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments, boolean isChildArrayList) {
+    private String toJavaTypeString(ClassTypeInfo classTypeInfo, boolean isWrap, boolean isArrayList, boolean isTypeArguments, boolean isChildArrayList) {
         StringBuilder sb = new StringBuilder();
-        ClassTypeInfo.TypeEnum type = typeInfo.getType();
-        if (type == ClassTypeInfo.TypeEnum.BYTE && typeInfo.isArray()) {
+        ClassTypeInfo.TypeEnum type = classTypeInfo.getType();
+        if (type == ClassTypeInfo.TypeEnum.BYTE && classTypeInfo.isArray()) {
             sb.append("byte[]");
-        } else if (isArrayList && typeInfo.isArray()) {
-            toJavaArrayTypeString(typeInfo, sb, isWrap, true);
+        } else if (isArrayList && classTypeInfo.isArray()) {
+            toJavaArrayTypeString(classTypeInfo, sb, isWrap, true);
             return sb.toString();
-        } else if (typeInfo.isOtherType()) {
-            sb.append(typeInfo.getClassName());
+        } else if (classTypeInfo.isOtherType()) {
+            sb.append(classTypeInfo.getClassName());
         } else if (isWrap) {
             sb.append(toJavaWrapString(type));
         } else {
             sb.append(toJavaString(type));
         }
-        List<ClassTypeInfo> typeArguments = typeInfo.getTypeArguments();
+        List<ClassTypeInfo> typeArguments = classTypeInfo.getTypeArguments();
         if (!typeArguments.isEmpty() && isTypeArguments) {
             sb.append('<');
             for (int i = 0; i < typeArguments.size(); i++) {
@@ -63,8 +63,8 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
         sb.append('>');
     }
 
-    public String toJavaTypeString(ClassTypeInfo typeInfo, boolean isWrap, boolean isArrayList) {
-        return toJavaTypeString(typeInfo, isWrap, isArrayList, true);
+    public String toJavaTypeString(ClassTypeInfo classTypeInfo, boolean isWrap, boolean isArrayList) {
+        return toJavaTypeString(classTypeInfo, isWrap, isArrayList, true);
     }
 
     private static String toJavaWrapString(ClassTypeInfo.TypeEnum type) {
