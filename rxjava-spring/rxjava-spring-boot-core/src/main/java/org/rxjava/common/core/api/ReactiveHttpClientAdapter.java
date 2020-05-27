@@ -184,7 +184,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
         }
 
         WebClient.ResponseSpec retrieve = postData ?
-                bodySpec.syncBody(params).retrieve()
+                bodySpec.bodyValue(params).retrieve()
                 : bodySpec.retrieve();
 
         return retrieve

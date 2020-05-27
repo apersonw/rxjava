@@ -56,6 +56,11 @@ public class ApiMethodInfo {
      */
     private List<ApiInputClassInfo> requestParams = new ArrayList<>();
     /**
+     * json参数列表
+     * todo:
+     */
+    private List<ApiInputClassInfo> jsonParams = new ArrayList<>();
+    /**
      * java注释信息
      */
     private JavaDocInfo javaDocInfo;
@@ -78,6 +83,9 @@ public class ApiMethodInfo {
         }
         if (param.isRequestParam()) {
             requestParams.add(param);
+        }
+        if (param.isJsonParam()) {
+            jsonParams.add(param);
         }
     }
 

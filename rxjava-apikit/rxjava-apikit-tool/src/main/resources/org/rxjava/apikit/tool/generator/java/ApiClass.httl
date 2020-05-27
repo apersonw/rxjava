@@ -31,23 +31,33 @@ public class $!{wrapper.getDistClassName()} {
 
     <!--#for(method : classInfo.apiMethodList)-->
     public Mono<$!{wrapper.resultData(method)}> $!{method.methodName}($!{wrapper.params(method)}) {
-        Map<String, Object> _uriVariables = new HashMap<>();
+        Map<String, Object> pathParamMap = new HashMap<>();
         <!--#for(param : method.pathParams)-->
-        _uriVariables.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        pathParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
         <!--#end-->
-        String _url = ApiUtils.expandUriComponent("$!{method.url}", _uriVariables);
+        String requestUrl = ApiUtils.expandUriComponent("$!{method.url}", pathParamMap);
 
-        Map<String, Object> _requestVariables = new HashMap<>();
+        Map<String, Object> requestParamMap = new HashMap<>();
         <!--#for(param : method.requestParams)-->
-        _requestVariables.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        requestParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        <!--#end-->
+
+        Map<String, Object> validParamMap = new HashMap<>();
+        <!--#for(param : method.validParams)-->
+        validParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
+        <!--#end-->
+
+        Map<String, Object> jsonParamMap = new HashMap<>();
+        <!--#for(param : method.jsonParams)-->
+        jsonParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
         <!--#end-->
 
         <!--#if(method.validParams)-->
         <!--#set(param = method.validParams[0])-->
         List<Entry<String, Object>> _form = $!{param.fieldName}.encode("", new ArrayList<>());
-        return clientAdapter.request("$!{method.type.name()}", _url, _form, _$!{method.index}Type);
+        return clientAdapter.request("$!{method.type.name()}", requestUrl, _form, _$!{method.index}Type);
         <!--#else-->
-        return clientAdapter.request("$!{method.type.name()}", _url, null, _$!{method.index}Type);
+        return clientAdapter.request("$!{method.type.name()}", requestUrl, null, _$!{method.index}Type);
         <!--#end-->
     }
     <!--#end-->
