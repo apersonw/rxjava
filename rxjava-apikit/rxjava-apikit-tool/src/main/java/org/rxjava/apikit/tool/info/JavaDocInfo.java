@@ -16,7 +16,7 @@ public class JavaDocInfo {
     /**
      * List<Map.Entry<String, List<String>>> 结构是 tagName -> fragments list
      */
-    private ListMultimap<String, List<String>> tags = Multimaps.newListMultimap(
+    private final ListMultimap<String, List<String>> tags = Multimaps.newListMultimap(
             new LinkedHashMap<>(), ArrayList::new
     );
 
