@@ -48,36 +48,10 @@ public class TestController {
 //        Example example = new Example();
 //        example.setName("我是测试人员");
 //        return exampleRepository.save(example).thenReturn(testModel);
-        return Mono.empty();
+        TestModel testModel = new TestModel();
+        testModel.setName("hi");
+        return Mono.just(testModel);
     }
 
-    @Bean
-    public ClientAdapter clientAdapter() {
-        return ReactiveHttpClientAdapter.build(new DefaultFormattingConversionService(), WebClient.builder(), "127.0.0.1", "8080", "");
-    }
 
-    @Bean
-    public TestApi testApi(ClientAdapter clientAdapter) {
-        return new TestApi(clientAdapter);
-    }
-
-    @Autowired
-    private TestApi testApi;
-
-    @Login(false)
-    @GetMapping("testApi")
-    public Mono<String> testApi() {
-        return testApi.testPath(
-                "iiai",
-                "asdfsafsdf",
-                new org.rxjava.api.person.example.form.TestBodyForm(),
-                new org.rxjava.api.person.example.form.TestForm(),
-                new org.rxjava.api.person.example.form.TestMultForm(),
-                null,
-                null)
-                .map(a->{
-                    System.out.println(a);
-                    return a;
-                }).map(org.rxjava.api.person.example.model.TestModel::toString);
-    }
 }

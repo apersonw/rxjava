@@ -4,20 +4,15 @@ import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.rxjava.apikit.client.ApiType;
-import org.rxjava.apikit.client.ApiUtils;
 import org.rxjava.apikit.client.ClientAdapter;
 import org.rxjava.apikit.client.InputParam;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.core.ResolvableType;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ReactiveHttpInputMessage;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.reactive.function.BodyExtractor;
-import org.springframework.web.reactive.function.BodyExtractors;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -153,13 +148,13 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
         HttpMethod httpMethod = HttpMethod.valueOf(method);
 
         List<Map.Entry<String, Object>> form = inputParam.getParamList();
-
-        //检查是否post请求
-        boolean postData = form != null
-                && (httpMethod == HttpMethod.PUT ||
-                httpMethod == HttpMethod.POST ||
-                httpMethod == HttpMethod.PATCH ||
-                httpMethod == HttpMethod.DELETE);
+        List<Map.Entry<String, Object>> bodyParamList = inputParam.getBodyParamList();
+        Object jsonBody = inputParam.getJsonBody();
+        if (!ObjectUtils.isEmpty(jsonBody)) {
+            form.addAll(bodyParamList);
+        } else {
+            jsonBody = bodyParamList;
+        }
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         if (form != null) {
@@ -171,13 +166,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
         //设置post请求参数
         WebClient.RequestBodySpec bodySpec = webClient
                 .method(httpMethod)
-                .uri(uriBuilder -> {
-                    uriBuilder = uriBuilder.path(uri);
-                    if (!postData && form != null) {
-                        uriBuilder = uriBuilder.queryParams(params);
-                    }
-                    return uriBuilder.build();
-                });
+                .uri(uriBuilder -> uriBuilder.path(uri).queryParams(params).build());
 
         //请求头设置接收中文语言
         bodySpec.header("Accept-Language", "zh_CN");
@@ -186,9 +175,8 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
             bodySpec = bodySpec.header("authorization", token);
         }
 
-        WebClient.ResponseSpec retrieve = postData ?
-                bodySpec.bodyValue(params).retrieve()
-                : bodySpec.retrieve();
+        WebClient.ResponseSpec retrieve = ObjectUtils.isEmpty(jsonBody) ?
+                bodySpec.retrieve() : bodySpec.bodyValue(jsonBody).retrieve();
 
         return retrieve
                 .bodyToMono(typeRef);
