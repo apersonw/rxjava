@@ -7,7 +7,6 @@ import org.rxjava.api.person.example.form.TestForm;
 import org.rxjava.api.person.example.form.TestMultForm;
 import org.rxjava.api.person.example.model.TestModel;
 import org.rxjava.apikit.client.ClientAdapter;
-import org.rxjava.apikit.client.InputParam;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class TestApiController {
 
     @Login(false)
     @GetMapping("testApi")
-    public Mono<String> testApi() {
+    public Mono<TestModel> testApi() {
         return testApi.testPath(
                 "iiai",
                 "asdfsafsdf",
@@ -46,6 +45,6 @@ public class TestApiController {
                 .map(a -> {
                     System.out.println(a);
                     return a;
-                }).map(TestModel::toString);
+                });
     }
 }
