@@ -11,6 +11,7 @@ import org.rxjava.service.example.form.TestMultForm;
 import org.rxjava.service.example.model.TestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -53,5 +55,16 @@ public class TestController {
         return Mono.just(testModel);
     }
 
+    @Login(false)
+    @PostMapping("filePart")
+    public Mono<TestModel> testRequestPart(
+            @RequestPart("file") FilePart filePart
+    ){
+        TestModel data = new TestModel();
+        data.setName("testModel");
+        FileSystemResource fileSystemResource = new FileSystemResource(new File(""));
+
+        return Mono.just(data);
+    }
 
 }
