@@ -6,8 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "rxjava-api-core": "1.1.0"
   },
   "devDependencies": {
-    "typescript": "^3.9.3"
+    "typescript": "3.9.5"
   }
 }

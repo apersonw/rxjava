@@ -1,7 +1,7 @@
 package org.rxjava.service.example.person;
 
 import lombok.extern.slf4j.Slf4j;
-import org.rxjava.api.person.example.TestApi;
+// import org.rxjava.api.person.example.TestApi;
 import org.rxjava.apikit.client.ClientAdapter;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
