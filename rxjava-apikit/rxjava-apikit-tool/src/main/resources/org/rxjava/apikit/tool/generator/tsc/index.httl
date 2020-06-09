@@ -1,20 +1,11 @@
 <!--#set(java.util.List<java.util.Map.Entry<String, String>> apis)-->
 <!--#set(java.util.Map.Entry<String, String> api)-->
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 <!--#for(api : apis)-->
-Object.defineProperty(exports, "$!{api.key}", {
-        enumerable: true,
-        get: function get() {
-        return _$!{api.key}.default;
-    }
-});
-var _$!{api.key} = _interopRequireDefault(require(".$!{api.value}"));
-
+import $!{api.key} from '.$!{api.value}';
 <!--#end-->
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+export {
+<!--#for(api : apis)-->
+    $!{api.key},
+<!--#end-->
+};

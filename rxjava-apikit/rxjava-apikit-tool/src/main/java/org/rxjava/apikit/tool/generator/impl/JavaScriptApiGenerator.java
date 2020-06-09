@@ -33,18 +33,18 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     @Override
     public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
         JavaScriptApiWrapper wrapper = new JavaScriptApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
-        File jsFile = createApiFile(wrapper, "js");
-        File dFile = createApiFile(wrapper, "d.ts");
+        File jsFile = createApiFile(wrapper, "ts");
+        //File dFile = createApiFile(wrapper, "d.ts");
         executeModule(
                 wrapper,
                 getTemplateFile("Api.httl"),
                 jsFile
         );
-        executeModule(
-                wrapper,
-                getTemplateFile("Api.d.httl"),
-                dFile
-        );
+        //executeModule(
+        //        wrapper,
+        //        getTemplateFile("Api.d.httl"),
+        //        dFile
+        //);
     }
 
     /**
@@ -52,18 +52,18 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
      */
     @Override
     public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) throws Exception {
-        File jsFile = createParamClassFile(wrapper, "js");
-        File dFile = createParamClassFile(wrapper, "d.ts");
+        File jsFile = createParamClassFile(wrapper, "ts");
+        //File dFile = createParamClassFile(wrapper, "d.ts");
         executeModule(
                 wrapper,
                 getTemplateFile("ParamClass.httl"),
                 jsFile
         );
-        executeModule(
-                wrapper,
-                getTemplateFile("ParamClass.d.httl"),
-                dFile
-        );
+        //executeModule(
+        //        wrapper,
+        //        getTemplateFile("ParamClass.d.httl"),
+        //        dFile
+        //);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     }
 
     private String getTemplateFile(String name) {
-        return "/org/rxjava/apikit/tool/generator/es2015/" + name;
+        return "/org/rxjava/apikit/tool/generator/tsc/" + name;
     }
 
     /**
@@ -115,19 +115,19 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
 
         parameters.put("apis", apis);
 
-        File jsFile = LocalPathUtils.packToPath(outPath, "", "index", ".js");
-        File dFile = LocalPathUtils.packToPath(outPath, "", "index", ".d.ts");
+        File jsFile = LocalPathUtils.packToPath(outPath, "", "index", ".ts");
+        //File dFile = LocalPathUtils.packToPath(outPath, "", "index", ".d.ts");
 
         execute(
                 parameters,
                 getTemplateFile("index.httl"),
                 jsFile
         );
-        execute(
-                parameters,
-                getTemplateFile("index.d.httl"),
-                dFile
-        );
+        //execute(
+        //        parameters,
+        //        getTemplateFile("index.d.httl"),
+        //        dFile
+        //);
     }
 
     /**
