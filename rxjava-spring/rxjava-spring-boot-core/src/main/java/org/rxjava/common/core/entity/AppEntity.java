@@ -2,6 +2,7 @@ package org.rxjava.common.core.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.bson.types.ObjectId;
 import org.rxjava.common.core.status.EntityStatus;
 import org.springframework.data.annotation.CreatedDate;
@@ -21,6 +22,7 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
  */
 @Getter
 @Setter
+@ToString
 @Document
 public class AppEntity {
     /**
