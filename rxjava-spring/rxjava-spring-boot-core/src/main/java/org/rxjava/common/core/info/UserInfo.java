@@ -22,7 +22,7 @@ public class UserInfo implements LoginInfo {
      */
     private String phone;
     /**
-     * 应用Id(此字段不可为null)，当前请求发起的appId
+     * 应用Id(此字段不可为null)，优先从token获取，若无token由前端传
      */
     private ObjectId appId;
 }
