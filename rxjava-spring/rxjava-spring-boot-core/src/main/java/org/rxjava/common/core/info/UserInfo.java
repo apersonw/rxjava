@@ -14,6 +14,10 @@ public class UserInfo implements LoginInfo {
      */
     private ObjectId userId;
     /**
+     * 当前登录账号Id
+     */
+    private ObjectId accountId;
+    /**
      * 手机号
      */
     private String phone;
