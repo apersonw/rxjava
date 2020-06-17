@@ -94,8 +94,14 @@ public class ApiMethodInfo {
         }
     }
 
-    public String getMethodClassName(){
-        return ApiMethodInfo.class.getSimpleName();
+    public String getMethodCaseName() {
+        char[] methodName = getMethodName().toCharArray();
+        char chars = methodName[0];
+        if (97 <= chars && chars <= 122) {
+            chars ^= 32;
+        }
+        methodName[0] = chars;
+        return String.valueOf(methodName);
     }
 
     protected void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {

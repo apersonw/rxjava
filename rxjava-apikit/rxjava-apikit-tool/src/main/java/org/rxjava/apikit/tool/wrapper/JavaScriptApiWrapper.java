@@ -54,19 +54,23 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
     public String params(ApiMethodInfo method, boolean isType) {
         StringBuilder sb = new StringBuilder();
         List<ApiInputClassInfo> params = method.getParams();
-        for (ApiInputClassInfo attributeInfo : params) {
-            if (attributeInfo.isValidParam() || attributeInfo.isPathParam()) {
+        for (ApiInputClassInfo apiInputClassInfo : params) {
+            if (apiInputClassInfo.isValidParam() || apiInputClassInfo.isPathParam()) {
                 if (sb.length() > 0) {
                     sb.append(", ");
                 }
-                sb.append(attributeInfo.getFieldName());
+                sb.append(apiInputClassInfo.getFieldName());
                 if (isType) {
                     sb.append(":");
-                    sb.append(toTypeString(attributeInfo.getClassTypeInfo()));
+                    sb.append(toTypeString(apiInputClassInfo.getClassTypeInfo()));
                 }
             }
         }
         return sb.toString();
+    }
+
+    public String paramType(ApiInputClassInfo apiInputClassInfo){
+        return toTypeString(apiInputClassInfo.getClassTypeInfo());
     }
 
     public String fieldName() {

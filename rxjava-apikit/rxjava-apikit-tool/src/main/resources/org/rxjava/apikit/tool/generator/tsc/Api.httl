@@ -5,10 +5,10 @@
 <!--#set(ApiInputClassInfo param)-->
 $!{wrapper.imports}
 <!--#for(method : classInfo.apiMethodList)-->
-export interface $!{method.methodClassName}Params {
-    id?: string,
-    name?: string,
-    form?: TestBodyForm
+export interface $!{method.methodCaseName}Params {
+    <!--#for(param : method.params)-->
+        $!{param.fieldName}?:$!{wrapper.paramType(param)},
+    <!--#end-->
 }
 
 <!--#end-->
@@ -23,7 +23,7 @@ $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
      *
 $!{wrapper.requestComment(method,"     * ")}
     */
-    $!{method.methodName}({$!{wrapper.params(method,true)}}:$!{method.methodClassName}Params):Promise<$!{wrapper.resultTypeString(method)}>;
+    $!{method.methodName}({$!{wrapper.params(method,true)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}>;
 <!--#end-->
 ##循环结束
 }
