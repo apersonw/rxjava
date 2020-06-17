@@ -30,5 +30,5 @@ $!{wrapper.requestComment(method,"     * ")}
 ##循环结束
 }
 export { $!{wrapper.getDistClassName()} };
-const $!{wrapper.fieldName}: $!{wrapper.getDistClassName()};
+const $!{wrapper.fieldName} = $!{wrapper.getDistClassName()};
 export default $!{wrapper.fieldName};
