@@ -7,7 +7,8 @@ $!{wrapper.imports}
 <!--#for(method : classInfo.apiMethodList)-->
 export interface $!{method.methodCaseName}Params {
     <!--#for(param : method.params)-->
-        $!{param.fieldName}?:$!{wrapper.paramType(param)},
+        $!{param.fieldName}?:$!{wrapper.paramType(param)}<!--#if(!for.last)-->,<!--#end-->
+
     <!--#end-->
 }
 
