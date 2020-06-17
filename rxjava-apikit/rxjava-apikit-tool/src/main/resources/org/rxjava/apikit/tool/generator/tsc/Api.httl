@@ -4,25 +4,23 @@
 <!--#set(ApiMethodInfo method)-->
 <!--#set(ApiInputClassInfo param)-->
 $!{wrapper.imports}
-
 <!--#for(method : classInfo.apiMethodList)-->
 export interface $!{method.methodClassName}Params {
     id?: string,
     name?: string,
     form?: TestBodyForm
 }
-<!--#end-->
 
+<!--#end-->
 /**
 $!{wrapper.comment(" * ")}
 */
 class $!{wrapper.getDistClassName()} extends AbstractApi {
-
 ##异步方法
 <!--#for(method : classInfo.apiMethodList)-->
    /**
 $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
-    *
+     *
 $!{wrapper.requestComment(method,"     * ")}
     */
     $!{method.methodName}({$!{wrapper.params(method,true)}}:$!{method.methodClassName}Params):Promise<$!{wrapper.resultTypeString(method)}>;
