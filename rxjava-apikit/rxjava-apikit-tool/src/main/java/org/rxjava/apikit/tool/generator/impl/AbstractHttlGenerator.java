@@ -20,19 +20,19 @@ abstract class AbstractHttlGenerator extends AbstractGenerator {
     /**
      * 执行模块文件生成
      */
-    void executeModule(BuilderWrapper wrapper, String templPath, File file) throws Exception {
-        log.info("开始生成文件:{}, templ:{}", file.getAbsolutePath(), templPath);
+    void executeModule(BuilderWrapper wrapper, String httlPath, File file) throws Exception {
+        log.info("开始生成文件:{}, httlPath:{}", file.getAbsolutePath(), httlPath);
         Map<String, Object> params = new HashMap<>();
         params.put("classInfo", wrapper.getClassInfo());
         params.put("wrapper", wrapper);
-        HttlUtils.renderFile(file, params, templPath);
-        log.info("结束生成文件:{}, templ:{}", file.getAbsolutePath(), templPath);
+        HttlUtils.renderFile(file, params, httlPath);
+        log.info("结束生成文件:{}, httlPath:{}", file.getAbsolutePath(), httlPath);
     }
 
-    void execute(Map<String, Object> parameters, String templPath, File file) throws Exception {
+    void execute(Map<String, Object> parameters, String httlPath, File file) throws Exception {
 
-        log.info("开始生成文件:{}, templ:{}", file.getAbsolutePath(), templPath);
-        HttlUtils.renderFile(file, parameters, templPath);
-        log.info("结束生成文件:{}, templ:{}", file.getAbsolutePath(), templPath);
+        log.info("开始生成文件:{}, httlPath:{}", file.getAbsolutePath(), httlPath);
+        HttlUtils.renderFile(file, parameters, httlPath);
+        log.info("结束生成文件:{}, httlPath:{}", file.getAbsolutePath(), httlPath);
     }
 }
