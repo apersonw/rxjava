@@ -94,6 +94,10 @@ public class ApiMethodInfo {
         }
     }
 
+    public String getMethodClassName(){
+        return ApiMethodInfo.class.getSimpleName();
+    }
+
     protected void findTypes(ClassTypeInfo type, List<ClassTypeInfo> list) {
         list.add(type);
         if (CollectionUtils.isNotEmpty(type.getTypeArguments())) {
