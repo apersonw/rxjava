@@ -1,4 +1,4 @@
-package org.rxjava.apikit.tool.utils;
+package org.rxjava.apikit.plugin;
 
 import org.apache.maven.plugin.logging.Log;
 import reactor.core.publisher.Flux;

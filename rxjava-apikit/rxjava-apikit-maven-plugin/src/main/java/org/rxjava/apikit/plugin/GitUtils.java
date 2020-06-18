@@ -1,4 +1,4 @@
-package org.rxjava.apikit.tool.utils;
+package org.rxjava.apikit.plugin;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -67,10 +67,10 @@ public class GitUtils {
         SystemStreamLog log = new SystemStreamLog();
         clone(
                 "https://code.aliyun.com/rxjava/rxjava-api-example.git",
-                "master", "./temp",
+                "master", "./rxjava-api-example",
                 log
         );
 
-        System.out.println(getVersion("./temp", log));
+        System.out.println(getVersion("./rxjava-api-example", log));
     }
 }
