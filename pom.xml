@@ -50,6 +50,7 @@
 
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
+        <maven-plugin-api.version>3.6.3</maven-plugin-api.version>
         <asm.version>8.0.1</asm.version>
 
         <!--Kotlin增量编译-->
@@ -306,6 +307,12 @@
                 <artifactId>kotlin-test-junit</artifactId>
                 <version>${kotlin.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>${maven-plugin-api.version}</version>
+                <scope>compile</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
