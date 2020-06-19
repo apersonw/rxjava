@@ -10,11 +10,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>rxjava-spring-boot-core</module>
-        <module>rxjava-spring-boot-starter-api</module>
         <module>rxjava-spring-boot-starter-service</module>
+        <module>rxjava-spring-boot-starter-service-mock</module>
         <module>rxjava-spring-cloud-starter-gateway</module>
         <module>rxjava-spring-cloud-starter-bus</module>
-        <module>rxjava-spring-mock-starter</module>
     </modules>
     <dependencies>
         <dependency>
