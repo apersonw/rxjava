@@ -37,25 +37,25 @@ public class RxApiBuildApplication implements CommandLineRunner {
 
         //分析api和param
         ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourceDir, "org.rxjava.service.example");
-        //{
-        //    //配置java客户端生成器
-        //    JavaClientApiGenerator javaClientApiGenerator = new JavaClientApiGenerator();
-        //    javaClientApiGenerator.setOutRootPackage("org.rxjava.api.example");
-        //    javaClientApiGenerator.setOutPath(javaOutPath);
-        //
-        //    //生成java客户端Api
-        //    manager.generate(javaClientApiGenerator);
-        //}
-
         {
-            //配置js客户端生成器
-            JavaScriptApiGenerator javaScriptApiGenerator = new JavaScriptApiGenerator();
-            javaScriptApiGenerator.setOutPath(jsOutPath);
-            javaScriptApiGenerator.setServiceId("example");
+            //配置java客户端生成器
+            JavaClientApiGenerator javaClientApiGenerator = new JavaClientApiGenerator();
+            javaClientApiGenerator.setOutRootPackage("org.rxjava.api.example");
+            javaClientApiGenerator.setOutPath(javaOutPath);
 
-            //生成java script客户端Api
-            manager.generate(javaScriptApiGenerator);
+            //生成java客户端Api
+            manager.generate(javaClientApiGenerator);
         }
+
+        //{
+        //    //配置js客户端生成器
+        //    JavaScriptApiGenerator javaScriptApiGenerator = new JavaScriptApiGenerator();
+        //    javaScriptApiGenerator.setOutPath(jsOutPath);
+        //    javaScriptApiGenerator.setServiceId("example");
+        //
+        //    //生成java script客户端Api
+        //    manager.generate(javaScriptApiGenerator);
+        //}
 
 //        {
 //            //配置apidoc生成器
