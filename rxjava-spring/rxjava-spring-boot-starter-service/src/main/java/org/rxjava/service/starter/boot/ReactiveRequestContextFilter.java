@@ -45,7 +45,7 @@ public class ReactiveRequestContextFilter implements WebFilter {
                         .filter(exchange)
                         .subscriberContext(ctx -> {
                             if (ObjectUtils.isNotEmpty(userInfo.getAppId())) {
-                                return ctx.put("settlerId", userInfo.getAppId());
+                                return ctx.put("appId", userInfo.getAppId());
                             }
                             return ctx;
                         })
