@@ -4,4 +4,5 @@
     <comment>默认异常异常消息</comment>
     <entry key="emptyError">结果集空错误</entry>
     <entry key="notFoundEnumValue">枚举值不存在</entry>
+    <entry key="unsupportedEncodingException">不支持的编码异常</entry>
 </properties>
