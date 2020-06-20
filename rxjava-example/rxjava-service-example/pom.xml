@@ -45,6 +45,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Junit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>

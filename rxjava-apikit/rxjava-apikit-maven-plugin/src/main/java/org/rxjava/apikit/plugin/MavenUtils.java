@@ -55,7 +55,7 @@ public class MavenUtils {
     }
 
 
-    public final static String serialize(Object o) {
+    public static String serialize(Object o) {
         try {
             return MAPPER.writeValueAsString(o);
         } catch (IOException e) {
