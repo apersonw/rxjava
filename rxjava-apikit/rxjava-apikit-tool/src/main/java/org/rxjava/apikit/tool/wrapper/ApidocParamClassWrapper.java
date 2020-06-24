@@ -22,7 +22,7 @@ public class ApidocParamClassWrapper extends JavaScriptWrapper<ParamClassInfo> {
         return Mono
                 .justOrEmpty(classInfo.getSuperType())
                 .map(ClassTypeInfo::getFullName)
-                .filter(fullName -> context.getParamWrapper(fullName)!=null)
+                .filter(fullName -> context.getParamWrapper(fullName) != null)
                 .map(fullName -> context.getParamWrapper(fullName))
                 .flatMapMany(w -> {
                     ClassTypeInfo superType = w.getClassInfo().getSuperType();

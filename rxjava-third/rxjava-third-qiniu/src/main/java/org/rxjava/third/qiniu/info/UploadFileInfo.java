@@ -45,7 +45,7 @@ public class UploadFileInfo {
 
     public Mono<UploadFileInfo> init() {
         String id = UuidUtils.getInstance().randomUuidToBase64();
-        return Mono.fromCallable(() -> Files.createTempFile("testdev-"+id, ".temp"))
+        return Mono.fromCallable(() -> Files.createTempFile("testdev-" + id, ".temp"))
                 .publishOn(Schedulers.elastic())
                 .subscribeOn(Schedulers.elastic())
                 .flatMap(temp -> filePart
@@ -68,7 +68,7 @@ public class UploadFileInfo {
                                 e.printStackTrace();
                             }
                         })
-                        .doOnError(throwable->{
+                        .doOnError(throwable -> {
                             try {
                                 Files.delete(temp);
                             } catch (IOException e) {

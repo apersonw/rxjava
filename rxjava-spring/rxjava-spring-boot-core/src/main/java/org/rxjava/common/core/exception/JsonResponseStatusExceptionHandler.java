@@ -65,7 +65,7 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
     }
 
     private Mono<Void> write(ServerWebExchange exchange,
-                                       ServerResponse response) {
+                             ServerResponse response) {
         exchange.getResponse().getHeaders()
                 .setContentType(response.headers().getContentType());
         return response.writeTo(exchange, serverResponseContext);

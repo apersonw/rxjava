@@ -12,15 +12,15 @@ public class DefaultPackageNameMapper implements PackageNameMapper {
         boolean isInPack = packageName.startsWith(sourceRootPackage);
         if (isInPack) {
             String dist = packageName.substring(sourceRootPackage.length());
-            if(dist.startsWith(".")){
+            if (dist.startsWith(".")) {
                 return dist.substring(1);
             }
             return dist;
-        }else{
+        } else {
             int index = packageName.lastIndexOf(".");
-            if(index>-1){
+            if (index > -1) {
                 String dist = packageName.substring(index, packageName.length());
-                if(dist.startsWith(".")){
+                if (dist.startsWith(".")) {
                     return dist.substring(1);
                 }
                 return dist;

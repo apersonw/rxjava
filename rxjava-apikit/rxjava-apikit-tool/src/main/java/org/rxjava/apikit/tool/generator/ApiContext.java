@@ -12,5 +12,5 @@ import java.util.List;
  */
 @Data
 public class ApiContext {
-    private List<ControllerInfo> controllerInfos=new ArrayList<>();
+    private List<ControllerInfo> controllerInfos = new ArrayList<>();
 }

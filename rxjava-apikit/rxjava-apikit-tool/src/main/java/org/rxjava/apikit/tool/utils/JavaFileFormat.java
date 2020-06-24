@@ -17,7 +17,7 @@ public class JavaFileFormat {
     public static final CodeFormatter CODE_FORMATTER = createCodeFormatter();
 
     private static CodeFormatter createCodeFormatter() {
-        Map<String,String> options = JavaCore.getOptions();
+        Map<String, String> options = JavaCore.getOptions();
         JavaCore.setComplianceOptions(JavaCore.VERSION_1_8, options);
         options.put("org.eclipse.jdt.core.formatter.lineSplit", "120");
         return ToolFactory.createCodeFormatter(options);

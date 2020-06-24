@@ -166,8 +166,8 @@ public class ClassAnalyseUtils {
                 .put(Mono.class.getName(), MONO)
                 .put(Flux.class.getName(), FLUX)
                 //Map和List类型均不再往下分析了
-                .put(Map.class.getName(),MAP)
-                .put(List.class.getName(),LIST)
+                .put(Map.class.getName(), MAP)
+                .put(List.class.getName(), LIST)
                 .build();
     }
 }

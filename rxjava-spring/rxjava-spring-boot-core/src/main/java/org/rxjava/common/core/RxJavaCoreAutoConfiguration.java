@@ -15,7 +15,7 @@ public class RxJavaCoreAutoConfiguration {
      */
     @Bean
     @Primary
-    public RequestTool requestTool(){
+    public RequestTool requestTool() {
         return new RequestTool();
     }
 }

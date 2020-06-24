@@ -12,6 +12,7 @@ import java.util.stream.Stream;
  */
 public class ErrorMessageException extends RuntimeException {
     private ErrorMessage errorMessage;
+
     private ErrorMessageException(String[] codes, Object[] arguments, String defaultMessage, Throwable cause) {
         super(MessageFormat.format(
                 "codes:{0},args:{1}, defaultMessage:{2}",

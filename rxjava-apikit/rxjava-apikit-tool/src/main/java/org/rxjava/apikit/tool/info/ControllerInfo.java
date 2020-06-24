@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ControllerInfo extends ClassBaseInfo{
+public class ControllerInfo extends ClassBaseInfo {
     /**
      * 控制器请求方法列表
      */

@@ -24,6 +24,7 @@ public class ApiClassInfo extends CommonClassInfo {
      * api方法列表
      */
     private List<ApiMethodInfo> apiMethodList = new ArrayList<>();
+
     /**
      * 添加api方法信息
      */

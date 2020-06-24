@@ -1,15 +1,20 @@
 package org.rxjava.service.example.test;
 
+import org.rxjava.api.example.person.TestApi;
 import org.rxjava.apikit.client.ClientAdapter;
-import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
+import org.rxjava.common.test.ClientAdapterFactory;
+import org.rxjava.common.test.EnableTest;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.convert.support.DefaultConversionService;
-import org.springframework.web.reactive.function.client.WebClient;
 
+@EnableTest
 public class TestApiContext {
+    @Bean
+    public ClientAdapter clientAdapter(ClientAdapterFactory clientAdapterFactory) {
+        return clientAdapterFactory.build("localhost", "8082", "");
+    }
 
     @Bean
-    public ClientAdapter clientAdapter() {
-        return ReactiveHttpClientAdapter.build(new DefaultConversionService(), WebClient.builder(), "localhost", "8082", "");
+    public TestApi testApi(ClientAdapter clientAdapter){
+        return new TestApi(clientAdapter);
     }
 }

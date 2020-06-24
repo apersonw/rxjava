@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.rxjava</groupId>
         <artifactId>rxjava</artifactId>
@@ -11,8 +12,8 @@
     <properties>
         <module.type>service</module.type>
         <module.Type>Service</module.Type>
-<!--        <git.url>git@code.aliyun.com:caomang/caomang-api-app.git</git.url>-->
-<!--        <git.url>https://code.aliyun.com/caomang/caomang-api-app.git</git.url>-->
+        <!--        <git.url>git@code.aliyun.com:caomang/caomang-api-app.git</git.url>-->
+        <!--        <git.url>https://code.aliyun.com/caomang/caomang-api-app.git</git.url>-->
     </properties>
     <dependencies>
         <dependency>
@@ -108,7 +109,7 @@
                                     <outPath>js/${project.name}-api-${module.name}-person</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
-                                        <outRootPackage />
+                                        <outRootPackage/>
                                         <serviceId>${module.name}</serviceId>
                                     </task>
                                 </task>
@@ -133,7 +134,7 @@
                                     <outPath>js/${project.name}-api-${module.name}-admin</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
-                                        <outRootPackage />
+                                        <outRootPackage/>
                                         <serviceId>${module.name}</serviceId>
                                     </task>
                                 </task>

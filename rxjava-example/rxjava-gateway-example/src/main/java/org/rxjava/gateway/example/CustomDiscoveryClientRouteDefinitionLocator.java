@@ -99,7 +99,7 @@ public class CustomDiscoveryClientRouteDefinitionLocator extends DiscoveryClient
                                 .entrySet()) {
                             String value = getValueFromExpr(evalCtxt, parser,
                                     instanceForEval, entry);
-                            predicate.addArg(entry.getKey(), value.replace("rxjava-service-",""));
+                            predicate.addArg(entry.getKey(), value.replace("rxjava-service-", ""));
                         }
                         routeDefinition.getPredicates().add(predicate);
                     }
@@ -111,7 +111,7 @@ public class CustomDiscoveryClientRouteDefinitionLocator extends DiscoveryClient
                                 .entrySet()) {
                             String value = getValueFromExpr(evalCtxt, parser,
                                     instanceForEval, entry);
-                            filter.addArg(entry.getKey(), value.replace("rxjava-service-",""));
+                            filter.addArg(entry.getKey(), value.replace("rxjava-service-", ""));
                         }
                         routeDefinition.getFilters().add(filter);
                     }

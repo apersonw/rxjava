@@ -59,7 +59,7 @@ public class TestController {
     @PostMapping("filePart")
     public Mono<TestModel> testRequestPart(
             @RequestPart("file") FilePart filePart
-    ){
+    ) {
         TestModel data = new TestModel();
         data.setName("testModel");
         FileSystemResource fileSystemResource = new FileSystemResource(new File(""));

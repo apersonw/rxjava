@@ -23,7 +23,7 @@ public class JavaDocInfo {
     /**
      * 获取注释第一行
      */
-    public String getFirstRow(){
+    public String getFirstRow() {
         if (tags.isEmpty()) {
             return "请设置控制器中文名";
         }

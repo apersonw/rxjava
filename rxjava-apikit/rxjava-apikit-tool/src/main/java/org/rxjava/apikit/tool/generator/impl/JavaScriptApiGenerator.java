@@ -107,7 +107,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     private void generateIndexFile() throws Exception {
         Map<String, Object> parameters = new HashMap<>();
 
-        List<Map.Entry<?,?>> apis = context.getApis().getValues().stream().map(apiInfo -> {
+        List<Map.Entry<?, ?>> apis = context.getApis().getValues().stream().map(apiInfo -> {
             JavaScriptApiWrapper wrapper = new JavaScriptApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
             String value = wrapper.getDistPackage().replace(".", "/") + '/' + wrapper.getDistClassName();
             return new AbstractMap.SimpleImmutableEntry<>(wrapper.getDistClassName(), value);
