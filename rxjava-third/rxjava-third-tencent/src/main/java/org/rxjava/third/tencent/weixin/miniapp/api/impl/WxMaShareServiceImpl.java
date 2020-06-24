@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.WxMaShareInfo;
 import org.rxjava.third.tencent.weixin.miniapp.util.crypt.WxMaCryptUtils;
 
 /**
- * @author zhfish
  */
 @AllArgsConstructor
 public class WxMaShareServiceImpl implements WxMaShareService {

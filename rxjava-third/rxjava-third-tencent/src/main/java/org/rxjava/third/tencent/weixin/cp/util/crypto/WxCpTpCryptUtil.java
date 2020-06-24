@@ -5,7 +5,6 @@ import org.rxjava.third.tencent.weixin.common.util.crypto.WxCryptUtil;
 import org.rxjava.third.tencent.weixin.cp.config.WxCpTpConfigStorage;
 
 /**
- * @author someone
  */
 public class WxCpTpCryptUtil extends WxCryptUtil {
     /**

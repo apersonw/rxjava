@@ -9,9 +9,6 @@ import org.w3c.dom.Document;
 
 /**
  * 查询代金券信息响应结果类
- * Created by Binary Wang on 2017-7-15.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 图文列表.
- *
- * @author yuanqixun
- * date:2018-08-25 00:35
  */
 @Data
 public class TextImageList implements Serializable {

@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author miller
  */
 public abstract class MediaImgUploadRequestExecutor<H, P> implements RequestExecutor<WxMediaImgUploadResult, File> {
     protected RequestHttp<H, P> requestHttp;

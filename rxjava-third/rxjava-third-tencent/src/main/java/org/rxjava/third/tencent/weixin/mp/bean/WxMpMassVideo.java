@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 /**
  * 群发时用到的视频素材
- *
- * @author chanjarster
  */
 @Data
 public class WxMpMassVideo implements Serializable {

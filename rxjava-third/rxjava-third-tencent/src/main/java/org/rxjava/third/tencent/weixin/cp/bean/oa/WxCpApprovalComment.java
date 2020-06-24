@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 审批申请备注信息
- *
- * @author element
  */
 @Data
 public class WxCpApprovalComment implements Serializable {

@@ -9,9 +9,6 @@ import java.util.List;
 /**
  * 小程序数据分析相关接口
  * 文档：https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis.html
- *
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28
  */
 public interface WxMaAnalysisService {
     String GET_DAILY_SUMMARY_TREND_URL = "https://api.weixin.qq.com/datacube/getweanalysisappiddailysummarytrend";

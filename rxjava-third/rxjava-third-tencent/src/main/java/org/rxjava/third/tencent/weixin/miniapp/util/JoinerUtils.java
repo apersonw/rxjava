@@ -11,9 +11,6 @@ import com.google.common.base.Joiner;
 /**
  * ClassName: JoinerUtils <br/>
  * Description: 字符串连接器 <br/>
- * Date: 2019年10月18日 下午1:42:59 <br/>
- *
- * @author <a href="https://gitee.com/esunego_hunan/weixin-java-tools">wsp</a>
  */
 
 public class JoinerUtils {

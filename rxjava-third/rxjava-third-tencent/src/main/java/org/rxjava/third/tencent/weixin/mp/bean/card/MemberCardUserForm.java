@@ -12,9 +12,6 @@ import java.util.List;
 
 /**
  * 用户表单对象.
- *
- * @author yuanqixun
- * @date 2018-08-30
  */
 @Data
 public class MemberCardUserForm implements Serializable {

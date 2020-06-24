@@ -15,10 +15,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/5
  */
 public class MaterialDeleteOkhttpRequestExecutor extends MaterialDeleteRequestExecutor<OkHttpClient, OkHttpProxyInfo> {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

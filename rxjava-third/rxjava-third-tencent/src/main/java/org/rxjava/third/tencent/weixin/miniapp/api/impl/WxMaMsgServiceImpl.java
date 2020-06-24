@@ -13,7 +13,6 @@ import org.rxjava.third.tencent.weixin.miniapp.constant.WxMaConstants;
 import org.rxjava.third.tencent.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaMsgServiceImpl implements WxMaMsgService {

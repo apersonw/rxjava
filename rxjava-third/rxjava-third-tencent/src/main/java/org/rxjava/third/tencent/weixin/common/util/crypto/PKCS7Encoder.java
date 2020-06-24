@@ -12,8 +12,6 @@ import java.util.Arrays;
 
 /**
  * 提供基于PKCS7算法的加解.
- *
- * @author tencent
  */
 public class PKCS7Encoder {
     private static final Charset CHARSET = StandardCharsets.UTF_8;

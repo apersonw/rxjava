@@ -17,7 +17,6 @@ import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @XStreamAlias("xml")
 @Data

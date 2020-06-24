@@ -8,9 +8,6 @@ import java.util.List;
 /**
  * 小程序代码管理相关 API（大部分只能是第三方平台调用）
  * 文档：https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1489140610_Uavc4&token=&lang=zh_CN
- *
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-26 19:43
  */
 public interface WxMaCodeService {
     /**

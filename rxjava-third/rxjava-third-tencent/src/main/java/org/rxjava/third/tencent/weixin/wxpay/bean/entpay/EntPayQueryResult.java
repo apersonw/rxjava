@@ -9,9 +9,6 @@ import org.w3c.dom.Document;
 
 /**
  * 企业付款查询返回结果.
- * Created by Binary Wang on 2016/10/19.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

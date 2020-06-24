@@ -11,9 +11,6 @@ import java.util.Map;
 
 /**
  * 批量查询用户信息查询参数 <br>
- * Created by LiuJunGuang on 2016/8/31.
- *
- * @author LiuJunGuang
  */
 @Data
 public class WxMpUserQuery implements Serializable {

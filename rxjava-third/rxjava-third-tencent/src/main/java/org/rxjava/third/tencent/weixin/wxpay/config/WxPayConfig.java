@@ -25,8 +25,6 @@ import java.util.Collections;
 
 /**
  * 微信支付配置
- *
- * @author Binary Wang (https://github.com/binarywang)
  */
 @Data
 public class WxPayConfig {
@@ -239,9 +237,6 @@ public class WxPayConfig {
     /**
      * 初始化api v3请求头 自动签名验签
      * 方法参照微信官方https://github.com/wechatpay-apiv3/wechatpay-apache-httpclient
-     *
-     * @return org.apache.http.impl.client.CloseableHttpClient
-     * @author doger.wang
      **/
     public CloseableHttpClient initApiV3HttpClient() throws WxPayException {
         String privateKeyPath = this.getPrivateKeyPath();

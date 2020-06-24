@@ -30,8 +30,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 在原有CertificatesVerifier基础上，增加自动更新证书功能
- *
- * @author doger.wang
  */
 @Slf4j
 public class AutoUpdateCertificatesVerifier implements Verifier {

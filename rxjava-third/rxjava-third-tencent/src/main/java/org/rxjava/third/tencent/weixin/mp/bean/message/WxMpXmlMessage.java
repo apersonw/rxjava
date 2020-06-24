@@ -24,8 +24,6 @@ import java.util.Map;
  * 部分未注释的字段的解释请查阅相关微信开发文档：
  * <a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140453&token=&lang=zh_CN">接收普通消息</a>
  * <a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140454&token=&lang=zh_CN">接收事件推送</a>
- *
- * @author chanjarster
  */
 @Data
 @Slf4j

@@ -7,8 +7,6 @@ import org.rxjava.third.tencent.weixin.wxpay.service.ProfitSharingService;
 import org.rxjava.third.tencent.weixin.wxpay.service.WxPayService;
 
 /**
- * @author Wang GuangXin 2019/10/22 10:13
- * @version 1.0
  */
 public class ProfitSharingServiceImpl implements ProfitSharingService {
     private WxPayService payService;

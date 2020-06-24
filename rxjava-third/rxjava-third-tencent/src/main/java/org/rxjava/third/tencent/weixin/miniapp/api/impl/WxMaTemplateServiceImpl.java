@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Binary
  */
 @AllArgsConstructor
 public class WxMaTemplateServiceImpl implements WxMaTemplateService {

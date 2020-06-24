@@ -7,9 +7,6 @@ import org.rxjava.third.tencent.weixin.wxpay.bean.result.BaseWxPayResult;
 
 /**
  * 微信支付异常结果类
- * Created by Binary Wang on 2017-6-6.
- *
- * @author BinaryWang
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

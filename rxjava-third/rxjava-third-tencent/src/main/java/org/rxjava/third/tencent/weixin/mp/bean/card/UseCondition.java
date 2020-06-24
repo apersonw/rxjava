@@ -9,9 +9,6 @@ import java.io.Serializable;
 
 /**
  * 使用门槛
- *
- * @author yuanqixun
- * date:2018-08-25 00:35
  */
 @Data
 public class UseCondition implements Serializable {

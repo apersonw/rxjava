@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 动态消息.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2020-02-17
  */
 @Data
 @Accessors(chain = true)

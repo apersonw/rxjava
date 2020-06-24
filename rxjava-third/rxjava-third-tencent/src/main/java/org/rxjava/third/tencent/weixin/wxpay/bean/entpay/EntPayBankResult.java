@@ -9,9 +9,6 @@ import org.w3c.dom.Document;
 
 /**
  * 企业付款到银行卡的响应结果.
- * Created by Binary Wang on 2017/12/21.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

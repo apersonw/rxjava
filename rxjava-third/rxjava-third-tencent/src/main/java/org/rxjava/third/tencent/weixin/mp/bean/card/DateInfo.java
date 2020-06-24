@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 使用日期，有效期的信息.
- *
- * @author yuanqixun
- * date:2018-08-25 00:31
  */
 @Data
 public class DateInfo implements Serializable {

@@ -6,8 +6,6 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28
  */
 @Data
 public class WxMaVisitPage implements Serializable {

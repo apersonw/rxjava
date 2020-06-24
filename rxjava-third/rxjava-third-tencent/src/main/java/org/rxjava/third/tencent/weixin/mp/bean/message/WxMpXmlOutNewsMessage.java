@@ -13,8 +13,6 @@ import java.util.List;
 
 /**
  * 被动回复的图文消息xml.
- *
- * @author chanjarster
  */
 @XStreamAlias("xml")
 @Data

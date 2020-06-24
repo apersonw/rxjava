@@ -10,8 +10,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.comment.WxMpCommentListVo;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Comment.*;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2019-06-16
  */
 @RequiredArgsConstructor
 public class WxMpCommentServiceImpl implements WxMpCommentService {

@@ -11,9 +11,6 @@ import java.util.List;
 
 /**
  * 模板列表信息
- * Created by Binary Wang on 2016-10-17.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMpTemplate implements Serializable {

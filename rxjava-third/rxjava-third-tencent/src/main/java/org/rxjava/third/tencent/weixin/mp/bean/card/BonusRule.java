@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 积分规则.
- *
- * @author yuanqixun
- * date:2018-08-25 00:33
  */
 @Data
 public class BonusRule implements Serializable {

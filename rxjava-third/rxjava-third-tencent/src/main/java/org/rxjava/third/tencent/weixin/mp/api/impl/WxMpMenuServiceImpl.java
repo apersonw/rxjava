@@ -15,9 +15,6 @@ import org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Menu.*;
 
 /**
- * Created by Binary Wang on 2016/7/21.
- *
- * @author Binary Wang
  */
 @Slf4j
 @RequiredArgsConstructor

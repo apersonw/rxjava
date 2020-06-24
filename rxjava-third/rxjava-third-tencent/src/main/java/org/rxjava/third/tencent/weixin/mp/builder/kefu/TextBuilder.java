@@ -5,10 +5,7 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 文本消息builder
- * <p>
  * 用法: WxMpKefuMessage m = WxMpKefuMessage.TEXT().content(...).toUser(...).build();
- *
- * @author chanjarster
  */
 public final class TextBuilder extends BaseBuilder<TextBuilder> {
     private String content;

@@ -8,9 +8,6 @@ import java.io.InputStream;
 
 /**
  * 临时素材接口
- * Created by Binary Wang on 2016/7/21.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaMediaService {
     String MEDIA_UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?type=%s";

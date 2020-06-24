@@ -10,9 +10,6 @@ import java.util.Map;
 
 /**
  * 发送企业红包
- *
- * @author wuyong
- * @date 2019-12-1
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

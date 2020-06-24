@@ -5,10 +5,7 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 卡券消息builder
- * <p>
  * 用法: WxMpKefuMessage m = WxMpKefuMessage.WXCARD().cardId(...).toUser(...).build();
- *
- * @author mgcnrx11
  */
 public final class WxCardBuilder extends BaseBuilder<WxCardBuilder> {
     private String cardId;

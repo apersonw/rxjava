@@ -23,7 +23,6 @@ import org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts;
 import java.io.IOException;
 
 /**
- * @author someone
  */
 public class WxCpTpServiceApacheHttpClientImpl extends BaseWxCpTpServiceImpl<CloseableHttpClient, HttpHost> {
     private CloseableHttpClient httpClient;

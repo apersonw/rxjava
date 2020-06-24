@@ -7,8 +7,6 @@ import java.io.File;
 
 /**
  * 微信客户端（第三方应用）配置存储
- *
- * @author zhenjun cai
  */
 public interface WxCpTpConfigStorage {
 

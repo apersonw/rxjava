@@ -5,10 +5,7 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 获得消息builder
- * <p>
  * 用法: WxMpKefuMessage m = WxMpKefuMessage.IMAGE().mediaId(...).toUser(...).build();
- *
- * @author chanjarster
  */
 public final class ImageBuilder extends BaseBuilder<ImageBuilder> {
     private String mediaId;

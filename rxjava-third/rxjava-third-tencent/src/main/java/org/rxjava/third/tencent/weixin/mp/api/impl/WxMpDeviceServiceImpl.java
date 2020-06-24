@@ -10,9 +10,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.device.*;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Device.*;
 
 /**
- * Created by keungtung on 10/12/2016.
- *
- * @author keungtung
  */
 @Slf4j
 @RequiredArgsConstructor

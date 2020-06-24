@@ -14,8 +14,6 @@ import java.io.Serializable;
 
 /**
  * 客服消息.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMaKefuMessage implements Serializable {

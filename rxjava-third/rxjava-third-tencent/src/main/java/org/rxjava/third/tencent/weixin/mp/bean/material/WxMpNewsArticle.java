@@ -17,8 +17,6 @@ import java.io.Serializable;
  * 8. url           点击图文消息跳转链接
  * 9. need_open_comment（新增字段） 否 Uint32 是否打开评论，0不打开，1打开
  * 10. only_fans_can_comment（新增字段） 否 Uint32 是否粉丝才可评论，0所有人可评论，1粉丝才可评论
- *
- * @author chanjarster
  */
 @Data
 public class WxMpNewsArticle implements Serializable {

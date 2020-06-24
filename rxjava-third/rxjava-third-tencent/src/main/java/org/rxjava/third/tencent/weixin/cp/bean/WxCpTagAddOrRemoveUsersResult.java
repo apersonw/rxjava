@@ -12,9 +12,6 @@ import java.util.List;
 
 /**
  * 为标签添加或移除用户结果对象类.
- * Created by Binary Wang on 2017-6-22.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxCpTagAddOrRemoveUsersResult implements Serializable {

@@ -5,11 +5,8 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 图文消息builder
- * <p>
  * 用法:
  * WxMpKefuMessage m = WxMpKefuMessage.NEWS().mediaId("xxxxx").toUser(...).build();
- *
- * @author Binary Wang
  */
 public final class MpNewsBuilder extends BaseBuilder<MpNewsBuilder> {
     private String mediaId;

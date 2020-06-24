@@ -18,7 +18,6 @@ import java.nio.file.Files;
 import java.util.UUID;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaMediaServiceImpl implements WxMaMediaService {

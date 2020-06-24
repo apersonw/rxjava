@@ -14,9 +14,6 @@ import java.util.Map;
 
 /**
  * 微信支付-申请退款请求参数
- * Created by Binary Wang on 2016-10-08.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

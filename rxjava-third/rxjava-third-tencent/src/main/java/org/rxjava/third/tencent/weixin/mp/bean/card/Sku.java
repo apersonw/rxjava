@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 商品信息.
- *
- * @author yuanqixun
- * date:2018-08-25 00:32
  */
 @Data
 public class Sku implements Serializable {

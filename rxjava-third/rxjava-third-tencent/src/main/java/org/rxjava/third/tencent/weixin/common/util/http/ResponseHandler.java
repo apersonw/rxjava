@@ -2,10 +2,7 @@ package org.rxjava.third.tencent.weixin.common.util.http;
 
 /**
  * http请求响应回调处理接口.
- * Created by Binary Wang on 2018/12/8.
- *
  * @param <T> 返回值类型
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface ResponseHandler<T> {
     /**

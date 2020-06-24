@@ -13,10 +13,6 @@ import org.rxjava.third.tencent.weixin.common.util.http.SimpleGetRequestExecutor
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/4
  */
 public class JoddHttpSimpleGetRequestExecutor extends SimpleGetRequestExecutor<HttpConnectionProvider, ProxyInfo> {
     public JoddHttpSimpleGetRequestExecutor(RequestHttp requestHttp) {

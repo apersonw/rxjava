@@ -16,7 +16,6 @@ import java.util.Map;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.UserBlacklist.*;
 
 /**
- * @author miller
  */
 @RequiredArgsConstructor
 public class WxMpUserBlacklistServiceImpl implements WxMpUserBlacklistService {

@@ -9,9 +9,6 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.WxMaSubscribeMessage;
 import java.lang.reflect.Type;
 
 /**
- * .
- *
- * @author S
  */
 public class WxMaSubscribeMessageGsonAdapter implements JsonSerializer<WxMaSubscribeMessage> {
     @Override

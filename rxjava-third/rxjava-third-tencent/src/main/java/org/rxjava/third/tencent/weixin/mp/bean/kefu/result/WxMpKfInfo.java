@@ -9,8 +9,6 @@ import java.io.Serializable;
 
 /**
  * 客服基本信息以及客服在线状态信息
- *
- * @author Binary Wang
  */
 @Data
 public class WxMpKfInfo implements Serializable {

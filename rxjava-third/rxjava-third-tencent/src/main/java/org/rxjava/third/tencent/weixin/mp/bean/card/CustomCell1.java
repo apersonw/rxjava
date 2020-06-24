@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 自定义会员信息类目.
- *
- * @author yuanqixun
- * date:2018-08-25 00:34
  */
 @Data
 public class CustomCell1 implements Serializable {

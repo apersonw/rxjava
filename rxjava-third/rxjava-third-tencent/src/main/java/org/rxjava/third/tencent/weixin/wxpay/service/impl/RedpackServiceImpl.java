@@ -14,10 +14,6 @@ import org.rxjava.third.tencent.weixin.wxpay.service.RedpackService;
 import org.rxjava.third.tencent.weixin.wxpay.service.WxPayService;
 
 /**
- * 老板加点注释吧.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2019-12-26
  */
 @RequiredArgsConstructor
 public class RedpackServiceImpl implements RedpackService {

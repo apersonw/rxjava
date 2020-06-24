@@ -13,8 +13,6 @@ import java.util.Map;
 /**
  * 回调消息包.
  * https://work.weixin.qq.com/api/doc#90001/90143/91116
- *
- * @author zhenjun cai
  */
 @XStreamAlias("xml")
 @Data

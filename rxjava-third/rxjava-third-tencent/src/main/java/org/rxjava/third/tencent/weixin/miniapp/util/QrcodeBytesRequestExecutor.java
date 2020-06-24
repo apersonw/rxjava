@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class QrcodeBytesRequestExecutor implements RequestExecutor<byte[], AbstractWxMaQrcodeWrapper> {
     protected RequestHttp<CloseableHttpClient, HttpHost> requestHttp;

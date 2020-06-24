@@ -5,9 +5,6 @@ import org.rxjava.third.tencent.weixin.common.error.WxErrorException;
 
 /**
  * 菜单管理相关接口
- * Created by BinaryWang on 2017/6/24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxCpMenuService {
 

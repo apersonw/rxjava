@@ -8,7 +8,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.WxMpMassOpenIdsMessage;
 import java.lang.reflect.Type;
 
 /**
- * @author someone
  */
 public class WxMpMassOpenIdsMessageGsonAdapter implements JsonSerializer<WxMpMassOpenIdsMessage> {
 

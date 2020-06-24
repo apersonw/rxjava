@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * openid列表群发的消息
- *
- * @author chanjarster
  */
 @Data
 public class WxMpMassOpenIdsMessage implements Serializable {

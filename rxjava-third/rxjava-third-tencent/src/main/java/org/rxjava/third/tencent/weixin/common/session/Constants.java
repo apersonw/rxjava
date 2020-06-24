@@ -19,9 +19,6 @@ package org.rxjava.third.tencent.weixin.common.session;
 
 /**
  * Manifest constants for the <code>org.apache.catalina.session</code>
- * package.
- *
- * @author Craig R. McClanahan
  */
 public class Constants {
     public static final String PACKAGE = "org.rxjava.third.tencent.weixin.common.session";

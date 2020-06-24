@@ -6,7 +6,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author codepiano
  */
 @Data
 public class WxMpMaterialCountResult implements Serializable {

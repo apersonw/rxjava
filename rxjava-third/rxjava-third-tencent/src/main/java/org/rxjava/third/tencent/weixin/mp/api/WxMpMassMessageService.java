@@ -9,9 +9,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.result.WxMpMassUploadResult;
 
 /**
  * 群发消息服务类.
- * Created by Binary Wang on 2017-8-16.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMpMassMessageService {
     /**

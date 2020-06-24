@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 /**
  * 审批申请详情响应结果
- *
- * @author element
  */
 @Data
 public class WxCpApprovalDetailResult implements Serializable {

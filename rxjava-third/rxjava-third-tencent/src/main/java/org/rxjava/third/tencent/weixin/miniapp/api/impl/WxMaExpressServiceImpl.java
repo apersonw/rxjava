@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 @AllArgsConstructor
 public class WxMaExpressServiceImpl implements WxMaExpressService {

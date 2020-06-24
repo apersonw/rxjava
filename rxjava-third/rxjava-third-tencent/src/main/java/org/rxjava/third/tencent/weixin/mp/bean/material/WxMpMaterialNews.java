@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 图文素材.
- *
- * @author codepiano
  */
 @Data
 public class WxMpMaterialNews implements Serializable {

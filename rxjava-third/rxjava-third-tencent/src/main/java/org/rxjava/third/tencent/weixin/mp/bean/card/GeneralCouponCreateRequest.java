@@ -8,10 +8,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * .
- *
- * @author leeis
- * @date 2018/12/29
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

@@ -5,9 +5,6 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.WxMaDomainAction;
 
 /**
  * 小程序修改服务器地址、成员管理 API（大部分只能是第三方平台调用）
- *
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-27 15:46
  */
 public interface WxMaSettingService {
     /**

@@ -11,9 +11,6 @@ import java.util.List;
 
 /**
  * 微信会员卡高级字段信息.
- *
- * @author yuanqixun
- * date:2018-08-25 00:36
  */
 @Data
 public class AdvancedInfo implements Serializable {

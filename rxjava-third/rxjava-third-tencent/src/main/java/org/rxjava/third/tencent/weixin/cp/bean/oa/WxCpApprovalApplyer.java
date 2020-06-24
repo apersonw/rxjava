@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 /**
  * 申请人信息
- *
- * @author element
  */
 @Data
 public class WxCpApprovalApplyer extends WxCpOperator implements Serializable {

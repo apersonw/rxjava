@@ -24,8 +24,6 @@ import java.net.URLEncoder;
 import java.util.UUID;
 
 /**
- * @author yqx
- * @date 2018-09-13
  */
 public class MaQrCodeApacheHttpRequestExecutor extends MaQrCodeRequestExecutor<CloseableHttpClient, HttpHost> {
     public MaQrCodeApacheHttpRequestExecutor(RequestHttp requestHttp) {

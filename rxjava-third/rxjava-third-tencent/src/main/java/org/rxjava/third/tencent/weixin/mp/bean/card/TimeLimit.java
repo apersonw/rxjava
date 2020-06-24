@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 使用时段限制.
- *
- * @author yuanqixun
- * date:2018-08-25 00:34
  */
 @Data
 public class TimeLimit implements Serializable {

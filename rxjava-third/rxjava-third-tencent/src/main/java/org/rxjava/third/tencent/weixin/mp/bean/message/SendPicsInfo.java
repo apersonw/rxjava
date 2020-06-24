@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by BinaryWang on 2017/5/4.
- *
- * @author Binary Wang
  */
 @XStreamAlias("SendPicsInfo")
 @Data

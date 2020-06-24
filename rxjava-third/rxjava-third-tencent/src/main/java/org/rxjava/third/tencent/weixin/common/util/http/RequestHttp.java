@@ -1,9 +1,6 @@
 package org.rxjava.third.tencent.weixin.common.util.http;
 
 /**
- * Created by ecoolper on 2017/4/22.
- *
- * @author ecoolper
  */
 public interface RequestHttp<H, P> {
 

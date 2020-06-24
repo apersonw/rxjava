@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.material.WxMpMaterialVideoInfoRes
 import java.lang.reflect.Type;
 
 /**
- * @author codepiano
  */
 public class WxMpMaterialVideoInfoResultAdapter implements JsonDeserializer<WxMpMaterialVideoInfoResult> {
 

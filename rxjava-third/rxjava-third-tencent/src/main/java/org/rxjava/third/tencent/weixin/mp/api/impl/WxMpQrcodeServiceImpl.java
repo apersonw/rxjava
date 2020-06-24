@@ -18,9 +18,6 @@ import java.nio.charset.StandardCharsets;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Qrcode.*;
 
 /**
- * Created by Binary Wang on 2016/7/21.
- *
- * @author Binary Wang
  */
 @RequiredArgsConstructor
 public class WxMpQrcodeServiceImpl implements WxMpQrcodeService {

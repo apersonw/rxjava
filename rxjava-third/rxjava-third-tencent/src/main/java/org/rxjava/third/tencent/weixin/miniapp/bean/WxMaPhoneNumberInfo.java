@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 /**
  * 微信用户绑定的手机号相关信息
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMaPhoneNumberInfo implements Serializable {

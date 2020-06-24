@@ -8,8 +8,6 @@ import org.rxjava.third.tencent.weixin.cp.util.json.WxCpGsonBuilder;
 import java.util.List;
 
 /**
- * @author yqx
- * @date 2020/3/116
  */
 @Getter
 @Setter

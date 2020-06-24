@@ -7,9 +7,6 @@ import java.util.Map;
 
 /**
  * 转换短链接请求对象类
- * Created by Binary Wang on 2017-3-27.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

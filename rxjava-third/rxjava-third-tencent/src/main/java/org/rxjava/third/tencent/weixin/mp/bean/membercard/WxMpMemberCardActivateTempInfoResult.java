@@ -5,8 +5,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 
 
 /**
- * @author thomas
- * @date 2019/4/26
  */
 @Data
 public class WxMpMemberCardActivateTempInfoResult {

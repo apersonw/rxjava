@@ -10,9 +10,6 @@ import java.io.Serializable;
 
 /**
  * 获取微信刷脸调用凭证返回结果.
- * 详见文档：https://pay.weixin.qq.com/wiki/doc/wxfacepay/develop/sdk-android.html#获取数据-getwxpayfacerawdata
- *
- * @author Jmdhappy
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

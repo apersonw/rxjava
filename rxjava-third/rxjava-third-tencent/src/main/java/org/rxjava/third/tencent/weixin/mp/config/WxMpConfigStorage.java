@@ -10,8 +10,6 @@ import java.util.concurrent.locks.Lock;
 
 /**
  * 微信客户端配置存储.
- *
- * @author chanjarster
  */
 public interface WxMpConfigStorage {
     String getAccessToken();

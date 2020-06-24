@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 关注者列表
- *
- * @author chanjarster
  */
 @Data
 public class WxMpUserList implements Serializable {

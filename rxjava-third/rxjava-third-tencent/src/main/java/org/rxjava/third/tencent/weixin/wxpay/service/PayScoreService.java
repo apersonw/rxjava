@@ -10,10 +10,6 @@ import org.rxjava.third.tencent.weixin.wxpay.exception.WxPayException;
  * 微信支付分是对个人的身份特质、支付行为、使用历史等情况的综合计算分值，旨在为用户提供更简单便捷的生活方式。
  * 微信用户可以在具体应用场景中，开通微信支付分。开通后，用户可以在【微信—>钱包—>支付分】中查看分数和使用记录。
  * （即需在应用场景中使用过一次，钱包才会出现支付分入口）
- * <p>
- * Created by doger.wang on 2020/05/12.
- *
- * @author doger.wang
  */
 public interface PayScoreService {
     /**

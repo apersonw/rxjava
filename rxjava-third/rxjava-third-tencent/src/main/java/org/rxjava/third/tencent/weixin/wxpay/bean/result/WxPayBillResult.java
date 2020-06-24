@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 微信对账单结果类.
- *
- * @author DDLeEHi
  */
 @Data
 @NoArgsConstructor

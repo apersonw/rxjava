@@ -7,8 +7,6 @@ import lombok.Data;
  * lineColor 包装类
  * 用于描述二维码（小程序码）颜色（RGB参数值），
  * 详情请查看文档 https://mp.weixin.qq.com/debug/wxadoc/dev/api/qrcode.html
- *
- * @author Element
  */
 @Data
 @AllArgsConstructor

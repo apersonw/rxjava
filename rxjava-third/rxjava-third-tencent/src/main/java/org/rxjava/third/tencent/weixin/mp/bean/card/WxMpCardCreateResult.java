@@ -7,9 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * .
- *
- * @author yuanqixun
  */
 @Data
 public class WxMpCardCreateResult implements Serializable {

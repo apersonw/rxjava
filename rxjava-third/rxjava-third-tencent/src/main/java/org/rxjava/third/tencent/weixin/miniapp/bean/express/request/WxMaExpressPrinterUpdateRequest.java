@@ -11,9 +11,6 @@ import java.io.Serializable;
 
 /**
  * 配置面单打印员请求对象
- *
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 @Data
 @Builder

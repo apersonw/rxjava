@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 /**
  * 创建会员卡请求对象.
- *
- * @author yuanqixun
  */
 @Data
 public class MemberCardCreateRequest implements Serializable {

@@ -5,9 +5,6 @@ import lombok.Data;
 
 /**
  * 使用user_ticket获取成员详情接口返回类.
- * Created by BinaryWang on 2018/4/22.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxCpUserDetail {

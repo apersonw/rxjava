@@ -9,7 +9,6 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.template.WxMaTemplateListRes
 import java.util.List;
 
 /**
- * @author IOMan（lewis.lynn1006@gmail.com）
  */
 @Deprecated
 public interface WxMaTemplateService {

@@ -16,8 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28
  */
 @AllArgsConstructor
 public class WxMaAnalysisServiceImpl implements WxMaAnalysisService {

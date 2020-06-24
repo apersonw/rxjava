@@ -4,8 +4,6 @@ package org.rxjava.third.tencent.weixin.open.api.impl;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author yangyidian
- * @date 2020/01/09
  **/
 public abstract class AbstractWxOpenInRedisConfigStorage extends WxOpenInMemoryConfigStorage {
     protected final static String COMPONENT_VERIFY_TICKET_KEY = "wechat_component_verify_ticket:";

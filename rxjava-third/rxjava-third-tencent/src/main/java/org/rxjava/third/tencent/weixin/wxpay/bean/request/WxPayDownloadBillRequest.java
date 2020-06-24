@@ -13,9 +13,6 @@ import java.util.Map;
 
 /**
  * 微信支付下载对账单请求参数类
- * Created by Binary Wang on 2017-01-11.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

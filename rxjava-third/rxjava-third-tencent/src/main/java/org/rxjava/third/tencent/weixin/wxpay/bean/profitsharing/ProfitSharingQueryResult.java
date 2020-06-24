@@ -14,8 +14,6 @@ import org.w3c.dom.Document;
 import java.util.List;
 
 /**
- * @author Wang GuangXin 2019/10/22 15:51
- * @version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

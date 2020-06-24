@@ -18,10 +18,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * .
- *
- * @author : zhayueran
- * @date 2019/6/27 14:06
  */
 public class OcrDiscernApacheHttpRequestExecutor extends OcrDiscernRequestExecutor<CloseableHttpClient, HttpHost> {
     public OcrDiscernApacheHttpRequestExecutor(RequestHttp requestHttp) {

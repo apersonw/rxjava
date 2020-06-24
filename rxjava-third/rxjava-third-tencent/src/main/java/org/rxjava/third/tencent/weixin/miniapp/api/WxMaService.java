@@ -9,7 +9,6 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.WxMaJscode2SessionResult;
 import org.rxjava.third.tencent.weixin.miniapp.config.WxMaConfig;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaService extends WxService {
     /**

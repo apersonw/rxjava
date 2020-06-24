@@ -9,9 +9,6 @@ import java.io.Serializable;
 
 /**
  * 会员卡激活，用户字段提交请求
- *
- * @author yuanqixun
- * @date 2018-08-30
  */
 @Data
 public class MemberCardActivateUserFormRequest implements Serializable {

@@ -21,10 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/5
  */
 public class JoddHttpMediaDownloadRequestExecutor extends BaseMediaDownloadRequestExecutor<HttpConnectionProvider, ProxyInfo> {
     public JoddHttpMediaDownloadRequestExecutor(RequestHttp requestHttp, File tmpDirFile) {

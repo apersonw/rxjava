@@ -6,9 +6,6 @@ import org.rxjava.third.tencent.weixin.cp.bean.WxCpMessage;
 /**
  * 文本卡片消息Builder
  * 用法: WxCustomMessage m = WxCustomMessage.TEXTCARD().title(...)....toUser(...).build();
- * Created by Binary Wang on 2017-7-2.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class TextCardBuilder extends BaseBuilder<TextCardBuilder> {
     private String title;

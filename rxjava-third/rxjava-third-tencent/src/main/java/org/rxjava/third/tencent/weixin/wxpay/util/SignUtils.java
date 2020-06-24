@@ -17,9 +17,6 @@ import java.util.*;
 
 /**
  * 签名相关工具类.
- * Created by Binary Wang on 2017-3-23.
- *
- * @author <a href="https://github.com/binarywang">binarywang(Binary Wang)</a>
  */
 @Slf4j
 public class SignUtils {

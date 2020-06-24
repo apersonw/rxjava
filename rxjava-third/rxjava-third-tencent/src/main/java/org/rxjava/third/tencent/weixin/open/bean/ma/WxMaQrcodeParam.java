@@ -9,9 +9,6 @@ import java.util.Set;
 
 /**
  * 微信小程序体验二维码参数
- *
- * @author yqx
- * @date 2018/9/13
  */
 @Data
 public class WxMaQrcodeParam {

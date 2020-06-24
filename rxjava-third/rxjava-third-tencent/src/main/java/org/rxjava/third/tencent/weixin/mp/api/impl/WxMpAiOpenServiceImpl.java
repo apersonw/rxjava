@@ -15,9 +15,6 @@ import java.io.File;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.AiOpen.*;
 
 /**
- * Created by BinaryWang on 2018/6/9.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @RequiredArgsConstructor
 public class WxMpAiOpenServiceImpl implements WxMpAiOpenService {

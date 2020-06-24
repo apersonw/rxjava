@@ -12,10 +12,6 @@ import java.util.List;
 /**
  * 更新任务卡片消息状态的返回类
  * 参考文档：https://work.weixin.qq.com/api/doc#90000/90135/91579
- * Created by Jeff on 2019-05-16.
- *
- * @author <a href="https://github.com/domainname">Jeff</a>
- * @date 2019-05-16
  */
 @Data
 @AllArgsConstructor

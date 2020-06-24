@@ -19,8 +19,6 @@ import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.ImgProc.*;
 
 /**
  * 图像处理接口实现.
- *
- * @author Theo Nie
  */
 @RequiredArgsConstructor
 public class WxMpImgProcServiceImpl implements WxMpImgProcService {

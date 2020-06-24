@@ -7,12 +7,8 @@ import java.io.File;
 
 /**
  * 二维码相关操作接口.
- * <p>
  * 接口A（createWxaCode）加上接口C（createQrcode），总共生成的码数量限制为100,000，请谨慎调用。
- * <p>
  * 文档地址：https://mp.weixin.qq.com/debug/wxadoc/dev/api/qrcode.html
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaQrcodeService {
     String CREATE_QRCODE_URL = "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode";

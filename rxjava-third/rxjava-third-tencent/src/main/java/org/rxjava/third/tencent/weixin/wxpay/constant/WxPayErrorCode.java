@@ -2,9 +2,6 @@ package org.rxjava.third.tencent.weixin.wxpay.constant;
 
 /**
  * 微信支付错误码
- * Created by Binary Wang on 2018/11/18.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxPayErrorCode {
     /**

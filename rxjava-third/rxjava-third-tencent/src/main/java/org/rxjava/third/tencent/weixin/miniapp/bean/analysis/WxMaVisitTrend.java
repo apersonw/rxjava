@@ -7,9 +7,6 @@ import java.io.Serializable;
 
 /**
  * 访问趋势
- *
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28
  */
 @Data
 public class WxMaVisitTrend implements Serializable {

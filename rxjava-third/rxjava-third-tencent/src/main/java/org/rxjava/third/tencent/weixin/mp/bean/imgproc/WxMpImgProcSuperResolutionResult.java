@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 /**
  * 图片高清化返回结果
- *
- * @author Theo Nie
  */
 @Data
 public class WxMpImgProcSuperResolutionResult implements Serializable {

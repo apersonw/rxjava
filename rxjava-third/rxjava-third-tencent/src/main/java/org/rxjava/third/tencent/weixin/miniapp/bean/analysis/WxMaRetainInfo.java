@@ -9,9 +9,6 @@ import java.util.Map;
 
 /**
  * 访问留存
- *
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28 14:41
  */
 @Data
 public class WxMaRetainInfo implements Serializable {

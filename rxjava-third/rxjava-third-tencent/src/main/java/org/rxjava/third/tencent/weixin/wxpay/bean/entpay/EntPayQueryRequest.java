@@ -10,9 +10,6 @@ import java.util.Map;
 
 /**
  * 企业付款请求对象.
- * Created by Binary Wang on 2016/10/19.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

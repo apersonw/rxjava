@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author codepiano
  */
 @Data
 public class WxMpMaterialFileBatchGetResult implements Serializable {

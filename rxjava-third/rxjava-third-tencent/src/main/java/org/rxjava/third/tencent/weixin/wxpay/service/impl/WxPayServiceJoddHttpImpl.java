@@ -18,9 +18,6 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * 微信支付请求实现类，jodd-http实现.
- * Created by Binary Wang on 2016/7/28.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxPayServiceJoddHttpImpl extends BaseWxPayServiceImpl {
     @Override

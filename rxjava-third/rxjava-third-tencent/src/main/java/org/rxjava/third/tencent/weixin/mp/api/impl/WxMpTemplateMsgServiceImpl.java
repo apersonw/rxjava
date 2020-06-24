@@ -17,9 +17,6 @@ import java.util.List;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.TemplateMsg.*;
 
 /**
- * Created by Binary Wang on 2016-10-14.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @RequiredArgsConstructor
 public class WxMpTemplateMsgServiceImpl implements WxMpTemplateMsgService {

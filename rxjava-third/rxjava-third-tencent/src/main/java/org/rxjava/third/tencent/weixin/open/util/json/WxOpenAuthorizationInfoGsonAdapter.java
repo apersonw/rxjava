@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenAuthorizationInfoGsonAdapter implements JsonDeserializer<WxOpenAuthorizationInfo> {
     @Override

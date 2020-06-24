@@ -14,8 +14,6 @@ import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCE
 
 /**
  * jodd-http方式实现.
- *
- * @author someone
  */
 public class WxMpServiceJoddHttpImpl extends BaseWxMpServiceImpl<HttpConnectionProvider, ProxyInfo> {
     private HttpConnectionProvider httpClient;

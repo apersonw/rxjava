@@ -24,9 +24,6 @@ import java.security.PublicKey;
 import java.security.Security;
 
 /**
- * Created by BinaryWang on 2017/12/19.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class EntPayServiceImpl implements EntPayService {
     private WxPayService payService;

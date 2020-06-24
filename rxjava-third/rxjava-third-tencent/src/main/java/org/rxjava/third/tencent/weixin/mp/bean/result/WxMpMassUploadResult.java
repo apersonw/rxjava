@@ -8,8 +8,6 @@ import java.io.Serializable;
 /**
  * 上传群发用的素材的结果.
  * 视频和图文消息需要在群发前上传素材
- *
- * @author chanjarster
  */
 @Data
 public class WxMpMassUploadResult implements Serializable {

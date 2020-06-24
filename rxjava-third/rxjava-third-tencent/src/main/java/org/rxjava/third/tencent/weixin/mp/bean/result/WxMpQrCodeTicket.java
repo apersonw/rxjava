@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 /**
  * 换取二维码的Ticket
- *
- * @author chanjarster
  */
 @Data
 public class WxMpQrCodeTicket implements Serializable {

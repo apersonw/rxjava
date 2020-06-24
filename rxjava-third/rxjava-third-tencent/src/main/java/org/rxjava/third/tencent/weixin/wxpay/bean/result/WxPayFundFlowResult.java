@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 下载资金账单接口响应结果对象类
- * Created by cwivan on 2018-08-02.
- *
- * @author cwivan
  */
 @Data
 @NoArgsConstructor

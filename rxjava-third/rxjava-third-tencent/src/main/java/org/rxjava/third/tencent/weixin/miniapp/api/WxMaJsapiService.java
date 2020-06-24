@@ -5,9 +5,6 @@ import org.rxjava.third.tencent.weixin.common.error.WxErrorException;
 
 /**
  * jsapi相关接口
- * Created by BinaryWang on 2018/8/5.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaJsapiService {
     /**

@@ -3,9 +3,6 @@ package org.rxjava.third.tencent.weixin.cp.constant;
 
 /**
  * 企业微信api地址常量类
- * Created by BinaryWang on 2019-06-02.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public final class WxCpApiPathConsts {
     public static final String DEFAULT_CP_BASE_URL = "https://qyapi.weixin.qq.com";

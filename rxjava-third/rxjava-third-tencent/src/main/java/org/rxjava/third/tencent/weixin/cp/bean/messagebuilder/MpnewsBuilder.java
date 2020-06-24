@@ -10,11 +10,8 @@ import java.util.List;
 
 /**
  * mpnews类型的图文消息builder
- * <p>
  * 用法:
  * WxCustomMessage m = WxCustomMessage.MPNEWS().addArticle(article).toUser(...).build();
- *
- * @author Binary Wang
  */
 public final class MpnewsBuilder extends BaseBuilder<MpnewsBuilder> {
     private List<MpnewsArticle> articles = new ArrayList<>();

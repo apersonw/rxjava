@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.miniapp.util.json.WxMaGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author borisbao
  */
 @Data
 public class WxMaMediaAsyncCheckResult implements Serializable {

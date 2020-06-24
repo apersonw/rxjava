@@ -7,9 +7,6 @@ import java.util.Map;
 
 /**
  * miniprogram_notice 类型的消息 builder
- * Created by Binary Wang on 2019/6/16.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class MiniProgramNoticeMsgBuilder extends BaseBuilder<MiniProgramNoticeMsgBuilder> {
     private String title;

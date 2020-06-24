@@ -6,8 +6,6 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author keungtung
- * @date 10/12/2016
  */
 @Data
 public class WxDevice implements Serializable {

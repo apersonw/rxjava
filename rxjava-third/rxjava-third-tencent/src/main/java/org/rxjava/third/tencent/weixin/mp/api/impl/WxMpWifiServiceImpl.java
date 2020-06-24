@@ -11,9 +11,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.wifi.WxMpWifiShopListResult;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Wifi.*;
 
 /**
- * Created by BinaryWang on 2018/6/10.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @RequiredArgsConstructor
 public class WxMpWifiServiceImpl implements WxMpWifiService {

@@ -12,9 +12,6 @@ import java.util.List;
 
 /**
  * 小程序物流助手
- *
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 public interface WxMaExpressService {
     /**

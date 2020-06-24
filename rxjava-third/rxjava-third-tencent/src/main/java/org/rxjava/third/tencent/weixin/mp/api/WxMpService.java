@@ -20,8 +20,6 @@ import java.util.Map;
 
 /**
  * 微信公众号API的Service.
- *
- * @author chanjarster
  */
 public interface WxMpService extends WxService {
     /**

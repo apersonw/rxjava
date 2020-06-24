@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxMaMessageRouterRule {
     private final WxMaMessageRouter routerBuilder;

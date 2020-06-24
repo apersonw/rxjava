@@ -24,9 +24,6 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Created by Binary Wang on 2016/7/27.
- *
- * @author BinaryWang
  */
 @Slf4j
 @RequiredArgsConstructor

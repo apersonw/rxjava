@@ -9,9 +9,6 @@ import org.rxjava.third.tencent.weixin.miniapp.util.crypt.WxMaCryptUtils;
 import java.util.List;
 
 /**
- * Created by Binary Wang on 2018/11/4.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaRunServiceImpl implements WxMaRunService {

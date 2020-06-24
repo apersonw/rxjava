@@ -5,9 +5,6 @@ import lombok.Getter;
 /**
  * 微信公众平台全局返回码.
  * 参考文档：<a href="http://mp.weixin.qq.com/wiki/10/6380dc743053a91c544ffd2b7c959166.html">公众平台全局返回码</a>
- * Created by Binary Wang on 2018/5/13.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Getter
 public enum WxMpErrorMsgEnum {

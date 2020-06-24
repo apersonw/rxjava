@@ -13,10 +13,6 @@ import org.rxjava.third.tencent.weixin.common.util.http.SimplePostRequestExecuto
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/4
  */
 public class JoddHttpSimplePostRequestExecutor extends SimplePostRequestExecutor<HttpConnectionProvider, ProxyInfo> {
     public JoddHttpSimplePostRequestExecutor(RequestHttp requestHttp) {

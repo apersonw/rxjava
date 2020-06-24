@@ -8,9 +8,6 @@ import java.util.Map;
 
 /**
  * 企业微信 OA 审批数据.
- *
- * @author Element
- * @date 2019-04-06 14:36
  */
 @Deprecated
 @Data

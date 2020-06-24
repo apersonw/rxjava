@@ -5,9 +5,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * 参考文档 https://developers.weixin.qq.com/miniprogram/dev/api-backend/templateMessage.send.html
- * Created by Binary Wang on 2018/9/23.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @NoArgsConstructor

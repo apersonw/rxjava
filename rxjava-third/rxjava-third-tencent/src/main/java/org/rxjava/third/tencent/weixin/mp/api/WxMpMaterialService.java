@@ -8,12 +8,9 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- * Created by Binary Wang on 2016/7/21.
  * 素材管理的相关接口，包括媒体管理的接口，
  * 即以https://api.weixin.qq.com/cgi-bin/material
  * 和 https://api.weixin.qq.com/cgi-bin/media开头的接口
- *
- * @author Binary Wang
  */
 public interface WxMpMaterialService {
     /**

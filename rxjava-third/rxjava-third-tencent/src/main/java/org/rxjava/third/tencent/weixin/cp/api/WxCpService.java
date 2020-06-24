@@ -15,8 +15,6 @@ import org.rxjava.third.tencent.weixin.cp.config.WxCpConfigStorage;
 
 /**
  * 微信API的Service.
- *
- * @author chanjaster
  */
 public interface WxCpService {
     /**

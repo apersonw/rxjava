@@ -7,9 +7,6 @@ import java.util.List;
 
 /**
  * 部门管理接口
- * Created by BinaryWang on 2017/6/24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxCpDepartmentService {
 

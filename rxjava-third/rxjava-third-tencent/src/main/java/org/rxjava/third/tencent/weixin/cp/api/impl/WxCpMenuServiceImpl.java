@@ -11,9 +11,6 @@ import static org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts.Menu
 
 /**
  * 菜单管理相关接口.
- * Created by Binary Wang on 2017-6-25.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @RequiredArgsConstructor
 public class WxCpMenuServiceImpl implements WxCpMenuService {

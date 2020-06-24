@@ -6,9 +6,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.comment.WxMpCommentListVo;
 /**
  * 图文消息留言管理接口.
  * https://developers.weixin.qq.com/doc/offiaccount/Comments_management/Image_Comments_Management_Interface.html
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2019-06-16
  */
 public interface WxMpCommentService {
     /**

@@ -12,8 +12,6 @@ import java.util.List;
 
 /**
  * 主体变更迁移用户 openid 返回.
- *
- * @author 007gzs
  */
 @Data
 public class WxMpChangeOpenid implements Serializable {

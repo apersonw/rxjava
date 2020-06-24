@@ -7,9 +7,6 @@ import static org.rxjava.third.tencent.weixin.mp.bean.WxMpHostConfig.*;
 
 /**
  * 公众号接口api地址
- * Created by BinaryWang on 2019-06-03.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMpApiUrl {
 

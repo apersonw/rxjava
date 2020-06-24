@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * 审批方式
- *
- * @author element
  */
 public enum WxCpApproverAttr {
     /**

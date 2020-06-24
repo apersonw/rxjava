@@ -11,8 +11,6 @@ import org.rxjava.third.tencent.weixin.wxpay.exception.WxPayException;
 import java.util.Map;
 
 /**
- * @author Wang GuangXin 2019/10/22 15:44
- * @version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

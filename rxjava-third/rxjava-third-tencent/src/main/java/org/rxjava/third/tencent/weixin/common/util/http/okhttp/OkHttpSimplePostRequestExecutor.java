@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/4
  */
 @Slf4j
 public class OkHttpSimplePostRequestExecutor extends SimplePostRequestExecutor<OkHttpClient, OkHttpProxyInfo> {

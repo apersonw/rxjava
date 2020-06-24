@@ -18,8 +18,6 @@ import java.util.List;
 
 /**
  * 群聊适配器
- *
- * @author gaigeshen
  */
 public class WxCpChatGsonAdapter implements JsonSerializer<WxCpChat>, JsonDeserializer<WxCpChat> {
 

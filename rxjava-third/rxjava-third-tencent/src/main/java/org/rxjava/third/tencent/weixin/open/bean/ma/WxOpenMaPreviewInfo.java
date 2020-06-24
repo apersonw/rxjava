@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 /**
- * @author zxfreedom
- * @description
- * @date 2019/12/30
  */
 @Data
 public class WxOpenMaPreviewInfo {

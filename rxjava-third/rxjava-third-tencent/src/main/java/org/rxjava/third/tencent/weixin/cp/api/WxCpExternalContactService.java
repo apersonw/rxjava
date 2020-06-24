@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * 外部联系人管理接口，企业微信的外部联系人的接口和通讯录接口已经拆离
- * Created by Joe Cao on 2019/6/14
- *
- * @author <a href="https://github.com/JoeCao">JoeCao</a>
  */
 public interface WxCpExternalContactService {
     /**

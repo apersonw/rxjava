@@ -19,10 +19,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/5
  */
 @Slf4j
 public class OkHttpMediaDownloadRequestExecutor extends BaseMediaDownloadRequestExecutor<OkHttpClient, OkHttpProxyInfo> {

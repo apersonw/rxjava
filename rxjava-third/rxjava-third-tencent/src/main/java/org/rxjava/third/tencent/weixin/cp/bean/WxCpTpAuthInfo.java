@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 服务商模式获取授权信息
- *
- * @author yuanqixun
  */
 @Getter
 @Setter

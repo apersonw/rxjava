@@ -20,12 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
- * <p>
  * 增加开放平台代小程序管理服务能力
  * 说明：这里让这个服务公开便于调用者模拟本地测试服务
- * @author yqx
- * @date 2018-09-12
  */
 public class WxOpenMaServiceImpl extends WxMaServiceImpl implements WxOpenMaService {
     private WxOpenComponentService wxOpenComponentService;

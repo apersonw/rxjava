@@ -10,9 +10,6 @@ import java.lang.reflect.Type;
 
 /**
  * Json to WxMpMemberCardActivateTempInfoResultGsonAdapter 的转换适配器
- *
- * @author thomas(351402401 @ qq.com)
- * @version 2019/4/26
  */
 public class WxMpMemberCardActivateTempInfoResultGsonAdapter implements JsonDeserializer<WxMpMemberCardActivateTempInfoResult> {
 

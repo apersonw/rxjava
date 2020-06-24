@@ -6,9 +6,6 @@ import org.rxjava.third.tencent.weixin.wxpay.exception.WxPayException;
 /**
  * 注意：微信最高分账比例为30%
  * 可多次分账到同一个人，但是依然不能超过30%
- *
- * @author Wang GuangXin 2019/10/22 10:05
- * @version 1.0
  */
 public interface ProfitSharingService {
     /**

@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Binary Wang on 2016-11-28.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

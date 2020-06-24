@@ -10,8 +10,6 @@ import java.io.Serializable;
 
 /**
  * 发送小程序红包的返回结果
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

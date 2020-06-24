@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author element
  */
 @Data
 public class Content implements Serializable {

@@ -54,9 +54,6 @@ import java.util.Map;
  * 5: 5页
  * 6: 6-10页
  * 7: >10页
- *
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28
  */
 @Data
 public class WxMaVisitDistribution implements Serializable {

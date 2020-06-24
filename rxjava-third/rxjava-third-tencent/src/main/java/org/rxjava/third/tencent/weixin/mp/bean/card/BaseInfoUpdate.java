@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 微信会员卡基本信息更新
- *
- * @author yuanqixun
- * date:2018-08-25 00:36
  */
 @Data
 public class BaseInfoUpdate implements Serializable {

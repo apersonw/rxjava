@@ -9,9 +9,6 @@ import java.util.Map;
 
 /**
  * 云开发相关接口.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2020-01-22
  */
 public interface WxMaCloudService {
     String INVOKE_CLOUD_FUNCTION_URL = "https://api.weixin.qq.com/tcb/invokecloudfunction?env=%s&name=%s";

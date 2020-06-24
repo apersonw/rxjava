@@ -11,10 +11,6 @@ import org.rxjava.third.tencent.weixin.common.util.http.SimpleGetRequestExecutor
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/4
  */
 public class OkHttpSimpleGetRequestExecutor extends SimpleGetRequestExecutor<OkHttpClient, OkHttpProxyInfo> {
     public OkHttpSimpleGetRequestExecutor(RequestHttp requestHttp) {

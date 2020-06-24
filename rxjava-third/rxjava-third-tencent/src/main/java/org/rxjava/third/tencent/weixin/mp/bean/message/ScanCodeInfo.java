@@ -9,9 +9,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * Created by BinaryWang on 2017/5/4.
- *
- * @author Binary Wang
  */
 @XStreamAlias("ScanCodeInfo")
 @Data

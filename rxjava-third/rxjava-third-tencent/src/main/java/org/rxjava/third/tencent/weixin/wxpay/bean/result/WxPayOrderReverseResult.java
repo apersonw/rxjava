@@ -8,9 +8,6 @@ import org.w3c.dom.Document;
 
 /**
  * 撤销订单响应结果类
- * Created by Binary Wang on 2017-3-23.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

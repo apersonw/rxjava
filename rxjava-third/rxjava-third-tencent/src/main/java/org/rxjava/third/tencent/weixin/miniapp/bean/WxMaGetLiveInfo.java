@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 获取直播房间列表
- *
- * @author yjwang
- * @date 2020/4/5
  */
 @Data
 public class WxMaGetLiveInfo implements Serializable {

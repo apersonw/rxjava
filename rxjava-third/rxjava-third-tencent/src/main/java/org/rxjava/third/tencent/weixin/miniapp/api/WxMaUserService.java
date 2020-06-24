@@ -9,8 +9,6 @@ import java.util.Map;
 
 /**
  * 用户信息相关操作接口.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaUserService {
     String SET_USER_STORAGE = "https://api.weixin.qq.com/wxa/set_user_storage?appid=%s&signature=%s&openid=%s&sig_method=%s";

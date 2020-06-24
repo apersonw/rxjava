@@ -9,9 +9,6 @@ import java.util.Map;
 
 /**
  * 拉取订单评价数据接口的请求参数封装类.
- * Created by BinaryWang on 2017/9/2.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

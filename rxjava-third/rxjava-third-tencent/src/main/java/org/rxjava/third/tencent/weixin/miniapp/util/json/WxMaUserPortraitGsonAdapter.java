@@ -10,8 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-28
  */
 public class WxMaUserPortraitGsonAdapter implements JsonDeserializer<WxMaUserPortrait> {
     @Override

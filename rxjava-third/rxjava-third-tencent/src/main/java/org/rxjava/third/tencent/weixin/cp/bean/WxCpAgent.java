@@ -12,9 +12,6 @@ import java.util.List;
 
 /**
  * 企业号应用信息.
- * Created by huansinho on 2018/4/13.
- *
- * @author <a href="https://github.com/huansinho">huansinho</a>
  */
 @Data
 @Builder

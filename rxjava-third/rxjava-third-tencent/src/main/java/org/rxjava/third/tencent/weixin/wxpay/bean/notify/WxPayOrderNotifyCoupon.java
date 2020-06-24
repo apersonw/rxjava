@@ -10,8 +10,6 @@ import java.util.Map;
 
 /**
  * 支付异步通知代金券详细.
- *
- * @author aimilin
  */
 @Data
 @NoArgsConstructor

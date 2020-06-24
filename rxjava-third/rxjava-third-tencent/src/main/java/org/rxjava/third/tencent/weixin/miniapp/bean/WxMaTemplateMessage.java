@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * 模板消息.
  * 参考 https://developers.weixin.qq.com/miniprogram/dev/api-backend/templateMessage.send.html
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Getter
 @Setter

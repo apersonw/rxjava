@@ -10,8 +10,6 @@ import org.w3c.dom.Document;
 /**
  * 扫码支付通知回调类.
  * 具体定义，请查看文档：https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=6_4
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

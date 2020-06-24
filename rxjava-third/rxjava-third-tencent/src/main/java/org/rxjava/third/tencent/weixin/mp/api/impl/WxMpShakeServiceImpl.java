@@ -13,9 +13,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.shake.*;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.ShakeAround.*;
 
 /**
- * Created by rememberber on 2017/6/5.
- *
- * @author rememberber
  */
 @RequiredArgsConstructor
 public class WxMpShakeServiceImpl implements WxMpShakeService {

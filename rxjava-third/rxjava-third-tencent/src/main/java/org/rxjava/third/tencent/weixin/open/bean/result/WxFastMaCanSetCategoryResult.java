@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * 获取账号所有可以设置的类目.
- *
- * @author Hipple
- * @since 2019/1/26 18:43
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

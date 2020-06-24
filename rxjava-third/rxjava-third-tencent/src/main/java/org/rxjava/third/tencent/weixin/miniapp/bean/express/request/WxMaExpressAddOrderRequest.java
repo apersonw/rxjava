@@ -13,9 +13,6 @@ import java.io.Serializable;
 
 /**
  * 生成运单请求对象
- *
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 @Data
 @Builder

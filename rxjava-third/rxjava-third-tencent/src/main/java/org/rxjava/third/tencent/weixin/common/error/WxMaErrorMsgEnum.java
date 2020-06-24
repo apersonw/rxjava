@@ -4,8 +4,6 @@ import lombok.Getter;
 
 /**
  * 微信小程序错误码
- *
- * @author <a href="https://github.com/biggates">biggates</a>
  */
 @Getter
 public enum WxMaErrorMsgEnum {

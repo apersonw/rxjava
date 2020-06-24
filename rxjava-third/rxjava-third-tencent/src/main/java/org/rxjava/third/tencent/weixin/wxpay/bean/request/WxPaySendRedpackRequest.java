@@ -7,9 +7,6 @@ import java.util.Map;
 
 /**
  * 发送红包请求参数对象.
- * Created by Binary Wang on 2016/9/24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

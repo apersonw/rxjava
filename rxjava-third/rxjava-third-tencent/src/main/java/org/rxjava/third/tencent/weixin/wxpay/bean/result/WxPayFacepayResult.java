@@ -8,9 +8,6 @@ import org.w3c.dom.Document;
 
 /**
  * 提交书刷脸支付接口响应结果对象类
- * Created by Jmdhappy on 2019-09-05.
- *
- * @author <a href="https://github.com/jmdhappy/xxpay-master">XxPay</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

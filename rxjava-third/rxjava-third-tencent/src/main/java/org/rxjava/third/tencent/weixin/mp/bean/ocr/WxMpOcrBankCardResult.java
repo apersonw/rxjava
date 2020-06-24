@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 /**
  * 银行卡OCR识别结果
- *
- * @author Theo Nie
  */
 @Data
 public class WxMpOcrBankCardResult implements Serializable {

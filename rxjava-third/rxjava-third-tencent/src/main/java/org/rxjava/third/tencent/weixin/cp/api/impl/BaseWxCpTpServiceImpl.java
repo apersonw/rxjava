@@ -29,9 +29,6 @@ import java.util.Map;
 import static org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts.Tp.*;
 
 /**
- * .
- *
- * @author zhenjun cai
  */
 @Slf4j
 public abstract class BaseWxCpTpServiceImpl<H, P> implements WxCpTpService, RequestHttp<H, P> {

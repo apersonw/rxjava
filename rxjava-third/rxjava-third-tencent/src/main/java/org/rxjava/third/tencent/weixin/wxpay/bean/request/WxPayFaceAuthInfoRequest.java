@@ -10,9 +10,6 @@ import java.util.Map;
 /**
  * 获取微信刷脸调用凭证请求对象类
  * 详见文档：https://pay.weixin.qq.com/wiki/doc/wxfacepay/develop/sdk-android.html#获取数据-getwxpayfacerawdata
- * Created by Jmdhappy on 2019-09-04.
- *
- * @author <a href="https://github.com/jmdhappy/xxpay-master">XxPay</a>
  */
 @Data
 @Accessors(chain = true)

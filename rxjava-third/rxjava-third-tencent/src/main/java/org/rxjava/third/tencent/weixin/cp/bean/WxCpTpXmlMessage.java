@@ -14,8 +14,6 @@ import java.util.Map;
 /**
  * 回调推送的message
  * https://work.weixin.qq.com/api/doc#90001/90143/90612
- *
- * @author zhenjun cai
  */
 @XStreamAlias("xml")
 @Slf4j

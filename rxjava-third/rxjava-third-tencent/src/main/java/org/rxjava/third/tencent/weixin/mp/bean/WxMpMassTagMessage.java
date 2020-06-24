@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 /**
  * 按标签群发的消息.
- *
- * @author chanjarster
  */
 @Data
 public class WxMpMassTagMessage implements Serializable {

@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.util.*;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class XStreamTransformer {
     private static final Map<Class<?>, XStream> CLASS_2_XSTREAM_INSTANCE = new HashMap<>();

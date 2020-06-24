@@ -4,9 +4,6 @@ import org.rxjava.third.tencent.weixin.common.error.WxErrorException;
 
 /**
  * 微信服务接口.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2020-04-25
  */
 public interface WxService {
     /**

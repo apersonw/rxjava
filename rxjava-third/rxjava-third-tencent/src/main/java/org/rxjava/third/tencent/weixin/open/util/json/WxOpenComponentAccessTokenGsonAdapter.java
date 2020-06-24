@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.open.bean.WxOpenComponentAccessToken;
 import java.lang.reflect.Type;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenComponentAccessTokenGsonAdapter implements JsonDeserializer<WxOpenComponentAccessToken> {
     @Override

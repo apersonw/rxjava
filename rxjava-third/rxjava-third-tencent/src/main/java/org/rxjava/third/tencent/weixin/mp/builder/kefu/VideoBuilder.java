@@ -5,7 +5,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 视频消息builder
- * <p>
  * 用法: WxMpKefuMessage m = WxMpKefuMessage.VOICE()
  * .mediaId(...)
  * .title(...)
@@ -13,8 +12,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
  * .description(..)
  * .toUser(...)
  * .build();
- *
- * @author chanjarster
  */
 public final class VideoBuilder extends BaseBuilder<VideoBuilder> {
     private String mediaId;

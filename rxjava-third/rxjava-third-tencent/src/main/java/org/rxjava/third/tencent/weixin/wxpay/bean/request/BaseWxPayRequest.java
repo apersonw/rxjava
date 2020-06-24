@@ -26,9 +26,6 @@ import static org.rxjava.third.tencent.weixin.wxpay.constant.WxPayConstants.Sign
 
 /**
  * 微信支付请求对象共用的参数存放类
- * Created by Binary Wang on 2016-10-24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @Accessors(chain = true)

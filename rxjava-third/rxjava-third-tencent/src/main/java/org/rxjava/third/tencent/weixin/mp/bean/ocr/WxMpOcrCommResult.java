@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Theo Nie
  */
 @Data
 public class WxMpOcrCommResult implements Serializable {

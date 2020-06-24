@@ -40,9 +40,6 @@ import static org.rxjava.third.tencent.weixin.wxpay.constant.WxPayConstants.TarT
 
 /**
  * 微信支付接口请求抽象实现类
- * Created by Binary Wang on 2017-7-8.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public abstract class BaseWxPayServiceImpl implements WxPayService {
     private static final String TOTAL_FUND_COUNT = "资金流水总笔数";

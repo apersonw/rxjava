@@ -13,8 +13,6 @@ import org.rxjava.third.tencent.weixin.cp.config.WxCpTpConfigStorage;
 
 /**
  * 微信第三方应用API的Service.
- *
- * @author zhenjun cai
  */
 public interface WxCpTpService {
     /**
@@ -89,14 +87,11 @@ public interface WxCpTpService {
 
     /**
      * 获取企业永久授权码信息
-     * <p>
      * 原来的方法实现不全
      *
      * @param authCode
      * @return
      * @throws WxErrorException
-     * @author yuan
-     * @since 2020-03-18
      */
     WxCpTpPermanentCodeInfo getPermanentCodeInfo(String authCode) throws WxErrorException;
 

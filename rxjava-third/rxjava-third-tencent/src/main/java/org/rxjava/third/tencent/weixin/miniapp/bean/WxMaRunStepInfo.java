@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * 微信运动步数信息.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMaRunStepInfo implements Serializable {

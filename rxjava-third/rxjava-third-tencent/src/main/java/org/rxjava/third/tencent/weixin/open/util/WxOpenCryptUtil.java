@@ -4,7 +4,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.rxjava.third.tencent.weixin.open.api.WxOpenConfigStorage;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenCryptUtil extends org.rxjava.third.tencent.weixin.common.util.crypto.WxCryptUtil {
     /**

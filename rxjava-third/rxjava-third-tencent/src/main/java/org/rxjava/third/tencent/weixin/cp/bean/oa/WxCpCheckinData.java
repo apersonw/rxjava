@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * 企业微信打卡数据.
- *
- * @author Element
- * @date 2019-04-06 11:01
  */
 @Data
 public class WxCpCheckinData implements Serializable {

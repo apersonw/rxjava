@@ -9,9 +9,6 @@ import java.util.Map;
 
 /**
  * 红包发送记录查询请求
- *
- * @author wuyong
- * @date 2019-12-01 17:19
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

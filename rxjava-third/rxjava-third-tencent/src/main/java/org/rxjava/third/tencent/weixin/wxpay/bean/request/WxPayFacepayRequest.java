@@ -9,9 +9,6 @@ import java.util.Map;
 /**
  * 提交刷脸支付请求对象类
  * 详见文档：微信人脸支付商户开发文档
- * Created by Jmdhappy on 2019-09-05.
- *
- * @author <a href="https://github.com/jmdhappy/xxpay-master">XxPay</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

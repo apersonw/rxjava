@@ -7,8 +7,6 @@ import org.rxjava.third.tencent.weixin.open.util.json.WxOpenGsonBuilder;
 
 /**
  * 二维码规则的校验文件名称及内容
- *
- * @author <a href="https://github.com/hanwei59">hanwei59</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

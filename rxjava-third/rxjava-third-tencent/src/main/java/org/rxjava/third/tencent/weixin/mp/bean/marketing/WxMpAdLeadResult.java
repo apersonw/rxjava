@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 @Data
 public class WxMpAdLeadResult implements Serializable {

@@ -10,8 +10,6 @@ import java.io.File;
 /**
  * 多项图像处理能力相关的API.
  * https://developers.weixin.qq.com/doc/offiaccount/Intelligent_Interface/Img_Proc.html
- *
- * @author Theo Nie
  */
 public interface WxMpImgProcService {
 

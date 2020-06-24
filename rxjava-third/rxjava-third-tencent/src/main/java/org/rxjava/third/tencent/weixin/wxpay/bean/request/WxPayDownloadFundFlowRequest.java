@@ -13,9 +13,6 @@ import java.util.Map;
 
 /**
  * 微信支付下载资金账单请求参数类
- * Created by cwivan on 2018-08-02.
- *
- * @author <a href="https://github.com/cwivan">cwivan</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

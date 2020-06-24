@@ -11,9 +11,6 @@ import java.io.Serializable;
 
 /**
  * 企业微信红包返回
- *
- * @author wuyong
- * @date 2019-12-01 11:31
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

@@ -16,9 +16,6 @@ import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.MassMessage;
 
 /**
  * 群发消息服务类
- * Created by Binary Wang on 2017-8-16.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Slf4j
 @RequiredArgsConstructor

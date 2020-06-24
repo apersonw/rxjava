@@ -5,7 +5,6 @@ import org.rxjava.third.tencent.weixin.open.util.json.WxOpenGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenAuthorizerAccessToken implements Serializable {
     private static final long serialVersionUID = -4069745419280727420L;

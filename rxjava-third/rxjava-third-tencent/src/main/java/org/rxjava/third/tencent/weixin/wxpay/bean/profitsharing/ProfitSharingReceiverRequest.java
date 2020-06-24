@@ -11,9 +11,6 @@ import java.util.Map;
 
 /**
  * 添加/删除分账接受方请求对象
- *
- * @author Wang GuangXin 2019/10/22 13:41
- * @version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

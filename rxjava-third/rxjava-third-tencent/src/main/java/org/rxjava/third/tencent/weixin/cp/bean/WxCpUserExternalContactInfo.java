@@ -8,10 +8,7 @@ import java.util.List;
 
 /**
  * 外部联系人详情
- * Created by Binary Wang on 2018/9/16.
  * 参考文档：https://work.weixin.qq.com/api/doc#13878
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Getter
 @Setter

@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * 公费电话拨打记录.
- *
- * @author Element
- * @date 2019-04-06 15:38
  */
 @Data
 public class WxCpDialRecord implements Serializable {

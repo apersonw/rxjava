@@ -17,9 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by yjwang on 2020/4/5.
- *
- * @author <a href="https://github.com/yjwang3300300">yjwang</a>
  */
 @AllArgsConstructor
 public class WxMaLiveServiceImpl implements WxMaLiveService {

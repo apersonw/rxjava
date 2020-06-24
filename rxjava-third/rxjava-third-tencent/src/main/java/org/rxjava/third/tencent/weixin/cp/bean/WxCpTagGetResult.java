@@ -11,9 +11,6 @@ import java.util.List;
 
 /**
  * 管理企业号应用-测试
- * Created by huansinho on 2018/4/16.
- *
- * @author <a href="https://github.com/huansinho">huansinho</a>
  */
 @Data
 @AllArgsConstructor

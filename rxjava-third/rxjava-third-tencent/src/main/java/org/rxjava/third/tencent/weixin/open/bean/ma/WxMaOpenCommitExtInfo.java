@@ -13,14 +13,9 @@ import java.util.Map;
 
 /**
  * 微信小程序三方平台代上传代码提交额外信息对象
- * <p>
  * 如果代码中已经有配置，则配置的合并规则为：除了pages和tabBar.list直接覆盖原配置，其他都为插入或同级覆盖。
  * extjson 详细说明
  * https://developers.weixin.qq.com/miniprogram/dev/devtools/ext.html#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91
- * </p>
- *
- * @author yqx
- * @date 2018/9/13
  */
 @Data
 public class WxMaOpenCommitExtInfo implements Serializable {

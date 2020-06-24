@@ -15,7 +15,6 @@ import java.io.IOException;
 import static org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts.GET_TOKEN;
 
 /**
- * @author someone
  */
 @Slf4j
 public class WxCpServiceOkHttpImpl extends BaseWxCpServiceImpl<OkHttpClient, OkHttpProxyInfo> {

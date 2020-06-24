@@ -5,9 +5,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * 微信支付接口请求数据封装对象
- * Created by Binary Wang on 2017-8-25.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @NoArgsConstructor

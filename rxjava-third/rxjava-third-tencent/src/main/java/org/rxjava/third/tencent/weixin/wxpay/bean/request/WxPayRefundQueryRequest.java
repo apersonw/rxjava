@@ -8,9 +8,6 @@ import org.rxjava.third.tencent.weixin.wxpay.exception.WxPayException;
 import java.util.Map;
 
 /**
- * Created by Binary Wang on 2016-11-24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

@@ -9,7 +9,6 @@ import java.util.List;
 
 
 /**
- * @author billytomato
  */
 public class WxNetCheckResultGsonAdapter implements JsonDeserializer<WxNetCheckResult> {
 

@@ -8,9 +8,6 @@ import java.util.Map;
 
 /**
  * 提交付款码支付请求对象类
- * Created by Binary Wang on 2017-3-23.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

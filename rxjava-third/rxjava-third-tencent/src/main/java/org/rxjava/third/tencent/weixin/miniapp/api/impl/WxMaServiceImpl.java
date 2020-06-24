@@ -35,7 +35,6 @@ import java.util.concurrent.locks.Lock;
 import static org.rxjava.third.tencent.weixin.miniapp.constant.WxMaConstants.ErrorCode.*;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Slf4j
 public class WxMaServiceImpl implements WxMaService, RequestHttp<CloseableHttpClient, HttpHost> {

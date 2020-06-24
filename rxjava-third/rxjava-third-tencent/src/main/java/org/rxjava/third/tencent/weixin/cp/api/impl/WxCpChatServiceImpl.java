@@ -19,8 +19,6 @@ import static org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts.Chat
 
 /**
  * 群聊服务实现.
- *
- * @author gaigeshen
  */
 @RequiredArgsConstructor
 public class WxCpChatServiceImpl implements WxCpChatService {

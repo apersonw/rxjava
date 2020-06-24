@@ -6,10 +6,6 @@ import java.util.List;
 
 /**
  * 任务卡片管理接口.
- * Created by Jeff on 2019-05-16.
- *
- * @author <a href="https://github.com/domainname">Jeff</a>
- * @date 2019-05-16
  */
 public interface WxCpTaskCardService {
 

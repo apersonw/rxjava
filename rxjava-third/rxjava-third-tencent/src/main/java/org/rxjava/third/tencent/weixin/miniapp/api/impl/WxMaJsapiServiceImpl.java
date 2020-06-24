@@ -14,9 +14,6 @@ import org.rxjava.third.tencent.weixin.miniapp.api.WxMaService;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Created by BinaryWang on 2018/8/5.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaJsapiServiceImpl implements WxMaJsapiService {

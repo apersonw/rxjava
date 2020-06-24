@@ -11,8 +11,6 @@ import java.io.Serializable;
  * 注意:
  * 仅“部门”支持同时配置多个筛选条件。
  * 不同类型的筛选条件之间为“与”的关系，同类型筛选条件之间为“或”的关系
- *
- * @author element
  */
 @Data
 public class WxCpApprovalInfoQueryFilter implements Serializable {

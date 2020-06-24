@@ -19,9 +19,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.util.List;
 
 /**
- * Created by Binary Wang on 2016/9/26.
- *
- * @author binarywang (https://github.com/binarywang)
  */
 @RequiredArgsConstructor
 public class WxMpStoreServiceImpl implements WxMpStoreService {

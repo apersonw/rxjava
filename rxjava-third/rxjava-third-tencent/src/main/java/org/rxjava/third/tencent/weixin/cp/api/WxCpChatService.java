@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 群聊服务.
- *
- * @author gaigeshen
  */
 public interface WxCpChatService {
 

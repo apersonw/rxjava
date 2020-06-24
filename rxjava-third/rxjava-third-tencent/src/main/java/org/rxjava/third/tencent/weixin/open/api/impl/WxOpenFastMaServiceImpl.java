@@ -16,10 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * .
- *
- * @author Hipple
- * @since 2019/1/23 15:27
  */
 public class WxOpenFastMaServiceImpl extends WxMaServiceImpl implements WxOpenFastMaService {
     private WxOpenComponentService wxOpenComponentService;

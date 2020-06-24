@@ -6,7 +6,6 @@ import org.rxjava.third.tencent.weixin.miniapp.util.json.WxMaGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author zhfish
  */
 @Data
 public class WxMaShareInfo implements Serializable {

@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author ArBing
  */
 @Data
 public class WxMaTemplateLibraryGetResult implements Serializable {

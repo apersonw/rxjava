@@ -9,7 +9,6 @@ import org.rxjava.third.tencent.weixin.open.bean.WxOpenComponentAccessToken;
 import java.util.concurrent.locks.Lock;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public interface WxOpenConfigStorage {
 

@@ -23,9 +23,6 @@ import java.util.Map;
  * 支付结果通知.
  * 文档见：https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8
  * https://pay.weixin.qq.com/wiki/doc/api/external/native.php?chapter=9_7
- *
- * @author aimilin6688
- * @since 2.5.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

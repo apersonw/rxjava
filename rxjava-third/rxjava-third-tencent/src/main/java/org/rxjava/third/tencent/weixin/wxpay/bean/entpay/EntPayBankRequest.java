@@ -10,9 +10,6 @@ import java.util.Map;
 
 /**
  * 企业付款到银行卡的请求对象类
- * Created by BinaryWang on 2017/12/20.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

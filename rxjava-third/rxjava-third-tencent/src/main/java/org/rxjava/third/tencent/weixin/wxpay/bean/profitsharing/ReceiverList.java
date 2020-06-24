@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author Wang GuangXin 2019/10/22 11:01
- * @version 1.0
  */
 
 public class ReceiverList implements Serializable {

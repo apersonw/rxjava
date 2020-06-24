@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.common.util.json.WxGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author ArBing
  */
 @Data
 public class WxMaTemplateAddResult implements Serializable {

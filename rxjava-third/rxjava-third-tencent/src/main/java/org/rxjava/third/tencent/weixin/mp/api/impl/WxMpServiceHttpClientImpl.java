@@ -19,8 +19,6 @@ import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCE
 
 /**
  * apache http client方式实现.
- *
- * @author someone
  */
 public class WxMpServiceHttpClientImpl extends BaseWxMpServiceImpl<CloseableHttpClient, HttpHost> {
     private CloseableHttpClient httpClient;

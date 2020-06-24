@@ -12,7 +12,6 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.code.WxMaCodeCommitRequest;
 import org.rxjava.third.tencent.weixin.miniapp.bean.code.WxMaCodeVersionDistribution;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxMaGsonBuilder {
     private static final GsonBuilder INSTANCE = new GsonBuilder();

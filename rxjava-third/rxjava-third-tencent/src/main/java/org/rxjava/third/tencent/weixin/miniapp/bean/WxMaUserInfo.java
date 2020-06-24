@@ -6,7 +6,6 @@ import org.rxjava.third.tencent.weixin.miniapp.util.json.WxMaGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMaUserInfo implements Serializable {

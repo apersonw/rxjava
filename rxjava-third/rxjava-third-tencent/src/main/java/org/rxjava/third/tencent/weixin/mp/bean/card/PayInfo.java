@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 支付功能.
- *
- * @author yuanqixun
- * date:2018-08-25 00:33
  */
 @Data
 public class PayInfo implements Serializable {

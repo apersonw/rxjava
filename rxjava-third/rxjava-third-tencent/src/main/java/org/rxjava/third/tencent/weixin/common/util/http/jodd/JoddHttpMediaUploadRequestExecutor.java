@@ -16,10 +16,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/5
  */
 public class JoddHttpMediaUploadRequestExecutor extends MediaUploadRequestExecutor<HttpConnectionProvider, ProxyInfo> {
     public JoddHttpMediaUploadRequestExecutor(RequestHttp requestHttp) {

@@ -2,8 +2,6 @@ package org.rxjava.third.tencent.weixin.miniapp.constant;
 
 /**
  * 小程序常量.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxMaConstants {
     /**

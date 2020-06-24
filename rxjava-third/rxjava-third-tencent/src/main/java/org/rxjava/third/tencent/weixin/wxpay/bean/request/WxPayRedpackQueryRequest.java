@@ -13,9 +13,6 @@ import java.util.Map;
  * 示例值
  * 类型
  * 说明
- * Created by Binary Wang on 2016-11-28.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

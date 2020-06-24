@@ -9,8 +9,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author Mklaus
- * @date 2018-01-22 下午12:18
  */
 @Data
 @NoArgsConstructor

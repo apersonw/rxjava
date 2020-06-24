@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 群发时用到的图文消息素材.
- *
- * @author chanjarster
  */
 @Data
 public class WxMpMassNews implements Serializable {

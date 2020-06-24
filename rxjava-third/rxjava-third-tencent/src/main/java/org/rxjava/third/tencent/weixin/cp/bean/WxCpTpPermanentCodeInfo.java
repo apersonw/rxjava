@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 服务商模式获取永久授权码信息
- *
- * @author yunaqixun
  */
 @Getter
 @Setter

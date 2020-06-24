@@ -12,9 +12,6 @@ import java.util.concurrent.locks.Lock;
 
 /**
  * 基于Redisson的实现
- *
- * @author yuanqixun
- * @date 2020/5/3
  */
 public class WxMaRedissonConfigImpl extends WxMaDefaultConfigImpl {
 

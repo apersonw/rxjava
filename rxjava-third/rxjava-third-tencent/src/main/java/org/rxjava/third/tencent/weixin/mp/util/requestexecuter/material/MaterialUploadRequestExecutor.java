@@ -11,7 +11,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.material.WxMpMaterialUploadResult
 import java.io.IOException;
 
 /**
- * @author codepiano
  */
 public abstract class MaterialUploadRequestExecutor<H, P> implements RequestExecutor<WxMpMaterialUploadResult, WxMpMaterial> {
     protected RequestHttp<H, P> requestHttp;

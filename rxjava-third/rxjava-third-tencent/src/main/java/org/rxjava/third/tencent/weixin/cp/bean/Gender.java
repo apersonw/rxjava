@@ -2,9 +2,6 @@ package org.rxjava.third.tencent.weixin.cp.bean;
 
 /**
  * 性别枚举
- * Created by BinaryWang on 2018/4/22.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public enum Gender {
     /**

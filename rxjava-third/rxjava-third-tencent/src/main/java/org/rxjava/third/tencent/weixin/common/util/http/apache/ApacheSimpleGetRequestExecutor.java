@@ -13,10 +13,6 @@ import org.rxjava.third.tencent.weixin.common.util.http.SimpleGetRequestExecutor
 import java.io.IOException;
 
 /**
- * .
- *
- * @author ecoolper
- * @date 2017/5/4
  */
 public class ApacheSimpleGetRequestExecutor extends SimpleGetRequestExecutor<CloseableHttpClient, HttpHost> {
     public ApacheSimpleGetRequestExecutor(RequestHttp requestHttp) {

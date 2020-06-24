@@ -9,9 +9,6 @@ import org.w3c.dom.Document;
 
 /**
  * 红包发送记录查询返回
- *
- * @author wuyong
- * @date 2019-12-01 17:23
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

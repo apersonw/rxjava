@@ -16,8 +16,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2019-12-15
  */
 @AllArgsConstructor
 public class WxMaSubscribeServiceImpl implements WxMaSubscribeService {

@@ -6,9 +6,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
 /**
  * 一次性订阅消息接口
  * https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1500374289_66bvB
- *
- * @author Mklaus
- * @date 2018-01-22 上午11:07
  */
 public interface WxMpSubscribeMsgService {
     /**

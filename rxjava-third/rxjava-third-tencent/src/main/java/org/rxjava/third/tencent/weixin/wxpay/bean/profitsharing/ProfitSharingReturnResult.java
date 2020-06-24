@@ -8,8 +8,6 @@ import org.rxjava.third.tencent.weixin.wxpay.bean.result.BaseWxPayResult;
 import org.w3c.dom.Document;
 
 /**
- * @author Wang GuangXin 2019/10/23 14:41
- * @version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

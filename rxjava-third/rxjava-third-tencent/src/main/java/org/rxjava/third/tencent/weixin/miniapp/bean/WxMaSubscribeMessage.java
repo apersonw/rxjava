@@ -11,8 +11,6 @@ import java.util.List;
 /**
  * 订阅消息.
  * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/subscribe-message/subscribeMessage.send.html
- *
- * @author S
  */
 @Getter
 @Setter

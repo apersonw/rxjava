@@ -14,9 +14,6 @@ import java.util.List;
 /**
  * 公众号的自动回复规则.
  * 参考文档地址：https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Getting_Rules_for_Auto_Replies.html
- * Created by Binary Wang on 2017-7-8.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMpCurrentAutoReplyInfo implements Serializable {

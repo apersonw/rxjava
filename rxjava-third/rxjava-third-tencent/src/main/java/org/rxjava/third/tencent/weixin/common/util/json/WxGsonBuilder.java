@@ -9,9 +9,6 @@ import org.rxjava.third.tencent.weixin.common.bean.result.WxMediaUploadResult;
 import org.rxjava.third.tencent.weixin.common.error.WxError;
 
 /**
- * .
- *
- * @author chanjarster
  */
 public class WxGsonBuilder {
 

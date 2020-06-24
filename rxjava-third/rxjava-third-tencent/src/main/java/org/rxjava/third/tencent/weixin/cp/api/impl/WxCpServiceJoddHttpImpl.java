@@ -14,7 +14,6 @@ import org.rxjava.third.tencent.weixin.cp.config.WxCpConfigStorage;
 import org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts;
 
 /**
- * @author someone
  */
 public class WxCpServiceJoddHttpImpl extends BaseWxCpServiceImpl<HttpConnectionProvider, ProxyInfo> {
     private HttpConnectionProvider httpClient;

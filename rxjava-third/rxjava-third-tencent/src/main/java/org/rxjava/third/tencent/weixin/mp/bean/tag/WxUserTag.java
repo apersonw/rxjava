@@ -10,9 +10,6 @@ import java.util.List;
 
 /**
  * 用户标签对象
- * Created by Binary Wang on 2016/9/2.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxUserTag implements Serializable {

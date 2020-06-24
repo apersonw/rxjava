@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 /**
  * 企业微信操作人
- *
- * @author element
  */
 @Data
 public class WxCpOperator implements Serializable {

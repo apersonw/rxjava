@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * 用户标签管理相关接口
- * Created by Binary Wang on 2016/9/2.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMpUserTagService {
     /**

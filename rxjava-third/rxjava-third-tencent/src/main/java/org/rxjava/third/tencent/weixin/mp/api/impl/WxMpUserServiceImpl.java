@@ -18,9 +18,6 @@ import java.util.Map;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.User.*;
 
 /**
- * Created by Binary Wang on 2016/7/21.
- *
- * @author BinaryWang
  */
 @RequiredArgsConstructor
 public class WxMpUserServiceImpl implements WxMpUserService {

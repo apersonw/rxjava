@@ -14,9 +14,6 @@ import java.util.List;
 
 /**
  * 物流账号对象
- *
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 @Data
 @NoArgsConstructor

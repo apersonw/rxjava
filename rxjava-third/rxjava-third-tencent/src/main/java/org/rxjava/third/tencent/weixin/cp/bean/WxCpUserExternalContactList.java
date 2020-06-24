@@ -8,10 +8,7 @@ import java.util.List;
 
 /**
  * 外部联系人列表
- * Created by Joe Cao on 2019/6/16.
  * 参考文档：https://work.weixin.qq.com/api/doc#90001/90143/91570
- *
- * @author <a href="https://github.com/JoeCao">Joe Cao</a>
  */
 public class WxCpUserExternalContactList {
     @SerializedName("errcode")

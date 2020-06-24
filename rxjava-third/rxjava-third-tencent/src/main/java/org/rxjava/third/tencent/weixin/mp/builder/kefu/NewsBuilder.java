@@ -9,11 +9,8 @@ import java.util.List;
 
 /**
  * 图文消息builder
- * <p>
  * 用法:
  * WxMpKefuMessage m = WxMpKefuMessage.NEWS().addArticle(article).toUser(...).build();
- *
- * @author chanjarster
  */
 public final class NewsBuilder extends BaseBuilder<NewsBuilder> {
     private List<WxMpKefuMessage.WxArticle> articles = new ArrayList<>();

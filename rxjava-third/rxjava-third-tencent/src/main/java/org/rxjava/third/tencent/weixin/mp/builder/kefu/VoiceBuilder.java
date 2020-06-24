@@ -5,10 +5,7 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 语音消息builder
- * <p>
  * 用法: WxMpKefuMessage m = WxMpKefuMessage.VOICE().mediaId(...).toUser(...).build();
- *
- * @author chanjarster
  */
 public final class VoiceBuilder extends BaseBuilder<VoiceBuilder> {
     private String mediaId;

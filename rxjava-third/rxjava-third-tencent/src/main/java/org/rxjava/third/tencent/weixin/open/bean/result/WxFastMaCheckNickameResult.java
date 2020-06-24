@@ -6,9 +6,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 微信认证名称检测结果类.
- *
- * @author Hipple
- * @since 2019/1/26 17:39
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

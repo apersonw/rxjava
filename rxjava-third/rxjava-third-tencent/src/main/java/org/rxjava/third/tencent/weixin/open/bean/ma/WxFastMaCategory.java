@@ -7,9 +7,6 @@ import java.util.List;
 
 /**
  * 修改更新类目所需实体.
- *
- * @author Hipple
- * @since 2019/1/25 10:49
  */
 @Data
 public class WxFastMaCategory implements Serializable {

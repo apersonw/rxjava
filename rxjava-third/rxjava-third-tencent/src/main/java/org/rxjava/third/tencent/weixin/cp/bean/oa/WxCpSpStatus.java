@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 /**
  * 审批单状态
  * (1-审批中；2-已通过；3-已驳回；4-已撤销；6-通过后撤销；7-已删除；10-已支付）
- *
- * @author element
  */
 public enum WxCpSpStatus {
 

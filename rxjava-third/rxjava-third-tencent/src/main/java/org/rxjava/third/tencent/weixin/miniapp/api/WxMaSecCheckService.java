@@ -7,9 +7,6 @@ import java.io.File;
 
 /**
  * 内容安全相关接口.
- * Created by Binary Wang on 2018/11/24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaSecCheckService {
 

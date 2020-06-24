@@ -14,8 +14,6 @@ import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCE
 
 /**
  * okhttp实现.
- *
- * @author someone
  */
 public class WxMpServiceOkHttpImpl extends BaseWxMpServiceImpl<OkHttpClient, OkHttpProxyInfo> {
     private OkHttpClient httpClient;

@@ -8,10 +8,6 @@ import org.rxjava.third.tencent.weixin.open.bean.result.WxFastMaAccountBasicInfo
 import java.lang.reflect.Type;
 
 /**
- * .
- *
- * @author Hipple
- * @since 2019/1/23 15:02
  */
 public class WxFastMaAccountBasicInfoGsonAdapter implements JsonDeserializer<WxFastMaAccountBasicInfoResult> {
     @Override

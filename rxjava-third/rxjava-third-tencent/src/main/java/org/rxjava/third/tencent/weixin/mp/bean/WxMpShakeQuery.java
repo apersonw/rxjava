@@ -8,9 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by rememberber on 2017/6/5.
- *
- * @author rememberber
  */
 @Data
 public class WxMpShakeQuery implements Serializable {

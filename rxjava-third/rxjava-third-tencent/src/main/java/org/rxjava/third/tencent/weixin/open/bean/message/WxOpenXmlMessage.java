@@ -18,7 +18,6 @@ import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 @Data
 @Slf4j

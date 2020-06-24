@@ -6,7 +6,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author miller
  */
 @Data
 public class WxMediaImgUploadResult implements Serializable {

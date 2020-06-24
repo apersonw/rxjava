@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 服务位置信息.
- *
- * @author doger.wang
- * @date 2020-05-19
  */
 @Data
 @NoArgsConstructor

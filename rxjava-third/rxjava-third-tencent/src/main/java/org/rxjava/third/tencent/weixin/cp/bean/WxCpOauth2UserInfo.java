@@ -8,9 +8,6 @@ import lombok.experimental.Accessors;
 
 /**
  * 用oauth2获取用户信息的结果类
- * Created by BinaryWang on 2019/5/26.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @Accessors(chain = true)

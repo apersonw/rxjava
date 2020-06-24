@@ -8,8 +8,6 @@ import java.util.Map;
 
 /**
  * 发送小程序红包请求参数对象.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

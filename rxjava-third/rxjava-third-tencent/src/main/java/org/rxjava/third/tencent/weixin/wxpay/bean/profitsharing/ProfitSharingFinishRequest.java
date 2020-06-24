@@ -9,8 +9,6 @@ import org.rxjava.third.tencent.weixin.wxpay.constant.WxPayConstants;
 import java.util.Map;
 
 /**
- * @author Wang GuangXin 2019/10/23 14:02
- * @version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

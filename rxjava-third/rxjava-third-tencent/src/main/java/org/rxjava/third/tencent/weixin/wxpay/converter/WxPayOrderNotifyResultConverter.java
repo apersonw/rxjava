@@ -24,8 +24,6 @@ import java.util.Map;
 
 /**
  * The type Wxpay order notify result converter.
- *
- * @author aimilin
  */
 public class WxPayOrderNotifyResultConverter extends AbstractReflectionConverter {
 

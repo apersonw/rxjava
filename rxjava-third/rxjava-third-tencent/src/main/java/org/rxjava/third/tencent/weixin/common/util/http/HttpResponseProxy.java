@@ -12,9 +12,6 @@ import java.util.regex.Pattern;
 
 /**
  * 三种http框架的response代理类，方便提取公共方法
- * Created by Binary Wang on 2017-8-3.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class HttpResponseProxy {
     private static final Pattern PATTERN = Pattern.compile(".*filename=\"(.*)\"");

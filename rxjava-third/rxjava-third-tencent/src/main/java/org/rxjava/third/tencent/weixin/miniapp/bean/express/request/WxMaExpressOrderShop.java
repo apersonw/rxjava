@@ -9,9 +9,6 @@ import java.io.Serializable;
 
 /**
  * 商品信息对象
- *
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 @Data
 @NoArgsConstructor

@@ -7,9 +7,6 @@ import java.util.List;
 
 /**
  * 直播相关操作接口.
- * Created by yjwang on 2020/4/5.
- *
- * @author <a href="https://github.com/yjwang3300300">yjwang</a>
  */
 public interface WxMaLiveService {
     String GET_LIVE_INFO = "http://api.weixin.qq.com/wxa/business/getliveinfo";

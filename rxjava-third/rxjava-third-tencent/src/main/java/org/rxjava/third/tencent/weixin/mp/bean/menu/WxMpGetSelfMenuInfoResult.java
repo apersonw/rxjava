@@ -8,9 +8,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * Created by Binary Wang on 2016-11-25.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMpGetSelfMenuInfoResult implements Serializable {

@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 获取标签下粉丝列表的结果对象
- * Created by Binary Wang on 2016-09-19.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxTagListUser implements Serializable {

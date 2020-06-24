@@ -5,7 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author element
  */
 @Data
 public class ContentTitle implements Serializable {

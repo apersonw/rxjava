@@ -38,8 +38,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * httpclient 连接管理器
- *
- * @author kakotor
  */
 @Slf4j
 @Data

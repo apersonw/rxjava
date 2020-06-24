@@ -18,9 +18,6 @@ import java.util.Map;
 import static org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts.User.*;
 
 /**
- * Created by BinaryWang on 2017/6/24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @RequiredArgsConstructor
 public class WxCpUserServiceImpl implements WxCpUserService {

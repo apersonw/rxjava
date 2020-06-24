@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 群发图文评论数据.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2019-08-30
  */
 @Data
 public class WxMpCommentListVo implements Serializable {

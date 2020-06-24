@@ -6,8 +6,6 @@ import lombok.EqualsAndHashCode;
 import org.rxjava.third.tencent.weixin.common.util.json.WxGsonBuilder;
 
 /**
- * @author keungtung.
- * @date 14/12/2016
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -27,9 +27,6 @@ import java.util.UUID;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Material.*;
 
 /**
- * Created by Binary Wang on 2016/7/21.
- *
- * @author Binary Wang
  */
 @RequiredArgsConstructor
 public class WxMpMaterialServiceImpl implements WxMpMaterialService {

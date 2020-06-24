@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author Binary Wang
  */
 @Data
 public class WxMpKfSessionGetResult implements Serializable {

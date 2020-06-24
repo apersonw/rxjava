@@ -13,9 +13,6 @@ import java.util.Map;
 /**
  * 微信开放平台代小程序实现服务能力
  * https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1489144594_DhNoV&token=&lang=zh_CN
- *
- * @author yqx
- * @date 2018/9/12
  */
 public interface WxOpenMaService extends WxMaService {
 

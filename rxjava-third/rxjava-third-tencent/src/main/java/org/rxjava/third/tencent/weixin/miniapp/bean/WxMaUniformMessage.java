@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * 模板消息.
  * 参考 https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html#接口说明  模板消息部分
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Getter
 @Setter

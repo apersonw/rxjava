@@ -6,8 +6,6 @@ import java.util.List;
 
 /**
  * 群聊
- *
- * @author gaigeshen
  */
 @Data
 public class WxCpChat {

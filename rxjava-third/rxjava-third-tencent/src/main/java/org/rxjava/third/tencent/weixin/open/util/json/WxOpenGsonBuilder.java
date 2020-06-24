@@ -9,7 +9,6 @@ import org.rxjava.third.tencent.weixin.open.bean.auth.WxOpenAuthorizerInfo;
 import org.rxjava.third.tencent.weixin.open.bean.result.*;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenGsonBuilder {
 

@@ -9,9 +9,6 @@ import java.util.Map;
 
 /**
  * 查询汇率请求.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2020-05-23
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

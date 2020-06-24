@@ -13,8 +13,6 @@ import java.util.List;
 /**
  * 微信支付-申请退款返回结果.
  * https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_4
- *
- * @author liukaitj & Binary Wang
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

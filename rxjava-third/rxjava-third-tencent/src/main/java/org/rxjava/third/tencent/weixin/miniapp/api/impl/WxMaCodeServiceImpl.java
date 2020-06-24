@@ -24,8 +24,6 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
- * @since 2018-04-26 20:00
  */
 @AllArgsConstructor
 public class WxMaCodeServiceImpl implements WxMaCodeService {

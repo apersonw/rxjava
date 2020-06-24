@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Binary Wang
  */
 @Data
 public class WxMpKfSessionWaitCaseList implements Serializable {

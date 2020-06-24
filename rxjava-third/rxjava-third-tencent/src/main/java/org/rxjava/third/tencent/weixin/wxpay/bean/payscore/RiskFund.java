@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 /**
  * 订单风险金信息.
- *
- * @author doger.wang
- * @date 2020-05-19
  */
 @Data
 @NoArgsConstructor

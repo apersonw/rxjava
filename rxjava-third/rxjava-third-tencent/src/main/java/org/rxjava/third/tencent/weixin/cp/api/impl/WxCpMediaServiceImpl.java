@@ -18,9 +18,6 @@ import static org.rxjava.third.tencent.weixin.cp.constant.WxCpApiPathConsts.Medi
 
 /**
  * 媒体管理接口.
- * Created by Binary Wang on 2017-6-25.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @RequiredArgsConstructor
 public class WxCpMediaServiceImpl implements WxCpMediaService {

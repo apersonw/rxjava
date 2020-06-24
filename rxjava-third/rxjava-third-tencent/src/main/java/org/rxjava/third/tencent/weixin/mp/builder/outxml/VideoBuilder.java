@@ -4,8 +4,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.message.WxMpXmlOutVideoMessage;
 
 /**
  * 视频消息builder
- *
- * @author chanjarster
  */
 public final class VideoBuilder extends BaseBuilder<VideoBuilder, WxMpXmlOutVideoMessage> {
 

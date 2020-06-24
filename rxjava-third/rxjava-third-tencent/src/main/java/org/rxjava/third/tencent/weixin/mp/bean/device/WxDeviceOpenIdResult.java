@@ -8,8 +8,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.util.List;
 
 /**
- * @author keungtung.
- * @date 16/12/2016
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 二维码/条码识别返回结果
- *
- * @author Theo Nie
  */
 @Data
 public class WxMpImgProcQrCodeResult implements Serializable {

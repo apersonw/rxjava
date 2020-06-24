@@ -7,8 +7,6 @@ import com.google.gson.GsonBuilder;
 import java.io.Serializable;
 
 /**
- * @author Wang GuangXin 2019/10/22 11:07
- * @version 1.0
  */
 public class Receiver implements Serializable {
     private String type;

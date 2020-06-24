@@ -13,9 +13,6 @@ import java.util.List;
 
 /**
  * 微信支付常量类
- * Created by Binary Wang on 2017-8-24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxPayConstants {
 

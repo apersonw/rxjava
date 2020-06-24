@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import org.w3c.dom.Document;
 
 /**
- * Created by BinaryWang on 2017/6/18.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

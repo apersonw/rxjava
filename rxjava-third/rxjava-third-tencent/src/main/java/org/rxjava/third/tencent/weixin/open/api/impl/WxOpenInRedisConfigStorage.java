@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenInRedisConfigStorage extends AbstractWxOpenInRedisConfigStorage {
 

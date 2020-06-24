@@ -9,8 +9,6 @@ import java.util.Map;
 
 /**
  * 处理小程序推送消息的处理器接口.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaMessageHandler {
     /**

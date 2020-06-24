@@ -9,11 +9,8 @@ import java.util.List;
 
 /**
  * 菜单消息builder
- * <p>
  * 用法:
  * WxMpKefuMessage m = WxMpKefuMessage.MSGMENU().addMenus(lists).headContent(headContent).tailContent(tailContent).toUser(...).build();
- *
- * @author billytomato
  */
 public final class WxMsgMenuBuilder extends BaseBuilder<WxMsgMenuBuilder> {
     private List<WxMpKefuMessage.MsgMenu> msgMenus = new ArrayList<>();

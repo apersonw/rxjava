@@ -13,9 +13,6 @@ import java.io.IOException;
 
 /**
  * 获得小程序体验QrCode图片 请求执行器.
- *
- * @author yqx
- * @date 2018-09-13
  */
 public abstract class MaQrCodeRequestExecutor<H, P> implements RequestExecutor<File, WxMaQrcodeParam> {
     protected RequestHttp<H, P> requestHttp;

@@ -13,8 +13,6 @@ import org.rxjava.third.tencent.weixin.common.util.xml.XStreamInitializer;
 
 /**
  * 微信支付订单和退款的异步通知共用的响应类.
- *
- * @author someone
  */
 @Data
 @Builder(builderMethodName = "newBuilder")

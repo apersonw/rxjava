@@ -15,9 +15,6 @@ import java.util.List;
 
 /**
  * 应用推送消息
- * Created by Binary Wang on 2019/1/26.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 @Builder

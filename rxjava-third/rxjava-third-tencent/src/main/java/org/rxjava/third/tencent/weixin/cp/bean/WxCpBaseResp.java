@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.rxjava.third.tencent.weixin.cp.util.json.WxCpGsonBuilder;
 
 /**
- * @author yqx
- * @date 2020/3/16
  */
 @Getter
 @Setter

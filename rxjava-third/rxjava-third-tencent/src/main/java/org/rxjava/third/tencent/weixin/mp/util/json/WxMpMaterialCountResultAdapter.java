@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.material.WxMpMaterialCountResult;
 import java.lang.reflect.Type;
 
 /**
- * @author codepiano
  */
 public class WxMpMaterialCountResultAdapter implements JsonDeserializer<WxMpMaterialCountResult> {
 

@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * 退款代金券信息.
- * Created by BinaryWang on 2018/4/21.
- *
- * @author Binary Wang
  */
 @Data
 @NoArgsConstructor

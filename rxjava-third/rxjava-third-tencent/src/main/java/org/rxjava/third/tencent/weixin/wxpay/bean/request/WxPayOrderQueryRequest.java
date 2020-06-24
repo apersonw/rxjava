@@ -11,14 +11,12 @@ import java.util.Map;
  * 订单查询请求对象
  * Created by Binary Wang on 2016-10-24.
  * 注释中各行每个字段描述对应如下：
- * <li>字段名
- * <li>变量名
- * <li>是否必填
- * <li>类型
- * <li>示例值
- * <li>描述
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
+ * 字段名
+ * 变量名
+ * 是否必填
+ * 类型
+ * 示例值
+ * 描述
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

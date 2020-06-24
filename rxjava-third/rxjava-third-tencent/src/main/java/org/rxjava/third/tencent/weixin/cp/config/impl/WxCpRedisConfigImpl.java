@@ -15,8 +15,6 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 使用说明：本实现仅供参考，并不完整.
  * 比如为减少项目依赖，未加入redis分布式锁的实现，如有需要请自行实现。
- *
- * @author gaigeshen
  */
 public class WxCpRedisConfigImpl implements WxCpConfigStorage {
     private static final String ACCESS_TOKEN_KEY = "WX_CP_ACCESS_TOKEN";

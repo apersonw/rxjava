@@ -6,7 +6,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.result.WxMpUserBlacklistGetResult
 import java.util.List;
 
 /**
- * @author miller
  */
 public interface WxMpUserBlacklistService {
     /**

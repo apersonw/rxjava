@@ -12,8 +12,6 @@ import java.util.List;
 
 /**
  * 微信用户信息.
- *
- * @author chanjarster
  */
 @Data
 public class WxMpUser implements Serializable {

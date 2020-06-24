@@ -8,7 +8,6 @@ import org.rxjava.third.tencent.weixin.cp.util.json.WxCpGsonBuilder;
 import java.util.List;
 
 /**
- * @author 曹祖鹏
  */
 @Data
 public class WxCpUserWithExternalPermission {

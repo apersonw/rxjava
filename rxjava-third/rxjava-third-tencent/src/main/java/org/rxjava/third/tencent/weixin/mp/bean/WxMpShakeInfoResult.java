@@ -7,9 +7,6 @@ import java.io.Serializable;
 
 /**
  * 摇一摇周边：获取设备及用户信息接口返回JSON数据接收类
- * Created by rememberber on 2017/6/5.
- *
- * @author rememberber
  */
 @Data
 public class WxMpShakeInfoResult implements Serializable {

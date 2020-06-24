@@ -5,10 +5,7 @@ import org.rxjava.third.tencent.weixin.mp.bean.message.WxMpXmlOutTransferKefuMes
 
 /**
  * 客服消息builder
- * <p>
  * 用法: WxMpXmlOutTransferKefuMessage m = WxMpXmlOutMessage.TRANSFER_CUSTOMER_SERVICE().kfAccount("").toUser("").build();
- *
- * @author chanjarster
  */
 public final class TransferCustomerServiceBuilder
         extends BaseBuilder<TransferCustomerServiceBuilder, WxMpXmlOutTransferKefuMessage> {

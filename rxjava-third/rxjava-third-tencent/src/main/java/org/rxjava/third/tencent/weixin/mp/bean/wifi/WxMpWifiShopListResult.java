@@ -8,9 +8,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.util.List;
 
 /**
- * Created by BinaryWang on 2018/6/10.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMpWifiShopListResult {

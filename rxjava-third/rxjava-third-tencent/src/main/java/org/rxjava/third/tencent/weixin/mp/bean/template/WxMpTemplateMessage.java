@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * 模板消息.
  * 参考 http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1433751277&token=&lang=zh_CN 发送模板消息接口部分
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Getter
 @Setter

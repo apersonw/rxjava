@@ -14,7 +14,6 @@ import org.rxjava.third.tencent.weixin.miniapp.util.QrcodeRequestExecutor;
 import java.io.File;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaQrcodeServiceImpl implements WxMaQrcodeService {

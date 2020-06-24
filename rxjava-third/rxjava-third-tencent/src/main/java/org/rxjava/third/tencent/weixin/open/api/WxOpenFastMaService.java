@@ -11,9 +11,6 @@ import java.util.List;
  * 微信开放平台【快速创建小程序】的专用接口
  * https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=21528465979XX32V&token=&lang=zh_CN
  * 注意：该类的接口仅限通过快速创建小程序接口的小程序使用
- *
- * @author Hipple
- * @date 2019/01/23
  */
 public interface WxOpenFastMaService extends WxMaService {
     /**

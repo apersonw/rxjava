@@ -6,8 +6,6 @@ import java.util.List;
 
 /**
  * 微信运动相关操作接口.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public interface WxMaRunService {
 

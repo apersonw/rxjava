@@ -16,9 +16,6 @@ import java.util.List;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.DataCube.*;
 
 /**
- * Created by Binary Wang on 2016/8/23.
- *
- * @author binarywang (https://github.com/binarywang)
  */
 @RequiredArgsConstructor
 public class WxMpDataCubeServiceImpl implements WxMpDataCubeService {

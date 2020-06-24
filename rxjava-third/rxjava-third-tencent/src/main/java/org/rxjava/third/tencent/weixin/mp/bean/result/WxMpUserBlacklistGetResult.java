@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author miller
  */
 @Data
 public class WxMpUserBlacklistGetResult implements Serializable {

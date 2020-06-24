@@ -20,7 +20,6 @@ import java.util.Date;
 import static org.rxjava.third.tencent.weixin.mp.enums.WxMpApiUrl.Kefu.*;
 
 /**
- * @author Binary Wang
  */
 @Slf4j
 @RequiredArgsConstructor

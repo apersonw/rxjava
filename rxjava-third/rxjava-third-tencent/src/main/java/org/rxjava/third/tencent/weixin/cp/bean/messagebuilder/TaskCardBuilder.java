@@ -9,9 +9,6 @@ import java.util.List;
 /**
  * 任务卡片消息Builder
  * 用法: WxCustomMessage m = WxCustomMessage.TASKCARD().title(...)....toUser(...).build();
- *
- * @author <a href="https://github.com/domainname">Jeff</a>
- * @date 2019-05-16
  */
 public class TaskCardBuilder extends BaseBuilder<TaskCardBuilder> {
     private String title;

@@ -7,9 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.util.json.WxMpGsonBuilder;
 import java.io.Serializable;
 
 /**
- * .
- *
- * @author BinaryWang
  */
 @Data
 public class WxMpStoreInfo implements Serializable {

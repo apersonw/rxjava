@@ -15,9 +15,6 @@ import java.util.Map;
 
 /**
  * 运单信息返回结果对象
- *
- * @author <a href="https://github.com/mr-xiaoyu">xiaoyu</a>
- * @since 2019-11-26
  */
 @Data
 @NoArgsConstructor

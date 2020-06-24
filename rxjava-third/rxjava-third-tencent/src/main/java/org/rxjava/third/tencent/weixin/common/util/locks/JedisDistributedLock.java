@@ -10,8 +10,6 @@ import java.util.concurrent.locks.Lock;
 
 /**
  * JedisPool 分布式锁
- *
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class JedisDistributedLock implements Lock {
     private final Pool<Jedis> jedisPool;

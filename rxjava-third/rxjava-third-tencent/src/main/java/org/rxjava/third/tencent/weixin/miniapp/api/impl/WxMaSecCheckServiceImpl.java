@@ -16,9 +16,6 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Created by Binary Wang on 2018/11/24.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaSecCheckServiceImpl implements WxMaSecCheckService {

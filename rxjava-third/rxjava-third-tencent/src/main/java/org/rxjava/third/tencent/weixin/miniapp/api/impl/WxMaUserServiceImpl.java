@@ -17,7 +17,6 @@ import org.rxjava.third.tencent.weixin.miniapp.util.crypt.WxMaCryptUtils;
 import java.util.Map;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @AllArgsConstructor
 public class WxMaUserServiceImpl implements WxMaUserService {

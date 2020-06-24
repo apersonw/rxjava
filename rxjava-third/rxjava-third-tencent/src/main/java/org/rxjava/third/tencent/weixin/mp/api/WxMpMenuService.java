@@ -7,8 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.menu.WxMpMenu;
 
 /**
  * 菜单相关操作接口.
- *
- * @author Binary Wang
  */
 public interface WxMpMenuService {
     /**

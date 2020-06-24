@@ -11,7 +11,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- * @author <a href="https://github.com/winter4666">winter</a>
  */
 public abstract class AbstractWxMaRedisConfig extends WxMaDefaultConfigImpl {
 

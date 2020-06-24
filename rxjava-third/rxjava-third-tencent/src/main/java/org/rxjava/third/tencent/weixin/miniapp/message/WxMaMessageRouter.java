@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 /**
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 @Data
 public class WxMaMessageRouter {

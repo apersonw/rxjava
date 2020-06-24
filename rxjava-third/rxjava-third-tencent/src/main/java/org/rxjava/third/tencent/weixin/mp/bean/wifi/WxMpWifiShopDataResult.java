@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * 门店Wi-Fi信息.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
- * @date 2019-06-16
  */
 @Data
 public class WxMpWifiShopDataResult {

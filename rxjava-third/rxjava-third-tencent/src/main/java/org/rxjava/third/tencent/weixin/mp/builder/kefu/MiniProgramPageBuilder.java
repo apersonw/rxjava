@@ -5,11 +5,8 @@ import org.rxjava.third.tencent.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 小程序卡片 builder
- * <p>
  * 用法:
  * WxMpKefuMessage m = WxMpKefuMessage.MINIPROGRAMPAGE().title("xxxx").thumbMediaId("xxxxx").appId("xxxx").pagePath("****").toUser(...).build();
- *
- * @author boris.bao
  */
 public final class MiniProgramPageBuilder extends BaseBuilder<MiniProgramPageBuilder> {
 

@@ -8,9 +8,6 @@ import java.util.List;
 /**
  * 管理企业号应用
  * 文档地址：https://work.weixin.qq.com/api/doc#10087
- * Created by huansinho on 2018/4/13.
- *
- * @author <a href="https://github.com/huansinho">huansinho</a>
  */
 public interface WxCpAgentService {
     /**

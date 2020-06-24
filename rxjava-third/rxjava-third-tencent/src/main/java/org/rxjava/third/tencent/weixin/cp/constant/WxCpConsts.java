@@ -2,9 +2,6 @@ package org.rxjava.third.tencent.weixin.cp.constant;
 
 /**
  * 企业微信常量
- * Created by Binary Wang on 2018/8/25.
- *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
 public class WxCpConsts {
     /**

@@ -7,7 +7,6 @@ import org.rxjava.third.tencent.weixin.mp.config.WxMpConfigStorage;
 import org.rxjava.third.tencent.weixin.open.api.WxOpenComponentService;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
  */
 public class WxOpenMpServiceImpl extends WxMpServiceImpl {
     private WxOpenComponentService wxOpenComponentService;

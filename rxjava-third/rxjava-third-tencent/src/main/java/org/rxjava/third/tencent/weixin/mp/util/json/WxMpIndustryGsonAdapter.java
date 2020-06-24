@@ -8,7 +8,6 @@ import org.rxjava.third.tencent.weixin.mp.bean.template.WxMpTemplateIndustryEnum
 import java.lang.reflect.Type;
 
 /**
- * @author miller
  */
 public class WxMpIndustryGsonAdapter implements JsonSerializer<WxMpTemplateIndustry>, JsonDeserializer<WxMpTemplateIndustry> {
     @Override

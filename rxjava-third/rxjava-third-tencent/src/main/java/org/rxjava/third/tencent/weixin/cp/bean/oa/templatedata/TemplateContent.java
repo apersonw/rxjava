@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author gyv12345@163.com
  */
 @Data
 public class TemplateContent implements Serializable {
