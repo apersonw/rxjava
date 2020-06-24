@@ -8,6 +8,7 @@ import org.rxjava.apikit.client.ClientAdapter;
 import org.rxjava.apikit.client.InputParam;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -172,7 +173,7 @@ public class ReactiveHttpClientAdapter implements ClientAdapter {
         bodySpec.header("Accept-Language", "zh_CN");
 
         if (token != null) {
-            bodySpec = bodySpec.header("authorization", token);
+            bodySpec = bodySpec.header(HttpHeaders.AUTHORIZATION, token);
         }
 
         WebClient.ResponseSpec retrieve = ObjectUtils.isEmpty(jsonBody) ?

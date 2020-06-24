@@ -7,14 +7,14 @@ import org.rxjava.common.test.EnableTest;
 import org.springframework.context.annotation.Bean;
 
 @EnableTest
-public class TestApiContext {
+public class ApiContext {
     @Bean
     public ClientAdapter clientAdapter(ClientAdapterFactory clientAdapterFactory) {
         return clientAdapterFactory.build("localhost", "8082", "");
     }
 
     @Bean
-    public TestApi testApi(ClientAdapter clientAdapter){
+    public TestApi testApi(ClientAdapter clientAdapter) {
         return new TestApi(clientAdapter);
     }
 }
