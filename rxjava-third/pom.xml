@@ -15,6 +15,7 @@
     </properties>
     <modules>
         <module>rxjava-third-qiniu</module>
+        <module>rxjava-third-tencent</module>
     </modules>
     <dependencies>
         <dependency>
