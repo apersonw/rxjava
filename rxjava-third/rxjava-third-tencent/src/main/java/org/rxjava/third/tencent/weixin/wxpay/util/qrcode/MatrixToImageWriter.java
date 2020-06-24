@@ -1,11 +1,12 @@
 package org.rxjava.third.tencent.weixin.wxpay.util.qrcode;
 
 import com.google.zxing.common.BitMatrix;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.imageio.ImageIO;
 
 public final class MatrixToImageWriter {
     private static final int BLACK = -16777216;
@@ -19,8 +20,8 @@ public final class MatrixToImageWriter {
         int height = matrix.getHeight();
         BufferedImage image = new BufferedImage(width, height, 1);
 
-        for(int x = 0; x < width; ++x) {
-            for(int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            for (int y = 0; y < height; ++y) {
                 image.setRGB(x, y, matrix.get(x, y) ? -16777216 : -1);
             }
         }

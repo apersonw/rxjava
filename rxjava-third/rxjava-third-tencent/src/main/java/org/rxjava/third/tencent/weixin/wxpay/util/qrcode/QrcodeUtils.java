@@ -2,20 +2,15 @@ package org.rxjava.third.tencent.weixin.wxpay.util.qrcode;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.Binarizer;
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.DecodeHintType;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.NotFoundException;
+import com.google.zxing.*;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import java.awt.BasicStroke;
-import java.awt.Graphics2D;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
@@ -26,9 +21,6 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
 import java.nio.file.Files;
 import java.util.Map;
-import javax.imageio.ImageIO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class QrcodeUtils {
     private static final int DEFAULT_LENGTH = 400;
@@ -89,7 +81,7 @@ public class QrcodeUtils {
             byte[] var5;
             try {
                 MappedByteBuffer byteBuffer = fc.map(MapMode.READ_ONLY, 0L, fc.size()).load();
-                byte[] result = new byte[(int)fc.size()];
+                byte[] result = new byte[(int) fc.size()];
                 if (byteBuffer.remaining() > 0) {
                     byteBuffer.get(result, 0, byteBuffer.remaining());
                 }
@@ -128,8 +120,8 @@ public class QrcodeUtils {
             int height = image.getHeight() / logoConfig.getLogoPart();
             int x = (image.getWidth() - width) / 2;
             int y = (image.getHeight() - height) / 2;
-            g.drawImage(logo, x, y, width, height, (ImageObserver)null);
-            g.setStroke(new BasicStroke((float)logoConfig.getBorder()));
+            g.drawImage(logo, x, y, width, height, (ImageObserver) null);
+            g.setStroke(new BasicStroke((float) logoConfig.getBorder()));
             g.setColor(logoConfig.getBorderColor());
             g.drawRect(x, y, width, height);
             g.dispose();

@@ -1,6 +1,6 @@
 package org.rxjava.third.tencent.weixin.wxpay.util.qrcode;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class MatrixToLogoImageConfig {
     public static final Color DEFAULT_BORDERCOLOR;

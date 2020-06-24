@@ -1,7 +1,8 @@
 package org.rxjava.third.tencent.weixin.wxpay.util.qrcode;
 
 import com.google.zxing.LuminanceSource;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -20,8 +21,8 @@ public final class BufferedImageLuminanceSource extends LuminanceSource {
         int sourceWidth = image.getWidth();
         int sourceHeight = image.getHeight();
         if (left + width <= sourceWidth && top + height <= sourceHeight) {
-            for(int y = top; y < top + height; ++y) {
-                for(int x = left; x < left + width; ++x) {
+            for (int y = top; y < top + height; ++y) {
+                for (int x = left; x < left + width; ++x) {
                     if ((image.getRGB(x, y) & -16777216) == 0) {
                         image.setRGB(x, y, -1);
                     }
@@ -29,7 +30,7 @@ public final class BufferedImageLuminanceSource extends LuminanceSource {
             }
 
             this.image = new BufferedImage(sourceWidth, sourceHeight, 10);
-            this.image.getGraphics().drawImage(image, 0, 0, (ImageObserver)null);
+            this.image.getGraphics().drawImage(image, 0, 0, (ImageObserver) null);
             this.left = left;
             this.top = top;
         } else {
@@ -81,10 +82,10 @@ public final class BufferedImageLuminanceSource extends LuminanceSource {
     public LuminanceSource rotateCounterClockwise() {
         int sourceWidth = this.image.getWidth();
         int sourceHeight = this.image.getHeight();
-        AffineTransform transform = new AffineTransform(0.0D, -1.0D, 1.0D, 0.0D, 0.0D, (double)sourceWidth);
+        AffineTransform transform = new AffineTransform(0.0D, -1.0D, 1.0D, 0.0D, 0.0D, (double) sourceWidth);
         BufferedImage rotatedImage = new BufferedImage(sourceHeight, sourceWidth, 10);
         Graphics2D g = rotatedImage.createGraphics();
-        g.drawImage(this.image, transform, (ImageObserver)null);
+        g.drawImage(this.image, transform, (ImageObserver) null);
         g.dispose();
         int width = this.getWidth();
         return new BufferedImageLuminanceSource(rotatedImage, this.top, sourceWidth - (this.left + width), this.getHeight(), width);
