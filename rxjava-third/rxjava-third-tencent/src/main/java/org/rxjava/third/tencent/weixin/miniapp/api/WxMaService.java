@@ -9,6 +9,7 @@ import org.rxjava.third.tencent.weixin.miniapp.bean.WxMaJscode2SessionResult;
 import org.rxjava.third.tencent.weixin.miniapp.config.WxMaConfig;
 
 /**
+ *
  */
 public interface WxMaService extends WxService {
     /**
@@ -36,7 +37,6 @@ public interface WxMaService extends WxService {
 
     /**
      * 导入抽样数据
-     * <p>
      * 第三方通过调用微信API，将数据写入到setdynamicdata这个API。每个Post数据包不超过5K，若数据过多可开多进（线）程并发导入数据（例如：数据量为十万量级可以开50个线程并行导数据）。
      * 文档地址：https://wsad.weixin.qq.com/wsad/zh_CN/htmledition/widget-docs-v3/html/custom/quickstart/implement/import/index.html
      * http请求方式：POST http(s)://api.weixin.qq.com/wxa/setdynamicdata?access_token=ACCESS_TOKEN
@@ -65,11 +65,8 @@ public interface WxMaService extends WxService {
     /**
      * 获取access_token，本方法线程安全.
      * 且在多线程同时刷新时只刷新一次，避免超出2000次/日的调用次数上限
-     * <p>
      * 另：本service的所有方法都会在access_token过期是调用此方法
-     * <p>
      * 程序员在非必要情况下尽量不要主动调用此方法
-     * <p>
      * 详情请见: http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN
      *
      * @param forceRefresh 强制刷新
@@ -78,7 +75,6 @@ public interface WxMaService extends WxService {
 
     /**
      * 用户支付完成后，获取该用户的 UnionId，无需用户授权。本接口支持第三方平台代理查询。
-     * <p>
      * 注意：调用前需要用户完成支付，且在支付后的五分钟内有效。
      * 请求地址： GET https://api.weixin.qq.com/wxa/getpaidunionid?access_token=ACCESS_TOKEN&openid=OPENID
      * 文档地址：https://developers.weixin.qq.com/miniprogram/dev/api/getPaidUnionId.html
@@ -102,7 +98,6 @@ public interface WxMaService extends WxService {
      * @param data     参数或请求数据
      * @param executor 执行器
      * @param uri      接口请求地址
-     * @return .
      */
     <T, E> T execute(RequestExecutor<T, E> executor, String uri, E data) throws WxErrorException;
 
@@ -117,85 +112,61 @@ public interface WxMaService extends WxService {
     /**
      * 设置当微信系统响应系统繁忙时，最大重试次数.
      * 默认：5次
-     *
-     * @param maxRetryTimes 最大重试次数
      */
     void setMaxRetryTimes(int maxRetryTimes);
 
     /**
      * 获取WxMaConfig 对象.
-     *
-     * @return WxMaConfig
      */
     WxMaConfig getWxMaConfig();
 
     /**
      * 注入 {@link WxMaConfig} 的实现.
-     *
-     * @param wxConfigProvider config
      */
     void setWxMaConfig(WxMaConfig wxConfigProvider);
 
     /**
      * 返回消息（客服消息和模版消息）发送接口方法实现类，以方便调用其各个接口.
-     *
-     * @return WxMaMsgService
      */
     WxMaMsgService getMsgService();
 
     /**
      * 返回素材相关接口方法的实现类对象，以方便调用其各个接口.
-     *
-     * @return WxMaMediaService
      */
     WxMaMediaService getMediaService();
 
     /**
      * 返回用户相关接口方法的实现类对象，以方便调用其各个接口.
-     *
-     * @return WxMaUserService
      */
     WxMaUserService getUserService();
 
     /**
      * 返回二维码相关接口方法的实现类对象，以方便调用其各个接口.
-     *
-     * @return WxMaQrcodeService
      */
     WxMaQrcodeService getQrcodeService();
 
     /**
      * 返回模板配置相关接口方法的实现类对象, 以方便调用其各个接口.
-     *
-     * @return WxMaTemplateService
      */
     WxMaTemplateService getTemplateService();
 
     /**
      * 返回订阅消息配置相关接口方法的实现类对象, 以方便调用其各个接口.
-     *
-     * @return WxMaSubscribeService
      */
     WxMaSubscribeService getSubscribeService();
 
     /**
      * 数据分析相关查询服务.
-     *
-     * @return WxMaAnalysisService
      */
     WxMaAnalysisService getAnalysisService();
 
     /**
      * 返回代码操作相关的 API.
-     *
-     * @return WxMaCodeService
      */
     WxMaCodeService getCodeService();
 
     /**
      * 返回jsapi操作相关的 API服务类对象.
-     *
-     * @return WxMaJsapiService
      */
     WxMaJsapiService getJsapiService();
 
@@ -208,29 +179,21 @@ public interface WxMaService extends WxService {
 
     /**
      * 返回分享相关查询服务.
-     *
-     * @return WxMaShareService
      */
     WxMaShareService getShareService();
 
     /**
      * 返回微信运动相关接口服务对象.
-     *
-     * @return WxMaShareService
      */
     WxMaRunService getRunService();
 
     /**
      * 返回内容安全相关接口服务对象.
-     *
-     * @return WxMaShareService
      */
     WxMaSecCheckService getSecCheckService();
 
     /**
      * 返回插件相关接口服务对象.
-     *
-     * @return WxMaPluginService
      */
     WxMaPluginService getPluginService();
 
@@ -241,29 +204,21 @@ public interface WxMaService extends WxService {
 
     /**
      * 请求http请求相关信息.
-     *
-     * @return .
      */
     RequestHttp getRequestHttp();
 
     /**
      * 获取物流助手接口服务对象
-     *
-     * @return .
      */
     WxMaExpressService getExpressService();
 
     /**
      * 获取云开发接口服务对象
-     *
-     * @return .
      */
     WxMaCloudService getCloudService();
 
     /**
      * 获取直播接口服务对象
-     *
-     * @return .
      */
     WxMaLiveService getLiveService();
 }
