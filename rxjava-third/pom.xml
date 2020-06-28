@@ -15,7 +15,12 @@
     </properties>
     <modules>
         <module>rxjava-third-qiniu</module>
-        <module>rxjava-third-tencent</module>
+        <module>rxjava-third-weixin-common</module>
+        <module>rxjava-third-weixin-cp</module>
+        <module>rxjava-third-weixin-miniapp</module>
+        <module>rxjava-third-weixin-mp</module>
+        <module>rxjava-third-weixin-open</module>
+        <module>rxjava-third-weixin-pay</module>
     </modules>
     <dependencies>
         <dependency>
