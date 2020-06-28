@@ -1,6 +1,5 @@
 package org.rxjava.third.weixin.pay.converter;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
