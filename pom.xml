@@ -501,6 +501,28 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>rdc-releases</id>
+            <name>caomang-release</name>
+            <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>rdc-snapshots</id>
+            <name>caomang-snapshot</name>
+            <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
     </repositories>
     <distributionManagement>
         <!--<snapshotRepository>-->
