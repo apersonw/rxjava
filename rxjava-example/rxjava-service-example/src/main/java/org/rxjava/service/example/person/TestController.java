@@ -1,26 +1,23 @@
 package org.rxjava.service.example.person;
 
 import lombok.extern.slf4j.Slf4j;
-// import org.rxjava.api.person.example.TestApi;
-import org.rxjava.apikit.client.ClientAdapter;
 import org.rxjava.common.core.annotation.Login;
-import org.rxjava.common.core.api.ReactiveHttpClientAdapter;
+import org.rxjava.service.example.entity.Example;
 import org.rxjava.service.example.form.TestBodyForm;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.form.TestMultForm;
 import org.rxjava.service.example.model.TestModel;
+import org.rxjava.service.example.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 import java.io.File;
-import java.util.List;
+
+// import org.rxjava.api.person.example.TestApi;
 
 /**
  * @author happy
@@ -29,6 +26,16 @@ import java.util.List;
 @RequestMapping("mergeTestPath")
 @Slf4j
 public class TestController {
+
+    @Autowired
+    private ExampleService exampleService;
+
+    @Login(false)
+    @GetMapping("testDemo")
+    public Mono<Example> testDemo() {
+        return exampleService.testDemo();
+    }
+
     /**
      * 路径变量测试
      */
