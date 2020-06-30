@@ -2,19 +2,31 @@ version: '3.8'
 services:
   redis:
     image: 'redis:latest'
-    hostname: redis
+    container_name: redis
     restart: always
     ports:
       - 6379:6379
-  mongodb:
-    image: 'mongo:latest'
-    hostname: mongodb
-    restart: always
+  master-mongo:
+    image: mongo
+    container_name: master-mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
+    command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
+  second-mongo:
+    image: mongo
+    container_name: second-mongo
+    ports:
+      - "27018:27017"
+    command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
+  third-mongo:
+    image: mongo
+    container_name: third-mongo
+    ports:
+      - "27019:27017"
+    command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
   mysql:
     image: 'mysql:latest'
-    hostname: mysql
+    container_name: mysql
     restart: always
     ports:
       - 3306:3306
@@ -22,7 +34,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root123
   nacos:
     image: 'nacos/nacos-server:latest'
-    hostname: nacos
+    container_name: nacos
     restart: always
     ports:
       - 8848:8848
@@ -36,7 +48,7 @@ services:
       - MYSQL_SERVICE_PASSWORD=root
   rabbitmq:
     image: 'rabbitmq:3.8.3-management'
-    hostname: rabbitmq
+    container_name: rabbitmq
     restart: always
     ports:
       - 5671:5671

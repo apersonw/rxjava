@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.mongodb.ReactiveMongoDatabaseFactory;
+import org.springframework.data.mongodb.ReactiveMongoTransactionManager;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
@@ -37,6 +39,14 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    /**
+     * 响应式mongo事务管理
+     */
+    @Bean
+    ReactiveMongoTransactionManager reactiveTransactionManager(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory) {
+        return new ReactiveMongoTransactionManager(reactiveMongoDatabaseFactory);
+    }
 
     /**
      * Redis Bean
@@ -105,8 +115,12 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     }
 
     public enum StringToLocalDateTimeConverter implements Converter<String, LocalDateTime> {
+        /**
+         * @see LocalDateTime
+         */
         LOCALDATETIME;
 
+        @Override
         public LocalDateTime convert(@NotNull String text) {
             return LocalDateTime.parse(text, DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_TIME_FORMAT()).withZone(ZoneId.systemDefault()));
         }
