@@ -25,7 +25,6 @@
             <artifactId>jedis-lock</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- 由于jodd-http较新的3.8版本需要jdk8，故而此处采用较低版本 -->
         <dependency>
             <groupId>org.jodd</groupId>
             <artifactId>jodd-http</artifactId>
