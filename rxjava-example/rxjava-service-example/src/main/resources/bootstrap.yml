@@ -19,12 +19,12 @@ spring:
         default-requeue-rejected: true
         auto-startup: true
   cloud:
-    kubernetes:
+    bus:
+      enabled: false
+    nacos:
       config:
         enabled: false
       discovery:
         enabled: false
-    bus:
-      enabled: false
 server:
   port: 8082

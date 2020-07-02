@@ -3,6 +3,7 @@ package org.rxjava.service.example;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 /**
  * @author happy 2019-05-10 18:06

@@ -3,10 +3,12 @@ package org.rxjava.service.example.person;
 import lombok.extern.slf4j.Slf4j;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.service.example.entity.Example;
+import org.rxjava.service.example.entity.ExampleMysql;
 import org.rxjava.service.example.form.TestBodyForm;
 import org.rxjava.service.example.form.TestForm;
 import org.rxjava.service.example.form.TestMultForm;
 import org.rxjava.service.example.model.TestModel;
+import org.rxjava.service.example.repository.ExampleMysqlRepository;
 import org.rxjava.service.example.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -16,6 +18,7 @@ import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 import java.io.File;
+import java.time.LocalDateTime;
 
 // import org.rxjava.api.person.example.TestApi;
 
@@ -30,10 +33,23 @@ public class TestController {
     @Autowired
     private ExampleService exampleService;
 
+    @Autowired
+    private ExampleMysqlRepository exampleMysqlRepository;
+
     @Login(false)
     @GetMapping("testDemo")
     public Mono<Example> testDemo() {
         return exampleService.testDemo();
+    }
+
+    @Login(false)
+    @GetMapping("testMysql")
+    public Mono<ExampleMysql> testMysql() {
+        ExampleMysql s = new ExampleMysql();
+        s.setId(33L);
+        s.setName("测试");
+        s.setCreateDate(LocalDateTime.now());
+        return exampleMysqlRepository.save(s);
     }
 
     /**

@@ -20,6 +20,22 @@
         <!--            <artifactId>rxjava-api-example-person</artifactId>-->
         <!--            <version>1.0.9-SNAPSHOT</version>-->
         <!--        </dependency>-->
+        <!--响应式mysql所需jar包begin-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+        </dependency>
+        <!--自动配置需要引入的一个嵌入式数据库类型对象-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dev.miku</groupId>
+            <artifactId>r2dbc-mysql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--响应式mysql所需jar包end-->
         <dependency>
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-tool</artifactId>
