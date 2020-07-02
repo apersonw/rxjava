@@ -55,6 +55,19 @@
         <asm.version>8.0.1</asm.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
 
+        <!--第三方依赖版本-->
+        <jedis.version>2.9.0</jedis.version>
+        <jedis-lock.version>1.0.0</jedis-lock.version>
+        <jodd-http.version>5.1.4</jodd-http.version>
+        <okhttp.version>4.5.0</okhttp.version>
+        <dom4j.version>2.1.3</dom4j.version>
+        <commons-codec.version>1.14</commons-codec.version>
+        <httpclient.version>4.5.10</httpclient.version>
+        <httpmime.version>4.5.12</httpmime.version>
+        <httpcore.version>4.4.1</httpcore.version>
+        <xstream.version>1.4.11.1</xstream.version>
+        <redisson.version>3.12.0</redisson.version>
+
         <!--Kotlin增量编译-->
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     </properties>
@@ -323,6 +336,64 @@
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
+            <!--rxjava-third所依赖的包begin-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jedis-lock</groupId>
+                <artifactId>jedis-lock</artifactId>
+                <version>${jedis-lock.version}</version>
+            </dependency>
+            <!-- 由于jodd-http较新的3.8版本需要jdk8，故而此处采用较低版本 -->
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-http</artifactId>
+                <version>${jodd-http.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpmime.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${xstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <!--rxjava-third所依赖的包end-->
         </dependencies>
     </dependencyManagement>
     <build>
