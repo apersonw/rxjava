@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - 6379:6379
+
+#  mongo集群
   master-mongo:
     image: mongo
     container_name: master-mongo
