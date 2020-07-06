@@ -14,7 +14,8 @@
         <module.Type>Third</module.Type>
     </properties>
     <modules>
-        <module>rxjava-third-qiniu</module>
+        <module>rxjava-third-qiniu-broadcast</module>
+        <module>rxjava-third-qiniu-file</module>
         <module>rxjava-third-weixin-common</module>
         <module>rxjava-third-weixin-cp</module>
         <module>rxjava-third-weixin-miniapp</module>

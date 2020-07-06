@@ -7,7 +7,7 @@
         <version>1.0.9-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rxjava-third-qiniu</artifactId>
+    <artifactId>rxjava-third-qiniu-file</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <!--七牛云文件上传sdk-->

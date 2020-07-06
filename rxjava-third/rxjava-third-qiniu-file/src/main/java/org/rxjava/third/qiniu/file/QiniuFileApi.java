@@ -1,4 +1,4 @@
-package org.rxjava.third.qiniu;
+package org.rxjava.third.qiniu.file;
 
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.Region;
@@ -18,18 +18,18 @@ import java.io.*;
 /**
  * 七牛云Api
  */
-public class QiniuApi implements Serializable {
+public class QiniuFileApi implements Serializable {
     private final String accessKey;
     private final String secretKey;
     private final String bucket;
     private final String token;
     private final UploadManager uploadManager;
 
-    private QiniuApi() {
+    private QiniuFileApi() {
         throw new RuntimeException("禁止反射破坏单例");
     }
 
-    private QiniuApi(String accessKey, String secretKey, String bucket) {
+    private QiniuFileApi(String accessKey, String secretKey, String bucket) {
         if (StringUtils.isAnyEmpty(accessKey, secretKey, bucket)) {
             throw ErrorMessageException.of("stringNotEmpty");
         }
@@ -45,13 +45,13 @@ public class QiniuApi implements Serializable {
         this.token = auth.uploadToken(bucket);
     }
 
-    public static QiniuApi getInstance(String accessKey, String secretKey, String bucket) {
+    public static QiniuFileApi getInstance(String accessKey, String secretKey, String bucket) {
         return LazyHolder.lazy(accessKey, secretKey, bucket);
     }
 
     private static class LazyHolder {
-        private static QiniuApi lazy(String accessKey, String secretKey, String bucket) {
-            return new QiniuApi(accessKey, secretKey, bucket);
+        private static QiniuFileApi lazy(String accessKey, String secretKey, String bucket) {
+            return new QiniuFileApi(accessKey, secretKey, bucket);
         }
     }
 

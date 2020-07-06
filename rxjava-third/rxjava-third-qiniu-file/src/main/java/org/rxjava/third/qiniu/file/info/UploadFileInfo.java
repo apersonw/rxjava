@@ -1,4 +1,4 @@
-package org.rxjava.third.qiniu.info;
+package org.rxjava.third.qiniu.file.info;
 
 import com.qiniu.util.IOUtils;
 import lombok.Cleanup;
