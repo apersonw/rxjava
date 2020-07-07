@@ -12,6 +12,8 @@
 - [rxjava-gateway](https://mvnrepository.com/artifact/org.rxjava/rxjava-gateway)：网关项目pom
 - [rxjava-service](https://mvnrepository.com/artifact/org.rxjava/rxjava-service)：微服务项目pom
 - [rxjava-spring](https://mvnrepository.com/artifact/org.rxjava/rxjava-spring)：对spring的一些整合
+- [rxjava-third-qiniu](https://mvnrepository.com/artifact/org.rxjava/rxjava-third-qiniu)：对七牛的一些整合
+- [rxjava-third-weixin](https://mvnrepository.com/artifact/org.rxjava/rxjava-third-weixin)：对微信的一些整合
 - [rxjava](https://mvnrepository.com/artifact/org.rxjava/rxjava)：依赖管理pom 
 
 ### 二、Api生成器说明
@@ -43,3 +45,16 @@
 - rxjava-spring-boot-starter-service：整合了spring自动配置，时间格式统一处理，登陆请求拦截，异常统一处理
 - rxjava-spring-cloud-starter-bus：做了一些消息总线的基础约定
 - rxjava-spring-cloud-starter-gateway：做了一些网关的一些基础配置
+
+### 七、rxjava-third-qiniu
+
+- rxjava-third-qiniu-broadcast：主要是对直播的一系列api接口进行的封装
+- rxjava-third-qiniu-file：主要是对文件的一系列api接口进行的封装
+
+### 八、rxjava-third-weixin
+
+- rxjava-third-weixin-common：主要是对微信通用类的一些封装
+- rxjava-third-weixin-cp：主要是对企业微信/企业号的一系列api接口进行的封装
+- rxjava-third-weixin-miniapp：主要是对微信小程序的一系列api接口进行的封装
+- rxjava-third-weixin-open：主要是对微信开放平台的一系列api接口进行的封装
+- rxjava-third-weixin-pay：主要是对微信支付的一系列api接口进行的封装
