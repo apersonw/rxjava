@@ -58,7 +58,7 @@
         <!--第三方依赖版本-->
         <jedis.version>2.9.0</jedis.version>
         <jedis-lock.version>1.0.0</jedis-lock.version>
-        <jodd-http.version>5.0.13</jodd-http.version>
+        <jodd.version>5.0.13</jodd.version>
         <okhttp.version>4.5.0</okhttp.version>
         <dom4j.version>2.1.3</dom4j.version>
         <commons-codec.version>1.14</commons-codec.version>
@@ -68,6 +68,7 @@
         <xstream.version>1.4.11.1</xstream.version>
         <redisson.version>3.13.2</redisson.version>
         <bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
+        <joda-time.version>2.10.6</joda-time.version>
 
         <!--Kotlin增量编译-->
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
@@ -348,11 +349,15 @@
                 <artifactId>jedis-lock</artifactId>
                 <version>${jedis-lock.version}</version>
             </dependency>
-            <!-- 由于jodd-http较新的3.8版本需要jdk8，故而此处采用较低版本 -->
             <dependency>
                 <groupId>org.jodd</groupId>
                 <artifactId>jodd-http</artifactId>
-                <version>${jodd-http.version}</version>
+                <version>${jodd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-core</artifactId>
+                <version>${jodd.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
@@ -398,6 +403,21 @@
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk15on</artifactId>
                 <version>${bcprov-jdk15on.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk15on</artifactId>
+                <version>${bcprov-jdk15on.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
             </dependency>
             <!--rxjava-third所依赖的包end-->
         </dependencies>
