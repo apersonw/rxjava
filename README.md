@@ -58,3 +58,70 @@
 - rxjava-third-weixin-miniapp：主要是对微信小程序的一系列api接口进行的封装
 - rxjava-third-weixin-open：主要是对微信开放平台的一系列api接口进行的封装
 - rxjava-third-weixin-pay：主要是对微信支付的一系列api接口进行的封装
+
+### 九、搭建mongodb副本集数据库
+
+一、创建docker-compose.yml文件
+
+```yaml
+version: '3.7'
+services:
+  master-mongo:
+    image: mongo
+    container_name: master-mongo
+    ports:
+    - "27017:27017"
+    volumes:
+    - ./data/master:/data/db
+    command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
+  secondary-mongo:
+    image: mongo
+    container_name: secondary-mongo
+    ports:
+    - "27018:27017"
+    volumes:
+    - ./data/secondary:/data/db
+    command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
+  arbiter-mongo:
+    image: mongo
+    container_name: arbiter-mongo
+    ports:
+    - "27019:27017"
+    volumes:
+    - ./data/arbiter:/data/db
+    command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
+```
+
+二、进入master节点终端bash
+
+```shell script
+#1、输入mongo命令，进入mongo命令行
+#2、输入以下副本集加入配置(10.22.33.44是宿主机的ip地址)
+config={
+  _id:"testSet",
+  members:[
+    {_id:0,host:"10.22.33.44:27017"},
+    {_id:1,host:"10.22.33.44:27018"},
+    {_id:2,host:"10.22.33.44:27019"}
+  ]
+}
+#3、根据config初始化，初始化成功会返回ok
+rs.initiate(config)
+#4、查看状态命令
+rs.status()
+```
+
+三、在@configuration注解下添加响应式事务管理器
+
+```text
+@Bean
+ReactiveMongoTransactionManager reactiveTransactionManager(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory) {
+    return new ReactiveMongoTransactionManager(reactiveMongoDatabaseFactory);
+}
+```
+
+四、在需要使用事务的地方添加注解即可
+
+```text
+@Transactional
+```
