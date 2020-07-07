@@ -7,15 +7,9 @@
         <version>1.0.9-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rxjava-third</artifactId>
+    <artifactId>rxjava-third-weixin</artifactId>
     <packaging>pom</packaging>
-    <properties>
-        <module.type>third</module.type>
-        <module.Type>Third</module.Type>
-    </properties>
     <modules>
-        <module>rxjava-third-qiniu-broadcast</module>
-        <module>rxjava-third-qiniu-file</module>
         <module>rxjava-third-weixin-common</module>
         <module>rxjava-third-weixin-cp</module>
         <module>rxjava-third-weixin-miniapp</module>

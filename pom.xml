@@ -11,7 +11,8 @@
         <module>rxjava-service</module>
         <module>rxjava-gateway</module>
         <module>rxjava-apikit</module>
-        <module>rxjava-third</module>
+        <module>rxjava-third-qiniu</module>
+        <module>rxjava-third-weixin</module>
     </modules>
     <properties>
         <!--项目编译版本-->
