@@ -20,9 +20,13 @@ import java.util.List;
  * JSON帮助类
  */
 public class JsonUtils {
-    public static final ObjectMapper DEFAULT_MAPPER = new ObjectMapper();
+    public static final ObjectMapper DEFAULT_MAPPER = JsonUtils.create();
 
-    public static ObjectMapper create() {
+    private JsonUtils() {
+        throw new RuntimeException("禁止反射破坏单例");
+    }
+
+    private static ObjectMapper create() {
         ObjectMapper objectMapper = new ObjectMapper();
         //字段值为null则不输出
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);

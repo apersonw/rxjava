@@ -2,6 +2,7 @@ package org.rxjava.common.core.exception;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.rxjava.common.core.utils.ErrorMessageUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
@@ -49,8 +50,9 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
     /**
      * 解析并处理异常消息
      */
+    @NotNull
     @Override
-    public Mono<Void> handle(ServerWebExchange exchange, Throwable throwable) {
+    public Mono<Void> handle(ServerWebExchange exchange, @NotNull Throwable throwable) {
         //检查响应是否待发
         if (exchange.getResponse().isCommitted()) {
             return Mono.error(throwable);
@@ -59,8 +61,8 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
         ErrorMessage errorMessage = toErrorMessage(exchange, throwable);
 
         return ServerResponse.status(errorMessage.getStatus())
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .body(BodyInserters.fromObject(errorMessage))
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(errorMessage))
                 .flatMap(response -> write(exchange, response));
     }
 
@@ -142,12 +144,14 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
         this.viewResolvers = viewResolvers;
     }
 
-    private ServerResponse.Context serverResponseContext = new ServerResponse.Context() {
+    private final ServerResponse.Context serverResponseContext = new ServerResponse.Context() {
+        @NotNull
         @Override
         public List<HttpMessageWriter<?>> messageWriters() {
             return messageWriters;
         }
 
+        @NotNull
         @Override
         public List<ViewResolver> viewResolvers() {
             return viewResolvers;
@@ -162,7 +166,7 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
     }
 
     @Override
-    public void setMessageSource(MessageSource messageSource) {
+    public void setMessageSource(@NotNull MessageSource messageSource) {
         this.messageAccessor = new MessageSourceAccessor(messageSource, Locale.CHINA);
     }
 }

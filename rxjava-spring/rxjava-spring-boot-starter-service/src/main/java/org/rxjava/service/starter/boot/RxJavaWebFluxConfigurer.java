@@ -92,16 +92,21 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
     @Bean
     @Primary
     public ObjectMapper objectMapper() {
-        return JsonUtils.create();
+        return JsonUtils.DEFAULT_MAPPER;
     }
 
+    /**
+     * 参数格式转换服务
+     */
     @Bean
     public FormattingConversionService formattingConversionService() {
         DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
         conversionService.addFormatterForFieldAnnotation(new NumberFormatAnnotationFormatterFactory());
+
         DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
         registrar.setDateFormatter(DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_FORMAT()));
         registrar.setDateTimeFormatter(DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getDATE_TIME_FORMAT()));
+        registrar.setTimeFormatter(DateTimeFormatter.ofPattern(JavaTimeModuleUtils.getTIME_FORMAT()));
         registrar.registerFormatters(conversionService);
         return conversionService;
     }

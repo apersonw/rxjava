@@ -1,5 +1,8 @@
 package org.rxjava.mock.starter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.rxjava.common.core.info.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -27,9 +31,13 @@ import java.util.Objects;
 @Configuration
 @EnableConfigurationProperties({MockProperties.class})
 @Order(1)
+@Slf4j
 public class RxJavaMockAutoConfiguration implements WebFilter {
 
     private static final String LOGIN_INFO = "loginInfo";
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private MockProperties mockProperties;
@@ -37,6 +45,15 @@ public class RxJavaMockAutoConfiguration implements WebFilter {
     @NotNull
     @Override
     public Mono<Void> filter(@NotNull ServerWebExchange serverWebExchange, @NotNull WebFilterChain webFilterChain) {
+        log.info("当前请求的是mock，如果是正式环境，请注意排查问题！");
+        PathContainer path = serverWebExchange.getRequest().getPath().pathWithinApplication();
+        String pathValue = path.value();
+
+        //内部服务不注入任何信息
+        if (pathValue.startsWith("/inner/")) {
+            return webFilterChain.filter(serverWebExchange);
+        }
+
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId(mockProperties.getUserId());
 
@@ -44,10 +61,10 @@ public class RxJavaMockAutoConfiguration implements WebFilter {
                 .map(a -> {
                     String loginInfoJson;
                     try {
-                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(userInfo), "utf8");
-                    } catch (UnsupportedEncodingException e) {
+                        loginInfoJson = URLEncoder.encode(objectMapper.writeValueAsString(userInfo),"utf8");
+                    } catch (UnsupportedEncodingException | JsonProcessingException e) {
                         e.printStackTrace();
-                        throw ErrorMessageException.of("不支持的编码异常");
+                        throw ErrorMessageException.of("unsupportedEncodingOrJsonException");
                     }
                     return loginInfoJson;
                 })

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.rxjava.common.core.annotation.Login;
 import org.rxjava.common.core.info.LoginInfo;
 import org.rxjava.common.core.exception.UnauthorizedException;
+import org.rxjava.common.core.info.UserInfo;
 import org.rxjava.common.core.utils.JsonUtils;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -79,6 +80,6 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-        return JsonUtils.deserialize(loginInfoJson, LoginInfo.class);
+        return JsonUtils.deserialize(loginInfoJson, UserInfo.class);
     }
 }
