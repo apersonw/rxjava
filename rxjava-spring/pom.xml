@@ -16,6 +16,7 @@
         <module>rxjava-spring-boot-starter-test</module>
         <module>rxjava-spring-cloud-starter-gateway</module>
         <module>rxjava-spring-cloud-starter-bus</module>
+        <module>rxjava-spring-third-starter-weixin-miniapp</module>
     </modules>
     <dependencies>
         <dependency>
