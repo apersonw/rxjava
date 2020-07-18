@@ -6,25 +6,29 @@ services:
     restart: always
     ports:
       - 6379:6379
-
-#  mongo集群
   master-mongo:
     image: mongo
     container_name: master-mongo
     ports:
       - "27017:27017"
+    volumes:
+      - ./data/master:/data/db
     command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
-  second-mongo:
+  secondary-mongo:
     image: mongo
-    container_name: second-mongo
+    container_name: secondary-mongo
     ports:
       - "27018:27017"
+    volumes:
+      - ./data/secondary:/data/db
     command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
-  third-mongo:
+  arbiter-mongo:
     image: mongo
-    container_name: third-mongo
+    container_name: arbiter-mongo
     ports:
       - "27019:27017"
+    volumes:
+      - ./data/arbiter:/data/db
     command: mongod --dbpath /data/db --replSet testSet --oplogSize 128
   mysql:
     image: 'mysql:latest'
