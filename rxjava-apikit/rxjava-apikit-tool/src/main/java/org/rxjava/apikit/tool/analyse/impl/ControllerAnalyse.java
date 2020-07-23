@@ -166,12 +166,14 @@ public class ControllerAnalyse implements Analyse {
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
             if (MapUtils.isNotEmpty(pathVarAnnotationAttributes)) {
                 apiInputClassInfo.setPathParam(true);
+                apiInputClassInfo.setRequired(pathVarAnnotationAttributes.getBoolean("required"));
             }
 
             //检查参数是否有@RequestParam注解
             AnnotationAttributes requestParamAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, RequestParam.class);
             if (MapUtils.isNotEmpty(requestParamAnnotationAttributes)) {
                 apiInputClassInfo.setRequestParam(true);
+                apiInputClassInfo.setRequired(requestParamAnnotationAttributes.getBoolean("required"));
             }
 
             //检查是否有@Valid或@Validated或@RequestBody注解
@@ -182,6 +184,7 @@ public class ControllerAnalyse implements Analyse {
                 RequestBody requestBodyAnnotation = AnnotationUtils.getAnnotation(parameter, RequestBody.class);
                 if (null != requestBodyAnnotation) {
                     apiInputClassInfo.setJsonParam(true);
+                    apiInputClassInfo.setRequired(requestBodyAnnotation.required());
                 }
             }
 
