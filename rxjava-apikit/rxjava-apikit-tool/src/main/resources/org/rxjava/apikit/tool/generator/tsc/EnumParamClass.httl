@@ -1,0 +1,14 @@
+<!--#set(JavaEnumParamClassWrapper wrapper)-->
+<!--#set(EnumParamClassInfo classInfo)-->
+<!--#set(EnumConstantInfo constant)-->
+enum $!{wrapper.getDistClassName()} {
+    <!--#for(constant : classInfo.enumConstantInfos)-->
+    <!--    #if(for.last)-->
+        $!{constant.name}
+    <!--    #else-->
+        $!{constant.name},
+    <!--    #end-->
+    <!--#end-->
+}
+
+export default $!{wrapper.getDistClassName()};

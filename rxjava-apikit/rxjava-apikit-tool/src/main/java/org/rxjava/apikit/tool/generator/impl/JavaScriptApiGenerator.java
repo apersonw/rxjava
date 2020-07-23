@@ -37,7 +37,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
         //File dFile = createApiFile(wrapper, "d.ts");
         executeModule(
                 wrapper,
-                getTemplateFile("Api.httl"),
+                getTemplateFile("ApiClass.httl"),
                 jsFile
         );
         //executeModule(
@@ -67,8 +67,19 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     }
 
     @Override
-    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) throws Exception {
-        //todo:
+    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> wrapper) throws Exception {
+        File tsFile = createParamClassFile(wrapper, "ts");
+        //File dFile = createParamClassFile(wrapper, "d.ts");
+        executeModule(
+                wrapper,
+                getTemplateFile("EnumParamClass.httl"),
+                tsFile
+        );
+        //executeModule(
+        //        wrapper,
+        //        getTemplateFile("EnumParamClass.d.httl"),
+        //        dFile
+        //);
     }
 
     /**

@@ -64,8 +64,8 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                 .map(ClassTypeInfo::getFullName)
                 .distinct()
                 .sort(Comparator.naturalOrder())
-                .filter(fullName -> context.getParamWrapper(fullName) != null)
-                .map(fullName -> context.getParamWrapper(fullName))
+                .filter(fullName -> context.getParamOrEnumWrapper(fullName) != null)
+                .map(fullName -> context.getParamOrEnumWrapper(fullName))
                 .doOnNext(r -> {
                     String distPackage = getDistPackage();
                     String proTypeName = r.getDistClassName();
