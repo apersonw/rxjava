@@ -29,6 +29,6 @@ $!{wrapper.requestComment(method,"     * ")}
 <!--#end-->
 ##循环结束
 }
-export { $!{wrapper.getDistClassName()} };
-const $!{wrapper.fieldName} = $!{wrapper.getDistClassName()};
+
+const $!{wrapper.fieldName} = new $!{wrapper.getDistClassName()}();
 export default $!{wrapper.fieldName};
