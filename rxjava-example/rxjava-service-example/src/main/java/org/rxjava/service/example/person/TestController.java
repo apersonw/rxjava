@@ -90,4 +90,9 @@ public class TestController {
         return Mono.just(data);
     }
 
+    @GetMapping("testMono")
+    public Mono<ExampleMysql> testMono(){
+        return exampleMysqlRepository.findOneById();
+    }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
  * @author happy 2019-05-10 18:06
  */
 @SpringBootApplication
+@EnableR2dbcRepositories
 public class RxServiceExampleApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder(RxServiceExampleApplication.class).web(WebApplicationType.REACTIVE).run(args);
