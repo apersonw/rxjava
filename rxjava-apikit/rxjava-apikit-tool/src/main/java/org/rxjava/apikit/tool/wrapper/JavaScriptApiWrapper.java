@@ -2,6 +2,7 @@ package org.rxjava.apikit.tool.wrapper;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
  */
 @Getter
 @Setter
+@ToString
 public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
     private String packageName;
 
@@ -42,9 +44,8 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         if (StringUtils.isEmpty(classInfoPackageName)) {
             return 0;
         } else {
-            return classInfoPackageName.split(".").length + 1;
+            return classInfoPackageName.split("\\.").length + 1;
         }
-
     }
 
     public String params(ApiMethodInfo method) {
