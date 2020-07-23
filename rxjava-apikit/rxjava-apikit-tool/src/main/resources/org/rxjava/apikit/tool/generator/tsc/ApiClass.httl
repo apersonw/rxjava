@@ -25,7 +25,15 @@ $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
      *
 $!{wrapper.requestComment(method,"     * ")}
     */
-    $!{method.methodName}({$!{wrapper.params(method,true)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}>;
+    $!{method.methodName} = ({$!{wrapper.params(method,true)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
+        return super._request(
+            '$!{wrapper.serviceId}',
+            '$!{method.type.name()}',
+            'url',
+            'pathVars',
+            'formVars'
+        )
+    };
 <!--#end-->
 ##循环结束
 }
