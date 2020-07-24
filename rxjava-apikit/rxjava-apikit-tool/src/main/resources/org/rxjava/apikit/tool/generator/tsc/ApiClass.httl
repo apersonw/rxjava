@@ -26,13 +26,17 @@ $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
 $!{wrapper.requestComment(method,"     * ")}
     */
     $!{method.methodName} = ({$!{wrapper.params(method,true)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
-        return super._request(
-            '$!{wrapper.serviceId}',
-            '$!{method.type.name()}',
-            'url',
-            'pathVars',
-            'formVars'
-        )
+        return super._request({
+            serviceName: '$!{wrapper.serviceId}',
+            method: '$!{method.type.name()}',
+            path: 'url',
+            pathParams: 'pathVars',
+            urlParams: 'formVars',
+            bodyParams: '',
+            dataType: '',
+            responseType: '',
+            headers: ''
+        })
     };
 <!--#end-->
 ##循环结束
