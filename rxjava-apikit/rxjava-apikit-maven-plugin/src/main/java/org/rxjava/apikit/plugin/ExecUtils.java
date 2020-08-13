@@ -1,5 +1,6 @@
 package org.rxjava.apikit.plugin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.maven.plugin.logging.Log;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -13,16 +14,20 @@ import java.io.InputStreamReader;
 /**
  * @author happy
  */
+@Slf4j
 public class ExecUtils {
-    public static int exec(String command, Log log) {
-        return exec(command, log, null, null, null);
+    public static void main(String[] args) {
+        ExecUtils.exec("pwd");
+    }
+    public static int exec(String command) {
+        return exec(command,null, null, null);
     }
 
     public static int exec(String command, Log log, @Nullable String dir) {
-        return exec(command, log, dir, null, null);
+        return exec(command,dir, null, null);
     }
 
-    public static int exec(String command, Log log, @Nullable String dir, @Nullable StringBuffer stringBuffer, @Nullable StringBuffer errStringBuffer) {
+    public static int exec(String command, @Nullable String dir, @Nullable StringBuffer stringBuffer, @Nullable StringBuffer errStringBuffer) {
         try {
             Process exec;
             if (dir == null) {
@@ -51,7 +56,6 @@ public class ExecUtils {
                             errStringBuffer.append(str);
                         }
                     });
-
 
             Flux<String> inputErrorFlux = Flux
                     .<String>create(fluxSink -> {
