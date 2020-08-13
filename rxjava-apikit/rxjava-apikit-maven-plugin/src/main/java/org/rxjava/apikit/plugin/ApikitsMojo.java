@@ -1,5 +1,6 @@
 package org.rxjava.apikit.plugin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -15,6 +16,7 @@ import java.util.List;
         requiresDependencyCollection = ResolutionScope.RUNTIME,
         requiresDependencyResolution = ResolutionScope.RUNTIME
 )
+@Slf4j
 public class ApikitsMojo extends AbstractMojo {
     @Parameter
     private List<Group> groups;
@@ -32,15 +34,16 @@ public class ApikitsMojo extends AbstractMojo {
                 .toArray(String[]::new);
 
         if (compileSourceRoots.length > 1) {
-            throw new RuntimeException("Multiple compileSourceRoot is not supported");
+            throw new RuntimeException("不支持多编译源码路径");
         }
         String sourcePath = compileSourceRoots[0];
         try {
-            getLog().info("开始执行全部任务:" + groups);
-            for (Group group : groups) {
-                getLog().info("开始执行第一组:" + group);
+            log.info("开始执行全部任务:" + groups);
+            for (int i = 0; i < groups.size(); i++) {
+                Group group = groups.get(i);
+                log.info("开始执行第" + i + "组:" + group);
                 MavenUtils.generate(project, group, sourcePath, compileSourceRoots);
-                getLog().info("结束第一组:" + group);
+                log.info("执行完成第" + i + "组:" + group);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
