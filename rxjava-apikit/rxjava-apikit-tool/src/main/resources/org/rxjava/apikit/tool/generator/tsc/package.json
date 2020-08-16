@@ -5,7 +5,7 @@
   "scripts": {
   },
   "dependencies": {
-    "rxjava-api-core": "2.0.0"
+    "rxjava-api-core": "2.0.1"
   },
   "devDependencies": {
     "typescript": "3.9.5"
