@@ -40,28 +40,6 @@
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-apikit-tool</artifactId>
             <version>${project.parent.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>org.eclipse.core.filesystem</artifactId>
-                    <groupId>org.eclipse.platform</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.equinox.registry</artifactId>
-                    <groupId>org.eclipse.platform</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.equinox.preferences</artifactId>
-                    <groupId>org.eclipse.platform</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.core.runtime</artifactId>
-                    <groupId>org.eclipse.platform</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.equinox.common</artifactId>
-                    <groupId>org.eclipse.platform</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.zxing</groupId>
@@ -74,12 +52,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- Junit 5 -->
         <dependency>
