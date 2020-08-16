@@ -25,13 +25,25 @@ $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
      *
 $!{wrapper.requestComment(method,"     * ")}
     */
-    $!{method.methodName} = ({$!{wrapper.params(method,true)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
+    $!{method.methodName} = ({$!{wrapper.params(method)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
+        const pathVars : any = {};
+        <!--#if(method.pathParams.size > 0)-->
+        <!--#for(param : method.pathParams)-->
+        pathVars.$!{param.fieldName} = $!{param.fieldName};
+        <!--#end-->
+        <!--#end-->
+        const requestParams : any = {};
+        <!--#if(method.pathParams.size > 0)-->
+        <!--#for(param : method.requestParams)-->
+        requestParams.$!{param.fieldName} = $!{param.fieldName};
+        <!--#end-->
+        <!--#end-->
         return super._request({
             serviceName: '$!{wrapper.serviceId}',
-            method: '$!{method.type.name()}',
-            path: 'url',
-            pathParams: 'pathVars',
-            urlParams: 'formVars',
+            method: Method.$!{method.type.name()},
+            path: '$!{method.url}',
+            pathParams: {...pathVars},
+            requestParams: {...requestParams},
             bodyParams: '',
             dataType: '',
             responseType: '',

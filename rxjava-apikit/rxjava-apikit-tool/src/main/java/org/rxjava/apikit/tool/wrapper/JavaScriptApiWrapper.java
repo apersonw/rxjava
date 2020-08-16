@@ -56,7 +56,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         StringBuilder sb = new StringBuilder();
         List<ApiInputClassInfo> params = method.getParams();
         for (ApiInputClassInfo apiInputClassInfo : params) {
-            if (apiInputClassInfo.isValidParam() || apiInputClassInfo.isPathParam()) {
+            if (apiInputClassInfo.isValidParam() || apiInputClassInfo.isPathParam() || apiInputClassInfo.isRequestParam()) {
                 if (sb.length() > 0) {
                     sb.append(", ");
                 }
@@ -89,7 +89,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
     public String imports(boolean isModel) {
         String imports = isModel ? getMethodImports(false) : "";
-        return imports + "import {AbstractApi} from 'rxjava-api-core'\n";
+        return imports + "import { AbstractApi, Method } from 'rxjava-api-core'\n";
     }
 
     public String es2015imports() {
