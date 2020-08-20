@@ -2,6 +2,7 @@ package org.rxjava.common.core.form;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Min;
  */
 @Getter
 @Setter
+@ToString
 public class PageForm {
     /**
      * 页码

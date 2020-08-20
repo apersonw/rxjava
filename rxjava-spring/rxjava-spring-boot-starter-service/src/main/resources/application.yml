@@ -12,7 +12,7 @@ logging:
             logging: DEBUG
     #控制台打印httl模板引擎日志信息
     httl: INFO
-spring:
-  http:
+server:
+  servlet:
     encoding:
       force: true
