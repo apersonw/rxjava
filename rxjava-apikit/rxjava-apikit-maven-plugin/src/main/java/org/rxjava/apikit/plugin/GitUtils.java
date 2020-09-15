@@ -66,7 +66,7 @@ public class GitUtils {
     public static void main(String[] args) {
         SystemStreamLog log = new SystemStreamLog();
         clone(
-                "https://code.aliyun.com/rxjava/rxjava-api-example.git",
+                "https://codeup.aliyun.com/5eb8536c38076f00011bd2ac/rxjava/rxjava-api-example.git",
                 "master", "./rxjava-api-example"
         );
 
