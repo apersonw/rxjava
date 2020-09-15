@@ -12,7 +12,7 @@
         <module.name>example</module.name>
         <module.Name>Example</module.Name>
         <project.name>rxjava</project.name>
-        <git.url>https://code.aliyun.com/rxjava/rxjava-api-example.git</git.url>
+        <git.url>https://codeup.aliyun.com/5eb8536c38076f00011bd2ac/rxjava/rxjava-api-example.git</git.url>
     </properties>
     <dependencies>
         <!--        <dependency>-->
