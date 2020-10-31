@@ -13,18 +13,20 @@ import java.io.InputStreamReader;
 
 /**
  * @author happy
+ * 命令行帮助类
  */
 @Slf4j
-public class ExecUtils {
+public class CommandUtils {
     public static void main(String[] args) {
-        ExecUtils.exec("pwd");
-    }
-    public static int exec(String command) {
-        return exec(command,null, null, null);
+        CommandUtils.exec("pwd");
     }
 
-    public static int exec(String command, Log log, @Nullable String dir) {
-        return exec(command,dir, null, null);
+    public static void exec(String command) {
+        exec(command, null, null, null);
+    }
+
+    public static void exec(String command, @Nullable String dir) {
+        exec(command, dir, null, null);
     }
 
     public static int exec(String command, @Nullable String dir, @Nullable StringBuffer stringBuffer, @Nullable StringBuffer errStringBuffer) {
@@ -85,7 +87,7 @@ public class ExecUtils {
                         } catch (InterruptedException e) {
                             r.error(e);
                         }
-                    })).blockOptional().orElse(-1);
+                    })).blockOptional().orElseThrow(() -> new RuntimeException("exec result not zero"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
