@@ -2,7 +2,6 @@ package org.rxjava.apikit.plugin;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.text.StringEscapeUtils;
-import org.apache.maven.plugin.logging.Log;
 
 /**
  * Git帮助类
@@ -28,18 +27,12 @@ public class GitUtils {
         CommandUtils.exec("git add .", dir);
     }
 
-    public static boolean commit(String dir, String commit, Log log) {
+    public static boolean commit(String dir, String message) {
         StringBuffer sb = new StringBuffer();
         StringBuffer errSb = new StringBuffer();
-        int r = CommandUtils.exec("git commit -m \"" + StringEscapeUtils.escapeXSI(commit) + "\"", dir, sb, errSb);
-        if (r != 0) {
-            //nothing to commit, working tree clean
-            if (sb.indexOf("nothing") > -1) {
-                return false;
-            }
-            throw new RuntimeException("exec result not zero");
-        }
-        return true;
+        CommandUtils.exec("git commit -m \"" + StringEscapeUtils.escapeXSI(message) + "\"", dir, sb, errSb);
+        //nothing to commit, working tree clean
+        return sb.indexOf("nothing") < 0;
     }
 
     public static void push(String dir, String branch) {
@@ -47,9 +40,13 @@ public class GitUtils {
     }
 
     public static void main(String[] args) {
-        clone(
-                "https://codeup.aliyun.com/5eb8536c38076f00011bd2ac/rxjava/rxjava-api-example.git",
-                "master", "./rxjava-api-example"
-        );
+        //clone(
+        //        "https://codeup.aliyun.com/5eb8536c38076f00011bd2ac/rxjava/rxjava-api-example.git",
+        //        "master", "./rxjava-api-example"
+        //);
+        setNameAndEmail("./rxjava-api-example", "happy", "185408868@qq.com");
+        add("./rxjava-api-example");
+        commit("./rxjava-api-example", "测试提交");
+        push("./rxjava-api-example","master");
     }
 }

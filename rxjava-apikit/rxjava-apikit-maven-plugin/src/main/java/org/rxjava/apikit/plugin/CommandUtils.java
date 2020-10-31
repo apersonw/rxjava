@@ -1,6 +1,7 @@
 package org.rxjava.apikit.plugin;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.logging.Log;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -29,16 +30,17 @@ public class CommandUtils {
         exec(command, dir, null, null);
     }
 
-    public static int exec(String command, @Nullable String dir, @Nullable StringBuffer stringBuffer, @Nullable StringBuffer errStringBuffer) {
+    public static int exec(String command, @Nullable String dir, @Nullable StringBuffer successBuffer, @Nullable StringBuffer errorBuffer) {
         try {
             Process exec;
-            if (dir == null) {
+            if (StringUtils.isEmpty(dir)) {
                 exec = Runtime.getRuntime().exec(command);
             } else {
                 exec = Runtime.getRuntime().exec(command, new String[]{}, new File(dir));
             }
 
-            Flux<String> inputFlux = Flux
+            // 命令执行出错后返回的消息
+            Flux<String> errorFlux = Flux
                     .<String>create(fluxSink -> {
                         BufferedReader input = new BufferedReader(new InputStreamReader(exec.getErrorStream()));
                         String line;
@@ -54,12 +56,13 @@ public class CommandUtils {
                     .subscribeOn(Schedulers.elastic())
                     .doOnNext(log::info)
                     .doOnNext(str -> {
-                        if (errStringBuffer != null) {
-                            errStringBuffer.append(str);
+                        if (errorBuffer != null) {
+                            errorBuffer.append(str);
                         }
                     });
 
-            Flux<String> inputErrorFlux = Flux
+            // 命令执行成功后的返回消息
+            Flux<String> successFlux = Flux
                     .<String>create(fluxSink -> {
                         BufferedReader input = new BufferedReader(new InputStreamReader(exec.getInputStream()));
                         String line;
@@ -75,12 +78,12 @@ public class CommandUtils {
                     .subscribeOn(Schedulers.elastic())
                     .doOnNext(log::info)
                     .doOnNext(str -> {
-                        if (stringBuffer != null) {
-                            stringBuffer.append(str);
+                        if (successBuffer != null) {
+                            successBuffer.append(str);
                         }
                     });
 
-            return Mono.zip(inputFlux.all(r -> true), inputErrorFlux.all(r -> true))
+            return Mono.zip(errorFlux.all(r -> true), successFlux.all(r -> true))
                     .then(Mono.<Integer>create(r -> {
                         try {
                             r.success(exec.waitFor());
