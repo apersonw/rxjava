@@ -45,19 +45,19 @@ public class $!{wrapper.getDistClassName()} {
 
         InputParam inputParam = new InputParam();
 
-        List<Entry<String, Object>> _paramList = new ArrayList<>();
+        List<Entry<String, Object>> paramList = new ArrayList<>();
         <!--#for(param : method.requestParams)-->
-        _paramList.add(new AbstractMap.SimpleImmutableEntry<>("$!{param.getFieldName()}", $!{param.getFieldName()}));
+        paramList.add(new AbstractMap.SimpleImmutableEntry<>("$!{param.getFieldName()}", $!{param.getFieldName()}));
         <!--#end-->
-        inputParam.setParamList(_paramList);
+        inputParam.setParamList(paramList);
 
-        List<Entry<String, Object>> _bodyParamList = new ArrayList<>();
+        List<Entry<String, Object>> bodyParamList = new ArrayList<>();
         <!--#if(method.validParams)-->
         <!--#for(param : method.validParams)-->
-        _bodyParamList.addAll($!{param.fieldName}.encode("", new ArrayList<>()));
+        bodyParamList.addAll($!{param.fieldName}.encode("", new ArrayList<>()));
         <!--#end-->
         <!--#end-->
-        inputParam.setBodyParamList(_bodyParamList);
+        inputParam.setBodyParamList(bodyParamList);
 
         <!--#if(method.jsonParams)-->
         <!--#set(param = method.jsonParams[0])-->
