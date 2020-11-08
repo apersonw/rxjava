@@ -2,7 +2,6 @@ package org.rxjava.apikit.plugin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.maven.plugin.logging.Log;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
@@ -43,10 +42,9 @@ public class CommandUtils {
             Flux<String> errorFlux = Flux
                     .<String>create(fluxSink -> {
                         BufferedReader input = new BufferedReader(new InputStreamReader(exec.getErrorStream()));
-                        String line;
                         try {
-                            while ((line = input.readLine()) != null) {
-                                fluxSink.next(line);
+                            while (input.readLine() != null) {
+                                fluxSink.next(input.readLine());
                             }
                             fluxSink.complete();
                         } catch (Throwable e) {
