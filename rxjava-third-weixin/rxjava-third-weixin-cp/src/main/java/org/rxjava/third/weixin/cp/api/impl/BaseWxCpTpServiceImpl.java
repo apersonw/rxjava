@@ -55,8 +55,7 @@ public abstract class BaseWxCpTpServiceImpl<H, P> implements WxCpTpService, Requ
     @Override
     public boolean checkSignature(String msgSignature, String timestamp, String nonce, String data) {
         try {
-            return SHA1.gen(this.configStorage.getToken(), timestamp, nonce, data)
-                    .equals(msgSignature);
+            return SHA1.gen(this.configStorage.getToken(), timestamp, nonce, data).equals(msgSignature);
         } catch (Exception e) {
             log.error("Checking signature failed, and the reason is :" + e.getMessage());
             return false;
