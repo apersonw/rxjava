@@ -136,8 +136,9 @@ public abstract class BaseWxCpTpServiceImpl<H, P> implements WxCpTpService, Requ
         WxCpTpPreauthCode preauthCode = WxCpTpPreauthCode.fromJson(result);
         String preAuthUrl = "https://open.work.weixin.qq.com/3rdapp/install?suite_id=" + configStorage.getSuiteId() +
                 "&pre_auth_code=" + preauthCode.getPreAuthCode() + "&redirect_uri=" + URLEncoder.encode(redirectUri, "utf-8");
-        if (StringUtils.isNotBlank(state))
+        if (StringUtils.isNotBlank(state)) {
             preAuthUrl += "&state=" + state;
+        }
         return preAuthUrl;
     }
 
