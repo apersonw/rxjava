@@ -24,7 +24,7 @@
 
         <!--依赖版本-->
         <spring-cloud-kubernetes.version>1.1.7.RELEASE</spring-cloud-kubernetes.version>
-        <spring-cloud-dependencies.version>Hoxton.SR9</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2020.0.0-SNAPSHOT</spring-cloud-dependencies.version>
         <de.codecentric.version>2.4.0</de.codecentric.version>
         <spring-boot.version>${de.codecentric.version}</spring-boot.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
@@ -131,6 +131,10 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
         <!--Guava库 更加简洁的操作-->
         <dependency>
