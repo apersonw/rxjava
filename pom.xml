@@ -432,7 +432,6 @@
         </dependencies>
     </dependencyManagement>
     <build>
-        <finalName>docker</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -464,6 +463,35 @@
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
                 </plugin>
+                <!--使用jib插件-->
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>jib-maven-plugin</artifactId>
+                    <version>2.5.2</version>
+                    <configuration>
+                        <allowInsecureRegistries>true</allowInsecureRegistries>
+                        <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
+                        <from>
+                            <!--使用openjdk官方镜像，tag是14-jdk-alpine，表示镜像的操作系统是alpine linux,装好了jdk14-->
+                            <image>registry.rxjava.top/docker/base/java:dev-237</image>
+                        </from>
+                        <!--容器相关的属性-->
+                        <container>
+                            <!--jvm内存参数-->
+                            <jvmFlags>
+                                <jvmFlag>-Xms256M</jvmFlag>
+                                <jvmFlag>-Xmx256M</jvmFlag>
+                            </jvmFlags>
+                            <!--要暴露的端口-->
+                            <ports>
+                                <port>8080</port>
+                            </ports>
+                            <!--使用该参数将镜像的创建时间与系统时间对齐-->
+                            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                            <filesModificationTime>${maven.build.timestamp}</filesModificationTime>
+                        </container>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -485,70 +513,13 @@
                         </execution>
                     </executions>
                     <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                         <!-- 是否跳过测试 -->
                         <skip>true</skip>
                         <showWarnings>true</showWarnings>
-                        <encoding>${java.encoding}</encoding>
+                        <encoding>UTF-8</encoding>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven-resources-plugin.version}</version>
-                    <configuration>
-                        <encoding>${java.encoding}</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven-dependency-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${maven-assembly-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>distro-assembly</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                            <configuration>
-                                <descriptors>
-                                    <descriptor>src/assembly/bin.xml</descriptor>
-                                </descriptors>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-plugin-plugin</artifactId>
-                    <version>${maven-plugin-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>default-descriptor</id>
-                            <phase>process-classes</phase>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.ow2.asm</groupId>
-                            <artifactId>asm</artifactId>
-                            <version>${asm.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.ow2.asm</groupId>
-                            <artifactId>asm-commons</artifactId>
-                            <version>${asm.version}</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -560,21 +531,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
