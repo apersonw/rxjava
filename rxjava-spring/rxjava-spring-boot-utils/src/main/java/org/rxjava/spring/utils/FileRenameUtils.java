@@ -1,4 +1,4 @@
-package org.rxjava.common.core.utils;
+package org.rxjava.spring.utils;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Collectors;
 
@@ -78,7 +77,7 @@ public class FileRenameUtils implements Serializable {
     }
 
     public static FileRenameUtils getInstance() {
-        return FileRenameUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 
     /**
@@ -94,6 +93,6 @@ public class FileRenameUtils implements Serializable {
      * 禁止序列化破坏单例
      */
     private Object readResolve() {
-        return FileRenameUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 }

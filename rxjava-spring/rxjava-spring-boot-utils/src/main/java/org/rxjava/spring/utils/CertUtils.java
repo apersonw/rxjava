@@ -1,4 +1,4 @@
-package org.rxjava.common.core.utils;
+package org.rxjava.spring.utils;
 
 import org.springframework.util.Base64Utils;
 
@@ -60,7 +60,7 @@ public class CertUtils implements Serializable {
     }
 
     public static CertUtils getInstance() {
-        return CertUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 
     /**
@@ -76,6 +76,6 @@ public class CertUtils implements Serializable {
      * 禁止序列化破坏单例
      */
     private Object readResolve() {
-        return CertUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 }

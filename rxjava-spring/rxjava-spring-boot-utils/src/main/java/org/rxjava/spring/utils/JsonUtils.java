@@ -1,4 +1,4 @@
-package org.rxjava.common.core.utils;
+package org.rxjava.spring.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -11,7 +11,6 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
-import org.rxjava.common.core.utils.JsonUtils;
+import org.rxjava.spring.utils.JsonUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
@@ -116,7 +116,9 @@ public class WebFluxHttpImpl implements WebHttp {
         @Override
         public Request queryParam(String name, Object... values) {
             for (Object value : values) {
-                if (value == null) continue;
+                if (value == null) {
+                    continue;
+                }
                 params.add(name, value.toString());
             }
             return this;

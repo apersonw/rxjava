@@ -1,4 +1,4 @@
-package org.rxjava.common.core.utils;
+package org.rxjava.spring.utils;
 
 import java.io.Serializable;
 import java.util.Objects;

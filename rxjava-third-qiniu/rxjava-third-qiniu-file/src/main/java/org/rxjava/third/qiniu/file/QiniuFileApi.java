@@ -9,8 +9,8 @@ import com.qiniu.util.IOUtils;
 import com.qiniu.util.StringMap;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.exception.ErrorMessageException;
-import org.rxjava.common.core.utils.JsonUtils;
-import org.rxjava.common.core.utils.UuidUtils;
+import org.rxjava.spring.utils.JsonUtils;
+import org.rxjava.spring.utils.UuidUtils;
 import reactor.core.publisher.Mono;
 
 import java.io.*;

@@ -2,7 +2,7 @@ package org.rxjava.common.core.tools;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import org.rxjava.common.core.utils.JsonUtils;
+import org.rxjava.spring.utils.JsonUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;

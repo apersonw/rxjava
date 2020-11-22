@@ -4,7 +4,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.rxjava.common.core.info.LoginInfo;
 import org.rxjava.common.core.exception.ErrorMessageException;
-import org.rxjava.common.core.utils.JsonUtils;
+import org.rxjava.spring.utils.JsonUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.WebFilterExchange;
@@ -15,6 +15,7 @@ import reactor.core.publisher.Mono;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author happy 2019-06-29 16:31
@@ -39,12 +40,7 @@ public class CustomServerAuthenticationSuccessHandler implements ServerAuthentic
         return Mono.just(loginInfo)
                 .map(a -> {
                     String loginInfoJson;
-                    try {
-                        loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), "utf8");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                        throw ErrorMessageException.of("不支持的编码异常");
-                    }
+                    loginInfoJson = URLEncoder.encode(JsonUtils.serialize(loginInfo), StandardCharsets.UTF_8);
                     return loginInfoJson;
                 })
                 .flatMap(loginInfoJson -> {

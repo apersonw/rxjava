@@ -15,6 +15,11 @@
             <artifactId>rxjava-apikit-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-spring-boot-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <!--断言核心库-->
         <dependency>
             <groupId>org.assertj</groupId>

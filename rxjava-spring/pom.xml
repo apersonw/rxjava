@@ -10,6 +10,7 @@
     <artifactId>rxjava-spring</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>rxjava-spring-boot-utils</module>
         <module>rxjava-spring-boot-core</module>
         <module>rxjava-spring-boot-starter-service</module>
         <module>rxjava-spring-boot-starter-service-mock</module>

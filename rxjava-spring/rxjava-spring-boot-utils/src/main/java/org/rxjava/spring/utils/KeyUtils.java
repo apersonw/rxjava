@@ -1,4 +1,4 @@
-package org.rxjava.common.core.utils;
+package org.rxjava.spring.utils;
 
 import java.io.Serializable;
 
@@ -17,7 +17,7 @@ public class KeyUtils implements Serializable {
     }
 
     public static KeyUtils getInstance() {
-        return KeyUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 
     /**
@@ -33,6 +33,6 @@ public class KeyUtils implements Serializable {
      * 禁止序列化破坏单例
      */
     private Object readResolve() {
-        return KeyUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 }

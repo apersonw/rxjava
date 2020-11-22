@@ -1,4 +1,4 @@
-package org.rxjava.common.core.utils;
+package org.rxjava.spring.utils;
 
 import java.io.Serializable;
 import java.util.Base64;
@@ -47,7 +47,7 @@ public class UuidUtils implements Serializable {
     }
 
     public static UuidUtils getInstance() {
-        return UuidUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 
     /**
@@ -63,6 +63,6 @@ public class UuidUtils implements Serializable {
      * 禁止序列化破坏单例
      */
     private Object readResolve() {
-        return UuidUtils.LazyHolder.lazy();
+        return LazyHolder.lazy();
     }
 }
