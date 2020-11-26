@@ -20,7 +20,7 @@
         <java.version>15</java.version>
         <maven.compiler.release>15</maven.compiler.release>
 
-        <kotlin.version>1.3.72</kotlin.version>
+        <kotlin.version>1.4.10</kotlin.version>
 
         <!--依赖版本-->
         <spring-cloud-kubernetes.version>2.0.0-M3</spring-cloud-kubernetes.version>
@@ -507,6 +507,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
