@@ -24,8 +24,8 @@
 
         <!--依赖版本-->
         <spring-cloud-kubernetes.version>2.0.0-M3</spring-cloud-kubernetes.version>
-        <spring-cloud-dependencies.version>2020.0.0-SNAPSHOT</spring-cloud-dependencies.version>
-        <spring-boot.version>2.4.0</spring-boot.version>
+        <spring-cloud-dependencies.version>2020.0.0-M6</spring-cloud-dependencies.version>
+        <spring-boot.version>2.4.1</spring-boot.version>
         <com.google.guava.version>30.0-jre</com.google.guava.version>
         <lombok.version>1.18.16</lombok.version>
         <commons-lang3.version>3.11</commons-lang3.version>
