@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <localRepository>/root/.m2/repository/</localRepository>
+    <servers>
+        <server>
+            <id>rdc-releases</id>
+            <username>5eb853513c30c32653e43ad2</username>
+            <password>g8W9UmtkXgoq</password>
+        </server>
+        <server>
+            <id>rdc-snapshots</id>
+            <username>5eb853513c30c32653e43ad2</username>
+            <password>g8W9UmtkXgoq</password>
+        </server>
+    </servers>
+</settings>
