@@ -20,13 +20,14 @@
         <java.version>15</java.version>
         <maven.compiler.release>15</maven.compiler.release>
 
-        <kotlin.version>1.4.10</kotlin.version>
+        <kotlin.version>1.4.20</kotlin.version>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>2.0.0-M3</spring-cloud-kubernetes.version>
-        <spring-cloud-dependencies.version>2020.0.0-M6</spring-cloud-dependencies.version>
-        <spring-boot.version>2.4.1</spring-boot.version>
-        <com.google.guava.version>30.0-jre</com.google.guava.version>
+        <spring-cloud-kubernetes.version>2.0.0</spring-cloud-kubernetes.version>
+        <spring-cloud-dependencies.version>2020.0.0</spring-cloud-dependencies.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
+        <spring-cloud-starter-oauth2.version>2.2.4.RELEASE</spring-cloud-starter-oauth2.version>
+        <com.google.guava.version>30.1-jre</com.google.guava.version>
         <lombok.version>1.18.16</lombok.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -43,6 +44,7 @@
         <alipay-sdk-java.version>4.10.29.ALL</alipay-sdk-java.version>
         <zxing.version>3.4.0</zxing.version>
         <springdoc.version>1.4.1</springdoc.version>
+        <airline.version>0.9</airline.version>
 
         <!--插件版本-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -50,6 +52,7 @@
         <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
         <asm.version>9.0</asm.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <jib-maven-plugin.version>2.7.1</jib-maven-plugin.version>
 
         <!--第三方依赖版本-->
         <jedis.version>2.9.0</jedis.version>
@@ -173,6 +176,11 @@
                 <artifactId>spring-boot-devtools</artifactId>
                 <version>${spring-boot.version}</version>
                 <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>${spring-cloud-starter-oauth2.version}</version>
             </dependency>
             <!--Apache通用帮助类库-->
             <dependency>
@@ -430,7 +438,7 @@
                 <plugin>
                     <groupId>com.google.cloud.tools</groupId>
                     <artifactId>jib-maven-plugin</artifactId>
-                    <version>2.5.2</version>
+                    <version>${jib-maven-plugin.version}</version>
                     <configuration>
                         <allowInsecureRegistries>true</allowInsecureRegistries>
                         <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
