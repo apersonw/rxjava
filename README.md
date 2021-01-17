@@ -1,12 +1,10 @@
-#### 如果你觉得还行，请给个star，感谢你的支持🙏
-## QQ交流群：828300414，加群答案：taro-jd
-
 ### 项目已发布到maven中央仓库，当前最新正式版本号为1.0.8，快照版本1.0.9
 
 ## rxjava项目说明
 
 ### 一、模块说明
 
+- [docker]：项目本地运行所需要的中间件
 - [rxjava-apikit](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit)：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
 - [rxjava-example](https://mvnrepository.com/artifact/org.rxjava/rxjava-example)：例子工程
 - [rxjava-gateway](https://mvnrepository.com/artifact/org.rxjava/rxjava-gateway)：网关项目pom
