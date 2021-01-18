@@ -20,10 +20,10 @@
         <java.version>15</java.version>
         <maven.compiler.release>15</maven.compiler.release>
 
-        <kotlin.version>1.4.20</kotlin.version>
+        <kotlin.version>1.4.21</kotlin.version>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>2.0.0</spring-cloud-kubernetes.version>
+        <spring-cloud-kubernetes.version>2.0.0-M3</spring-cloud-kubernetes.version>
         <spring-cloud-dependencies.version>2020.0.0</spring-cloud-dependencies.version>
         <spring-boot.version>2.4.2</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.4.RELEASE</spring-cloud-starter-oauth2.version>
@@ -496,11 +496,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-plugin-plugin</artifactId>
                     <version>${maven-plugin-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-plugin-plugin</artifactId>
-                    <version>${maven-plugin-plugin.version}</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.ow2.asm</groupId>
@@ -544,6 +539,14 @@
             <id>spring-release</id>
             <name>Spring Release</name>
             <url>https://repo.spring.io/release</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>central-repository</id>
+            <name>Central Repository</name>
+            <url>https://repo1.maven.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
