@@ -17,10 +17,10 @@
     </servers>
     <mirrors>
         <mirror>
-            <id>rdc-snapshots</id>
-            <name>rdc-snapshots</name>
-            <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU</url>
-            <mirrorOf>*</mirrorOf>
+            <id>mirror</id>
+            <mirrorOf>central,jcenter,!rdc-releases,!rdc-snapshots</mirrorOf>
+            <name>mirror</name>
+            <url>https://maven.aliyun.com/nexus/content/groups/public</url>
         </mirror>
     </mirrors>
 </settings>
