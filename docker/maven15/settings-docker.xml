@@ -15,6 +15,22 @@
             <password>g8W9UmtkXgoq</password>
         </server>
     </servers>
+    <profiles>
+        <profile>
+            <id>rdc</id>
+            <properties>
+                <altReleaseDeploymentRepository>
+                    rdc-releases::default::https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/
+                </altReleaseDeploymentRepository>
+                <altSnapshotDeploymentRepository>
+                    rdc-snapshots::default::https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/
+                </altSnapshotDeploymentRepository>
+            </properties>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>rdc</activeProfile>
+    </activeProfiles>
     <mirrors>
         <mirror>
             <id>mirror</id>
