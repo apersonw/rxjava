@@ -15,4 +15,12 @@
             <password>g8W9UmtkXgoq</password>
         </server>
     </servers>
+    <mirrors>
+        <mirror>
+            <id>rdc-snapshots</id>
+            <name>rdc-snapshots</name>
+            <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
 </settings>
