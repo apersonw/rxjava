@@ -13,6 +13,7 @@
         <module>rxjava-apikit</module>
         <module>rxjava-third-qiniu</module>
         <module>rxjava-third-weixin</module>
+        <module>rxjava-web</module>
     </modules>
     <properties>
         <!--项目编译版本-->
