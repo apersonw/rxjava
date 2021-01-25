@@ -10,7 +10,7 @@
     <artifactId>rxjava-web</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <!--<module>rxjava-web-boot-core</module>-->
+        <module>rxjava-web-boot-core</module>
         <!--<module>rxjava-web-boot-starter-service</module>-->
     </modules>
     <dependencies>
