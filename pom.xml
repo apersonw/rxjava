@@ -14,6 +14,7 @@
         <module>rxjava-third-qiniu</module>
         <module>rxjava-third-weixin</module>
         <module>rxjava-web</module>
+        <module>rxjava-service-web</module>
     </modules>
     <properties>
         <!--项目编译版本-->

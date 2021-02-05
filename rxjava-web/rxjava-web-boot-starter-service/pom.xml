@@ -10,5 +10,10 @@
     <artifactId>rxjava-web-boot-starter-service</artifactId>
     <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-web-boot-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 </project>
