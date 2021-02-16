@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.rxjava.web.service.starter.RxJavaWebAutoConfiguration

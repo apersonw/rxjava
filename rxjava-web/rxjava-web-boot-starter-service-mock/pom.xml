@@ -7,17 +7,13 @@
         <version>1.0.9-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rxjava-web-boot-starter-service</artifactId>
+    <artifactId>rxjava-web-boot-starter-service-mock</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.rxjava</groupId>
             <artifactId>rxjava-web-boot-core</artifactId>
             <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-kubernetes-all</artifactId>
         </dependency>
     </dependencies>
 </project>

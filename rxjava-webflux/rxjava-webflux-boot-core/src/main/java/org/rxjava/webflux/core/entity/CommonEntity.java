@@ -23,7 +23,7 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
 @Setter
 @ToString
 @Document
-public class webfluxEntity {
+public class CommonEntity {
     /**
      * 实体Id
      */

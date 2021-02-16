@@ -12,6 +12,7 @@
     <modules>
         <module>rxjava-web-boot-core</module>
         <module>rxjava-web-boot-starter-service</module>
+        <module>rxjava-web-boot-starter-service-mock</module>
     </modules>
     <dependencies>
         <dependency>
