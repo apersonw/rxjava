@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.rxjava.webflux.gateway.starter.RxJavaGatewayAutoConfiguration,\
+org.rxjava.webflux.gateway.starter.CustomGatewayDiscoveryClientAutoConfiguration

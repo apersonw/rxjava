@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.rxjava</groupId>
+        <artifactId>rxjava-webflux</artifactId>
+        <version>1.0.9-SNAPSHOT</version>
+    </parent>
+    <artifactId>rxjava-webflux-boot-core</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-apikit-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-webflux-boot-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!--断言核心库-->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+        </dependency>
+    </dependencies>
+</project>
