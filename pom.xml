@@ -71,6 +71,7 @@
         <redisson.version>3.13.2</redisson.version>
         <bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
         <joda-time.version>2.10.6</joda-time.version>
+        <jpa-spec.version>3.2.4</jpa-spec.version>
 
         <!--Kotlin增量编译-->
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
@@ -401,6 +402,11 @@
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.wenhao</groupId>
+                <artifactId>jpa-spec</artifactId>
+                <version>${jpa-spec.version}</version>
             </dependency>
             <!--rxjava-third所依赖的包end-->
         </dependencies>
