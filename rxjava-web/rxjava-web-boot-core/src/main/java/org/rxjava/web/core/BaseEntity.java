@@ -1,35 +1,26 @@
 package org.rxjava.web.core;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.*;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * @author happy
  */
 @Data
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    private String id;
+    private ObjectId id;
 
     @Version
     private long version;
     @CreatedBy
-    private String createUserId;
+    private ObjectId createUserId;
 
     @LastModifiedBy
-    private String lastModifyUserId;
+    private ObjectId lastModifyUserId;
 
     @CreatedDate
     private LocalDateTime createDateTime;
