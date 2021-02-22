@@ -3,8 +3,11 @@ package org.rxjava.web.core;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.*;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.time.LocalDateTime;
+
+import static org.springframework.data.mongodb.core.index.IndexDirection.DESCENDING;
 
 /**
  * @author happy
@@ -23,6 +26,7 @@ public abstract class BaseEntity {
     private ObjectId lastModifyUserId;
 
     @CreatedDate
+    @Indexed(direction = DESCENDING)
     private LocalDateTime createDateTime;
 
     @LastModifiedDate
