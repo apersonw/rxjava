@@ -26,9 +26,9 @@
         <kotlin.version>1.4.21</kotlin.version>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>2.0.0-M3</spring-cloud-kubernetes.version>
-        <spring-cloud-dependencies.version>2020.0.0</spring-cloud-dependencies.version>
-        <spring-boot.version>2.4.2</spring-boot.version>
+        <spring-cloud-kubernetes.version>2.0.1</spring-cloud-kubernetes.version>
+        <spring-cloud-dependencies.version>Hoxton.SR10</spring-cloud-dependencies.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.4.RELEASE</spring-cloud-starter-oauth2.version>
         <com.google.guava.version>30.1-jre</com.google.guava.version>
         <lombok.version>1.18.16</lombok.version>

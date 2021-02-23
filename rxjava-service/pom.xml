@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.rxjava</groupId>
-            <artifactId>rxjava-spring-boot-starter-service</artifactId>
+            <artifactId>rxjava-webflux-boot-starter-service</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
@@ -31,7 +31,7 @@
             <dependencies>
                 <dependency>
                     <groupId>org.rxjava</groupId>
-                    <artifactId>rxjava-spring-boot-starter-service-mock</artifactId>
+                    <artifactId>rxjava-webflux-boot-starter-service-mock</artifactId>
                     <version>${project.parent.version}</version>
                 </dependency>
             </dependencies>
