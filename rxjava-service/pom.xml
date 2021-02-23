@@ -18,6 +18,11 @@
     <dependencies>
         <dependency>
             <groupId>org.rxjava</groupId>
+            <artifactId>rxjava-webflux-boot-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.rxjava</groupId>
             <artifactId>rxjava-webflux-boot-starter-service</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
