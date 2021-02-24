@@ -3,6 +3,7 @@ package org.rxjava.webflux.service.starter.boot;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.rxjava.webflux.core.annotation.Login;
 import org.rxjava.webflux.core.info.LoginInfo;
 import org.rxjava.webflux.core.exception.UnauthorizedException;
@@ -34,12 +35,13 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
     }
 
     @Override
-    public boolean supports(Object handler) {
+    public boolean supports(@NotNull Object handler) {
         return super.supports(handler);
     }
 
+    @NotNull
     @Override
-    public Mono<HandlerResult> handle(ServerWebExchange exchange, Object handler) {
+    public Mono<HandlerResult> handle(ServerWebExchange exchange, @NotNull Object handler) {
         HandlerMethod handlerMethod = (HandlerMethod) handler;
 
         ServerHttpRequest request = exchange.getRequest();

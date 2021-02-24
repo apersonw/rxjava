@@ -1,5 +1,6 @@
 package org.rxjava.webflux.service.starter.boot;
 
+import org.jetbrains.annotations.NotNull;
 import org.rxjava.webflux.core.exception.JsonResponseStatusExceptionHandler;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 public class ServiceDelegatingWebFluxConfiguration extends DelegatingWebFluxConfiguration {
 
+    @NotNull
     @Override
     protected RequestMappingHandlerAdapter createRequestMappingHandlerAdapter() {
         return new SecurityRequestMappingHandlerAdapter();
