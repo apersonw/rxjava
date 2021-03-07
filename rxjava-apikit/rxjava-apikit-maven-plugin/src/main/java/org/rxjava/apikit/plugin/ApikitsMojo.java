@@ -8,6 +8,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.rxjava.apikit.plugin.bean.Group;
+import org.rxjava.apikit.plugin.utils.MavenUtils;
 
 import java.util.List;
 

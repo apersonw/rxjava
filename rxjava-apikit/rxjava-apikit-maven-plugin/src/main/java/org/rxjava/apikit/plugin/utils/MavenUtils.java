@@ -1,4 +1,4 @@
-package org.rxjava.apikit.plugin;
+package org.rxjava.apikit.plugin.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
