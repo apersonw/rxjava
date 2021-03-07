@@ -34,12 +34,11 @@
         <lombok.version>1.18.16</lombok.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-compress.version>1.20</commons-compress.version>
         <commons-io.version>2.7</commons-io.version>
         <javassist.version>3.27.0-GA</javassist.version>
         <paranamer.version>2.8</paranamer.version>
         <classgraph.version>4.8.86</classgraph.version>
-        <org.eclipse.jgit.version>5.7.0.202003110725-r</org.eclipse.jgit.version>
-        <org.eclipse.jdt.core.version>3.22.0</org.eclipse.jdt.core.version>
         <httl.version>1.0.11</httl.version>
         <commons-text.version>1.8</commons-text.version>
         <jackson.version>2.11.0</jackson.version>
@@ -72,6 +71,17 @@
         <bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
         <joda-time.version>2.10.6</joda-time.version>
         <jpa-spec.version>3.2.4</jpa-spec.version>
+
+        <!--eclipse-begin-->
+        <org.eclipse.jgit.version>5.7.0.202003110725-r</org.eclipse.jgit.version>
+        <org.eclipse.jdt.core.version>3.22.0</org.eclipse.jdt.core.version>
+        <org.eclipse.equinox.registry.version>3.10.0</org.eclipse.equinox.registry.version>
+        <org.eclipse.osgi.version>3.16.100</org.eclipse.osgi.version>
+        <org.eclipse.equinox.preferences.version>3.8.100</org.eclipse.equinox.preferences.version>
+        <org.eclipse.core.filesystem.version>1.7.700</org.eclipse.core.filesystem.version>
+        <org.eclipse.core.runtime.version>3.20.0</org.eclipse.core.runtime.version>
+        <org.eclipse.equinox.common.version>3.14.0</org.eclipse.equinox.common.version>
+        <!--eclipse-end-->
 
         <!--Kotlin增量编译-->
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
@@ -202,6 +212,11 @@
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
             <!--IO工具类库-->
             <dependency>
                 <groupId>commons-io</groupId>
@@ -266,6 +281,36 @@
                 <groupId>org.eclipse.jdt</groupId>
                 <artifactId>org.eclipse.jdt.core</artifactId>
                 <version>${org.eclipse.jdt.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.equinox.registry</artifactId>
+                <version>${org.eclipse.equinox.registry.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.osgi</artifactId>
+                <version>${org.eclipse.osgi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.equinox.preferences</artifactId>
+                <version>${org.eclipse.equinox.preferences.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.core.filesystem</artifactId>
+                <version>${org.eclipse.core.filesystem.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.core.runtime</artifactId>
+                <version>${org.eclipse.core.runtime.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.equinox.common</artifactId>
+                <version>${org.eclipse.equinox.common.version}</version>
             </dependency>
             <!--Httl模板引擎-->
             <dependency>
