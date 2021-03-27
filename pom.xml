@@ -71,6 +71,7 @@
         <bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
         <joda-time.version>2.10.6</joda-time.version>
         <jpa-spec.version>3.2.4</jpa-spec.version>
+        <springfox.version>3.0.0</springfox.version>
 
         <!--eclipse-begin-->
         <org.eclipse.jgit.version>5.7.0.202003110725-r</org.eclipse.jgit.version>
@@ -452,6 +453,11 @@
                 <groupId>com.github.wenhao</groupId>
                 <artifactId>jpa-spec</artifactId>
                 <version>${jpa-spec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox.version}</version>
             </dependency>
             <!--rxjava-third所依赖的包end-->
         </dependencies>
