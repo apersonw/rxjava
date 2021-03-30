@@ -1,7 +1,6 @@
 package org.rxjava.web.core;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,7 +22,7 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
 @MappedSuperclass
 public abstract class BaseEntity {
     @Id
-    @GenericGenerator(name = "objectId", strategy = "org.rxjava.web.core.config.ObjectIdGenerator" )
+    @GenericGenerator(name = "objectId", strategy = "org.rxjava.web.core.config.ObjectIdGenerator")
     @GeneratedValue(generator = "objectId")
     @Column(length = 64)
     private String id;
@@ -31,10 +30,12 @@ public abstract class BaseEntity {
     @Version
     private Long version;
     @CreatedBy
-    private ObjectId createUserId;
+    @Column(length = 64)
+    private String createUserId;
 
     @LastModifiedBy
-    private ObjectId lastModifyUserId;
+    @Column(length = 64)
+    private String lastModifyUserId;
 
     @CreatedDate
     @Indexed(direction = DESCENDING)
