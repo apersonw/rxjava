@@ -17,13 +17,18 @@ import java.util.*;
 @Getter
 public class Context {
 
-    public static Context create(String rootPackage, String javaFilePath) {
+    public static Context create(String rootPackage, String javaFilePath, boolean reactive) {
         Context context = new Context();
         context.rootPackage = rootPackage;
         context.javaFilePath = javaFilePath;
+        context.reactive=reactive;
         return context;
     }
 
+    /**
+     * 是否响应式项目
+     */
+    private boolean reactive;
     /**
      * 包信息
      */

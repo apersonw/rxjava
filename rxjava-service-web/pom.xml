@@ -48,6 +48,7 @@
                     <groups>
                         <group implementation="org.rxjava.apikit.plugin.bean.Group">
                             <rootPackage>${project.groupId}.${module.type}.${module.name}.controller</rootPackage>
+                            <reactive>false</reactive>
                             <apiType>person</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">

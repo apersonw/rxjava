@@ -30,6 +30,9 @@ public class ApikitMojo extends AbstractMojo {
     @Parameter
     private String apiType;
 
+    @Parameter
+    private boolean reactive;
+
     @Override
     public void execute() {
         Map<?, ?> pluginContext = getPluginContext();
@@ -48,7 +51,7 @@ public class ApikitMojo extends AbstractMojo {
 
         getLog().info("开始执行全部任务" + tasks + pluginContext);
 
-        MavenUtils.generate(project, new Group(tasks, rootPackage, apiType), javaSourcePath, compileSourceRoots);
+        MavenUtils.generate(project, new Group(tasks, rootPackage, apiType, reactive), javaSourcePath, compileSourceRoots);
 
     }
 }

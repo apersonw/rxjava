@@ -19,4 +19,5 @@ public class Group {
     private List<Task> tasks;
     private String rootPackage;
     private String apiType;
+    private boolean reactive = true;
 }

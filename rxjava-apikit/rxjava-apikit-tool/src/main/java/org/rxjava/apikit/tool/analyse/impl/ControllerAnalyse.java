@@ -63,13 +63,13 @@ public class ControllerAnalyse implements Analyse {
                              .scan()) {
             scanResult.getAllClasses()
                     .filter(classInfo -> {
-                        //检查类是否处于root包下
+                        //检查扫描到的类是否处于root包下
                         String classPackageName = classInfo.getName();
                         if (!classPackageName.startsWith(context.getRootPackage())) {
                             return false;
                         }
 
-                        //检查类上是否有Controller注解
+                        //检查类上是否有@Controller注解
                         return classInfo.getAnnotationInfo(Controller.class.getName()) != null;
                     })
                     .forEach(this::analyseClass);
@@ -114,7 +114,7 @@ public class ControllerAnalyse implements Analyse {
     }
 
     /**
-     * 分析Controller类方法
+     * 分析类@RequestMapping注解的方法
      */
     private ApiMethodInfo analyseMethod(MethodInfo methodInfo, String parentPath, JdtClassWrapper jdtClassWrapper) {
         Method method = methodInfo.loadClassAndGetMethod();
@@ -141,7 +141,7 @@ public class ControllerAnalyse implements Analyse {
     }
 
     /**
-     * 分析Controller类方法入参信息
+     * 分析类@RequestMapping注解方法的入参信息
      */
     private void analyseInputClass(Method method, ApiMethodInfo apiMethodInfo) {
         Parameter[] parameters = method.getParameters();
@@ -158,25 +158,25 @@ public class ControllerAnalyse implements Analyse {
                 throw new RuntimeException("请修改编译选项，保留方法参数名称");
             }
 
-            //泛型
+            //分析泛型参数
             Type pType = parameter.getParameterizedType();
             ApiInputClassInfo apiInputClassInfo = new ApiInputClassInfo(paramName, ClassTypeInfo.form(pType));
 
-            //检查参数是否有@PathVariable注解
+            //分析@PathVariable注解的方法参数
             AnnotationAttributes pathVarAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, PathVariable.class);
             if (MapUtils.isNotEmpty(pathVarAnnotationAttributes)) {
                 apiInputClassInfo.setPathParam(true);
                 apiInputClassInfo.setRequired(pathVarAnnotationAttributes.getBoolean("required"));
             }
 
-            //检查参数是否有@RequestParam注解
+            //分析@RequestParam注解的方法参数
             AnnotationAttributes requestParamAnnotationAttributes = AnnotatedElementUtils.getMergedAnnotationAttributes(parameter, RequestParam.class);
             if (MapUtils.isNotEmpty(requestParamAnnotationAttributes)) {
                 apiInputClassInfo.setRequestParam(true);
                 apiInputClassInfo.setRequired(requestParamAnnotationAttributes.getBoolean("required"));
             }
 
-            //检查是否有@Valid或@Validated或@RequestBody注解
+            //分析@Valid或@Validated或@RequestBody注解的方法参数
             Valid validAnnotation = AnnotationUtils.getAnnotation(parameter, Valid.class);
             Validated validatedAnnotation = AnnotationUtils.getAnnotation(parameter, Validated.class);
             if (validAnnotation != null || validatedAnnotation != null) {
@@ -188,7 +188,7 @@ public class ControllerAnalyse implements Analyse {
                 }
             }
 
-            //检查参数是否有@RequestPart注解
+            //分析@RequestPart注解的方法参数
             RequestPart requestPartAnnotation = AnnotationUtils.getAnnotation(parameter, RequestPart.class);
             if (null != requestPartAnnotation) {
                 apiInputClassInfo.setRequestPartParam(true);
@@ -236,6 +236,7 @@ public class ControllerAnalyse implements Analyse {
         try {
             cls = resultType.toClass();
         } catch (ClassNotFoundException ignored) {
+        // 忽略掉未找到类的异常错误
         }
         if (cls != null
                 && (Flux.class.isAssignableFrom(cls)
@@ -256,10 +257,7 @@ public class ControllerAnalyse implements Analyse {
             } else {
                 ClassTypeInfo realResultTypeArray = realResultType.clone();
                 realResultTypeArray.setArray(true);
-
                 apiMethodInfo.setReturnClass(realResultTypeArray);
-
-
                 apiMethodInfo.setResultDataType(realResultTypeArray);
             }
         } else {

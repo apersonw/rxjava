@@ -45,6 +45,7 @@ public class GenerateUtils {
 
     public static void generate(Group group, String javaSourcePath, String[] srcPaths, Log log) {
         List<Task> tasks = group.getTasks();
+        boolean reactive = group.isReactive();
 
         if (CollectionUtils.isEmpty(tasks)) {
             log.info("当前没有任务");
@@ -73,7 +74,7 @@ public class GenerateUtils {
                     gitGenerator.setGitBranch(gitTask.getBranch());
 
                     //初始化api生成管理器
-                    ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourcePath, rootPackage);
+                    ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourcePath, rootPackage, reactive);
                     Generator generator = createGenerator(gitTask.getTask(), apiType);
                     gitGenerator.setGenerator((AbstractGenerator) generator);
 

@@ -31,7 +31,7 @@ public class $!{wrapper.getDistClassName()} {
     }
 
     <!--#for(method : classInfo.apiMethodList)-->
-    public Mono<$!{wrapper.resultData(method)}> $!{method.methodName}($!{wrapper.params(method)}) {
+    public <!--#if(wrapper.context.reactive)-->Mono<<!--#end-->$!{wrapper.resultData(method)}<!--#if(wrapper.context.reactive)-->><!--#end--> $!{method.methodName}($!{wrapper.params(method)}) {
         Map<String, Object> pathParamMap = new HashMap<>();
         <!--#for(param : method.pathParams)-->
         pathParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});

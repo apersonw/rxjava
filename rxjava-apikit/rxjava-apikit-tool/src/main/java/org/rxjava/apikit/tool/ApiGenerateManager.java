@@ -53,15 +53,16 @@ public class ApiGenerateManager {
      *
      * @param javaSourceDir 源码文件夹路径
      * @param rootPackage   java包路径
+     * @param reactive
      * @return api生成管理器
      */
-    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage) {
+    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage, boolean reactive) {
         ApiGenerateManager manager = new ApiGenerateManager();
         manager.javaSourceDir = javaSourceDir;
         manager.rootPackage = rootPackage;
         //获取java源码的文件夹路径
         manager.rootDirPath = LocalPathUtils.packToPath(javaSourceDir, rootPackage).getAbsolutePath();
-        manager.context = Context.create(rootPackage, javaSourceDir);
+        manager.context = Context.create(rootPackage, javaSourceDir, reactive);
         //分析控制器信息并保存到上下文
         ControllerAnalyse.create().analyse(manager.context);
         //分析参数类型信息并保存到上下文
