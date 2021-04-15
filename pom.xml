@@ -622,29 +622,29 @@
         </repository>
     </repositories>
     <distributionManagement>
-        <snapshotRepository>
-            <id>oss</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>oss</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <!--<repository>-->
-        <!--    <id>rdc-releases</id>-->
-        <!--    <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>-->
-        <!--</repository>-->
         <!--<snapshotRepository>-->
-        <!--    <id>rdc-snapshots</id>-->
-        <!--    <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>-->
+        <!--    <id>oss</id>-->
+        <!--    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
         <!--</snapshotRepository>-->
+        <!--<repository>-->
+        <!--    <id>oss</id>-->
+        <!--    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+        <!--</repository>-->
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>
+        </snapshotRepository>
     </distributionManagement>
-    <licenses>
-        <license>
-            <name>The MIT License (MIT)</name>
-            <url>https://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
+    <!--<licenses>-->
+    <!--    <license>-->
+    <!--        <name>The MIT License (MIT)</name>-->
+    <!--        <url>https://opensource.org/licenses/MIT</url>-->
+    <!--    </license>-->
+    <!--</licenses>-->
 
     <developers>
         <developer>
@@ -653,15 +653,15 @@
         </developer>
     </developers>
 
-    <scm>
-        <url>https://github.com/apersonw/rxjava.git</url>
-        <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>
-        <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>
-    </scm>
+    <!--<scm>-->
+    <!--    <url>https://github.com/apersonw/rxjava.git</url>-->
+    <!--    <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>-->
+    <!--    <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>-->
+    <!--</scm>-->
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
+    <!--<parent>-->
+    <!--    <groupId>org.sonatype.oss</groupId>-->
+    <!--    <artifactId>oss-parent</artifactId>-->
+    <!--    <version>7</version>-->
+    <!--</parent>-->
 </project>
