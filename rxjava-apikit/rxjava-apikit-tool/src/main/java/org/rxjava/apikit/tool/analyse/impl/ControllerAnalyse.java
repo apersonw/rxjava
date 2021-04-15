@@ -58,7 +58,7 @@ public class ControllerAnalyse implements Analyse {
         try (ScanResult scanResult =
                      new ClassGraph()
                              .enableAllInfo()
-                             .whitelistPackages(context.getRootPackage())
+                             .acceptPackages(context.getRootPackage())
                              .addClassLoader(ControllerAnalyse.class.getClassLoader())
                              .scan()) {
             scanResult.getAllClasses()

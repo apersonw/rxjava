@@ -47,68 +47,27 @@
                 <configuration>
                     <groups>
                         <group implementation="org.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>org.${project.name}.${module.type}.${module.name}.person</rootPackage>
+                            <rootPackage>${project.groupId}.${module.type}.${module.name}.controller</rootPackage>
                             <apiType>person</apiType>
                             <tasks>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>java/${project.name}-api-${module.name}-person/src/main/java
+                                    <outPath>java/${project.name}-api/src/main/java
                                     </outPath>
-                                    <deleteUris>org</deleteUris>
+                                    <deleteUris>${project.groupId}</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
-                                        <outRootPackage>org.${project.name}.api.person.${module.name}</outRootPackage>
-                                        <artifactId>${project.name}-api-${module.name}-person</artifactId>
+                                        <outRootPackage>${project.groupId}.api.${module.name}</outRootPackage>
+                                        <artifactId>${project.name}-api</artifactId>
                                         <parentVersion>${project.parent.version}</parentVersion>
                                     </task>
                                 </task>
                                 <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
-                                    <outPath>js/${project.name}-api-${module.name}-person</outPath>
+                                    <outPath>js/${project.name}-api</outPath>
                                     <deleteUris>org</deleteUris>
                                     <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
                                         <outRootPackage/>
                                         <serviceId>${module.name}</serviceId>
-                                    </task>
-                                </task>
-                            </tasks>
-                        </group>
-                        <group implementation="org.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>org.${project.name}.${module.type}.${module.name}.admin</rootPackage>
-                            <apiType>admin</apiType>
-                            <tasks>
-                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>${git.url}</url>
-                                    <outPath>java/${project.name}-api-${module.name}-admin/src/main/java</outPath>
-                                    <deleteUris>org</deleteUris>
-                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
-                                        <outRootPackage>org.${project.name}.api.${module.name}.admin</outRootPackage>
-                                        <artifactId>${project.name}-api-${module.name}-admin</artifactId>
-                                        <parentVersion>${project.parent.version}</parentVersion>
-                                    </task>
-                                </task>
-                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>${git.url}</url>
-                                    <outPath>js/${project.name}-api-${module.name}-admin</outPath>
-                                    <deleteUris>org</deleteUris>
-                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaScriptClientTask">
-                                        <outRootPackage/>
-                                        <serviceId>${module.name}</serviceId>
-                                    </task>
-                                </task>
-                            </tasks>
-                        </group>
-                        <group implementation="org.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>org.${project.name}.${module.type}.${module.name}.inner</rootPackage>
-                            <apiType>inner</apiType>
-                            <tasks>
-                                <task implementation="org.rxjava.apikit.plugin.bean.GitTask">
-                                    <url>${git.url}</url>
-                                    <outPath>java/${project.name}-api-${module.name}-inner/src/main/java</outPath>
-                                    <deleteUris>org</deleteUris>
-                                    <task implementation="org.rxjava.apikit.plugin.bean.JavaClientTask">
-                                        <outRootPackage>org.${project.name}.api.${module.name}.inner</outRootPackage>
-                                        <artifactId>${project.name}-api-${module.name}-inner</artifactId>
-                                        <parentVersion>${project.parent.version}</parentVersion>
                                     </task>
                                 </task>
                             </tasks>
