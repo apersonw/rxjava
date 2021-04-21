@@ -12,6 +12,7 @@ import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.utils.CommentUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author happy
@@ -77,10 +78,7 @@ public class BuilderWrapper<T extends CommonClassInfo> {
 
     public String getFullDistPackage(String distFolder) {
         if (StringUtils.isEmpty(distFolder)) {
-            if (distRootPackage == null) {
-                return "";
-            }
-            return distRootPackage;
+            return Objects.requireNonNullElse(distRootPackage, "");
         } else {
             if (StringUtils.isEmpty(distRootPackage)) {
                 return distFolder;

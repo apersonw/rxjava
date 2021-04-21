@@ -2,10 +2,10 @@ package org.rxjava.apikit.tool.wrapper;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.rxjava.apikit.tool.generator.Context;
+import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.info.FieldInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.info.PropertyInfo;
-import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -43,6 +43,11 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
      */
     public String imports() {
         StringBuilder sb = new StringBuilder();
+
+        ClassTypeInfo superType = classInfo.getSuperType();
+        if (superType != null) {
+            sb.append("import ").append(superType.getPackageName()).append(".").append(superType.getClassName()).append(";\n");
+        }
 
         Flux.fromIterable(classInfo.getProperties())
                 .mergeWith(getSupper())
@@ -122,15 +127,16 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
             if (typeInfo.isArray()) {
                 if (sourceTypeInfo.isBytes()) {
                     sb.append(start).append(" if (").append(name).append(" != null && (").append(name).append(".length > 0)) {\n");
-                    sb.append("$list.add(new SimpleImmutableEntry<>(" + parentName + " + \"")
+                    sb.append("$list.add(new SimpleImmutableEntry<>(").append(parentName).append(" + \"")
                             .append(name).append("\", ")
                             .append(name)
                             .append("));\n");
                     sb.append(start).append("}\n");
                 } else if (typeInfo.isOtherType() && typeInfo.isObjectId()) {
                     sb.append(start).append(" if (").append(name).append(" != null && (!").append(name).append(".isEmpty())) {\n");
-                    sb.append(start).append("for (int i = 0; i < ").append(name).append(".size(); i++) {\n");
-                    sb.append(start).append("    ").append(name).append(".get(i).encode(").append(parentName).append(" + \"")
+                    sb.append("List<").append(typeInfo.getClassName()).append("> ").append(name).append("New = new ArrayList<>(this.").append(name).append(");");
+                    sb.append(start).append("for (int i = 0; i < ").append(name).append("New").append(".size(); i++) {\n");
+                    sb.append(start).append("    ").append(name).append("New").append(".get(i).encode(").append(parentName).append(" + \"")
                             .append(name).append("\" + \"[\" + i + \"].\", $list);\n");
                     sb.append(start).append("    }\n");
                     sb.append(start).append("}\n");
