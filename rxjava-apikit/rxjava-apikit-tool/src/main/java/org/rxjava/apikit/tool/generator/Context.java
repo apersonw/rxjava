@@ -42,11 +42,11 @@ public class Context {
      */
     private String javaFilePath;
     /**
-     * 消息包装map
+     * 参数类包装map
      */
     private Map<String, BuilderWrapper<ParamClassInfo>> paramClassWrapperMap;
     /**
-     * 消息包装map
+     * 枚举类包装map
      */
     private Map<String, BuilderWrapper<EnumParamClassInfo>> enumParamClassWrapperMap;
     /**
