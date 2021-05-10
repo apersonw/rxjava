@@ -37,7 +37,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_ROOT_PASSWORD=root111
   nacos:
     image: 'nacos/nacos-server:latest'
     container_name: nacos
