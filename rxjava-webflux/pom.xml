@@ -16,6 +16,7 @@
         <module>rxjava-webflux-boot-starter-service-mock</module>
         <module>rxjava-webflux-boot-starter-test</module>
         <module>rxjava-webflux-cloud-starter-gateway</module>
+        <module>rxjava-webflux-cloud-starter-kafka</module>
         <module>rxjava-webflux-cloud-starter-bus</module>
         <module>rxjava-webflux-third-starter-weixin-miniapp</module>
     </modules>

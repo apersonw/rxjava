@@ -1,6 +1,5 @@
 package org.rxjava.webflux.service.starter;
 
-import org.rxjava.webflux.service.starter.boot.CustomMongoConfiguration;
 import org.rxjava.webflux.service.starter.boot.ReactiveRequestContextFilter;
 import org.rxjava.webflux.service.starter.boot.RxJavaWebFluxConfigurer;
 import org.rxjava.webflux.service.starter.boot.ServiceDelegatingWebFluxConfiguration;
@@ -21,7 +20,6 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @Import({
         ServiceDelegatingWebFluxConfiguration.class,
         RxJavaWebFluxConfigurer.class,
-        //CustomMongoConfiguration.class,已经不再需要自行创建索引了
         ReactiveRequestContextFilter.class
 })
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
