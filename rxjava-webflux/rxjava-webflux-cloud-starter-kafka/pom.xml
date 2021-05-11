@@ -10,5 +10,9 @@
     <artifactId>rxjava-webflux-cloud-starter-kafka</artifactId>
     <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+        </dependency>
     </dependencies>
 </project>
