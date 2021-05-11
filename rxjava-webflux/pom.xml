@@ -15,6 +15,9 @@
         <module>rxjava-webflux-boot-starter-service</module>
         <module>rxjava-webflux-boot-starter-service-mock</module>
         <module>rxjava-webflux-boot-starter-test</module>
+        <module>rxjava-webflux-boot-starter-elasticsearch</module>
+        <module>rxjava-webflux-boot-starter-mongodb-reactive</module>
+        <module>rxjava-webflux-boot-starter-redis-reactive</module>
         <module>rxjava-webflux-cloud-starter-gateway</module>
         <module>rxjava-webflux-cloud-starter-hdfs</module>
         <module>rxjava-webflux-cloud-starter-kafka</module>
