@@ -15,6 +15,7 @@
         <module>rxjava-web</module>
         <module>rxjava-service-web</module>
         <module>rxjava-webflux</module>
+        <module>rxjava-starters</module>
     </modules>
     <properties>
         <!--项目编译版本-->
