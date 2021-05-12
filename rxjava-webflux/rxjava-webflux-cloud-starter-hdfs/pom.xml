@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
+            <groupId>org.springframework.cloud.stream.app</groupId>
             <artifactId>spring-cloud-starter-stream-hdfs</artifactId>
         </dependency>
     </dependencies>
