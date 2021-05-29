@@ -16,6 +16,7 @@
         <module>rxjava-service-web</module>
         <module>rxjava-webflux</module>
         <module>rxjava-starters</module>
+        <module>rxjava-starter-parent-web</module>
     </modules>
     <properties>
         <!--项目编译版本-->
@@ -28,7 +29,7 @@
         <!--依赖版本-->
         <spring-cloud-kubernetes.version>2.0.2</spring-cloud-kubernetes.version>
         <spring-cloud-dependencies.version>2020.0.2</spring-cloud-dependencies.version>
-        <spring-boot.version>2.4.5</spring-boot.version>
+        <spring-boot.version>2.4.6</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <com.google.guava.version>30.1.1-jre</com.google.guava.version>
         <lombok.version>1.18.20</lombok.version>
