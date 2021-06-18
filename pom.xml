@@ -17,6 +17,7 @@
         <module>rxjava-webflux</module>
         <module>rxjava-starters</module>
         <module>rxjava-starter-parent-web</module>
+        <module>rxjava-starter-parent-webflux</module>
     </modules>
     <properties>
         <!--项目编译版本-->
@@ -189,6 +190,17 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-oauth2</artifactId>
                 <version>${spring-cloud-starter-oauth2.version}</version>
+            </dependency>
+            <!--Spring Boot Admin 依赖管理-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>2.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>2.4.1</version>
             </dependency>
             <!--Apache通用帮助类库-->
             <dependency>
