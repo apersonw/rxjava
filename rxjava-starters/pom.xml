@@ -12,10 +12,13 @@
     <modules>
         <module>rxjava-starter-boot-web</module>
         <module>rxjava-starter-boot-webflux</module>
-        <module>rxjava-starter-h2</module>
         <module>rxjava-starter-bus-amqp</module>
         <module>rxjava-starter-elasticsearch</module>
         <module>rxjava-starter-gateway</module>
+        <module>rxjava-starter-h2</module>
+        <module>rxjava-starter-hdfs</module>
+        <module>rxjava-starter-kafka</module>
+        <module>rxjava-starter-mongodb-reactive</module>
         <module>rxjava-starter-redis-reactive</module>
         <module>rxjava-starter-redis</module>
     </modules>
