@@ -47,7 +47,7 @@ public class ReactiveRequestContextFilter implements WebFilter {
                 })
                 .flatMap(userInfo -> chain
                         .filter(exchange)
-                        .subscriberContext(ctx -> {
+                        .contextWrite(ctx -> {
                             if (ObjectUtils.isNotEmpty(userInfo.getAppId())) {
                                 return ctx.put("appId", userInfo.getAppId());
                             }

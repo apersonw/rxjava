@@ -1,5 +1,7 @@
 package org.rxjava.starter.webflux;
 
+import org.rxjava.starter.webflux.configuration.RxJavaWebFluxConfigurer;
+import org.rxjava.starter.webflux.configuration.ServiceDelegatingWebFluxConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -11,7 +13,8 @@ import org.springframework.core.Ordered;
  */
 @Configuration
 @Import({
-
+        ServiceDelegatingWebFluxConfiguration.class,
+        RxJavaWebFluxConfigurer.class
 })
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 public class WebfluxAutoConfiguration {
