@@ -1,10 +1,14 @@
 package org.rxjava.starter.webflux;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.rxjava.starter.webflux.configuration.RxJavaWebFluxConfigurer;
 import org.rxjava.starter.webflux.configuration.ServiceDelegatingWebFluxConfiguration;
+import org.rxjava.utils.JsonUtils;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 
 /**
@@ -18,4 +22,10 @@ import org.springframework.core.Ordered;
 })
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 public class WebfluxAutoConfiguration {
+
+    @Bean
+    @Primary
+    public ObjectMapper objectMapper() {
+        return JsonUtils.DEFAULT_MAPPER;
+    }
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.NotNull;
 import org.rxjava.utils.JavaTimeModuleUtils;
 import org.rxjava.utils.JsonUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -18,7 +17,6 @@ import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -30,8 +28,11 @@ import java.time.format.DateTimeFormatter;
  */
 public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
+
+    public RxJavaWebFluxConfigurer(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
     /**
      * 使用指定的资源访问指定的名称，异常消息国际化处理
@@ -46,12 +47,6 @@ public class RxJavaWebFluxConfigurer implements WebFluxConfigurer {
         messageSource.setUseCodeAsDefaultMessage(true);
         messageSource.setCacheSeconds(99999999);
         return messageSource;
-    }
-
-    @Bean
-    @Primary
-    public ObjectMapper objectMapper() {
-        return JsonUtils.DEFAULT_MAPPER;
     }
 
     /**
