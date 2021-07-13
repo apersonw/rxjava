@@ -4,11 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.rxjava.webflux.core.annotation.Login;
-import org.rxjava.webflux.core.exception.UnauthorizedException;
-import org.rxjava.webflux.core.info.LoginInfo;
-import org.rxjava.webflux.core.info.UserInfo;
-import org.rxjava.webflux.utils.JsonUtils;
+import org.rxjava.starter.webflux.exception.UnauthorizedException;
+import org.rxjava.starter.webflux.info.LoginInfo;
+import org.rxjava.utils.JsonUtils;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.method.HandlerMethod;
@@ -16,11 +14,13 @@ import org.springframework.web.reactive.HandlerResult;
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+import org.rxjava.starter.webflux.annotation.Login;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
-import static org.rxjava.webflux.service.starter.boot.LoginInfoArgumentResolver.LOGIN_REQUEST_ATTRIBUTE;
+import static org.rxjava.starter.webflux.configuration.LoginInfoArgumentResolver.LOGIN_REQUEST_ATTRIBUTE;
+
 
 /**
  * @author happy 2019-04-16 23:05
@@ -77,11 +77,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         if (StringUtils.isEmpty(loginInfoJson)) {
             return null;
         }
-        try {
-            loginInfoJson = URLDecoder.decode(loginInfoJson, "utf8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-        return JsonUtils.deserialize(loginInfoJson, UserInfo.class);
+        loginInfoJson = URLDecoder.decode(loginInfoJson, StandardCharsets.UTF_8);
+        return JsonUtils.deserialize(loginInfoJson, LoginInfo.class);
     }
 }
