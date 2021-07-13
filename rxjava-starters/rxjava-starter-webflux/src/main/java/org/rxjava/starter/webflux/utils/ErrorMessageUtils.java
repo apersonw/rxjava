@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 错误消息帮助类
  */
 public class ErrorMessageUtils implements Serializable {
-    public static ErrorMessage handlerI18n(ErrorMessage errorMessage, MessageSourceAccessor messageSourceAccessor) {
+    public static void handlerI18n(ErrorMessage errorMessage, MessageSourceAccessor messageSourceAccessor) {
         if (errorMessage.getMessage() == null) {
             errorMessage.setMessage(messageSourceAccessor.getMessage(errorMessage));
         }
@@ -24,7 +24,6 @@ public class ErrorMessageUtils implements Serializable {
                 }
             });
         }
-        return errorMessage;
     }
 
     private ErrorMessageUtils() {
