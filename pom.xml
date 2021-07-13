@@ -18,6 +18,7 @@
         <module>rxjava-starters</module>
         <module>rxjava-starter-parent-web</module>
         <module>rxjava-starter-parent-webflux</module>
+        <module>rxjava-utils</module>
     </modules>
     <properties>
         <!--项目编译版本-->

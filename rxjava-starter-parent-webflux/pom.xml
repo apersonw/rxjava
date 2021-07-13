@@ -12,8 +12,8 @@
     <dependencies>
         <dependency>
             <groupId>org.rxjava</groupId>
-            <artifactId>rxjava-starter-boot-webflux</artifactId>
-            <version>${parent.version}</version>
+            <artifactId>rxjava-starter-webflux</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

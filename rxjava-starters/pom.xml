@@ -10,8 +10,8 @@
     <artifactId>rxjava-starters</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>rxjava-starter-boot-web</module>
-        <module>rxjava-starter-boot-webflux</module>
+        <module>rxjava-starter-web</module>
+        <module>rxjava-starter-webflux</module>
         <module>rxjava-starter-bus-amqp</module>
         <module>rxjava-starter-elasticsearch</module>
         <module>rxjava-starter-gateway</module>
