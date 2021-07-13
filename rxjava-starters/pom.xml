@@ -26,4 +26,18 @@
     </modules>
     <dependencies>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.rxjava</groupId>
+                <artifactId>rxjava-utils</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.rxjava</groupId>
+                <artifactId>rxjava-apikit-core</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
