@@ -26,7 +26,7 @@
         <java.version>15</java.version>
         <maven.compiler.release>15</maven.compiler.release>
 
-        <kotlin.version>1.5.10</kotlin.version>
+        <kotlin.version>1.5.20</kotlin.version>
 
         <!--依赖版本-->
         <spring-cloud-kubernetes.version>2.0.3</spring-cloud-kubernetes.version>
