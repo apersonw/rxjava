@@ -261,6 +261,11 @@
                 <artifactId>guava</artifactId>
                 <version>${com.google.guava.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.checkerframework</groupId>
+                <artifactId>checker-qual</artifactId>
+                <version>3.8.0</version>
+            </dependency>
             <!--Lombok库-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
