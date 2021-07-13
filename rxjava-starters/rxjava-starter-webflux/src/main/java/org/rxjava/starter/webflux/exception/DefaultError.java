@@ -11,4 +11,8 @@ class DefaultError extends DefaultMessageSourceResolvable {
     DefaultError(String code) {
         super(code);
     }
+
+    public DefaultError() {
+        super("");
+    }
 }

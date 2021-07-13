@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  * 错误消息异常(可预知错误均抛出此异常)
  */
 public class ErrorMessageException extends RuntimeException {
-    private ErrorMessage errorMessage;
+    private final ErrorMessage errorMessage;
 
     private ErrorMessageException(String[] codes, Object[] arguments, String defaultMessage, Throwable cause) {
         super(MessageFormat.format(

@@ -12,6 +12,7 @@
     <modules>
         <module>rxjava-starter-web</module>
         <module>rxjava-starter-webflux</module>
+        <module>rxjava-starter-webflux-mock</module>
         <module>rxjava-starter-bus-amqp</module>
         <module>rxjava-starter-elasticsearch</module>
         <module>rxjava-starter-gateway</module>
@@ -21,6 +22,7 @@
         <module>rxjava-starter-mongodb-reactive</module>
         <module>rxjava-starter-redis-reactive</module>
         <module>rxjava-starter-redis</module>
+        <module>rxjava-starter-mysql</module>
     </modules>
     <dependencies>
     </dependencies>
