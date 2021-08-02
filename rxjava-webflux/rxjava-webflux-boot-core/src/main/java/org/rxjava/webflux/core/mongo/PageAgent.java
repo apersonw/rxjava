@@ -18,8 +18,8 @@ import java.util.function.Function;
  * Mono分页
  */
 public class PageAgent<T> {
-    private ReactiveMongoTemplate reactiveMongoTemplate;
-    private Class<T> clazz;
+    private final ReactiveMongoTemplate reactiveMongoTemplate;
+    private final Class<T> clazz;
 
     public PageAgent(ReactiveMongoTemplate reactiveMongoTemplate, Class<T> clazz) {
         this.reactiveMongoTemplate = reactiveMongoTemplate;
