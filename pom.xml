@@ -9,7 +9,7 @@
     <modules>
 <!--        <module>rxjava-starters</module>-->
 <!--        <module>rxjava-starter-parent-webflux</module>-->
-<!--        <module>rxjava-starter-parent-web</module>-->
+        <module>rxjava-starter-parent-web</module>
 <!--        <module>rxjava-utils</module>-->
         <module>rxjava-apikit</module>
 <!--        <module>rxjava-commons</module>-->
