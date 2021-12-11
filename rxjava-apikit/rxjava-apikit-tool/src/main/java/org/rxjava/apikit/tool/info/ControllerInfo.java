@@ -1,8 +1,8 @@
 package org.rxjava.apikit.tool.info;
 
+import org.rxjava.apikit.tool.type.ApiType;
 import lombok.Getter;
 import lombok.Setter;
-import org.rxjava.apikit.tool.type.ApiType;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
 package org.rxjava.apikit.tool;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import org.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
 import org.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.generator.Generator;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @author happy

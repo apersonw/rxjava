@@ -1,16 +1,7 @@
 package org.rxjava.apikit.tool.analyse.impl;
 
-import com.thoughtworks.paranamer.AnnotationParanamer;
-import com.thoughtworks.paranamer.BytecodeReadingParanamer;
-import com.thoughtworks.paranamer.CachingParanamer;
-import com.thoughtworks.paranamer.Paranamer;
-import httl.util.CollectionUtils;
-import io.github.classgraph.*;
-import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.annotation.Ignore;
+import org.rxjava.apikit.annotation.Login;
 import org.rxjava.apikit.core.HttpMethodType;
 import org.rxjava.apikit.tool.analyse.Analyse;
 import org.rxjava.apikit.tool.generator.Context;
@@ -19,6 +10,15 @@ import org.rxjava.apikit.tool.info.ApiInputClassInfo;
 import org.rxjava.apikit.tool.info.ApiMethodInfo;
 import org.rxjava.apikit.tool.info.ClassTypeInfo;
 import org.rxjava.apikit.tool.utils.JdtClassWrapper;
+import com.thoughtworks.paranamer.AnnotationParanamer;
+import com.thoughtworks.paranamer.BytecodeReadingParanamer;
+import com.thoughtworks.paranamer.CachingParanamer;
+import com.thoughtworks.paranamer.Paranamer;
+import httl.util.CollectionUtils;
+import io.github.classgraph.*;
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -126,6 +126,12 @@ public class ControllerAnalyse implements Analyse {
         apiMethodInfo.setHttpMethodTypes(toMethodTypes(requestMethods));
         apiMethodInfo.setMethodName(methodInfo.getName());
         apiMethodInfo.setJavaDocInfo(jdtClassWrapper.getMethodComment(methodInfo.getName()));
+
+        //判断接口是否需要登陆
+        Login loginAnnotation = AnnotationUtils.getAnnotation(method, Login.class);
+        if (loginAnnotation != null && !loginAnnotation.value()) {
+            apiMethodInfo.setLogin(false);
+        }
 
         //访问路径
         String[] pathArray = Objects.requireNonNull(annotationAttributes).getStringArray("path");
@@ -236,7 +242,7 @@ public class ControllerAnalyse implements Analyse {
         try {
             cls = resultType.toClass();
         } catch (ClassNotFoundException ignored) {
-        // 忽略掉未找到类的异常错误
+            // 忽略掉未找到类的异常错误
         }
         if (cls != null
                 && (Flux.class.isAssignableFrom(cls)
@@ -250,9 +256,10 @@ public class ControllerAnalyse implements Analyse {
             boolean isSingle = Mono.class.isAssignableFrom(cls);
             ClassTypeInfo realResultType = resultType.getTypeArguments().get(0);
 
+            apiMethodInfo.setFlux(Objects.equals(resultType.getPackageName(), Flux.class.getPackage().getName()) &&
+                    Objects.equals(resultType.getClassName(), Flux.class.getSimpleName()));
             if (isSingle) {
                 apiMethodInfo.setReturnClass(realResultType);
-
                 apiMethodInfo.setResultDataType(realResultType);
             } else {
                 ClassTypeInfo realResultTypeArray = realResultType.clone();
@@ -285,12 +292,12 @@ public class ControllerAnalyse implements Analyse {
      */
     private HttpMethodType[] toMethodTypes(RequestMethod[] requestMapping) {
         return Objects.requireNonNull(Flux
-                .just(requestMapping)
-                .map(m -> HttpMethodType.valueOf(m.name()))
-                .collectList()
-                .filter(r -> !r.isEmpty())
-                .switchIfEmpty(Mono.just(Arrays.asList(HttpMethodType.values())))
-                .block())
+                        .just(requestMapping)
+                        .map(m -> HttpMethodType.valueOf(m.name()))
+                        .collectList()
+                        .filter(r -> !r.isEmpty())
+                        .switchIfEmpty(Mono.just(Arrays.asList(HttpMethodType.values())))
+                        .block())
                 .toArray(new HttpMethodType[]{});
     }
 }

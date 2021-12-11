@@ -23,7 +23,7 @@ public final class LocalPathUtils {
      * 获取指定路径下文件
      */
     public static File packToPath(String path, String packageName) {
-        return new File(path, packageName.replace(".", File.separator));
+        return new File(path, packageName.replace(".", "/"));
     }
 
     /**
@@ -38,7 +38,7 @@ public final class LocalPathUtils {
      * 路径转为包格式
      */
     public static String pathToPack(String path) {
-        return path.replace(File.separator, ".");
+        return path.replace("/", ".");
     }
 
     /**

@@ -1,5 +1,6 @@
 package org.rxjava.apikit.client;
 
+import org.rxjava.apikit.core.HttpMethodType;
 import reactor.core.publisher.Mono;
 
 import java.lang.reflect.Type;
@@ -12,7 +13,7 @@ public interface ClientAdapter {
     /**
      * 发起http请求
      *
-     * @param method     请求方法{@link org.rxjava.apikit.core.HttpMethodType}
+     * @param method     请求方法{@link HttpMethodType}
      * @param uri        请求的Uri
      * @param inputParam 入参
      * @param returnType 返回值类型

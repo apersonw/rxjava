@@ -2,7 +2,6 @@ package org.rxjava.apikit.tool.info;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.Data;
-import lombok.ToString;
 import org.apache.commons.lang3.ClassUtils;
 import org.bson.types.ObjectId;
 
@@ -230,7 +229,7 @@ public class ClassTypeInfo implements Cloneable {
          * 枚举值
          */
         VOID, BOOLEAN, BYTE, SHORT, INT, LONG, FLOAT,
-        DOUBLE, STRING, DATE,
+        DOUBLE, STRING, DATE,LocalDateTime,
         OBJECTID,
         OTHER;
 
@@ -260,9 +259,9 @@ public class ClassTypeInfo implements Cloneable {
                 .put(Date.class, DATE)
                 .put(ObjectId.class, OBJECTID)
                 .put(Instant.class, DATE)
-                .put(LocalDateTime.class, DATE)
-                .put(LocalDate.class, DATE)
-                .put(LocalTime.class, DATE)
+                .put(LocalDateTime.class, LocalDateTime)
+                .put(LocalDate.class, LocalDateTime)
+                .put(LocalTime.class, LocalDateTime)
                 .build();
 
         private static final ImmutableMap<TypeEnum, Class<?>> CLASS_MAP = ImmutableMap.<TypeEnum, Class<?>>builder()
@@ -276,6 +275,7 @@ public class ClassTypeInfo implements Cloneable {
                 .put(DOUBLE, Double.class)
                 .put(STRING, String.class)
                 .put(DATE, Date.class)
+                .put(LocalDateTime, LocalDateTime.class)
                 .put(OBJECTID, ObjectId.class)
                 .build();
 

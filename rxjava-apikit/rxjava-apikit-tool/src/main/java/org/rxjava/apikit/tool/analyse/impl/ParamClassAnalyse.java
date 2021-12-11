@@ -1,11 +1,11 @@
 package org.rxjava.apikit.tool.analyse.impl;
 
-import com.google.common.collect.ImmutableSet;
-import org.apache.commons.collections4.CollectionUtils;
 import org.rxjava.apikit.tool.analyse.Analyse;
 import org.rxjava.apikit.tool.generator.Context;
 import org.rxjava.apikit.tool.info.*;
 import org.rxjava.apikit.tool.utils.JdtClassWrapper;
+import com.google.common.collect.ImmutableSet;
+import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -180,7 +180,7 @@ public class ParamClassAnalyse implements Analyse {
             paramClassInfo.sortPropertys();
             return paramClassInfo;
         } catch (Throwable th) {
-            log.error("分析param错误,classInfo:{}", classInfo, th);
+            log.error("分析param错误,classInfo.getClassName:{}", classInfo.getClassName(), th);
             throw new RuntimeException(th);
         }
     }

@@ -1,28 +1,17 @@
 package org.rxjava.apikit.tool.generator.impl;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.EnumParamClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.info.ServiceInfo;
-import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
 import org.rxjava.apikit.tool.wrapper.*;
-import org.springframework.util.FileCopyUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.AbstractMap;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author happy
@@ -127,8 +116,13 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
 
         parameters.put("serviceInfo", serviceInfo);
 
+        String sb = File.separator +
+                "src" + File.separator +
+                "main" + File.separator +
+                "java";
+
         //项目路径
-        String outProjectPath = outPath.replace("/src/main/java", "");
+        String outProjectPath = outPath.replace(sb, "");
         File indexFile = LocalPathUtils.packToPath(outProjectPath, "", "pom", ".xml");
         execute(
                 parameters,
@@ -144,9 +138,13 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
 
         Map<String, Object> parameters = new HashMap<>();
 
+        String sb = File.separator +
+                "src" + File.separator +
+                "main" + File.separator +
+                "java";
         //项目路径
-        String outProjectPath = outPath.replace("/src/main/java", "");
-        File outFile = new File(outProjectPath.replace(".", File.separator) + "/.gitignore");
+        String outProjectPath = outPath.replace(sb, "");
+        File outFile = new File(outProjectPath.replace(".", "/") + "/.gitignore");
         execute(
                 parameters,
                 getTemplateFile("gitignore.httl"),

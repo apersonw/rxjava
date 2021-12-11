@@ -15,15 +15,15 @@ public class ApiClassInfo extends CommonClassInfo {
     /**
      * url作为key的map
      */
-    private Map<String, Map<HttpMethodType, ApiMethodInfo>> methodUrlMap = new HashMap<>();
+    private final Map<String, Map<HttpMethodType, ApiMethodInfo>> methodUrlMap = new HashMap<>();
     /**
      * 方法名methodName作为key的map
      */
-    private Map<String, ApiMethodInfo> methodNameMap = new HashMap<>();
+    private final Map<String, ApiMethodInfo> methodNameMap = new HashMap<>();
     /**
      * api方法列表
      */
-    private List<ApiMethodInfo> apiMethodList = new ArrayList<>();
+    private final List<ApiMethodInfo> apiMethodList = new ArrayList<>();
 
     /**
      * 添加api方法信息

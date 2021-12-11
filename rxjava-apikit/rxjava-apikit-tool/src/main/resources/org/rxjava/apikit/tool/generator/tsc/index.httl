@@ -1,7 +1,12 @@
-<!--#set(java.util.List<java.util.Map.Entry<String, String>> apis)-->
-<!--#set(java.util.Map.Entry<String, String> api)-->
+<!--#set(java.util.List<java.util.Map.Entry<String, JavaScriptMethodInfo>> apis)-->
+<!--#set(java.util.Map.Entry<String, JavaScriptMethodInfo> api)-->
+<!--#set(JavaScriptMethodInfo value)-->
+
 <!--#for(api : apis)-->
-import $!{api.key} from '.$!{api.value}';
+/**
+$!{api.value.comment}
+*/
+import $!{api.key} from '.$!{api.value.apiName}';
 <!--#end-->
 
 export {

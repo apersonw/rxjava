@@ -15,8 +15,8 @@ public abstract class AbstractCommonGenerator extends AbstractHttlGenerator {
      */
     File createApiFile(BuilderWrapper wrapper, String suffix) {
         String fullDistPackage = wrapper.getFullDistPackage();
-        if ("d.ts".equals(suffix) || ("js".equals(suffix))) {
-            fullDistPackage = "";
+        if ("d.ts".equals(suffix) || ("js".equals(suffix)) || ("ts".equals(suffix))) {
+            fullDistPackage = "src/";
         }
         return LocalPathUtils.packToPath(outPath, fullDistPackage, wrapper.getDistClassName(), "." + suffix);
     }
@@ -25,6 +25,10 @@ public abstract class AbstractCommonGenerator extends AbstractHttlGenerator {
      * 创建参数类文件
      */
     File createParamClassFile(BuilderWrapper wrapper, String suffix) {
-        return LocalPathUtils.packToPath(outPath, wrapper.getFullDistPackage(wrapper.getDistFolder()), wrapper.getDistClassName(), "." + suffix);
+        String fullDistPackage = wrapper.getFullDistPackage(wrapper.getDistFolder());
+        if ("d.ts".equals(suffix) || ("js".equals(suffix)) || ("ts".equals(suffix))) {
+            fullDistPackage = "src/" + fullDistPackage;
+        }
+        return LocalPathUtils.packToPath(outPath, fullDistPackage, wrapper.getDistClassName(), "." + suffix);
     }
 }

@@ -30,6 +30,32 @@ public class ParamClassInfo extends CommonClassInfo {
         return transform(type.getJavadoc());
     }
 
+    /**
+     * 若是有泛型，则需要再获取
+     */
+    public String getInterfaceName() {
+        if (this.getTypeParameters().size() > 0) {
+            return super.getClassName() + "<T>";
+        } else {
+            return super.getClassName();
+        }
+    }
+
+    /**
+     * 获取分页信息
+     */
+    public String getPageInfo() {
+        String pageInfo = "";
+        if (this.getTypeParameters().size() > 0) {
+            pageInfo = "\n    content?:T[];\n" +
+                    "\n" +
+                    "    size?: number;\n" +
+                    "    \n" +
+                    "    number?: number;";
+        }
+        return pageInfo;
+    }
+
     protected static JavaDocInfo transform(org.eclipse.jdt.core.dom.Javadoc javadoc) {
         if (javadoc == null) {
             return null;

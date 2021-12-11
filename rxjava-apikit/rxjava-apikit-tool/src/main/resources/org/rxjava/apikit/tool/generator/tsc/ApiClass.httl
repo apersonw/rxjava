@@ -3,6 +3,8 @@
 <!--#set(ClassTypeInfo type)-->
 <!--#set(ApiMethodInfo method)-->
 <!--#set(ApiInputClassInfo param)-->
+import { CompactObj } from 'rxjava-api-core'
+import { stringify } from 'qs'
 $!{wrapper.imports}
 <!--#for(method : classInfo.apiMethodList)-->
 export interface $!{method.methodCaseName}Params {
@@ -25,29 +27,44 @@ $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
      *
 $!{wrapper.requestComment(method,"     * ")}
     */
-    $!{method.methodName} = ({$!{wrapper.params(method)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
-        const pathVars : any = {};
-        <!--#if(method.pathParams.size > 0)-->
-        <!--#for(param : method.pathParams)-->
-        pathVars.$!{param.fieldName} = $!{param.fieldName};
+    $!{method.methodName} = ({$!{wrapper.inputParams(method)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
+
+        <!--#if("GET"==method.type.name)-->
+        let requestParam: any = {}
+
+            <!--#for(param : method.params)-->
+                <!--#if(param.isRequestParam())-->
+        requestParam.$!{param.fieldName} = $!{param.fieldName}
+                <!--#end-->
+            <!--#end-->
+        const reqObj = Object.assign({},requestParam,$!{wrapper.params(method)})
+        CompactObj.compact(reqObj)
+        let data = stringify(reqObj,{ allowDots: true })
+
+        <!--#else(method.jsonParams.size()>0)-->
+        let data = Object.assign({},$!{wrapper.params(method)})
+
+        <!--#else-->
+        let requestParam: any = {}
+            <!--#for(param : method.params)-->
+                <!--#if(param.isRequestParam())-->
+        requestParam.$!{param.fieldName} = $!{param.fieldName}
+                <!--#end-->
+            <!--#end-->
+        const reqObj = Object.assign({},requestParam,$!{wrapper.params(method)})
+        CompactObj.compact(reqObj)
+        let data = stringify(reqObj,{ allowDots: true })
         <!--#end-->
-        <!--#end-->
-        const requestParams : any = {};
-        <!--#if(method.pathParams.size > 0)-->
-        <!--#for(param : method.requestParams)-->
-        requestParams.$!{param.fieldName} = $!{param.fieldName};
-        <!--#end-->
-        <!--#end-->
+
         return super._request({
             serviceName: '$!{wrapper.serviceId}',
-            method: Method.$!{method.type.name()},
-            path: '$!{method.url}',
-            pathParams: {...pathVars},
-            requestParams: {...requestParams},
-            bodyParams: '',
-            dataType: '',
-            responseType: '',
-            headers: ''
+            method: '$!{method.type.name()}',
+            path: <!--#if("GET"!=method.type.name&&method.params.size()>0&&method.jsonParams.size()<1)-->'$!{method.url}?'+data<!--#else-->'$!{method.url}'<!--#end-->,
+            data,
+            dataType: <!--#if(wrapper.returnTypeIsOther(method))-->'json'<!--#else-->'text'<!--#end-->,
+            responseType: <!--#if(wrapper.returnTypeIsOther(method))-->'json'<!--#else-->'text'<!--#end-->,
+            header: {'content-type':<!--#if("GET"==method.type.name||method.jsonParams.size()<1)-->'application/x-www-form-urlencoded'<!--#else-->'application/json'<!--#end-->},
+            login: $!{method.login}
         })
     };
 <!--#end-->

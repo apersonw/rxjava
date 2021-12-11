@@ -1,10 +1,10 @@
 package org.rxjava.apikit.tool.generator;
 
+import org.rxjava.apikit.tool.info.*;
+import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.ObjectUtils;
-import org.rxjava.apikit.tool.info.*;
-import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 
 import java.util.*;
 
@@ -42,11 +42,11 @@ public class Context {
      */
     private String javaFilePath;
     /**
-     * 消息包装map
+     * 参数类包装map
      */
     private Map<String, BuilderWrapper<ParamClassInfo>> paramClassWrapperMap;
     /**
-     * 消息包装map
+     * 枚举类包装map
      */
     private Map<String, BuilderWrapper<EnumParamClassInfo>> enumParamClassWrapperMap;
     /**

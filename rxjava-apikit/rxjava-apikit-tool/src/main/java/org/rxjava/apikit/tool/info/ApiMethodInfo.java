@@ -1,8 +1,8 @@
 package org.rxjava.apikit.tool.info;
 
+import org.rxjava.apikit.core.HttpMethodType;
 import lombok.Data;
 import org.apache.commons.collections4.CollectionUtils;
-import org.rxjava.apikit.core.HttpMethodType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,10 @@ public class ApiMethodInfo {
      * 方法请求url
      */
     private String url;
+    /**
+     * 返回值是否Flux
+     */
+    private boolean flux = false;
     /**
      * Http请求方法类型,默认为Get
      */

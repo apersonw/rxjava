@@ -2,10 +2,10 @@ package org.rxjava.apikit.plugin.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import org.rxjava.apikit.plugin.bean.Group;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
-import org.rxjava.apikit.plugin.bean.Group;
 
 import java.io.IOException;
 import java.lang.reflect.Method;

@@ -1,7 +1,6 @@
 package org.rxjava.apikit.client;
 
 import org.apache.commons.lang3.StringUtils;
-
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
@@ -20,6 +19,10 @@ public class ApiUtils {
      * 正则表达式名称
      */
     private static final Pattern NAMES_PATTERN = Pattern.compile("\\{([^/]+?)}");
+
+    public static String expandUriComponent(String url){
+        return expandUriComponent(url, new HashMap<>(0));
+    }
 
     /**
      * 展开Uri组件

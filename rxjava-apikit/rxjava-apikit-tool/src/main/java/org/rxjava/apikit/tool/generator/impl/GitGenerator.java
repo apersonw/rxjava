@@ -1,5 +1,8 @@
 package org.rxjava.apikit.tool.generator.impl;
 
+import org.rxjava.apikit.tool.generator.AbstractGenerator;
+import org.rxjava.apikit.tool.generator.Context;
+import org.rxjava.apikit.tool.generator.Generator;
 import com.google.common.collect.Iterables;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,19 +13,16 @@ import org.eclipse.jgit.api.LogCommand;
 import org.eclipse.jgit.api.RmCommand;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.awtui.AwtCredentialsProvider;
 import org.eclipse.jgit.dircache.DirCache;
 import org.eclipse.jgit.errors.IncorrectObjectTypeException;
 import org.eclipse.jgit.errors.MissingObjectException;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.*;
-import org.rxjava.apikit.tool.generator.AbstractGenerator;
-import org.rxjava.apikit.tool.generator.Context;
-import org.rxjava.apikit.tool.generator.Generator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
-import org.eclipse.jgit.awtui.AwtCredentialsProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class GitGenerator implements Generator {
 
         //账号信息配置
         CredentialsProvider cp;
-        if (StringUtils.isEmpty(gitUser)) {
+        if (!StringUtils.hasText(gitUser)) {
             cp = new ChainingCredentialsProvider(new NetRCCredentialsProvider(), new AwtCredentialsProvider());
         } else {
             cp = new UsernamePasswordCredentialsProvider(gitUser, gitPassword);

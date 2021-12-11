@@ -5,20 +5,24 @@
 <!--#set(ClassTypeInfo type)-->
 package $!{wrapper.getFullDistPackage()};
 
-<!--#if(wrapper.context.reactive)-->import reactor.core.publisher.Mono;<!--#end-->
+<!--#if(wrapper.context.reactive)-->import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
+<!--#end-->
 import org.bson.types.ObjectId;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.Future;
 import org.rxjava.apikit.client.InputParam;
-
-
 import org.rxjava.apikit.client.*;
 
 $!{wrapper.imports}
 
 public class $!{wrapper.getDistClassName()} {
     private <!--#if(!wrapper.context.reactive)-->Mvc<!--#end-->ClientAdapter clientAdapter;
+    private String authorization;
+    public void setAuthorization(String authorization){
+        this.authorization=authorization;
+    }
 
     /**
     * 必须注入适配器
@@ -26,45 +30,45 @@ public class $!{wrapper.getDistClassName()} {
     private $!{wrapper.getDistClassName()}() {
     }
 
-    public $!{wrapper.getDistClassName()}(MvcClientAdapter clientAdapter) {
+    public $!{wrapper.getDistClassName()}(<!--#if(!wrapper.context.reactive)-->Mvc<!--#end-->ClientAdapter clientAdapter) {
         this.clientAdapter = clientAdapter;
     }
 
     <!--#for(method : classInfo.apiMethodList)-->
-    public <!--#if(wrapper.context.reactive)-->Mono<<!--#end-->$!{wrapper.resultData(method)}<!--#if(wrapper.context.reactive)-->><!--#end--> $!{method.methodName}($!{wrapper.params(method)}) {
-        Map<String, Object> pathParamMap = new HashMap<>();
-        <!--#for(param : method.pathParams)-->
-        pathParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
-        <!--#end-->
-        String requestUrl = ApiUtils.expandUriComponent("$!{method.url}", pathParamMap);
-
-        Map<String, Object> requestPartParamMap = new HashMap<>();
-        <!--#for(param : method.requestPartParams)-->
-        requestPartParamMap.put("$!{param.getFieldName()}", $!{param.getFieldName()});
-        <!--#end-->
+    /**
+    $!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
+    *
+    $!{wrapper.requestComment(method,"     * ")}
+    */
+    public $!{wrapper.resultData(method)} $!{method.methodName}($!{wrapper.params(method)}) {
+        String requestUrl = ApiUtils.expandUriComponent("$!{method.url}");
 
         InputParam inputParam = new InputParam();
 
-        List<Entry<String, Object>> paramList = new ArrayList<>();
-        <!--#for(param : method.requestParams)-->
-        paramList.add(new AbstractMap.SimpleImmutableEntry<>("$!{param.getFieldName()}", $!{param.getFieldName()}));
+        <!--#for(param : method.params)-->
+            <!--#if(param.validParam && !param.jsonParam)-->
+        inputParam.addForm($!{param.fieldName});
+            <!--#end-->
+            <!--#if(param.requestParam)-->
+        inputParam.addRequestParam("$!{param.fieldName}",$!{param.fieldName});
+            <!--#end-->
         <!--#end-->
-        inputParam.setParamList(paramList);
 
-        List<Entry<String, Object>> bodyParamList = new ArrayList<>();
-        <!--#if(method.validParams)-->
-        <!--#for(param : method.validParams)-->
-        bodyParamList.addAll($!{param.fieldName}.encode("", new ArrayList<>()));
+        <!--#if(method.login)-->
+        inputParam.setAuthorization(authorization);
         <!--#end-->
-        <!--#end-->
-        inputParam.setBodyParamList(bodyParamList);
 
-        <!--#if(method.jsonParams)-->
+        <!--#if(method.jsonParams.size() > 0)-->
         <!--#set(param = method.jsonParams[0])-->
         inputParam.setJsonBody($!{param.getFieldName()});
         <!--#end-->
 
+        <!--#if(method.isFlux)-->
+        Mono<$!{wrapper.toResultDataType(method)}> $result = clientAdapter.request("$!{method.type.name()}", requestUrl, inputParam, _$!{method.index}Type);
+        return $result.flatMapIterable(r->r);
+        <!--#else-->
         return clientAdapter.request("$!{method.type.name()}", requestUrl, inputParam, _$!{method.index}Type);
+        <!--#end-->
     }
     <!--#end-->
 

@@ -2,58 +2,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.rxjava</groupId>
+    <groupId>com.rxjava</groupId>
     <artifactId>rxjava</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.9-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <modules>
-        <module>rxjava-spring</module>
-        <module>rxjava-service</module>
-        <module>rxjava-gateway</module>
+<!--        <module>rxjava-starters</module>-->
+<!--        <module>rxjava-starter-parent-webflux</module>-->
+<!--        <module>rxjava-starter-parent-web</module>-->
+<!--        <module>rxjava-utils</module>-->
         <module>rxjava-apikit</module>
-        <module>rxjava-third-qiniu</module>
-        <module>rxjava-third-weixin</module>
-        <module>rxjava-web</module>
-        <module>rxjava-service-web</module>
-        <module>rxjava-webflux</module>
+<!--        <module>rxjava-commons</module>-->
     </modules>
     <properties>
         <!--项目编译版本-->
         <java.encoding>UTF-8</java.encoding>
-        <java.version>15</java.version>
-        <maven.compiler.release>15</maven.compiler.release>
-
-        <kotlin.version>1.4.32</kotlin.version>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>2.0.2</spring-cloud-kubernetes.version>
-        <spring-cloud-dependencies.version>2020.0.2</spring-cloud-dependencies.version>
-        <spring-boot.version>2.4.5</spring-boot.version>
+        <spring-cloud-kubernetes.version>2.1.0</spring-cloud-kubernetes.version>
+        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
+        <spring-cloud-alibaba-dependencies.version>2.2.7.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <spring-boot.version>2.6.1</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
+        <spring-cloud-starter-netflix-hystrix.version>2.2.10.RELEASE</spring-cloud-starter-netflix-hystrix.version>
         <com.google.guava.version>30.1.1-jre</com.google.guava.version>
         <lombok.version>1.18.20</lombok.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-compress.version>1.20</commons-compress.version>
         <commons-io.version>2.8.0</commons-io.version>
-        <javassist.version>3.27.0-GA</javassist.version>
+        <javassist.version>3.28.0-GA</javassist.version>
         <paranamer.version>2.8</paranamer.version>
         <classgraph.version>4.8.86</classgraph.version>
         <httl.version>1.0.11</httl.version>
         <commons-text.version>1.8</commons-text.version>
-        <jackson.version>2.11.0</jackson.version>
+        <jackson.version>2.13.0</jackson.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
         <alipay-sdk-java.version>4.10.29.ALL</alipay-sdk-java.version>
         <zxing.version>3.4.0</zxing.version>
-        <springdoc.version>1.4.1</springdoc.version>
+        <springdoc.version>1.5.1</springdoc.version>
+        <druid.version>1.2.8</druid.version>
+        <de.codecentric.version>2.5.4</de.codecentric.version>
+
 
         <!--插件版本-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-plugin-api.version>3.6.3</maven-plugin-api.version>
         <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
-        <asm.version>9.0</asm.version>
+        <asm.version>9.1</asm.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <jib-maven-plugin.version>3.0.0</jib-maven-plugin.version>
+        <jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
 
         <!--第三方依赖版本-->
         <jedis.version>2.9.0</jedis.version>
@@ -67,14 +67,20 @@
         <httpcore.version>4.4.1</httpcore.version>
         <xstream.version>1.4.11.1</xstream.version>
         <redisson.version>3.13.2</redisson.version>
-        <bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
+        <bouncycastle.version>1.69</bouncycastle.version>
         <joda-time.version>2.10.6</joda-time.version>
         <jpa-spec.version>3.2.4</jpa-spec.version>
         <springfox.version>3.0.0</springfox.version>
+        <aliyun.sms.version>2.0.6</aliyun.sms.version>
+        <easyexcel.version>3.0.4</easyexcel.version>
+        <mybatis-plus.version>3.4.3</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>
+        <freemarker.version>2.3.31</freemarker.version>
+
 
         <!--eclipse-begin-->
         <org.eclipse.jgit.version>5.7.0.202003110725-r</org.eclipse.jgit.version>
-        <org.eclipse.jdt.core.version>3.22.0</org.eclipse.jdt.core.version>
+        <org.eclipse.jdt.core.version>3.26.0</org.eclipse.jdt.core.version>
         <org.eclipse.equinox.registry.version>3.10.0</org.eclipse.equinox.registry.version>
         <org.eclipse.osgi.version>3.16.100</org.eclipse.osgi.version>
         <org.eclipse.equinox.preferences.version>3.8.100</org.eclipse.equinox.preferences.version>
@@ -83,20 +89,11 @@
         <org.eclipse.equinox.common.version>3.14.0</org.eclipse.equinox.common.version>
         <!--eclipse-end-->
 
-        <!--Kotlin增量编译-->
-        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+        <!-- flowable-->
+        <flowable.version>6.7.1</flowable.version>
+
     </properties>
     <dependencies>
-        <!--Kotlin库-->
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-reflect</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test-junit</artifactId>
-            <scope>test</scope>
-        </dependency>
         <!--Lombok库-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -136,10 +133,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-guava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
         <!--Guava库 更加简洁的操作-->
         <dependency>
@@ -189,6 +182,47 @@
                 <artifactId>spring-cloud-starter-oauth2</artifactId>
                 <version>${spring-cloud-starter-oauth2.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-tools</artifactId>
+                <version>3.4.11</version>
+            </dependency>
+            <!--Spring Boot Admin 依赖管理-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${de.codecentric.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${de.codecentric.version}</version>
+            </dependency>
+            <!--Spring Cloud Alibaba Dependencies-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--zipkin-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>2.2.8.RELEASE</version>
+            </dependency>
+            <!--hystrix-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${spring-cloud-starter-netflix-hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+                <version>${spring-cloud-starter-netflix-hystrix.version}</version>
+            </dependency>
             <!--Apache通用帮助类库-->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -221,6 +255,11 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${com.google.guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.checkerframework</groupId>
+                <artifactId>checker-qual</artifactId>
+                <version>3.8.0</version>
             </dependency>
             <!--Lombok库-->
             <dependency>
@@ -337,6 +376,11 @@
                 <version>3.0.0</version>
             </dependency>
             <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>1.5.20</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.maven</groupId>
                 <artifactId>maven-plugin-api</artifactId>
                 <version>${maven-plugin-api.version}</version>
@@ -348,6 +392,12 @@
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!--大数据-->
+            <dependency>
+                <groupId>org.springframework.cloud.stream.app</groupId>
+                <artifactId>spring-cloud-starter-stream-hdfs</artifactId>
+                <version>2.1.4.RELEASE</version>
             </dependency>
             <!--rxjava-third所依赖的包begin-->
             <dependency>
@@ -413,12 +463,12 @@
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk15on</artifactId>
-                <version>${bcprov-jdk15on.version}</version>
+                <version>${bouncycastle.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcpkix-jdk15on</artifactId>
-                <version>${bcprov-jdk15on.version}</version>
+                <version>${bouncycastle.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.zxing</groupId>
@@ -445,36 +495,124 @@
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.5.1</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.5.8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
             <!--rxjava-third所依赖的包end-->
+
+            <dependency>
+                <groupId>cn.gjing</groupId>
+                <artifactId>tools-httpclient</artifactId>
+                <version>1.2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.qcloudsms</groupId>
+                <artifactId>qcloudsms</artifactId>
+                <version>1.0.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>4.16.54.ALL</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.78</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>dysmsapi20170525</artifactId>
+                <version>${aliyun.sms.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
+            <!-- flowable -->
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+
+            <!--mybatis-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-utils</artifactId>
+                <version>3.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-provider-api</artifactId>
+                <version>3.3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-core</artifactId>
+                <version>0.7.7</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>annotations</artifactId>
+                        <groupId>com.google.code.findbugs</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.servo</groupId>
+                <artifactId>servo-core</artifactId>
+                <version>0.10.1</version>
+                <scope>runtime</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.jetbrains.kotlin</groupId>
-                    <artifactId>kotlin-maven-plugin</artifactId>
-                    <version>${kotlin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>compile</id>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>compile</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>test-compile</id>
-                            <phase>test-compile</phase>
-                            <goals>
-                                <goal>test-compile</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <jvmTarget>${java.version}</jvmTarget>
-                    </configuration>
-                </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -490,7 +628,7 @@
                         <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
                         <from>
                             <!--使用openjdk官方镜像，tag是14-jdk-alpine，表示镜像的操作系统是alpine linux,装好了jdk14-->
-                            <image>registry.rxjava.top/docker/base/java:dev-237</image>
+                            <image>registry.cn-chengdu.aliyuncs.com/jmh_test/openjdk11:jdk-11.0.11_9-alpine</image>
                         </from>
                         <!--容器相关的属性-->
                         <container>
@@ -498,6 +636,7 @@
                             <jvmFlags>
                                 <jvmFlag>-Xms256M</jvmFlag>
                                 <jvmFlag>-Xmx256M</jvmFlag>
+                                <jvmFlag>-Duser.timezone=Asia/Shanghai</jvmFlag>
                             </jvmFlags>
                             <!--要暴露的端口-->
                             <ports>
@@ -554,11 +693,6 @@
         </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-            </plugin>
-            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
@@ -567,69 +701,47 @@
     </build>
     <repositories>
         <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-release</id>
-            <name>Spring Release</name>
-            <url>https://repo.spring.io/release</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>oss-snapshot</id>
-            <name>OSS Snapshot</name>
-            <url>http://oss.jfrog.org/oss-snapshot-local</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
             <id>rdc-releases</id>
-            <name>caomang-release</name>
-            <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <url>https://packages.aliyun.com/maven/repository/2129096-release-d6G8wC/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>rdc-snapshots</id>
-            <name>caomang-snapshot</name>
-            <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <url>https://packages.aliyun.com/maven/repository/2129096-snapshot-Xw2LKV/</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>springsource-repos</id>
+            <url>https://repo.spring.io/release/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>springsnapshots-repos</id>
+            <url>https://repo.spring.io/snapshot/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
     <distributionManagement>
-        <!--<snapshotRepository>-->
-        <!--    <id>oss</id>-->
-        <!--    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
-        <!--</snapshotRepository>-->
-        <!--<repository>-->
-        <!--    <id>oss</id>-->
-        <!--    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-        <!--</repository>-->
         <repository>
             <id>rdc-releases</id>
             <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>
@@ -639,29 +751,4 @@
             <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>
         </snapshotRepository>
     </distributionManagement>
-    <!--<licenses>-->
-    <!--    <license>-->
-    <!--        <name>The MIT License (MIT)</name>-->
-    <!--        <url>https://opensource.org/licenses/MIT</url>-->
-    <!--    </license>-->
-    <!--</licenses>-->
-
-    <!--<developers>-->
-    <!--    <developer>-->
-    <!--        <name>happy</name>-->
-    <!--        <email>185408868@qq.com</email>-->
-    <!--    </developer>-->
-    <!--</developers>-->
-
-    <!--<scm>-->
-    <!--    <url>https://github.com/apersonw/rxjava.git</url>-->
-    <!--    <connection>scm:git:git@github.com:apersonw/rxjava.git</connection>-->
-    <!--    <developerConnection>scm:git:git@github.com:apersonw/rxjava.git</developerConnection>-->
-    <!--</scm>-->
-
-    <!--<parent>-->
-    <!--    <groupId>org.sonatype.oss</groupId>-->
-    <!--    <artifactId>oss-parent</artifactId>-->
-    <!--    <version>7</version>-->
-    <!--</parent>-->
 </project>

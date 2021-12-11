@@ -1,9 +1,5 @@
 package org.rxjava.apikit.tool.generator;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
 import org.rxjava.apikit.tool.generator.impl.DefaultPackageNameMapper;
 import org.rxjava.apikit.tool.generator.impl.PatternNameMaper;
@@ -11,7 +7,10 @@ import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.EnumParamClassInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
-import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 import java.util.*;

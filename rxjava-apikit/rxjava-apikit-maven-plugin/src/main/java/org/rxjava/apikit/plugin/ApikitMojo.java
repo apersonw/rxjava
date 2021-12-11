@@ -1,13 +1,13 @@
 package org.rxjava.apikit.plugin;
 
+import org.rxjava.apikit.plugin.bean.Group;
+import org.rxjava.apikit.plugin.bean.Task;
+import org.rxjava.apikit.plugin.utils.MavenUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
-import org.rxjava.apikit.plugin.bean.Group;
-import org.rxjava.apikit.plugin.bean.Task;
-import org.rxjava.apikit.plugin.utils.MavenUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -51,7 +51,8 @@ public class ApikitMojo extends AbstractMojo {
 
         getLog().info("开始执行全部任务" + tasks + pluginContext);
 
+        //rootPackage截取部分字符串
+        rootPackage = rootPackage.replace("rxjava-service", "");
         MavenUtils.generate(project, new Group(tasks, rootPackage, apiType, reactive), javaSourcePath, compileSourceRoots);
-
     }
 }

@@ -3,9 +3,6 @@ package org.rxjava.apikit.plugin.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.rxjava.apikit.plugin.bean.*;
 import org.rxjava.apikit.tool.ApiGenerateManager;
 import org.rxjava.apikit.tool.generator.AbstractGenerator;
@@ -13,6 +10,9 @@ import org.rxjava.apikit.tool.generator.Generator;
 import org.rxjava.apikit.tool.generator.impl.GitGenerator;
 import org.rxjava.apikit.tool.generator.impl.JavaClientApiGenerator;
 import org.rxjava.apikit.tool.generator.impl.JavaScriptApiGenerator;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugin.logging.SystemStreamLog;
 
 import java.util.List;
 
@@ -98,8 +98,11 @@ public class GenerateUtils {
             JavaClientTask javaClientTask = (JavaClientTask) task;
             JavaClientApiGenerator javaClientApiGenerator = new JavaClientApiGenerator();
 
+            String projectName = javaClientTask.getProjectName();
+            String moduleName = projectName.replace("rxjava-service-", "");
             //设置生成的api根包路径
-            javaClientApiGenerator.setOutRootPackage(javaClientTask.getOutRootPackage());
+            String outRootPackage = javaClientTask.getOutRootPackage().replace("org.rxjava", "org.rxjava." + moduleName);
+            javaClientApiGenerator.setOutRootPackage(outRootPackage);
             javaClientApiGenerator.setArtifactId(javaClientTask.getArtifactId());
             javaClientApiGenerator.setParentVersion(javaClientTask.getParentVersion());
             return javaClientApiGenerator;

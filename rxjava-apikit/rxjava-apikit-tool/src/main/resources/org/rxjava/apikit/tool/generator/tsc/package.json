@@ -1,11 +1,14 @@
 {
   "name": "rxjava-api",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc:publish": "rm -fr ./dist && ./node_modules/.bin/tsc && npm publish"
   },
   "dependencies": {
-    "rxjava-api-core": "2.0.1"
+    "rxjava-api-core": "1.0.0",
+    "qs": "^6.10.1"
   },
   "devDependencies": {
     "typescript": "3.9.5"

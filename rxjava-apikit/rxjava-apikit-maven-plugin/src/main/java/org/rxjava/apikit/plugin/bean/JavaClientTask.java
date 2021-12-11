@@ -14,4 +14,5 @@ public class JavaClientTask extends AbstractTask {
     private String outRootPackage;
     private String artifactId;
     private String parentVersion;
+    private String projectName;
 }

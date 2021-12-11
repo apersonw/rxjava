@@ -1,9 +1,9 @@
 package org.rxjava.apikit.tool.generator.impl;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.apache.commons.lang3.StringUtils;
 import org.rxjava.apikit.tool.info.ApiClassInfo;
 import org.rxjava.apikit.tool.info.EnumParamClassInfo;
+import org.rxjava.apikit.tool.info.JavaScriptMethodInfo;
 import org.rxjava.apikit.tool.info.ParamClassInfo;
 import org.rxjava.apikit.tool.utils.JsonUtils;
 import org.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -11,6 +11,7 @@ import org.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaEnumParamClassWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaScriptApiWrapper;
 import org.rxjava.apikit.tool.wrapper.JavaScriptParamClassWrapper;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -110,6 +111,12 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     public void generateBaseFile() throws Exception {
         generateIndexFile();
         generatePackageFile();
+        generateEslintignoreFile();
+        generateEslintrcFile();
+        generateGitignoreFile();
+        generateNpmignoreFile();
+        generateBabelConfigFile();
+        generateTsconfigFile();
     }
 
     /**
@@ -121,12 +128,16 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
         List<Map.Entry<?, ?>> apis = context.getApis().getValues().stream().map(apiInfo -> {
             JavaScriptApiWrapper wrapper = new JavaScriptApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
             String value = wrapper.getDistPackage().replace(".", "/") + '/' + wrapper.getDistClassName();
-            return new AbstractMap.SimpleImmutableEntry<>(wrapper.getDistClassName(), value);
+            String comment = wrapper.comment(" * ");
+            JavaScriptMethodInfo javaScriptMethodInfo = new JavaScriptMethodInfo();
+            javaScriptMethodInfo.setApiName(value);
+            javaScriptMethodInfo.setComment(comment);
+            return new AbstractMap.SimpleImmutableEntry<>(wrapper.getDistClassName(), javaScriptMethodInfo);
         }).collect(Collectors.toList());
 
         parameters.put("apis", apis);
 
-        File jsFile = LocalPathUtils.packToPath(outPath, "", "index", ".ts");
+        File jsFile = LocalPathUtils.packToPath(outPath, "src", "index", ".ts");
         //File dFile = LocalPathUtils.packToPath(outPath, "", "index", ".d.ts");
 
         execute(
@@ -159,7 +170,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
         if (StringUtils.isNotEmpty(this.apiType)) {
             apiType = "-" + this.apiType;
         }
-        packageJson.put("name", "rxjava-apis-" + serviceId + apiType);
+        packageJson.put("name", serviceId + "-api" + apiType);
         if (this.version != null) {
             String prevVersionText = packageJson.get("version").asText();
             if (prevVersionText != null) {
@@ -170,5 +181,77 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
             packageJson.put("version", prevVersionText);
         }
         JsonUtils.DEFAULT_MAPPER.writerWithDefaultPrettyPrinter().writeValue(packageFile, packageJson);
+    }
+
+    /**
+     * 生成Eslintignore文件
+     */
+    private void generateEslintignoreFile() throws Exception {
+        File jsFile = LocalPathUtils.packToPath(outPath, "", ".eslintignore", "");
+        execute(
+                new HashMap<>(0),
+                getTemplateFile("eslintignore.httl"),
+                jsFile
+        );
+    }
+
+    /**
+     * 生成Eslintrc文件
+     */
+    private void generateEslintrcFile() throws Exception {
+        File jsFile = LocalPathUtils.packToPath(outPath, "", ".eslintrc", "");
+        execute(
+                new HashMap<>(0),
+                getTemplateFile("eslintrc.httl"),
+                jsFile
+        );
+    }
+
+    /**
+     * 生成Gitignore文件
+     */
+    private void generateGitignoreFile() throws Exception {
+        File jsFile = LocalPathUtils.packToPath(outPath, "", ".gitignore", "");
+        execute(
+                new HashMap<>(0),
+                getTemplateFile("gitignore.httl"),
+                jsFile
+        );
+    }
+
+    /**
+     * 生成Npmignore文件
+     */
+    private void generateNpmignoreFile() throws Exception {
+        File jsFile = LocalPathUtils.packToPath(outPath, "", ".npmignore", "");
+        execute(
+                new HashMap<>(0),
+                getTemplateFile("npmignore.httl"),
+                jsFile
+        );
+    }
+
+    /**
+     * 生成BabelConfig文件
+     */
+    private void generateBabelConfigFile() throws Exception {
+        File jsFile = LocalPathUtils.packToPath(outPath, "", "babel.config", ".js");
+        execute(
+                new HashMap<>(0),
+                getTemplateFile("babel.config.httl"),
+                jsFile
+        );
+    }
+
+    /**
+     * 生成BabelConfig文件
+     */
+    private void generateTsconfigFile() throws Exception {
+        File jsFile = LocalPathUtils.packToPath(outPath, "", "tsconfig", ".json");
+        execute(
+                new HashMap<>(0),
+                getTemplateFile("tsconfig.httl"),
+                jsFile
+        );
     }
 }

@@ -1,5 +1,7 @@
 package org.rxjava.apikit.plugin;
 
+import org.rxjava.apikit.plugin.bean.Group;
+import org.rxjava.apikit.plugin.utils.MavenUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
@@ -7,9 +9,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
-import org.rxjava.apikit.plugin.bean.Group;
-import org.rxjava.apikit.plugin.utils.MavenUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mojo(
@@ -32,6 +33,7 @@ public class ApikitsMojo extends AbstractMojo {
                 .getCompileSourceRoots()
                 .stream()
                 .filter(str -> !str.contains("generated-sources/annotations"))
+                .filter(str -> !str.contains("generated-sources\\annotations"))
                 .toArray(String[]::new);
 
         if (compileSourceRoots.length > 1) {
@@ -39,9 +41,15 @@ public class ApikitsMojo extends AbstractMojo {
         }
         String sourcePath = compileSourceRoots[0];
         try {
-            log.info("开始执行全部任务:" + groups);
-            for (int i = 0; i < groups.size(); i++) {
-                Group group = groups.get(i);
+            //截取rxjava-service为空字符串
+            List<Group> newGroups = new ArrayList<>();
+            groups.forEach(group -> {
+                group.setRootPackage(group.getRootPackage().replace("rxjava-service-",""));
+                newGroups.add(group);
+            });
+            log.info("开始执行全部任务:" + newGroups);
+            for (int i = 0; i < newGroups.size(); i++) {
+                Group group = newGroups.get(i);
                 log.info("开始执行第" + i + "组:" + group);
                 MavenUtils.generate(project, group, sourcePath, compileSourceRoots);
                 log.info("执行完成第" + i + "组:" + group);

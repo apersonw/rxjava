@@ -20,12 +20,10 @@
             <groupId>org.mongodb</groupId>
             <artifactId>bson</artifactId>
         </dependency>
-        <!--#if(!wrapper.context.reactive)-->
         <dependency>
             <groupId>org.rxjava</groupId>
-            <artifactId>rxjava-web-boot-core</artifactId>
+            <artifactId>rxjava-common-core</artifactId>
             <version>$!{serviceInfo.parentVersion}</version>
         </dependency>
-        <!--#end-->
     </dependencies>
 </project>
