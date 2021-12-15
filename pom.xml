@@ -626,7 +626,7 @@
                         <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
                         <from>
                             <!--使用openjdk官方镜像，tag是14-jdk-alpine，表示镜像的操作系统是alpine linux,装好了jdk14-->
-                            <image>registry.cn-chengdu.aliyuncs.com/jmh_test/openjdk11:jdk-11.0.11_9-alpine</image>
+                            <image>registry.cn-chengdu.aliyuncs.com/rxjava/openjdk11:jdk-11.0.11_9-alpine</image>
                         </from>
                         <!--容器相关的属性-->
                         <container>
@@ -699,8 +699,8 @@
     </build>
     <repositories>
         <repository>
-            <id>rdc-releases</id>
-            <url>https://packages.aliyun.com/maven/repository/2129096-release-d6G8wC/</url>
+            <id>rdc-rxjava-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -709,8 +709,8 @@
             </snapshots>
         </repository>
         <repository>
-            <id>rdc-snapshots</id>
-            <url>https://packages.aliyun.com/maven/repository/2129096-snapshot-Xw2LKV/</url>
+            <id>rdc-rxjava-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -741,11 +741,11 @@
     </repositories>
     <distributionManagement>
         <repository>
-            <id>rdc-releases</id>
+            <id>rdc-rxjava-releases</id>
             <url>https://packages.aliyun.com/maven/repository/2002270-release-BynRSk/</url>
         </repository>
         <snapshotRepository>
-            <id>rdc-snapshots</id>
+            <id>rdc-rxjava-snapshots</id>
             <url>https://packages.aliyun.com/maven/repository/2002270-snapshot-SMSKFU/</url>
         </snapshotRepository>
     </distributionManagement>
