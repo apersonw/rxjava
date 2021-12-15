@@ -3,21 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>top.rxjava</groupId>
-        <artifactId>rxjava</artifactId>
+        <artifactId>rxjava-starter</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rxjava-starter</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>rxjava-starter-webflux</module>
-        <module>rxjava-starter-bus-amqp</module>
-        <module>rxjava-starter-mongo-reactive</module>
-    </modules>
+    <artifactId>rxjava-starter-bus-amqp</artifactId>
+    <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
     </dependencies>
-    <dependencyManagement>
-        <dependencies>
-        </dependencies>
-    </dependencyManagement>
 </project>
