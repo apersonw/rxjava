@@ -1,6 +1,5 @@
 package top.rxjava.common.utils;
 
-import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -11,6 +10,7 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import org.apache.commons.lang3.StringUtils;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
@@ -105,13 +105,8 @@ public class JsonUtils {
         }
     }
 
-    /**
-     * @param content given JSON content String
-     * @param clazz   需要强转的类型
-     * @return 集合
-     */
     public static <T> List<T> parseArray(String content, Class<T> clazz) {
-        if (StrUtil.isEmpty(content)) {
+        if (StringUtils.isEmpty(content)) {
             return new ArrayList<>();
         }
         try {
