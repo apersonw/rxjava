@@ -7,6 +7,7 @@ import top.rxjava.common.core.exception.FieldError;
 
 /**
  * @author happy
+ * 错误消息帮助类
  */
 public class ErrorMessageUtils {
     public static void handlerI18n(ErrorMessage errorMessage, MessageSourceAccessor messageSourceAccessor) {
