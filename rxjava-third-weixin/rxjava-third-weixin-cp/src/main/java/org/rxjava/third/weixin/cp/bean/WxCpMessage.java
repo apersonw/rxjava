@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.api.WxConsts.KefuMsgType;
-import org.rxjava.third.weixin.cp.bean.article.MpnewsArticle;
-import org.rxjava.third.weixin.cp.bean.article.NewArticle;
-import org.rxjava.third.weixin.cp.bean.messagebuilder.*;
-import org.rxjava.third.weixin.cp.bean.taskcard.TaskCardButton;
+import top.rxjava.third.weixin.common.api.WxConsts.KefuMsgType;
+import top.rxjava.third.weixin.cp.bean.article.MpnewsArticle;
+import top.rxjava.third.weixin.cp.bean.article.NewArticle;
+import top.rxjava.third.weixin.cp.bean.messagebuilder.*;
+import top.rxjava.third.weixin.cp.bean.taskcard.TaskCardButton;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.rxjava.third.weixin.common.api.WxConsts.KefuMsgType.*;
+import static top.rxjava.third.weixin.common.api.WxConsts.KefuMsgType.*;
 
 /**
  * 消息

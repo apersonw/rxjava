@@ -23,11 +23,11 @@
  * 需要导入架包commons-codec-1.9（或commons-codec-1.8等其他版本）
  * 官方下载地址：http://commons.apache.org/proper/commons-codec/download_codec.cgi
  */
-package org.rxjava.third.weixin.cp.util.crypto;
+package top.rxjava.third.weixin.cp.util.crypto;
 
 import org.apache.commons.codec.binary.Base64;
-import org.rxjava.third.weixin.common.util.crypto.WxCryptUtil;
-import org.rxjava.third.weixin.cp.config.WxCpConfigStorage;
+import top.rxjava.third.weixin.common.util.crypto.WxCryptUtil;
+import top.rxjava.third.weixin.cp.config.WxCpConfigStorage;
 
 public class WxCpCryptUtil extends WxCryptUtil {
 

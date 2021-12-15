@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.impl.WxMpServiceImpl;
-import org.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.open.api.WxOpenComponentService;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.impl.WxMpServiceImpl;
+import top.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.open.api.WxOpenComponentService;
 
 /**
  */

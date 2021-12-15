@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustry;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustryEnum;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustry;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustryEnum;
 
 import java.lang.reflect.Type;
 

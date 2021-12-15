@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.bean.message;
+package top.rxjava.third.weixin.mp.bean.message;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.common.util.xml.XStreamMediaIdConverter;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.common.util.xml.XStreamMediaIdConverter;
 
 @XStreamAlias("xml")
 @Data

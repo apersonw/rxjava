@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.util;
+package top.rxjava.third.weixin.miniapp.util;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -9,15 +9,15 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.ResponseHandler;
-import org.rxjava.third.weixin.common.util.http.apache.InputStreamResponseHandler;
-import org.rxjava.third.weixin.common.util.http.apache.Utf8ResponseHandler;
-import org.rxjava.third.weixin.miniapp.bean.AbstractWxMaQrcodeWrapper;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.ResponseHandler;
+import top.rxjava.third.weixin.common.util.http.apache.InputStreamResponseHandler;
+import top.rxjava.third.weixin.common.util.http.apache.Utf8ResponseHandler;
+import top.rxjava.third.weixin.miniapp.bean.AbstractWxMaQrcodeWrapper;
 
 import java.io.IOException;
 import java.io.InputStream;

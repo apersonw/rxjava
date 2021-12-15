@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.result;
+package top.rxjava.third.weixin.pay.bean.result;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
@@ -7,13 +7,13 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
-import org.rxjava.third.weixin.pay.service.WxPayService;
-import org.rxjava.third.weixin.pay.util.SignUtils;
-import org.rxjava.third.weixin.pay.util.XmlConfig;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.service.WxPayService;
+import top.rxjava.third.weixin.pay.util.SignUtils;
+import top.rxjava.third.weixin.pay.util.XmlConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;

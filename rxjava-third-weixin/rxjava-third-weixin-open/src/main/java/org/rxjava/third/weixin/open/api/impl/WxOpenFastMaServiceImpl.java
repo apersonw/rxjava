@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.api.impl.WxMaServiceImpl;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
-import org.rxjava.third.weixin.open.api.WxOpenComponentService;
-import org.rxjava.third.weixin.open.api.WxOpenFastMaService;
-import org.rxjava.third.weixin.open.bean.ma.WxFastMaCategory;
-import org.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
-import org.rxjava.third.weixin.open.bean.result.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.api.impl.WxMaServiceImpl;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.open.api.WxOpenComponentService;
+import top.rxjava.third.weixin.open.api.WxOpenFastMaService;
+import top.rxjava.third.weixin.open.bean.ma.WxFastMaCategory;
+import top.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
+import top.rxjava.third.weixin.open.bean.result.*;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http.apache;
+package top.rxjava.third.weixin.common.util.http.apache;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHost;

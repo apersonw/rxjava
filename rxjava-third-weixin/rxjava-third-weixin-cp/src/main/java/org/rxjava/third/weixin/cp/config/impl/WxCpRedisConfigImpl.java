@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.cp.config.impl;
+package top.rxjava.third.weixin.cp.config.impl;
 
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.cp.config.WxCpConfigStorage;
-import org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.cp.config.WxCpConfigStorage;
+import top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;

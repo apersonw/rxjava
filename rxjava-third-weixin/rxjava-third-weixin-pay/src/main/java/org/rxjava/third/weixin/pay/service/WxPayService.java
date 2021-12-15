@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.pay.service;
+package top.rxjava.third.weixin.pay.service;
 
-import org.rxjava.third.weixin.pay.bean.WxPayApiData;
-import org.rxjava.third.weixin.pay.bean.coupon.*;
-import org.rxjava.third.weixin.pay.bean.request.*;
-import org.rxjava.third.weixin.pay.bean.result.*;
-import org.rxjava.third.weixin.pay.bean.notify.WxPayOrderNotifyResult;
-import org.rxjava.third.weixin.pay.bean.notify.WxPayRefundNotifyResult;
-import org.rxjava.third.weixin.pay.bean.notify.WxScanPayNotifyResult;
-import org.rxjava.third.weixin.pay.config.WxPayConfig;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.bean.WxPayApiData;
+import top.rxjava.third.weixin.pay.bean.coupon.*;
+import top.rxjava.third.weixin.pay.bean.request.*;
+import top.rxjava.third.weixin.pay.bean.result.*;
+import top.rxjava.third.weixin.pay.bean.notify.WxPayOrderNotifyResult;
+import top.rxjava.third.weixin.pay.bean.notify.WxPayRefundNotifyResult;
+import top.rxjava.third.weixin.pay.bean.notify.WxScanPayNotifyResult;
+import top.rxjava.third.weixin.pay.config.WxPayConfig;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 import java.io.File;
 import java.net.URI;
@@ -175,9 +175,9 @@ public interface WxPayService {
     /**
      * 调用统一下单接口，并组装生成支付所需参数对象.
      *
-     * @param <T>     请使用{@link org.rxjava.third.weixin.wxpay.bean.order}包下的类
+     * @param <T>     请使用{@link top.rxjava.third.weixin.wxpay.bean.order}包下的类
      * @param request 统一下单请求参数
-     * @return 返回 {@link org.rxjava.third.weixin.wxpay.bean.order}包下的类对象
+     * @return 返回 {@link top.rxjava.third.weixin.wxpay.bean.order}包下的类对象
      * @throws WxPayException the wx pay exception
      */
     <T> T createOrder(WxPayUnifiedOrderRequest request) throws WxPayException;

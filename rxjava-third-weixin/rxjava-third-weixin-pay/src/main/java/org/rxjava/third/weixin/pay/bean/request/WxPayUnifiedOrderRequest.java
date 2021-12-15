@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.pay.bean.request;
+package top.rxjava.third.weixin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.annotation.Required;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.pay.config.WxPayConfig;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants.TradeType;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.common.annotation.Required;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.pay.config.WxPayConfig;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants.TradeType;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 import java.util.Map;
 

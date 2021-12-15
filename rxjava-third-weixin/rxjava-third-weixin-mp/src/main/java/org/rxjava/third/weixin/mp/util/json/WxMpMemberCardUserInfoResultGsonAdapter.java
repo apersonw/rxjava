@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.mp.bean.membercard.MemberCardUserInfo;
-import org.rxjava.third.weixin.mp.bean.membercard.NameValues;
-import org.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardUserInfoResult;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.mp.bean.membercard.MemberCardUserInfo;
+import top.rxjava.third.weixin.mp.bean.membercard.NameValues;
+import top.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardUserInfoResult;
 
 import java.lang.reflect.Type;
 
-import static org.rxjava.third.weixin.common.util.json.GsonHelper.getString;
+import static top.rxjava.third.weixin.common.util.json.GsonHelper.getString;
 
 /**
  * Json to WxMpMemberCardUserInfoResult 的转换适配器

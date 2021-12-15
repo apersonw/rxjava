@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.WxMpShakeInfoResult;
-import org.rxjava.third.weixin.mp.bean.WxMpShakeQuery;
-import org.rxjava.third.weixin.mp.bean.shake.*;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.WxMpShakeInfoResult;
+import top.rxjava.third.weixin.mp.bean.WxMpShakeQuery;
+import top.rxjava.third.weixin.mp.bean.shake.*;
 
 /**
  * 摇一摇周边的相关接口.

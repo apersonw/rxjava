@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import org.apache.http.HttpHost;
 import org.apache.http.client.config.RequestConfig;
@@ -6,16 +6,16 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.HttpType;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.HttpType;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
 
 import java.io.IOException;
 import java.util.concurrent.locks.Lock;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCESS_TOKEN_URL;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCESS_TOKEN_URL;
 
 /**
  * apache http client方式实现.

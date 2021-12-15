@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.cp.message;
+package top.rxjava.third.weixin.cp.message;
 
-import org.rxjava.third.weixin.cp.bean.WxCpXmlMessage;
+import top.rxjava.third.weixin.cp.bean.WxCpXmlMessage;
 
 /**
  * 消息匹配器，用在消息路由的时候

@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
 import com.google.gson.JsonArray;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.cloud.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.cloud.*;
 
 import java.util.List;
 import java.util.Map;

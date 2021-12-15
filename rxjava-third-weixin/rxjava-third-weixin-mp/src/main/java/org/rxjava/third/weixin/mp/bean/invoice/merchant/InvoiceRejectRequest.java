@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.invoice.merchant;
+package top.rxjava.third.weixin.mp.bean.invoice.merchant;
 
 import java.io.Serializable;
 

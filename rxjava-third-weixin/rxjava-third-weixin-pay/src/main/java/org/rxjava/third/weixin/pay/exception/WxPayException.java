@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.pay.exception;
+package top.rxjava.third.weixin.pay.exception;
 
 import com.google.common.base.Joiner;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
 
 /**
  * 微信支付异常结果类

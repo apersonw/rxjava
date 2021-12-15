@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.common.service;
+package top.rxjava.third.weixin.common.service;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 
 /**
  * 微信服务接口.

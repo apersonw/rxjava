@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.open.executor;
+package top.rxjava.third.weixin.open.executor;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.fs.FileUtils;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
-import org.rxjava.third.weixin.open.bean.ma.WxMaQrcodeParam;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.fs.FileUtils;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
+import top.rxjava.third.weixin.open.bean.ma.WxMaQrcodeParam;
 
 import java.io.File;
 import java.io.IOException;

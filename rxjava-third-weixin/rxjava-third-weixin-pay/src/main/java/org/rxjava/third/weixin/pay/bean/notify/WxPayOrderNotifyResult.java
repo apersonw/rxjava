@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.pay.bean.notify;
+package top.rxjava.third.weixin.pay.bean.notify;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants;
-import org.rxjava.third.weixin.pay.converter.WxPayOrderNotifyResultConverter;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
-import org.rxjava.third.weixin.pay.service.WxPayService;
-import org.rxjava.third.weixin.pay.util.SignUtils;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants;
+import top.rxjava.third.weixin.pay.converter.WxPayOrderNotifyResultConverter;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.service.WxPayService;
+import top.rxjava.third.weixin.pay.util.SignUtils;
 import org.w3c.dom.Document;
 
 import java.util.ArrayList;

@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.cp.util.json;
+package top.rxjava.third.weixin.cp.util.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.rxjava.third.weixin.common.bean.menu.WxMenu;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.util.json.WxErrorAdapter;
-import org.rxjava.third.weixin.cp.bean.WxCpChat;
-import org.rxjava.third.weixin.cp.bean.WxCpDepart;
-import org.rxjava.third.weixin.cp.bean.WxCpTag;
-import org.rxjava.third.weixin.cp.bean.WxCpUser;
+import top.rxjava.third.weixin.common.bean.menu.WxMenu;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.util.json.WxErrorAdapter;
+import top.rxjava.third.weixin.cp.bean.WxCpChat;
+import top.rxjava.third.weixin.cp.bean.WxCpDepart;
+import top.rxjava.third.weixin.cp.bean.WxCpTag;
+import top.rxjava.third.weixin.cp.bean.WxCpUser;
 
 /**
  *

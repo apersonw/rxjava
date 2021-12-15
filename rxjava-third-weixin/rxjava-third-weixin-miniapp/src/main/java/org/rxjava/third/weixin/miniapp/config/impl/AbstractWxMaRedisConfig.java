@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.config.impl;
+package top.rxjava.third.weixin.miniapp.config.impl;
 
 import com.github.jedis.lock.JedisLock;
 import redis.clients.jedis.Jedis;

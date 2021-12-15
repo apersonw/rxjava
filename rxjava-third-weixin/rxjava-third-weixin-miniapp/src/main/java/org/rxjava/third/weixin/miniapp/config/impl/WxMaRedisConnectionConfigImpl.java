@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.config.impl;
+package top.rxjava.third.weixin.miniapp.config.impl;
 
 import lombok.RequiredArgsConstructor;
 import redis.clients.jedis.Jedis;

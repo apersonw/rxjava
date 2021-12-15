@@ -6,11 +6,11 @@
  * arose from modification of the original source, or other redistribution of this source
  * is not permitted without written permission of the KINGSTAR MEDIA SOLUTIONS LTD.
  */
-package org.rxjava.third.weixin.cp.util.json;
+package top.rxjava.third.weixin.cp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.cp.bean.WxCpTag;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.cp.bean.WxCpTag;
 
 import java.lang.reflect.Type;
 

@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.miniapp.bean.template;
+package top.rxjava.third.weixin.miniapp.bean.template;
 
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
 
 import java.io.Serializable;
 import java.util.List;

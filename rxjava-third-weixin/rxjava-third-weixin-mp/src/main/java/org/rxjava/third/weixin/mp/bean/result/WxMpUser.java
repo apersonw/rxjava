@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.mp.bean.result;
+package top.rxjava.third.weixin.mp.bean.result;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import lombok.Data;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;

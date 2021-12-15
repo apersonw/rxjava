@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.membercard;
+package top.rxjava.third.weixin.mp.bean.membercard;
 
 import lombok.Data;
 

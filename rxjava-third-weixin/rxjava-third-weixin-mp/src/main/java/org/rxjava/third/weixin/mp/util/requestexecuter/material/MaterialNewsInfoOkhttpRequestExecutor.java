@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.mp.util.requestexecuter.material;
+package top.rxjava.third.weixin.mp.util.requestexecuter.material;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.mp.bean.material.WxMpMaterialNews;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.mp.bean.material.WxMpMaterialNews;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.IOException;
 

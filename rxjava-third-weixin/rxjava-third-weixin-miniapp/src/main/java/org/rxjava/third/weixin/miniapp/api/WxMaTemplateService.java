@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateAddResult;
-import org.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateLibraryGetResult;
-import org.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateLibraryListResult;
-import org.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateListResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateAddResult;
+import top.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateLibraryGetResult;
+import top.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateLibraryListResult;
+import top.rxjava.third.weixin.miniapp.bean.template.WxMaTemplateListResult;
 
 import java.util.List;
 

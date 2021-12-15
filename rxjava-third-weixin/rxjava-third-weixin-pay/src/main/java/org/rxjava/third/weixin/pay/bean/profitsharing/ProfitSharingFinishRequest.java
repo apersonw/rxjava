@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.pay.bean.profitsharing;
+package top.rxjava.third.weixin.pay.bean.profitsharing;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.*;
-import org.rxjava.third.weixin.common.annotation.Required;
-import org.rxjava.third.weixin.pay.bean.request.BaseWxPayRequest;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants;
+import top.rxjava.third.weixin.common.annotation.Required;
+import top.rxjava.third.weixin.pay.bean.request.BaseWxPayRequest;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants;
 
 import java.util.Map;
 

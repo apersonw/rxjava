@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.bean.WxCpOauth2UserInfo;
-import org.rxjava.third.weixin.cp.bean.WxCpUserDetail;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.bean.WxCpOauth2UserInfo;
+import top.rxjava.third.weixin.cp.bean.WxCpUserDetail;
 
 /**
  * OAuth2相关管理接口.
@@ -33,7 +33,7 @@ public interface WxCpOAuth2Service {
      *
      * @param redirectUri 跳转链接地址
      * @param state       状态码
-     * @param scope       取值参考org.rxjava.third.weixin.common.api.WxConsts.OAuth2Scope类
+     * @param scope       取值参考top.rxjava.third.weixin.common.api.WxConsts.OAuth2Scope类
      * @return url
      */
     String buildAuthorizationUrl(String redirectUri, String state, String scope);

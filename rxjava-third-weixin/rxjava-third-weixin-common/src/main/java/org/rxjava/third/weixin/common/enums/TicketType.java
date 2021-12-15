@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.enums;
+package top.rxjava.third.weixin.common.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.miniapp.config.impl;
+package top.rxjava.third.weixin.miniapp.config.impl;
 
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RedissonClient;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.redis.RedissonWxRedisOps;
-import org.rxjava.third.weixin.common.redis.WxRedisOps;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.redis.RedissonWxRedisOps;
+import top.rxjava.third.weixin.common.redis.WxRedisOps;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

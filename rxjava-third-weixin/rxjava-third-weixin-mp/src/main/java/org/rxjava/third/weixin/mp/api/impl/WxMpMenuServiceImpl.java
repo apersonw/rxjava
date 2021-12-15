@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.rxjava.third.weixin.common.bean.menu.WxMenu;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpMenuService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.menu.WxMpGetSelfMenuInfoResult;
-import org.rxjava.third.weixin.mp.bean.menu.WxMpMenu;
-import org.rxjava.third.weixin.mp.enums.WxMpApiUrl;
+import top.rxjava.third.weixin.common.bean.menu.WxMenu;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpMenuService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.menu.WxMpGetSelfMenuInfoResult;
+import top.rxjava.third.weixin.mp.bean.menu.WxMpMenu;
+import top.rxjava.third.weixin.mp.enums.WxMpApiUrl;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Menu.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Menu.*;
 
 /**
  */

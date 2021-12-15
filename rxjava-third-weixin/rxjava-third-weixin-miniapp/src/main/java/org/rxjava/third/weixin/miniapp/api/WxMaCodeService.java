@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.code.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.code.*;
 
 import java.util.List;
 

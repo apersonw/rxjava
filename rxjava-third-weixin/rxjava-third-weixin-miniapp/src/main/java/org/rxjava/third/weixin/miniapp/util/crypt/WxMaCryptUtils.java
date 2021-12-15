@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.miniapp.util.crypt;
+package top.rxjava.third.weixin.miniapp.util.crypt;
 
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.rxjava.third.weixin.common.util.crypto.PKCS7Encoder;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.common.util.crypto.PKCS7Encoder;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -18,7 +18,7 @@ import java.util.Arrays;
 /**
  *
  */
-public class WxMaCryptUtils extends org.rxjava.third.weixin.common.util.crypto.WxCryptUtil {
+public class WxMaCryptUtils extends top.rxjava.third.weixin.common.util.crypto.WxCryptUtil {
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     public WxMaCryptUtils(WxMaConfig config) {

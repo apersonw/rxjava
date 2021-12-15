@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http.jodd;
+package top.rxjava.third.weixin.common.util.http.jodd;
 
 import jodd.http.HttpConnectionProvider;
 import jodd.http.HttpRequest;
@@ -7,13 +7,13 @@ import jodd.http.ProxyInfo;
 import jodd.util.StringPool;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.fs.FileUtils;
-import org.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.HttpResponseProxy;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.fs.FileUtils;
+import top.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.HttpResponseProxy;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

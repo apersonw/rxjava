@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.api;
+package top.rxjava.third.weixin.common.api;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
@@ -6,15 +6,15 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.common.util.XmlUtils;
-import org.rxjava.third.weixin.common.util.xml.IntegerArrayConverter;
-import org.rxjava.third.weixin.common.util.xml.LongArrayConverter;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.cp.config.WxCpConfigStorage;
-import org.rxjava.third.weixin.cp.util.crypto.WxCpCryptUtil;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
-import org.rxjava.third.weixin.cp.util.xml.XStreamTransformer;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.common.util.XmlUtils;
+import top.rxjava.third.weixin.common.util.xml.IntegerArrayConverter;
+import top.rxjava.third.weixin.common.util.xml.LongArrayConverter;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.cp.config.WxCpConfigStorage;
+import top.rxjava.third.weixin.cp.util.crypto.WxCpCryptUtil;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.cp.util.xml.XStreamTransformer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -158,7 +158,7 @@ public class WxCpXmlMessage implements Serializable {
 
     /**
      * 通讯录变更事件.
-     * 请参考常量 org.rxjava.third.weixin.cp.constant.WxCpConsts.ContactChangeType
+     * 请参考常量 top.rxjava.third.weixin.cp.constant.WxCpConsts.ContactChangeType
      */
     @XStreamAlias("ChangeType")
     @XStreamConverter(value = XStreamCDataConverter.class)

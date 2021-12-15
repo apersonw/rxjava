@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.bean.datacube;
+package top.rxjava.third.weixin.mp.bean.datacube;
 
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.Data;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 import java.util.Date;

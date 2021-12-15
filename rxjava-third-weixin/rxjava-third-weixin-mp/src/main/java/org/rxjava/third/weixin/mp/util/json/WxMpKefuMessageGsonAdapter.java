@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.*;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.api.WxConsts.KefuMsgType;
-import org.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
+import top.rxjava.third.weixin.common.api.WxConsts.KefuMsgType;
+import top.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 import java.lang.reflect.Type;
 

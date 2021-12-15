@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.mp.util.requestexecuter.material;
+package top.rxjava.third.weixin.mp.util.requestexecuter.material;
 
 import okhttp3.*;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.mp.bean.material.WxMpMaterial;
-import org.rxjava.third.weixin.mp.bean.material.WxMpMaterialUploadResult;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.mp.bean.material.WxMpMaterial;
+import top.rxjava.third.weixin.mp.bean.material.WxMpMaterialUploadResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.config.impl;
+package top.rxjava.third.weixin.mp.config.impl;
 
 import lombok.Data;
-import org.rxjava.third.weixin.common.enums.TicketType;
-import org.rxjava.third.weixin.common.redis.JedisWxRedisOps;
-import org.rxjava.third.weixin.common.redis.WxRedisOps;
+import top.rxjava.third.weixin.common.enums.TicketType;
+import top.rxjava.third.weixin.common.redis.JedisWxRedisOps;
+import top.rxjava.third.weixin.common.redis.WxRedisOps;
 import redis.clients.jedis.JedisPool;
 
 import java.util.concurrent.TimeUnit;

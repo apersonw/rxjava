@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.bean.WxCpAppChatMessage;
-import org.rxjava.third.weixin.cp.bean.WxCpChat;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.bean.WxCpAppChatMessage;
+import top.rxjava.third.weixin.cp.bean.WxCpChat;
 
 import java.util.List;
 

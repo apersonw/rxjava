@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.api.WxCpAgentService;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.WxCpAgent;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.api.WxCpAgentService;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.WxCpAgent;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.List;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Agent.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Agent.*;
 
 
 /**

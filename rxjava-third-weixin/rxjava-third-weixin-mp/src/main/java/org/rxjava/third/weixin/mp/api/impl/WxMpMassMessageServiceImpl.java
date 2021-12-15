@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpMassMessageService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.*;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassGetResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassSendResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassSpeedGetResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassUploadResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpMassMessageService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.*;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassGetResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassSendResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassSpeedGetResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassUploadResult;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.MassMessage;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.MassMessage;
 
 /**
  * 群发消息服务类

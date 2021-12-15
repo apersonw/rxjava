@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.open.bean.auth;
+package top.rxjava.third.weixin.open.bean.auth;
 
 import lombok.Data;
 import org.apache.commons.lang3.tuple.Pair;

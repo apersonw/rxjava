@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.util.requestexecuter.material;
+package top.rxjava.third.weixin.mp.util.requestexecuter.material;
 
 import org.apache.http.Consts;
 import org.apache.http.HttpHost;
@@ -10,14 +10,14 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.apache.Utf8ResponseHandler;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.mp.bean.material.WxMpMaterial;
-import org.rxjava.third.weixin.mp.bean.material.WxMpMaterialUploadResult;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.apache.Utf8ResponseHandler;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.mp.bean.material.WxMpMaterial;
+import top.rxjava.third.weixin.mp.bean.material.WxMpMaterialUploadResult;
 
 import java.io.File;
 import java.io.FileNotFoundException;

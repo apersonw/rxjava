@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.converter;
+package top.rxjava.third.weixin.pay.converter;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -11,8 +11,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.mapper.Mapper;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.pay.bean.notify.WxPayOrderNotifyCoupon;
-import org.rxjava.third.weixin.pay.bean.notify.WxPayOrderNotifyResult;
+import top.rxjava.third.weixin.pay.bean.notify.WxPayOrderNotifyCoupon;
+import top.rxjava.third.weixin.pay.bean.notify.WxPayOrderNotifyResult;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;

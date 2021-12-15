@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.mp.bean.store;
+package top.rxjava.third.weixin.mp.bean.store;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
-import org.rxjava.third.weixin.common.annotation.Required;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.annotation.Required;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

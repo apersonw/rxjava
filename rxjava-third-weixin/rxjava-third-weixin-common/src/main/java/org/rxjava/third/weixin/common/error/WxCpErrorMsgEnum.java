@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.error;
+package top.rxjava.third.weixin.common.error;
 
 import lombok.Getter;
 

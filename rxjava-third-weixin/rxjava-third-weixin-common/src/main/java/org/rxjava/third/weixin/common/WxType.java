@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common;
+package top.rxjava.third.weixin.common;
 
 /**
  * 微信类型枚举.

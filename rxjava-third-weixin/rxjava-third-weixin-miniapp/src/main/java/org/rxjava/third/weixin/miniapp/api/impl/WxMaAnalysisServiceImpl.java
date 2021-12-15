@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.api.WxMaAnalysisService;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.bean.analysis.*;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.api.WxMaAnalysisService;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.bean.analysis.*;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.lang.reflect.Type;
 import java.util.Date;

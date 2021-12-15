@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.WxMaMediaAsyncCheckResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.WxMaMediaAsyncCheckResult;
 
 import java.io.File;
 
@@ -57,7 +57,7 @@ public interface WxMaSecCheckService {
      * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/sec-check/security.mediaCheckAsync.html
      *
      * @param mediaUrl  要检测的多媒体url
-     * @param mediaType 媒体类型,{@link org.rxjava.third.weixin.miniapp.constant.WxMaConstants.SecCheckMediaType}
+     * @param mediaType 媒体类型,{@link top.rxjava.third.weixin.miniapp.constant.WxMaConstants.SecCheckMediaType}
      * @return
      */
     WxMaMediaAsyncCheckResult mediaCheckAsync(String mediaUrl, int mediaType) throws WxErrorException;

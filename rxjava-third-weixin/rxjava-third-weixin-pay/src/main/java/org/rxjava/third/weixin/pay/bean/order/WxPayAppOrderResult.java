@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.order;
+package top.rxjava.third.weixin.pay.bean.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

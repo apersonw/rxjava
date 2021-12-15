@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.card.enums;
+package top.rxjava.third.weixin.mp.bean.card.enums;
 
 /**
  * 会员信息类目半自定义名称，当开发者变更这类类目信息的value值时 可以选择触发系统模板消息通知用户。

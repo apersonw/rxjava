@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.miniapp.bean;
+package top.rxjava.third.weixin.miniapp.bean;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.rxjava.third.weixin.miniapp.builder.ImageMessageBuilder;
-import org.rxjava.third.weixin.miniapp.builder.LinkMessageBuilder;
-import org.rxjava.third.weixin.miniapp.builder.MaPageMessageBuilder;
-import org.rxjava.third.weixin.miniapp.builder.TextMessageBuilder;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.miniapp.builder.ImageMessageBuilder;
+import top.rxjava.third.weixin.miniapp.builder.LinkMessageBuilder;
+import top.rxjava.third.weixin.miniapp.builder.MaPageMessageBuilder;
+import top.rxjava.third.weixin.miniapp.builder.TextMessageBuilder;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.io.Serializable;
 

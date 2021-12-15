@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.miniapp.builder;
+package top.rxjava.third.weixin.miniapp.builder;
 
-import org.rxjava.third.weixin.miniapp.bean.WxMaKefuMessage;
+import top.rxjava.third.weixin.miniapp.bean.WxMaKefuMessage;
 
 /**
  *

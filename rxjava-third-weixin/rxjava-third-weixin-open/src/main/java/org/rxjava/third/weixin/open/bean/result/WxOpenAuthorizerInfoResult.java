@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.open.bean.result;
+package top.rxjava.third.weixin.open.bean.result;
 
 import lombok.Data;
-import org.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizationInfo;
-import org.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizerInfo;
+import top.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizationInfo;
+import top.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizerInfo;
 
 import java.io.Serializable;
 

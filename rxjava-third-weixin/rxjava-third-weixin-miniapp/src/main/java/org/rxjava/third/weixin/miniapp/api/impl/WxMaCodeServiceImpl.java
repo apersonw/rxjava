@@ -1,19 +1,19 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.miniapp.api.WxMaCodeService;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.bean.code.*;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.miniapp.api.WxMaCodeService;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.bean.code.*;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.io.File;
 import java.io.IOException;

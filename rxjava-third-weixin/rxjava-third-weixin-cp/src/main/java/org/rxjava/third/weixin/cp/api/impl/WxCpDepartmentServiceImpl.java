@@ -1,19 +1,19 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.cp.api.WxCpDepartmentService;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.WxCpDepart;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.cp.api.WxCpDepartmentService;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.WxCpDepart;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.List;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Department.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Department.*;
 
 /**
  * 部门管理接口

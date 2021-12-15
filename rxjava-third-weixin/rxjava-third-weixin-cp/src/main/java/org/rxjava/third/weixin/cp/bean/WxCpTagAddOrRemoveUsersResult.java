@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.google.common.base.Splitter;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.io.Serializable;
 import java.util.Collections;

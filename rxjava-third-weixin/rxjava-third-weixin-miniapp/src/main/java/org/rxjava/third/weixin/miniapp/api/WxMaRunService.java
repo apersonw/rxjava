@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.miniapp.bean.WxMaRunStepInfo;
+import top.rxjava.third.weixin.miniapp.bean.WxMaRunStepInfo;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.miniapp.message;
+package top.rxjava.third.weixin.miniapp.message;
 
-import org.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.session.WxSessionManager;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.bean.WxMaMessage;
+import top.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.session.WxSessionManager;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.bean.WxMaMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

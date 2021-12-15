@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.*;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassGetResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassSendResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassSpeedGetResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpMassUploadResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.*;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassGetResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassSendResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassSpeedGetResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpMassUploadResult;
 
 /**
  * 群发消息服务类.

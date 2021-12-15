@@ -1,17 +1,17 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
 
 import lombok.Data;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.enums.TicketType;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
-import org.rxjava.third.weixin.mp.bean.WxMpHostConfig;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.open.api.WxOpenConfigStorage;
-import org.rxjava.third.weixin.open.bean.WxOpenAuthorizerAccessToken;
-import org.rxjava.third.weixin.open.bean.WxOpenComponentAccessToken;
-import org.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.enums.TicketType;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.mp.bean.WxMpHostConfig;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.open.api.WxOpenConfigStorage;
+import top.rxjava.third.weixin.open.bean.WxOpenAuthorizerAccessToken;
+import top.rxjava.third.weixin.open.bean.WxOpenComponentAccessToken;
+import top.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
 
 import java.io.File;
 import java.util.Map;

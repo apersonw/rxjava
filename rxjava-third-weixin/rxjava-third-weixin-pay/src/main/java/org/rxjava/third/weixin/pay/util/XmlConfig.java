@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.pay.util;
+package top.rxjava.third.weixin.pay.util;
 
-import org.rxjava.third.weixin.pay.bean.request.BaseWxPayRequest;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.bean.request.BaseWxPayRequest;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
 
 public class XmlConfig {
 
@@ -19,7 +19,7 @@ public class XmlConfig {
      * 1：性能提升约 10 ~ 15倍
      * 2：可以通过 graalvm 生成native image，大大减少系统开销(CPU,RAM)，加快应用启动速度(亚秒级)，加快系统部署速度（脱离JRE）.
      * <p>
-     * 参考测试案例: org.rxjava.third.weixin.wxpay.bean.result.WxPayRedpackQueryResultTest#benchmark
+     * 参考测试案例: top.rxjava.third.weixin.wxpay.bean.result.WxPayRedpackQueryResultTest#benchmark
      * 参考网址: https://www.graalvm.org/
      */
     public static boolean fastMode = false;

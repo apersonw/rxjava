@@ -5,20 +5,20 @@
 ### 一、模块说明
 
 - [docker]：项目本地运行所需要的中间件
-- [rxjava-apikit](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit)：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
-- [rxjava-example](https://mvnrepository.com/artifact/org.rxjava/rxjava-example)：例子工程
-- [rxjava-gateway](https://mvnrepository.com/artifact/org.rxjava/rxjava-gateway)：网关项目pom
-- [rxjava-service](https://mvnrepository.com/artifact/org.rxjava/rxjava-service)：微服务项目pom
-- [rxjava-spring](https://mvnrepository.com/artifact/org.rxjava/rxjava-spring)：对spring的一些整合
-- [rxjava-third-qiniu](https://mvnrepository.com/artifact/org.rxjava/rxjava-third-qiniu)：对七牛的一些整合
-- [rxjava-third-weixin](https://mvnrepository.com/artifact/org.rxjava/rxjava-third-weixin)：对微信的一些整合
-- [rxjava](https://mvnrepository.com/artifact/org.rxjava/rxjava)：依赖管理pom 
+- [rxjava-apikit](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit)：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
+- [rxjava-example](https://mvnrepository.com/artifact/top.rxjava/rxjava-example)：例子工程
+- [rxjava-gateway](https://mvnrepository.com/artifact/top.rxjava/rxjava-gateway)：网关项目pom
+- [rxjava-service](https://mvnrepository.com/artifact/top.rxjava/rxjava-service)：微服务项目pom
+- [rxjava-spring](https://mvnrepository.com/artifact/top.rxjava/rxjava-spring)：对spring的一些整合
+- [rxjava-third-qiniu](https://mvnrepository.com/artifact/top.rxjava/rxjava-third-qiniu)：对七牛的一些整合
+- [rxjava-third-weixin](https://mvnrepository.com/artifact/top.rxjava/rxjava-third-weixin)：对微信的一些整合
+- [rxjava](https://mvnrepository.com/artifact/top.rxjava/rxjava)：依赖管理pom 
 
 ### 二、Api生成器说明
 
-- [rxjava-apikit-core](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-core)：一些默认约定，如适配器
-- [rxjava-apikit-maven-plugin](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-maven-plugin)：maven插件，可直接执行命令生成api
-- [rxjava-apikit-tool](https://mvnrepository.com/artifact/org.rxjava/rxjava-apikit-tool)：Api生成器实现代码
+- [rxjava-apikit-core](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit-core)：一些默认约定，如适配器
+- [rxjava-apikit-maven-plugin](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit-maven-plugin)：maven插件，可直接执行命令生成api
+- [rxjava-apikit-tool](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit-tool)：Api生成器实现代码
 
 - api插件maven生成器命令：进入微服务目录，执行命令 mvn clean rxjava-apikit:apis
 

@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.URIUtil;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.cp.api.WxCpOAuth2Service;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.WxCpOauth2UserInfo;
-import org.rxjava.third.weixin.cp.bean.WxCpUserDetail;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.URIUtil;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.cp.api.WxCpOAuth2Service;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.WxCpOauth2UserInfo;
+import top.rxjava.third.weixin.cp.bean.WxCpUserDetail;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
-import static org.rxjava.third.weixin.common.api.WxConsts.OAuth2Scope.*;
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.OAuth2.*;
+import static top.rxjava.third.weixin.common.api.WxConsts.OAuth2Scope.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.OAuth2.*;
 
 /**
  * oauth2相关接口实现类.

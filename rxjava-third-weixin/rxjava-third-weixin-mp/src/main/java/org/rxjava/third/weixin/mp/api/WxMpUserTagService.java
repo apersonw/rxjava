@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.tag.WxTagListUser;
-import org.rxjava.third.weixin.mp.bean.tag.WxUserTag;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.tag.WxTagListUser;
+import top.rxjava.third.weixin.mp.bean.tag.WxUserTag;
 
 import java.util.List;
 

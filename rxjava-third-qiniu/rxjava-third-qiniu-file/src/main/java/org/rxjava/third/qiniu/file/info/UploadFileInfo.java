@@ -1,9 +1,9 @@
-package org.rxjava.third.qiniu.file.info;
+package top.rxjava.third.qiniu.file.info;
 
 import com.qiniu.util.IOUtils;
 import lombok.Cleanup;
 import lombok.Data;
-import org.rxjava.spring.utils.UuidUtils;
+import top.rxjava.spring.utils.UuidUtils;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.DigestUtils;

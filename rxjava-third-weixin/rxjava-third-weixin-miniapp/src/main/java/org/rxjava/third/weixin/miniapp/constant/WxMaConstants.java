@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.constant;
+package top.rxjava.third.weixin.miniapp.constant;
 
 /**
  * 小程序常量.

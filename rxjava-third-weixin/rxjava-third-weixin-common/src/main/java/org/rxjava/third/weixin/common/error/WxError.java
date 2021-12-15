@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.common.error;
+package top.rxjava.third.weixin.common.error;
 
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
 
 import java.io.Serializable;
 

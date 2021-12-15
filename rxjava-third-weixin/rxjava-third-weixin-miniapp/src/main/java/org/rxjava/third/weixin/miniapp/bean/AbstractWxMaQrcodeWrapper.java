@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.miniapp.bean;
+package top.rxjava.third.weixin.miniapp.bean;
 
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 /**
  * 微信二维码（小程序码）包装器.

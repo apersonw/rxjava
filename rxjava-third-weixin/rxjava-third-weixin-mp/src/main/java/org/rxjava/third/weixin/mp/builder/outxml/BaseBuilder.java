@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.mp.builder.outxml;
+package top.rxjava.third.weixin.mp.builder.outxml;
 
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlOutMessage;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlOutMessage;
 
 public abstract class BaseBuilder<BuilderType, ValueType> {
 

@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.pay.bean.entpay;
+package top.rxjava.third.weixin.pay.bean.entpay;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
 import org.w3c.dom.Document;
 
 /**

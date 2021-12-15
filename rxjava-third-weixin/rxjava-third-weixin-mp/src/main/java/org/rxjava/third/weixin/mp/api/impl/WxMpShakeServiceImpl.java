@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.api.WxMpShakeService;
-import org.rxjava.third.weixin.mp.bean.WxMpShakeInfoResult;
-import org.rxjava.third.weixin.mp.bean.WxMpShakeQuery;
-import org.rxjava.third.weixin.mp.bean.shake.*;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.api.WxMpShakeService;
+import top.rxjava.third.weixin.mp.bean.WxMpShakeInfoResult;
+import top.rxjava.third.weixin.mp.bean.WxMpShakeQuery;
+import top.rxjava.third.weixin.mp.bean.shake.*;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.ShakeAround.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.ShakeAround.*;
 
 /**
  */

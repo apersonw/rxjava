@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.common.collect.Maps;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.api.WxCpUserService;
-import org.rxjava.third.weixin.cp.bean.WxCpInviteResult;
-import org.rxjava.third.weixin.cp.bean.WxCpUser;
-import org.rxjava.third.weixin.cp.bean.WxCpUserExternalContactInfo;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.api.WxCpUserService;
+import top.rxjava.third.weixin.cp.bean.WxCpInviteResult;
+import top.rxjava.third.weixin.cp.bean.WxCpUser;
+import top.rxjava.third.weixin.cp.bean.WxCpUserExternalContactInfo;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.User.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.User.*;
 
 /**
  */

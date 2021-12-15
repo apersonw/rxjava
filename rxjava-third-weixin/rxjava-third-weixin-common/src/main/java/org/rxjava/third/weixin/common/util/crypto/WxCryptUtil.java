@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.crypto;
+package top.rxjava.third.weixin.common.util.crypto;
 
 import org.apache.commons.codec.binary.Base64;
 import org.w3c.dom.Document;

@@ -1,17 +1,17 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import jodd.http.HttpConnectionProvider;
 import jodd.http.HttpRequest;
 import jodd.http.HttpResponse;
 import jodd.http.ProxyInfo;
 import jodd.http.net.SocketHttpConnectionProvider;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.HttpType;
-import org.rxjava.third.weixin.cp.config.WxCpConfigStorage;
-import org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.HttpType;
+import top.rxjava.third.weixin.cp.config.WxCpConfigStorage;
+import top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts;
 
 /**
  */

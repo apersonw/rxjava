@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.bean.express.request;
+package top.rxjava.third.weixin.miniapp.bean.express.request;
 
 
 import com.google.gson.annotations.SerializedName;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.miniapp.constant.WxMaConstants;
+import top.rxjava.third.weixin.miniapp.constant.WxMaConstants;
 
 import java.io.Serializable;
 

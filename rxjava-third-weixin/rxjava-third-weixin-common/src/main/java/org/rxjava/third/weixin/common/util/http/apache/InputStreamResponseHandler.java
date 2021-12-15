@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http.apache;
+package top.rxjava.third.weixin.common.util.http.apache;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.open.bean.result;
+package top.rxjava.third.weixin.open.bean.result;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
 
 import java.io.Serializable;
 

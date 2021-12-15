@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.notify;
+package top.rxjava.third.weixin.pay.bean.notify;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -8,8 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
 
 /**
  * 微信支付订单和退款的异步通知共用的响应类.

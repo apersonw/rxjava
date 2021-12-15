@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.bean;
+package top.rxjava.third.weixin.mp.bean;
 
 import lombok.Data;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 

@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import lombok.AllArgsConstructor;
-import org.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.fs.FileUtils;
-import org.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.miniapp.api.WxMaMediaService;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.fs.FileUtils;
+import top.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.miniapp.api.WxMaMediaService;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
 
 import java.io.File;
 import java.io.IOException;

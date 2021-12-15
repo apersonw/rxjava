@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.util.xml;
+package top.rxjava.third.weixin.mp.util.xml;
 
 import com.thoughtworks.xstream.XStream;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.mp.bean.message.*;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.mp.bean.message.*;
 
 import java.io.InputStream;
 import java.util.*;

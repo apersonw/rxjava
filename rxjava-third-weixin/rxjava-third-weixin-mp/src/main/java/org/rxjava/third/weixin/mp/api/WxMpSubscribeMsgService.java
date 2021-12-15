@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
 
 /**
  * 一次性订阅消息接口

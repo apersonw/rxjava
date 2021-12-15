@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.bean.oa.templatedata.control;
+package top.rxjava.third.weixin.cp.bean.oa.templatedata.control;
 
 import lombok.Data;
 

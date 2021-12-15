@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.cp.bean.oa.templatedata.control;
+package top.rxjava.third.weixin.cp.bean.oa.templatedata.control;
 
 import lombok.Data;
-import org.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateVacationItem;
+import top.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateVacationItem;
 
 import java.io.Serializable;
 import java.util.List;

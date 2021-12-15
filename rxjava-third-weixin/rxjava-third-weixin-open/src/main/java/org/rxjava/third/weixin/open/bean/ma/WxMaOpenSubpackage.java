@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.open.bean.ma;
+package top.rxjava.third.weixin.open.bean.ma;
 
 import lombok.Builder;
 import lombok.Data;

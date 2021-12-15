@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.enums;
+package top.rxjava.third.weixin.mp.enums;
 
 import lombok.AllArgsConstructor;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
 
-import static org.rxjava.third.weixin.mp.bean.WxMpHostConfig.*;
+import static top.rxjava.third.weixin.mp.bean.WxMpHostConfig.*;
 
 /**
  * 公众号接口api地址

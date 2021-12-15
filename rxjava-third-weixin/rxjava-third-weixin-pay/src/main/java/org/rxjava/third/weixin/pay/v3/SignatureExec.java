@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.v3;
+package top.rxjava.third.weixin.pay.v3;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpException;

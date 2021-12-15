@@ -1,19 +1,19 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.time.FastDateFormat;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpDataCubeService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.datacube.*;
-import org.rxjava.third.weixin.mp.enums.WxMpApiUrl;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpDataCubeService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.datacube.*;
+import top.rxjava.third.weixin.mp.enums.WxMpApiUrl;
 
 import java.text.Format;
 import java.util.Date;
 import java.util.List;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.DataCube.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.DataCube.*;
 
 /**
  */

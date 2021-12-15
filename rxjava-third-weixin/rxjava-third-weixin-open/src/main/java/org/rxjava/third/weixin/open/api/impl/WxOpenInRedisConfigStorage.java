@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
 import lombok.NonNull;
-import org.rxjava.third.weixin.common.redis.JedisWxRedisOps;
-import org.rxjava.third.weixin.common.redis.WxRedisOps;
+import top.rxjava.third.weixin.common.redis.JedisWxRedisOps;
+import top.rxjava.third.weixin.common.redis.WxRedisOps;
 import redis.clients.jedis.Jedis;
 import redis.clients.util.Pool;
 

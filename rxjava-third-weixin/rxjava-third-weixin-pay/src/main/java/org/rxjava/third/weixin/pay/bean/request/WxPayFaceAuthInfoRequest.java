@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.pay.bean.request;
+package top.rxjava.third.weixin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.rxjava.third.weixin.common.annotation.Required;
+import top.rxjava.third.weixin.common.annotation.Required;
 
 import java.util.Map;
 

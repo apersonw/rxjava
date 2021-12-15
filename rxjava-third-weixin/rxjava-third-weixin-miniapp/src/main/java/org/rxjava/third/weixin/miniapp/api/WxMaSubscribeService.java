@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
 import lombok.Data;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.template.WxMaPubTemplateTitleListResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.template.WxMaPubTemplateTitleListResult;
 
 import java.util.List;
 

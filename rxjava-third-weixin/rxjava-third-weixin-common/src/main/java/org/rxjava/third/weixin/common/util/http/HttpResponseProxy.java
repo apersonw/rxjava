@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.common.util.http;
+package top.rxjava.third.weixin.common.util.http;
 
 import jodd.http.HttpResponse;
 import okhttp3.Response;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

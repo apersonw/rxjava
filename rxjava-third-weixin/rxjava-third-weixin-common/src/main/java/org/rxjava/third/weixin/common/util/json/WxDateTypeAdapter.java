@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.json;
+package top.rxjava.third.weixin.common.util.json;
 
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;

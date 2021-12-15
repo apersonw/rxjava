@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.mp.bean.card.WxMpCard;
-import org.rxjava.third.weixin.mp.bean.card.WxMpCardResult;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.mp.bean.card.WxMpCard;
+import top.rxjava.third.weixin.mp.bean.card.WxMpCardResult;
 
 import java.lang.reflect.Type;
 

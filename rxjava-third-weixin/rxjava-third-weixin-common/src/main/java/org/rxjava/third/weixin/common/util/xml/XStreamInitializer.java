@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.xml;
+package top.rxjava.third.weixin.common.util.xml;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.basic.*;
@@ -72,7 +72,7 @@ public class XStreamInitializer {
         // setup proper security by limiting which classes can be loaded by XStream
         xstream.addPermission(NoTypePermission.NONE);
         xstream.addPermission(new WildcardTypePermission(new String[]{
-                "org.rxjava.third.weixin.**", "org.rxjava.third.weixin.**", "org.rxjava.third.weixin.**"
+                "top.rxjava.third.weixin.**", "top.rxjava.third.weixin.**", "top.rxjava.third.weixin.**"
         }));
         xstream.setClassLoader(Thread.currentThread().getContextClassLoader());
         return xstream;

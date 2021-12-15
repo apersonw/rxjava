@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
@@ -6,11 +6,11 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.api.WxMaSubscribeService;
-import org.rxjava.third.weixin.miniapp.bean.template.WxMaPubTemplateTitleListResult;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.api.WxMaSubscribeService;
+import top.rxjava.third.weixin.miniapp.bean.template.WxMaPubTemplateTitleListResult;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.io.Serializable;
 import java.util.List;

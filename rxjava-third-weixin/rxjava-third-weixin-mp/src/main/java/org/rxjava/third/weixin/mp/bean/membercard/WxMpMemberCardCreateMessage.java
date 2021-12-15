@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.bean.membercard;
+package top.rxjava.third.weixin.mp.bean.membercard;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.mp.bean.card.MemberCardCreateRequest;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.bean.card.MemberCardCreateRequest;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 

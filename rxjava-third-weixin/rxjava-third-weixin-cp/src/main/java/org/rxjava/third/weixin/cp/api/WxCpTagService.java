@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.bean.WxCpTag;
-import org.rxjava.third.weixin.cp.bean.WxCpTagAddOrRemoveUsersResult;
-import org.rxjava.third.weixin.cp.bean.WxCpTagGetResult;
-import org.rxjava.third.weixin.cp.bean.WxCpUser;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.bean.WxCpTag;
+import top.rxjava.third.weixin.cp.bean.WxCpTagAddOrRemoveUsersResult;
+import top.rxjava.third.weixin.cp.bean.WxCpTagGetResult;
+import top.rxjava.third.weixin.cp.bean.WxCpUser;
 
 import java.util.List;
 

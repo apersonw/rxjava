@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.request;
+package top.rxjava.third.weixin.pay.bean.request;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -8,21 +8,21 @@ import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.BeanUtils;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.pay.config.WxPayConfig;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
-import org.rxjava.third.weixin.pay.util.SignUtils;
-import org.rxjava.third.weixin.pay.util.XmlConfig;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.BeanUtils;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.pay.config.WxPayConfig;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.util.SignUtils;
+import top.rxjava.third.weixin.pay.util.XmlConfig;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.rxjava.third.weixin.pay.constant.WxPayConstants.SignType.ALL_SIGN_TYPES;
+import static top.rxjava.third.weixin.pay.constant.WxPayConstants.SignType.ALL_SIGN_TYPES;
 
 /**
  * 微信支付请求对象共用的参数存放类

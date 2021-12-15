@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.mp.bean.message;
+package top.rxjava.third.weixin.mp.bean.message;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;

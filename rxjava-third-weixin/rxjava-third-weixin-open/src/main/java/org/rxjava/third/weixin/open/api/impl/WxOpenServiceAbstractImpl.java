@@ -1,13 +1,13 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.open.api.WxOpenComponentService;
-import org.rxjava.third.weixin.open.api.WxOpenConfigStorage;
-import org.rxjava.third.weixin.open.api.WxOpenService;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.open.api.WxOpenComponentService;
+import top.rxjava.third.weixin.open.api.WxOpenConfigStorage;
+import top.rxjava.third.weixin.open.api.WxOpenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

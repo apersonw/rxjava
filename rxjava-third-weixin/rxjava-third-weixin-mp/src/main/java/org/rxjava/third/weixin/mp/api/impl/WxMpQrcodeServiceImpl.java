@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpQrcodeService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.result.WxMpQrCodeTicket;
-import org.rxjava.third.weixin.mp.util.requestexecuter.qrcode.QrCodeRequestExecutor;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpQrcodeService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.result.WxMpQrCodeTicket;
+import top.rxjava.third.weixin.mp.util.requestexecuter.qrcode.QrCodeRequestExecutor;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Qrcode.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Qrcode.*;
 
 /**
  */

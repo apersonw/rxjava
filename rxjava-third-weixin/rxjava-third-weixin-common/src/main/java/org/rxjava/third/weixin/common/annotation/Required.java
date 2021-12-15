@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.annotation;
+package top.rxjava.third.weixin.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

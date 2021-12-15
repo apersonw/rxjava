@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.membercard;
+package top.rxjava.third.weixin.mp.bean.membercard;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

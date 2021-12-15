@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.bean.shake;
+package top.rxjava.third.weixin.mp.bean.shake;
 
 import com.google.gson.JsonObject;
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 

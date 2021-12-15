@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.mp.builder.kefu;
+package top.rxjava.third.weixin.mp.builder.kefu;
 
-import org.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
+import top.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 public class BaseBuilder<T> {
     protected String msgType;

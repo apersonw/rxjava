@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.bean.oa.applydata;
+package top.rxjava.third.weixin.cp.bean.oa.applydata;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

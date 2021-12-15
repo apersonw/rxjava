@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean;
+package top.rxjava.third.weixin.pay.bean;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

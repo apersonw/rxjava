@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.datacube;
+package top.rxjava.third.weixin.mp.bean.datacube;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

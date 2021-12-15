@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.card;
+package top.rxjava.third.weixin.mp.bean.card;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.card.enums;
+package top.rxjava.third.weixin.mp.bean.card.enums;
 
 public enum CardSceneType {
     SCENE_NEAR_BY("附近"),

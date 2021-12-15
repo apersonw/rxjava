@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.open.bean.auth;
+package top.rxjava.third.weixin.open.bean.auth;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

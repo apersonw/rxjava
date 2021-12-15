@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.bean;
+package top.rxjava.third.weixin.common.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

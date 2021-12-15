@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.bean.menu.WxMenu;
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.bean.menu.WxMenu;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 
 /**
  * 菜单管理相关接口
@@ -27,7 +27,7 @@ public interface WxCpMenuService {
      *
      * @param agentId 企业号应用的id
      * @param menu    菜单对象
-     * @see #create(org.rxjava.third.weixin.common.bean.menu.WxMenu)
+     * @see #create(top.rxjava.third.weixin.common.bean.menu.WxMenu)
      */
     void create(Integer agentId, WxMenu menu) throws WxErrorException;
 

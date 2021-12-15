@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.open.bean;
+package top.rxjava.third.weixin.open.bean;
 
-import org.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
+import top.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
 
 import java.io.Serializable;
 

@@ -1,17 +1,17 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.bean.WxJsapiSignature;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.session.WxSession;
-import org.rxjava.third.weixin.common.session.WxSessionManager;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.cp.bean.WxCpMaJsCode2SessionResult;
-import org.rxjava.third.weixin.cp.bean.WxCpMessage;
-import org.rxjava.third.weixin.cp.bean.WxCpMessageSendResult;
-import org.rxjava.third.weixin.cp.bean.WxCpProviderToken;
-import org.rxjava.third.weixin.cp.config.WxCpConfigStorage;
+import top.rxjava.third.weixin.common.bean.WxJsapiSignature;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.session.WxSession;
+import top.rxjava.third.weixin.common.session.WxSessionManager;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.cp.bean.WxCpMaJsCode2SessionResult;
+import top.rxjava.third.weixin.cp.bean.WxCpMessage;
+import top.rxjava.third.weixin.cp.bean.WxCpMessageSendResult;
+import top.rxjava.third.weixin.cp.bean.WxCpProviderToken;
+import top.rxjava.third.weixin.cp.config.WxCpConfigStorage;
 
 /**
  * 微信API的Service.
@@ -208,7 +208,7 @@ public interface WxCpService {
 
     /**
      * 设置WxSessionManager，只有当需要使用个性化的WxSessionManager的时候才需要调用此方法，
-     * WxCpService默认使用的是{@link org.rxjava.third.weixin.common.session.StandardSessionManager}
+     * WxCpService默认使用的是{@link top.rxjava.third.weixin.common.session.StandardSessionManager}
      *
      * @param sessionManager 会话管理器
      */

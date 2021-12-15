@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.message;
+package top.rxjava.third.weixin.miniapp.message;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
@@ -7,10 +7,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
-import org.rxjava.third.weixin.miniapp.util.crypt.WxMaCryptUtils;
-import org.rxjava.third.weixin.miniapp.util.xml.XStreamTransformer;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.miniapp.util.crypt.WxMaCryptUtils;
+import top.rxjava.third.weixin.miniapp.util.xml.XStreamTransformer;
 
 import java.io.Serializable;
 

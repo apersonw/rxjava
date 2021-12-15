@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.open.api;
+package top.rxjava.third.weixin.open.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.open.bean.ma.WxMaOpenCommitExtInfo;
-import org.rxjava.third.weixin.open.bean.message.WxOpenMaSubmitAuditMessage;
-import org.rxjava.third.weixin.open.bean.result.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.open.bean.ma.WxMaOpenCommitExtInfo;
+import top.rxjava.third.weixin.open.bean.message.WxOpenMaSubmitAuditMessage;
+import top.rxjava.third.weixin.open.bean.result.*;
 
 import java.io.File;
 import java.util.List;

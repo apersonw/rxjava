@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
 
 import org.apache.commons.lang3.StringUtils;

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.entpay;
+package top.rxjava.third.weixin.pay.bean.entpay;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;

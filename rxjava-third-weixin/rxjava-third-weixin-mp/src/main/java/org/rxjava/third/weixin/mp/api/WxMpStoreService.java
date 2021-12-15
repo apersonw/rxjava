@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.store.WxMpStoreBaseInfo;
-import org.rxjava.third.weixin.mp.bean.store.WxMpStoreInfo;
-import org.rxjava.third.weixin.mp.bean.store.WxMpStoreListResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.store.WxMpStoreBaseInfo;
+import top.rxjava.third.weixin.mp.bean.store.WxMpStoreInfo;
+import top.rxjava.third.weixin.mp.bean.store.WxMpStoreListResult;
 
 import java.util.List;
 

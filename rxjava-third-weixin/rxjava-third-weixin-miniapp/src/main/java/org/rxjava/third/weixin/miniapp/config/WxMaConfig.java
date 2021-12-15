@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.miniapp.config;
+package top.rxjava.third.weixin.miniapp.config;
 
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
 
 import java.util.concurrent.locks.Lock;
 

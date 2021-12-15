@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.bean.cloud;
+package top.rxjava.third.weixin.miniapp.bean.cloud;
 
 import lombok.Data;
 

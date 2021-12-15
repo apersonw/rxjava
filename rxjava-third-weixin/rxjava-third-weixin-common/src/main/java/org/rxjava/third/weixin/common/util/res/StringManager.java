@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.rxjava.third.weixin.common.util.res;
+package top.rxjava.third.weixin.common.util.res;
 
 import java.text.MessageFormat;
 import java.util.*;

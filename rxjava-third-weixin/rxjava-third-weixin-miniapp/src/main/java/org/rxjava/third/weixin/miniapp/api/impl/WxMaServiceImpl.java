@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
@@ -13,26 +13,26 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.DataUtils;
-import org.rxjava.third.weixin.common.util.crypto.SHA1;
-import org.rxjava.third.weixin.common.util.http.*;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.miniapp.api.*;
-import org.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.DataUtils;
+import top.rxjava.third.weixin.common.util.crypto.SHA1;
+import top.rxjava.third.weixin.common.util.http.*;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.miniapp.api.*;
+import top.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 
-import static org.rxjava.third.weixin.miniapp.constant.WxMaConstants.ErrorCode.*;
+import static top.rxjava.third.weixin.miniapp.constant.WxMaConstants.ErrorCode.*;
 
 /**
  */

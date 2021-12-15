@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.bean.oa.templatedata.control;
+package top.rxjava.third.weixin.cp.bean.oa.templatedata.control;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateDateRange;
+import top.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateDateRange;
 
 import java.io.Serializable;
 

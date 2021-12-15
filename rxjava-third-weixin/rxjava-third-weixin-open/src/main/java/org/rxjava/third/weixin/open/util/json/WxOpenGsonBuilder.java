@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.open.util.json;
+package top.rxjava.third.weixin.open.util.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.rxjava.third.weixin.open.bean.WxOpenAuthorizerAccessToken;
-import org.rxjava.third.weixin.open.bean.WxOpenComponentAccessToken;
-import org.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizationInfo;
-import org.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizerInfo;
-import org.rxjava.third.weixin.open.bean.result.*;
+import top.rxjava.third.weixin.open.bean.WxOpenAuthorizerAccessToken;
+import top.rxjava.third.weixin.open.bean.WxOpenComponentAccessToken;
+import top.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizationInfo;
+import top.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizerInfo;
+import top.rxjava.third.weixin.open.bean.result.*;
 
 /**
  */

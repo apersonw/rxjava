@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.card.enums;
+package top.rxjava.third.weixin.mp.bean.card.enums;
 
 public enum CardStatusType {
     CARD_STATUS_NOT_VERIFY("待审核"),

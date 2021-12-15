@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.card.*;
-import org.rxjava.third.weixin.mp.bean.membercard.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.card.*;
+import top.rxjava.third.weixin.mp.bean.membercard.*;
 
 /**
  * 会员卡相关接口.

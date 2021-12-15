@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.enums;
+package top.rxjava.third.weixin.mp.enums;
 
 import lombok.Getter;
 

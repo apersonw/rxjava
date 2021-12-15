@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.cp.message;
+package top.rxjava.third.weixin.cp.message;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.session.WxSessionManager;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.WxCpXmlMessage;
-import org.rxjava.third.weixin.cp.bean.WxCpXmlOutMessage;
+import top.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.session.WxSessionManager;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.WxCpXmlMessage;
+import top.rxjava.third.weixin.cp.bean.WxCpXmlOutMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

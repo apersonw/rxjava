@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.open.bean.ma;
+package top.rxjava.third.weixin.open.bean.ma;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
+import top.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;

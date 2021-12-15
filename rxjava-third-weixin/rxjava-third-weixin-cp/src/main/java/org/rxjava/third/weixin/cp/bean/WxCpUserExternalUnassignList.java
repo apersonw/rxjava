@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.List;
 

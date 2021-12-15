@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.v3.auth;
+package top.rxjava.third.weixin.pay.v3.auth;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
-import org.rxjava.third.weixin.pay.v3.Validator;
+import top.rxjava.third.weixin.pay.v3.Validator;
 
 import java.io.IOException;
 

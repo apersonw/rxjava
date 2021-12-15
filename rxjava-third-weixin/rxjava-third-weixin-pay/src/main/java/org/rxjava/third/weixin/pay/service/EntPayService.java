@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.pay.service;
+package top.rxjava.third.weixin.pay.service;
 
-import org.rxjava.third.weixin.pay.bean.entpay.*;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.bean.entpay.*;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 /**
  * 企业付款相关服务类.

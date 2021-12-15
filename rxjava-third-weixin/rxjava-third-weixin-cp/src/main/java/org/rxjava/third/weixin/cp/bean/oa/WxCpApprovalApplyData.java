@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.cp.bean.oa;
+package top.rxjava.third.weixin.cp.bean.oa;
 
 import lombok.Data;
-import org.rxjava.third.weixin.cp.bean.oa.applydata.Content;
+import top.rxjava.third.weixin.cp.bean.oa.applydata.Content;
 
 import java.io.Serializable;
 import java.util.List;

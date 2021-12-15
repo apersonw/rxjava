@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.result;
+package top.rxjava.third.weixin.pay.bean.result;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.w3c.dom.Document;

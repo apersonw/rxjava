@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.util;
+package top.rxjava.third.weixin.pay.util;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -7,9 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.pay.bean.request.BaseWxPayRequest;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants.SignType;
+import top.rxjava.third.weixin.pay.bean.request.BaseWxPayRequest;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants.SignType;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -102,7 +102,7 @@ public class SignUtils {
 
         toSign.append("key=").append(signKey);
         if (SignType.HMAC_SHA256.equals(signType)) {
-            return org.rxjava.third.weixin.common.util.SignUtils.createHmacSha256Sign(toSign.toString(), signKey);
+            return top.rxjava.third.weixin.common.util.SignUtils.createHmacSha256Sign(toSign.toString(), signKey);
         } else {
             return DigestUtils.md5Hex(toSign.toString()).toUpperCase();
         }
@@ -145,7 +145,7 @@ public class SignUtils {
         //企业微信这里字段名不一样
         toSign.append("secret=").append(signKey);
         if (SignType.HMAC_SHA256.equals(signType)) {
-            return org.rxjava.third.weixin.common.util.SignUtils.createHmacSha256Sign(toSign.toString(), signKey);
+            return top.rxjava.third.weixin.common.util.SignUtils.createHmacSha256Sign(toSign.toString(), signKey);
         } else {
             return DigestUtils.md5Hex(toSign.toString()).toUpperCase();
         }

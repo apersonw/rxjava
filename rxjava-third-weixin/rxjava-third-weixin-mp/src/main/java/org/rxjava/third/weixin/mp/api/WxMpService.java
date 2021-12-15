@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.bean.WxJsapiSignature;
-import org.rxjava.third.weixin.common.bean.WxNetCheckResult;
-import org.rxjava.third.weixin.common.enums.TicketType;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.service.WxService;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.mp.bean.WxMpSemanticQuery;
-import org.rxjava.third.weixin.mp.bean.result.WxMpCurrentAutoReplyInfo;
-import org.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
-import org.rxjava.third.weixin.mp.bean.result.WxMpSemanticQueryResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpUser;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.mp.enums.WxMpApiUrl;
+import top.rxjava.third.weixin.common.bean.WxJsapiSignature;
+import top.rxjava.third.weixin.common.bean.WxNetCheckResult;
+import top.rxjava.third.weixin.common.enums.TicketType;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.service.WxService;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.mp.bean.WxMpSemanticQuery;
+import top.rxjava.third.weixin.mp.bean.result.WxMpCurrentAutoReplyInfo;
+import top.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import top.rxjava.third.weixin.mp.bean.result.WxMpSemanticQueryResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpUser;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.mp.enums.WxMpApiUrl;
 
 import java.util.Map;
 

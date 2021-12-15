@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.mp.util.requestexecuter.qrcode;
+package top.rxjava.third.weixin.mp.util.requestexecuter.qrcode;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.fs.FileUtils;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
-import org.rxjava.third.weixin.mp.bean.result.WxMpQrCodeTicket;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.fs.FileUtils;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
+import top.rxjava.third.weixin.mp.bean.result.WxMpQrCodeTicket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

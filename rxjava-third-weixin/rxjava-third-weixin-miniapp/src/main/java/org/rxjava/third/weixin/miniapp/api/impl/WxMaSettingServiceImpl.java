@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import lombok.AllArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.api.WxMaSettingService;
-import org.rxjava.third.weixin.miniapp.bean.WxMaDomainAction;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.api.WxMaSettingService;
+import top.rxjava.third.weixin.miniapp.bean.WxMaDomainAction;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.util.HashMap;
 import java.util.Map;

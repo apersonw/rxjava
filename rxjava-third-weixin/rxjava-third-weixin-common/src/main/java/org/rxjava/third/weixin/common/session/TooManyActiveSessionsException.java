@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.rxjava.third.weixin.common.session;
+package top.rxjava.third.weixin.common.session;
 
 /**
  * An exception that indicates the maximum number of active sessions has been

@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.bean.wifi;
+package top.rxjava.third.weixin.mp.bean.wifi;
 
 import com.google.gson.JsonParser;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.util.List;
 

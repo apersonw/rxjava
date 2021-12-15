@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.rxjava.third.weixin.mp.bean.*;
-import org.rxjava.third.weixin.mp.bean.card.WxMpCard;
-import org.rxjava.third.weixin.mp.bean.card.WxMpCardResult;
-import org.rxjava.third.weixin.mp.bean.datacube.WxDataCubeUserCumulate;
-import org.rxjava.third.weixin.mp.bean.datacube.WxDataCubeUserSummary;
-import org.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
-import org.rxjava.third.weixin.mp.bean.material.*;
-import org.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardActivateTempInfoResult;
-import org.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardUpdateResult;
-import org.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardUserInfoResult;
-import org.rxjava.third.weixin.mp.bean.result.*;
-import org.rxjava.third.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustry;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateMessage;
+import top.rxjava.third.weixin.mp.bean.*;
+import top.rxjava.third.weixin.mp.bean.card.WxMpCard;
+import top.rxjava.third.weixin.mp.bean.card.WxMpCardResult;
+import top.rxjava.third.weixin.mp.bean.datacube.WxDataCubeUserCumulate;
+import top.rxjava.third.weixin.mp.bean.datacube.WxDataCubeUserSummary;
+import top.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
+import top.rxjava.third.weixin.mp.bean.material.*;
+import top.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardActivateTempInfoResult;
+import top.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardUpdateResult;
+import top.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardUserInfoResult;
+import top.rxjava.third.weixin.mp.bean.result.*;
+import top.rxjava.third.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustry;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateMessage;
 
 /**
  *

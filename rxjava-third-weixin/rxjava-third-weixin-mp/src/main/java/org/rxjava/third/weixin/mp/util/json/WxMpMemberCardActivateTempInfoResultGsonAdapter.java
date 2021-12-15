@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.mp.bean.membercard.MemberCardUserInfo;
-import org.rxjava.third.weixin.mp.bean.membercard.NameValues;
-import org.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardActivateTempInfoResult;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.mp.bean.membercard.MemberCardUserInfo;
+import top.rxjava.third.weixin.mp.bean.membercard.NameValues;
+import top.rxjava.third.weixin.mp.bean.membercard.WxMpMemberCardActivateTempInfoResult;
 
 import java.lang.reflect.Type;
 

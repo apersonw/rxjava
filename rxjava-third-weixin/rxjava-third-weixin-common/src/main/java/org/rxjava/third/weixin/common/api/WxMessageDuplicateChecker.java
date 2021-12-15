@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.api;
+package top.rxjava.third.weixin.common.api;
 
 /**
  * 消息重复检查器.

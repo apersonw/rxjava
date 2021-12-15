@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -7,16 +7,16 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.api.WxCpOaService;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.oa.*;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.api.WxCpOaService;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.oa.*;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.Date;
 import java.util.List;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Oa.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Oa.*;
 
 /**
  * 企业微信 OA 接口实现

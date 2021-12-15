@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.bean.device;
+package top.rxjava.third.weixin.mp.bean.device;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
 
 /**
  */

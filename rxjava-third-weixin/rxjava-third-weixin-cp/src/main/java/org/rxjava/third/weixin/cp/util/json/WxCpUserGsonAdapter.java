@@ -7,12 +7,12 @@
  * is not permitted without written permission of the KINGSTAR MEDIA SOLUTIONS LTD.
  */
 
-package org.rxjava.third.weixin.cp.util.json;
+package top.rxjava.third.weixin.cp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.cp.bean.Gender;
-import org.rxjava.third.weixin.cp.bean.WxCpUser;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.cp.bean.Gender;
+import top.rxjava.third.weixin.cp.bean.WxCpUser;
 
 import java.lang.reflect.Type;
 

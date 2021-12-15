@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.constant;
+package top.rxjava.third.weixin.cp.constant;
 
 /**
  * 企业微信常量

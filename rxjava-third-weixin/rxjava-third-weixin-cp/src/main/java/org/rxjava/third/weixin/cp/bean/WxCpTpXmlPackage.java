@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.XmlUtils;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.cp.util.xml.XStreamTransformer;
+import top.rxjava.third.weixin.common.util.XmlUtils;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.cp.util.xml.XStreamTransformer;
 
 import java.io.Serializable;
 import java.util.Map;

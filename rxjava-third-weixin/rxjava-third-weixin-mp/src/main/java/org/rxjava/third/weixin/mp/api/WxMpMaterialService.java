@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.material.*;
+import top.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.material.*;
 
 import java.io.File;
 import java.io.InputStream;
@@ -33,7 +33,7 @@ public interface WxMpMaterialService {
      * 详情请见: <a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1444738726&token=&lang=zh_CN">新增临时素材</a>
      * 接口url格式：https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE
      *
-     * @param mediaType 媒体类型, 请看{@link org.rxjava.third.weixin.common.api.WxConsts}
+     * @param mediaType 媒体类型, 请看{@link top.rxjava.third.weixin.common.api.WxConsts}
      * @param file      文件对象
      * @throws WxErrorException
      * @see #mediaUpload(String, String, InputStream)
@@ -47,8 +47,8 @@ public interface WxMpMaterialService {
      * 详情请见: <a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1444738726&token=&lang=zh_CN">新增临时素材</a>
      * 接口url格式：https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE
      *
-     * @param mediaType   媒体类型, 请看{@link org.rxjava.third.weixin.common.api.WxConsts}
-     * @param fileType    文件类型，请看{@link org.rxjava.third.weixin.common.api.WxConsts}
+     * @param mediaType   媒体类型, 请看{@link top.rxjava.third.weixin.common.api.WxConsts}
+     * @param fileType    文件类型，请看{@link top.rxjava.third.weixin.common.api.WxConsts}
      * @param inputStream 输入流
      * @throws WxErrorException
      * @see #mediaUpload(java.lang.String, java.io.File)
@@ -112,7 +112,7 @@ public interface WxMpMaterialService {
      * 3、素材的格式大小等要求与公众平台官网一致。具体是，图片大小不超过2M，支持bmp/png/jpeg/jpg/gif格式，语音大小不超过5M，长度不超过60秒，支持mp3/wma/wav/amr格式
      * 4、调用该接口需https协议
      *
-     * @param mediaType 媒体类型, 请看{@link org.rxjava.third.weixin.common.api.WxConsts}
+     * @param mediaType 媒体类型, 请看{@link top.rxjava.third.weixin.common.api.WxConsts}
      * @param material  上传的素材, 请看{@link WxMpMaterial}
      */
     WxMpMaterialUploadResult materialFileUpload(String mediaType, WxMpMaterial material) throws WxErrorException;
@@ -219,7 +219,7 @@ public interface WxMpMaterialService {
      * 详情请见: <a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1444738734&token=&lang=zh_CN">获取素材列表</a>
      * 接口url格式：https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=ACCESS_TOKEN
      *
-     * @param type   媒体类型, 请看{@link org.rxjava.third.weixin.common.api.WxConsts}
+     * @param type   媒体类型, 请看{@link top.rxjava.third.weixin.common.api.WxConsts}
      * @param offset 从全部素材的该偏移位置开始返回，0表示从第一个素材 返回
      * @param count  返回素材的数量，取值在1到20之间
      */

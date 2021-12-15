@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.common.redis;
+package top.rxjava.third.weixin.common.redis;
 
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.util.locks.JedisDistributedLock;
+import top.rxjava.third.weixin.common.util.locks.JedisDistributedLock;
 import redis.clients.jedis.Jedis;
 import redis.clients.util.Pool;
 

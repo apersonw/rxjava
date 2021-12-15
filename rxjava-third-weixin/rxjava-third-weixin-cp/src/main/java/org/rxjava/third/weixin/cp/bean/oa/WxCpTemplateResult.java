@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.cp.bean.oa;
+package top.rxjava.third.weixin.cp.bean.oa;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateContent;
-import org.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateTitle;
+import top.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateContent;
+import top.rxjava.third.weixin.cp.bean.oa.templatedata.TemplateTitle;
 
 import java.io.Serializable;
 import java.util.List;

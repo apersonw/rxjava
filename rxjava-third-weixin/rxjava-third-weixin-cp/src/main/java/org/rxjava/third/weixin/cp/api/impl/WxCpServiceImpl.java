@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -7,17 +7,17 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts;
 
 import java.io.IOException;
 import java.util.concurrent.locks.Lock;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.GET_AGENT_CONFIG_TICKET;
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.GET_JSAPI_TICKET;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.GET_AGENT_CONFIG_TICKET;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.GET_JSAPI_TICKET;
 
 /**
  * 默认接口实现类，使用apache httpclient实现

@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.open.api;
+package top.rxjava.third.weixin.open.api;
 
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.open.bean.WxOpenAuthorizerAccessToken;
-import org.rxjava.third.weixin.open.bean.WxOpenComponentAccessToken;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.open.bean.WxOpenAuthorizerAccessToken;
+import top.rxjava.third.weixin.open.bean.WxOpenComponentAccessToken;
 
 import java.util.concurrent.locks.Lock;
 

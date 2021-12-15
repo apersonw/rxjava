@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.miniapp.bean.express;
+package top.rxjava.third.weixin.miniapp.bean.express;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.io.Serializable;
 import java.util.List;

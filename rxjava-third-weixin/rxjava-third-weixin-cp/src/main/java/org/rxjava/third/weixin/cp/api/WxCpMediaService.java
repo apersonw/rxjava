@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,8 +21,8 @@ public interface WxCpMediaService {
      * 缩略图（thumb）：64KB，支持JPG格式
      * 详情请见: http://mp.weixin.qq.com/wiki/index.php?title=上传下载多媒体文件
      *
-     * @param mediaType   媒体类型, 请看{@link org.rxjava.third.weixin.common.api.WxConsts}
-     * @param fileType    文件类型，请看{@link org.rxjava.third.weixin.common.api.WxConsts}
+     * @param mediaType   媒体类型, 请看{@link top.rxjava.third.weixin.common.api.WxConsts}
+     * @param fileType    文件类型，请看{@link top.rxjava.third.weixin.common.api.WxConsts}
      * @param inputStream 输入流，需要调用方控制关闭该输入流
      */
     WxMediaUploadResult upload(String mediaType, String fileType, InputStream inputStream)

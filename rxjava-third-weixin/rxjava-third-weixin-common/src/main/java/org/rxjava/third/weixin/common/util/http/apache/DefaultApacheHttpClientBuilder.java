@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http.apache;
+package top.rxjava.third.weixin.common.util.http.apache;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

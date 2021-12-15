@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.shake;
+package top.rxjava.third.weixin.mp.bean.shake;
 
 import com.google.gson.JsonObject;
 import lombok.Data;

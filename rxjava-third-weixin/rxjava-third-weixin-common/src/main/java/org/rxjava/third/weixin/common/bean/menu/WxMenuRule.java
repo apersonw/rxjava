@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.common.bean.menu;
+package top.rxjava.third.weixin.common.bean.menu;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
 
 import java.io.Serializable;
 

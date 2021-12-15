@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.mp.config.impl;
+package top.rxjava.third.weixin.mp.config.impl;
 
 import lombok.Data;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.enums.TicketType;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.mp.bean.WxMpHostConfig;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.enums.TicketType;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.mp.bean.WxMpHostConfig;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.File;
 import java.io.Serializable;

@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.pay.service;
+package top.rxjava.third.weixin.pay.service;
 
-import org.rxjava.third.weixin.pay.bean.profitsharing.*;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.bean.profitsharing.*;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 /**
  * 注意：微信最高分账比例为30%

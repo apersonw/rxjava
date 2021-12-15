@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.redis;
+package top.rxjava.third.weixin.common.redis;
 
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RedissonClient;

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.bean.analysis;
+package top.rxjava.third.weixin.miniapp.bean.analysis;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

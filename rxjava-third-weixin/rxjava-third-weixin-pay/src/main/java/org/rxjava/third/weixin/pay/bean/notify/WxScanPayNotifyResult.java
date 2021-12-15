@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.pay.bean.notify;
+package top.rxjava.third.weixin.pay.bean.notify;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
 import org.w3c.dom.Document;
 
 /**

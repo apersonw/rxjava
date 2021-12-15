@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.notify;
+package top.rxjava.third.weixin.pay.bean.notify;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -8,11 +8,11 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 import org.w3c.dom.Document;
 
 import javax.crypto.Cipher;

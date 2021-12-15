@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.HttpType;
-import org.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
-import org.rxjava.third.weixin.cp.config.WxCpConfigStorage;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.HttpType;
+import top.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
+import top.rxjava.third.weixin.cp.config.WxCpConfigStorage;
 
 import java.io.IOException;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.GET_TOKEN;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.GET_TOKEN;
 
 /**
  */

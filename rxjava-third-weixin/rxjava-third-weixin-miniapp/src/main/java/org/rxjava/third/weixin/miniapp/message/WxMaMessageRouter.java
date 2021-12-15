@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.miniapp.message;
+package top.rxjava.third.weixin.miniapp.message;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
-import org.rxjava.third.weixin.common.api.WxMessageDuplicateChecker;
-import org.rxjava.third.weixin.common.api.WxMessageInMemoryDuplicateChecker;
-import org.rxjava.third.weixin.common.session.InternalSession;
-import org.rxjava.third.weixin.common.session.InternalSessionManager;
-import org.rxjava.third.weixin.common.session.StandardSessionManager;
-import org.rxjava.third.weixin.common.session.WxSessionManager;
-import org.rxjava.third.weixin.common.util.LogExceptionHandler;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.bean.WxMaMessage;
+import top.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
+import top.rxjava.third.weixin.common.api.WxMessageDuplicateChecker;
+import top.rxjava.third.weixin.common.api.WxMessageInMemoryDuplicateChecker;
+import top.rxjava.third.weixin.common.session.InternalSession;
+import top.rxjava.third.weixin.common.session.InternalSessionManager;
+import top.rxjava.third.weixin.common.session.StandardSessionManager;
+import top.rxjava.third.weixin.common.session.WxSessionManager;
+import top.rxjava.third.weixin.common.util.LogExceptionHandler;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.bean.WxMaMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

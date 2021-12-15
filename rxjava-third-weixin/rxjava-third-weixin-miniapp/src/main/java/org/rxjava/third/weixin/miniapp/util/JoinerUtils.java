@@ -4,7 +4,7 @@
  * <p>
  * Project Name:yigou
  */
-package org.rxjava.third.weixin.miniapp.util;
+package top.rxjava.third.weixin.miniapp.util;
 
 import com.google.common.base.Joiner;
 

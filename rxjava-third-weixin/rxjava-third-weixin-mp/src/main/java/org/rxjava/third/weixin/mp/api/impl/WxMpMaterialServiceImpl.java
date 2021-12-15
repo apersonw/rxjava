@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.fs.FileUtils;
-import org.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.mp.api.WxMpMaterialService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.material.*;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
-import org.rxjava.third.weixin.mp.util.requestexecuter.material.*;
-import org.rxjava.third.weixin.mp.util.requestexecuter.media.MediaImgUploadRequestExecutor;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.fs.FileUtils;
+import top.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.mp.api.WxMpMaterialService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.material.*;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.util.requestexecuter.material.*;
+import top.rxjava.third.weixin.mp.util.requestexecuter.media.MediaImgUploadRequestExecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Material.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Material.*;
 
 /**
  */

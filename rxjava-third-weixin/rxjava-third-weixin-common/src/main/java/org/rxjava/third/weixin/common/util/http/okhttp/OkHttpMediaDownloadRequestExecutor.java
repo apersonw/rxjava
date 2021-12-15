@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http.okhttp;
+package top.rxjava.third.weixin.common.util.http.okhttp;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -8,12 +8,12 @@ import okio.BufferedSink;
 import okio.Okio;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.HttpResponseProxy;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.HttpResponseProxy;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.common.util.http.okhttp;
+package top.rxjava.third.weixin.common.util.http.okhttp;
 
 import okhttp3.*;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.WxMpUserQuery;
-import org.rxjava.third.weixin.mp.bean.result.WxMpChangeOpenid;
-import org.rxjava.third.weixin.mp.bean.result.WxMpUser;
-import org.rxjava.third.weixin.mp.bean.result.WxMpUserList;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.WxMpUserQuery;
+import top.rxjava.third.weixin.mp.bean.result.WxMpChangeOpenid;
+import top.rxjava.third.weixin.mp.bean.result.WxMpUser;
+import top.rxjava.third.weixin.mp.bean.result.WxMpUserList;
 
 import java.util.List;
 

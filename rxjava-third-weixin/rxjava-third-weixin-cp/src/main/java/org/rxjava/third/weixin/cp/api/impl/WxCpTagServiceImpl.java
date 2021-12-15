@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.api.WxCpTagService;
-import org.rxjava.third.weixin.cp.bean.WxCpTag;
-import org.rxjava.third.weixin.cp.bean.WxCpTagAddOrRemoveUsersResult;
-import org.rxjava.third.weixin.cp.bean.WxCpTagGetResult;
-import org.rxjava.third.weixin.cp.bean.WxCpUser;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.api.WxCpTagService;
+import top.rxjava.third.weixin.cp.bean.WxCpTag;
+import top.rxjava.third.weixin.cp.bean.WxCpTagAddOrRemoveUsersResult;
+import top.rxjava.third.weixin.cp.bean.WxCpTagGetResult;
+import top.rxjava.third.weixin.cp.bean.WxCpUser;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.List;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Tag.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Tag.*;
 
 /**
  * 标签管理接口.

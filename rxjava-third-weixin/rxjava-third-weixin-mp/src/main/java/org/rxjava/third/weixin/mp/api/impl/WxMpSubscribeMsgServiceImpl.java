@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.URIUtil;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.api.WxMpSubscribeMsgService;
-import org.rxjava.third.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.URIUtil;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.api.WxMpSubscribeMsgService;
+import top.rxjava.third.weixin.mp.bean.subscribe.WxMpSubscribeMessage;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.SubscribeMsg.SEND_MESSAGE_URL;
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.SubscribeMsg.SUBSCRIBE_MESSAGE_AUTHORIZE_URL;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.SubscribeMsg.SEND_MESSAGE_URL;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.SubscribeMsg.SUBSCRIBE_MESSAGE_AUTHORIZE_URL;
 
 /**
  * 一次性订阅消息接口.

@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.open.bean;
+package top.rxjava.third.weixin.open.bean;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.open.bean.result.WxOpenResult;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.open.bean.result.WxOpenResult;
 
 import java.io.Serializable;
 

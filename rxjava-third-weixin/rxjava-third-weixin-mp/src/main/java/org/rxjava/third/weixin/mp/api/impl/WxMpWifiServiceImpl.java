@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.api.WxMpWifiService;
-import org.rxjava.third.weixin.mp.bean.wifi.WxMpWifiShopDataResult;
-import org.rxjava.third.weixin.mp.bean.wifi.WxMpWifiShopListResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.api.WxMpWifiService;
+import top.rxjava.third.weixin.mp.bean.wifi.WxMpWifiShopDataResult;
+import top.rxjava.third.weixin.mp.bean.wifi.WxMpWifiShopListResult;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Wifi.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Wifi.*;
 
 /**
  */

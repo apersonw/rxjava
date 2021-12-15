@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateData;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateMessage;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateData;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateMessage;
 
 import java.lang.reflect.Type;
 

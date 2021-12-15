@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.common.util.json;
+package top.rxjava.third.weixin.common.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.bean.WxNetCheckResult;
+import top.rxjava.third.weixin.common.bean.WxNetCheckResult;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

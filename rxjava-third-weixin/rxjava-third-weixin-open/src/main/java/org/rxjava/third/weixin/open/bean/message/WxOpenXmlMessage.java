@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.open.bean.message;
+package top.rxjava.third.weixin.open.bean.message;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlMessage;
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlOutMessage;
-import org.rxjava.third.weixin.open.api.WxOpenConfigStorage;
-import org.rxjava.third.weixin.open.util.WxOpenCryptUtil;
-import org.rxjava.third.weixin.open.util.xml.XStreamTransformer;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlMessage;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlOutMessage;
+import top.rxjava.third.weixin.open.api.WxOpenConfigStorage;
+import top.rxjava.third.weixin.open.util.WxOpenCryptUtil;
+import top.rxjava.third.weixin.open.util.xml.XStreamTransformer;
 
 import java.io.IOException;
 import java.io.InputStream;

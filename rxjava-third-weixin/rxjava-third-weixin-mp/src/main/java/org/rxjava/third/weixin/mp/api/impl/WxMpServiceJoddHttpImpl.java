@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import jodd.http.HttpConnectionProvider;
 import jodd.http.HttpRequest;
 import jodd.http.ProxyInfo;
 import jodd.http.net.SocketHttpConnectionProvider;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.HttpType;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.HttpType;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
 
 import java.util.concurrent.locks.Lock;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCESS_TOKEN_URL;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCESS_TOKEN_URL;
 
 /**
  * jodd-http方式实现.

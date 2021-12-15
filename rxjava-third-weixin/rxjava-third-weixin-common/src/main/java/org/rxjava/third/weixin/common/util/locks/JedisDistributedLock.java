@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.locks;
+package top.rxjava.third.weixin.common.util.locks;
 
 import com.github.jedis.lock.JedisLock;
 import redis.clients.jedis.Jedis;

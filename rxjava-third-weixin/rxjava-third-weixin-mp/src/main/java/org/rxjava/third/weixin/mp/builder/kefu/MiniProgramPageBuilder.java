@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.mp.builder.kefu;
+package top.rxjava.third.weixin.mp.builder.kefu;
 
-import org.rxjava.third.weixin.common.api.WxConsts.KefuMsgType;
-import org.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
+import top.rxjava.third.weixin.common.api.WxConsts.KefuMsgType;
+import top.rxjava.third.weixin.mp.bean.kefu.WxMpKefuMessage;
 
 /**
  * 小程序卡片 builder

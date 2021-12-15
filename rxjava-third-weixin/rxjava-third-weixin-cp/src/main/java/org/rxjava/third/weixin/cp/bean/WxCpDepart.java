@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import lombok.Data;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.io.Serializable;
 

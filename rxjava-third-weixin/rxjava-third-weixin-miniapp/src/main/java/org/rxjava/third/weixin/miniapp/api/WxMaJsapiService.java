@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.bean.WxJsapiSignature;
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.bean.WxJsapiSignature;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 
 /**
  * jsapi相关接口

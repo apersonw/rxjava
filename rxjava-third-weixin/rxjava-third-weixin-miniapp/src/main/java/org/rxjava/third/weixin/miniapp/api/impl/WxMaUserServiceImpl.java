@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.SignUtils;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.api.WxMaUserService;
-import org.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
-import org.rxjava.third.weixin.miniapp.bean.WxMaPhoneNumberInfo;
-import org.rxjava.third.weixin.miniapp.bean.WxMaUserInfo;
-import org.rxjava.third.weixin.miniapp.config.WxMaConfig;
-import org.rxjava.third.weixin.miniapp.util.crypt.WxMaCryptUtils;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.SignUtils;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.api.WxMaUserService;
+import top.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
+import top.rxjava.third.weixin.miniapp.bean.WxMaPhoneNumberInfo;
+import top.rxjava.third.weixin.miniapp.bean.WxMaUserInfo;
+import top.rxjava.third.weixin.miniapp.config.WxMaConfig;
+import top.rxjava.third.weixin.miniapp.util.crypt.WxMaCryptUtils;
 
 import java.util.Map;
 

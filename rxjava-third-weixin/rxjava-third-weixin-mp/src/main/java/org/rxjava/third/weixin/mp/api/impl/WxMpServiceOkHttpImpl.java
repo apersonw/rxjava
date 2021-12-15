@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import okhttp3.*;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.HttpType;
-import org.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.HttpType;
+import top.rxjava.third.weixin.common.util.http.okhttp.OkHttpProxyInfo;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
 
 import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCESS_TOKEN_URL;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.GET_ACCESS_TOKEN_URL;
 
 /**
  * okhttp实现.

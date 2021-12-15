@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.bean.express.result;
+package top.rxjava.third.weixin.miniapp.bean.express.result;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.io.Serializable;
 import java.util.List;

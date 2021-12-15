@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.card.enums;
+package top.rxjava.third.weixin.mp.bean.card.enums;
 
 /**
  * 会员卡颜色

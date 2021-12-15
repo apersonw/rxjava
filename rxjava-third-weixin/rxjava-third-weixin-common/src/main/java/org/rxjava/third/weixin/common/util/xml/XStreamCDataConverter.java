@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.xml;
+package top.rxjava.third.weixin.common.util.xml;
 
 import com.thoughtworks.xstream.converters.basic.StringConverter;
 

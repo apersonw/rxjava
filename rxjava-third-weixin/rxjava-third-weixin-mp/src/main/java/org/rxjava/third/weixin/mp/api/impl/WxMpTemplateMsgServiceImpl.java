@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.api.WxMpTemplateMsgService;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplate;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustry;
-import org.rxjava.third.weixin.mp.bean.template.WxMpTemplateMessage;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.api.WxMpTemplateMsgService;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplate;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateIndustry;
+import top.rxjava.third.weixin.mp.bean.template.WxMpTemplateMessage;
 
 import java.util.List;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.TemplateMsg.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.TemplateMsg.*;
 
 /**
  */

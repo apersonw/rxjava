@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.mp.config;
+package top.rxjava.third.weixin.mp.config;
 
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.enums.TicketType;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.mp.bean.WxMpHostConfig;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.enums.TicketType;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.mp.bean.WxMpHostConfig;
 
 import java.io.File;
 import java.util.concurrent.locks.Lock;

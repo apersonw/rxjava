@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
 
 import java.util.ArrayList;
 import java.util.List;

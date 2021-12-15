@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.pay.bean.request;
+package top.rxjava.third.weixin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.*;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.annotation.Required;
-import org.rxjava.third.weixin.pay.constant.WxPayConstants.BillType;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.common.annotation.Required;
+import top.rxjava.third.weixin.pay.constant.WxPayConstants.BillType;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 import java.util.Arrays;
 import java.util.Map;

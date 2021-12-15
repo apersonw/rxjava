@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
-import org.rxjava.third.weixin.common.bean.WxCardApiSignature;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.bean.card.*;
+import top.rxjava.third.weixin.common.bean.WxCardApiSignature;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.bean.card.*;
 
 import java.util.List;
 

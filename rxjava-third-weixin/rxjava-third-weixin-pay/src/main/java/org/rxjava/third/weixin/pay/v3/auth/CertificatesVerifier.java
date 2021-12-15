@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.v3.auth;
+package top.rxjava.third.weixin.pay.v3.auth;
 
 import java.math.BigInteger;
 import java.security.InvalidKeyException;

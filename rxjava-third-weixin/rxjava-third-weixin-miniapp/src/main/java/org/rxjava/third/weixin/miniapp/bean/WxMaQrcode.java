@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.miniapp.bean;
+package top.rxjava.third.weixin.miniapp.bean;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
+import top.rxjava.third.weixin.miniapp.util.json.WxMaGsonBuilder;
 
 import java.io.Serializable;
 

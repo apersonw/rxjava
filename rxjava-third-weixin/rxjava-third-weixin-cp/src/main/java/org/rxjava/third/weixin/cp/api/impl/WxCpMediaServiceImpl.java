@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.fs.FileUtils;
-import org.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.cp.api.WxCpMediaService;
-import org.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.common.bean.result.WxMediaUploadResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.fs.FileUtils;
+import top.rxjava.third.weixin.common.util.http.BaseMediaDownloadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.cp.api.WxCpMediaService;
+import top.rxjava.third.weixin.cp.api.WxCpService;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Media.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Media.*;
 
 /**
  * 媒体管理接口.

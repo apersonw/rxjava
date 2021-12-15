@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.v3.auth;
+package top.rxjava.third.weixin.pay.v3.auth;
 
 import java.security.*;
 import java.util.Base64;

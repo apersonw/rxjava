@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.constant;
+package top.rxjava.third.weixin.pay.constant;
 
 /**
  * 微信支付错误码

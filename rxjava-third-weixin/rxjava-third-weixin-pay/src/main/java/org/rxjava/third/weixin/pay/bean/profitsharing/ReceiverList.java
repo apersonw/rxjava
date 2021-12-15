@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.profitsharing;
+package top.rxjava.third.weixin.pay.bean.profitsharing;
 
 import com.google.gson.Gson;
 

@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.pay.v3.auth;
+package top.rxjava.third.weixin.pay.v3.auth;
 
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.util.EntityUtils;
-import org.rxjava.third.weixin.pay.v3.Credentials;
+import top.rxjava.third.weixin.pay.v3.Credentials;
 
 import java.io.IOException;
 import java.net.URI;

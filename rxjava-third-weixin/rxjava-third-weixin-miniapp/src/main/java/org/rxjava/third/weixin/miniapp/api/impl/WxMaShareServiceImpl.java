@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import lombok.AllArgsConstructor;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.api.WxMaShareService;
-import org.rxjava.third.weixin.miniapp.bean.WxMaShareInfo;
-import org.rxjava.third.weixin.miniapp.util.crypt.WxMaCryptUtils;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.api.WxMaShareService;
+import top.rxjava.third.weixin.miniapp.bean.WxMaShareInfo;
+import top.rxjava.third.weixin.miniapp.util.crypt.WxMaCryptUtils;
 
 /**
  */

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.util.qrcode;
+package top.rxjava.third.weixin.pay.util.qrcode;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;

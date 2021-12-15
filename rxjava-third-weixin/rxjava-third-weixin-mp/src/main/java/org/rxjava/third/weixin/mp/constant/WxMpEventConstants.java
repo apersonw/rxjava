@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.constant;
+package top.rxjava.third.weixin.mp.constant;
 
 /**
  * 微信公众号事件的相关常量

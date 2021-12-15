@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.api.WxMpUserService;
-import org.rxjava.third.weixin.mp.bean.WxMpUserQuery;
-import org.rxjava.third.weixin.mp.bean.result.WxMpChangeOpenid;
-import org.rxjava.third.weixin.mp.bean.result.WxMpUser;
-import org.rxjava.third.weixin.mp.bean.result.WxMpUserList;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.api.WxMpUserService;
+import top.rxjava.third.weixin.mp.bean.WxMpUserQuery;
+import top.rxjava.third.weixin.mp.bean.result.WxMpChangeOpenid;
+import top.rxjava.third.weixin.mp.bean.result.WxMpUser;
+import top.rxjava.third.weixin.mp.bean.result.WxMpUserList;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.User.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.User.*;
 
 /**
  */

@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.crypto;
+package top.rxjava.third.weixin.common.util.crypto;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;

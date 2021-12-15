@@ -1,4 +1,4 @@
-package org.rxjava.third.qiniu.file;
+package top.rxjava.third.qiniu.file;
 
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.Region;
@@ -8,9 +8,9 @@ import com.qiniu.util.Auth;
 import com.qiniu.util.IOUtils;
 import com.qiniu.util.StringMap;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.common.core.exception.ErrorMessageException;
-import org.rxjava.spring.utils.JsonUtils;
-import org.rxjava.spring.utils.UuidUtils;
+import top.rxjava.common.core.exception.ErrorMessageException;
+import top.rxjava.spring.utils.JsonUtils;
+import top.rxjava.spring.utils.UuidUtils;
 import reactor.core.publisher.Mono;
 
 import java.io.*;

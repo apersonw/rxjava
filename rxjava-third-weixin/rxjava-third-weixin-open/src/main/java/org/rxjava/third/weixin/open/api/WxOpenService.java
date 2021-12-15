@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.open.api;
+package top.rxjava.third.weixin.open.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 
 /**
  */

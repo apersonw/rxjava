@@ -1,4 +1,4 @@
-package org.rxjava.third.qiniu.file;
+package top.rxjava.third.qiniu.file;
 
 import org.springframework.context.annotation.Import;
 

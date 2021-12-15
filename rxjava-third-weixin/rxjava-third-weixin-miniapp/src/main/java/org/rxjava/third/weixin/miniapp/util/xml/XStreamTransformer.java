@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.miniapp.util.xml;
+package top.rxjava.third.weixin.miniapp.util.xml;
 
 import com.thoughtworks.xstream.XStream;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.miniapp.bean.WxMaMessage;
-import org.rxjava.third.weixin.miniapp.message.WxMaXmlOutMessage;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.miniapp.bean.WxMaMessage;
+import top.rxjava.third.weixin.miniapp.message.WxMaXmlOutMessage;
 
 import java.io.InputStream;
 import java.util.*;

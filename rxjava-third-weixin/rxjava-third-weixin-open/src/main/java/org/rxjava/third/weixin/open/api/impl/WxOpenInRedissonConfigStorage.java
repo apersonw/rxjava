@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
 import lombok.NonNull;
 import org.redisson.api.RedissonClient;
-import org.rxjava.third.weixin.common.redis.RedissonWxRedisOps;
-import org.rxjava.third.weixin.common.redis.WxRedisOps;
+import top.rxjava.third.weixin.common.redis.RedissonWxRedisOps;
+import top.rxjava.third.weixin.common.redis.WxRedisOps;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

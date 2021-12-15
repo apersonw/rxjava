@@ -1,16 +1,16 @@
-package org.rxjava.third.weixin.mp.api;
+package top.rxjava.third.weixin.mp.api;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
-import org.rxjava.third.weixin.common.api.WxMessageDuplicateChecker;
-import org.rxjava.third.weixin.common.api.WxMessageInMemoryDuplicateChecker;
-import org.rxjava.third.weixin.common.session.InternalSession;
-import org.rxjava.third.weixin.common.session.InternalSessionManager;
-import org.rxjava.third.weixin.common.session.StandardSessionManager;
-import org.rxjava.third.weixin.common.session.WxSessionManager;
-import org.rxjava.third.weixin.common.util.LogExceptionHandler;
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlMessage;
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlOutMessage;
+import top.rxjava.third.weixin.common.api.WxErrorExceptionHandler;
+import top.rxjava.third.weixin.common.api.WxMessageDuplicateChecker;
+import top.rxjava.third.weixin.common.api.WxMessageInMemoryDuplicateChecker;
+import top.rxjava.third.weixin.common.session.InternalSession;
+import top.rxjava.third.weixin.common.session.InternalSessionManager;
+import top.rxjava.third.weixin.common.session.StandardSessionManager;
+import top.rxjava.third.weixin.common.session.WxSessionManager;
+import top.rxjava.third.weixin.common.util.LogExceptionHandler;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlMessage;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,24 +97,24 @@ public class WxMpMessageRouter {
     }
 
     /**
-     * 设置自定义的 {@link org.rxjava.third.weixin.common.api.WxMessageDuplicateChecker}
-     * 如果不调用该方法，默认使用 {@link org.rxjava.third.weixin.common.api.WxMessageInMemoryDuplicateChecker}
+     * 设置自定义的 {@link top.rxjava.third.weixin.common.api.WxMessageDuplicateChecker}
+     * 如果不调用该方法，默认使用 {@link top.rxjava.third.weixin.common.api.WxMessageInMemoryDuplicateChecker}
      */
     public void setMessageDuplicateChecker(WxMessageDuplicateChecker messageDuplicateChecker) {
         this.messageDuplicateChecker = messageDuplicateChecker;
     }
 
     /**
-     * 设置自定义的{@link org.rxjava.third.weixin.common.session.WxSessionManager}
-     * 如果不调用该方法，默认使用 {@link org.rxjava.third.weixin.common.session.StandardSessionManager}
+     * 设置自定义的{@link top.rxjava.third.weixin.common.session.WxSessionManager}
+     * 如果不调用该方法，默认使用 {@link top.rxjava.third.weixin.common.session.StandardSessionManager}
      */
     public void setSessionManager(WxSessionManager sessionManager) {
         this.sessionManager = sessionManager;
     }
 
     /**
-     * 设置自定义的{@link org.rxjava.third.weixin.common.api.WxErrorExceptionHandler}
-     * 如果不调用该方法，默认使用 {@link org.rxjava.third.weixin.common.util.LogExceptionHandler}
+     * 设置自定义的{@link top.rxjava.third.weixin.common.api.WxErrorExceptionHandler}
+     * 如果不调用该方法，默认使用 {@link top.rxjava.third.weixin.common.util.LogExceptionHandler}
      */
     public void setExceptionHandler(WxErrorExceptionHandler exceptionHandler) {
         this.exceptionHandler = exceptionHandler;

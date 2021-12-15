@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.miniapp.util.json;
+package top.rxjava.third.weixin.miniapp.util.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.rxjava.third.weixin.miniapp.bean.WxMaSubscribeMessage;
-import org.rxjava.third.weixin.miniapp.bean.WxMaTemplateMessage;
-import org.rxjava.third.weixin.miniapp.bean.WxMaUniformMessage;
-import org.rxjava.third.weixin.miniapp.bean.analysis.WxMaRetainInfo;
-import org.rxjava.third.weixin.miniapp.bean.analysis.WxMaUserPortrait;
-import org.rxjava.third.weixin.miniapp.bean.analysis.WxMaVisitDistribution;
-import org.rxjava.third.weixin.miniapp.bean.code.WxMaCodeCommitRequest;
-import org.rxjava.third.weixin.miniapp.bean.code.WxMaCodeVersionDistribution;
+import top.rxjava.third.weixin.miniapp.bean.WxMaSubscribeMessage;
+import top.rxjava.third.weixin.miniapp.bean.WxMaTemplateMessage;
+import top.rxjava.third.weixin.miniapp.bean.WxMaUniformMessage;
+import top.rxjava.third.weixin.miniapp.bean.analysis.WxMaRetainInfo;
+import top.rxjava.third.weixin.miniapp.bean.analysis.WxMaUserPortrait;
+import top.rxjava.third.weixin.miniapp.bean.analysis.WxMaVisitDistribution;
+import top.rxjava.third.weixin.miniapp.bean.code.WxMaCodeCommitRequest;
+import top.rxjava.third.weixin.miniapp.bean.code.WxMaCodeVersionDistribution;
 
 /**
  */

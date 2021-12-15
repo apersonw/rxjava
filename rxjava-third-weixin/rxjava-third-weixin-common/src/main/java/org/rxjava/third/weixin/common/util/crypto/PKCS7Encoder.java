@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
 
-package org.rxjava.third.weixin.common.util.crypto;
+package top.rxjava.third.weixin.common.util.crypto;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

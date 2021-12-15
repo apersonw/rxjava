@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.miniapp.util.json;
+package top.rxjava.third.weixin.miniapp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.util.json.GsonHelper;
-import org.rxjava.third.weixin.miniapp.bean.analysis.WxMaRetainInfo;
+import top.rxjava.third.weixin.common.util.json.GsonHelper;
+import top.rxjava.third.weixin.miniapp.bean.analysis.WxMaRetainInfo;
 
 import java.lang.reflect.Type;
 import java.util.LinkedHashMap;

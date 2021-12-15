@@ -1,4 +1,4 @@
 /**
  * 数据分析
  */
-package org.rxjava.third.weixin.miniapp.bean.analysis;
+package top.rxjava.third.weixin.miniapp.bean.analysis;

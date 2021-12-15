@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -6,9 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.cp.bean.article.MpnewsArticle;
-import org.rxjava.third.weixin.cp.bean.article.NewArticle;
-import org.rxjava.third.weixin.cp.constant.WxCpConsts.AppChatMsgType;
+import top.rxjava.third.weixin.cp.bean.article.MpnewsArticle;
+import top.rxjava.third.weixin.cp.bean.article.NewArticle;
+import top.rxjava.third.weixin.cp.constant.WxCpConsts.AppChatMsgType;
 
 import java.io.Serializable;
 import java.util.List;

@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-package org.rxjava.third.weixin.common.session;
+package top.rxjava.third.weixin.common.session;
 
 /**
  * Manifest constants for the <code>org.apache.catalina.session</code>
  */
 public class Constants {
-    public static final String PACKAGE = "org.rxjava.third.weixin.common.session";
+    public static final String PACKAGE = "top.rxjava.third.weixin.common.session";
 }

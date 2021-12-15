@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.miniapp.util.json;
+package top.rxjava.third.weixin.miniapp.util.json;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import org.rxjava.third.weixin.miniapp.bean.code.WxMaCodeCommitRequest;
+import top.rxjava.third.weixin.miniapp.bean.code.WxMaCodeCommitRequest;
 
 import java.lang.reflect.Type;
 

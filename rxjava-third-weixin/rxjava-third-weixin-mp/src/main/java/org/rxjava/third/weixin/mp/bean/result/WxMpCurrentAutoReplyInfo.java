@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.bean.result;
+package top.rxjava.third.weixin.mp.bean.result;
 
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.json.WxBooleanTypeAdapter;
-import org.rxjava.third.weixin.common.util.json.WxDateTypeAdapter;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.WxBooleanTypeAdapter;
+import top.rxjava.third.weixin.common.util.json.WxDateTypeAdapter;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 import java.util.Date;

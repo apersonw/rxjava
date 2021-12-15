@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.pay.service;
+package top.rxjava.third.weixin.pay.service;
 
-import org.rxjava.third.weixin.pay.bean.request.WxPayRedpackQueryRequest;
-import org.rxjava.third.weixin.pay.bean.request.WxPaySendMiniProgramRedpackRequest;
-import org.rxjava.third.weixin.pay.bean.request.WxPaySendRedpackRequest;
-import org.rxjava.third.weixin.pay.bean.result.WxPayRedpackQueryResult;
-import org.rxjava.third.weixin.pay.bean.result.WxPaySendMiniProgramRedpackResult;
-import org.rxjava.third.weixin.pay.bean.result.WxPaySendRedpackResult;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.bean.request.WxPayRedpackQueryRequest;
+import top.rxjava.third.weixin.pay.bean.request.WxPaySendMiniProgramRedpackRequest;
+import top.rxjava.third.weixin.pay.bean.request.WxPaySendRedpackRequest;
+import top.rxjava.third.weixin.pay.bean.result.WxPayRedpackQueryResult;
+import top.rxjava.third.weixin.pay.bean.result.WxPaySendMiniProgramRedpackResult;
+import top.rxjava.third.weixin.pay.bean.result.WxPaySendRedpackResult;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 /**
  * 红包相关接口.

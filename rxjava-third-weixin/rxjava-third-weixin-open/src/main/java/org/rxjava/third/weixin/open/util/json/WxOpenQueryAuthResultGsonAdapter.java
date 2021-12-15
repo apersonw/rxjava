@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.open.util.json;
+package top.rxjava.third.weixin.open.util.json;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import org.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizationInfo;
-import org.rxjava.third.weixin.open.bean.result.WxOpenQueryAuthResult;
+import top.rxjava.third.weixin.open.bean.auth.WxOpenAuthorizationInfo;
+import top.rxjava.third.weixin.open.bean.result.WxOpenQueryAuthResult;
 
 import java.lang.reflect.Type;
 

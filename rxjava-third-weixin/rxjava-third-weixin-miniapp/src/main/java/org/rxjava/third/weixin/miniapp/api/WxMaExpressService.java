@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.express.WxMaExpressAccount;
-import org.rxjava.third.weixin.miniapp.bean.express.WxMaExpressDelivery;
-import org.rxjava.third.weixin.miniapp.bean.express.WxMaExpressPath;
-import org.rxjava.third.weixin.miniapp.bean.express.WxMaExpressPrinter;
-import org.rxjava.third.weixin.miniapp.bean.express.request.*;
-import org.rxjava.third.weixin.miniapp.bean.express.result.WxMaExpressOrderInfoResult;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.express.WxMaExpressAccount;
+import top.rxjava.third.weixin.miniapp.bean.express.WxMaExpressDelivery;
+import top.rxjava.third.weixin.miniapp.bean.express.WxMaExpressPath;
+import top.rxjava.third.weixin.miniapp.bean.express.WxMaExpressPrinter;
+import top.rxjava.third.weixin.miniapp.bean.express.request.*;
+import top.rxjava.third.weixin.miniapp.bean.express.result.WxMaExpressOrderInfoResult;
 
 import java.util.List;
 

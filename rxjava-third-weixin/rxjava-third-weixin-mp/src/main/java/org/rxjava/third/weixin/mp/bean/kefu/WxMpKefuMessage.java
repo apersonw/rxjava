@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.bean.kefu;
+package top.rxjava.third.weixin.mp.bean.kefu;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.mp.builder.kefu.*;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.mp.builder.kefu.*;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;

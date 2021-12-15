@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.miniapp.api.impl;
+package top.rxjava.third.weixin.miniapp.api.impl;
 
 import lombok.AllArgsConstructor;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.api.WxMaQrcodeService;
-import org.rxjava.third.weixin.miniapp.api.WxMaService;
-import org.rxjava.third.weixin.miniapp.bean.WxMaCodeLineColor;
-import org.rxjava.third.weixin.miniapp.bean.WxMaQrcode;
-import org.rxjava.third.weixin.miniapp.bean.WxaCode;
-import org.rxjava.third.weixin.miniapp.bean.WxaCodeUnlimit;
-import org.rxjava.third.weixin.miniapp.util.QrcodeBytesRequestExecutor;
-import org.rxjava.third.weixin.miniapp.util.QrcodeRequestExecutor;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.api.WxMaQrcodeService;
+import top.rxjava.third.weixin.miniapp.api.WxMaService;
+import top.rxjava.third.weixin.miniapp.bean.WxMaCodeLineColor;
+import top.rxjava.third.weixin.miniapp.bean.WxMaQrcode;
+import top.rxjava.third.weixin.miniapp.bean.WxaCode;
+import top.rxjava.third.weixin.miniapp.bean.WxaCodeUnlimit;
+import top.rxjava.third.weixin.miniapp.util.QrcodeBytesRequestExecutor;
+import top.rxjava.third.weixin.miniapp.util.QrcodeRequestExecutor;
 
 import java.io.File;
 

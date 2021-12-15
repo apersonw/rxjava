@@ -6,12 +6,12 @@
  * arose from modification of the original source, or other redistribution of this source
  * is not permitted without written permission of the KINGSTAR MEDIA SOLUTIONS LTD.
  */
-package org.rxjava.third.weixin.common.util.json;
+package top.rxjava.third.weixin.common.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.common.bean.menu.WxMenu;
-import org.rxjava.third.weixin.common.bean.menu.WxMenuButton;
-import org.rxjava.third.weixin.common.bean.menu.WxMenuRule;
+import top.rxjava.third.weixin.common.bean.menu.WxMenu;
+import top.rxjava.third.weixin.common.bean.menu.WxMenuButton;
+import top.rxjava.third.weixin.common.bean.menu.WxMenuRule;
 
 import java.lang.reflect.Type;
 

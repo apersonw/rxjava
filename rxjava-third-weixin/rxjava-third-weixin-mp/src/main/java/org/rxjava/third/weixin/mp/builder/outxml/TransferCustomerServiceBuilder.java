@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.mp.builder.outxml;
+package top.rxjava.third.weixin.mp.builder.outxml;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlOutTransferKefuMessage;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlOutTransferKefuMessage;
 
 /**
  * 客服消息builder

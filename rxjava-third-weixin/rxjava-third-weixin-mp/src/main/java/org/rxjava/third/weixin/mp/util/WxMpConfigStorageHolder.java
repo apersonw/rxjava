@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.util;
+package top.rxjava.third.weixin.mp.util;
 
 /**
  */

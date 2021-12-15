@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpImgProcService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.imgproc.WxMpImgProcAiCropResult;
-import org.rxjava.third.weixin.mp.bean.imgproc.WxMpImgProcQrCodeResult;
-import org.rxjava.third.weixin.mp.bean.imgproc.WxMpImgProcSuperResolutionResult;
-import org.rxjava.third.weixin.mp.util.requestexecuter.ocr.OcrDiscernRequestExecutor;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpImgProcService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.imgproc.WxMpImgProcAiCropResult;
+import top.rxjava.third.weixin.mp.bean.imgproc.WxMpImgProcQrCodeResult;
+import top.rxjava.third.weixin.mp.bean.imgproc.WxMpImgProcSuperResolutionResult;
+import top.rxjava.third.weixin.mp.util.requestexecuter.ocr.OcrDiscernRequestExecutor;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.ImgProc.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.ImgProc.*;
 
 /**
  * 图像处理接口实现.

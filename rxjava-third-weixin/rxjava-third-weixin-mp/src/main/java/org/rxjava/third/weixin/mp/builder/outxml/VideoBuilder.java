@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.mp.builder.outxml;
+package top.rxjava.third.weixin.mp.builder.outxml;
 
-import org.rxjava.third.weixin.mp.bean.message.WxMpXmlOutVideoMessage;
+import top.rxjava.third.weixin.mp.bean.message.WxMpXmlOutVideoMessage;
 
 /**
  * 视频消息builder

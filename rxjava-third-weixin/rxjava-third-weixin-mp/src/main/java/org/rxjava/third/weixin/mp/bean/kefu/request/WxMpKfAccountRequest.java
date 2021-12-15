@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.bean.kefu.request;
+package top.rxjava.third.weixin.mp.bean.kefu.request;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 

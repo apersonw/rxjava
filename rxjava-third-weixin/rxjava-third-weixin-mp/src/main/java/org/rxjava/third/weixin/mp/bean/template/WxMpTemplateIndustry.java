@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.mp.bean.template;
+package top.rxjava.third.weixin.mp.bean.template;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
+import top.rxjava.third.weixin.mp.util.json.WxMpGsonBuilder;
 
 import java.io.Serializable;
 

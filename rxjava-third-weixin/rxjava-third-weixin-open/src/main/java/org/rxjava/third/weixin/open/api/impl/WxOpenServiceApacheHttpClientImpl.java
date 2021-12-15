@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.open.api.impl;
+package top.rxjava.third.weixin.open.api.impl;
 
 import org.apache.http.HttpHost;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.HttpType;
-import org.rxjava.third.weixin.common.util.http.SimpleGetRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.SimplePostRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import org.rxjava.third.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
-import org.rxjava.third.weixin.open.api.WxOpenConfigStorage;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.HttpType;
+import top.rxjava.third.weixin.common.util.http.SimpleGetRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.SimplePostRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import top.rxjava.third.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
+import top.rxjava.third.weixin.open.api.WxOpenConfigStorage;
 
 /**
  * apache-http方式实现

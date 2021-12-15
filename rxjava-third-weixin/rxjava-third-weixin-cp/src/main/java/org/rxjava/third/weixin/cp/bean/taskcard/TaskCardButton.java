@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.bean.taskcard;
+package top.rxjava.third.weixin.cp.bean.taskcard;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
 import lombok.NonNull;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.bean.oa.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.bean.oa.*;
 
 import java.util.Date;
 import java.util.List;
@@ -65,7 +65,7 @@ public interface WxCpOaService {
      * @param endTime   结束时间
      * @return WxCpApprovalInfo
      * @throws WxErrorException
-     * @see org.rxjava.third.weixin.cp.api.WxCpOaService#getApprovalInfo
+     * @see top.rxjava.third.weixin.cp.api.WxCpOaService#getApprovalInfo
      */
     WxCpApprovalInfo getApprovalInfo(@NonNull Date startTime, @NonNull Date endTime) throws WxErrorException;
 
@@ -91,8 +91,8 @@ public interface WxCpOaService {
      * @param endTime   获取审批记录的结束时间
      * @param nextSpnum 第一个拉取的审批单号，不填从该时间段的第一个审批单拉取
      * @throws WxErrorException
-     * @see org.rxjava.third.weixin.cp.api.WxCpOaService#getApprovalInfo
-     * @see org.rxjava.third.weixin.cp.api.WxCpOaService#getApprovalDetail
+     * @see top.rxjava.third.weixin.cp.api.WxCpOaService#getApprovalInfo
+     * @see top.rxjava.third.weixin.cp.api.WxCpOaService#getApprovalDetail
      */
     @Deprecated
     WxCpApprovalDataResult getApprovalData(Date startTime, Date endTime, Long nextSpnum) throws WxErrorException;

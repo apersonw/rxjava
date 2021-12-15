@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http.okhttp;
+package top.rxjava.third.weixin.common.util.http.okhttp;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;

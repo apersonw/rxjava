@@ -1,13 +1,13 @@
-package org.rxjava.third.weixin.mp.bean.message;
+package top.rxjava.third.weixin.mp.bean.message;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
-import org.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
-import org.rxjava.third.weixin.mp.builder.outxml.*;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.mp.util.crypto.WxMpCryptUtil;
-import org.rxjava.third.weixin.mp.util.xml.XStreamTransformer;
+import top.rxjava.third.weixin.common.util.xml.XStreamCDataConverter;
+import top.rxjava.third.weixin.mp.builder.outxml.*;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.mp.util.crypto.WxMpCryptUtil;
+import top.rxjava.third.weixin.mp.util.xml.XStreamTransformer;
 
 import java.io.Serializable;
 

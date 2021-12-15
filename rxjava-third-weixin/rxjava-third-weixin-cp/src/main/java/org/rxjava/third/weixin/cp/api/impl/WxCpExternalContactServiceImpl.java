@@ -1,20 +1,20 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ArrayUtils;
-import org.rxjava.third.weixin.common.error.WxCpErrorMsgEnum;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.api.WxCpExternalContactService;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.*;
+import top.rxjava.third.weixin.common.error.WxCpErrorMsgEnum;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.api.WxCpExternalContactService;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.*;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.ExternalContact.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.ExternalContact.*;
 
 /**
  *

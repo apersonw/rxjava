@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.fs;
+package top.rxjava.third.weixin.common.util.fs;
 
 import java.io.File;
 import java.io.IOException;

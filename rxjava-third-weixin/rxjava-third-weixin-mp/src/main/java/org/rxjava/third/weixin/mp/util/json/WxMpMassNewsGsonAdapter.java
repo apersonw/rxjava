@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.mp.util.json;
+package top.rxjava.third.weixin.mp.util.json;
 
 import com.google.gson.*;
-import org.rxjava.third.weixin.mp.bean.WxMpMassNews;
-import org.rxjava.third.weixin.mp.bean.material.WxMpNewsArticle;
+import top.rxjava.third.weixin.mp.bean.WxMpMassNews;
+import top.rxjava.third.weixin.mp.bean.material.WxMpNewsArticle;
 
 import java.lang.reflect.Type;
 

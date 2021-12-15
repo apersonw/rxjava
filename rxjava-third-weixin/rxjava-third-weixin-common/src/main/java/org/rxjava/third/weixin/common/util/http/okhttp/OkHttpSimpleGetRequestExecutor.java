@@ -1,12 +1,12 @@
-package org.rxjava.third.weixin.common.util.http.okhttp;
+package top.rxjava.third.weixin.common.util.http.okhttp;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.SimpleGetRequestExecutor;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.SimpleGetRequestExecutor;
 
 import java.io.IOException;
 

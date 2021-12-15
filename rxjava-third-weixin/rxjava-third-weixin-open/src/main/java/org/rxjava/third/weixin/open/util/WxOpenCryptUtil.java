@@ -1,11 +1,11 @@
-package org.rxjava.third.weixin.open.util;
+package top.rxjava.third.weixin.open.util;
 
 import org.apache.commons.codec.binary.Base64;
-import org.rxjava.third.weixin.open.api.WxOpenConfigStorage;
+import top.rxjava.third.weixin.open.api.WxOpenConfigStorage;
 
 /**
  */
-public class WxOpenCryptUtil extends org.rxjava.third.weixin.common.util.crypto.WxCryptUtil {
+public class WxOpenCryptUtil extends top.rxjava.third.weixin.common.util.crypto.WxCryptUtil {
     /**
      * 构造函数
      *

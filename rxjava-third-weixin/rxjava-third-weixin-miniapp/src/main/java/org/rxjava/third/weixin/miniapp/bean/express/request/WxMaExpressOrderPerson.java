@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.miniapp.bean.express.request;
+package top.rxjava.third.weixin.miniapp.bean.express.request;
 
 
 import com.google.gson.annotations.SerializedName;

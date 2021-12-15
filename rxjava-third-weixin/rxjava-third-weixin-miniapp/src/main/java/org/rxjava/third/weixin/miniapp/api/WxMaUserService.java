@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
-import org.rxjava.third.weixin.miniapp.bean.WxMaPhoneNumberInfo;
-import org.rxjava.third.weixin.miniapp.bean.WxMaUserInfo;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
+import top.rxjava.third.weixin.miniapp.bean.WxMaPhoneNumberInfo;
+import top.rxjava.third.weixin.miniapp.bean.WxMaUserInfo;
 
 import java.util.Map;
 

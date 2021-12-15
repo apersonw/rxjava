@@ -1,21 +1,21 @@
-package org.rxjava.third.weixin.cp.api.impl;
+package top.rxjava.third.weixin.cp.api.impl;
 
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.cp.api.WxCpChatService;
-import org.rxjava.third.weixin.cp.api.WxCpService;
-import org.rxjava.third.weixin.cp.bean.WxCpAppChatMessage;
-import org.rxjava.third.weixin.cp.bean.WxCpChat;
-import org.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.cp.api.WxCpChatService;
+import top.rxjava.third.weixin.cp.api.WxCpService;
+import top.rxjava.third.weixin.cp.bean.WxCpAppChatMessage;
+import top.rxjava.third.weixin.cp.bean.WxCpChat;
+import top.rxjava.third.weixin.cp.util.json.WxCpGsonBuilder;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Chat.*;
+import static top.rxjava.third.weixin.cp.constant.WxCpApiPathConsts.Chat.*;
 
 /**
  * 群聊服务实现.

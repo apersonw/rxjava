@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.payscore;
+package top.rxjava.third.weixin.pay.bean.payscore;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

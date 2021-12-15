@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.common.util.http;
+package top.rxjava.third.weixin.common.util.http;
 
 /**
  */

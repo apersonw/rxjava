@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.bean.messagebuilder;
+package top.rxjava.third.weixin.cp.bean.messagebuilder;
 
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.cp.bean.WxCpMessage;
-import org.rxjava.third.weixin.cp.bean.article.NewArticle;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.cp.bean.WxCpMessage;
+import top.rxjava.third.weixin.cp.bean.article.NewArticle;
 
 import java.util.ArrayList;
 import java.util.Collections;

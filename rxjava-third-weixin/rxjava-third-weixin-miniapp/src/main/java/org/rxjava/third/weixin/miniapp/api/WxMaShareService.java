@@ -1,6 +1,6 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.miniapp.bean.WxMaShareInfo;
+import top.rxjava.third.weixin.miniapp.bean.WxMaShareInfo;
 
 /**
  * 分享信息相关操作接口.

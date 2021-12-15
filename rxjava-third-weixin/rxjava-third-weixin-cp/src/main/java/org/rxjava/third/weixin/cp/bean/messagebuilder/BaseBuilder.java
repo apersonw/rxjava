@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.bean.messagebuilder;
+package top.rxjava.third.weixin.cp.bean.messagebuilder;
 
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.api.WxConsts;
-import org.rxjava.third.weixin.cp.bean.WxCpMessage;
+import top.rxjava.third.weixin.common.api.WxConsts;
+import top.rxjava.third.weixin.cp.bean.WxCpMessage;
 
 public class BaseBuilder<T> {
     protected String msgType;

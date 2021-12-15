@@ -1,18 +1,18 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.mp.api.WxMpAiOpenService;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.enums.AiLangType;
-import org.rxjava.third.weixin.mp.util.requestexecuter.voice.VoiceUploadRequestExecutor;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.mp.api.WxMpAiOpenService;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.enums.AiLangType;
+import top.rxjava.third.weixin.mp.util.requestexecuter.voice.VoiceUploadRequestExecutor;
 
 import java.io.File;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.AiOpen.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.AiOpen.*;
 
 /**
  */

@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.cp.bean.WxCpInviteResult;
-import org.rxjava.third.weixin.cp.bean.WxCpUser;
-import org.rxjava.third.weixin.cp.bean.WxCpUserExternalContactInfo;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.cp.bean.WxCpInviteResult;
+import top.rxjava.third.weixin.cp.bean.WxCpUser;
+import top.rxjava.third.weixin.cp.bean.WxCpUserExternalContactInfo;
 
 import java.util.List;
 import java.util.Map;

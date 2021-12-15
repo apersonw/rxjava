@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.open.bean.result;
+package top.rxjava.third.weixin.open.bean.result;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
+import top.rxjava.third.weixin.open.util.json.WxOpenGsonBuilder;
 
 /**
  * 微信开放平台小程序当前分阶段发布详情

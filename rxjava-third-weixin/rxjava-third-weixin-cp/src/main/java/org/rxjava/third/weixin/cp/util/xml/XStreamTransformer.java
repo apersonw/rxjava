@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.cp.util.xml;
+package top.rxjava.third.weixin.cp.util.xml;
 
 import com.thoughtworks.xstream.XStream;
-import org.rxjava.third.weixin.common.util.xml.XStreamInitializer;
-import org.rxjava.third.weixin.cp.bean.*;
+import top.rxjava.third.weixin.common.util.xml.XStreamInitializer;
+import top.rxjava.third.weixin.cp.bean.*;
 
 import java.io.InputStream;
 import java.util.HashMap;

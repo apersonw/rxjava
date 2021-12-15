@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.enums;
+package top.rxjava.third.weixin.mp.enums;
 
 /**
  * 微信卡券类型.

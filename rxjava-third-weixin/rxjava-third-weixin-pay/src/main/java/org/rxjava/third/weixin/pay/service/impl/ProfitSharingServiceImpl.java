@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.pay.service.impl;
+package top.rxjava.third.weixin.pay.service.impl;
 
-import org.rxjava.third.weixin.pay.bean.profitsharing.*;
-import org.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
-import org.rxjava.third.weixin.pay.service.ProfitSharingService;
-import org.rxjava.third.weixin.pay.service.WxPayService;
+import top.rxjava.third.weixin.pay.bean.profitsharing.*;
+import top.rxjava.third.weixin.pay.bean.result.BaseWxPayResult;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.service.ProfitSharingService;
+import top.rxjava.third.weixin.pay.service.WxPayService;
 
 /**
  */

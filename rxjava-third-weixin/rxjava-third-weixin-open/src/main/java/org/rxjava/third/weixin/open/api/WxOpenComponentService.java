@@ -1,14 +1,14 @@
-package org.rxjava.third.weixin.open.api;
+package top.rxjava.third.weixin.open.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
-import org.rxjava.third.weixin.mp.api.WxMpService;
-import org.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
-import org.rxjava.third.weixin.open.bean.WxOpenCreateResult;
-import org.rxjava.third.weixin.open.bean.WxOpenGetResult;
-import org.rxjava.third.weixin.open.bean.WxOpenMaCodeTemplate;
-import org.rxjava.third.weixin.open.bean.message.WxOpenXmlMessage;
-import org.rxjava.third.weixin.open.bean.result.*;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.WxMaJscode2SessionResult;
+import top.rxjava.third.weixin.mp.api.WxMpService;
+import top.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import top.rxjava.third.weixin.open.bean.WxOpenCreateResult;
+import top.rxjava.third.weixin.open.bean.WxOpenGetResult;
+import top.rxjava.third.weixin.open.bean.WxOpenMaCodeTemplate;
+import top.rxjava.third.weixin.open.bean.message.WxOpenXmlMessage;
+import top.rxjava.third.weixin.open.bean.result.*;
 
 import java.util.List;
 

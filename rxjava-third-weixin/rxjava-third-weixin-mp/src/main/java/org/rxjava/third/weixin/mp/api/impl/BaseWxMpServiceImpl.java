@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.api.impl;
+package top.rxjava.third.weixin.mp.api.impl;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -10,35 +10,35 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.bean.WxJsapiSignature;
-import org.rxjava.third.weixin.common.bean.WxNetCheckResult;
-import org.rxjava.third.weixin.common.enums.TicketType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.session.StandardSessionManager;
-import org.rxjava.third.weixin.common.session.WxSessionManager;
-import org.rxjava.third.weixin.common.util.DataUtils;
-import org.rxjava.third.weixin.common.util.RandomUtils;
-import org.rxjava.third.weixin.common.util.crypto.SHA1;
-import org.rxjava.third.weixin.common.util.http.*;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
-import org.rxjava.third.weixin.mp.api.*;
-import org.rxjava.third.weixin.mp.bean.WxMpSemanticQuery;
-import org.rxjava.third.weixin.mp.bean.result.WxMpCurrentAutoReplyInfo;
-import org.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
-import org.rxjava.third.weixin.mp.bean.result.WxMpSemanticQueryResult;
-import org.rxjava.third.weixin.mp.bean.result.WxMpUser;
-import org.rxjava.third.weixin.mp.config.WxMpConfigStorage;
-import org.rxjava.third.weixin.mp.enums.WxMpApiUrl;
-import org.rxjava.third.weixin.mp.util.WxMpConfigStorageHolder;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.bean.WxJsapiSignature;
+import top.rxjava.third.weixin.common.bean.WxNetCheckResult;
+import top.rxjava.third.weixin.common.enums.TicketType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.session.StandardSessionManager;
+import top.rxjava.third.weixin.common.session.WxSessionManager;
+import top.rxjava.third.weixin.common.util.DataUtils;
+import top.rxjava.third.weixin.common.util.RandomUtils;
+import top.rxjava.third.weixin.common.util.crypto.SHA1;
+import top.rxjava.third.weixin.common.util.http.*;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.mp.api.*;
+import top.rxjava.third.weixin.mp.bean.WxMpSemanticQuery;
+import top.rxjava.third.weixin.mp.bean.result.WxMpCurrentAutoReplyInfo;
+import top.rxjava.third.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import top.rxjava.third.weixin.mp.bean.result.WxMpSemanticQueryResult;
+import top.rxjava.third.weixin.mp.bean.result.WxMpUser;
+import top.rxjava.third.weixin.mp.config.WxMpConfigStorage;
+import top.rxjava.third.weixin.mp.enums.WxMpApiUrl;
+import top.rxjava.third.weixin.mp.util.WxMpConfigStorageHolder;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 
-import static org.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.*;
+import static top.rxjava.third.weixin.mp.enums.WxMpApiUrl.Other.*;
 
 /**
  * 基础实现类.

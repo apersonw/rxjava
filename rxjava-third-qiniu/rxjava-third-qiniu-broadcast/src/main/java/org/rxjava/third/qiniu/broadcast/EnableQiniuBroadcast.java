@@ -1,4 +1,4 @@
-package org.rxjava.third.qiniu.broadcast;
+package top.rxjava.third.qiniu.broadcast;
 
 import org.springframework.context.annotation.Import;
 

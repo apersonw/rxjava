@@ -1,15 +1,15 @@
-package org.rxjava.third.weixin.cp.api;
+package top.rxjava.third.weixin.cp.api;
 
-import org.rxjava.third.weixin.common.bean.WxAccessToken;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestExecutor;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.cp.bean.WxCpMaJsCode2SessionResult;
-import org.rxjava.third.weixin.cp.bean.WxCpTpAuthInfo;
-import org.rxjava.third.weixin.cp.bean.WxCpTpCorp;
-import org.rxjava.third.weixin.cp.bean.WxCpTpPermanentCodeInfo;
-import org.rxjava.third.weixin.cp.config.WxCpTpConfigStorage;
+import top.rxjava.third.weixin.common.bean.WxAccessToken;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.MediaUploadRequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestExecutor;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.cp.bean.WxCpMaJsCode2SessionResult;
+import top.rxjava.third.weixin.cp.bean.WxCpTpAuthInfo;
+import top.rxjava.third.weixin.cp.bean.WxCpTpCorp;
+import top.rxjava.third.weixin.cp.bean.WxCpTpPermanentCodeInfo;
+import top.rxjava.third.weixin.cp.config.WxCpTpConfigStorage;
 
 /**
  * 微信第三方应用API的Service.

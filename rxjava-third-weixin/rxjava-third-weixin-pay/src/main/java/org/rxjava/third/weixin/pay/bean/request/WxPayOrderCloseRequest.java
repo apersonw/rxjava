@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.pay.bean.request;
+package top.rxjava.third.weixin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.*;

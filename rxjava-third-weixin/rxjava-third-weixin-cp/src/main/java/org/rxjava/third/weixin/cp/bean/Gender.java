@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.cp.bean;
+package top.rxjava.third.weixin.cp.bean;
 
 /**
  * 性别枚举

@@ -1,10 +1,10 @@
-package org.rxjava.third.weixin.common.util;
+package top.rxjava.third.weixin.common.util;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
-import org.rxjava.third.weixin.common.annotation.Required;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.annotation.Required;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

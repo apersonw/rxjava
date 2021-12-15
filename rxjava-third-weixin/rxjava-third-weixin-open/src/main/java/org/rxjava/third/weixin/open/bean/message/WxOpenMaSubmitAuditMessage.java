@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.open.bean.message;
+package top.rxjava.third.weixin.open.bean.message;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.rxjava.third.weixin.open.bean.ma.WxOpenMaPreviewInfo;
-import org.rxjava.third.weixin.open.bean.ma.WxOpenMaSubmitAudit;
+import top.rxjava.third.weixin.open.bean.ma.WxOpenMaPreviewInfo;
+import top.rxjava.third.weixin.open.bean.ma.WxOpenMaSubmitAudit;
 
 import java.io.Serializable;
 import java.util.List;

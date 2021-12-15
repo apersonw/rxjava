@@ -1,9 +1,9 @@
-package org.rxjava.third.weixin.pay.service;
+package top.rxjava.third.weixin.pay.service;
 
-import org.rxjava.third.weixin.pay.bean.payscore.PayScoreNotifyData;
-import org.rxjava.third.weixin.pay.bean.payscore.WxPayScoreRequest;
-import org.rxjava.third.weixin.pay.bean.payscore.WxPayScoreResult;
-import org.rxjava.third.weixin.pay.exception.WxPayException;
+import top.rxjava.third.weixin.pay.bean.payscore.PayScoreNotifyData;
+import top.rxjava.third.weixin.pay.bean.payscore.WxPayScoreRequest;
+import top.rxjava.third.weixin.pay.bean.payscore.WxPayScoreResult;
+import top.rxjava.third.weixin.pay.exception.WxPayException;
 
 /**
  * 支付分相关服务类.
@@ -42,7 +42,7 @@ public interface PayScoreService {
      *
      * @param outOrderNo the out order no
      * @param reason     the reason
-     * @return org.rxjava.third.weixin.wxpay.bean.payscore.WxPayScoreResult wx pay score result
+     * @return top.rxjava.third.weixin.wxpay.bean.payscore.WxPayScoreResult wx pay score result
      * @throws WxPayException the wx pay exception
      */
     WxPayScoreResult cancelServiceOrder(String outOrderNo, String reason) throws WxPayException;

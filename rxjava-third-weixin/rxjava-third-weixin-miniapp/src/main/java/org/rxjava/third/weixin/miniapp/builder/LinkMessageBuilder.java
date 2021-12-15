@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.miniapp.builder;
+package top.rxjava.third.weixin.miniapp.builder;
 
-import org.rxjava.third.weixin.miniapp.bean.WxMaKefuMessage;
+import top.rxjava.third.weixin.miniapp.bean.WxMaKefuMessage;
 
-import static org.rxjava.third.weixin.miniapp.constant.WxMaConstants.KefuMsgType;
+import static top.rxjava.third.weixin.miniapp.constant.WxMaConstants.KefuMsgType;
 
 /**
  * 图文链接消息builder

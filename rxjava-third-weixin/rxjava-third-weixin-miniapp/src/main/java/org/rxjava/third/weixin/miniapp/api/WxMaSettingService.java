@@ -1,7 +1,7 @@
-package org.rxjava.third.weixin.miniapp.api;
+package top.rxjava.third.weixin.miniapp.api;
 
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.miniapp.bean.WxMaDomainAction;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.miniapp.bean.WxMaDomainAction;
 
 /**
  * 小程序修改服务器地址、成员管理 API（大部分只能是第三方平台调用）

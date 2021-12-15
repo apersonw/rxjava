@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.util.requestexecuter.ocr;
+package top.rxjava.third.weixin.mp.util.requestexecuter.ocr;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -8,11 +8,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.rxjava.third.weixin.common.WxType;
-import org.rxjava.third.weixin.common.error.WxError;
-import org.rxjava.third.weixin.common.error.WxErrorException;
-import org.rxjava.third.weixin.common.util.http.RequestHttp;
-import org.rxjava.third.weixin.common.util.http.apache.Utf8ResponseHandler;
+import top.rxjava.third.weixin.common.WxType;
+import top.rxjava.third.weixin.common.error.WxError;
+import top.rxjava.third.weixin.common.error.WxErrorException;
+import top.rxjava.third.weixin.common.util.http.RequestHttp;
+import top.rxjava.third.weixin.common.util.http.apache.Utf8ResponseHandler;
 
 import java.io.File;
 import java.io.IOException;

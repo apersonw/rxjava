@@ -1,4 +1,4 @@
-package org.rxjava.third.weixin.mp.bean.template;
+package top.rxjava.third.weixin.mp.bean.template;
 
 import lombok.Data;
 

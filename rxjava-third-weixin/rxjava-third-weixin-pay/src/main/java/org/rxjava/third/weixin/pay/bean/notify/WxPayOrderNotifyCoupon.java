@@ -1,8 +1,8 @@
-package org.rxjava.third.weixin.pay.bean.notify;
+package top.rxjava.third.weixin.pay.bean.notify;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.rxjava.third.weixin.common.util.json.WxGsonBuilder;
+import top.rxjava.third.weixin.common.util.json.WxGsonBuilder;
 
 import java.io.Serializable;
 import java.util.HashMap;
