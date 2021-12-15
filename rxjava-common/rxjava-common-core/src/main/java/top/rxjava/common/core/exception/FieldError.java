@@ -1,4 +1,4 @@
-package top.rxjava.starter.webflux.exception;
+package top.rxjava.common.core.exception;
 
 import lombok.Data;
 import org.springframework.context.MessageSourceResolvable;

@@ -1,8 +1,12 @@
 package top.rxjava.starter.web.exception;
 
 import org.springframework.beans.TypeMismatchException;
+import org.springframework.context.MessageSource;
+import org.springframework.context.MessageSourceAware;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.core.codec.DecodingException;
 import org.springframework.http.HttpStatus;
+import org.springframework.lang.NonNullApi;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -11,13 +15,17 @@ import top.rxjava.common.core.exception.ErrorMessage;
 import top.rxjava.common.core.exception.ErrorMessageException;
 import top.rxjava.common.core.exception.TokenException;
 import top.rxjava.common.core.exception.UnauthorizedException;
+import top.rxjava.common.utils.ErrorMessageUtils;
 import top.rxjava.common.utils.JsonUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Locale;
 
-public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionResolver {
+public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionResolver, MessageSourceAware {
+    private MessageSourceAccessor messageAccessor;
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
@@ -38,7 +46,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
      */
     private ErrorMessage toErrorMessage(HttpServletRequest request, HttpServletResponse response, Object handler, Exception exception) {
         HttpStatus status;
-        ErrorMessage errorMessage = null;
+        ErrorMessage errorMessage = new ErrorMessage();
 
         //参数异常错误
         if (exception instanceof WebExchangeBindException) {
@@ -75,12 +83,16 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
             status = HttpStatus.INTERNAL_SERVER_ERROR;
             errorMessage = new ErrorMessage();
         }
-        //errorMessage.setStatus(status.value());
-        //errorMessage.setTimestamp(LocalDateTime.now());
-        //errorMessage.setPath(request.getPath().pathWithinApplication().value());
-
+        errorMessage.setStatus(status.value());
+        errorMessage.setOccurTime(LocalDateTime.now());
+        errorMessage.setPath(request.getPathInfo());
         //处理消息国际化
-        //ErrorMessageUtils.handlerI18n(errorMessage, messageAccessor);
+        ErrorMessageUtils.handlerI18n(errorMessage, messageAccessor);
         return errorMessage;
+    }
+
+    @Override
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageAccessor = new MessageSourceAccessor(messageSource, Locale.CHINA);
     }
 }
