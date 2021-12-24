@@ -4,43 +4,56 @@ import lombok.Data;
 import org.springframework.context.MessageSourceResolvable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author happy
  */
 @Data
 public class ErrorMessage implements MessageSourceResolvable {
-    /**
-     * 错误码
-     */
     private String[] codes;
-    /**
-     * 消息解析参数数组
-     */
     private Object[] arguments;
-    /**
-     * 默认消息
-     */
     private String defaultMessage;
-    /**
-     * 请求路径
-     */
+    private LocalDateTime timestamp;
     private String path;
-    /**
-     * 消息
-     */
     private String message;
+    private List<FieldError> fieldErrors;
     /**
-     * 状态码
+     * 状态字段
      */
     private int status;
-    /**
-     * 发生时间
-     */
-    private LocalDateTime occurTime;
-    /**
-     * 字段错误
-     */
-    private List<FieldError> fieldErrors;
+
+    public ErrorMessage(String[] codes, Object[] arguments, String defaultMessage) {
+        this.codes = codes;
+        this.arguments = arguments;
+        this.defaultMessage = defaultMessage;
+    }
+
+    public ErrorMessage(String code, Object... args) {
+        this(new String[]{code}, args);
+    }
+
+    public ErrorMessage(String[] codes, Object[] arguments) {
+        this(codes, arguments, codes[0]);
+    }
+
+    public ErrorMessage(String code, String... argCode) {
+        this(code, (Object[]) Stream.of(argCode)
+                .map(DefaultError::new)
+                .toArray(DefaultError[]::new));
+    }
+
+    public ErrorMessage addFieldObjs(String field, String[] codes, Object... args) {
+        return add(new FieldError(field, codes, args));
+    }
+
+    public ErrorMessage add(FieldError fieldError) {
+        if (fieldErrors == null) {
+            fieldErrors = new ArrayList<>();
+        }
+        fieldErrors.add(fieldError);
+        return this;
+    }
 }

@@ -27,11 +27,11 @@ public class ErrorMessageUtils {
                 }
             }
             errorMessage.setMessage(sb.toString());
-//            errorMessage.getErrors().forEach(fieldError -> {
-//                if (fieldError.getMessage() == null) {
-//                    fieldError.setMessage(messageSourceAccessor.getMessage(fieldError));
-//                }
-//            });
+            errorMessage.getFieldErrors().forEach(fieldError -> {
+                if (fieldError.getMessage() == null) {
+                    fieldError.setMessage(messageSourceAccessor.getMessage(fieldError));
+                }
+            });
         }
     }
 }

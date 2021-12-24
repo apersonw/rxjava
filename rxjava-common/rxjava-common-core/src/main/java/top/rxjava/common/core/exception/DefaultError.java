@@ -1,4 +1,4 @@
-package top.rxjava.starter.webflux.exception;
+package top.rxjava.common.core.exception;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.context.support.DefaultMessageSourceResolvable;

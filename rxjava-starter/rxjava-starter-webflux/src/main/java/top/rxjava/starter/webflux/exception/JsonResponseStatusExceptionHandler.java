@@ -1,6 +1,10 @@
 package top.rxjava.starter.webflux.exception;
 
-import top.rxjava.starter.webflux.utils.ErrorMessageUtils;
+import top.rxjava.common.core.exception.ErrorMessage;
+import top.rxjava.common.core.exception.ErrorMessageException;
+import top.rxjava.common.core.exception.TokenException;
+import top.rxjava.common.core.exception.UnauthorizedException;
+import top.rxjava.common.utils.ErrorMessageUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.TypeMismatchException;
@@ -114,16 +118,11 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
 
             RequestPath path = request.getPath();
             log.error("http status:{},reason:{},path:{},method:{}", status, errorMessageStr, path, request.getMethodValue());
-        } else if (throwable instanceof JwtTokenParseException) {
+        } else if (throwable instanceof TokenException) {
             //JwtToken解析异常
             status = HttpStatus.UNAUTHORIZED;
-            errorMessage = ((JwtTokenParseException) throwable).getErrorMessage();
+            errorMessage = ((TokenException) throwable).getErrorMessage();
             log.error("http status:{},reason:{}", status, "JwtToken解析异常，请检查Token是否正确", throwable);
-        } else if (throwable instanceof TokenExpiredException) {
-            //Token过期异常
-            status = HttpStatus.UNAUTHORIZED;
-            errorMessage = ((TokenExpiredException) throwable).getErrorMessage();
-            log.error("http status:{},reason:{}", status, "认证已过期，请重新登陆", throwable);
         } else if (throwable instanceof UnauthorizedException) {
             //未登陆错误
             status = HttpStatus.UNAUTHORIZED;
