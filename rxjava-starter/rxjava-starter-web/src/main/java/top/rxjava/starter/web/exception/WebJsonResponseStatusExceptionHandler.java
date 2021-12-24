@@ -6,7 +6,6 @@ import org.springframework.context.MessageSourceAware;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.core.codec.DecodingException;
 import org.springframework.http.HttpStatus;
-import org.springframework.lang.NonNullApi;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -46,7 +45,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
      */
     private ErrorMessage toErrorMessage(HttpServletRequest request, HttpServletResponse response, Object handler, Exception exception) {
         HttpStatus status;
-        ErrorMessage errorMessage = new ErrorMessage();
+        ErrorMessage errorMessage = null;
 
         //参数异常错误
         if (exception instanceof WebExchangeBindException) {
@@ -55,7 +54,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
         } else if (exception instanceof ErrorMessageException) {
             ErrorMessageException errorMessageException = (ErrorMessageException) exception;
             status = HttpStatus.UNPROCESSABLE_ENTITY;
-            //errorMessage = errorMessageException.getErrorMessage();
+            errorMessage = errorMessageException.getErrorMessage();
         } else if (exception instanceof ResponseStatusException) {
             ResponseStatusException responseStatusException = (ResponseStatusException) exception;
             status = responseStatusException.getStatus();
@@ -70,7 +69,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
             } else {
                 errorMessageStr = responseStatusException.getReason();
             }
-            errorMessage = new ErrorMessage();
+            errorMessage = new ErrorMessage(errorMessageStr);
             String path = request.getPathInfo();
         } else if (exception instanceof TokenException) {
             //Token过期异常
@@ -78,13 +77,13 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
         } else if (exception instanceof UnauthorizedException) {
             //未登陆错误
             status = HttpStatus.UNAUTHORIZED;
-            errorMessage = new ErrorMessage();
+            errorMessage = new ErrorMessage("unauthorized");
         } else {
             status = HttpStatus.INTERNAL_SERVER_ERROR;
-            errorMessage = new ErrorMessage();
+            errorMessage = new ErrorMessage("internal_server_error");
         }
         errorMessage.setStatus(status.value());
-        errorMessage.setOccurTime(LocalDateTime.now());
+        errorMessage.setTimestamp(LocalDateTime.now());
         errorMessage.setPath(request.getPathInfo());
         //处理消息国际化
         ErrorMessageUtils.handlerI18n(errorMessage, messageAccessor);
