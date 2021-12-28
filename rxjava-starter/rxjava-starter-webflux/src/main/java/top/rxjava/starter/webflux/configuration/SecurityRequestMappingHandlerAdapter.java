@@ -5,6 +5,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.method.HandlerMethod;
@@ -27,8 +28,6 @@ import static top.rxjava.starter.webflux.configuration.LoginInfoArgumentResolver
 
 /**
  * 请求映射适配器
- *
- * @author happy
  */
 public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerAdapter {
     private static final Logger log = LogManager.getLogger();
@@ -71,7 +70,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
                         String loginInfoJson = request.getHeaders().getFirst(LOGIN_INFO);
                         LoginInfo loginInfo = parseLoginJson(loginInfoJson);
                         if (loginInfo == null) {
-                            throw UnauthorizedException.of("Unauthorized");
+                            throw UnauthorizedException.of(HttpStatus.UNAUTHORIZED.getReasonPhrase());
                         }
                         //请求参数注入登陆信息对象
                         exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, loginInfo);

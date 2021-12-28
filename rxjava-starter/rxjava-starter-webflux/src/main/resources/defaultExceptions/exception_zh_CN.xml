@@ -9,5 +9,6 @@
     <entry key="LocalDateTimeFormatError">请检查时间格式是否为："yyyy-MM-dd HH:mm:ss.SSS"</entry>
     <entry key="tokenUserIdIsNotEmpty">token中的用户Id不能为空</entry>
     <entry key="Unauthorized">未登陆</entry>
-    <entry key="unauthorized">未登陆</entry>
+    <entry key="Forbidden">无权限</entry>
+    <entry key="Internal Server Error">服务器错误</entry>
 </properties>

@@ -77,10 +77,10 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
         } else if (exception instanceof UnauthorizedException) {
             //未登陆错误
             status = HttpStatus.UNAUTHORIZED;
-            errorMessage = new ErrorMessage("unauthorized");
+            errorMessage = new ErrorMessage(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         } else {
             status = HttpStatus.INTERNAL_SERVER_ERROR;
-            errorMessage = new ErrorMessage("internal_server_error");
+            errorMessage = new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
         }
         assert errorMessage != null;
         errorMessage.setStatus(status.value());

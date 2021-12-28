@@ -126,12 +126,12 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
         } else if (throwable instanceof UnauthorizedException) {
             //未登陆错误
             status = HttpStatus.UNAUTHORIZED;
-            errorMessage = new ErrorMessage("Unauthorized");
-            log.error("http status:{},reason:{}", status, "需要登陆", throwable);
+            errorMessage = new ErrorMessage(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+            log.error("http status:{},reason:{}", status, "未登陆", throwable);
         } else {
             status = HttpStatus.INTERNAL_SERVER_ERROR;
             log.error("Error:", throwable);
-            errorMessage = new ErrorMessage("server.error", (Object) throwable.getMessage());
+            errorMessage = new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), (Object) throwable.getMessage());
         }
         errorMessage.setStatus(status.value());
         errorMessage.setTimestamp(LocalDateTime.now());
@@ -144,7 +144,7 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
     }
 
     private static ErrorMessage transform(BindingResult bindingResult) {
-        ErrorMessage errorMessage = new ErrorMessage("server.validator");
+        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
         for (ObjectError error : bindingResult.getAllErrors()) {
             String key = (error instanceof FieldError
                     ? ((FieldError) error).getField()
