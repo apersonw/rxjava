@@ -47,6 +47,10 @@ public class ErrorMessageException extends RuntimeException {
         return new ErrorMessageException(new String[]{code}, null, null, null);
     }
 
+    public static ErrorMessageException of(String code,String defaultMessage) {
+        return new ErrorMessageException(new String[]{code}, null, defaultMessage, null);
+    }
+
     public ErrorMessage getErrorMessage() {
         return errorMessage;
     }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>默认异常异常消息</comment>
+    <entry key="emptyError">结果集空错误</entry>
+    <entry key="notFoundEnumValue">枚举值不存在</entry>
+    <entry key="unsupportedEncodingOrJsonException">不支持的编码或Json异常</entry>
+    <entry key="URLClassLoaderLoadError">URLClassLoader加载错误</entry>
+    <entry key="LocalDateTimeFormatError">请检查时间格式是否为："yyyy-MM-dd HH:mm:ss.SSS"</entry>
+    <entry key="tokenUserIdIsNotEmpty">token中的用户Id不能为空</entry>
+    <entry key="Unauthorized">未登陆</entry>
+    <entry key="Forbidden">无权限</entry>
+    <entry key="Internal Server Error">服务器错误</entry>
+</properties>
