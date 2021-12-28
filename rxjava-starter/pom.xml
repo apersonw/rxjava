@@ -13,6 +13,7 @@
         <module>rxjava-starter-webflux</module>
         <module>rxjava-starter-bus-amqp</module>
         <module>rxjava-starter-kafka</module>
+        <module>rxjava-starter-jpa</module>
         <module>rxjava-starter-mongo-reactive</module>
         <module>rxjava-starter-redis-reactive</module>
         <module>rxjava-starter-redis</module>
