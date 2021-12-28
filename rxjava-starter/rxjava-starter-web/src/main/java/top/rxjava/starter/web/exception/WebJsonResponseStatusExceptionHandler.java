@@ -82,6 +82,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
             status = HttpStatus.INTERNAL_SERVER_ERROR;
             errorMessage = new ErrorMessage("internal_server_error");
         }
+        assert errorMessage != null;
         errorMessage.setStatus(status.value());
         errorMessage.setTimestamp(LocalDateTime.now());
         errorMessage.setPath(request.getPathInfo());

@@ -1,4 +1,4 @@
-package top.rxjava.starter.webflux.info;
+package top.rxjava.common.core.info;
 
 import lombok.Data;
 import org.bson.types.ObjectId;

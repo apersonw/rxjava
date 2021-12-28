@@ -16,7 +16,7 @@ import top.rxjava.apikit.annotation.Login;
 import top.rxjava.common.core.exception.ErrorMessageException;
 import top.rxjava.common.core.exception.UnauthorizedException;
 import top.rxjava.common.utils.JsonUtils;
-import top.rxjava.starter.webflux.info.LoginInfo;
+import top.rxjava.common.core.info.LoginInfo;
 
 import javax.validation.constraints.NotNull;
 import java.io.UnsupportedEncodingException;
