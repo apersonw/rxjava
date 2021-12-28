@@ -58,7 +58,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
         } else if (exception instanceof ResponseStatusException) {
             ResponseStatusException responseStatusException = (ResponseStatusException) exception;
             status = responseStatusException.getStatus();
-            String errorMessageStr = "";
+            String errorMessageStr;
 
             if (exception.getCause() instanceof TypeMismatchException) {
                 TypeMismatchException typeMismatchException = (TypeMismatchException) exception.getCause();
