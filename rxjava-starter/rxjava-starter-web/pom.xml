@@ -11,6 +11,10 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
+            <groupId>top.rxjava</groupId>
+            <artifactId>rxjava-starter-jpa</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -45,4 +49,13 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>top.rxjava</groupId>
+                <artifactId>rxjava-starter-jpa</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
