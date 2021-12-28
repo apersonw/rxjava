@@ -1,4 +1,4 @@
-package top.rxjava.starter.mongodb.starter.mongo;
+package top.rxjava.starter.mongodb.mongo;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

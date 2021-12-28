@@ -1,4 +1,4 @@
-package top.rxjava.starter.mongodb.starter.configuration;
+package top.rxjava.starter.mongodb.configuration;
 
 import org.springframework.data.mongodb.config.EnableReactiveMongoAuditing;
 

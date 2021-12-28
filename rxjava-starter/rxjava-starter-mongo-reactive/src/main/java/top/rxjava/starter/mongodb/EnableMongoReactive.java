@@ -1,6 +1,6 @@
-package top.rxjava.starter.mongodb.starter;
+package top.rxjava.starter.mongodb;
 
-import top.rxjava.starter.mongodb.starter.configuration.MongoReactiveConfiguration;
+import top.rxjava.starter.mongodb.configuration.MongoReactiveConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

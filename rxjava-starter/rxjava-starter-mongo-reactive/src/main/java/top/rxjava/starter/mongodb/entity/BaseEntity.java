@@ -1,6 +1,6 @@
-package top.rxjava.starter.mongodb.starter.entity;
+package top.rxjava.starter.mongodb.entity;
 
-import top.rxjava.starter.mongodb.starter.status.EntityStatus;
+import top.rxjava.starter.mongodb.status.EntityStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

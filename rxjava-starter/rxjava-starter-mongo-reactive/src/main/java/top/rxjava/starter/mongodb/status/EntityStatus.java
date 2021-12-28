@@ -1,4 +1,4 @@
-package top.rxjava.starter.mongodb.starter.status;
+package top.rxjava.starter.mongodb.status;
 
 /**
  * 实体生命周期状态
