@@ -20,9 +20,6 @@ public class LoginInfoHandlerInterceptor implements AsyncHandlerInterceptor {
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
         if (methodAnnotation == null || methodAnnotation.value()) {
-            String pathInfo = request.getRequestURI();
-            String method = request.getMethod();
-            //log.info(pathInfo, method);
             throw UnauthorizedException.of();
         }
         return true;
