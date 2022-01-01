@@ -42,10 +42,10 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jdk8</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--    <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+        <!--    <artifactId>jackson-dataformat-xml</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>top.rxjava</groupId>
             <artifactId>rxjava-common-core</artifactId>

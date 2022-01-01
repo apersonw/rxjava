@@ -30,6 +30,9 @@ public class UnauthorizedException extends RuntimeException {
     public static UnauthorizedException of(String message) {
         return new UnauthorizedException(message);
     }
+    public static UnauthorizedException of() {
+        return new UnauthorizedException("Unauthorized");
+    }
 
     private static UnauthorizedException parseCode(String code, String... argsCode) {
         return new UnauthorizedException(code, argsCode);

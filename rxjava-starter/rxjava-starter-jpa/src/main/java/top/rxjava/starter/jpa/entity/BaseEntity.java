@@ -1,6 +1,7 @@
 package top.rxjava.starter.jpa.entity;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.*;
 import org.springframework.data.annotation.Version;

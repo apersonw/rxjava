@@ -12,7 +12,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import top.rxjava.common.utils.JsonUtils;
 import top.rxjava.starter.jpa.configuration.CustomAuditorAware;
-import top.rxjava.starter.web.exception.RxjavaWebConfigurer;
+import top.rxjava.starter.web.configuration.RxjavaWebConfigurer;
 
 @Configuration
 @Import({
@@ -21,10 +21,6 @@ import top.rxjava.starter.web.exception.RxjavaWebConfigurer;
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @EnableJpaAuditing
 public class WebAutoConfiguration {
-    @Bean
-    public ObjectMapper objectMapper() {
-        return JsonUtils.DEFAULT_MAPPER;
-    }
 
     @Bean
     public AuditorAware<ObjectId> customAuditorAware() {
@@ -42,4 +38,5 @@ public class WebAutoConfiguration {
         messageSource.setCacheSeconds(99999999);
         return messageSource;
     }
+
 }
