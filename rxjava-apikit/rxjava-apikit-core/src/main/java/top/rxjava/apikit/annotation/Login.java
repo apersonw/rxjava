@@ -2,6 +2,9 @@ package top.rxjava.apikit.annotation;
 
 import java.lang.annotation.*;
 
+/**
+ * @author happy
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
