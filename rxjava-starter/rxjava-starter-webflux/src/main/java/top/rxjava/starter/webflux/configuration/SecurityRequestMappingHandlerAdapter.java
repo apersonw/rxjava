@@ -17,7 +17,7 @@ import top.rxjava.apikit.annotation.Login;
 import top.rxjava.common.core.exception.ErrorMessageException;
 import top.rxjava.common.core.exception.UnauthorizedException;
 import top.rxjava.common.utils.JsonUtils;
-import top.rxjava.common.core.info.LoginInfo;
+import top.rxjava.common.core.info.TokenInfo;
 
 import javax.validation.constraints.NotNull;
 import java.io.UnsupportedEncodingException;
@@ -68,12 +68,12 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
                     Login login = handlerMethod.getMethodAnnotation(Login.class);
                     if (login == null || login.value()) {
                         String loginInfoJson = request.getHeaders().getFirst(LOGIN_INFO);
-                        LoginInfo loginInfo = parseLoginJson(loginInfoJson);
-                        if (loginInfo == null) {
+                        TokenInfo tokenInfo = parseLoginJson(loginInfoJson);
+                        if (tokenInfo == null) {
                             throw UnauthorizedException.of(HttpStatus.UNAUTHORIZED.getReasonPhrase());
                         }
                         //请求参数注入登陆信息对象
-                        exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, loginInfo);
+                        exchange.getAttributes().put(LOGIN_REQUEST_ATTRIBUTE, tokenInfo);
                     }
                     return "login";
                 })
@@ -83,7 +83,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
     /**
      * 解析网关注入的登陆信息
      */
-    private LoginInfo parseLoginJson(String loginInfoJson) {
+    private TokenInfo parseLoginJson(String loginInfoJson) {
         if (StringUtils.isEmpty(loginInfoJson)) {
             return null;
         }
@@ -92,11 +92,11 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
         } catch (UnsupportedEncodingException e) {
             throw ErrorMessageException.of(e.getMessage());
         }
-        LoginInfo loginInfo = JsonUtils.deserialize(loginInfoJson, LoginInfo.class);
-        log.info("用户登陆信息:{}", loginInfo);
-        if (ObjectUtils.isEmpty(loginInfo.getUserId())) {
+        TokenInfo tokenInfo = JsonUtils.deserialize(loginInfoJson, TokenInfo.class);
+        log.info("用户登陆信息:{}", tokenInfo);
+        if (ObjectUtils.isEmpty(tokenInfo.getUserId())) {
             throw ErrorMessageException.of("tokenUserIdIsNotEmpty");
         }
-        return loginInfo;
+        return tokenInfo;
     }
 }

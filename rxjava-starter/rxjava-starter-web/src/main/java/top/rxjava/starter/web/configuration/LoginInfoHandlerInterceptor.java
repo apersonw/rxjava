@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInfoHandlerInterceptor implements AsyncHandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        if (!(handler instanceof HandlerMethod)) {
-            return true;
-        }
-
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-        Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
-        if (methodAnnotation == null || methodAnnotation.value()) {
-            throw UnauthorizedException.of();
-        }
+        //if (!(handler instanceof HandlerMethod)) {
+        //    return true;
+        //}
+        //
+        //HandlerMethod handlerMethod = (HandlerMethod) handler;
+        //Login methodAnnotation = handlerMethod.getMethodAnnotation(Login.class);
+        //if (methodAnnotation == null || methodAnnotation.value()) {
+        //    throw UnauthorizedException.of();
+        //}
         return true;
     }
 }

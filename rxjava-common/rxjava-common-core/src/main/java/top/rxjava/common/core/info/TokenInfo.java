@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
  * @author happy
  */
 @Data
-public class LoginInfo {
+public class TokenInfo {
     /**
      * 用户Id
      */
