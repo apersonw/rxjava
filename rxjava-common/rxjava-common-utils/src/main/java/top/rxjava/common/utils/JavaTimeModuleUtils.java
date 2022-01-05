@@ -22,12 +22,18 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * 日期时间模块帮助类
+ * ISO 8601规定的日期和时间分隔符是T。标准格式如下：
+ * 日期：yyyy-MM-dd
+ * 时间：HH:mm:ss
+ * 带毫秒的时间：HH:mm:ss.SSS
+ * 日期和时间：yyyy-MM-dd'T'HH:mm:ss
+ * 带毫秒的日期和时间：yyyy-MM-dd'T'HH:mm:ss.SSS
  *
  * @author happy
  */
 public class JavaTimeModuleUtils implements Serializable {
     @Getter
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS";
     @Getter
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     @Getter
