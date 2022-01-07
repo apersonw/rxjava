@@ -1,0 +1,47 @@
+package top.rxjava.apikit.httl.ast;
+
+import top.rxjava.apikit.httl.Node;
+import top.rxjava.apikit.httl.Visitor;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.List;
+
+public abstract class AbstractNode implements Node {
+
+    private final int offset;
+
+    private Node parent;
+
+    public AbstractNode(int offset) {
+        this.offset = offset;
+    }
+
+    @Override
+    public void accept(Visitor visitor) throws IOException, ParseException {
+        visitor.visit(this);
+    }
+
+    @Override
+    public int getOffset() {
+        return offset;
+    }
+
+    @Override
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node parent) throws ParseException {
+        if (this.parent != null) {
+            throw new ParseException("Can not modify parent.", getOffset());
+        }
+        this.parent = parent;
+    }
+
+    @Override
+    public List<Node> getChildren() {
+        return null;
+    }
+
+}

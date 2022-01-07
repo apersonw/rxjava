@@ -3,16 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>top.rxjava</groupId>
-        <artifactId>rxjava</artifactId>
+        <artifactId>rxjava-apikit</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rxjava-apikit</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>rxjava-apikit-core</module>
-        <module>rxjava-apikit-httl</module>
-        <module>rxjava-apikit-tool</module>
-        <module>rxjava-apikit-maven-plugin</module>
-    </modules>
+    <artifactId>rxjava-apikit-httl</artifactId>
+    <packaging>jar</packaging>
 </project>

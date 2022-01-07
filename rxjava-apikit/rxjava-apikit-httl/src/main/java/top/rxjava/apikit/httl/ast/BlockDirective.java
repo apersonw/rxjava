@@ -1,0 +1,88 @@
+/*
+ * Copyright 2011-2013 HTTL Team.
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *  
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *  
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package top.rxjava.apikit.httl.ast;
+
+import top.rxjava.apikit.httl.Node;
+import top.rxjava.apikit.httl.Visitor;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * BlockDirective. (SPI, Prototype, ThreadSafe)
+ *
+ * @author Liang Fei (liangfei0201 AT gmail DOT com)
+ */
+public abstract class BlockDirective extends Directive {
+
+    private List<Node> children;
+
+    private EndDirective end;
+
+    public BlockDirective(int offset) {
+        super(offset);
+    }
+
+    @Override
+    public void accept(Visitor visitor) throws IOException, ParseException {
+        Expression expression = getExpression();
+        if (expression != null) {
+            expression.accept(visitor);
+        }
+        if (visitor.visit(this)) {
+            if (children != null) {
+                for (Node node : children) {
+                    node.accept(visitor);
+                }
+            }
+            if (end != null) {
+                end.accept(visitor);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Node> getChildren() {
+        return children == null ? Collections.EMPTY_LIST : children;
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void setChildren(List<Statement> children) throws ParseException {
+        if (this.children != null) {
+            throw new ParseException("Can not modify children statement.", getOffset());
+        }
+        for (Statement node : children) {
+            node.setParent(this);
+        }
+        this.children = (List) Collections.unmodifiableList(children);
+    }
+
+    public EndDirective getEnd() {
+        return end;
+    }
+
+    public void setEnd(EndDirective end) throws ParseException {
+        if (this.end != null) {
+            throw new ParseException("Can not modify end.", this.end.getOffset());
+        }
+        this.end = end;
+        end.setStart(this);
+    }
+
+}
