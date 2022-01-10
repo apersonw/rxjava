@@ -14,10 +14,6 @@ public class TokenInfo {
      */
     private ObjectId userId;
     /**
-     * 用户真实姓名
-     */
-    private String realName;
-    /**
      * 用户手机号
      */
     private String phone;

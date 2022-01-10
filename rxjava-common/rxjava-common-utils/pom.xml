@@ -50,6 +50,10 @@
             <groupId>top.rxjava</groupId>
             <artifactId>rxjava-common-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
