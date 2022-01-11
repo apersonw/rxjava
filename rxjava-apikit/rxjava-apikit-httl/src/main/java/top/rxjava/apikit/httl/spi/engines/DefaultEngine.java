@@ -1,12 +1,12 @@
 /*
  * Copyright 2011-2013 HTTL Team.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +15,6 @@
  */
 package top.rxjava.apikit.httl.spi.engines;
 
-import com.sun.java.accessibility.util.Translator;
 import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Node;
@@ -240,7 +239,7 @@ public class DefaultEngine extends Engine {
         if (resource == null) {
             resource = loadResource(name, locale, encoding);
         }
-        long start = logger != null && logger.isDebugEnabled() ? System.currentTimeMillis() : 0;
+        long start = log != null && log.isDebugEnabled() ? System.currentTimeMillis() : 0;
         String source = resource.getSource();
         try {
             if (templateFilter != null) {
@@ -249,8 +248,8 @@ public class DefaultEngine extends Engine {
             Node root = templateParser.parse(source, 0);
             Map<String, Class<?>> parameterTypes = useRenderVariableType && args != null ? new DelegateMap<String, Class<?>>(new TypeMap(convertMap(args))) : null;
             Template template = translator.translate(resource, root, parameterTypes);
-            if (logger != null && logger.isDebugEnabled()) {
-                logger.debug("Parsed the template " + name + ", eslapsed: " + (System.currentTimeMillis() - start) + "ms.");
+            if (log != null && log.isDebugEnabled()) {
+                log.debug("Parsed the template " + name + ", eslapsed: " + (System.currentTimeMillis() - start) + "ms.");
             }
             return template;
         } catch (ParseException e) {
@@ -279,6 +278,7 @@ public class DefaultEngine extends Engine {
      * @throws ParseException - If the template cannot be parsed
      * @see #getEngine()
      */
+    @Override
     public Template parseTemplate(String source, Object parameterTypes) throws ParseException {
         String name = "/$" + Digest.getMD5(source);
         if (!hasResource(name)) {
@@ -301,6 +301,7 @@ public class DefaultEngine extends Engine {
      * @throws IOException - If an I/O error occurs
      * @see #getEngine()
      */
+    @Override
     public Resource getResource(String name, Locale locale, String encoding) throws IOException {
         name = UrlUtils.cleanName(name);
         locale = cleanLocale(locale);
@@ -329,6 +330,7 @@ public class DefaultEngine extends Engine {
      * @return exists
      * @see #getEngine()
      */
+    @Override
     public boolean hasResource(String name, Locale locale) {
         name = UrlUtils.cleanName(name);
         locale = cleanLocale(locale);
@@ -346,8 +348,8 @@ public class DefaultEngine extends Engine {
      * Init the engine.
      */
     public void init() {
-        if (logger != null && StringUtils.isNotEmpty(name)) {
-            if (logger.isWarnEnabled() && !ConfigUtils.isFilePath(name)) {
+        if (log != null && StringUtils.isNotEmpty(name)) {
+            if (log.isWarnEnabled() && !ConfigUtils.isFilePath(name)) {
                 try {
                     List<String> realPaths = new ArrayList<String>();
                     Enumeration<URL> e = Thread.currentThread().getContextClassLoader().getResources(name);
@@ -356,16 +358,16 @@ public class DefaultEngine extends Engine {
                         realPaths.add(url.getFile());
                     }
                     if (realPaths.size() > 1) {
-                        logger.warn("Multi httl config in classpath, conflict configs: " + realPaths + ". Please keep only one config.");
+                        log.warn("Multi httl config in classpath, conflict configs: " + realPaths + ". Please keep only one config.");
                     }
                 } catch (IOException e) {
-                    logger.error(e.getMessage(), e);
+                    log.error(e.getMessage(), e);
                 }
             }
-            if (logger.isInfoEnabled()) {
+            if (log.isInfoEnabled()) {
                 String realPath = ConfigUtils.getRealPath(name);
                 if (StringUtils.isNotEmpty(realPath)) {
-                    logger.info("Load httl config from " + realPath + " in " + (name.startsWith("/") ? "filesystem" : "classpath") + ".");
+                    log.info("Load httl config from " + realPath + " in " + (name.startsWith("/") ? "filesystem" : "classpath") + ".");
                 }
             }
         }
@@ -389,23 +391,23 @@ public class DefaultEngine extends Engine {
                     count += list.size();
                     for (String name : list) {
                         try {
-                            if (logger != null && logger.isDebugEnabled()) {
-                                logger.debug("Preload the template: " + name);
+                            if (log != null && log.isDebugEnabled()) {
+                                log.debug("Preload the template: " + name);
                             }
                             getTemplate(name, getDefaultEncoding());
                         } catch (Exception e) {
-                            if (logger != null && logger.isErrorEnabled()) {
-                                logger.error(e.getMessage(), e);
+                            if (log != null && log.isErrorEnabled()) {
+                                log.error(e.getMessage(), e);
                             }
                         }
                     }
                 }
-                if (logger != null && logger.isInfoEnabled()) {
-                    logger.info("Preload " + count + " templates from directory " + (templateDirectory == null ? "/" : templateDirectory) + " with suffix " + Arrays.toString(templateSuffix));
+                if (log != null && log.isInfoEnabled()) {
+                    log.info("Preload " + count + " templates from directory " + (templateDirectory == null ? "/" : templateDirectory) + " with suffix " + Arrays.toString(templateSuffix));
                 }
             } catch (Exception e) {
-                if (logger != null && logger.isErrorEnabled()) {
-                    logger.error(e.getMessage(), e);
+                if (log != null && log.isErrorEnabled()) {
+                    log.error(e.getMessage(), e);
                 }
             }
         }
@@ -465,13 +467,6 @@ public class DefaultEngine extends Engine {
      */
     public void setUseRenderVariableType(boolean useRenderVariableType) {
         this.useRenderVariableType = useRenderVariableType;
-    }
-
-    /**
-     * httl.properties: loggers=httl.spi.loggers.Log4jLogger
-     */
-    public void setLogger(Logger logger) {
-        this.logger = logger;
     }
 
     /**
