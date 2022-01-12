@@ -15,18 +15,20 @@
  */
 package top.rxjava.apikit.httl.spi.translators;
 
+import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Node;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.Template;
-import top.rxjava.apikit.httl.spi.Translator;
+import top.rxjava.apikit.httl.spi.*;
+import top.rxjava.apikit.httl.spi.Compiler;
 import top.rxjava.apikit.httl.spi.translators.templates.AdaptiveTemplate;
 import top.rxjava.apikit.httl.spi.translators.templates.CompiledTemplate;
 import top.rxjava.apikit.httl.spi.translators.templates.CompiledVisitor;
 import top.rxjava.apikit.httl.util.ClassUtils;
 import top.rxjava.apikit.httl.util.StringSequence;
 import top.rxjava.apikit.httl.util.StringUtils;
-import top.rxjava.apikit.httl.spi.Interceptor;
+import top.rxjava.apikit.httl.spi.Formatter;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -40,6 +42,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author @author Liang Fei (liangfei0201 AT gmail DOT com)
  * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setTranslator(Translator)
  */
+@Slf4j
 public class CompiledTranslator implements Translator {
 
     private static final String TEMPLATE_CLASS_PREFIX = CompiledTemplate.class.getPackage().getName() + ".Template_";
@@ -57,7 +60,6 @@ public class CompiledTranslator implements Translator {
     private Engine engine;
     private Compiler compiler;
     private Interceptor interceptor;
-    private Logger logger;
     private Switcher<Filter> textFilterSwitcher;
     private Switcher<Filter> valueFilterSwitcher;
     private Switcher<Formatter<Object>> formatterSwitcher;
@@ -80,10 +82,6 @@ public class CompiledTranslator implements Translator {
     private String engineName;
     private String[] importSizers;
     private String[] importGetters;
-
-    public void setLogger(Logger logger) {
-        this.logger = logger;
-    }
 
     /**
      * httl.properties: import.sizers=size,length,getSize,getLength
@@ -345,9 +343,10 @@ public class CompiledTranslator implements Translator {
         }
     }
 
+    @Override
     public Template translate(Resource resource, Node root, Map<String, Class<?>> defVariableTypes) throws IOException, ParseException {
-        if (logger != null && logger.isDebugEnabled()) {
-            logger.debug("Compile template " + resource.getName());
+        if (log != null && log.isDebugEnabled()) {
+            log.debug("Compile template " + resource.getName());
         }
         try {
             Template writerTemplate = null;

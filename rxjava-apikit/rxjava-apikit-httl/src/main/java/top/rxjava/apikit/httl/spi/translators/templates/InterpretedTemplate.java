@@ -198,10 +198,12 @@ public class InterpretedTemplate extends AbstractTemplate {
         this.outputEncoding = outputEncoding;
     }
 
+    @Override
     public Map<String, Class<?>> getVariables() {
         return variables;
     }
 
+    @Override
     public Map<String, Template> getMacros() {
         return macros;
     }

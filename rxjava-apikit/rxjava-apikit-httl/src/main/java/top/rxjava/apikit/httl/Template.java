@@ -28,10 +28,10 @@ import java.util.Map;
  * </pre>
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
- * @see httl.Engine#getTemplate(String, String)
- * @see httl.Context#getTemplate()
- * @see httl.spi.Translator#translate(Resource, Node, Map)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String, String)
+ * @see top.rxjava.apikit.httl.Context#getTemplate()
+ * @see top.rxjava.apikit.httl.spi.Translator#translate(Resource, Node, Map)
  */
 public interface Template extends Node, Resource {
 
@@ -126,6 +126,7 @@ public interface Template extends Node, Resource {
      *
      * @return parent template
      */
+    @Override
     Template getParent();
 
     /**

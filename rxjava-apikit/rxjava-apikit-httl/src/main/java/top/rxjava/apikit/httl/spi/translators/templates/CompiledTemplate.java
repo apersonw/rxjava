@@ -15,12 +15,10 @@
  */
 package top.rxjava.apikit.httl.spi.translators.templates;
 
-import top.rxjava.apikit.httl.Context;
-import top.rxjava.apikit.httl.Engine;
-import top.rxjava.apikit.httl.Resource;
-import top.rxjava.apikit.httl.Template;
-import top.rxjava.apikit.httl.spi.Filter;
-import top.rxjava.apikit.httl.spi.Interceptor;
+import top.rxjava.apikit.httl.*;
+import top.rxjava.apikit.httl.spi.*;
+import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.formatters.MultiFormatter;
 
 import java.io.OutputStream;
 import java.io.Writer;
@@ -32,7 +30,7 @@ import java.util.Map;
  * CompiledTemplate. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
 public abstract class CompiledTemplate extends AbstractTemplate {
 
@@ -109,20 +107,23 @@ public abstract class CompiledTemplate extends AbstractTemplate {
     }
 
     protected String doFilter(Filter filter, String key, String value) {
-        if (filter != null)
+        if (filter != null) {
             return filter.filter(key, value);
+        }
         return value;
     }
 
     protected char[] doFilter(Filter filter, String key, char[] value) {
-        if (filter != null)
+        if (filter != null) {
             return filter.filter(key, value);
+        }
         return value;
     }
 
     protected byte[] doFilter(Filter filter, String key, byte[] value) {
-        if (filter != null)
+        if (filter != null) {
             return filter.filter(key, value);
+        }
         return value;
     }
 
@@ -177,6 +178,7 @@ public abstract class CompiledTemplate extends AbstractTemplate {
         return Collections.unmodifiableMap(macros);
     }
 
+    @Override
     public Map<String, Template> getMacros() {
         return macros;
     }

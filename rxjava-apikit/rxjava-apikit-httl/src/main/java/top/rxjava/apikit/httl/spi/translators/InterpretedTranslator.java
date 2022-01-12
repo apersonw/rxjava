@@ -21,6 +21,7 @@ import top.rxjava.apikit.httl.Node;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.Template;
 import top.rxjava.apikit.httl.spi.*;
+import top.rxjava.apikit.httl.spi.translators.templates.InterpretedTemplate;
 import top.rxjava.apikit.httl.util.StringSequence;
 
 import java.io.IOException;

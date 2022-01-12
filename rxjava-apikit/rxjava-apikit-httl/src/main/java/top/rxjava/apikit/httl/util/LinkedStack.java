@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package top.rxjava.apikit.httl.ast;
+package top.rxjava.apikit.httl.util;
 
 import java.io.Serializable;
 import java.util.Collections;
