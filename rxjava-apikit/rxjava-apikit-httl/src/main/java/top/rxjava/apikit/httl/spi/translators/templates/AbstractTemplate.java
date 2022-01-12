@@ -35,7 +35,7 @@ import java.util.Map;
  * AbstractTemplate. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
 public abstract class AbstractTemplate implements Template {
 
@@ -130,7 +130,6 @@ public abstract class AbstractTemplate implements Template {
         }
     }
 
-    @Override
     public void render(Object parameters, Object out) throws IOException, ParseException {
         Map<String, Object> map = convertMap(parameters);
         out = convertOut(out);
@@ -145,7 +144,11 @@ public abstract class AbstractTemplate implements Template {
                 throw new IllegalArgumentException("No such Converter to convert the " + out.getClass().getName() + " to OutputStream or Writer.");
             }
             if (interceptor != null) {
-                interceptor.render(context, this::_render);
+                interceptor.render(context, new Listener() {
+                    public void render(Context context) throws IOException, ParseException {
+                        _render(context);
+                    }
+                });
             } else {
                 _render(context);
             }
@@ -204,73 +207,59 @@ public abstract class AbstractTemplate implements Template {
         this.interceptor = interceptor;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public String getEncoding() {
         return encoding;
     }
 
-    @Override
     public Locale getLocale() {
         return locale;
     }
 
-    @Override
     public long getLastModified() {
         return lastModified;
     }
 
-    @Override
     public long getLength() {
         return length;
     }
 
-    @Override
     public String getSource() throws IOException {
         return resource.getSource();
     }
 
-    @Override
     public Reader openReader() throws IOException {
         return resource.openReader();
     }
 
-    @Override
     public InputStream openStream() throws IOException {
         return resource.openStream();
     }
 
-    @Override
     public Engine getEngine() {
         return resource.getEngine();
     }
 
-    @Override
     public int getOffset() {
         return root.getOffset();
     }
 
-    @Override
     public Template getParent() {
         return parent;
     }
 
-    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public List<Node> getChildren() {
         return (List) ((BlockDirective) root).getChildren();
     }
 
-    @Override
     public boolean isMacro() {
         return root instanceof MacroDirective;
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         if (visitor.visit(this)) {
             for (Node node : getChildren()) {
@@ -279,22 +268,18 @@ public abstract class AbstractTemplate implements Template {
         }
     }
 
-    @Override
     public Object evaluate() throws ParseException {
         return evaluate(null);
     }
 
-    @Override
     public void render(Object out) throws IOException, ParseException {
         render(null, out);
     }
 
-    @Override
     public void render() throws IOException, ParseException {
         render(null, Context.getContext().getOut());
     }
 
-    @Override
     public Object evaluate(Object context) throws ParseException {
         UnsafeStringWriter writer = new UnsafeStringWriter();
         try {
@@ -316,15 +301,9 @@ public abstract class AbstractTemplate implements Template {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         AbstractTemplate other = (AbstractTemplate) obj;
         String name = getName();
         String otherName = other.getName();

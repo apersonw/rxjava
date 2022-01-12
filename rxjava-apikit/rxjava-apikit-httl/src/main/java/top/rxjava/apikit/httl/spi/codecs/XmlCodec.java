@@ -44,12 +44,10 @@ public class XmlCodec extends AbstractXmlCodec {
         return bo.toByteArray();
     }
 
-    @Override
     public <T> T valueOf(String str, Class<T> type) throws ParseException {
         return valueOf(toBytes(str), type);
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public <T> T valueOf(byte[] str, Class<T> type) throws ParseException {
         if (str == null) {

@@ -15,11 +15,11 @@
  */
 package top.rxjava.apikit.httl.spi.compilers;
 
-import lombok.extern.slf4j.Slf4j;
+import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.util.ClassUtils;
 import top.rxjava.apikit.httl.util.StringUtils;
 import top.rxjava.apikit.httl.util.VolatileReference;
-import top.rxjava.apikit.httl.spi.Compiler;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,7 +37,6 @@ import java.util.regex.Pattern;
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setCompiler(Compiler)
  */
-@Slf4j
 public abstract class AbstractCompiler implements Compiler {
 
     private static final Pattern PACKAGE_PATTERN = Pattern.compile("package\\s+([_a-zA-Z][_a-zA-Z0-9\\.]*);");
@@ -50,7 +49,16 @@ public abstract class AbstractCompiler implements Compiler {
 
     protected File compileDirectory;
 
+    protected Logger logger;
+
     private volatile boolean first = true;
+
+    /**
+     * httl.properties: loggers=httl.spi.loggers.Log4jLogger
+     */
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 
     /**
      * httl.properties: code.directory=/tmp/javacode
@@ -89,19 +97,19 @@ public abstract class AbstractCompiler implements Compiler {
                 }
                 if (first) {
                     first = false;
-                    if (log != null && log.isInfoEnabled()) {
-                        log.info("Compile httl template classes to directory " + compileDirectory.getAbsolutePath());
+                    if (logger != null && logger.isInfoEnabled()) {
+                        logger.info("Compile httl template classes to directory " + compileDirectory.getAbsolutePath());
                     }
                 }
             } catch (IOException e) {
-                log.warn(e.getMessage(), e);
+                logger.warn(e.getMessage(), e);
             }
         }
     }
 
     private void logJavaCode(String className, String sorceCode) throws IOException {
-        if (log != null && log.isDebugEnabled()) {
-            log.debug("\n================================\n" + sorceCode + "\n================================\n");
+        if (logger != null && logger.isDebugEnabled()) {
+            logger.debug("\n================================\n" + sorceCode + "\n================================\n");
         }
         if (codeDirectory != null) {
             File javaFile = new File(codeDirectory, className.replace('.', '/') + ".java");
@@ -118,7 +126,6 @@ public abstract class AbstractCompiler implements Compiler {
         }
     }
 
-    @Override
     public Class<?> compile(String code) throws ParseException {
         String className = null;
         try {
@@ -162,8 +169,8 @@ public abstract class AbstractCompiler implements Compiler {
             }
             return cls;
         } catch (Throwable t) {
-            if (log != null && log.isErrorEnabled()) {
-                log.error("Failed to compile class, cause: " + t.getMessage() + ", class: " + className + ", code: \n================================\n" + code + "\n================================\n", t);
+            if (logger != null && logger.isErrorEnabled()) {
+                logger.error("Failed to compile class, cause: " + t.getMessage() + ", class: " + className + ", code: \n================================\n" + code + "\n================================\n", t);
             }
             if (t instanceof ParseException) {
                 throw (ParseException) t;

@@ -23,7 +23,7 @@ import java.util.List;
  * Node. (API, Prototype, Immutable, ThreadSafe)
  *
  * @author @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Template
+ * @see top.rxjava.apikit.httl.Template
  */
 public interface Node {
 

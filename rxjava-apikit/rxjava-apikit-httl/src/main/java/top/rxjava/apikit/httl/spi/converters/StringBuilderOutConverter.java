@@ -32,7 +32,6 @@ import java.util.Map;
  */
 public class StringBuilderOutConverter implements Converter<StringBuilder, Writer> {
 
-    @Override
     public Writer convert(StringBuilder value, Map<String, Class<?>> types) throws IOException, ParseException {
         return new UnsafeStringWriter(value);
     }

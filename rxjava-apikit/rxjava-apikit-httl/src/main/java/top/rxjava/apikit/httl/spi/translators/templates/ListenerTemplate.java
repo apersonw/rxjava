@@ -26,7 +26,7 @@ import java.text.ParseException;
  * ListenerTemplate. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
 public class ListenerTemplate extends ProxyTemplate {
 

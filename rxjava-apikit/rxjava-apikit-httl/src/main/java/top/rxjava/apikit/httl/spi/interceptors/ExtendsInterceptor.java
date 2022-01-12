@@ -92,7 +92,6 @@ public class ExtendsInterceptor extends FirstInterceptor {
         this.extendsNested = extendsNested;
     }
 
-    @Override
     public void doRender(Context context, Listener listener) throws IOException, ParseException {
         String extendsName = null;
         // extends.varibale=layout

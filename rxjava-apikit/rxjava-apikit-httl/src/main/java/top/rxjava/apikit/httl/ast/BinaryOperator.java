@@ -38,7 +38,6 @@ public class BinaryOperator extends Operator {
         super(name, priority, offset);
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         leftParameter.accept(visitor);
         rightParameter.accept(visitor);
@@ -50,9 +49,8 @@ public class BinaryOperator extends Operator {
     }
 
     public void setLeftParameter(Expression leftParameter) throws ParseException {
-        if (this.leftParameter != null) {
+        if (this.leftParameter != null)
             throw new ParseException("Can not modify left parameter.", getOffset());
-        }
         this.leftParameter = leftParameter;
     }
 
@@ -61,13 +59,11 @@ public class BinaryOperator extends Operator {
     }
 
     public void setRightParameter(Expression rightParameter) throws ParseException {
-        if (this.rightParameter != null) {
+        if (this.rightParameter != null)
             throw new ParseException("Can not modify right parameter.", getOffset());
-        }
         this.rightParameter = rightParameter;
     }
 
-    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public List<Node> getChildren() {
         return (List) Arrays.asList(leftParameter, rightParameter);

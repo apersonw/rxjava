@@ -26,7 +26,6 @@ import top.rxjava.apikit.httl.spi.Resolver;
  */
 public class ContextResolver implements Resolver {
 
-    @Override
     public Object get(String key) {
         if ("parent".equals(key)) {
             return Context.getContext().getParent();

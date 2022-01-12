@@ -50,13 +50,11 @@ public class JSONWriter {
     }
 
     private static String escape(String str) {
-        if (str == null) {
+        if (str == null)
             return str;
-        }
         int len = str.length();
-        if (len == 0) {
+        if (len == 0)
             return str;
-        }
 
         char c;
         StringBuilder sb = null;
@@ -81,9 +79,8 @@ public class JSONWriter {
                         sb.append('\\').append(c);
                         break;
                     default:
-                        if (sb != null) {
+                        if (sb != null)
                             sb.append(c);
-                        }
                 }
             }
         }
@@ -94,7 +91,7 @@ public class JSONWriter {
      * object begin.
      *
      * @return this.
-     * @throws IOException
+     * @throws IOException.
      */
     public JSONWriter objectBegin() throws IOException {
         beforeValue();
@@ -109,7 +106,7 @@ public class JSONWriter {
      * object end.
      *
      * @return this.
-     * @throws IOException
+     * @throws IOException.
      */
     public JSONWriter objectEnd() throws IOException {
         writer.write(JSON.RBRACE);
@@ -122,7 +119,7 @@ public class JSONWriter {
      *
      * @param name name.
      * @return this.
-     * @throws IOException
+     * @throws IOException.
      */
     public JSONWriter objectItem(String name) throws IOException {
         beforeObjectItem();
@@ -138,7 +135,7 @@ public class JSONWriter {
      * array begin.
      *
      * @return this.
-     * @throws IOException
+     * @throws IOException.
      */
     public JSONWriter arrayBegin() throws IOException {
         beforeValue();
@@ -153,7 +150,7 @@ public class JSONWriter {
      * array end, return array value.
      *
      * @return this.
-     * @throws IOException
+     * @throws IOException.
      */
     public JSONWriter arrayEnd() throws IOException {
         writer.write(JSON.RSQUARE);
@@ -165,7 +162,7 @@ public class JSONWriter {
      * value.
      *
      * @return this.
-     * @throws IOException
+     * @throws IOException.
      */
     public JSONWriter valueNull() throws IOException {
         beforeValue();
@@ -263,9 +260,8 @@ public class JSONWriter {
     private void beforeValue() throws IOException {
         switch (state.type) {
             case ARRAY:
-                if (state.itemCount++ > 0) {
+                if (state.itemCount++ > 0)
                     writer.write(JSON.COMMA);
-                }
                 return;
             case OBJECT:
                 throw new IOException("Must call objectItem first.");
@@ -281,9 +277,8 @@ public class JSONWriter {
                 writer.write(JSON.NULL);
             case OBJECT:
                 state.type = OBJECT_VALUE;
-                if (state.itemCount++ > 0) {
+                if (state.itemCount++ > 0)
                     writer.write(JSON.COMMA);
-                }
                 return;
             default:
                 throw new IOException("Must call objectBegin first.");

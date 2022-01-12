@@ -176,7 +176,6 @@ public class JSONArray implements JSONNode {
      * @param jc json converter
      * @param jb json builder.
      */
-    @Override
     public void writeJSON(JSONValue jc, JSONWriter jb, boolean writeClass)
             throws IOException {
         jb.arrayBegin();

@@ -56,9 +56,8 @@ public class Operator extends Expression {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void setChildren(List<Expression> children) throws ParseException {
-        if (this.children != null) {
+        if (this.children != null)
             throw new ParseException("Can not modify operator parameters.", getOffset());
-        }
         for (Expression node : children) {
             node.setParent(this);
         }

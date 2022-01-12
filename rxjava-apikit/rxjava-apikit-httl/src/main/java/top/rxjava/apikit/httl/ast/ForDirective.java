@@ -15,7 +15,6 @@
  */
 package top.rxjava.apikit.httl.ast;
 
-
 import top.rxjava.apikit.httl.util.StringUtils;
 
 import java.lang.reflect.Type;
@@ -55,7 +54,6 @@ public class ForDirective extends BlockDirective {
         return name;
     }
 
-    @Override
     public Expression getExpression() {
         return expression;
     }

@@ -16,6 +16,7 @@
 package top.rxjava.apikit.httl.spi.converters;
 
 import top.rxjava.apikit.httl.spi.Converter;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
@@ -39,7 +40,6 @@ public class ResponseOutConverter implements Converter<HttpServletResponse, Obje
         this.outputStream = outputStream;
     }
 
-    @Override
     public Object convert(HttpServletResponse value, Map<String, Class<?>> types) throws IOException, ParseException {
         if (outputStream) {
             return value.getOutputStream();

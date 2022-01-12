@@ -189,7 +189,6 @@ public class ServletResolver implements Resolver, Filter {
         return null;
     }
 
-    @Override
     public Object get(String key) {
         final HttpServletRequest request = getRequest();
         if (request == null) {
@@ -209,7 +208,6 @@ public class ServletResolver implements Resolver, Filter {
         }
         if (COOKIE_KEY.equals(key)) {
             return new MapSupport<String, Object>() {
-                @Override
                 public Object get(Object key) {
                     return ServletResolver.this.getCookieValue(request, (String) key);
                 }
@@ -217,7 +215,6 @@ public class ServletResolver implements Resolver, Filter {
         }
         if (PARAMETER_KEY.equals(key)) {
             return new MapSupport<String, Object>() {
-                @Override
                 public Object get(Object key) {
                     return ServletResolver.this.getParameterValue(request, (String) key);
                 }
@@ -225,7 +222,6 @@ public class ServletResolver implements Resolver, Filter {
         }
         if (HEADER_KEY.equals(key)) {
             return new MapSupport<String, Object>() {
-                @Override
                 public Object get(Object key) {
                     return ServletResolver.this.getHeaderValue(request, (String) key);
                 }
@@ -281,15 +277,12 @@ public class ServletResolver implements Resolver, Filter {
         return value;
     }
 
-    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
-    @Override
     public void destroy() {
     }
 
-    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
         setRequestAndResponse((HttpServletRequest) request, (HttpServletResponse) response);

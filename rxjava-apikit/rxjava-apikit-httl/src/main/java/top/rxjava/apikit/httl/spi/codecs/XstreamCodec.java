@@ -40,19 +40,16 @@ public class XstreamCodec extends AbstractXmlCodec {
         XSTREAM = new XStream(driver);
     }
 
-    @Override
     public String toString(String key, Object value) {
         return XSTREAM.toXML(value);
     }
 
-    @Override
     public byte[] toBytes(String key, Object value) {
         UnsafeByteArrayOutputStream out = new UnsafeByteArrayOutputStream();
         XSTREAM.toXML(value, out);
         return out.toByteArray();
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public <T> T valueOf(String str, Class<T> type) throws ParseException {
         if (str == null) {
@@ -68,7 +65,6 @@ public class XstreamCodec extends AbstractXmlCodec {
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public <T> T valueOf(byte[] str, Class<T> type) throws ParseException {
         if (str == null) {

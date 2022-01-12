@@ -27,7 +27,6 @@ public class TypeMap extends MapSupport<String, Class<?>> {
         this.valueMap = valueMap;
     }
 
-    @Override
     public Class<?> get(Object key) {
         if (valueMap != null) {
             Object value = valueMap.get(key);
@@ -42,7 +41,6 @@ public class TypeMap extends MapSupport<String, Class<?>> {
         return null;
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public Set<String> keySet() {
         return valueMap == null ? Collections.EMPTY_SET : valueMap.keySet();

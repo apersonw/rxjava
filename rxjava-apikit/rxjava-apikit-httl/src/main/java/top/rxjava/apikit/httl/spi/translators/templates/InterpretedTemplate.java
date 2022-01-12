@@ -24,7 +24,6 @@ import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.spi.Formatter;
 import top.rxjava.apikit.httl.spi.Switcher;
 import top.rxjava.apikit.httl.util.StringSequence;
-import top.rxjava.apikit.httl.Template;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -37,7 +36,7 @@ import java.util.Map;
  * InterpretedTemplate. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
 public class InterpretedTemplate extends AbstractTemplate {
 
@@ -198,12 +197,10 @@ public class InterpretedTemplate extends AbstractTemplate {
         this.outputEncoding = outputEncoding;
     }
 
-    @Override
     public Map<String, Class<?>> getVariables() {
         return variables;
     }
 
-    @Override
     public Map<String, Template> getMacros() {
         return macros;
     }

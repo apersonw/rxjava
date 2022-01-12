@@ -27,7 +27,7 @@ import java.util.Locale;
  * AbstractResource. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.spi.loaders.AbstractLoader#load(String, Locale, String)
+ * @see top.rxjava.apikit.httl.spi.loaders.AbstractLoader#load(String, Locale, String)
  */
 public abstract class AbstractResource implements Resource, Serializable {
 
@@ -55,37 +55,30 @@ public abstract class AbstractResource implements Resource, Serializable {
         this.lastModified = lastModified;
     }
 
-    @Override
     public Engine getEngine() {
         return engine;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public String getEncoding() {
         return encoding;
     }
 
-    @Override
     public Locale getLocale() {
         return locale;
     }
 
-    @Override
     public long getLastModified() {
         return lastModified;
     }
 
-    @Override
     public long getLength() {
         return -1;
     }
 
-    @Override
     public String getSource() throws IOException {
         try {
             return IOUtils.readToString(openReader());

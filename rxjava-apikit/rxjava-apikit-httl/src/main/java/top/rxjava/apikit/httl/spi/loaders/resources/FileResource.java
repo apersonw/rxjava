@@ -40,7 +40,6 @@ public class FileResource extends InputStreamResource {
         this.file = new File(path);
     }
 
-    @Override
     public InputStream openStream() throws IOException {
         return new FileInputStream(this.file);
     }

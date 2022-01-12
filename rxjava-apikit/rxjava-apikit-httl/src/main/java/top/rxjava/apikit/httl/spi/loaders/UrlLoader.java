@@ -34,25 +34,21 @@ import java.util.Locale;
  */
 public class UrlLoader extends AbstractLoader {
 
-    @Override
     public List<String> doList(String directory, String suffix) throws IOException {
         return UrlUtils.listUrl(new URL(cleanPath(directory)), suffix);
     }
 
-    @Override
     protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
         return new UrlResource(getEngine(), name, locale, encoding, cleanPath(path));
     }
 
-    @Override
     public boolean doExists(String name, Locale locale, String path) throws IOException {
         InputStream in = new URL(cleanPath(path)).openStream();
         try {
             return in != null;
         } finally {
-            if (in != null) {
+            if (in != null)
                 in.close();
-            }
         }
     }
 

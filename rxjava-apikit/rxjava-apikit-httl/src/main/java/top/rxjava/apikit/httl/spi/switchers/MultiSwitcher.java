@@ -52,7 +52,6 @@ public class MultiSwitcher<T> implements Switcher<T> {
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public List<String> locations() {
         if (switchers == null || switchers.length == 0) {
@@ -68,7 +67,6 @@ public class MultiSwitcher<T> implements Switcher<T> {
         return locations;
     }
 
-    @Override
     public T switchover(String location, T origin) {
         if (switchers == null || switchers.length == 0) {
             return origin;

@@ -15,7 +15,6 @@
  */
 package top.rxjava.apikit.httl.spi.translators;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Node;
 import top.rxjava.apikit.httl.Resource;
@@ -38,7 +37,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author @author Liang Fei (liangfei0201 AT gmail DOT com)
  * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setTranslator(Translator)
  */
-@Slf4j
 public class InterpretedTranslator implements Translator {
 
     private final List<StringSequence> importSequences = new CopyOnWriteArrayList<StringSequence>();
@@ -64,6 +62,12 @@ public class InterpretedTranslator implements Translator {
     private Converter<Object, Object> mapConverter;
 
     private Converter<Object, Object> outConverter;
+
+    private Logger logger;
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 
     public void setMapConverter(Converter<Object, Object> mapConverter) {
         this.mapConverter = mapConverter;
@@ -192,12 +196,11 @@ public class InterpretedTranslator implements Translator {
         this.defaultVariableType = defaultVariableType;
     }
 
-    @Override
     public Template translate(Resource resource,
                               Node root, Map<String, Class<?>> parameterTypes) throws ParseException,
             IOException {
-        if (log != null && log.isDebugEnabled()) {
-            log.debug("Interprete template " + resource.getName());
+        if (logger != null && logger.isDebugEnabled()) {
+            logger.debug("Interprete template " + resource.getName());
         }
         InterpretedTemplate template = new InterpretedTemplate(resource, root, null);
         template.setInterceptor(interceptor);

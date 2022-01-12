@@ -15,9 +15,9 @@
  */
 package top.rxjava.apikit.httl.spi.codecs;
 
+import top.rxjava.apikit.httl.spi.Compiler;
 import top.rxjava.apikit.httl.spi.codecs.json.JSON;
 import top.rxjava.apikit.httl.spi.converters.BeanMapConverter;
-import top.rxjava.apikit.httl.spi.Compiler;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -47,7 +47,6 @@ public class JsonCodec extends AbstractJsonCodec {
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public <T> T valueOf(String str, Class<T> type) throws ParseException {
         if (str == null) {

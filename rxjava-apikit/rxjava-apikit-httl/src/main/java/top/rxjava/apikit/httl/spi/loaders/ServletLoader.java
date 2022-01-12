@@ -54,17 +54,14 @@ public class ServletLoader extends AbstractLoader implements ServletContextListe
         SERVLET_CONTEXT = servletContext;
     }
 
-    @Override
     public void contextInitialized(ServletContextEvent sce) {
         setServletContext(sce.getServletContext());
     }
 
-    @Override
     public void contextDestroyed(ServletContextEvent sce) {
         setServletContext(null);
     }
 
-    @Override
     public List<String> doList(String directory, String suffix) throws IOException {
         String path = getAndCheckServletContext().getRealPath(directory);
         if (path == null || path.length() == 0) {
@@ -73,12 +70,10 @@ public class ServletLoader extends AbstractLoader implements ServletContextListe
         return UrlUtils.listFile(new File(path), suffix);
     }
 
-    @Override
     protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
         return new ServletResource(getEngine(), name, locale, encoding, path, getAndCheckServletContext());
     }
 
-    @Override
     public boolean doExists(String name, Locale locale, String path) throws IOException {
         return SERVLET_CONTEXT != null && SERVLET_CONTEXT.getResource(path) != null;
     }

@@ -31,7 +31,7 @@ import java.util.Map;
  * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  * @see top.rxjava.apikit.httl.Engine#getTemplate(String, String)
  * @see top.rxjava.apikit.httl.Context#getTemplate()
- * @see top.rxjava.apikit.httl.spi.Translator#translate(Resource, Node, Map)
+ * @see top.rxjava.apikit.httl.spi.Translator#translate(Resource, Node, java.util.Map)
  */
 public interface Template extends Node, Resource {
 
@@ -49,8 +49,8 @@ public interface Template extends Node, Resource {
      * @param out - render output
      * @throws IOException    - If an I/O error occurs
      * @throws ParseException - If the template cannot be parsed on runtime
-     * @see httl.Context
-     * @see httl.spi.Converter
+     * @see top.rxjava.apikit.httl.Context
+     * @see top.rxjava.apikit.httl.spi.Converter
      */
     void render(Object map, Object out) throws IOException, ParseException;
 
@@ -67,8 +67,8 @@ public interface Template extends Node, Resource {
      * @param out - render output
      * @throws IOException    - If an I/O error occurs
      * @throws ParseException - If the template cannot be parsed on runtime
-     * @see httl.Context
-     * @see httl.spi.Converter
+     * @see top.rxjava.apikit.httl.Context
+     * @see top.rxjava.apikit.httl.spi.Converter
      */
     void render(Object out) throws IOException, ParseException;
 
@@ -85,7 +85,7 @@ public interface Template extends Node, Resource {
      *
      * @throws IOException    - If an I/O error occurs
      * @throws ParseException - If the template cannot be parsed on runtime
-     * @see httl.Context
+     * @see top.rxjava.apikit.httl.Context
      */
     void render() throws IOException, ParseException;
 
@@ -101,8 +101,8 @@ public interface Template extends Node, Resource {
      * @param map - evaluate variables map
      * @return evaluate result (string or byte[])
      * @throws ParseException - If the expression cannot be parsed on runtime
-     * @see httl.Context
-     * @see httl.spi.Converter
+     * @see top.rxjava.apikit.httl.Context
+     * @see top.rxjava.apikit.httl.spi.Converter
      */
     Object evaluate(Object map) throws ParseException;
 
@@ -117,7 +117,7 @@ public interface Template extends Node, Resource {
      *
      * @return evaluate result (string or byte[])
      * @throws ParseException - If the expression cannot be parsed on runtime
-     * @see httl.Context
+     * @see top.rxjava.apikit.httl.Context
      */
     Object evaluate() throws ParseException;
 
@@ -126,7 +126,6 @@ public interface Template extends Node, Resource {
      *
      * @return parent template
      */
-    @Override
     Template getParent();
 
     /**

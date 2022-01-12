@@ -46,8 +46,8 @@ import java.util.*;
  * </pre>
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Template#render(Object, Object)
- * @see httl.spi.translators.templates.AbstractTemplate#render(Object, Object)
+ * @see top.rxjava.apikit.httl.Template#render(Object, Object)
+ * @see top.rxjava.apikit.httl.spi.translators.templates.AbstractTemplate#render(Object, Object)
  */
 public final class Context implements Map<String, Object> {
 
@@ -316,7 +316,7 @@ public final class Context implements Map<String, Object> {
     }
 
     @SuppressWarnings("unchecked")
-    public Set<Entry<String, Object>> entrySet() {
+    public Set<Map.Entry<String, Object>> entrySet() {
         checkThread();
         return current == null ? Collections.EMPTY_SET : current.entrySet();
     }

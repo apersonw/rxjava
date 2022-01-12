@@ -16,8 +16,8 @@
 package top.rxjava.apikit.httl.spi.translators.templates;
 
 import top.rxjava.apikit.httl.*;
-import top.rxjava.apikit.httl.spi.*;
 import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.*;
 import top.rxjava.apikit.httl.spi.formatters.MultiFormatter;
 
 import java.io.OutputStream;
@@ -107,23 +107,20 @@ public abstract class CompiledTemplate extends AbstractTemplate {
     }
 
     protected String doFilter(Filter filter, String key, String value) {
-        if (filter != null) {
+        if (filter != null)
             return filter.filter(key, value);
-        }
         return value;
     }
 
     protected char[] doFilter(Filter filter, String key, char[] value) {
-        if (filter != null) {
+        if (filter != null)
             return filter.filter(key, value);
-        }
         return value;
     }
 
     protected byte[] doFilter(Filter filter, String key, byte[] value) {
-        if (filter != null) {
+        if (filter != null)
             return filter.filter(key, value);
-        }
         return value;
     }
 
@@ -178,7 +175,6 @@ public abstract class CompiledTemplate extends AbstractTemplate {
         return Collections.unmodifiableMap(macros);
     }
 
-    @Override
     public Map<String, Template> getMacros() {
         return macros;
     }

@@ -35,9 +35,8 @@ public class EndDirective extends Directive {
     }
 
     public void setStart(BlockDirective start) throws ParseException {
-        if (this.start != null) {
+        if (this.start != null)
             throw new ParseException("Can not modify start.", getOffset());
-        }
         this.start = start;
     }
 

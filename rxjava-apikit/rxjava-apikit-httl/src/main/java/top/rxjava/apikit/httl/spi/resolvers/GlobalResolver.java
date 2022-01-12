@@ -44,7 +44,6 @@ public class GlobalResolver implements Resolver {
         return getGlobal().put(key, value);
     }
 
-    @Override
     public Object get(String key) {
         return global == null ? null : global.get(key);
     }

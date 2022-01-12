@@ -35,12 +35,10 @@ public abstract class MapSupport<K, V> implements Map<K, V> {
         this.keySet = keys == null ? Collections.EMPTY_SET : Collections.unmodifiableSet(new HashSet<K>(Arrays.asList(keys)));
     }
 
-    @Override
     public Set<K> keySet() {
         return keySet;
     }
 
-    @Override
     public Collection<V> values() {
         return new BeanSet<V>() {
             @Override
@@ -50,57 +48,48 @@ public abstract class MapSupport<K, V> implements Map<K, V> {
         };
     }
 
-    @Override
-    public Set<Entry<K, V>> entrySet() {
-        return new BeanSet<Entry<K, V>>() {
+    public Set<Map.Entry<K, V>> entrySet() {
+        return new BeanSet<Map.Entry<K, V>>() {
             @Override
-            protected Entry<K, V> getVaue(K key) {
+            protected Map.Entry<K, V> getVaue(K key) {
                 return new MapEntry<K, V>(key, get(key));
             }
         };
     }
 
-    @Override
     public boolean containsKey(Object key) {
         return get(key) != null;
     }
 
-    @Override
     public boolean containsValue(Object value) {
         return values().contains(value);
     }
 
-    @Override
     public boolean isEmpty() {
         return size() > 0;
     }
 
-    @Override
     public int size() {
         return keySet().size();
     }
 
-    @Override
     public V put(K key, V value) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public void putAll(Map<? extends K, ? extends V> map) {
         if (map != null) {
-            for (Entry<? extends K, ? extends V> entry : map.entrySet()) {
+            for (Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
                 put(entry.getKey(), entry.getValue());
             }
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public V remove(Object key) {
         return put((K) key, null);
     }
 
-    @Override
     public void clear() {
         for (K key : keySet()) {
             remove(key);
@@ -127,18 +116,15 @@ public abstract class MapSupport<K, V> implements Map<K, V> {
 
             private K key;
 
-            @Override
             public boolean hasNext() {
                 return iterator.hasNext();
             }
 
-            @Override
             public T next() {
                 key = iterator.next();
                 return getVaue(key);
             }
 
-            @Override
             public void remove() {
                 if (key == null)
                     throw new IllegalStateException("No such remove() key, Please call next() first.");

@@ -19,7 +19,7 @@ package top.rxjava.apikit.httl.ast;
  * Expression. (API, Prototype, Immutable, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.spi.parsers.ExpressionParser#parse(String, int)
+ * @see top.rxjava.apikit.httl.spi.parsers.ExpressionParser#parse(String, int)
  */
 public abstract class Expression extends AbstractNode {
 

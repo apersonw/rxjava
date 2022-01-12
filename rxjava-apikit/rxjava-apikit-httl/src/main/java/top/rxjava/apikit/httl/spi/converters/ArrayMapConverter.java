@@ -47,7 +47,6 @@ import java.util.Map;
  */
 public class ArrayMapConverter implements Converter<Object[], Map<String, Object>> {
 
-    @Override
     public Map<String, Object> convert(Object[] values, Map<String, Class<?>> types)
             throws IOException, ParseException {
         return CollectionUtils.toMap(types.keySet(), values);

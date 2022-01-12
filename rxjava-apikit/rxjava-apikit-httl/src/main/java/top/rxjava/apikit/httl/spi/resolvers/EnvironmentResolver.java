@@ -24,7 +24,6 @@ import top.rxjava.apikit.httl.spi.Resolver;
  */
 public class EnvironmentResolver implements Resolver {
 
-    @Override
     public Object get(String key) {
         return System.getenv(key);
     }

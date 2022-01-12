@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentMap;
  * AdaptiveCache. (SPI, Singleton, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.spi.engines.DefaultEngine#setCache(Map)
+ * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setCache(Map)
  */
 public class AdaptiveCache<K, V> implements ConcurrentMap<K, V> {
 

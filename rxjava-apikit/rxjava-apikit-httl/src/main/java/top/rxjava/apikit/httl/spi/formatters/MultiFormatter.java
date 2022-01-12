@@ -222,189 +222,152 @@ public class MultiFormatter implements Formatter<Object> {
     }
 
     public String toString(String key, boolean value) {
-        if (booleanFormatter != null) {
+        if (booleanFormatter != null)
             return booleanFormatter.toString(key, value);
-        }
         return value ? trueValue : falseValue;
     }
 
     public String toString(String key, byte value) {
-        if (byteFormatter != null) {
+        if (byteFormatter != null)
             return byteFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, char value) {
-        if (charFormatter != null) {
+        if (charFormatter != null)
             return charFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, short value) {
-        if (shortFormatter != null) {
+        if (shortFormatter != null)
             return shortFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, int value) {
-        if (intFormatter != null) {
+        if (intFormatter != null)
             return intFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, long value) {
-        if (longFormatter != null) {
+        if (longFormatter != null)
             return longFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, float value) {
-        if (floatFormatter != null) {
+        if (floatFormatter != null)
             return floatFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, double value) {
-        if (doubleFormatter != null) {
+        if (doubleFormatter != null)
             return doubleFormatter.toString(key, value);
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, Boolean value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (booleanFormatter != null) {
+        if (booleanFormatter != null)
             return booleanFormatter.toString(key, value);
-        }
         return value.booleanValue() ? trueValue : falseValue;
     }
 
     public String toString(String key, Byte value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (byteFormatter != null) {
+        if (byteFormatter != null)
             return byteFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Character value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (charFormatter != null) {
+        if (charFormatter != null)
             return charFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Short value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (shortFormatter != null) {
+        if (shortFormatter != null)
             return shortFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Integer value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (intFormatter != null) {
+        if (intFormatter != null)
             return intFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Long value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (longFormatter != null) {
+        if (longFormatter != null)
             return longFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Float value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (floatFormatter != null) {
+        if (floatFormatter != null)
             return floatFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Double value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (doubleFormatter != null) {
+        if (doubleFormatter != null)
             return doubleFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Number value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (value instanceof Byte) {
+        if (value instanceof Byte)
             return toString(key, (Byte) value);
-        }
-        if (value instanceof Short) {
+        if (value instanceof Short)
             return toString(key, (Short) value);
-        }
-        if (value instanceof Integer) {
+        if (value instanceof Integer)
             return toString(key, (Integer) value);
-        }
-        if (value instanceof Long) {
+        if (value instanceof Long)
             return toString(key, (Long) value);
-        }
-        if (value instanceof Float) {
+        if (value instanceof Float)
             return toString(key, (Float) value);
-        }
-        if (value instanceof Double) {
+        if (value instanceof Double)
             return toString(key, (Double) value);
-        }
-        if (numberFormatter != null) {
+        if (numberFormatter != null)
             return numberFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, Date value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (dateFormatter != null) {
+        if (dateFormatter != null)
             return dateFormatter.toString(key, value);
-        }
         return value.toString();
     }
 
     public String toString(String key, byte[] value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (value.length == 0) {
+        if (value.length == 0)
             return "";
-        }
-        if (outputEncoding == null) {
+        if (outputEncoding == null)
             return new String(value);
-        }
         try {
             return new String(value, outputEncoding);
         } catch (UnsupportedEncodingException e) {
@@ -413,16 +376,14 @@ public class MultiFormatter implements Formatter<Object> {
     }
 
     public String toString(String key, char[] value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
         return String.valueOf(value);
     }
 
     public String toString(String key, String value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
         return value;
     }
 
@@ -442,39 +403,28 @@ public class MultiFormatter implements Formatter<Object> {
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public String toString(String key, Object value) {
-        if (value == null) {
+        if (value == null)
             return nullValue;
-        }
-        if (value instanceof String) {
+        if (value instanceof String)
             return (String) value;
-        }
-        if (value instanceof Boolean) {
+        if (value instanceof Boolean)
             return toString(key, (Boolean) value);
-        }
-        if (value instanceof Character) {
+        if (value instanceof Character)
             return toString(key, (Character) value);
-        }
-        if (value instanceof Number) {
+        if (value instanceof Number)
             return toString(key, (Number) value);
-        }
-        if (value instanceof Date) {
+        if (value instanceof Date)
             return toString(key, (Date) value);
-        }
-        if (value instanceof byte[]) {
+        if (value instanceof byte[])
             return toString(key, (byte[]) value);
-        }
-        if (value instanceof Template) {
+        if (value instanceof Template)
             return toString(key, (Template) value);
-        }
-        if (value instanceof Resource) {
+        if (value instanceof Resource)
             return toString(key, (Resource) value);
-        }
-        if (formatter != null) {
+        if (formatter != null)
             return formatter.toString(key, value);
-        }
         Class<?> cls = value.getClass();
         Formatter<Object> formatter = (Formatter<Object>) formatters.get(cls);
         if (formatter != null) {
@@ -492,189 +442,152 @@ public class MultiFormatter implements Formatter<Object> {
     }
 
     public char[] toChars(String key, boolean value) {
-        if (booleanFormatter != null) {
+        if (booleanFormatter != null)
             return booleanFormatter.toChars(key, value);
-        }
         return value ? trueValueChars : falseValueChars;
     }
 
     public char[] toChars(String key, byte value) {
-        if (byteFormatter != null) {
+        if (byteFormatter != null)
             return byteFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, char value) {
-        if (charFormatter != null) {
+        if (charFormatter != null)
             return charFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, short value) {
-        if (shortFormatter != null) {
+        if (shortFormatter != null)
             return shortFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, int value) {
-        if (intFormatter != null) {
+        if (intFormatter != null)
             return intFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, long value) {
-        if (longFormatter != null) {
+        if (longFormatter != null)
             return longFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, float value) {
-        if (floatFormatter != null) {
+        if (floatFormatter != null)
             return floatFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, double value) {
-        if (doubleFormatter != null) {
+        if (doubleFormatter != null)
             return doubleFormatter.toChars(key, value);
-        }
         return String.valueOf(value).toCharArray();
     }
 
     public char[] toChars(String key, Boolean value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (booleanFormatter != null) {
+        if (booleanFormatter != null)
             return booleanFormatter.toChars(key, value);
-        }
         return value.booleanValue() ? trueValueChars : falseValueChars;
     }
 
     public char[] toChars(String key, Byte value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (byteFormatter != null) {
+        if (byteFormatter != null)
             return byteFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Character value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (charFormatter != null) {
+        if (charFormatter != null)
             return charFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Short value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (shortFormatter != null) {
+        if (shortFormatter != null)
             return shortFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Integer value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (intFormatter != null) {
+        if (intFormatter != null)
             return intFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Long value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (longFormatter != null) {
+        if (longFormatter != null)
             return longFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Float value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (floatFormatter != null) {
+        if (floatFormatter != null)
             return floatFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Double value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (doubleFormatter != null) {
+        if (doubleFormatter != null)
             return doubleFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Number value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (value instanceof Byte) {
+        if (value instanceof Byte)
             return toChars(key, (Byte) value);
-        }
-        if (value instanceof Short) {
+        if (value instanceof Short)
             return toChars(key, (Short) value);
-        }
-        if (value instanceof Integer) {
+        if (value instanceof Integer)
             return toChars(key, (Integer) value);
-        }
-        if (value instanceof Long) {
+        if (value instanceof Long)
             return toChars(key, (Long) value);
-        }
-        if (value instanceof Float) {
+        if (value instanceof Float)
             return toChars(key, (Float) value);
-        }
-        if (value instanceof Double) {
+        if (value instanceof Double)
             return toChars(key, (Double) value);
-        }
-        if (numberFormatter != null) {
+        if (numberFormatter != null)
             return numberFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, Date value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (dateFormatter != null) {
+        if (dateFormatter != null)
             return dateFormatter.toChars(key, value);
-        }
         return value.toString().toCharArray();
     }
 
     public char[] toChars(String key, byte[] value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (value.length == 0) {
+        if (value.length == 0)
             return new char[0];
-        }
-        if (outputEncoding == null) {
+        if (outputEncoding == null)
             return new String(value).toCharArray();
-        }
         try {
             return new String(value, outputEncoding).toCharArray();
         } catch (UnsupportedEncodingException e) {
@@ -683,16 +596,14 @@ public class MultiFormatter implements Formatter<Object> {
     }
 
     public char[] toChars(String key, char[] value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
         return value;
     }
 
     public char[] toChars(String key, String value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
         return value.toCharArray();
     }
 
@@ -712,42 +623,30 @@ public class MultiFormatter implements Formatter<Object> {
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public char[] toChars(String key, Object value) {
-        if (value == null) {
+        if (value == null)
             return nullValueChars;
-        }
-        if (value instanceof char[]) {
+        if (value instanceof char[])
             return (char[]) value;
-        }
-        if (value instanceof Boolean) {
+        if (value instanceof Boolean)
             return toChars(key, (Boolean) value);
-        }
-        if (value instanceof Character) {
+        if (value instanceof Character)
             return toChars(key, (Character) value);
-        }
-        if (value instanceof Number) {
+        if (value instanceof Number)
             return toChars(key, (Number) value);
-        }
-        if (value instanceof Date) {
+        if (value instanceof Date)
             return toChars(key, (Date) value);
-        }
-        if (value instanceof String) {
+        if (value instanceof String)
             return toChars(key, (String) value);
-        }
-        if (value instanceof Template) {
+        if (value instanceof Template)
             return toChars(key, (Template) value);
-        }
-        if (value instanceof Expression) {
+        if (value instanceof Expression)
             return toChars(key, (Expression) value);
-        }
-        if (value instanceof Resource) {
+        if (value instanceof Resource)
             return toChars(key, (Resource) value);
-        }
-        if (formatter != null) {
+        if (formatter != null)
             return formatter.toChars(key, value);
-        }
         Class<?> cls = value.getClass();
         Formatter<Object> formatter = (Formatter<Object>) formatters.get(cls);
         if (formatter != null) {
@@ -765,176 +664,142 @@ public class MultiFormatter implements Formatter<Object> {
     }
 
     public byte[] toBytes(String key, boolean value) {
-        if (booleanFormatter != null) {
+        if (booleanFormatter != null)
             return booleanFormatter.toBytes(key, value);
-        }
         return value ? trueValueBytes : falseValueBytes;
     }
 
     public byte[] toBytes(String key, byte value) {
-        if (byteFormatter != null) {
+        if (byteFormatter != null)
             return byteFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, char value) {
-        if (charFormatter != null) {
+        if (charFormatter != null)
             return charFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, short value) {
-        if (shortFormatter != null) {
+        if (shortFormatter != null)
             return shortFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, int value) {
-        if (intFormatter != null) {
+        if (intFormatter != null)
             return intFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, long value) {
-        if (longFormatter != null) {
+        if (longFormatter != null)
             return longFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, float value) {
-        if (floatFormatter != null) {
+        if (floatFormatter != null)
             return floatFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, double value) {
-        if (doubleFormatter != null) {
+        if (doubleFormatter != null)
             return doubleFormatter.toBytes(key, value);
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, Boolean value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (booleanFormatter != null) {
+        if (booleanFormatter != null)
             return booleanFormatter.toBytes(key, value);
-        }
         return value.booleanValue() ? trueValueBytes : falseValueBytes;
     }
 
     public byte[] toBytes(String key, Byte value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (byteFormatter != null) {
+        if (byteFormatter != null)
             return byteFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Character value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (charFormatter != null) {
+        if (charFormatter != null)
             return charFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Short value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (shortFormatter != null) {
+        if (shortFormatter != null)
             return shortFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Integer value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (intFormatter != null) {
+        if (intFormatter != null)
             return intFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Long value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (longFormatter != null) {
+        if (longFormatter != null)
             return longFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Float value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (floatFormatter != null) {
+        if (floatFormatter != null)
             return floatFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Double value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (doubleFormatter != null) {
+        if (doubleFormatter != null)
             return doubleFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Number value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (value instanceof Byte) {
+        if (value instanceof Byte)
             return toBytes(key, (Byte) value);
-        }
-        if (value instanceof Short) {
+        if (value instanceof Short)
             return toBytes(key, (Short) value);
-        }
-        if (value instanceof Integer) {
+        if (value instanceof Integer)
             return toBytes(key, (Integer) value);
-        }
-        if (value instanceof Long) {
+        if (value instanceof Long)
             return toBytes(key, (Long) value);
-        }
-        if (value instanceof Float) {
+        if (value instanceof Float)
             return toBytes(key, (Float) value);
-        }
-        if (value instanceof Double) {
+        if (value instanceof Double)
             return toBytes(key, (Double) value);
-        }
-        if (numberFormatter != null) {
+        if (numberFormatter != null)
             return numberFormatter.toBytes(key, value);
-        }
         return toBytes(key, value.toString());
     }
 
     public byte[] toBytes(String key, Date value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (dateFormatter != null) {
+        if (dateFormatter != null)
             return dateFormatter.toBytes(key, value);
-        }
         return toBytes(key, DateUtils.format(value));
     }
 
@@ -945,22 +810,18 @@ public class MultiFormatter implements Formatter<Object> {
     }
 
     public byte[] toBytes(String key, char[] value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
         return toBytes(key, String.valueOf(value));
     }
 
     public byte[] toBytes(String key, String value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (value.length() == 0) {
+        if (value.length() == 0)
             return new byte[0];
-        }
-        if (outputEncoding == null) {
+        if (outputEncoding == null)
             return value.getBytes();
-        }
         try {
             return value.getBytes(outputEncoding);
         } catch (UnsupportedEncodingException e) {
@@ -984,42 +845,30 @@ public class MultiFormatter implements Formatter<Object> {
         }
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public byte[] toBytes(String key, Object value) {
-        if (value == null) {
+        if (value == null)
             return nullValueBytes;
-        }
-        if (value instanceof byte[]) {
+        if (value instanceof byte[])
             return (byte[]) value;
-        }
-        if (value instanceof Boolean) {
+        if (value instanceof Boolean)
             return toBytes(key, (Boolean) value);
-        }
-        if (value instanceof Character) {
+        if (value instanceof Character)
             return toBytes(key, (Character) value);
-        }
-        if (value instanceof Number) {
+        if (value instanceof Number)
             return toBytes(key, (Number) value);
-        }
-        if (value instanceof Date) {
+        if (value instanceof Date)
             return toBytes(key, (Date) value);
-        }
-        if (value instanceof String) {
+        if (value instanceof String)
             return toBytes(key, (String) value);
-        }
-        if (value instanceof Template) {
+        if (value instanceof Template)
             return toBytes(key, (Template) value);
-        }
-        if (value instanceof Expression) {
+        if (value instanceof Expression)
             return toBytes(key, (Expression) value);
-        }
-        if (value instanceof Resource) {
+        if (value instanceof Resource)
             return toBytes(key, (Resource) value);
-        }
-        if (formatter != null) {
+        if (formatter != null)
             return formatter.toBytes(key, value);
-        }
         Class<?> cls = value.getClass();
         Formatter<Object> formatter = (Formatter<Object>) formatters.get(cls);
         if (formatter != null) {

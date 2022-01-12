@@ -599,20 +599,17 @@ public class TemplateParser implements Parser {
         RootDirective rootDirective = new RootDirective();
         directiveStack.push(new BlockDirectiveEntry(rootDirective));
         for (Statement directive : directives) {
-            if (directive == null) {
+            if (directive == null)
                 continue;
-            }
             Class<?> directiveClass = directive.getClass();
             // 弹栈
             if (directiveClass == EndDirective.class
                     || directiveClass == ElseDirective.class) {
-                if (directiveStack.isEmpty()) {
+                if (directiveStack.isEmpty())
                     throw new ParseException("Miss #end directive.", directive.getOffset());
-                }
                 BlockDirective blockDirective = directiveStack.pop().popDirective();
-                if (blockDirective == rootDirective) {
+                if (blockDirective == rootDirective)
                     throw new ParseException("Miss #end directive.", directive.getOffset());
-                }
                 EndDirective endDirective;
                 if (directiveClass == ElseDirective.class) {
                     endDirective = new EndDirective(directive.getOffset());
@@ -623,15 +620,13 @@ public class TemplateParser implements Parser {
             }
             // 设置树
             if (directiveClass != EndDirective.class) { // 排除EndDirective
-                if (directiveStack.isEmpty()) {
+                if (directiveStack.isEmpty())
                     throw new ParseException("Miss #end directive.", directive.getOffset());
-                }
                 directiveStack.peek().appendInnerDirective(directive);
             }
             // 压栈
-            if (directive instanceof BlockDirective) {
+            if (directive instanceof BlockDirective)
                 directiveStack.push(new BlockDirectiveEntry((BlockDirective) directive));
-            }
         }
         BlockDirective root = directiveStack.pop().popDirective();
         if (!directiveStack.isEmpty()) { // 后验条件
@@ -787,7 +782,6 @@ public class TemplateParser implements Parser {
         }
     }
 
-    @Override
     public Node parse(String source, int offset) throws ParseException {
         return reduce(trim(clean(scan(source, offset))));
     }

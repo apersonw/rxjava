@@ -20,6 +20,7 @@ import top.rxjava.apikit.httl.Visitor;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,7 +36,6 @@ public class UnaryOperator extends Operator {
         super(name, priority, offset);
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         parameter.accept(visitor);
         visitor.visit(this);
@@ -46,16 +46,15 @@ public class UnaryOperator extends Operator {
     }
 
     public void setParameter(Expression parameter) throws ParseException {
-        if (this.parameter != null) {
+        if (this.parameter != null)
             throw new ParseException("Can not modify parameter.", getOffset());
-        }
         this.parameter = parameter;
         parameter.setParent(this);
     }
 
-    @Override
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public List<Node> getChildren() {
-        return List.of(parameter);
+        return (List) Arrays.asList(parameter);
     }
 
     @Override

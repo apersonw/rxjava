@@ -51,7 +51,6 @@ public class FastjsonCodec extends AbstractJsonCodec {
         return JSON.toJSONBytes(value, FEATURES);
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public <T> T valueOf(String str, Class<T> type) throws ParseException {
         if (str == null) {
@@ -63,7 +62,6 @@ public class FastjsonCodec extends AbstractJsonCodec {
         return JSON.parseObject(str, type);
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public <T> T valueOf(byte[] str, Class<T> type) throws ParseException {
         if (str == null) {

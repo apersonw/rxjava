@@ -27,7 +27,6 @@ import top.rxjava.apikit.httl.util.StringUtils;
  */
 public class TrimBlankLineFilter extends AbstractFilter {
 
-    @Override
     public String filter(String key, String text) {
         return StringUtils.trimBlankLine(text);
     }

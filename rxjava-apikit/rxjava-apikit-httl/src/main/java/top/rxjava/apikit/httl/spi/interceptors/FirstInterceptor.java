@@ -31,7 +31,6 @@ import java.text.ParseException;
  */
 public abstract class FirstInterceptor extends TemplateInterceptor {
 
-    @Override
     public void render(Context context, Listener listener)
             throws IOException, ParseException {
         if (context.getLevel() > 1) {

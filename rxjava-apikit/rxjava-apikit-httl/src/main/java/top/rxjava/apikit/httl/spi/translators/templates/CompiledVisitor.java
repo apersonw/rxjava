@@ -16,11 +16,11 @@
 package top.rxjava.apikit.httl.spi.translators.templates;
 
 import top.rxjava.apikit.httl.*;
-import top.rxjava.apikit.httl.spi.*;
+import top.rxjava.apikit.httl.ast.*;
 import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.*;
 import top.rxjava.apikit.httl.spi.Formatter;
 import top.rxjava.apikit.httl.spi.formatters.MultiFormatter;
-import top.rxjava.apikit.httl.ast.*;
 import top.rxjava.apikit.httl.util.*;
 
 import java.io.IOException;
@@ -1085,7 +1085,6 @@ public class CompiledVisitor extends AstVisitor {
         return types;
     }
 
-    @Override
     public void visit(Constant node) throws IOException, ParseException {
         Object value = node.getValue();
         Class<?> type;
@@ -1134,7 +1133,6 @@ public class CompiledVisitor extends AstVisitor {
         codeStack.push(code);
     }
 
-    @Override
     public void visit(Variable node) throws IOException, ParseException {
         String name = node.getName();
         Type type = types.get(name);
@@ -1241,9 +1239,8 @@ public class CompiledVisitor extends AstVisitor {
         Class<?> rightClass = (Class<?>) (rightType instanceof ParameterizedType ? ((ParameterizedType) rightType).getRawType() : rightType);
         Class<?> leftClass = (Class<?>) (leftType instanceof ParameterizedType ? ((ParameterizedType) leftType).getRawType() : leftType);
 
-        if (leftClass == null) {
+        if (leftClass == null)
             leftClass = Object.class;
-        }
 
         String name = node.getName();
         if ("null".equals(leftCode)) {

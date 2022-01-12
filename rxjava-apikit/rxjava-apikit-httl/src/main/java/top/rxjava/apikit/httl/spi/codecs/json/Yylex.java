@@ -259,9 +259,8 @@ public class Yylex {
         while (i < l) {
             int count = packed.charAt(i++);
             int value = packed.charAt(i++);
-            do {
+            do
                 result[j++] = value;
-            }
             while (--count > 0);
         }
         return j;
@@ -316,9 +315,8 @@ public class Yylex {
         while (i < l) {
             int count = packed.charAt(i++);
             int value = packed.charAt(i++);
-            do {
+            do
                 result[j++] = value;
-            }
             while (--count > 0);
         }
         return j;
@@ -337,9 +335,8 @@ public class Yylex {
         while (i < 122) {
             int count = packed.charAt(i++);
             char value = packed.charAt(i++);
-            do {
+            do
                 map[j++] = value;
-            }
             while (--count > 0);
         }
         return map;
@@ -404,9 +401,8 @@ public class Yylex {
         zzAtEOF = true; /* indicate end of file */
         zzEndRead = zzStartRead; /* invalidate buffer */
 
-        if (zzReader != null) {
+        if (zzReader != null)
             zzReader.close();
-        }
     }
 
     /**
@@ -506,9 +502,8 @@ public class Yylex {
      *               not be greater than yylength()!
      */
     public void yypushback(int number) {
-        if (number > yylength()) {
+        if (number > yylength())
             zzScanError(ZZ_PUSHBACK_2BIG);
-        }
 
         zzMarkedPos -= number;
     }
@@ -548,9 +543,9 @@ public class Yylex {
             {
                 while (true) {
 
-                    if (zzCurrentPosL < zzEndReadL) {
+                    if (zzCurrentPosL < zzEndReadL)
                         zzInput = zzBufferL[zzCurrentPosL++];
-                    } else if (zzAtEOF) {
+                    else if (zzAtEOF) {
                         zzInput = YYEOF;
                         break zzForAction;
                     } else {
@@ -571,18 +566,16 @@ public class Yylex {
                         }
                     }
                     int zzNext = zzTransL[zzRowMapL[zzState] + zzCMapL[zzInput]];
-                    if (zzNext == -1) {
+                    if (zzNext == -1)
                         break zzForAction;
-                    }
                     zzState = zzNext;
 
                     int zzAttributes = zzAttrL[zzState];
                     if ((zzAttributes & 1) == 1) {
                         zzAction = zzState;
                         zzMarkedPosL = zzCurrentPosL;
-                        if ((zzAttributes & 8) == 8) {
+                        if ((zzAttributes & 8) == 8)
                             break zzForAction;
-                        }
                     }
 
                 }

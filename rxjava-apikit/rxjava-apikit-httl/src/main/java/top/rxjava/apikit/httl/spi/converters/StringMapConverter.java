@@ -16,9 +16,9 @@
 package top.rxjava.apikit.httl.spi.converters;
 
 import top.rxjava.apikit.httl.spi.Codec;
+import top.rxjava.apikit.httl.spi.Compiler;
 import top.rxjava.apikit.httl.spi.Converter;
 import top.rxjava.apikit.httl.util.StringUtils;
-import top.rxjava.apikit.httl.spi.Compiler;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -61,19 +61,17 @@ public class StringMapConverter implements Converter<String, Map<String, Object>
         this.formats = buf.toString();
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public Map<String, Object> convert(String value, Map<String, Class<?>> types) throws IOException,
             ParseException {
-        if (StringUtils.isEmpty(value)) {
+        if (StringUtils.isEmpty(value))
             return null;
-        }
         if (codecs != null) {
             value = value.trim();
             for (Codec codec : codecs) {
                 if (codec.isValueOf(value)) {
                     Class<?> type = BeanMapConverter.getBeanClass(String.valueOf(
-                            System.identityHashCode(types)), types, compiler);
+                            System.identityHashCode(types)), types, compiler, null);
                     Object bean = codec.valueOf(value, type);
                     if (bean instanceof Map) {
                         return (Map<String, Object>) bean;

@@ -29,10 +29,10 @@ import java.util.Locale;
  * </pre>
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getResource(String)
- * @see httl.Engine#getResource(String, String)
- * @see httl.spi.Loader#load(String, Locale, String)
- * @see httl.spi.Translator#translate(Resource, Node, java.util.Map)
+ * @see top.rxjava.apikit.httl.Engine#getResource(String)
+ * @see top.rxjava.apikit.httl.Engine#getResource(String, String)
+ * @see top.rxjava.apikit.httl.spi.Loader#load(String, Locale, String)
+ * @see top.rxjava.apikit.httl.spi.Translator#translate(Resource, Node, java.util.Map)
  */
 public interface Resource {
 

@@ -15,10 +15,10 @@
  */
 package top.rxjava.apikit.httl.spi.loaders;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.spi.loaders.resources.InputStreamResource;
 import top.rxjava.apikit.httl.util.CollectionUtils;
 import top.rxjava.apikit.httl.util.LocaleUtils;
@@ -38,10 +38,11 @@ import java.util.Locale;
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
-@Slf4j
 public abstract class AbstractLoader implements Loader {
 
     private Engine engine;
+
+    private Logger logger;
 
     private String encoding;
 
@@ -122,6 +123,17 @@ public abstract class AbstractLoader implements Loader {
         this.engine = engine;
     }
 
+    protected Logger getLogger() {
+        return logger;
+    }
+
+    /**
+     * httl.properties: loggers=httl.spi.loggers.Log4jLogger
+     */
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
     protected String getEncoding() {
         return encoding;
     }
@@ -153,7 +165,6 @@ public abstract class AbstractLoader implements Loader {
         return LocaleUtils.appendLocale(name, locale);
     }
 
-    @Override
     public List<String> list(String suffix) throws IOException {
         String[] directories;
         if (StringUtils.endsWith(suffix, templateSuffix)) {
@@ -180,7 +191,6 @@ public abstract class AbstractLoader implements Loader {
         return result;
     }
 
-    @Override
     public boolean exists(String name, Locale locale) {
         Locale cur = locale;
         while (cur != null) {
@@ -200,7 +210,6 @@ public abstract class AbstractLoader implements Loader {
         }
     }
 
-    @Override
     public Resource load(String name, Locale locale, String encoding) throws IOException {
         if (StringUtils.isEmpty(encoding)) {
             encoding = this.encoding;
@@ -219,7 +228,7 @@ public abstract class AbstractLoader implements Loader {
     private void logResourceDirectory(Resource resource) {
         if (first) {
             first = false;
-            if (log != null && log.isInfoEnabled()
+            if (logger != null && logger.isInfoEnabled()
                     && resource instanceof InputStreamResource) {
                 File file = ((InputStreamResource) resource).getFile();
                 if (file != null && file.exists()) {
@@ -235,7 +244,7 @@ public abstract class AbstractLoader implements Loader {
                             abs = "/";
                         }
                     }
-                    log.info("Load httl template from" + (reloadable ? " RELOADABLE" : "") + " directory " + abs + " by " + getClass().getSimpleName() + ".");
+                    logger.info("Load httl template from" + (reloadable ? " RELOADABLE" : "") + " directory " + abs + " by " + getClass().getSimpleName() + ".");
                 }
             }
         }

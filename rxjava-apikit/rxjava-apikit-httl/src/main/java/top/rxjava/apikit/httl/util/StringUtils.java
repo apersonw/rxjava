@@ -138,16 +138,14 @@ public class StringUtils {
     }
 
     public static String valueOf(Object value) {
-        if (value == null) {
+        if (value == null)
             return "";
-        }
         return toString(value);
     }
 
     public static String toString(Object value) {
-        if (value == null) {
+        if (value == null)
             return null;
-        }
         if (value.getClass().isArray()) {
             if (value instanceof boolean[]) {
                 return Arrays.toString((boolean[]) value);

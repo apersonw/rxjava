@@ -19,6 +19,7 @@ import top.rxjava.apikit.httl.util.iterators.*;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.Map.Entry;
 
 public class CollectionUtils {
 
@@ -669,7 +670,7 @@ public class CollectionUtils {
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public static <K, V> Iterator<Map.Entry<K, V>> toIterator(Map<K, V> object) {
+    public static <K, V> Iterator<Entry<K, V>> toIterator(Map<K, V> object) {
         return object == null ? (Iterator) EmptyIterator.getEmptyIterator() : object.entrySet().iterator();
     }
 

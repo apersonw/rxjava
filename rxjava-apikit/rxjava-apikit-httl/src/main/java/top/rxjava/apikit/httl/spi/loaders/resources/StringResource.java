@@ -24,7 +24,7 @@ import java.util.Locale;
  * StringResource. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.spi.loaders.StringLoader#load(String, Locale, String)
+ * @see top.rxjava.apikit.httl.spi.loaders.StringLoader#load(String, Locale, String)
  */
 public class StringResource extends AbstractResource {
 
@@ -47,12 +47,10 @@ public class StringResource extends AbstractResource {
         return source.length();
     }
 
-    @Override
     public Reader openReader() throws IOException {
         return new StringReader(source);
     }
 
-    @Override
     public InputStream openStream() throws IOException {
         return new ByteArrayInputStream(source.getBytes(getEncoding()));
     }

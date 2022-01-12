@@ -33,18 +33,15 @@ import java.util.Locale;
  */
 public class FileLoader extends AbstractLoader {
 
-    @Override
     public List<String> doList(String directory, String suffix) throws IOException {
         File file = new File(directory);
         return UrlUtils.listFile(file, suffix);
     }
 
-    @Override
     protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
         return new FileResource(getEngine(), name, locale, encoding, path);
     }
 
-    @Override
     public boolean doExists(String name, Locale locale, String path) throws IOException {
         return new File(path).exists();
     }

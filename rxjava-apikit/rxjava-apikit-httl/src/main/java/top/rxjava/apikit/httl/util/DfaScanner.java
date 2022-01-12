@@ -124,17 +124,15 @@ public abstract class DfaScanner {
                 } else {
                     acceptLength = buffer.length() + state - BREAK;
                 }
-                if (acceptLength < 0 || acceptLength > buffer.length()) {
+                if (acceptLength < 0 || acceptLength > buffer.length())
                     throw new ParseException("DFAScanner.accepter.error" + (errorWithSource ? ", source: " + charStream : ""), offset - buffer.length());
-                }
                 if (acceptLength != 0) {
                     String message = buffer.substring(0, acceptLength);
                     Token token = new Token(message, offset - buffer.length(), pre);
                     tokens.add(token);// 完成接收
                 }
-                if (acceptLength != buffer.length()) {
+                if (acceptLength != buffer.length())
                     remain.insert(0, buffer.substring(acceptLength)); // 将未接收的缓存记入残存
-                }
                 buffer.setLength(0); // 清空缓存
                 state = 0; // 回归到初始状态
             }

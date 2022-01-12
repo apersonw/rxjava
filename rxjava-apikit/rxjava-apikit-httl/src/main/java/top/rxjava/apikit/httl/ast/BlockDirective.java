@@ -41,18 +41,16 @@ public abstract class BlockDirective extends Directive {
     @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         Expression expression = getExpression();
-        if (expression != null) {
+        if (expression != null)
             expression.accept(visitor);
-        }
         if (visitor.visit(this)) {
             if (children != null) {
                 for (Node node : children) {
                     node.accept(visitor);
                 }
             }
-            if (end != null) {
+            if (end != null)
                 end.accept(visitor);
-            }
         }
     }
 
@@ -64,9 +62,8 @@ public abstract class BlockDirective extends Directive {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void setChildren(List<Statement> children) throws ParseException {
-        if (this.children != null) {
+        if (this.children != null)
             throw new ParseException("Can not modify children statement.", getOffset());
-        }
         for (Statement node : children) {
             node.setParent(this);
         }
@@ -78,9 +75,8 @@ public abstract class BlockDirective extends Directive {
     }
 
     public void setEnd(EndDirective end) throws ParseException {
-        if (this.end != null) {
+        if (this.end != null)
             throw new ParseException("Can not modify end.", this.end.getOffset());
-        }
         this.end = end;
         end.setStart(this);
     }

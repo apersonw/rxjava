@@ -24,8 +24,8 @@ import java.text.ParseException;
  * Render Interceptor. (SPI, Singleton, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
- * @see httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
+ * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
+ * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
 public interface Interceptor {
 

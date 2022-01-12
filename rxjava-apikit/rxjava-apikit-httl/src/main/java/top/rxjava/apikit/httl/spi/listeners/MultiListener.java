@@ -15,9 +15,9 @@
  */
 package top.rxjava.apikit.httl.spi.listeners;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.spi.Listener;
+import top.rxjava.apikit.httl.spi.Logger;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -29,10 +29,11 @@ import java.text.ParseException;
  * @see top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor#setBeforeListener(Listener)
  * @see top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor#setAfterListener(Listener)
  */
-@Slf4j
 public class MultiListener implements Listener {
 
     private Listener[] listeners;
+
+    private Logger logger;
 
     /**
      * httl.properties: listeners=httl.spi.listeners.ExtendsListener
@@ -49,11 +50,16 @@ public class MultiListener implements Listener {
         }
     }
 
-    @Override
+    /**
+     * httl.properties: loggers=httl.spi.loggers.Log4jListener
+     */
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
     public void render(Context context) throws IOException, ParseException {
-        if (listeners == null || listeners.length == 0) {
+        if (listeners == null || listeners.length == 0)
             return;
-        }
         if (listeners.length == 1) {
             listeners[0].render(context);
             return;
@@ -62,8 +68,8 @@ public class MultiListener implements Listener {
             try {
                 listener.render(context);
             } catch (Exception e) { // 确保第一个出错，不影响第二个执行
-                if (log != null && log.isErrorEnabled()) {
-                    log.error(e.getMessage(), e);
+                if (logger != null && logger.isErrorEnabled()) {
+                    logger.error(e.getMessage(), e);
                 }
             }
         }

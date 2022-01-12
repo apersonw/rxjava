@@ -49,9 +49,8 @@ public final class Token {
      * @param type    type
      */
     public Token(String message, int offset, int type) {
-        if (StringUtils.isEmpty(message)) {
+        if (StringUtils.isEmpty(message))
             throw new IllegalArgumentException("message == null");
-        }
         this.message = message;
         this.offset = offset;
         this.type = type;
@@ -101,29 +100,15 @@ public final class Token {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         Token other = (Token) obj;
         if (message == null) {
-            if (other.message != null) {
-                return false;
-            }
-        } else if (!message.equals(other.message)) {
-            return false;
-        }
-        if (offset != other.offset) {
-            return false;
-        }
-        if (type != other.type) {
-            return false;
-        }
+            if (other.message != null) return false;
+        } else if (!message.equals(other.message)) return false;
+        if (offset != other.offset) return false;
+        if (type != other.type) return false;
         return true;
     }
 

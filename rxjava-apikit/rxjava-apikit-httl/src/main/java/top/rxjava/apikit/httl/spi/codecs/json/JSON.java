@@ -49,13 +49,12 @@ public class JSON {
      *
      * @param obj object.
      * @return json string.
-     * @throws IOException
+     * @throws IOException.
      */
     public static String json(Object obj, boolean writeClass,
                               Converter<Object, Map<String, Object>> mc) throws IOException {
-        if (obj == null) {
+        if (obj == null)
             return NULL;
-        }
         StringWriter sw = new StringWriter();
         try {
             json(obj, sw, writeClass, mc);
@@ -70,7 +69,7 @@ public class JSON {
      *
      * @param obj    object.
      * @param writer writer.
-     * @throws IOException
+     * @throws IOException.
      */
     public static void json(Object obj, Writer writer,
                             Converter<Object, Map<String, Object>> mc) throws IOException {
@@ -79,11 +78,10 @@ public class JSON {
 
     public static void json(Object obj, Writer writer, boolean writeClass,
                             Converter<Object, Map<String, Object>> mc) throws IOException {
-        if (obj == null) {
+        if (obj == null)
             writer.write(NULL);
-        } else {
+        else
             json(obj, new JSONWriter(writer), writeClass, mc);
-        }
     }
 
     /**
@@ -92,13 +90,12 @@ public class JSON {
      * @param obj        object.
      * @param properties property name array.
      * @return json string.
-     * @throws IOException
+     * @throws IOException.
      */
     public static String json(Object obj, String[] properties,
                               Converter<Object, Map<String, Object>> mc) throws IOException {
-        if (obj == null) {
+        if (obj == null)
             return NULL;
-        }
         StringWriter sw = new StringWriter();
         try {
             json(obj, properties, sw, mc);
@@ -120,25 +117,23 @@ public class JSON {
      * @param obj        object.
      * @param properties property name array.
      * @param writer     writer.
-     * @throws IOException
+     * @throws IOException.
      */
     public static void json(Object obj, final String[] properties,
                             Writer writer, boolean writeClass,
                             Converter<Object, Map<String, Object>> mc) throws IOException {
-        if (obj == null) {
+        if (obj == null)
             writer.write(NULL);
-        } else {
+        else
             json(obj, properties, new JSONWriter(writer), writeClass, mc);
-        }
     }
 
     private static void json(Object obj, JSONWriter jb, boolean writeClass,
                              Converter<Object, Map<String, Object>> mc) throws IOException {
-        if (obj == null) {
+        if (obj == null)
             jb.valueNull();
-        } else {
+        else
             new JSONValue(mc).writeValue(obj, jb, writeClass);
-        }
     }
 
     private static void json(Object obj, String[] properties, JSONWriter jb,
@@ -160,11 +155,10 @@ public class JSON {
             for (String prop : properties) {
                 jb.objectItem(prop);
                 value = wrapper.get(prop);
-                if (value == null) {
+                if (value == null)
                     jb.valueNull();
-                } else {
+                else
                     jw.writeValue(value, jb, writeClass);
-                }
             }
             jb.objectEnd();
         }

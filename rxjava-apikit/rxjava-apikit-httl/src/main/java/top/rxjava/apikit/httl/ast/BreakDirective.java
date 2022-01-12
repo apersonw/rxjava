@@ -33,12 +33,10 @@ public class BreakDirective extends LineDirective {
         this.expression = expression;
     }
 
-    @Override
     public Expression getExpression() {
         return expression;
     }
 
-    @Override
     public void setParent(Node parent) throws ParseException {
         super.setParent(parent);
     }

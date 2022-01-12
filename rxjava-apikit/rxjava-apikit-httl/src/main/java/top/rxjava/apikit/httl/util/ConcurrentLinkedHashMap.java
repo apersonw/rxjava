@@ -28,8 +28,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static java.util.Collections.*;
 import static top.rxjava.apikit.httl.util.ConcurrentLinkedHashMap.DrainStatus.*;
+import static java.util.Collections.*;
 
 /**
  * A hash table supporting full concurrency of retrievals, adjustable expected
@@ -69,9 +69,9 @@ import static top.rxjava.apikit.httl.util.ConcurrentLinkedHashMap.DrainStatus.*;
  * This class and its views and iterators implement all of the <em>optional</em>
  * methods of the {@link Map} and {@link Iterator} interfaces.
  * <p/>
- * Like {@link Hashtable} but unlike {@link HashMap}, this class does
+ * Like {@link java.util.Hashtable} but unlike {@link HashMap}, this class does
  * <em>not</em> allow <tt>null</tt> to be used as a key or value. Unlike
- * {@link LinkedHashMap}, this class does <em>not</em> provide
+ * {@link java.util.LinkedHashMap}, this class does <em>not</em> provide
  * predictable iteration order. A snapshot of the keys and entries may be
  * obtained in ascending and descending order of retention.
  *

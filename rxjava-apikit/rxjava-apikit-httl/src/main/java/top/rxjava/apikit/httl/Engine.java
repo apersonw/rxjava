@@ -367,12 +367,10 @@ public abstract class Engine {
      * @see #getEngine()
      */
     public Template getTemplate(String name, Object args) throws IOException, ParseException {
-        if (args instanceof String) {
+        if (args instanceof String)
             return getTemplate(name, (String) args);
-        }
-        if (args instanceof Locale) {
+        if (args instanceof Locale)
             return getTemplate(name, (Locale) args);
-        }
         return getTemplate(name, null, null, args);
     }
 
@@ -416,9 +414,8 @@ public abstract class Engine {
      * @see #getEngine()
      */
     public Template getTemplate(String name, Locale locale, Object args) throws IOException, ParseException {
-        if (args instanceof String) {
+        if (args instanceof String)
             return getTemplate(name, locale, (String) args);
-        }
         return getTemplate(name, locale, null, args);
     }
 

@@ -15,11 +15,11 @@
  */
 package top.rxjava.apikit.httl.spi.methods;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.Template;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.spi.Resolver;
 import top.rxjava.apikit.httl.util.EncodingProperties;
 import top.rxjava.apikit.httl.util.LocaleUtils;
@@ -36,12 +36,12 @@ import java.util.concurrent.ConcurrentMap;
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  */
-@Slf4j
 public class MessageMethod {
 
     private final ConcurrentMap<String, EncodingProperties> messageCache = new ConcurrentHashMap<String, EncodingProperties>();
     private Engine engine;
     private Resolver resolver;
+    private Logger logger;
     private String messageBasename;
     private String messageFormat;
     private String messageEncoding;
@@ -99,6 +99,13 @@ public class MessageMethod {
      */
     public void setResolver(Resolver resolver) {
         this.resolver = resolver;
+    }
+
+    /**
+     * httl.properties: resolver=httl.spi.loggers.Log4jLogger
+     */
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 
     private Locale getLocale() {
@@ -200,8 +207,8 @@ public class MessageMethod {
                     properties.load(resource.openStream(), encoding, resource.getLastModified());
                 }
             } catch (IOException e) {
-                if (log != null && log.isErrorEnabled()) {
-                    log.error("Failed to load httl message file " + file + " with locale " + locale + ", cause: " + e.getMessage(), e);
+                if (logger != null && logger.isErrorEnabled()) {
+                    logger.error("Failed to load httl message file " + file + " with locale " + locale + ", cause: " + e.getMessage(), e);
                 }
             }
         }

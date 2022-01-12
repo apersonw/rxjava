@@ -15,11 +15,11 @@
  */
 package top.rxjava.apikit.httl.spi.translators.templates;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Node;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.Template;
 import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.spi.Translator;
 
 import java.io.IOException;
@@ -32,9 +32,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * MixedTemplate. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
-@Slf4j
 public class MixedTemplate extends ProxyTemplate {
 
     private final Map<String, Class<?>> types = new ConcurrentHashMap<String, Class<?>>();
@@ -49,15 +48,18 @@ public class MixedTemplate extends ProxyTemplate {
 
     private final Converter<Object, Object> mapConverter;
 
+    private final Logger logger;
+
     private volatile Template compiledTemplate;
 
     private volatile boolean firstWarn = true;
 
     public MixedTemplate(Template template, Resource resource, Node root, Map<String, Class<?>> types,
-                         Translator translator, Converter<Object, Object> mapConverter) {
+                         Translator translator, Converter<Object, Object> mapConverter, Logger logger) {
         super(template);
         this.compiledTranslator = translator;
         this.mapConverter = mapConverter;
+        this.logger = logger;
         this.resource = resource;
         this.root = root;
         if (types != null) {
@@ -83,7 +85,6 @@ public class MixedTemplate extends ProxyTemplate {
         }
     }
 
-    @Override
     public void render(Object parameters, Object stream)
             throws IOException, ParseException {
         if (compiledTemplate != null) {
@@ -111,9 +112,9 @@ public class MixedTemplate extends ProxyTemplate {
                             try {
                                 compiledTemplate = compiledTranslator.translate(resource, root, types);
                             } catch (ParseException e) {
-                                if (firstWarn && log != null && log.isWarnEnabled()) {
+                                if (firstWarn && logger != null && logger.isWarnEnabled()) {
                                     firstWarn = false;
-                                    log.warn(e.getMessage(), e);
+                                    logger.warn(e.getMessage(), e);
                                 }
                             }
                         }

@@ -54,12 +54,10 @@ public class ScriptFilterSwitcher implements Switcher<Filter> {
         this.scriptFilter = filter;
     }
 
-    @Override
     public List<String> locations() {
         return scriptLocations;
     }
 
-    @Override
     public Filter switchover(String location, Filter defaultFilter) {
         if (START_TAG.equals(location)) {
             return scriptFilter;

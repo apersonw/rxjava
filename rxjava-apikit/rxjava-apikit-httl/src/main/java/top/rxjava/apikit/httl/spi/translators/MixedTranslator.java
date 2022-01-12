@@ -19,6 +19,7 @@ import top.rxjava.apikit.httl.Node;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.Template;
 import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.spi.Translator;
 import top.rxjava.apikit.httl.spi.translators.templates.MixedTemplate;
 
@@ -40,16 +41,17 @@ public class MixedTranslator implements Translator {
 
     private Converter<Object, Object> mapConverter;
 
+    private Logger logger;
+
     private boolean compiled;
 
     private boolean interpreted;
 
-    @Override
     public Template translate(Resource resource, Node root, Map<String, Class<?>> types)
             throws ParseException, IOException {
         if (interpreted && compiled) {
             return new MixedTemplate(interpretedTranslator.translate(resource, root, types),
-                    resource, root, types, compiledTranslator, mapConverter);
+                    resource, root, types, compiledTranslator, mapConverter, logger);
         } else if (interpreted) {
             return interpretedTranslator.translate(resource, root, types);
         } else {
@@ -75,6 +77,10 @@ public class MixedTranslator implements Translator {
 
     public void setMapConverter(Converter<Object, Object> mapConverter) {
         this.mapConverter = mapConverter;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 
 }

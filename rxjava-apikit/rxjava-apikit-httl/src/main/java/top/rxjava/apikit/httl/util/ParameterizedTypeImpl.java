@@ -37,17 +37,14 @@ public class ParameterizedTypeImpl implements ParameterizedType {
         this.arguments = arguments;
     }
 
-    @Override
     public Type[] getActualTypeArguments() {
         return arguments;
     }
 
-    @Override
     public Type getRawType() {
         return raw;
     }
 
-    @Override
     public Type getOwnerType() {
         return owner;
     }

@@ -39,7 +39,6 @@ public class NumberFormatter extends AbstractFormatter<Number> {
         this.numberFormat = numberFormat;
     }
 
-    @Override
     public String toString(String key, Number value) {
         return NumberUtils.format(value, numberFormat);
     }

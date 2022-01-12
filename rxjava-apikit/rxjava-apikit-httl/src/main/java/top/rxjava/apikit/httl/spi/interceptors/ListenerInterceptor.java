@@ -15,10 +15,10 @@
  */
 package top.rxjava.apikit.httl.spi.interceptors;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.spi.Interceptor;
 import top.rxjava.apikit.httl.spi.Listener;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.util.Optional;
 
 import java.io.IOException;
@@ -31,12 +31,13 @@ import java.text.ParseException;
  * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
  * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
-@Slf4j
 public class ListenerInterceptor implements Interceptor {
 
     private Listener beforeListener;
 
     private Listener afterListener;
+
+    private Logger logger;
 
     /**
      * httl.properties: before.listeners=httl.spi.listeners.ExtendsListener
@@ -54,14 +55,20 @@ public class ListenerInterceptor implements Interceptor {
         this.afterListener = listener;
     }
 
-    @Override
+    /**
+     * httl.properties: loggers=httl.spi.loggers.Log4jListener
+     */
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
     public void render(Context context, Listener listener) throws IOException, ParseException {
         if (beforeListener != null) {
             try {
                 beforeListener.render(context);
             } catch (Exception e) {
-                if (log != null && log.isErrorEnabled()) {
-                    log.error(e.getMessage(), e);
+                if (logger != null && logger.isErrorEnabled()) {
+                    logger.error(e.getMessage(), e);
                 }
             }
         }
@@ -72,8 +79,8 @@ public class ListenerInterceptor implements Interceptor {
                 try {
                     afterListener.render(context);
                 } catch (Exception e) {
-                    if (log != null && log.isErrorEnabled()) {
-                        log.error(e.getMessage(), e);
+                    if (logger != null && logger.isErrorEnabled()) {
+                        logger.error(e.getMessage(), e);
                     }
                 }
             }

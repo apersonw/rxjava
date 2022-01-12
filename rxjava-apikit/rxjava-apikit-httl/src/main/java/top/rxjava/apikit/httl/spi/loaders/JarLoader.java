@@ -47,7 +47,6 @@ public class JarLoader extends AbstractLoader {
         return file;
     }
 
-    @Override
     protected List<String> doList(String directory, String suffix) throws IOException {
         JarFile jarFile = new JarFile(getAndCheckFile());
         try {
@@ -57,12 +56,10 @@ public class JarLoader extends AbstractLoader {
         }
     }
 
-    @Override
     public Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
         return new JarResource(getEngine(), name, locale, encoding, getAndCheckFile());
     }
 
-    @Override
     public boolean doExists(String name, Locale locale, String path) throws IOException {
         if (file != null && file.exists()) {
             JarFile jarFile = new JarFile(file);

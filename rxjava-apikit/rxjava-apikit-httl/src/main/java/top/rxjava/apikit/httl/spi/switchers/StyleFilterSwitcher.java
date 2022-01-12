@@ -54,12 +54,10 @@ public class StyleFilterSwitcher implements Switcher<Filter> {
         this.styleFilter = filter;
     }
 
-    @Override
     public List<String> locations() {
         return styleLocations;
     }
 
-    @Override
     public Filter switchover(String location, Filter defaultFilter) {
         if (START_TAG.equals(location)) {
             return styleFilter;

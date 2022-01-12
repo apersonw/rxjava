@@ -51,12 +51,10 @@ public abstract class AbstractJsonCodec extends AbstractCodec {
         this.jsonWithClass = jsonWithClass;
     }
 
-    @Override
     public String getFormat() {
         return "json";
     }
 
-    @Override
     public boolean isValueOf(String str) {
         return StringUtils.isNotEmpty(str)
                 && (str.startsWith("{") || str.startsWith("[")
@@ -66,7 +64,6 @@ public abstract class AbstractJsonCodec extends AbstractCodec {
                 || "true".equals(str) || "false".equals(str));
     }
 
-    @Override
     public boolean isValueOf(char[] str) {
         return StringUtils.isNotEmpty(str)
                 && (str[0] == '{' || str[0] == '['
@@ -76,7 +73,6 @@ public abstract class AbstractJsonCodec extends AbstractCodec {
                 || Arrays.equals(TRUE_CHARS, str) || Arrays.equals(FALSE_CHARS, str));
     }
 
-    @Override
     public boolean isValueOf(byte[] str) {
         return StringUtils.isNotEmpty(str)
                 && (str[0] == '{' || str[0] == '['

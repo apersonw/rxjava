@@ -32,7 +32,6 @@ import java.text.ParseException;
  */
 public abstract class AstVisitor implements Visitor {
 
-    @Override
     public boolean visit(Node node) throws IOException, ParseException {
         try {
             if (node instanceof Expression) {

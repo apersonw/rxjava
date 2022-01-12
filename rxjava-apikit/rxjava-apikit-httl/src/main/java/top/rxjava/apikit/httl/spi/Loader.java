@@ -15,7 +15,6 @@
  */
 package top.rxjava.apikit.httl.spi;
 
-
 import top.rxjava.apikit.httl.Resource;
 
 import java.io.IOException;

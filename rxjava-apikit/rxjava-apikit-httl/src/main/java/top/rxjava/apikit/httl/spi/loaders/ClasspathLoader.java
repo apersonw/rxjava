@@ -32,17 +32,14 @@ import java.util.Locale;
  */
 public class ClasspathLoader extends AbstractLoader {
 
-    @Override
     public List<String> doList(String directory, String suffix) throws IOException {
         return UrlUtils.listUrl(Thread.currentThread().getContextClassLoader().getResource(cleanPath(directory)), suffix);
     }
 
-    @Override
     protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
         return new ClasspathResource(getEngine(), name, locale, encoding, cleanPath(path));
     }
 
-    @Override
     public boolean doExists(String name, Locale locale, String path) throws IOException {
         return Thread.currentThread().getContextClassLoader().getResource(cleanPath(path)) != null;
     }

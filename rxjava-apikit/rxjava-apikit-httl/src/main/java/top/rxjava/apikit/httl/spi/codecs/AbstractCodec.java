@@ -23,27 +23,22 @@ import java.text.ParseException;
 
 public abstract class AbstractCodec extends AbstractFormatter<Object> implements Codec {
 
-    @Override
     public boolean isValueOf(char[] chars) { // slowly
         return isValueOf(String.valueOf(chars));
     }
 
-    @Override
     public boolean isValueOf(byte[] bytes) { // slowly
         return isValueOf(toString(bytes));
     }
 
-    @Override
     public <T> T valueOf(char[] chars, Class<T> type) throws ParseException { // slowly
         return valueOf(String.valueOf(chars), type);
     }
 
-    @Override
     public <T> T valueOf(byte[] bytes, Class<T> type) throws ParseException { // slowly
         return valueOf(toString(bytes), type);
     }
 
-    @Override
     protected String toString(byte[] bytes) {
         String str;
         if (outputEncoding == null) {

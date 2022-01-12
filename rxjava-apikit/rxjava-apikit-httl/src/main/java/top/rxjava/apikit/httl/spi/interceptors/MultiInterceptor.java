@@ -46,7 +46,6 @@ public class MultiInterceptor implements Interceptor {
             final Interceptor current = interceptors[i];
             final Listener next = last;
             last = new Listener() {
-                @Override
                 public void render(Context context) throws IOException, ParseException {
                     if (next == null) {
                         Listener listener = (Listener) context.get(LISTENER_KEY);
@@ -62,7 +61,6 @@ public class MultiInterceptor implements Interceptor {
         this.chain = last;
     }
 
-    @Override
     public void render(Context context, Listener listener)
             throws IOException, ParseException {
         if (chain != null) {

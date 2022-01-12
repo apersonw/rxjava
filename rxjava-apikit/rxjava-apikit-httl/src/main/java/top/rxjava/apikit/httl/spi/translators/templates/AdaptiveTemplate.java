@@ -26,7 +26,7 @@ import java.util.*;
  * Adaptive Template. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
 public class AdaptiveTemplate implements Template, Serializable {
 
@@ -40,63 +40,51 @@ public class AdaptiveTemplate implements Template, Serializable {
     private Map<String, Template> macros;
 
     public AdaptiveTemplate(Template writerTemplate, Template streamTemplate, Converter<Object, Object> outConverter) {
-        if (writerTemplate == null) {
+        if (writerTemplate == null)
             throw new IllegalArgumentException("writer template == null");
-        }
-        if (streamTemplate == null) {
+        if (streamTemplate == null)
             throw new IllegalArgumentException("stream template == null");
-        }
         this.writerTemplate = writerTemplate;
         this.streamTemplate = streamTemplate;
         this.outConverter = outConverter;
     }
 
-    @Override
     public String getName() {
         return writerTemplate.getName();
     }
 
-    @Override
     public String getEncoding() {
         return writerTemplate.getEncoding();
     }
 
-    @Override
     public Locale getLocale() {
         return writerTemplate.getLocale();
     }
 
-    @Override
     public long getLastModified() {
         return writerTemplate.getLastModified();
     }
 
-    @Override
     public long getLength() {
         return writerTemplate.getLength();
     }
 
-    @Override
     public String getSource() throws IOException {
         return writerTemplate.getSource();
     }
 
-    @Override
     public Reader openReader() throws IOException {
         return writerTemplate.openReader();
     }
 
-    @Override
     public InputStream openStream() throws IOException {
         return streamTemplate.openStream();
     }
 
-    @Override
     public Engine getEngine() {
         return writerTemplate.getEngine();
     }
 
-    @Override
     public Object evaluate() throws ParseException {
         // Context.getOut() only OutputStream or Writer
         if (Context.getContext().getOut() instanceof OutputStream) {
@@ -106,7 +94,6 @@ public class AdaptiveTemplate implements Template, Serializable {
         }
     }
 
-    @Override
     public Object evaluate(Object context) throws ParseException {
         // Context.getOut() only OutputStream or Writer
         if (Context.getContext().getOut() instanceof OutputStream) {
@@ -116,12 +103,10 @@ public class AdaptiveTemplate implements Template, Serializable {
         }
     }
 
-    @Override
     public void render() throws IOException, ParseException {
         render(Context.getContext().getOut());
     }
 
-    @Override
     public void render(Object out) throws IOException, ParseException {
         if (out instanceof OutputStream) {
             streamTemplate.render(out);
@@ -137,7 +122,6 @@ public class AdaptiveTemplate implements Template, Serializable {
         }
     }
 
-    @Override
     public void render(Object context, Object out)
             throws IOException, ParseException {
         if (out instanceof OutputStream) {
@@ -154,12 +138,10 @@ public class AdaptiveTemplate implements Template, Serializable {
         }
     }
 
-    @Override
     public Map<String, Class<?>> getVariables() {
         return writerTemplate.getVariables();
     }
 
-    @Override
     public Map<String, Template> getMacros() {
         if (macros == null) { // allow duplicate on concurrent
             Map<String, Template> map = new HashMap<String, Template>();
@@ -173,27 +155,22 @@ public class AdaptiveTemplate implements Template, Serializable {
         return macros;
     }
 
-    @Override
     public int getOffset() {
         return writerTemplate.getOffset();
     }
 
-    @Override
     public boolean isMacro() {
         return writerTemplate.isMacro();
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         writerTemplate.accept(visitor);
     }
 
-    @Override
     public Template getParent() {
         return writerTemplate.getParent();
     }
 
-    @Override
     public List<Node> getChildren() {
         return writerTemplate.getChildren();
     }

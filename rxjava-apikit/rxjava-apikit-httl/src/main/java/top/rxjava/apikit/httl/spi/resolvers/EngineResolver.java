@@ -32,7 +32,6 @@ public class EngineResolver implements Resolver {
         this.engine = engine;
     }
 
-    @Override
     public Object get(String key) {
         return engine == null ? null : engine.getProperty(StringUtils.splitCamelName(key, "."));
     }

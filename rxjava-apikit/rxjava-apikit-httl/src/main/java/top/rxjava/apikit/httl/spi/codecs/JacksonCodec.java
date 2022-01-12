@@ -37,7 +37,6 @@ public class JacksonCodec extends AbstractJsonCodec {
         JacksonCodec.mapper = mapper;
     }
 
-    @Override
     public String toString(String key, Object value) {
         if (value == null) {
             return null;
@@ -49,7 +48,6 @@ public class JacksonCodec extends AbstractJsonCodec {
         }
     }
 
-    @Override
     public byte[] toBytes(String key, Object value) {
         if (value == null) {
             return null;
@@ -61,7 +59,6 @@ public class JacksonCodec extends AbstractJsonCodec {
         }
     }
 
-    @Override
     public <T> T valueOf(String str, Class<T> type) throws ParseException {
         if (str == null) {
             return null;
@@ -77,7 +74,6 @@ public class JacksonCodec extends AbstractJsonCodec {
         }
     }
 
-    @Override
     public <T> T valueOf(byte[] str, Class<T> type) throws ParseException {
         if (str == null) {
             return null;

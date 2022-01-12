@@ -37,7 +37,6 @@ public abstract class AbstractFormatter<T> implements Formatter<T> {
         this.outputEncoding = outputEncoding;
     }
 
-    @Override
     public char[] toChars(String key, T value) { // slowly
         if (value == null) {
             return new char[0];
@@ -45,7 +44,6 @@ public abstract class AbstractFormatter<T> implements Formatter<T> {
         return toChars(toString(key, value));
     }
 
-    @Override
     public byte[] toBytes(String key, T value) { // slowly
         if (value == null) {
             return new byte[0];

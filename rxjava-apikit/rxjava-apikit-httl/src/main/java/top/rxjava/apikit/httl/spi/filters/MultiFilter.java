@@ -15,7 +15,6 @@
  */
 package top.rxjava.apikit.httl.spi.filters;
 
-
 import top.rxjava.apikit.httl.spi.Filter;
 
 /**
@@ -48,7 +47,6 @@ public abstract class MultiFilter implements Filter {
         }
     }
 
-    @Override
     public String filter(String key, String value) {
         if (filters == null || filters.length == 0) {
             return value;
@@ -62,7 +60,6 @@ public abstract class MultiFilter implements Filter {
         return value;
     }
 
-    @Override
     public char[] filter(String key, char[] value) {
         if (filters == null || filters.length == 0) {
             return value;
@@ -76,7 +73,6 @@ public abstract class MultiFilter implements Filter {
         return value;
     }
 
-    @Override
     public byte[] filter(String key, byte[] value) {
         if (filters == null || filters.length == 0) {
             return value;

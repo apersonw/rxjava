@@ -27,17 +27,14 @@ import top.rxjava.apikit.httl.util.StringUtils;
  */
 public class EscapeXmlFilter implements Filter {
 
-    @Override
     public String filter(String key, String value) {
         return StringUtils.escapeXml(value);
     }
 
-    @Override
     public char[] filter(String key, char[] value) {
         return StringUtils.escapeXml(value);
     }
 
-    @Override
     public byte[] filter(String key, byte[] value) {
         return StringUtils.escapeXml(value);
     }

@@ -31,7 +31,6 @@ public abstract class Directive extends Statement {
         super(offset);
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         Expression expression = getExpression();
         if (expression != null) {

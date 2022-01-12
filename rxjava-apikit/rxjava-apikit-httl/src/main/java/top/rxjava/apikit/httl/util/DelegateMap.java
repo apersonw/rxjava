@@ -58,10 +58,10 @@ public class DelegateMap<K, V> implements Map<K, V>, Serializable {
         return parent == null ? null : parent.get(key);
     }
 
-    public Set<Entry<K, V>> entrySet() {
-        return new DelegateSet<Entry<K, V>>() {
+    public Set<Map.Entry<K, V>> entrySet() {
+        return new DelegateSet<Map.Entry<K, V>>() {
             @Override
-            protected Collection<Entry<K, V>> getCollection(Map<K, V> map) {
+            protected Collection<java.util.Map.Entry<K, V>> getCollection(Map<K, V> map) {
                 return map.entrySet();
             }
         };

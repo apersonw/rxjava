@@ -81,7 +81,6 @@ public class DumpListener implements Listener {
         this.dumpOverride = dumpOverride;
     }
 
-    @Override
     public void render(Context context) throws IOException, ParseException {
         if (dumpDirectory == null || dumpCodec == null) {
             return;

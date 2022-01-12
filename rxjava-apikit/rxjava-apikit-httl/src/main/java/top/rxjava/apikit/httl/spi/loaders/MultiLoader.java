@@ -38,7 +38,6 @@ public class MultiLoader implements Loader {
         this.loaders = loaders;
     }
 
-    @Override
     public Resource load(String name, Locale locale, String encoding) throws IOException {
         if (loaders.length == 1) {
             return loaders[0].load(name, locale, encoding);
@@ -54,7 +53,6 @@ public class MultiLoader implements Loader {
         throw new FileNotFoundException("No such template file: " + name);
     }
 
-    @Override
     public List<String> list(String suffix) throws IOException {
         if (loaders.length == 1) {
             return loaders[0].list(suffix);
@@ -72,7 +70,6 @@ public class MultiLoader implements Loader {
         return all;
     }
 
-    @Override
     public boolean exists(String name, Locale locale) {
         if (loaders.length == 1) {
             return loaders[0].exists(name, locale);

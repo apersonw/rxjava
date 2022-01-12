@@ -21,8 +21,8 @@ import java.lang.annotation.*;
  * Optional. (SPI, Annotation, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.util.BeanFactory
- * @see httl.util.Reqiured
+ * @see top.rxjava.apikit.httl.util.BeanFactory
+ * @see top.rxjava.apikit.httl.util.Reqiured
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

@@ -15,12 +15,11 @@
  */
 package top.rxjava.apikit.httl.spi.compilers;
 
-import lombok.extern.slf4j.Slf4j;
+import top.rxjava.apikit.httl.spi.Compiler;
 import top.rxjava.apikit.httl.util.ClassUtils;
 import top.rxjava.apikit.httl.util.StringUtils;
 import top.rxjava.apikit.httl.util.UnsafeByteArrayInputStream;
 import top.rxjava.apikit.httl.util.UnsafeByteArrayOutputStream;
-import top.rxjava.apikit.httl.spi.Compiler;
 
 import javax.tools.*;
 import javax.tools.JavaFileObject.Kind;
@@ -41,7 +40,6 @@ import java.util.*;
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setCompiler(Compiler)
  */
-@Slf4j
 public class JdkCompiler extends AbstractCompiler {
 
     private final JavaCompiler compiler;
@@ -96,7 +94,6 @@ public class JdkCompiler extends AbstractCompiler {
         }
         final ClassLoader parentLoader = contextLoader;
         classLoader = AccessController.doPrivileged(new PrivilegedAction<ClassLoaderImpl>() {
-            @Override
             public ClassLoaderImpl run() {
                 return new ClassLoaderImpl(parentLoader);
             }
@@ -106,7 +103,7 @@ public class JdkCompiler extends AbstractCompiler {
     }
 
     public void init() {
-        if (log != null && log.isDebugEnabled()) {
+        if (logger != null && logger.isDebugEnabled()) {
             StringBuilder buf = new StringBuilder(320);
             buf.append("JDK Compiler classpath locations:\n");
             buf.append("================\n");
@@ -115,7 +112,7 @@ public class JdkCompiler extends AbstractCompiler {
                 buf.append("\n");
             }
             buf.append("================\n");
-            log.debug(buf.toString());
+            logger.debug(buf.toString());
         }
     }
 
@@ -235,9 +232,8 @@ public class JdkCompiler extends AbstractCompiler {
         @Override
         public FileObject getFileForInput(Location location, String packageName, String relativeName) throws IOException {
             FileObject o = fileObjects.get(uri(location, packageName, relativeName));
-            if (o != null) {
+            if (o != null)
                 return o;
-            }
             return super.getFileForInput(location, packageName, relativeName);
         }
 
@@ -258,15 +254,14 @@ public class JdkCompiler extends AbstractCompiler {
         }
 
         @Override
-        public ClassLoader getClassLoader(Location location) {
+        public ClassLoader getClassLoader(JavaFileManager.Location location) {
             return classLoader;
         }
 
         @Override
         public String inferBinaryName(Location loc, JavaFileObject file) {
-            if (file instanceof JavaFileObjectImpl) {
+            if (file instanceof JavaFileObjectImpl)
                 return file.getName();
-            }
             return super.inferBinaryName(loc, file);
         }
 
@@ -274,14 +269,14 @@ public class JdkCompiler extends AbstractCompiler {
         public Iterable<JavaFileObject> list(Location location, String packageName, Set<Kind> kinds, boolean recurse)
                 throws IOException {
             ArrayList<JavaFileObject> files = new ArrayList<JavaFileObject>();
-            if (location == StandardLocation.CLASS_PATH && kinds.contains(Kind.CLASS)) {
+            if (location == StandardLocation.CLASS_PATH && kinds.contains(JavaFileObject.Kind.CLASS)) {
                 for (JavaFileObject file : fileObjects.values()) {
                     if (file.getKind() == Kind.CLASS && file.getName().startsWith(packageName)) {
                         files.add(file);
                     }
                 }
                 files.addAll(classLoader.files());
-            } else if (location == StandardLocation.SOURCE_PATH && kinds.contains(Kind.SOURCE)) {
+            } else if (location == StandardLocation.SOURCE_PATH && kinds.contains(JavaFileObject.Kind.SOURCE)) {
                 for (JavaFileObject file : fileObjects.values()) {
                     if (file.getKind() == Kind.SOURCE && file.getName().startsWith(packageName)) {
                         files.add(file);

@@ -57,7 +57,6 @@ public class SetDirective extends LineDirective {
         return name;
     }
 
-    @Override
     public Expression getExpression() {
         return expression;
     }

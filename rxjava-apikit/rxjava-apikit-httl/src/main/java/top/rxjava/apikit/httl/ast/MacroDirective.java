@@ -41,11 +41,9 @@ public class MacroDirective extends BlockDirective {
         return name;
     }
 
-    @Override
     public void setParent(Node parent) throws ParseException {
-        if (parent.getClass() != MacroDirective.class && parent.getClass() != RootDirective.class) {
+        if (parent.getClass() != MacroDirective.class && parent.getClass() != RootDirective.class)
             throw new ParseException("Can not define macro inside the #" + parent.getClass().getSimpleName().toLowerCase() + " directive.", getOffset());
-        }
         super.setParent(parent);
     }
 

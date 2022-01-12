@@ -37,7 +37,6 @@ public class ValueDirective extends LineDirective {
         this.noFilter = noFilter;
     }
 
-    @Override
     public Expression getExpression() {
         return expression;
     }

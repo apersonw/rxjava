@@ -27,17 +27,14 @@ import top.rxjava.apikit.httl.util.StringUtils;
  */
 public class EscapeStringFilter implements Filter {
 
-    @Override
     public String filter(String key, String value) {
         return StringUtils.escapeString(value);
     }
 
-    @Override
     public char[] filter(String key, char[] value) {
         return StringUtils.escapeString(value);
     }
 
-    @Override
     public byte[] filter(String key, byte[] value) {
         return StringUtils.escapeString(value);
     }

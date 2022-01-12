@@ -15,8 +15,8 @@
  */
 package top.rxjava.apikit.httl.spi.compilers;
 
-import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.util.ClassUtils;
 
 import java.text.ParseException;
@@ -27,12 +27,23 @@ import java.text.ParseException;
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setCompiler(Compiler)
  */
-@Slf4j
 public class AdaptiveCompiler implements Compiler {
 
     private Compiler compiler;
 
+    private Logger logger;
+
     private String codeDirectory;
+
+    /**
+     * httl.properties: loggers=httl.spi.loggers.Log4jLogger
+     */
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+        if (compiler instanceof AbstractCompiler) {
+            ((AbstractCompiler) compiler).setLogger(logger);
+        }
+    }
 
     /**
      * httl.properties: code.directory=/tmp
@@ -59,11 +70,13 @@ public class AdaptiveCompiler implements Compiler {
     public void setCompileVersion(String version) {
         if (version == null || ClassUtils.isBeforeJava6(version)) {
             JavassistCompiler javassistCompiler = new JavassistCompiler();
+            javassistCompiler.setLogger(logger);
             javassistCompiler.setCodeDirectory(codeDirectory);
             compiler = javassistCompiler;
         } else {
             JdkCompiler jdkCompiler = new JdkCompiler();
             jdkCompiler.setCompileVersion(version);
+            jdkCompiler.setLogger(logger);
             jdkCompiler.setCodeDirectory(codeDirectory);
             compiler = jdkCompiler;
         }
@@ -78,7 +91,6 @@ public class AdaptiveCompiler implements Compiler {
         }
     }
 
-    @Override
     public Class<?> compile(String code) throws ParseException {
         return compiler.compile(code);
     }

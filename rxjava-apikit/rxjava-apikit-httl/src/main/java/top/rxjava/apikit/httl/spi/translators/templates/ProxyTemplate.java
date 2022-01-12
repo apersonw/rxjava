@@ -32,7 +32,7 @@ import java.util.Map;
  * ProxyTemplate. (SPI, Prototype, ThreadSafe)
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see httl.Engine#getTemplate(String)
+ * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
  */
 public class ProxyTemplate implements Template {
 
@@ -42,12 +42,10 @@ public class ProxyTemplate implements Template {
         this.template = template;
     }
 
-    @Override
     public Object evaluate() throws ParseException {
         return evaluate(null);
     }
 
-    @Override
     public Object evaluate(Object parameters)
             throws ParseException {
         if (Context.getContext().getOut() instanceof OutputStream) {
@@ -69,98 +67,79 @@ public class ProxyTemplate implements Template {
         }
     }
 
-    @Override
     public void render() throws IOException, ParseException {
         render(null, Context.getContext().getOut());
     }
 
-    @Override
     public void render(Object stream) throws IOException, ParseException {
         render(null, stream);
     }
 
-    @Override
     public void render(Object parameters, Object stream)
             throws IOException, ParseException {
         template.render(parameters, stream);
     }
 
-    @Override
     public String getName() {
         return template.getName();
     }
 
-    @Override
     public String getEncoding() {
         return template.getEncoding();
     }
 
-    @Override
     public Locale getLocale() {
         return template.getLocale();
     }
 
-    @Override
     public long getLastModified() {
         return template.getLastModified();
     }
 
-    @Override
     public long getLength() {
         return template.getLength();
     }
 
-    @Override
     public String getSource() throws IOException {
         return template.getSource();
     }
 
-    @Override
     public Reader openReader() throws IOException {
         return template.openReader();
     }
 
-    @Override
     public Map<String, Class<?>> getVariables() {
         return template.getVariables();
     }
 
-    @Override
     public InputStream openStream() throws IOException {
         return template.openStream();
     }
 
-    @Override
     public int getOffset() {
         return template.getOffset();
     }
 
-    @Override
     public Engine getEngine() {
         return template.getEngine();
     }
 
-    @Override
     public Map<String, Template> getMacros() {
         return template.getMacros();
     }
 
-    @Override
     public boolean isMacro() {
         return template.isMacro();
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         template.accept(visitor);
     }
 
-    @Override
     public Template getParent() {
         return template.getParent();
     }
 
-    @Override
     public List<Node> getChildren() {
         return template.getChildren();
     }

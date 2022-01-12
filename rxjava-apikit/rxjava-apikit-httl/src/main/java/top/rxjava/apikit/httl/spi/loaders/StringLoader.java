@@ -75,12 +75,10 @@ public class StringLoader implements Loader {
         templates.clear();
     }
 
-    @Override
     public List<String> list(String suffix) throws IOException {
         return new ArrayList<String>(templates.keySet());
     }
 
-    @Override
     public Resource load(String name, Locale locale, String encoding) throws IOException {
         StringResource resource = templates.get(getTemplateKey(name, locale));
         if (resource == null) {
@@ -89,7 +87,6 @@ public class StringLoader implements Loader {
         return resource;
     }
 
-    @Override
     public boolean exists(String name, Locale locale) {
         return templates.containsKey(getTemplateKey(name, locale));
     }

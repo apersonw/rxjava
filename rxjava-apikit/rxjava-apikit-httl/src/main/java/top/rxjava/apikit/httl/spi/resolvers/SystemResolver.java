@@ -25,7 +25,6 @@ import top.rxjava.apikit.httl.util.StringUtils;
  */
 public class SystemResolver implements Resolver {
 
-    @Override
     public Object get(String key) {
         return System.getProperty(StringUtils.splitCamelName(key, "."));
     }

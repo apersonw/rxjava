@@ -15,10 +15,10 @@
  */
 package top.rxjava.apikit.httl.spi.methods;
 
+import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.Formatter;
 import top.rxjava.apikit.httl.spi.converters.BeanMapConverter;
 import top.rxjava.apikit.httl.util.*;
-import top.rxjava.apikit.httl.spi.Formatter;
-import top.rxjava.apikit.httl.spi.Compiler;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -445,24 +445,18 @@ public class TypeMethod {
     }
 
     public String toString(Object value) {
-        if (value == null) {
+        if (value == null)
             return null;
-        }
-        if (value instanceof String) {
+        if (value instanceof String)
             return (String) value;
-        }
-        if (value instanceof Number) {
+        if (value instanceof Number)
             return toString((Number) value);
-        }
-        if (value instanceof Date) {
+        if (value instanceof Date)
             return toString((Date) value);
-        }
-        if (value instanceof byte[]) {
+        if (value instanceof byte[])
             return toString((byte[]) value);
-        }
-        if (formatter != null) {
+        if (formatter != null)
             return formatter.toString("", value);
-        }
         return StringUtils.toString(value);
     }
 

@@ -15,9 +15,9 @@
  */
 package top.rxjava.apikit.httl.spi.converters;
 
-import lombok.extern.slf4j.Slf4j;
-import top.rxjava.apikit.httl.spi.Converter;
 import top.rxjava.apikit.httl.spi.Compiler;
+import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.Logger;
 import top.rxjava.apikit.httl.util.ClassUtils;
 import top.rxjava.apikit.httl.util.MapSupport;
 import top.rxjava.apikit.httl.util.StringUtils;
@@ -40,14 +40,13 @@ import java.util.concurrent.ConcurrentMap;
  * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setMapConverter(Converter)
  * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setMapConverter(Converter)
  */
-@Slf4j
 public class BeanMapConverter implements Converter<Object, Map<String, Object>> {
 
     private static final ConcurrentMap<Class<?>, Class<?>> BEAN_WRAPPERS = new ConcurrentHashMap<Class<?>, Class<?>>();
 
     private Compiler compiler;
 
-    public static Class<?> getBeanClass(String className, Map<String, Class<?>> properties, Compiler compiler) throws ParseException {
+    public static Class<?> getBeanClass(String className, Map<String, Class<?>> properties, Compiler compiler, Logger logger) throws ParseException {
         StringBuilder fields = new StringBuilder();
         StringBuilder gets = new StringBuilder();
         StringBuilder sets = new StringBuilder();
@@ -76,8 +75,8 @@ public class BeanMapConverter implements Converter<Object, Map<String, Object>> 
         code.append(gets);
         code.append(sets);
         code.append("}\n");
-        if (log != null && log.isDebugEnabled()) {
-            log.debug(code.toString());
+        if (logger != null && logger.isDebugEnabled()) {
+            logger.debug(code.toString());
         }
         return compiler.compile(code.toString());
     }
@@ -202,7 +201,6 @@ public class BeanMapConverter implements Converter<Object, Map<String, Object>> 
         this.compiler = compiler;
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public Map<String, Object> convert(Object bean, Map<String, Class<?>> types) throws IOException, ParseException {
         if (bean == null) {

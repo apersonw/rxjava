@@ -17,29 +17,24 @@ public abstract class AbstractNode implements Node {
         this.offset = offset;
     }
 
-    @Override
     public void accept(Visitor visitor) throws IOException, ParseException {
         visitor.visit(this);
     }
 
-    @Override
     public int getOffset() {
         return offset;
     }
 
-    @Override
     public Node getParent() {
         return parent;
     }
 
     public void setParent(Node parent) throws ParseException {
-        if (this.parent != null) {
+        if (this.parent != null)
             throw new ParseException("Can not modify parent.", getOffset());
-        }
         this.parent = parent;
     }
 
-    @Override
     public List<Node> getChildren() {
         return null;
     }

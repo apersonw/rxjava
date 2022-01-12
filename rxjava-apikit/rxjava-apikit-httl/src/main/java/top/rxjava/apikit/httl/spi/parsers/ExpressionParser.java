@@ -383,7 +383,6 @@ public class ExpressionParser implements Parser {
         return StringUtils.isNamed(msg) || StringUtils.isFunction(msg);
     }
 
-    @Override
     public Expression parse(String source, int offset) throws ParseException {
         if (expressionFilter != null) {
             source = expressionFilter.filter(source, source);
@@ -621,28 +620,24 @@ public class ExpressionParser implements Parser {
     }
 
     private Operator popOperator(LinkedStack<Expression> parameterStack, LinkedStack<Operator> operatorStack, Map<Operator, Token> operatorTokens, int offset) throws ParseException {
-        if (operatorStack.isEmpty()) {
+        if (operatorStack.isEmpty())
             throw new ParseException("Miss left parenthesis", offset);
-        }
         Operator operator = operatorStack.pop(); // 将优先级高于及等于当前操作符的弹出
         if (operator instanceof BinaryOperator) {
             Token token = operatorTokens.get(operator);
             BinaryOperator binaryOperator = (BinaryOperator) operator;
-            if (parameterStack.isEmpty()) {
+            if (parameterStack.isEmpty())
                 throw new ParseException("Binary operator " + binaryOperator.getName() + " miss parameter", token == null ? offset : getTokenOffset(token));
-            }
             binaryOperator.setRightParameter(parameterStack.pop()); // right first
-            if (parameterStack.isEmpty()) {
+            if (parameterStack.isEmpty())
                 throw new ParseException("Binary operator " + binaryOperator.getName() + " miss parameter", token == null ? offset : getTokenOffset(token));
-            }
             binaryOperator.setLeftParameter(parameterStack.pop());
             parameterStack.push(operator);
         } else if (operator instanceof UnaryOperator) {
             Token token = operatorTokens.get(operator);
             UnaryOperator unaryOperator = (UnaryOperator) operator;
-            if (parameterStack.isEmpty()) {
+            if (parameterStack.isEmpty())
                 throw new ParseException("Unary operator " + unaryOperator.getName() + "miss parameter", token == null ? offset : getTokenOffset(token));
-            }
             unaryOperator.setParameter(parameterStack.pop());
             parameterStack.push(operator);
         }
@@ -661,7 +656,6 @@ public class ExpressionParser implements Parser {
             super(name, Integer.MAX_VALUE, 0);
         }
 
-        @Override
         @SuppressWarnings("unchecked")
         public List<Node> getChildren() {
             return Collections.EMPTY_LIST;

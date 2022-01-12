@@ -57,7 +57,6 @@ public class CommentSyntaxFilter extends AbstractFilter {
         this.removeDirectiveBlankLine = removeDirectiveBlankLine;
     }
 
-    @Override
     public String filter(String key, String value) {
         boolean left = false;
         boolean right = false;

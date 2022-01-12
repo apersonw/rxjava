@@ -24,22 +24,18 @@ import top.rxjava.apikit.httl.util.StringUtils;
  */
 public abstract class AbstractXmlCodec extends AbstractCodec {
 
-    @Override
     public String getFormat() {
         return "xml";
     }
 
-    @Override
     public boolean isValueOf(String str) {
         return StringUtils.isNotEmpty(str) && str.startsWith("<");
     }
 
-    @Override
     public boolean isValueOf(char[] str) {
         return StringUtils.isNotEmpty(str) && str[0] == '<';
     }
 
-    @Override
     public boolean isValueOf(byte[] str) {
         return StringUtils.isNotEmpty(str) && str[0] == '<';
     }

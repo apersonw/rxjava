@@ -42,7 +42,6 @@ public abstract class InputStreamResource extends AbstractResource {
         this.path = path;
     }
 
-    @Override
     public Reader openReader() throws IOException {
         InputStream in = openStream();
         if (in == null) {
@@ -53,7 +52,6 @@ public abstract class InputStreamResource extends AbstractResource {
                 ? new InputStreamReader(in) : new InputStreamReader(in, encoding);
     }
 
-    @Override
     public long getLastModified() {
         File file = getFile();
         if (file != null && file.exists()) {
@@ -82,7 +80,6 @@ public abstract class InputStreamResource extends AbstractResource {
         return super.getLastModified();
     }
 
-    @Override
     public long getLength() {
         File file = getFile();
         if (file != null) {

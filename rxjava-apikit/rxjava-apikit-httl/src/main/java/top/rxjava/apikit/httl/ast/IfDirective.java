@@ -34,7 +34,6 @@ public class IfDirective extends BlockDirective {
         this.expression = expression;
     }
 
-    @Override
     public Expression getExpression() {
         return expression;
     }
