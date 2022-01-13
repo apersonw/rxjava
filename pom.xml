@@ -592,11 +592,6 @@
                 <version>0.9.1</version>
                 <scope>compile</scope>
             </dependency>
-            <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy</artifactId>
-                <version>3.0.9</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
