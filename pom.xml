@@ -15,7 +15,7 @@
     <properties>
         <!--项目编译版本-->
         <java.encoding>UTF-8</java.encoding>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
 
         <!--依赖版本-->
@@ -47,7 +47,7 @@
         <!--插件版本-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-plugin-api.version>3.6.3</maven-plugin-api.version>
-        <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
+        <maven-plugin-plugin.version>3.6.2</maven-plugin-plugin.version>
         <asm.version>9.1</asm.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
@@ -591,6 +591,11 @@
                 <artifactId>jjwt</artifactId>
                 <version>0.9.1</version>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>3.0.9</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
