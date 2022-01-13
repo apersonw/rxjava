@@ -34,7 +34,6 @@
         <javassist.version>3.28.0-GA</javassist.version>
         <paranamer.version>2.8</paranamer.version>
         <classgraph.version>4.8.86</classgraph.version>
-        <httl.version>1.0.11</httl.version>
         <commons-text.version>1.8</commons-text.version>
         <jackson.version>2.13.0</jackson.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
@@ -342,12 +341,6 @@
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.common</artifactId>
                 <version>${org.eclipse.equinox.common.version}</version>
-            </dependency>
-            <!--Httl模板引擎-->
-            <dependency>
-                <groupId>com.github.httl</groupId>
-                <artifactId>httl</artifactId>
-                <version>${httl.version}</version>
             </dependency>
             <!--jackson json和object转换库-->
             <dependency>

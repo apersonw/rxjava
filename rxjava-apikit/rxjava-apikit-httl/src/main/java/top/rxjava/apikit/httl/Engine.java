@@ -114,7 +114,6 @@ public abstract class Engine {
                 reference = old;
             }
         }
-        assert (reference != null);
         Engine engine = reference.get();
         if (engine == null) {
             synchronized (reference) { // reference lock

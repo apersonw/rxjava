@@ -14,7 +14,7 @@ import com.thoughtworks.paranamer.AnnotationParanamer;
 import com.thoughtworks.paranamer.BytecodeReadingParanamer;
 import com.thoughtworks.paranamer.CachingParanamer;
 import com.thoughtworks.paranamer.Paranamer;
-import httl.util.CollectionUtils;
+import top.rxjava.apikit.httl.util.CollectionUtils;
 import io.github.classgraph.*;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;

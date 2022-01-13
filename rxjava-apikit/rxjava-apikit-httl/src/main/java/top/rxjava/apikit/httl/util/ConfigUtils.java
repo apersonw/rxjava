@@ -149,7 +149,7 @@ public final class ConfigUtils {
 
     @SuppressWarnings("unchecked")
     public static Properties mergeProperties(Object... configs) {
-        List<Map<Object, Object>> list = new ArrayList<Map<Object, Object>>();
+        List<Map<Object, Object>> list = new ArrayList<>();
         int last = configs.length - 1;
         for (int i = 0; i <= last; i++) {
             Object config = configs[i];
@@ -192,7 +192,7 @@ public final class ConfigUtils {
                 }
             }
         }
-        for (Map.Entry<Object, Object> entry : new HashMap<Object, Object>(result).entrySet()) {
+        for (Map.Entry<Object, Object> entry : new HashMap<>(result).entrySet()) {
             String key = (String) entry.getKey();
             String value = (String) entry.getValue();
             if (StringUtils.isNotEmpty(value) && value.contains(REF)) {
