@@ -101,7 +101,7 @@ public class JavaClientApiGenerator extends AbstractCommonGenerator {
     }
 
     private String getTemplateFile(String name) {
-        return "/org/rxjava/apikit/tool/generator/java/" + name;
+        return "/top/rxjava/apikit/tool/generator/java/" + name;
     }
 
     /**

@@ -101,7 +101,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     }
 
     private String getTemplateFile(String name) {
-        return "/org/rxjava/apikit/tool/generator/tsc/" + name;
+        return "/top/rxjava/apikit/tool/generator/tsc/" + name;
     }
 
     /**

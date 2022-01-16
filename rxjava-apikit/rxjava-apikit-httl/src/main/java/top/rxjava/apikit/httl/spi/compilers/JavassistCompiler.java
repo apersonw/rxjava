@@ -15,6 +15,7 @@
  */
 package top.rxjava.apikit.httl.spi.compilers;
 
+import top.rxjava.HttlTest;
 import top.rxjava.apikit.httl.spi.Compiler;
 import top.rxjava.apikit.httl.util.ClassUtils;
 import javassist.*;

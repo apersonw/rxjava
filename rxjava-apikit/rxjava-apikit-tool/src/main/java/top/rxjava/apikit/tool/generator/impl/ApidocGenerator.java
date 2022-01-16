@@ -30,6 +30,6 @@ public class ApidocGenerator {
     }
 
     private String getTemplateFile(String name) {
-        return "/org/rxjava/apikit/tool/generator/apidoc/" + name;
+        return "/top/rxjava/apikit/tool/generator/apidoc/" + name;
     }
 }
