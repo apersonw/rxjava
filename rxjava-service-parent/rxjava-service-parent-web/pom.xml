@@ -128,65 +128,65 @@
                 <version>${project.parent.version}</version>
                 <configuration>
                     <groups>
-                        <group implementation="Group">
+                        <group implementation="top.rxjava.apikit.plugin.bean.Group">
                             <rootPackage>top.rxjava.service.${project.name}.manager</rootPackage>
                             <apiType>manager</apiType>
                             <tasks>
-                                <task implementation="GitTask">
+                                <task implementation="top.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
                                     <outPath>java/${project.name}-api-manager/src/main/java</outPath>
                                     <deleteUris>top.rxjava</deleteUris>
-                                    <task implementation="JavaClientTask">
+                                    <task implementation="top.rxjava.apikit.plugin.bean.JavaClientTask">
                                         <outRootPackage>top.rxjava.api</outRootPackage>
                                         <artifactId>${project.name}-api-manager</artifactId>
                                         <parentVersion>${project.parent.version}</parentVersion>
                                         <projectName>${project.name}</projectName>
                                     </task>
                                 </task>
-                                <task implementation="GitTask">
+                                <task implementation="top.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
                                     <outPath>js/${project.name}-api-manager</outPath>
                                     <deleteUris>top.rxjava</deleteUris>
-                                    <task implementation="JavaScriptClientTask">
+                                    <task implementation="top.rxjava.apikit.plugin.bean.JavaScriptClientTask">
                                         <serviceId>${project.name}</serviceId>
                                     </task>
                                 </task>
                             </tasks>
                         </group>
-                        <group implementation="Group">
+                        <group implementation="top.rxjava.apikit.plugin.bean.Group">
                             <rootPackage>top.rxjava.service.${project.name}.client</rootPackage>
                             <apiType>client</apiType>
                             <tasks>
-                                <task implementation="GitTask">
+                                <task implementation="top.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
                                     <outPath>java/${project.name}-api-client/src/main/java</outPath>
                                     <deleteUris>top.rxjava</deleteUris>
-                                    <task implementation="JavaClientTask">
+                                    <task implementation="top.rxjava.apikit.plugin.bean.JavaClientTask">
                                         <outRootPackage>top.rxjava.api</outRootPackage>
                                         <artifactId>${project.name}-api-client</artifactId>
                                         <parentVersion>${project.parent.version}</parentVersion>
                                         <projectName>${project.name}</projectName>
                                     </task>
                                 </task>
-                                <task implementation="GitTask">
+                                <task implementation="top.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
                                     <outPath>js/${project.name}-api-client</outPath>
                                     <deleteUris>top.rxjava</deleteUris>
-                                    <task implementation="JavaScriptClientTask">
+                                    <task implementation="top.rxjava.apikit.plugin.bean.JavaScriptClientTask">
                                         <serviceId>${project.name}</serviceId>
                                     </task>
                                 </task>
                             </tasks>
                         </group>
-                        <group implementation="Group">
+                        <group implementation="top.rxjava.apikit.plugin.bean.Group">
                             <rootPackage>top.rxjava.service.${project.name}.inner</rootPackage>
                             <apiType>inner</apiType>
                             <tasks>
-                                <task implementation="GitTask">
+                                <task implementation="top.rxjava.apikit.plugin.bean.GitTask">
                                     <url>${git.url}</url>
                                     <outPath>java/${project.name}-api-inner/src/main/java</outPath>
                                     <deleteUris>top.rxjava</deleteUris>
-                                    <task implementation="JavaClientTask">
+                                    <task implementation="top.rxjava.apikit.plugin.bean.JavaClientTask">
                                         <outRootPackage>top.rxjava.api</outRootPackage>
                                         <artifactId>${project.name}-api-inner</artifactId>
                                         <parentVersion>${project.parent.version}</parentVersion>
