@@ -51,7 +51,7 @@ public class ExtendsInterceptor extends FirstInterceptor {
     private String extendsVariable;
 
     /**
-     * httl.properties: engine=top.rxjava.apikit.httl.spi.engines.DefaultEngine
+     * httl.properties: engine=httl.spi.engines.DefaultEngine
      */
     public void setEngine(Engine engine) {
         this.engine = engine;

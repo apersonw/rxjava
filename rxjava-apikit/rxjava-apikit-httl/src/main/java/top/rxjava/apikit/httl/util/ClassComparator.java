@@ -29,7 +29,6 @@ public class ClassComparator implements Comparator<Class<?>> {
     private ClassComparator() {
     }
 
-    @Override
     public int compare(Class<?> o1, Class<?> o2) {
         if (o1 == null && o2 == null) {
             return 0;

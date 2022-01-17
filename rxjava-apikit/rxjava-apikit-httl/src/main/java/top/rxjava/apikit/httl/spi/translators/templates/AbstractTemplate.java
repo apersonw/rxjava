@@ -162,7 +162,11 @@ public abstract class AbstractTemplate implements Template {
     private void _render(Context context) throws IOException, ParseException {
         try {
             doRender(context);
-        } catch (RuntimeException | IOException | ParseException e) {
+        } catch (RuntimeException e) {
+            throw e;
+        } catch (IOException e) {
+            throw e;
+        } catch (ParseException e) {
             throw e;
         } catch (Exception e) {
             throw new RuntimeException(ClassUtils.toString(e), e);

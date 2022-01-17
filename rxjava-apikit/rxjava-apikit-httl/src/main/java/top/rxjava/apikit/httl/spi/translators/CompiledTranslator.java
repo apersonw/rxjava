@@ -346,7 +346,6 @@ public class CompiledTranslator implements Translator {
         }
     }
 
-    @Override
     public Template translate(Resource resource, Node root, Map<String, Class<?>> defVariableTypes) throws IOException, ParseException {
         if (logger != null && logger.isDebugEnabled()) {
             logger.debug("Compile template " + resource.getName());
@@ -371,7 +370,9 @@ public class CompiledTranslator implements Translator {
             } else {
                 return writerTemplate;
             }
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (ParseException e) {
             throw e;
         } catch (Exception e) {
             throw new ParseException("Failed to translate template: " + resource.getName() + ", cause: " + ClassUtils.toString(e), 0);

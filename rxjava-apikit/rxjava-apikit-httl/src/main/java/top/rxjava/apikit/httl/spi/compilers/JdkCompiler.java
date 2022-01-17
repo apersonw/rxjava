@@ -93,7 +93,11 @@ public class JdkCompiler extends AbstractCompiler {
             }
         }
         final ClassLoader parentLoader = contextLoader;
-        classLoader = AccessController.doPrivileged((PrivilegedAction<ClassLoaderImpl>) () -> new ClassLoaderImpl(parentLoader));
+        classLoader = AccessController.doPrivileged(new PrivilegedAction<ClassLoaderImpl>() {
+            public ClassLoaderImpl run() {
+                return new ClassLoaderImpl(parentLoader);
+            }
+        });
         javaFileManager = new JavaFileManagerImpl(standardJavaFileManager, classLoader);
         lintOptions.add("-Xlint:unchecked");
     }

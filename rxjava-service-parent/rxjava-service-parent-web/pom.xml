@@ -129,7 +129,7 @@
                 <configuration>
                     <groups>
                         <group implementation="top.rxjava.apikit.plugin.bean.Group">
-                            <rootPackage>top.rxjava.service.${project.name}.manager</rootPackage>
+                            <rootPackage>top.rxjava.service.${project.name}.admin</rootPackage>
                             <apiType>manager</apiType>
                             <tasks>
                                 <task implementation="top.rxjava.apikit.plugin.bean.GitTask">

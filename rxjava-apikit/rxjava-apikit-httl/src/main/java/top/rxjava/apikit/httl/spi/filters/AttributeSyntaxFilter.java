@@ -133,7 +133,6 @@ public class AttributeSyntaxFilter extends AbstractFilter {
                 || StringUtils.inArray(name, macroDirective);
     }
 
-    @Override
     public String filter(String key, String value) {
         Source source = new Source(value);
         OutputDocument document = new OutputDocument(source);
