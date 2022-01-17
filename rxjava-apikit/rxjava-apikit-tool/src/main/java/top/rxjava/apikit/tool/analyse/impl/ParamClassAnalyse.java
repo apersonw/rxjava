@@ -25,12 +25,12 @@ import java.util.*;
 public class ParamClassAnalyse implements Analyse {
     private static final Logger log = LoggerFactory.getLogger(ParamClassAnalyse.class);
     private Context context;
-    private Set<CommonClassInfo> classInfoSet = new HashSet<>();
-    private Set<ClassTypeInfo> enumInfoSet = new HashSet<>();
-    private List<ParamClassInfo> paramClassInfos = new ArrayList<>();
-    private ArrayDeque<CommonClassInfo> analysDeque = new ArrayDeque<>();
-    private Map<CommonClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
-    private Set<Class<?>> typeBack = ImmutableSet.of(
+    private final Set<CommonClassInfo> classInfoSet = new HashSet<>();
+    private final Set<ClassTypeInfo> enumInfoSet = new HashSet<>();
+    private final List<ParamClassInfo> paramClassInfos = new ArrayList<>();
+    private final ArrayDeque<CommonClassInfo> analysDeque = new ArrayDeque<>();
+    private final Map<CommonClassInfo, ParamClassInfo> paramClassMap = new HashMap<>();
+    private final Set<Class<?>> typeBack = ImmutableSet.of(
             Class.class, Object.class, void.class, Void.class
     );
 

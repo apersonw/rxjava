@@ -22,7 +22,7 @@ public class EnumParamClassInfo extends CommonClassInfo {
      * 父类类型信息
      */
     private ClassTypeInfo superType;
-    private Class clazz;
+    private Class<?> clazz;
     protected TypeDeclaration type;
     private List<String> typeParameters = new ArrayList<>();
     /**

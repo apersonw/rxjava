@@ -30,7 +30,7 @@ public class Context {
      */
     private boolean reactive;
     /**
-     * 包信息
+     * Api类的包信息
      */
     protected PackageInfo<ApiClassInfo> apis = new PackageInfo<>();
     /**

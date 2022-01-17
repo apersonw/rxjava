@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class PackageInfo<T extends CommonClassInfo> {
 
-    private Multimap<String, T> multimap = Multimaps.newListMultimap(
+    private final Multimap<String, T> multimap = Multimaps.newListMultimap(
             new ConcurrentSkipListMap<>(), CopyOnWriteArrayList::new
     );
 
