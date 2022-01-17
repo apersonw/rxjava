@@ -64,9 +64,14 @@
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>top.rxjava</groupId>-->
+<!--            <artifactId>rxjava-apikit-httl</artifactId>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>top.rxjava</groupId>
-            <artifactId>rxjava-apikit-httl</artifactId>
+            <groupId>com.github.httl</groupId>
+            <artifactId>httl</artifactId>
+            <version>1.0.11</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
