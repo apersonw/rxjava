@@ -1,11 +1,11 @@
 package top.rxjava.apikit.tool.analyse.impl;
 
+import com.google.common.collect.ImmutableSet;
+import org.apache.commons.collections4.CollectionUtils;
 import top.rxjava.apikit.tool.analyse.Analyse;
 import top.rxjava.apikit.tool.generator.Context;
 import top.rxjava.apikit.tool.info.*;
 import top.rxjava.apikit.tool.utils.JdtClassWrapper;
-import com.google.common.collect.ImmutableSet;
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

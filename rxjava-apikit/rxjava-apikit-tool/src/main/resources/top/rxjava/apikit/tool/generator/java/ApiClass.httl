@@ -12,7 +12,6 @@ import org.bson.types.ObjectId;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.Future;
-import InputParam;
 import top.rxjava.apikit.client.*;
 
 $!{wrapper.imports}

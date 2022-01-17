@@ -1,7 +1,7 @@
 package top.rxjava.apikit.tool.generator.impl;
 
-import top.rxjava.apikit.tool.generator.ClassNameMapper;
 import org.apache.commons.lang3.StringUtils;
+import top.rxjava.apikit.tool.generator.ClassNameMapper;
 
 import java.util.Set;
 

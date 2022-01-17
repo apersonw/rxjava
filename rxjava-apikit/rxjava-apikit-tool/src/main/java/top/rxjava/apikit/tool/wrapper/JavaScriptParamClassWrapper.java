@@ -2,13 +2,14 @@ package top.rxjava.apikit.tool.wrapper;
 
 import org.apache.commons.lang3.StringUtils;
 import top.rxjava.apikit.tool.generator.Context;
+import top.rxjava.apikit.tool.info.ClassTypeInfo;
 import top.rxjava.apikit.tool.info.FieldInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.info.PropertyInfo;
-import top.rxjava.apikit.tool.info.ClassTypeInfo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -66,6 +67,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                 .sort(Comparator.naturalOrder())
                 .filter(fullName -> context.getParamOrEnumWrapper(fullName) != null)
                 .map(fullName -> context.getParamOrEnumWrapper(fullName))
+                .filter(r -> !r.getDistClassName().equals(classInfo.getClassName()))
                 .doOnNext(r -> {
                     String distPackage = getDistPackage();
                     String proTypeName = r.getDistClassName();
@@ -80,7 +82,7 @@ public class JavaScriptParamClassWrapper extends JavaScriptWrapper<ParamClassInf
                                 .append(proTypeName)
                                 .append(" from '")
                                 .append(StringUtils.repeat("../", level))
-                                .append(r.getDistPackage())
+                                .append(r.getDistPackage().replace(".", "/"))
                                 .append("/")
                                 .append(proTypeName)
                                 .append("'\n");

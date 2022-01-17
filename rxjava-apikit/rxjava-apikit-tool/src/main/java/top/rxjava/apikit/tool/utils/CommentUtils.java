@@ -1,7 +1,7 @@
 package top.rxjava.apikit.tool.utils;
 
-import top.rxjava.apikit.tool.info.JavaDocInfo;
 import org.apache.commons.lang3.StringUtils;
+import top.rxjava.apikit.tool.info.JavaDocInfo;
 
 import java.util.*;
 import java.util.stream.Collectors;

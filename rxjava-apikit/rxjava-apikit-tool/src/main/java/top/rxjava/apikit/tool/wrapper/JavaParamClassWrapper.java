@@ -1,11 +1,8 @@
 package top.rxjava.apikit.tool.wrapper;
 
+import top.rxjava.apikit.tool.info.*;
 import org.apache.commons.collections4.CollectionUtils;
 import top.rxjava.apikit.tool.generator.Context;
-import top.rxjava.apikit.tool.info.ClassTypeInfo;
-import top.rxjava.apikit.tool.info.FieldInfo;
-import top.rxjava.apikit.tool.info.ParamClassInfo;
-import top.rxjava.apikit.tool.info.PropertyInfo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -46,7 +43,11 @@ public class JavaParamClassWrapper extends JavaWrapper<ParamClassInfo> {
 
         ClassTypeInfo superType = classInfo.getSuperType();
         if (superType != null) {
-            sb.append("import ").append(superType.getPackageName()).append(".").append(superType.getClassName()).append(";\n");
+            if (classInfo.getPackageName().equals(superType.getPackageName())) {
+                sb.append("import ").append(context.getParamOrEnumWrapper(classInfo.getFullName()).getDistPackage()).append(".").append(superType.getClassName()).append(";\n");
+            } else {
+                sb.append("import ").append(superType.getPackageName()).append(".").append(superType.getClassName()).append(";\n");
+            }
         }
 
         Flux.fromIterable(classInfo.getProperties())

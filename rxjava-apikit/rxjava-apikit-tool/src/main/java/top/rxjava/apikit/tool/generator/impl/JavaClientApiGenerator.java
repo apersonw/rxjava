@@ -1,13 +1,13 @@
 package top.rxjava.apikit.tool.generator.impl;
 
+import lombok.Getter;
+import lombok.Setter;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.info.ServiceInfo;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 import top.rxjava.apikit.tool.wrapper.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 import java.util.HashMap;

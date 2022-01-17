@@ -1,7 +1,7 @@
 package top.rxjava.apikit.tool.info;
 
-import top.rxjava.apikit.core.HttpMethodType;
 import lombok.Data;
+import top.rxjava.apikit.core.HttpMethodType;
 
 import java.util.ArrayList;
 import java.util.List;

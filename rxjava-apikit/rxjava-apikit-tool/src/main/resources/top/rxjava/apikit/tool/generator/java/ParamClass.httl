@@ -4,7 +4,7 @@
 <!--#set(ClassTypeInfo type)-->
 package $!{wrapper.getFullDistPackage()};
 
-import EncodeObject;
+import top.rxjava.apikit.client.EncodeObject;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.*;

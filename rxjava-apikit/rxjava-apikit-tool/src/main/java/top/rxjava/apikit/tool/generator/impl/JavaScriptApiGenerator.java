@@ -1,9 +1,10 @@
 package top.rxjava.apikit.tool.generator.impl;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import top.rxjava.apikit.tool.info.JavaScriptMethodInfo;
+import org.apache.commons.lang3.StringUtils;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
-import top.rxjava.apikit.tool.info.JavaScriptMethodInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.utils.JsonUtils;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -11,7 +12,6 @@ import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import top.rxjava.apikit.tool.wrapper.JavaEnumParamClassWrapper;
 import top.rxjava.apikit.tool.wrapper.JavaScriptApiWrapper;
 import top.rxjava.apikit.tool.wrapper.JavaScriptParamClassWrapper;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;

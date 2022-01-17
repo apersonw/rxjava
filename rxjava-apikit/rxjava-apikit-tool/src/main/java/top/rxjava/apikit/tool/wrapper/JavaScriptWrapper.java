@@ -1,9 +1,10 @@
 package top.rxjava.apikit.tool.wrapper;
 
+import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import com.google.common.collect.ImmutableMap;
 import top.rxjava.apikit.tool.generator.Context;
-import top.rxjava.apikit.tool.info.CommonClassInfo;
 import top.rxjava.apikit.tool.info.ClassTypeInfo;
+import top.rxjava.apikit.tool.info.CommonClassInfo;
 
 /**
  * @author happy 2019-05-09 23:04
@@ -28,13 +29,23 @@ public class JavaScriptWrapper<T extends CommonClassInfo> extends BuilderWrapper
             if (typeInfo.isGeneric()) {
                 sb.append("Object");
             } else {
-                sb.append(typeInfo.getClassName());
+                if (typeInfo.getTypeArguments().size() > 0) {
+                    sb.append(typeInfo.getClassName()).append("<").append(typeInfo.getTypeArguments().get(0).getClassName()).append(">");
+                } else {
+                    sb.append(typeInfo.getClassName());
+                    if (typeInfo.isEnumClass()) {
+                        sb.append("|string");
+                    }
+                }
             }
         } else {
             sb.append(toJavaScriptString(type));
         }
         if (typeInfo.isArray() || isArray) {
             sb.append("[]");
+            if (typeInfo.isEnumClass()) {
+                sb.append("|string");
+            }
         }
         return sb.toString();
     }
@@ -55,5 +66,6 @@ public class JavaScriptWrapper<T extends CommonClassInfo> extends BuilderWrapper
             .put(ClassTypeInfo.TypeEnum.DOUBLE, "number")
             .put(ClassTypeInfo.TypeEnum.DATE, "Date")
             .put(ClassTypeInfo.TypeEnum.STRING, "string")
+            .put(ClassTypeInfo.TypeEnum.OBJECTID, "string")
             .build();
 }

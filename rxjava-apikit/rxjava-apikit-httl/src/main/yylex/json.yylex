@@ -1,4 +1,4 @@
-package httl.spi.codecs.json;
+package top.rxjava.apikit.httl.spi.codecs.json;
 %%
 
 %{

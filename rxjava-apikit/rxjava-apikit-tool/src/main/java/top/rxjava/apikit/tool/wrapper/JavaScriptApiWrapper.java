@@ -9,8 +9,8 @@ import org.apache.commons.text.StringEscapeUtils;
 import top.rxjava.apikit.tool.generator.Context;
 import top.rxjava.apikit.tool.generator.NameMaper;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
-import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import top.rxjava.apikit.tool.info.ApiInputClassInfo;
+import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import top.rxjava.apikit.tool.info.ClassTypeInfo;
 import top.rxjava.apikit.tool.utils.CommentUtils;
 import top.rxjava.apikit.tool.utils.NameUtils;
@@ -49,14 +49,18 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
     }
 
     public String params(ApiMethodInfo method) {
-        return params(method, false);
+        return params(method, false, false);
     }
 
-    public String params(ApiMethodInfo method, boolean isType) {
+    public String inputParams(ApiMethodInfo method) {
+        return params(method, false, true);
+    }
+
+    public String params(ApiMethodInfo method, boolean isType, boolean containRequestParam) {
         StringBuilder sb = new StringBuilder();
         List<ApiInputClassInfo> params = method.getParams();
         for (ApiInputClassInfo apiInputClassInfo : params) {
-            if (apiInputClassInfo.isValidParam() || apiInputClassInfo.isPathParam() || apiInputClassInfo.isRequestParam()) {
+            if (apiInputClassInfo.isValidParam() || apiInputClassInfo.isPathParam() || (containRequestParam && apiInputClassInfo.isRequestParam())) {
                 if (sb.length() > 0) {
                     sb.append(", ");
                 }
@@ -89,7 +93,7 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
     public String imports(boolean isModel) {
         String imports = isModel ? getMethodImports(false) : "";
-        return imports + "import { AbstractApi, Method } from 'rxjava-api-core'\n";
+        return "import { AbstractApi, Method } from 'rxjava-api-core'\n" + imports;
     }
 
     public String es2015imports() {
@@ -183,7 +187,6 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
                                         toTypeString(attributeInfo.getClassTypeInfo())
                                 )
                         )
-                        .append("")
                         .append(method.getMethodName())
                         .append("</li>\n");
             }
@@ -234,7 +237,14 @@ public class JavaScriptApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
 
     public String resultTypeString(ApiMethodInfo method) {
         String returnType = toTypeString(method.getReturnClass());
+        if (returnType.contains("Page")) {
+            return returnType;
+        }
         return StringEscapeUtils.escapeHtml4(returnType);
+    }
+
+    public boolean returnTypeIsOther(ApiMethodInfo method){
+        return method.getReturnClass().isOtherType();
     }
 
 }

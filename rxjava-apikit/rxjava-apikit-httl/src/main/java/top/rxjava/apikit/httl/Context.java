@@ -46,7 +46,7 @@ import java.util.*;
  * </pre>
  *
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.Template#render(Object, Object)
+ * @see Template#render(Object, Object)
  * @see top.rxjava.apikit.httl.spi.translators.templates.AbstractTemplate#render(Object, Object)
  */
 public final class Context implements Map<String, Object> {

@@ -4,9 +4,10 @@ import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import top.rxjava.apikit.tool.generator.Context;
-import top.rxjava.apikit.tool.info.CommonClassInfo;
 import top.rxjava.apikit.tool.info.ClassTypeInfo;
+import top.rxjava.apikit.tool.info.CommonClassInfo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -31,9 +32,9 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
         ClassTypeInfo.TypeEnum type = classTypeInfo.getType();
         if (type == ClassTypeInfo.TypeEnum.BYTE && classTypeInfo.isArray()) {
             sb.append("byte[]");
-        } else if (isArrayList && classTypeInfo.isArray()) {
-            toJavaArrayTypeString(classTypeInfo, sb, isWrap, true);
-            return sb.toString();
+        // } else if (isArrayList && classTypeInfo.isArray()) {
+        //     toJavaArrayTypeString(classTypeInfo, sb, isWrap, true);
+        //     return sb.toString();
         } else if (classTypeInfo.isOtherType()) {
             sb.append(classTypeInfo.getClassName());
         } else if (isWrap) {
@@ -85,6 +86,7 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
             .put(ClassTypeInfo.TypeEnum.FLOAT, Float.class)
             .put(ClassTypeInfo.TypeEnum.DOUBLE, Double.class)
             .put(ClassTypeInfo.TypeEnum.DATE, Date.class)
+            .put(ClassTypeInfo.TypeEnum.LocalDateTime, LocalDateTime.class)
             .put(ClassTypeInfo.TypeEnum.STRING, String.class)
             .put(ClassTypeInfo.TypeEnum.OBJECTID, ObjectId.class)
             .build();
@@ -104,6 +106,7 @@ class JavaWrapper<T extends CommonClassInfo> extends BuilderWrapper<T> {
             .put(ClassTypeInfo.TypeEnum.FLOAT, float.class)
             .put(ClassTypeInfo.TypeEnum.DOUBLE, double.class)
             .put(ClassTypeInfo.TypeEnum.DATE, Date.class)
+            .put(ClassTypeInfo.TypeEnum.LocalDateTime, LocalDateTime.class)
             .put(ClassTypeInfo.TypeEnum.STRING, String.class)
             .put(ClassTypeInfo.TypeEnum.OBJECTID, ObjectId.class)
             .build();

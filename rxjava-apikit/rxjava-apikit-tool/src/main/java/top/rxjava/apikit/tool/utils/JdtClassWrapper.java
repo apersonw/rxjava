@@ -1,9 +1,9 @@
 package top.rxjava.apikit.tool.utils;
 
-import top.rxjava.apikit.tool.info.JavaDocInfo;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
+import top.rxjava.apikit.tool.info.JavaDocInfo;
 
 import java.io.IOException;
 import java.lang.reflect.Modifier;

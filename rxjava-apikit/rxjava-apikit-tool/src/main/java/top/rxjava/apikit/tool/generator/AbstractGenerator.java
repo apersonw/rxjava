@@ -1,5 +1,9 @@
 package top.rxjava.apikit.tool.generator;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
 import top.rxjava.apikit.tool.generator.impl.DefaultPackageNameMapper;
 import top.rxjava.apikit.tool.generator.impl.PatternNameMaper;
@@ -7,10 +11,6 @@ import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 import java.util.*;

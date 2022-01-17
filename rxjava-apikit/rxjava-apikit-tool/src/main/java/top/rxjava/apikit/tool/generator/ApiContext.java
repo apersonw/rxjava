@@ -1,7 +1,7 @@
 package top.rxjava.apikit.tool.generator;
 
-import top.rxjava.apikit.tool.info.ControllerInfo;
 import lombok.Data;
+import top.rxjava.apikit.tool.info.ControllerInfo;
 
 import java.util.ArrayList;
 import java.util.List;

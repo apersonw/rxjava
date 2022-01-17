@@ -1,6 +1,7 @@
 package top.rxjava.apikit.tool.generator.impl;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.apache.commons.lang3.StringUtils;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
@@ -10,7 +11,6 @@ import top.rxjava.apikit.tool.wrapper.ApidocApiWrapper;
 import top.rxjava.apikit.tool.wrapper.ApidocParamClassWrapper;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import top.rxjava.apikit.tool.wrapper.JavaScriptApiWrapper;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
