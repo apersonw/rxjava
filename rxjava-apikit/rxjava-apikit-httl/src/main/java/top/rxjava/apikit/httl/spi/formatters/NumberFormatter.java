@@ -17,30 +17,33 @@ package top.rxjava.apikit.httl.spi.formatters;
 
 import top.rxjava.apikit.httl.spi.Formatter;
 import top.rxjava.apikit.httl.util.NumberUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.text.DecimalFormat;
 
 /**
  * NumberFormatter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setFormatter(Formatter)
+ * @see InterpretedTranslator#setFormatter(Formatter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setFormatter(Formatter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setFormatter(Formatter)
  */
 public class NumberFormatter extends AbstractFormatter<Number> {
+	
+	private String numberFormat;
+	
+	/**
+	 * httl.properties: number.format=###,##0.###
+	 */
+	public void setNumberFormat(String numberFormat) {
+		new DecimalFormat(numberFormat).format(0);
+		this.numberFormat = numberFormat;
+	}
 
-    private String numberFormat;
-
-    /**
-     * httl.properties: number.format=###,##0.###
-     */
-    public void setNumberFormat(String numberFormat) {
-        new DecimalFormat(numberFormat).format(0);
-        this.numberFormat = numberFormat;
-    }
-
-    public String toString(String key, Number value) {
-        return NumberUtils.format(value, numberFormat);
-    }
+	public String toString(String key, Number value) {
+		return NumberUtils.format(value, numberFormat);
+	}
 
 }

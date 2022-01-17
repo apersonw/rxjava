@@ -17,18 +17,21 @@ package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.util.StringUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * TrimBlankLineFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTextFilter(Filter)
+ * @see InterpretedTranslator#setTextFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTextFilter(Filter)
  */
 public class TrimBlankLineFilter extends AbstractFilter {
 
-    public String filter(String key, String text) {
-        return StringUtils.trimBlankLine(text);
-    }
+	public String filter(String key, String text) {
+		return StringUtils.trimBlankLine(text);
+	}
 
 }

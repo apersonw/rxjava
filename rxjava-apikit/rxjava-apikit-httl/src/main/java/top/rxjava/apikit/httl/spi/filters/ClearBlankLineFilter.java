@@ -17,18 +17,21 @@ package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.util.StringUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * CompressBlankFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTemplateFilter(Filter)
+ * @see InterpretedTranslator#setTemplateFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTemplateFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTemplateFilter(Filter)
  */
 public class ClearBlankLineFilter extends AbstractFilter {
-
-    public String filter(String key, String text) {
-        return StringUtils.clearBlankLine(text);
-    }
+	
+	public String filter(String key, String text) {
+		return StringUtils.clearBlankLine(text);
+	}
 
 }

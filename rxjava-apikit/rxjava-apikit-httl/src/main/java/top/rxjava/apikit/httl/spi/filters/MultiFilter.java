@@ -16,74 +16,77 @@
 package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTemplateFilter(Filter)
+ * @see CompiledTranslator#setTextFilter(Filter)
+ * @see CompiledTranslator#setValueFilter(Filter)
+ * @see InterpretedTranslator#setTemplateFilter(Filter)
+ * @see InterpretedTranslator#setTextFilter(Filter)
+ * @see InterpretedTranslator#setValueFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTemplateFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTemplateFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTextFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilter(Filter)
  */
 public abstract class MultiFilter implements Filter {
+	
+	private Filter[] filters;
+	
+	/**
+	 * httl.properties: filters=httl.spi.filters.CompressBlankFilter
+	 */
+	public void setFilters(Filter[] filters) {
+		if (filters != null && filters.length > 0 
+				&& this.filters != null && this.filters.length > 0) {
+			Filter[] oldFilters = this.filters;
+			this.filters = new Filter[oldFilters.length + filters.length];
+			System.arraycopy(oldFilters, 0, this.filters, 0, oldFilters.length);
+			System.arraycopy(filters, 0, this.filters, oldFilters.length, filters.length);
+		} else {
+			this.filters = filters;
+		}
+	}
 
-    private Filter[] filters;
+	public String filter(String key, String value) {
+		if (filters == null || filters.length == 0) {
+			return value;
+		}
+		if (filters.length == 1) {
+			return filters[0].filter(key, value);
+		}
+		for (Filter filter : filters) {
+			value = filter.filter(key, value);
+		}
+		return value;
+	}
 
-    /**
-     * httl.properties: filters=httl.spi.filters.CompressBlankFilter
-     */
-    public void setFilters(Filter[] filters) {
-        if (filters != null && filters.length > 0
-                && this.filters != null && this.filters.length > 0) {
-            Filter[] oldFilters = this.filters;
-            this.filters = new Filter[oldFilters.length + filters.length];
-            System.arraycopy(oldFilters, 0, this.filters, 0, oldFilters.length);
-            System.arraycopy(filters, 0, this.filters, oldFilters.length, filters.length);
-        } else {
-            this.filters = filters;
-        }
-    }
+	public char[] filter(String key, char[] value) {
+		if (filters == null || filters.length == 0) {
+			return value;
+		}
+		if (filters.length == 1) {
+			return filters[0].filter(key, value);
+		}
+		for (Filter filter : filters) {
+			value = filter.filter(key, value);
+		}
+		return value;
+	}
 
-    public String filter(String key, String value) {
-        if (filters == null || filters.length == 0) {
-            return value;
-        }
-        if (filters.length == 1) {
-            return filters[0].filter(key, value);
-        }
-        for (Filter filter : filters) {
-            value = filter.filter(key, value);
-        }
-        return value;
-    }
-
-    public char[] filter(String key, char[] value) {
-        if (filters == null || filters.length == 0) {
-            return value;
-        }
-        if (filters.length == 1) {
-            return filters[0].filter(key, value);
-        }
-        for (Filter filter : filters) {
-            value = filter.filter(key, value);
-        }
-        return value;
-    }
-
-    public byte[] filter(String key, byte[] value) {
-        if (filters == null || filters.length == 0) {
-            return value;
-        }
-        if (filters.length == 1) {
-            return filters[0].filter(key, value);
-        }
-        for (Filter filter : filters) {
-            value = filter.filter(key, value);
-        }
-        return value;
-    }
+	public byte[] filter(String key, byte[] value) {
+		if (filters == null || filters.length == 0) {
+			return value;
+		}
+		if (filters.length == 1) {
+			return filters[0].filter(key, value);
+		}
+		for (Filter filter : filters) {
+			value = filter.filter(key, value);
+		}
+		return value;
+	}
 
 }

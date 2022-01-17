@@ -25,57 +25,57 @@ import java.util.List;
 
 /**
  * BinaryOperator. (SPI, Prototype, ThreadSafe)
- *
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  */
-public class BinaryOperator extends Operator {
+public abstract class BinaryOperator extends Operator {
 
-    private Expression leftParameter;
+	private Expression leftParameter;
+	
+	private Expression rightParameter;
+	
+	public BinaryOperator(String name, int priority, int offset){
+		super(name, priority, offset);
+	}
 
-    private Expression rightParameter;
+	public void accept(Visitor visitor) throws IOException, ParseException {
+		leftParameter.accept(visitor);
+		rightParameter.accept(visitor);
+		visitor.visit(this);
+	}
 
-    public BinaryOperator(String name, int priority, int offset) {
-        super(name, priority, offset);
-    }
+	public Expression getLeftParameter() {
+		return leftParameter;
+	}
 
-    public void accept(Visitor visitor) throws IOException, ParseException {
-        leftParameter.accept(visitor);
-        rightParameter.accept(visitor);
-        visitor.visit(this);
-    }
+	public void setLeftParameter(Expression leftParameter) {
+		if (this.leftParameter != null)
+			throw new IllegalStateException("Can not modify left parameter.");
+		this.leftParameter = leftParameter;
+	}
 
-    public Expression getLeftParameter() {
-        return leftParameter;
-    }
+	public Expression getRightParameter() {
+		return rightParameter;
+	}
 
-    public void setLeftParameter(Expression leftParameter) throws ParseException {
-        if (this.leftParameter != null)
-            throw new ParseException("Can not modify left parameter.", getOffset());
-        this.leftParameter = leftParameter;
-    }
+	public void setRightParameter(Expression rightParameter) {
+		if (this.rightParameter != null)
+			throw new IllegalStateException("Can not modify right parameter.");
+		this.rightParameter = rightParameter;
+	}
 
-    public Expression getRightParameter() {
-        return rightParameter;
-    }
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<Node> getChildren() {
+		return (List) Arrays.asList(leftParameter, rightParameter);
+	}
 
-    public void setRightParameter(Expression rightParameter) throws ParseException {
-        if (this.rightParameter != null)
-            throw new ParseException("Can not modify right parameter.", getOffset());
-        this.rightParameter = rightParameter;
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public List<Node> getChildren() {
-        return (List) Arrays.asList(leftParameter, rightParameter);
-    }
-
-    @Override
-    public String toString() {
-        if (getParent() instanceof Operator
-                && ((Operator) getParent()).getPriority() < getPriority()) {
-            return "(" + leftParameter + " " + getName() + " " + rightParameter + ")";
-        }
-        return leftParameter + " " + getName() + " " + rightParameter;
-    }
+	@Override
+	public String toString() {
+		if (getParent() instanceof Operator 
+				&& ((Operator) getParent()).getPriority() < getPriority()) {
+			return "(" + leftParameter + " " + getName() + " " + rightParameter + ")";
+		}
+		return leftParameter + " " + getName() + " " + rightParameter;
+	}
 
 }

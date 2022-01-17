@@ -17,6 +17,7 @@ package top.rxjava.apikit.httl.spi.loaders;
 
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,63 +27,64 @@ import java.util.Locale;
 
 /**
  * MultiLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public class MultiLoader implements Loader {
 
-    private Loader[] loaders;
+	private Loader[] loaders;
+	
+	public void setLoaders(Loader[] loaders) {
+		this.loaders = loaders;
+	}
 
-    public void setLoaders(Loader[] loaders) {
-        this.loaders = loaders;
-    }
+	public Resource load(String name, Locale locale, String encoding) throws IOException {
+		if (loaders.length == 1) {
+			return loaders[0].load(name, locale, encoding);
+		}
+		for (Loader loader : loaders) {
+			try {
+				if (loader.exists(name, locale)) {
+					return loader.load(name, locale, encoding);
+				}
+			} catch (Exception e) {
+			}
+		}
+		throw new FileNotFoundException("No such template file: " + name);
+	}
 
-    public Resource load(String name, Locale locale, String encoding) throws IOException {
-        if (loaders.length == 1) {
-            return loaders[0].load(name, locale, encoding);
-        }
-        for (Loader loader : loaders) {
-            try {
-                if (loader.exists(name, locale)) {
-                    return loader.load(name, locale, encoding);
-                }
-            } catch (Exception e) {
-            }
-        }
-        throw new FileNotFoundException("No such template file: " + name);
-    }
+	public List<String> list(String suffix) throws IOException {
+		if (loaders.length == 1) {
+			return loaders[0].list(suffix);
+		}
+		List<String> all = new ArrayList<String>();
+		for (Loader loader : loaders) {
+			try {
+				List<String> list = loader.list(suffix);
+				if (list != null && list.size() > 0) {
+					all.addAll(list);
+				}
+			} catch (Exception e) {
+			}
+		}
+		return all;
+	}
 
-    public List<String> list(String suffix) throws IOException {
-        if (loaders.length == 1) {
-            return loaders[0].list(suffix);
-        }
-        List<String> all = new ArrayList<String>();
-        for (Loader loader : loaders) {
-            try {
-                List<String> list = loader.list(suffix);
-                if (list != null && list.size() > 0) {
-                    all.addAll(list);
-                }
-            } catch (Exception e) {
-            }
-        }
-        return all;
-    }
-
-    public boolean exists(String name, Locale locale) {
-        if (loaders.length == 1) {
-            return loaders[0].exists(name, locale);
-        }
-        for (Loader loader : loaders) {
-            try {
-                if (loader.exists(name, locale)) {
-                    return true;
-                }
-            } catch (Exception e) {
-            }
-        }
-        return false;
-    }
+	public boolean exists(String name, Locale locale) {
+		if (loaders.length == 1) {
+			return loaders[0].exists(name, locale);
+		}
+		for (Loader loader : loaders) {
+			try {
+				if (loader.exists(name, locale)) {
+					return true;
+				}
+			} catch (Exception e) {
+			}
+		}
+		return false;
+	}
 
 }

@@ -17,6 +17,7 @@ package top.rxjava.apikit.httl.spi.loaders;
 
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 import top.rxjava.apikit.httl.spi.loaders.resources.FileResource;
 import top.rxjava.apikit.httl.util.UrlUtils;
 
@@ -27,23 +28,24 @@ import java.util.Locale;
 
 /**
  * FileLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public class FileLoader extends AbstractLoader {
 
-    public List<String> doList(String directory, String suffix) throws IOException {
-        File file = new File(directory);
-        return UrlUtils.listFile(file, suffix);
-    }
+	public List<String> doList(String directory, String suffix) throws IOException {
+		File file = new File(directory);
+		return UrlUtils.listFile(file, suffix);
+	}
+	
+	protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
+		return new FileResource(getEngine(), name, locale, encoding, path);
+	}
 
-    protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
-        return new FileResource(getEngine(), name, locale, encoding, path);
-    }
-
-    public boolean doExists(String name, Locale locale, String path) throws IOException {
-        return new File(path).exists();
-    }
+	public boolean doExists(String name, Locale locale, String path) throws IOException {
+		return new File(path).exists();
+	}
 
 }

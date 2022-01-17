@@ -17,6 +17,8 @@ package top.rxjava.apikit.httl.spi.formatters;
 
 import top.rxjava.apikit.httl.spi.Formatter;
 import top.rxjava.apikit.httl.util.DateUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,31 +26,32 @@ import java.util.TimeZone;
 
 /**
  * DateFormatter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setFormatter(Formatter)
+ * @see InterpretedTranslator#setFormatter(Formatter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setFormatter(Formatter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setFormatter(Formatter)
  */
 public class DateFormatter extends AbstractFormatter<Date> {
 
-    private String dateFormat;
+	private String dateFormat;
 
-    private TimeZone timeZone;
+	private TimeZone timeZone;
 
-    /**
-     * httl.properties: date.format=yyyy-MM-dd HH:mm:ss
-     */
-    public void setDateFormat(String dateFormat) {
-        new SimpleDateFormat(dateFormat).format(new Date());
-        this.dateFormat = dateFormat;
-    }
+	/**
+	 * httl.properties: date.format=yyyy-MM-dd HH:mm:ss
+	 */
+	public void setDateFormat(String dateFormat) {
+		new SimpleDateFormat(dateFormat).format(new Date());
+		this.dateFormat = dateFormat;
+	}
 
-    public void setTimeZone(String timeZone) {
-        this.timeZone = TimeZone.getTimeZone(timeZone);
-    }
+	public void setTimeZone(String timeZone) {
+		this.timeZone = TimeZone.getTimeZone(timeZone);
+	}
 
-    public String toString(String key, Date value) {
-        return DateUtils.format(value, dateFormat, timeZone);
-    }
+	public String toString(String key, Date value) {
+		return DateUtils.format(value, dateFormat, timeZone);
+	}
 
 }

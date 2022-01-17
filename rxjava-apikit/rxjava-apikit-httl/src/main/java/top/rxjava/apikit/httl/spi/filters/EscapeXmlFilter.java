@@ -17,26 +17,29 @@ package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.util.StringUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * EscapeXmlFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setValueFilter(Filter)
+ * @see InterpretedTranslator#setValueFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilter(Filter)
  */
 public class EscapeXmlFilter implements Filter {
 
-    public String filter(String key, String value) {
-        return StringUtils.escapeXml(value);
-    }
+	public String filter(String key, String value) {
+		return StringUtils.escapeXml(value);
+	}
 
-    public char[] filter(String key, char[] value) {
-        return StringUtils.escapeXml(value);
-    }
+	public char[] filter(String key, char[] value) {
+		return StringUtils.escapeXml(value);
+	}
 
-    public byte[] filter(String key, byte[] value) {
-        return StringUtils.escapeXml(value);
-    }
+	public byte[] filter(String key, byte[] value) {
+		return StringUtils.escapeXml(value);
+	}
 
 }

@@ -17,21 +17,24 @@ package top.rxjava.apikit.httl.spi.switchers;
 
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.spi.Switcher;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * StyleValueFilterSwitcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setValueFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setValueFilterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilterSwitcher(Switcher)
  */
 public class StyleValueFilterSwitcher extends StyleFilterSwitcher {
 
-    /**
-     * httl.properties: style.value.filter=httl.spi.filters.StyleValueFilter
-     */
-    public void setStyleValueFilter(Filter filter) {
-        setStyleFilter(filter);
-    }
+	/**
+	 * httl.properties: style.value.filter=httl.spi.filters.StyleValueFilter
+	 */
+	public void setStyleValueFilter(Filter filter) {
+		setStyleFilter(filter);
+	}
 
 }

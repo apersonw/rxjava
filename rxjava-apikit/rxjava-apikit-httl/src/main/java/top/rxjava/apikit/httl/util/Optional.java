@@ -15,14 +15,19 @@
  */
 package top.rxjava.apikit.httl.util;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * Optional. (SPI, Annotation, ThreadSafe)
- *
+ * 
+ * @see BeanFactory
+ * @see Reqiured
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.util.BeanFactory
- * @see top.rxjava.apikit.httl.util.Reqiured
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

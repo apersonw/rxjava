@@ -18,22 +18,25 @@ package top.rxjava.apikit.httl.spi.switchers;
 import top.rxjava.apikit.httl.spi.Formatter;
 import top.rxjava.apikit.httl.spi.Switcher;
 import top.rxjava.apikit.httl.util.Reqiured;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiFormatterSwitcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setFormatterSwitcher(Switcher)
+ * @see InterpretedTranslator#setFormatterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setFormatterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setFormatterSwitcher(Switcher)
  */
 public class MultiFormatterSwitcher extends MultiSwitcher<Formatter<Object>> {
 
-    /**
-     * httl.properties: formatter.switchers=httl.spi.switchers.StyleFormatterSwitcher
-     */
-    @Reqiured
-    public void setFormatterSwitchers(Switcher<Formatter<Object>>[] switchers) {
-        setSwitchers(switchers);
-    }
+	/**
+	 * httl.properties: formatter.switchers=httl.spi.switchers.StyleFormatterSwitcher
+	 */
+	@Reqiured
+	public void setFormatterSwitchers(Switcher<Formatter<Object>>[] switchers) {
+		setSwitchers(switchers);
+	}
 
 }

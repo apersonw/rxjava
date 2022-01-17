@@ -18,29 +18,32 @@ package top.rxjava.apikit.httl.spi.interceptors;
 import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.spi.Interceptor;
 import top.rxjava.apikit.httl.spi.Listener;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.text.ParseException;
 
 /**
  * MacroInterceptor. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setInterceptor(Interceptor)
+ * @see InterpretedTranslator#setInterceptor(Interceptor)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
 public abstract class MacroInterceptor implements Interceptor {
 
-    public void render(Context context, Listener listener)
-            throws IOException, ParseException {
-        if (!context.getTemplate().isMacro()) {
-            listener.render(context);
-            return;
-        }
-        doRender(context, listener);
-    }
+	public void render(Context context, Listener listener)
+			throws IOException, ParseException {
+		if (! context.getTemplate().isMacro()) { 
+			listener.render(context);
+			return;
+		}
+		doRender(context, listener);
+	}
 
-    protected abstract void doRender(Context context, Listener listener)
-            throws IOException, ParseException;
+	protected abstract void doRender(Context context, Listener listener)
+			throws IOException, ParseException;
 
 }

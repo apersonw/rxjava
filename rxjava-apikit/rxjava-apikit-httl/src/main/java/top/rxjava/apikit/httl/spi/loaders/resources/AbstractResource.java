@@ -18,6 +18,7 @@ package top.rxjava.apikit.httl.spi.loaders.resources;
 import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.util.IOUtils;
+import top.rxjava.apikit.httl.spi.loaders.AbstractLoader;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -25,71 +26,72 @@ import java.util.Locale;
 
 /**
  * AbstractResource. (SPI, Prototype, ThreadSafe)
- *
+ * 
+ * @see AbstractLoader#load(String, Locale, String)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.loaders.AbstractLoader#load(String, Locale, String)
  */
 public abstract class AbstractResource implements Resource, Serializable {
 
-    private static final long serialVersionUID = 6834431114838915042L;
+	private static final long serialVersionUID = 6834431114838915042L;
 
-    private final transient Engine engine;
+	private final transient Engine engine;
+	
+	private final String name;
+	
+	private final String encoding;
 
-    private final String name;
+	private final Locale locale;
 
-    private final String encoding;
+	private final long lastModified;
 
-    private final Locale locale;
+	public AbstractResource(Engine engine, String name, Locale locale, String encoding) {
+		this(engine, name, locale, encoding, -1);
+	}
 
-    private final long lastModified;
+	public AbstractResource(Engine engine, String name, Locale locale, String encoding, long lastModified) {
+		this.engine = engine;
+		this.name = name;
+		this.encoding = encoding;
+		this.locale = locale;
+		this.lastModified = lastModified;
+	}
 
-    public AbstractResource(Engine engine, String name, Locale locale, String encoding) {
-        this(engine, name, locale, encoding, -1);
-    }
+	public Engine getEngine() {
+		return engine;
+	}
 
-    public AbstractResource(Engine engine, String name, Locale locale, String encoding, long lastModified) {
-        this.engine = engine;
-        this.name = name;
-        this.encoding = encoding;
-        this.locale = locale;
-        this.lastModified = lastModified;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Engine getEngine() {
-        return engine;
-    }
+	public String getEncoding() {
+		return encoding;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Locale getLocale() {
+		return locale;
+	}
 
-    public String getEncoding() {
-        return encoding;
-    }
+	public long getLastModified() {
+		return lastModified;
+	}
 
-    public Locale getLocale() {
-        return locale;
-    }
+	public long getLength() {
+		return -1;
+	}
 
-    public long getLastModified() {
-        return lastModified;
-    }
-
-    public long getLength() {
-        return -1;
-    }
-
-    public String getSource() throws IOException {
-        try {
-            return IOUtils.readToString(openReader());
-        } catch (IOException e) {
-            throw new IllegalStateException(e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
+	public String getSource() throws IOException {
+		try {
+			return IOUtils.readToString(openReader());
+		} catch (IOException e) {
+			throw new IllegalStateException(e.getMessage(), e);
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return getName();
+	}
 
 }

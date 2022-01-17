@@ -17,6 +17,7 @@ package top.rxjava.apikit.httl.spi.loaders;
 
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 import top.rxjava.apikit.httl.spi.loaders.resources.JarResource;
 import top.rxjava.apikit.httl.util.UrlUtils;
 
@@ -28,48 +29,49 @@ import java.util.jar.JarFile;
 
 /**
  * JarLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public class JarLoader extends AbstractLoader {
+	
+	private File file;
+	
+	public void setTemplateDirectory(String directory) {
+		file = new File(directory);
+	}
 
-    private File file;
+	private File getAndCheckFile() {
+		if (file == null) {
+			throw new IllegalStateException("jar loader file == null. Please add config in your httl.properties: template.directory=foo.jar");
+		}
+		return file;
+	}
+	
+	protected List<String> doList(String directory, String suffix) throws IOException {
+		JarFile jarFile = new JarFile(getAndCheckFile());
+		try {
+			return UrlUtils.listJar(jarFile, suffix);
+		} finally {
+			jarFile.close();
+		}
+	}
+	
+	public Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
+		return new JarResource(getEngine(), name, locale, encoding, getAndCheckFile());
+	}
 
-    public void setTemplateDirectory(String directory) {
-        file = new File(directory);
-    }
-
-    private File getAndCheckFile() {
-        if (file == null) {
-            throw new IllegalStateException("jar loader file == null. Please add config in your httl.properties: template.directory=foo.jar");
-        }
-        return file;
-    }
-
-    protected List<String> doList(String directory, String suffix) throws IOException {
-        JarFile jarFile = new JarFile(getAndCheckFile());
-        try {
-            return UrlUtils.listJar(jarFile, suffix);
-        } finally {
-            jarFile.close();
-        }
-    }
-
-    public Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
-        return new JarResource(getEngine(), name, locale, encoding, getAndCheckFile());
-    }
-
-    public boolean doExists(String name, Locale locale, String path) throws IOException {
-        if (file != null && file.exists()) {
-            JarFile jarFile = new JarFile(file);
-            try {
-                return jarFile.getEntry(name) != null;
-            } finally {
-                jarFile.close();
-            }
-        }
-        return false;
-    }
+	public boolean doExists(String name, Locale locale, String path) throws IOException {
+		if (file != null && file.exists()) {
+			JarFile jarFile = new JarFile(file);
+			try {
+				return jarFile.getEntry(name) != null;
+			} finally {
+				jarFile.close();
+			}
+		}
+		return false; 
+	}
 
 }

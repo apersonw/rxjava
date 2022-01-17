@@ -16,20 +16,22 @@
 package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
+import top.rxjava.apikit.httl.spi.parsers.ExpressionParser;
 
 /**
  * MultiExpressionFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see ExpressionParser#setExpressionFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.parsers.ExpressionParser#setExpressionFilter(Filter)
  */
 public class MultiExpressionFilter extends MultiFilter {
 
-    /**
-     * httl.properties: expression.filters=httl.spi.filters.UnescapeXmlFilter
-     */
-    public void setExpressionFilters(Filter[] filters) {
-        setFilters(filters);
-    }
+	/**
+	 * httl.properties: expression.filters=httl.spi.filters.UnescapeXmlFilter
+	 */
+	public void setExpressionFilters(Filter[] filters) {
+		setFilters(filters);
+	}
 
 }

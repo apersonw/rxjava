@@ -16,36 +16,40 @@
 package top.rxjava.apikit.httl.spi.converters;
 
 import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * ResponseOutConverter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setOutConverter(Converter)
+ * @see InterpretedTranslator#setOutConverter(Converter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setOutConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setOutConverter(Converter)
  */
 public class ResponseOutConverter implements Converter<HttpServletResponse, Object> {
 
-    private boolean outputStream;
+	private boolean outputStream;
 
-    /**
-     * httl.properties: output.stream=true
-     */
-    public void setOutputStream(boolean outputStream) {
-        this.outputStream = outputStream;
-    }
+	/**
+	 * httl.properties: output.stream=true
+	 */
+	public void setOutputStream(boolean outputStream) {
+		this.outputStream = outputStream;
+	}
 
-    public Object convert(HttpServletResponse value, Map<String, Class<?>> types) throws IOException, ParseException {
-        if (outputStream) {
-            return value.getOutputStream();
-        } else {
-            return value.getWriter();
-        }
-    }
+	public Object convert(HttpServletResponse value, Map<String, Class<?>> types) throws IOException, ParseException {
+		if (outputStream) {
+			return value.getOutputStream();
+		} else {
+			return value.getWriter();
+		}
+	}
 
 }

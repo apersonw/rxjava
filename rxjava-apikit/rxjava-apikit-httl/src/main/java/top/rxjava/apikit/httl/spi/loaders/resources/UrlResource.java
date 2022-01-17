@@ -16,6 +16,7 @@
 package top.rxjava.apikit.httl.spi.loaders.resources;
 
 import top.rxjava.apikit.httl.Engine;
+import top.rxjava.apikit.httl.spi.loaders.UrlLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,28 +25,29 @@ import java.util.Locale;
 
 /**
  * UrlResource. (SPI, Prototype, ThreadSafe)
- *
+ * 
+ * @see UrlLoader#load(String, Locale, String)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.loaders.UrlLoader#load(String, Locale, String)
  */
 public class UrlResource extends InputStreamResource {
+	
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;
+	private final URL url;
+	
+	public UrlResource(Engine engine, String name, Locale locale, String encoding, String path) throws IOException {
+		super(engine, name, locale, encoding);
+		this.url = new URL(path);
+	}
 
-    private final URL url;
+	public InputStream openStream() throws IOException {
+		return url.openStream();
+	}
 
-    public UrlResource(Engine engine, String name, Locale locale, String encoding, String path) throws IOException {
-        super(engine, name, locale, encoding, path);
-        this.url = new URL(path);
-    }
-
-    public InputStream openStream() throws IOException {
-        return url.openStream();
-    }
-
-    @Override
-    protected URL getUrl() {
-        return url;
-    }
+	@Override
+	protected URL getUrl() {
+		return url;
+	}
 
 }

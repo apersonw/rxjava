@@ -16,21 +16,24 @@
 package top.rxjava.apikit.httl.spi.converters;
 
 import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiMapConverter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setMapConverter(Converter)
+ * @see InterpretedTranslator#setMapConverter(Converter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setMapConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setMapConverter(Converter)
  */
 public class MultiMapConverter extends MultiConverter {
 
-    /**
-     * httl.properties: map.converters=httl.spi.converters.BeanMapConverter
-     */
-    public void setMapConverters(Converter<Object, Object>[] converters) {
-        super.setConverters(converters);
-    }
+	/**
+	 * httl.properties: map.converters=httl.spi.converters.BeanMapConverter
+	 */
+	public void setMapConverters(Converter<Object, Object>[] converters) {
+		super.setConverters(converters);
+	}
 
 }

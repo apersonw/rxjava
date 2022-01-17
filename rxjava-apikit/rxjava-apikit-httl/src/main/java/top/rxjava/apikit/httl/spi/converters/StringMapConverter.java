@@ -19,6 +19,8 @@ import top.rxjava.apikit.httl.spi.Codec;
 import top.rxjava.apikit.httl.spi.Compiler;
 import top.rxjava.apikit.httl.spi.Converter;
 import top.rxjava.apikit.httl.util.StringUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -26,62 +28,63 @@ import java.util.Map;
 
 /**
  * StringMapConverter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setMapConverter(Converter)
+ * @see InterpretedTranslator#setMapConverter(Converter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setMapConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setMapConverter(Converter)
  */
 public class StringMapConverter implements Converter<String, Map<String, Object>> {
 
-    private final BeanMapConverter beanMapConverter = new BeanMapConverter();
+	private final BeanMapConverter beanMapConverter = new BeanMapConverter();
+	
+	private Compiler compiler;
 
-    private Compiler compiler;
+	private String formats = "";
 
-    private String formats = "";
+	private Codec[] codecs;
 
-    private Codec[] codecs;
+	/**
+	 * httl.properties: compiler=httl.spi.compilers.JdkCompiler
+	 */
+	public void setCompiler(Compiler compiler) {
+		this.beanMapConverter.setCompiler(compiler);
+		this.compiler = compiler;
+	}
 
-    /**
-     * httl.properties: compiler=httl.spi.compilers.JdkCompiler
-     */
-    public void setCompiler(Compiler compiler) {
-        this.beanMapConverter.setCompiler(compiler);
-        this.compiler = compiler;
-    }
+	public void setCodecs(Codec[] codecs) {
+		this.codecs = codecs;
+		StringBuilder buf = new StringBuilder();
+		for (Codec codec : codecs) {
+			if (buf.length() > 0) {
+				buf.append(",");
+			}
+			buf.append(codec.getFormat());
+		}
+		this.formats = buf.toString();
+	}
 
-    public void setCodecs(Codec[] codecs) {
-        this.codecs = codecs;
-        StringBuilder buf = new StringBuilder();
-        for (Codec codec : codecs) {
-            if (buf.length() > 0) {
-                buf.append(",");
-            }
-            buf.append(codec.getFormat());
-        }
-        this.formats = buf.toString();
-    }
-
-    @SuppressWarnings("unchecked")
-    public Map<String, Object> convert(String value, Map<String, Class<?>> types) throws IOException,
-            ParseException {
-        if (StringUtils.isEmpty(value))
-            return null;
-        if (codecs != null) {
-            value = value.trim();
-            for (Codec codec : codecs) {
-                if (codec.isValueOf(value)) {
-                    Class<?> type = BeanMapConverter.getBeanClass(String.valueOf(
-                            System.identityHashCode(types)), types, compiler, null);
-                    Object bean = codec.valueOf(value, type);
-                    if (bean instanceof Map) {
-                        return (Map<String, Object>) bean;
-                    }
-                    return beanMapConverter.convert(bean, types);
-                }
-            }
-        }
-        throw new IllegalArgumentException("Unsupported format of the string \"" + value + "\", only support format: "
-                + formats + ". Please add config codecs+=com.your.YourFormatStringCodec in httl.properties.");
-    }
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> convert(String value, Map<String, Class<?>> types) throws IOException,
+			ParseException {
+		if (StringUtils.isEmpty(value))
+			return null;
+		if (codecs != null) {
+			value = value.trim();
+			for (Codec codec : codecs) {
+				if (codec.isValueOf(value)) {
+					Class<?> type = BeanMapConverter.getBeanClass(String.valueOf(
+							System.identityHashCode(types)), types, compiler, null);
+					Object bean = codec.valueOf(value, type);
+					if (bean instanceof Map) {
+						return (Map<String, Object>) bean;
+					}
+					return beanMapConverter.convert(bean, types);
+				}
+			}
+		}
+		throw new IllegalArgumentException("Unsupported format of the string \"" + value + "\", only support format: "
+					+ formats + ". Please add config codecs+=com.your.YourFormatStringCodec in httl.properties.");
+	}
 
 }

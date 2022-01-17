@@ -16,21 +16,24 @@
 package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiTextFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTextFilter(Filter)
+ * @see InterpretedTranslator#setTemplateFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTemplateFilter(Filter)
  */
 public class MultiTextFilter extends MultiFilter {
 
-    /**
-     * httl.properties: text.filters=httl.spi.filters.ClearBlankLineFilter
-     */
-    public void setTextFilters(Filter[] filters) {
-        setFilters(filters);
-    }
+	/**
+	 * httl.properties: text.filters=httl.spi.filters.ClearBlankLineFilter
+	 */
+	public void setTextFilters(Filter[] filters) {
+		setFilters(filters);
+	}
 
 }

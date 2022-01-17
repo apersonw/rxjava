@@ -18,22 +18,25 @@ package top.rxjava.apikit.httl.spi.switchers;
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.spi.Switcher;
 import top.rxjava.apikit.httl.util.Reqiured;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiValueFilterSwitcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setValueFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setValueFilterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilterSwitcher(Switcher)
  */
 public class MultiValueFilterSwitcher extends MultiSwitcher<Filter> {
 
-    /**
-     * httl.properties: value.filter.switchers=httl.spi.switchers.JavascriptFilterSwitcher
-     */
-    @Reqiured
-    public void setValueFilterSwitchers(Switcher<Filter>[] switchers) {
-        setSwitchers(switchers);
-    }
+	/**
+	 * httl.properties: value.filter.switchers=httl.spi.switchers.JavascriptFilterSwitcher
+	 */
+	@Reqiured
+	public void setValueFilterSwitchers(Switcher<Filter>[] switchers) {
+		setSwitchers(switchers);
+	}
 
 }

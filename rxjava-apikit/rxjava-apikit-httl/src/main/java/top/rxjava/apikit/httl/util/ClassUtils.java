@@ -15,6 +15,7 @@
  */
 package top.rxjava.apikit.httl.util;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.*;
@@ -22,6 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -141,7 +143,7 @@ public class ClassUtils {
                     String classN = "." + className;
                     if (pkg.endsWith(classN)) {
                         return _forName(pkg);
-                    } else {
+                    }else{
                         return _forName(pkg + classN);
                     }
                 } catch (ClassNotFoundException e2) {
@@ -210,7 +212,7 @@ public class ClassUtils {
                     sb.append('L').append(name).append(';');
                 name = sb.toString();
             }
-            clazz = Class.forName(name, true, Thread.currentThread().getContextClassLoader());
+            clazz = Class.forName(name, true, getContextClassLoader());
             Class<?> old = CLASS_CACHE.putIfAbsent(key, clazz);
             if (old != null) {
                 clazz = old;
@@ -1023,4 +1025,24 @@ public class ClassUtils {
         return value;
     }
 
+    public static ClassLoader getContextClassLoader() {
+        return Thread.currentThread().getContextClassLoader();
+    }
+
+    public static Collection<URL> getClasspathURLs(ClassLoader contextClassLoader) {
+        List<URL> urls = new ArrayList<URL>();
+        if (contextClassLoader != null) {
+            final Enumeration<URL> resources;
+            try {
+                resources = contextClassLoader.getResources("");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            while (resources.hasMoreElements()) {
+                URL location = resources.nextElement();
+                urls.add(location);
+            }
+        }
+        return urls;
+    }
 }

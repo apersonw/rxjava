@@ -19,39 +19,43 @@ import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.spi.Interceptor;
 import top.rxjava.apikit.httl.spi.Listener;
 import top.rxjava.apikit.httl.spi.resolvers.ServletResolver;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * ServletInterceptor. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setInterceptor(Interceptor)
+ * @see InterpretedTranslator#setInterceptor(Interceptor)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
 public class ServletInterceptor extends FirstInterceptor {
 
-    @Override
-    protected void doRender(Context context, Listener listener)
-            throws IOException, ParseException {
-        if (ServletResolver.getRequest() == null) {
-            Object request = context.get("request");
-            Object response = context.get("response");
-            if (request instanceof HttpServletRequest
-                    && response instanceof HttpServletResponse) {
-                ServletResolver.setRequestAndResponse((HttpServletRequest) request, (HttpServletResponse) response);
-                try {
-                    listener.render(context);
-                } finally {
-                    ServletResolver.removeRequestAndResponse();
-                }
-                return;
-            }
-        }
-        listener.render(context);
-    }
+	@Override
+	protected void doRender(Context context, Listener listener)
+			throws IOException, ParseException {
+		if (ServletResolver.getRequest() == null) {
+			Object request = context.get("request");
+			Object response = context.get("response");
+			if (request instanceof HttpServletRequest
+					&& response instanceof HttpServletResponse) {
+				ServletResolver.setRequestAndResponse((HttpServletRequest) request, (HttpServletResponse) response);
+				try {
+					listener.render(context);
+				} finally {
+					ServletResolver.removeRequestAndResponse();
+				}
+				return;
+			}
+		}
+		listener.render(context);
+	}
 
 }

@@ -16,74 +16,77 @@
 package top.rxjava.apikit.httl.spi.formatters;
 
 import top.rxjava.apikit.httl.spi.Formatter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.UnsupportedEncodingException;
 
 /**
  * Abstract Formatter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setFormatter(Formatter)
+ * @see InterpretedTranslator#setFormatter(Formatter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setFormatter(Formatter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setFormatter(Formatter)
  */
 public abstract class AbstractFormatter<T> implements Formatter<T> {
 
-    protected String outputEncoding;
+	protected String outputEncoding;
 
-    /**
-     * httl.properties: output.encoding=UTF-8
-     */
-    public void setOutputEncoding(String outputEncoding) {
-        this.outputEncoding = outputEncoding;
-    }
+	/**
+	 * httl.properties: output.encoding=UTF-8
+	 */
+	public void setOutputEncoding(String outputEncoding) {
+		this.outputEncoding = outputEncoding;
+	}
 
-    public char[] toChars(String key, T value) { // slowly
-        if (value == null) {
-            return new char[0];
-        }
-        return toChars(toString(key, value));
-    }
+	public char[] toChars(String key, T value) { // slowly
+		if (value == null) {
+			return new char[0];
+		}
+		return toChars(toString(key, value));
+	}
 
-    public byte[] toBytes(String key, T value) { // slowly
-        if (value == null) {
-            return new byte[0];
-        }
-        return toBytes(toString(key, value));
-    }
+	public byte[] toBytes(String key, T value) { // slowly
+		if (value == null) {
+			return new byte[0];
+		}
+		return toBytes(toString(key, value));
+	}
+	
+	protected char[] toChars(String str) {
+		if (str == null) {
+			return new char[0];
+		}
+		return str.toCharArray();
+	}
 
-    protected char[] toChars(String str) {
-        if (str == null) {
-            return new char[0];
-        }
-        return str.toCharArray();
-    }
+	protected byte[] toBytes(String str) {
+		if (str == null) {
+			return new byte[0];
+		}
+		if (outputEncoding == null) {
+			return str.getBytes();
+		}
+		try {
+			return str.getBytes(outputEncoding);
+		} catch (UnsupportedEncodingException e) {
+			return str.getBytes();
+		}
+	}
 
-    protected byte[] toBytes(String str) {
-        if (str == null) {
-            return new byte[0];
-        }
-        if (outputEncoding == null) {
-            return str.getBytes();
-        }
-        try {
-            return str.getBytes(outputEncoding);
-        } catch (UnsupportedEncodingException e) {
-            return str.getBytes();
-        }
-    }
-
-    protected String toString(byte[] str) {
-        if (str == null) {
-            return "";
-        }
-        if (outputEncoding == null) {
-            return new String(str);
-        }
-        try {
-            return new String(str, outputEncoding);
-        } catch (UnsupportedEncodingException e) {
-            return new String(str);
-        }
-    }
+	protected String toString(byte[] str) {
+		if (str == null) {
+			return "";
+		}
+		if (outputEncoding == null) {
+			return new String(str);
+		}
+		try {
+			return new String(str, outputEncoding);
+		} catch (UnsupportedEncodingException e) {
+			return new String(str);
+		}
+	}
 
 }

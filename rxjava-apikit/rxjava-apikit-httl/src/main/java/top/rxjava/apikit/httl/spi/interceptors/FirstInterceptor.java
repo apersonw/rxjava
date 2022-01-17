@@ -18,26 +18,29 @@ package top.rxjava.apikit.httl.spi.interceptors;
 import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.spi.Interceptor;
 import top.rxjava.apikit.httl.spi.Listener;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.text.ParseException;
 
 /**
  * FirstInterceptor. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setInterceptor(Interceptor)
+ * @see InterpretedTranslator#setInterceptor(Interceptor)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
 public abstract class FirstInterceptor extends TemplateInterceptor {
 
-    public void render(Context context, Listener listener)
-            throws IOException, ParseException {
-        if (context.getLevel() > 1) {
-            listener.render(context);
-            return;
-        }
-        super.render(context, listener);
-    }
+	public void render(Context context, Listener listener)
+			throws IOException, ParseException {
+		if (context.getLevel() > 1) { 
+			listener.render(context);
+			return;
+		}
+		super.render(context, listener);
+	}
 
 }

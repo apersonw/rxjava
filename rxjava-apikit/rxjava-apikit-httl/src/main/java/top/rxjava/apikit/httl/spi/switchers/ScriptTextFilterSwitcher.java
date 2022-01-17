@@ -17,21 +17,24 @@ package top.rxjava.apikit.httl.spi.switchers;
 
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.spi.Switcher;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * ScriptTextFilterSwitcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTextFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setTextFilterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTextFilterSwitcher(Switcher)
  */
 public class ScriptTextFilterSwitcher extends ScriptFilterSwitcher {
 
-    /**
-     * httl.properties: script.text.filter=httl.spi.filters.ScriptTextFilter
-     */
-    public void setScriptTextFilter(Filter filter) {
-        setScriptFilter(filter);
-    }
+	/**
+	 * httl.properties: script.text.filter=httl.spi.filters.ScriptTextFilter
+	 */
+	public void setScriptTextFilter(Filter filter) {
+		setScriptFilter(filter);
+	}
 
 }

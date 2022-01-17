@@ -19,64 +19,67 @@ import top.rxjava.apikit.httl.Context;
 import top.rxjava.apikit.httl.spi.Interceptor;
 import top.rxjava.apikit.httl.spi.Listener;
 import top.rxjava.apikit.httl.util.Reqiured;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.text.ParseException;
 
 /**
  * MultiInterceptor. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setInterceptor(Interceptor)
+ * @see InterpretedTranslator#setInterceptor(Interceptor)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
 public class MultiInterceptor implements Interceptor {
 
-    private static final String LISTENER_KEY = "__listener__";
+	private static final String LISTENER_KEY = "__listener__";
 
-    private Listener chain;
+	private Listener chain;
 
-    /**
-     * httl.properties: interceptors=httl.spi.interceptors.ExtendsInterceptor
-     */
-    @Reqiured
-    public void setInterceptors(Interceptor[] interceptors) {
-        Listener last = null;
-        for (int i = interceptors.length - 1; i >= 0; i--) {
-            final Interceptor current = interceptors[i];
-            final Listener next = last;
-            last = new Listener() {
-                public void render(Context context) throws IOException, ParseException {
-                    if (next == null) {
-                        Listener listener = (Listener) context.get(LISTENER_KEY);
-                        if (listener != null) {
-                            current.render(context, listener);
-                        }
-                    } else {
-                        current.render(context, next);
-                    }
-                }
-            };
-        }
-        this.chain = last;
-    }
+	/**
+	 * httl.properties: interceptors=httl.spi.interceptors.ExtendsInterceptor
+	 */
+	@Reqiured
+	public void setInterceptors(Interceptor[] interceptors) {
+		Listener last = null;
+		for (int i = interceptors.length - 1; i >= 0; i--) {
+			final Interceptor current = interceptors[i];
+			final Listener next = last;
+			last = new Listener() {
+				public void render(Context context) throws IOException, ParseException {
+					if (next == null) {
+						Listener listener = (Listener) context.get(LISTENER_KEY);
+						if (listener != null) {
+							current.render(context, listener);
+						}
+					} else {
+						current.render(context, next);
+					}
+				}
+			};
+		}
+		this.chain = last;
+	}
 
-    public void render(Context context, Listener listener)
-            throws IOException, ParseException {
-        if (chain != null) {
-            Object old = context.put(LISTENER_KEY, listener);
-            try {
-                chain.render(context);
-            } finally {
-                if (old != null) {
-                    context.put(LISTENER_KEY, old);
-                } else {
-                    context.remove(LISTENER_KEY);
-                }
-            }
-        } else {
-            listener.render(context);
-        }
-    }
+	public void render(Context context, Listener listener)
+			throws IOException, ParseException {
+		if (chain != null) {
+			Object old = context.put(LISTENER_KEY, listener);
+			try {
+				chain.render(context);
+			} finally {
+				if ( old != null) {
+					context.put(LISTENER_KEY, old);
+				} else {
+					context.remove(LISTENER_KEY);
+				}
+			}
+		} else {
+			listener.render(context);
+		}
+	}
 
 }

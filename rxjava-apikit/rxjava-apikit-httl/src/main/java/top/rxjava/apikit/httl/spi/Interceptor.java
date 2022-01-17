@@ -16,27 +16,30 @@
 package top.rxjava.apikit.httl.spi;
 
 import top.rxjava.apikit.httl.Context;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.text.ParseException;
 
 /**
  * Render Interceptor. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setInterceptor(Interceptor)
+ * @see InterpretedTranslator#setInterceptor(Interceptor)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setInterceptor(Interceptor)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setInterceptor(Interceptor)
  */
 public interface Interceptor {
 
-    /**
-     * Intercept the template rendition.
-     *
-     * @param context  - render context
-     * @param listener - render listener.
-     * @throws IOException    - If an I/O error occurs
-     * @throws ParseException - If the template cannot be parsed on runtime
-     */
-    void render(Context context, Listener listener) throws IOException, ParseException;
+	/**
+	 * Intercept the template rendition.
+	 * 
+	 * @param context - render context
+	 * @param listener - render listener.
+	 * @throws IOException - If an I/O error occurs
+	 * @throws ParseException - If the template cannot be parsed on runtime
+	 */
+	void render(Context context, Listener listener) throws IOException, ParseException;
 
 }

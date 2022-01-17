@@ -21,26 +21,27 @@ import top.rxjava.apikit.httl.spi.filters.AttributeSyntaxFilter;
 
 /**
  * AttributeParser. (SPI, Singleton, ThreadSafe)
- *
- * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.filters.AttributeSyntaxFilter
+ * 
  * @deprecated Replace to: template.filter=<code>httl.spi.filters.AttributeSyntaxFilter</code>
+ * @see AttributeSyntaxFilter
+ * 
+ * @author Liang Fei (liangfei0201 AT gmail DOT com)
  */
 @Deprecated
 public class AttributeParser extends TemplateParser {
 
-    private Engine engine;
+	private Engine engine;
 
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
 
-    @Override
-    public void init() {
-        if (engine instanceof DefaultEngine) {
-            ((DefaultEngine) engine).setTemplateFilter(new AttributeSyntaxFilter());
-        }
-        super.init();
-    }
+	@Override
+	public void init() {
+		if (engine instanceof DefaultEngine) {
+			((DefaultEngine) engine).setTemplateFilter(new AttributeSyntaxFilter());
+		}
+		super.init();
+	}
 
 }

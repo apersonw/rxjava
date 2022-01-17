@@ -15,16 +15,46 @@
  */
 package top.rxjava.apikit.httl.ast;
 
+import top.rxjava.apikit.httl.Node;
+import top.rxjava.apikit.httl.Visitor;
+import top.rxjava.apikit.httl.spi.parsers.ExpressionParser;
+
+import java.io.IOException;
+import java.text.ParseException;
+
 /**
  * Expression. (API, Prototype, Immutable, ThreadSafe)
- *
+ * 
+ * @see ExpressionParser#parse(String, int)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.parsers.ExpressionParser#parse(String, int)
  */
-public abstract class Expression extends AbstractNode {
+public abstract class Expression implements Node {
 
-    public Expression(int offset) {
-        super(offset);
-    }
+	private final int offset;
+	
+	private Expression parent;
+
+	public Expression(int offset) {
+		this.offset = offset;
+	}
+
+	public void accept(Visitor visitor) throws IOException, ParseException {
+		visitor.visit(this);
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public Expression getParent() {
+		return parent;
+	}
+
+	public void setParent(Expression parent) {
+		if (this.parent != null)
+			throw new IllegalStateException("Can not modify parent.");
+		this.parent = parent;
+	}
 
 }

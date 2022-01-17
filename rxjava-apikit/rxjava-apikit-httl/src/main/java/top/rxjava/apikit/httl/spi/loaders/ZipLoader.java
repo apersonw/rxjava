@@ -17,6 +17,7 @@ package top.rxjava.apikit.httl.spi.loaders;
 
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 import top.rxjava.apikit.httl.spi.loaders.resources.ZipResource;
 import top.rxjava.apikit.httl.util.UrlUtils;
 
@@ -28,48 +29,49 @@ import java.util.zip.ZipFile;
 
 /**
  * ZipLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public class ZipLoader extends AbstractLoader {
+	
+	private File file;
+	
+	public void setTemplateDirectory(String directory) {
+		file = new File(directory);
+	}
+	
+	private File getAndCheckFile() {
+		if (file == null) {
+			throw new IllegalStateException("zip loader file == null. Please add config in your httl.properties: template.directory=foo.zip");
+		}
+		return file;
+	}
+	
+	protected List<String> doList(String directory, String suffix) throws IOException {
+		ZipFile zipFile = new ZipFile(getAndCheckFile());
+		try {
+			return UrlUtils.listZip(zipFile, suffix);
+		} finally {
+			zipFile.close();
+		}
+	}
+	
+	public Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
+		return new ZipResource(getEngine(), name, locale, encoding, getAndCheckFile());
+	}
 
-    private File file;
-
-    public void setTemplateDirectory(String directory) {
-        file = new File(directory);
-    }
-
-    private File getAndCheckFile() {
-        if (file == null) {
-            throw new IllegalStateException("zip loader file == null. Please add config in your httl.properties: template.directory=foo.zip");
-        }
-        return file;
-    }
-
-    protected List<String> doList(String directory, String suffix) throws IOException {
-        ZipFile zipFile = new ZipFile(getAndCheckFile());
-        try {
-            return UrlUtils.listZip(zipFile, suffix);
-        } finally {
-            zipFile.close();
-        }
-    }
-
-    public Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
-        return new ZipResource(getEngine(), name, locale, encoding, getAndCheckFile());
-    }
-
-    public boolean doExists(String name, Locale locale, String path) throws IOException {
-        if (file != null && file.exists()) {
-            ZipFile zipFile = new ZipFile(file);
-            try {
-                return zipFile.getEntry(name) != null;
-            } finally {
-                zipFile.close();
-            }
-        }
-        return false;
-    }
+	public boolean doExists(String name, Locale locale, String path) throws IOException {
+		if (file != null && file.exists()) {
+			ZipFile zipFile = new ZipFile(file);
+			try {
+				return zipFile.getEntry(name) != null;
+			} finally {
+				zipFile.close();
+			}
+		}
+		return false;
+	}
 
 }

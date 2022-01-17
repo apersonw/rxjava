@@ -15,22 +15,25 @@
  */
 package top.rxjava.apikit.httl.spi;
 
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+
 import java.text.ParseException;
 
 /**
  * Java Compiler. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setCompiler(Compiler)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setCompiler(Compiler)
  */
 public interface Compiler {
 
-    /**
-     * Compile java source code.
-     *
-     * @param code - java source code
-     * @return compiled java class
-     */
-    Class<?> compile(String code) throws ParseException;
+	/**
+	 * Compile java source code.
+	 * 
+	 * @param code - java source code
+	 * @return compiled java class
+	 */
+	Class<?> compile(String code) throws ParseException;
 
 }

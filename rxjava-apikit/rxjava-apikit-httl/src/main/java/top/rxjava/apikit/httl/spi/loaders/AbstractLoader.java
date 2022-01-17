@@ -19,6 +19,7 @@ import top.rxjava.apikit.httl.Engine;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
 import top.rxjava.apikit.httl.spi.Logger;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 import top.rxjava.apikit.httl.spi.loaders.resources.InputStreamResource;
 import top.rxjava.apikit.httl.util.CollectionUtils;
 import top.rxjava.apikit.httl.util.LocaleUtils;
@@ -34,226 +35,227 @@ import java.util.Locale;
 
 /**
  * AbstractLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public abstract class AbstractLoader implements Loader {
+	
+	private Engine engine;
 
-    private Engine engine;
+	private Logger logger;
+	
+	private String encoding;
 
-    private Logger logger;
+	private boolean reloadable;
 
-    private String encoding;
+	private volatile boolean first = true;
 
-    private boolean reloadable;
+	private String[] templateDirectory;
 
-    private volatile boolean first = true;
+	private String[] templateSuffix;
 
-    private String[] templateDirectory;
+	private String[] messageDirectory;
 
-    private String[] templateSuffix;
+	private String messageBasename;
 
-    private String[] messageDirectory;
+	private String[] messageSuffix;
 
-    private String messageBasename;
+	/**
+	 * httl.properties: template.directory=/META-INF/templates
+	 */
+	public void setTemplateDirectory(String[] directory) {
+		this.templateDirectory = UrlUtils.cleanDirectory(directory);
+	}
 
-    private String[] messageSuffix;
+	/**
+	 * httl.properties: template.suffix=.httl
+	 */
+	public void setTemplateSuffix(String[] suffix) {
+		this.templateSuffix = suffix;
+	}
 
-    /**
-     * httl.properties: template.directory=/META-INF/templates
-     */
-    public void setTemplateDirectory(String[] directory) {
-        this.templateDirectory = UrlUtils.cleanDirectory(directory);
-    }
+	/**
+	 * httl.properties: message.directory=/META-INF/messages
+	 */
+	public void setMessageDirectory(String[] directory) {
+		this.messageDirectory = UrlUtils.cleanDirectory(directory);
+	}
 
-    /**
-     * httl.properties: template.suffix=.httl
-     */
-    public void setTemplateSuffix(String[] suffix) {
-        this.templateSuffix = suffix;
-    }
+	/**
+	 * httl.properties: message.basename=messages
+	 */
+	public void setMessageBasename(String messageBasename) {
+		this.messageBasename = UrlUtils.cleanName(messageBasename);
+	}
 
-    /**
-     * httl.properties: message.directory=/META-INF/messages
-     */
-    public void setMessageDirectory(String[] directory) {
-        this.messageDirectory = UrlUtils.cleanDirectory(directory);
-    }
+	/**
+	 * httl.properties: message.suffix=.properties
+	 */
+	public void setMessageSuffix(String[] suffix) {
+		this.messageSuffix = suffix;
+	}
 
-    /**
-     * httl.properties: message.basename=messages
-     */
-    public void setMessageBasename(String messageBasename) {
-        this.messageBasename = UrlUtils.cleanName(messageBasename);
-    }
+	/**
+	 * httl.properties: engine=httl.spi.engines.DefaultEngine
+	 */
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
 
-    /**
-     * httl.properties: message.suffix=.properties
-     */
-    public void setMessageSuffix(String[] suffix) {
-        this.messageSuffix = suffix;
-    }
+	/**
+	 * httl.properties: loggers=httl.spi.loggers.Log4jLogger
+	 */
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
 
-    /**
-     * httl.properties: reloadable=true
-     */
-    public void setReloadable(boolean reloadable) {
-        this.reloadable = reloadable;
-    }
+	/**
+	 * httl.properties: reloadable=true
+	 */
+	public void setReloadable(boolean reloadable) {
+		this.reloadable = reloadable;
+	}
 
-    /**
-     * httl.properties: input.encoding=UTF-8
-     */
-    public void setInputEncoding(String encoding) {
-        if (StringUtils.isNotEmpty(encoding)) {
-            Charset.forName(encoding);
-            this.encoding = encoding;
-        }
-    }
+	/**
+	 * httl.properties: input.encoding=UTF-8
+	 */
+	public void setInputEncoding(String encoding) {
+		if (StringUtils.isNotEmpty(encoding)) {
+			Charset.forName(encoding);
+			this.encoding = encoding;
+		}
+	}
 
-    protected Engine getEngine() {
-        return engine;
-    }
+	protected Engine getEngine() {
+		return engine;
+	}
 
-    /**
-     * httl.properties: engine=httl.spi.engines.DefaultEngine
-     */
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
+	protected Logger getLogger() {
+		return logger;
+	}
 
-    protected Logger getLogger() {
-        return logger;
-    }
+	protected String getEncoding() {
+		return encoding;
+	}
 
-    /**
-     * httl.properties: loggers=httl.spi.loggers.Log4jLogger
-     */
-    public void setLogger(Logger logger) {
-        this.logger = logger;
-    }
+	protected String relocate(String name, Locale locale, String[] directories) {
+		if (CollectionUtils.isNotEmpty(directories) ) {
+			for (String directory : directories) {
+				try {
+					if (doExists(name, locale, directory + name)) {
+						return name = directory + name;
+					}
+				} catch (IOException e) {
+					continue;
+				}
+			}
+			return directories[0] + name;
+		}
+		return name;
+	}
 
-    protected String getEncoding() {
-        return encoding;
-    }
+	protected String toPath(String name, Locale locale) {
+		if (StringUtils.endsWith(name, templateSuffix)) {
+			name = relocate(name, locale, templateDirectory);
+		} else if (StringUtils.isNotEmpty(messageBasename) 
+				&& name.startsWith(messageBasename)
+				&& StringUtils.endsWith(name, messageSuffix)) {
+			name = relocate(name, locale, messageDirectory);
+		}
+		return LocaleUtils.appendLocale(name, locale);
+	}
 
-    protected String relocate(String name, Locale locale, String[] directories) {
-        if (CollectionUtils.isNotEmpty(directories)) {
-            for (String directory : directories) {
-                try {
-                    if (doExists(name, locale, directory + name)) {
-                        return name = directory + name;
-                    }
-                } catch (IOException e) {
-                    continue;
-                }
-            }
-            return directories[0] + name;
-        }
-        return name;
-    }
+	public List<String> list(String suffix) throws IOException {
+		String[] directories;
+		if (StringUtils.endsWith(suffix, templateSuffix)) {
+			directories = templateDirectory;
+		} else if (StringUtils.endsWith(suffix, messageSuffix)) {
+			directories = messageDirectory;
+		} else {
+			directories = null;
+		}
+		if (CollectionUtils.isEmpty(directories)) {
+			directories = new String[] { "/" };
+		}
+		List<String> result = new ArrayList<String>();
+		for (String directory : directories) {
+			List<String> list = doList(directory, suffix);
+			if (CollectionUtils.isNotEmpty(list)) {
+				for (String name : list) {
+					if (StringUtils.isNotEmpty(name)) {
+						result.add(UrlUtils.cleanName(name));
+					}
+				}
+			}
+		}
+		return result;
+	}
 
-    protected String toPath(String name, Locale locale) {
-        if (StringUtils.endsWith(name, templateSuffix)) {
-            name = relocate(name, locale, templateDirectory);
-        } else if (StringUtils.isNotEmpty(messageBasename)
-                && name.startsWith(messageBasename)
-                && StringUtils.endsWith(name, messageSuffix)) {
-            name = relocate(name, locale, messageDirectory);
-        }
-        return LocaleUtils.appendLocale(name, locale);
-    }
+	public boolean exists(String name, Locale locale) {
+		Locale cur = locale;
+		while (cur != null) {
+			if (_exists(name, locale, toPath(name, cur))) {
+				return true;
+			}
+			cur = LocaleUtils.getParentLocale(cur);
+		}
+		return _exists(name, locale, toPath(name, null));
+	}
 
-    public List<String> list(String suffix) throws IOException {
-        String[] directories;
-        if (StringUtils.endsWith(suffix, templateSuffix)) {
-            directories = templateDirectory;
-        } else if (StringUtils.endsWith(suffix, messageSuffix)) {
-            directories = messageDirectory;
-        } else {
-            directories = null;
-        }
-        if (CollectionUtils.isEmpty(directories)) {
-            directories = new String[]{"/"};
-        }
-        List<String> result = new ArrayList<String>();
-        for (String directory : directories) {
-            List<String> list = doList(directory, suffix);
-            if (CollectionUtils.isNotEmpty(list)) {
-                for (String name : list) {
-                    if (StringUtils.isNotEmpty(name)) {
-                        result.add(UrlUtils.cleanName(name));
-                    }
-                }
-            }
-        }
-        return result;
-    }
+	private boolean _exists(String name, Locale locale, String path) {
+		try {
+			return doExists(name, locale, path);
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
-    public boolean exists(String name, Locale locale) {
-        Locale cur = locale;
-        while (cur != null) {
-            if (_exists(name, locale, toPath(name, cur))) {
-                return true;
-            }
-            cur = LocaleUtils.getParentLocale(cur);
-        }
-        return _exists(name, locale, toPath(name, null));
-    }
+	public Resource load(String name, Locale locale, String encoding) throws IOException {
+		if (StringUtils.isEmpty(encoding)) {
+			encoding = this.encoding;
+		}
+		Locale cur = locale;
+		String path = toPath(name, cur);
+		while (cur != null && ! _exists(name, locale, path)) {
+			cur = LocaleUtils.getParentLocale(cur);
+			path = toPath(name, cur);
+		}
+		Resource resource = doLoad(name, locale, encoding, path);
+		logResourceDirectory(resource);
+		return resource;
+	}
+	
+	private void logResourceDirectory(Resource resource) {
+		if (first) {
+			first = false;
+			if (logger != null && logger.isInfoEnabled()
+					&& resource instanceof InputStreamResource) {
+				File file = ((InputStreamResource) resource).getFile();
+				if (file != null && file.exists()) {
+					String uri = resource.getName().replace('\\', '/');
+					String abs = file.getAbsolutePath().replace('\\', '/');
+					if (abs.endsWith(uri)) {
+						abs = abs.substring(0, abs.length() - uri.length());
+					} else {
+						int i = abs.lastIndexOf('/');
+						if (i > 0) {
+							abs = abs.substring(0, i);
+						} else {
+							abs = "/";
+						}
+					}
+					logger.info("Load httl template from" + (reloadable ? " RELOADABLE" : "") + " directory " + abs + " by " + getClass().getSimpleName() + ".");
+				}
+			}
+		}
+	}
 
-    private boolean _exists(String name, Locale locale, String path) {
-        try {
-            return doExists(name, locale, path);
-        } catch (Exception e) {
-            return false;
-        }
-    }
+	protected abstract List<String> doList(String directory, String suffix) throws IOException;
 
-    public Resource load(String name, Locale locale, String encoding) throws IOException {
-        if (StringUtils.isEmpty(encoding)) {
-            encoding = this.encoding;
-        }
-        Locale cur = locale;
-        String path = toPath(name, cur);
-        while (cur != null && !_exists(name, locale, path)) {
-            cur = LocaleUtils.getParentLocale(cur);
-            path = toPath(name, cur);
-        }
-        Resource resource = doLoad(name, locale, encoding, path);
-        logResourceDirectory(resource);
-        return resource;
-    }
+	protected abstract boolean doExists(String name, Locale locale, String path) throws IOException;
 
-    private void logResourceDirectory(Resource resource) {
-        if (first) {
-            first = false;
-            if (logger != null && logger.isInfoEnabled()
-                    && resource instanceof InputStreamResource) {
-                File file = ((InputStreamResource) resource).getFile();
-                if (file != null && file.exists()) {
-                    String uri = resource.getName().replace('\\', '/');
-                    String abs = file.getAbsolutePath().replace('\\', '/');
-                    if (abs.endsWith(uri)) {
-                        abs = abs.substring(0, abs.length() - uri.length());
-                    } else {
-                        int i = abs.lastIndexOf('/');
-                        if (i > 0) {
-                            abs = abs.substring(0, i);
-                        } else {
-                            abs = "/";
-                        }
-                    }
-                    logger.info("Load httl template from" + (reloadable ? " RELOADABLE" : "") + " directory " + abs + " by " + getClass().getSimpleName() + ".");
-                }
-            }
-        }
-    }
-
-    protected abstract List<String> doList(String directory, String suffix) throws IOException;
-
-    protected abstract boolean doExists(String name, Locale locale, String path) throws IOException;
-
-    protected abstract Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException;
+	protected abstract Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException;
 
 }

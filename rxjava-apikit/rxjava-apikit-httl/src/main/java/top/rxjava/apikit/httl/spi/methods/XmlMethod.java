@@ -19,28 +19,28 @@ import java.text.ParseException;
 
 /**
  * XmlMethod. (SPI, Singleton, ThreadSafe)
- *
- * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.methods.CodecMethod
+ * 
  * @deprecated Replace to <code>CodecMethod</code>
+ * @see CodecMethod
+ * @author Liang Fei (liangfei0201 AT gmail DOT com)
  */
 @Deprecated
 public class XmlMethod extends CodecMethod {
 
-    public String toXml(Object object) {
-        return super.encodeXml(object);
-    }
+	public String toXml(Object object) {
+		return super.encodeXml(object);
+	}
 
-    public Object parseXml(String xml) throws ParseException {
-        return super.decodeXml(xml);
-    }
+	public Object parseXml(String xml) throws ParseException {
+		return super.decodeXml(xml);
+	}
 
-    public <T> T parseXml(String xml, Class<T> cls) throws ParseException {
-        return super.decodeXml(xml, cls);
-    }
+	public <T> T parseXml(String xml, Class<T> cls) throws ParseException {
+		return super.decodeXml(xml, cls);
+	}
 
-    public Object parseXml(String xml, String cls) throws ParseException {
-        return super.decodeXml(xml, cls);
-    }
+	public Object parseXml(String xml, String cls) throws ParseException {
+		return super.decodeXml(xml, cls);
+	}
 
 }

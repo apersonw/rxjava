@@ -30,9 +30,10 @@ package top.rxjava.apikit.httl.spi.converters;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import top.rxjava.apikit.httl.spi.Converter;
 import top.rxjava.apikit.httl.util.CollectionUtils;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -40,16 +41,17 @@ import java.util.Map;
 
 /**
  * ArrayMapConverter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setMapConverter(Converter)
+ * @see InterpretedTranslator#setMapConverter(Converter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setMapConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setMapConverter(Converter)
  */
 public class ArrayMapConverter implements Converter<Object[], Map<String, Object>> {
 
-    public Map<String, Object> convert(Object[] values, Map<String, Class<?>> types)
-            throws IOException, ParseException {
-        return CollectionUtils.toMap(types.keySet(), values);
-    }
+	public Map<String, Object> convert(Object[] values, Map<String, Class<?>> types)
+			throws IOException, ParseException {
+		return CollectionUtils.toMap(types.keySet(), values);
+	}
 
 }

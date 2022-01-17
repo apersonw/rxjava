@@ -17,6 +17,8 @@ package top.rxjava.apikit.httl.spi.converters;
 
 import top.rxjava.apikit.httl.spi.Converter;
 import top.rxjava.apikit.httl.util.UnsafeStringWriter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -25,15 +27,16 @@ import java.util.Map;
 
 /**
  * StringBuilderOutConverter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setOutConverter(Converter)
+ * @see InterpretedTranslator#setOutConverter(Converter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setOutConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setOutConverter(Converter)
  */
 public class StringBuilderOutConverter implements Converter<StringBuilder, Writer> {
 
-    public Writer convert(StringBuilder value, Map<String, Class<?>> types) throws IOException, ParseException {
-        return new UnsafeStringWriter(value);
-    }
+	public Writer convert(StringBuilder value, Map<String, Class<?>> types) throws IOException, ParseException {
+		return new UnsafeStringWriter(value);
+	}
 
 }

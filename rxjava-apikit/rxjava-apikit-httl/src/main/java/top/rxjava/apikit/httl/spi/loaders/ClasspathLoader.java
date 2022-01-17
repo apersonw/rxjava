@@ -17,6 +17,7 @@ package top.rxjava.apikit.httl.spi.loaders;
 
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 import top.rxjava.apikit.httl.spi.loaders.resources.ClasspathResource;
 import top.rxjava.apikit.httl.util.UrlUtils;
 
@@ -26,26 +27,27 @@ import java.util.Locale;
 
 /**
  * ClasspathLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public class ClasspathLoader extends AbstractLoader {
 
-    public List<String> doList(String directory, String suffix) throws IOException {
-        return UrlUtils.listUrl(Thread.currentThread().getContextClassLoader().getResource(cleanPath(directory)), suffix);
-    }
+	public List<String> doList(String directory, String suffix) throws IOException {
+		return UrlUtils.listUrl(Thread.currentThread().getContextClassLoader().getResource(cleanPath(directory)), suffix);
+	}
+	
+	protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
+		return new ClasspathResource(getEngine(), name, encoding, cleanPath(path), locale);
+	}
 
-    protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
-        return new ClasspathResource(getEngine(), name, locale, encoding, cleanPath(path));
-    }
-
-    public boolean doExists(String name, Locale locale, String path) throws IOException {
-        return Thread.currentThread().getContextClassLoader().getResource(cleanPath(path)) != null;
-    }
-
-    private String cleanPath(String path) {
-        return path.startsWith("/") ? path.substring(1) : path;
-    }
+	public boolean doExists(String name, Locale locale, String path) throws IOException {
+		return Thread.currentThread().getContextClassLoader().getResource(cleanPath(path)) != null;
+	}
+	
+	private String cleanPath(String path) {
+		return path.startsWith("/") ? path.substring(1) : path;
+	}
 
 }

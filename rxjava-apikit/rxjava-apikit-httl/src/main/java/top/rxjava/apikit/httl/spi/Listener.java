@@ -16,27 +16,29 @@
 package top.rxjava.apikit.httl.spi;
 
 import top.rxjava.apikit.httl.Context;
+import top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor;
 
 import java.io.IOException;
 import java.text.ParseException;
 
 /**
  * Render Listener. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see Interceptor#render(Context, Listener)
+ * @see ListenerInterceptor#setBeforeListener(Listener)
+ * @see ListenerInterceptor#setAfterListener(Listener)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.Interceptor#render(Context, Listener)
- * @see top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor#setBeforeListener(Listener)
- * @see top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor#setAfterListener(Listener)
  */
 public interface Listener {
 
-    /**
-     * On template render.
-     *
-     * @param context - render context
-     * @throws IOException    - If an I/O error occurs
-     * @throws ParseException - If the template cannot be parsed on runtime
-     */
-    void render(Context context) throws IOException, ParseException;
+	/**
+	 * On template render.
+	 * 
+	 * @param context - render context
+	 * @throws IOException - If an I/O error occurs
+	 * @throws ParseException - If the template cannot be parsed on runtime
+	 */
+	void render(Context context) throws IOException, ParseException;
 
 }

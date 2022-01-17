@@ -18,22 +18,25 @@ package top.rxjava.apikit.httl.spi.switchers;
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.spi.Switcher;
 import top.rxjava.apikit.httl.util.Reqiured;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiTextFilterSwitcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTextFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setTextFilterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTextFilterSwitcher(Switcher)
  */
 public class MultiTextFilterSwitcher extends MultiSwitcher<Filter> {
 
-    /**
-     * httl.properties: text.filter.switchers=httl.spi.switchers.JavascriptFilterSwitcher
-     */
-    @Reqiured
-    public void setTextFilterSwitchers(Switcher<Filter>[] switchers) {
-        setSwitchers(switchers);
-    }
+	/**
+	 * httl.properties: text.filter.switchers=httl.spi.switchers.JavascriptFilterSwitcher
+	 */
+	@Reqiured
+	public void setTextFilterSwitchers(Switcher<Filter>[] switchers) {
+		setSwitchers(switchers);
+	}
 
 }

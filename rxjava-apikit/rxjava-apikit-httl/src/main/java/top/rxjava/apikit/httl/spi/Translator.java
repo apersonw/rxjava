@@ -18,6 +18,7 @@ package top.rxjava.apikit.httl.spi;
 import top.rxjava.apikit.httl.Node;
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.Template;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -25,20 +26,21 @@ import java.util.Map;
 
 /**
  * Template Translator. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setTranslator(Translator)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setTranslator(Translator)
  */
 public interface Translator {
 
-    /**
-     * Translate the resource to template.
-     *
-     * @param resource - template resource
-     * @param root     - template root node
-     * @param types    - template parameter types
-     * @return template instance
-     */
-    Template translate(Resource resource, Node root, Map<String, Class<?>> types) throws ParseException, IOException;
+	/**
+	 * Translate the resource to template.
+	 * 
+	 * @param resource - template resource
+	 * @param root - template root node
+	 * @param types - template parameter types
+	 * @return template instance
+	 */
+	Template translate(Resource resource, Node root, Map<String, Class<?>> types) throws ParseException, IOException;
 
 }

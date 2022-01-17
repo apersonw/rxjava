@@ -15,138 +15,150 @@
  */
 package top.rxjava.apikit.httl;
 
+import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.Translator;
+
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Template. (API, Prototype, Immutable, ThreadSafe)
- * <p/>
+ * 
  * <pre>
  * Engine engine = Engine.getEngine();
  * Template template = engine.getTemplate("/foo.httl");
  * </pre>
- *
+ * 
+ * @see Engine#getTemplate(String)
+ * @see Engine#getTemplate(String, String)
+ * @see Context#getTemplate()
+ * @see Translator#translate(Resource, Node, java.util.Map)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.Engine#getTemplate(String)
- * @see top.rxjava.apikit.httl.Engine#getTemplate(String, String)
- * @see top.rxjava.apikit.httl.Context#getTemplate()
- * @see top.rxjava.apikit.httl.spi.Translator#translate(Resource, Node, java.util.Map)
  */
 public interface Template extends Node, Resource {
 
-    /**
-     * Render the template to output stream.
-     * <p/>
-     * <pre>
-     * Writer/OutputStream out = ...;
-     * Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
-     * map.put("foo", foo);
-     * template.render(map, out);
-     * </pre>
-     *
-     * @param map - render variables map
-     * @param out - render output
-     * @throws IOException    - If an I/O error occurs
-     * @throws ParseException - If the template cannot be parsed on runtime
-     * @see top.rxjava.apikit.httl.Context
-     * @see top.rxjava.apikit.httl.spi.Converter
-     */
-    void render(Object map, Object out) throws IOException, ParseException;
+	/**
+	 * Render the template to output stream.
+	 * 
+	 * <pre>
+	 * Writer/OutputStream out = ...;
+	 * Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+	 * map.put("foo", foo);
+	 * template.render(map, out);
+	 * </pre>
+	 * 
+	 * @see Context
+	 * @see Converter
+	 * @param map - render variables map
+	 * @param out - render output
+	 * @throws IOException - If an I/O error occurs
+	 * @throws ParseException - If the template cannot be parsed on runtime
+	 */
+	void render(Object map, Object out) throws IOException, ParseException;
 
-    /**
-     * Render the template to output stream.
-     * <p/>
-     * <pre>
-     * Writer/OutputStream out = ...;
-     * Context context = Context.getContext();
-     * context.put("foo", foo);
-     * template.render(out);
-     * </pre>
-     *
-     * @param out - render output
-     * @throws IOException    - If an I/O error occurs
-     * @throws ParseException - If the template cannot be parsed on runtime
-     * @see top.rxjava.apikit.httl.Context
-     * @see top.rxjava.apikit.httl.spi.Converter
-     */
-    void render(Object out) throws IOException, ParseException;
+	/**
+	 * Render the template to output stream.
+	 * 
+	 * <pre>
+	 * Writer/OutputStream out = ...;
+	 * Context context = Context.getContext();
+	 * context.put("foo", foo);
+	 * template.render(out);
+	 * </pre>
+	 * 
+	 * @see Context
+	 * @see Converter
+	 * @param out - render output
+	 * @throws IOException - If an I/O error occurs
+	 * @throws ParseException - If the template cannot be parsed on runtime
+	 */
+	void render(Object out) throws IOException, ParseException;
 
-    /**
-     * Render the template to output stream.
-     * <p/>
-     * <pre>
-     * Writer/OutputStream out = ...;
-     * Context context = Context.getContext();
-     * context.put("foo", foo);
-     * context.setOut(out);
-     * template.render();
-     * </pre>
-     *
-     * @throws IOException    - If an I/O error occurs
-     * @throws ParseException - If the template cannot be parsed on runtime
-     * @see top.rxjava.apikit.httl.Context
-     */
-    void render() throws IOException, ParseException;
+	/**
+	 * Render the template to output stream.
+	 * 
+	 * <pre>
+	 * Writer/OutputStream out = ...;
+	 * Context context = Context.getContext();
+	 * context.put("foo", foo);
+	 * context.setOut(out);
+	 * template.render();
+	 * </pre>
+	 * 
+	 * @see Context
+	 * @throws IOException - If an I/O error occurs
+	 * @throws ParseException - If the template cannot be parsed on runtime
+	 */
+	void render() throws IOException, ParseException;
 
-    /**
-     * Evaluate the template.
-     * <p/>
-     * <pre>
-     * Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
-     * map.put("foo", foo);
-     * Object result = template.evaluate(map);
-     * </pre>
-     *
-     * @param map - evaluate variables map
-     * @return evaluate result (string or byte[])
-     * @throws ParseException - If the expression cannot be parsed on runtime
-     * @see top.rxjava.apikit.httl.Context
-     * @see top.rxjava.apikit.httl.spi.Converter
-     */
-    Object evaluate(Object map) throws ParseException;
+	/**
+	 * Evaluate the template.
+	 * 
+	 * <pre>
+	 * Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+	 * map.put("foo", foo);
+	 * Object result = template.evaluate(map);
+	 * </pre>
+	 * 
+	 * @see Context
+	 * @see Converter
+	 * @param map - evaluate variables map
+	 * @return evaluate result (string or byte[])
+	 * @throws ParseException - If the expression cannot be parsed on runtime
+	 */
+	Object evaluate(Object map) throws ParseException;
 
-    /**
-     * Evaluate the template.
-     * <p/>
-     * <pre>
-     * Context context = Context.getContext();
-     * context.put("foo", foo);
-     * Object result = template.evaluate();
-     * </pre>
-     *
-     * @return evaluate result (string or byte[])
-     * @throws ParseException - If the expression cannot be parsed on runtime
-     * @see top.rxjava.apikit.httl.Context
-     */
-    Object evaluate() throws ParseException;
+	/**
+	 * Evaluate the template.
+	 * 
+	 * <pre>
+	 * Context context = Context.getContext();
+	 * context.put("foo", foo);
+	 * Object result = template.evaluate();
+	 * </pre>
+	 * 
+	 * @see Context
+	 * @return evaluate result (string or byte[])
+	 * @throws ParseException - If the expression cannot be parsed on runtime
+	 */
+	Object evaluate() throws ParseException;
 
-    /**
-     * Get the macro parent template.
-     *
-     * @return parent template
-     */
-    Template getParent();
+	/**
+	 * Get the macro parent template.
+	 * 
+	 * @return parent template
+	 */
+	Template getParent();
 
-    /**
-     * Get the template variables. (Ordered)
-     *
-     * @return variable types
-     */
-    Map<String, Class<?>> getVariables();
+	/**
+	 * Get the template children nodes.
+	 * 
+	 * @return children nodes
+	 */
+	List<Node> getChildren();
 
-    /**
-     * Get the macro templates.
-     *
-     * @return macro templates
-     */
-    Map<String, Template> getMacros();
+	/**
+	 * Get the template variables. (Ordered)
+	 * 
+	 * @return variable types
+	 */
+	Map<String, Class<?>> getVariables();
 
-    /**
-     * Get the template macro flag.
-     *
-     * @return true - if this template is a macro.
-     */
-    boolean isMacro();
+	/**
+	 * Get the macro templates.
+	 * 
+	 * @return macro templates
+	 */
+	Map<String, Template> getMacros();
+
+	/**
+	 * Get the template macro flag.
+	 * 
+	 * @return true - if this template is a macro.
+	 */
+	boolean isMacro();
 
 }

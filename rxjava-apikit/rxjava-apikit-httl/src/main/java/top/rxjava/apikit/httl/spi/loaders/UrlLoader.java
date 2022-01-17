@@ -17,6 +17,7 @@ package top.rxjava.apikit.httl.spi.loaders;
 
 import top.rxjava.apikit.httl.Resource;
 import top.rxjava.apikit.httl.spi.Loader;
+import top.rxjava.apikit.httl.spi.engines.DefaultEngine;
 import top.rxjava.apikit.httl.spi.loaders.resources.UrlResource;
 import top.rxjava.apikit.httl.util.UrlUtils;
 
@@ -28,32 +29,33 @@ import java.util.Locale;
 
 /**
  * UrlLoader. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see DefaultEngine#setLoader(Loader)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.engines.DefaultEngine#setLoader(Loader)
  */
 public class UrlLoader extends AbstractLoader {
+	
+	public List<String> doList(String directory, String suffix) throws IOException {
+		return UrlUtils.listUrl(new URL(cleanPath(directory)), suffix);
+	}
+	
+	protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
+		return new UrlResource(getEngine(), name, locale, encoding, cleanPath(path));
+	}
 
-    public List<String> doList(String directory, String suffix) throws IOException {
-        return UrlUtils.listUrl(new URL(cleanPath(directory)), suffix);
-    }
+	public boolean doExists(String name, Locale locale, String path) throws IOException {
+		InputStream in = new URL(cleanPath(path)).openStream();
+		try {
+			return in != null;
+		} finally {
+			if (in != null)
+				in.close();
+		}
+	}
 
-    protected Resource doLoad(String name, Locale locale, String encoding, String path) throws IOException {
-        return new UrlResource(getEngine(), name, locale, encoding, cleanPath(path));
-    }
-
-    public boolean doExists(String name, Locale locale, String path) throws IOException {
-        InputStream in = new URL(cleanPath(path)).openStream();
-        try {
-            return in != null;
-        } finally {
-            if (in != null)
-                in.close();
-        }
-    }
-
-    private String cleanPath(String path) {
-        return path.startsWith("/") ? path.substring(1) : path;
-    }
+	private String cleanPath(String path) {
+		return path.startsWith("/") ? path.substring(1) : path;
+	}
 
 }

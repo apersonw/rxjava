@@ -16,21 +16,24 @@
 package top.rxjava.apikit.httl.spi.converters;
 
 import top.rxjava.apikit.httl.spi.Converter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiOutConverter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setOutConverter(Converter)
+ * @see InterpretedTranslator#setOutConverter(Converter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setOutConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setOutConverter(Converter)
  */
 public class MultiOutConverter extends MultiConverter {
 
-    /**
-     * httl.properties: out.converters=httl.spi.converters.ResponseOutConverter
-     */
-    public void setOutConverters(Converter<Object, Object>[] converters) {
-        super.setConverters(converters);
-    }
+	/**
+	 * httl.properties: out.converters=httl.spi.converters.ResponseOutConverter
+	 */
+	public void setOutConverters(Converter<Object, Object>[] converters) {
+		super.setConverters(converters);
+	}
 
 }

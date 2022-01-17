@@ -16,6 +16,8 @@
 package top.rxjava.apikit.httl.spi.switchers;
 
 import top.rxjava.apikit.httl.spi.Switcher;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,63 +25,64 @@ import java.util.List;
 
 /**
  * MultiSwitcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTextFilterSwitcher(Switcher)
+ * @see CompiledTranslator#setValueFilterSwitcher(Switcher)
+ * @see CompiledTranslator#setFormatterSwitcher(Switcher)
+ * @see InterpretedTranslator#setTextFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setValueFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setFormatterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setFormatterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTextFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setFormatterSwitcher(Switcher)
  */
 public class MultiSwitcher<T> implements Switcher<T> {
 
-    private Switcher<T>[] switchers;
+	private Switcher<T>[] switchers;
 
-    /**
-     * httl.properties: switchers=httl.spi.switchers.ScriptFilterSwitcher
-     */
-    @SuppressWarnings("unchecked")
-    public void setSwitchers(Switcher<T>[] switchers) {
-        if (switchers != null && switchers.length > 0
-                && this.switchers != null && this.switchers.length > 0) {
-            Switcher<T>[] oldSwitchers = this.switchers;
-            this.switchers = new Switcher[oldSwitchers.length + switchers.length];
-            System.arraycopy(oldSwitchers, 0, this.switchers, 0, oldSwitchers.length);
-            System.arraycopy(switchers, 0, this.switchers, oldSwitchers.length, switchers.length);
-        } else {
-            this.switchers = switchers;
-        }
-    }
+	/**
+	 * httl.properties: switchers=httl.spi.switchers.ScriptFilterSwitcher
+	 */
+	@SuppressWarnings("unchecked")
+	public void setSwitchers(Switcher<T>[] switchers) {
+		if (switchers != null && switchers.length > 0 
+				&& this.switchers != null && this.switchers.length > 0) {
+			Switcher<T>[] oldSwitchers = this.switchers;
+			this.switchers = new Switcher[oldSwitchers.length + switchers.length];
+			System.arraycopy(oldSwitchers, 0, this.switchers, 0, oldSwitchers.length);
+			System.arraycopy(switchers, 0, this.switchers, oldSwitchers.length, switchers.length);
+		} else {
+			this.switchers = switchers;
+		}
+	}
 
-    @SuppressWarnings("unchecked")
-    public List<String> locations() {
-        if (switchers == null || switchers.length == 0) {
-            return Collections.EMPTY_LIST;
-        }
-        if (switchers.length == 1) {
-            return switchers[0].locations();
-        }
-        List<String> locations = new ArrayList<String>();
-        for (Switcher<T> switcher : switchers) {
-            locations.addAll(switcher.locations());
-        }
-        return locations;
-    }
+	@SuppressWarnings("unchecked")
+	public List<String> locations() {
+		if (switchers == null || switchers.length == 0) {
+			return Collections.EMPTY_LIST;
+		}
+		if (switchers.length == 1) {
+			return switchers[0].locations();
+		}
+		List<String> locations = new ArrayList<String>();
+		for (Switcher<T> switcher : switchers) {
+			locations.addAll(switcher.locations());
+		}
+		return locations;
+	}
 
-    public T switchover(String location, T origin) {
-        if (switchers == null || switchers.length == 0) {
-            return origin;
-        }
-        if (switchers.length == 1) {
-            return switchers[0].switchover(location, origin);
-        }
-        for (Switcher<T> switcher : switchers) {
-            if (switcher.locations().contains(location)) {
-                return switcher.switchover(location, origin);
-            }
-        }
-        return origin;
-    }
+	public T switchover(String location, T origin) {
+		if (switchers == null || switchers.length == 0) {
+			return origin;
+		}
+		if (switchers.length == 1) {
+			return switchers[0].switchover(location, origin);
+		}
+		for (Switcher<T> switcher : switchers) {
+			if (switcher.locations().contains(location)) {
+				return switcher.switchover(location, origin);
+			}
+		}
+		return origin;
+	}
 
 }

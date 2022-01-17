@@ -16,21 +16,24 @@
 package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
 
 /**
  * MultiValueFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setValueFilter(Filter)
+ * @see InterpretedTranslator#setValueFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilter(Filter)
  */
 public class MultiValueFilter extends MultiFilter {
 
-    /**
-     * httl.properties: value.filters=httl.spi.filters.EscapeXmlFilter
-     */
-    public void setValueFilters(Filter[] filters) {
-        setFilters(filters);
-    }
+	/**
+	 * httl.properties: value.filters=httl.spi.filters.EscapeXmlFilter
+	 */
+	public void setValueFilters(Filter[] filters) {
+		setFilters(filters);
+	}
 
 }

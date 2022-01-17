@@ -15,30 +15,35 @@
  */
 package top.rxjava.apikit.httl.spi;
 
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Map;
 
 /**
  * Object Converter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setMapConverter(Converter)
+ * @see InterpretedTranslator#setMapConverter(Converter)
+ * @see CompiledTranslator#setOutConverter(Converter)
+ * @see InterpretedTranslator#setOutConverter(Converter)
+ * 
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setMapConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setMapConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setOutConverter(Converter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setOutConverter(Converter)
  */
 public interface Converter<F, T> {
 
-    /**
-     * Convert the value.
-     *
-     * @param value - origin value
-     * @param types - convert types
-     * @return converted value
-     * @throws IOException    - If an I/O error occurs
-     * @throws ParseException - If the template cannot be parsed on runtime
-     */
-    T convert(F value, Map<String, Class<?>> types) throws IOException, ParseException;
+	/**
+	 * Convert the value.
+	 * 
+	 * @param value - origin value
+	 * @param types - convert types
+	 * @return converted value
+	 * @throws IOException - If an I/O error occurs
+	 * @throws ParseException - If the template cannot be parsed on runtime
+	 */
+	T convert(F value, Map<String, Class<?>> types) throws IOException, ParseException;
 
 }

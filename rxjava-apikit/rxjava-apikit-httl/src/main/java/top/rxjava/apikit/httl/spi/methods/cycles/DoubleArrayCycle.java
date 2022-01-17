@@ -22,48 +22,48 @@ package top.rxjava.apikit.httl.spi.methods.cycles;
  */
 public class DoubleArrayCycle {
 
-    private final double[] values;
+	private final double[] values;
+	
+	private final int size;
 
-    private final int size;
+	private int index;
 
-    private int index;
+	public DoubleArrayCycle(double[] values) {
+		if (values == null || values.length == 0) {
+			throw new IllegalArgumentException("cycle values == null");
+		}
+		this.values = values;
+		this.size = values.length;
+		this.index = -1;
+	}
 
-    public DoubleArrayCycle(double[] values) {
-        if (values == null || values.length == 0) {
-            throw new IllegalArgumentException("cycle values == null");
-        }
-        this.values = values;
-        this.size = values.length;
-        this.index = -1;
-    }
+	public double getNext() {
+		index += 1;
+		if (index >= size)
+			index = 0;
+		return values[index];
+	}
 
-    public double getNext() {
-        index += 1;
-        if (index >= size)
-            index = 0;
-        return values[index];
-    }
+	public double getValue() {
+		if (index == -1)
+			return values[0];
+		return values[index];
+	}
 
-    public double getValue() {
-        if (index == -1)
-            return values[0];
-        return values[index];
-    }
+	public double[] getValues() {
+		return values;
+	}
 
-    public double[] getValues() {
-        return values;
-    }
+	public int getSize() {
+		return size;
+	}
 
-    public int getSize() {
-        return size;
-    }
+	public int getIndex() {
+		return index;
+	}
 
-    public int getIndex() {
-        return index;
-    }
-
-    public String toString() {
-        return String.valueOf(getNext());
-    }
+	public String toString() {
+		return String.valueOf(getNext());
+	}
 
 }

@@ -17,17 +17,26 @@ package top.rxjava.apikit.httl.spi.filters;
 
 import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.util.StringUtils;
-import net.htmlparser.jericho.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.htmlparser.jericho.Attribute;
+import net.htmlparser.jericho.Attributes;
+import net.htmlparser.jericho.Element;
+import net.htmlparser.jericho.OutputDocument;
+import net.htmlparser.jericho.Segment;
+import net.htmlparser.jericho.Source;
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
+
 /**
  * AttributeSyntaxFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTemplateFilter(Filter)
+ * @see InterpretedTranslator#setTemplateFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTemplateFilter(Filter)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTemplateFilter(Filter)
  */
 public class AttributeSyntaxFilter extends AbstractFilter {
 

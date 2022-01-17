@@ -15,47 +15,51 @@
  */
 package top.rxjava.apikit.httl.spi;
 
+import top.rxjava.apikit.httl.spi.translators.CompiledTranslator;
+import top.rxjava.apikit.httl.spi.translators.InterpretedTranslator;
+
 import java.util.List;
 
 /**
  * Location Switcher. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see CompiledTranslator#setTextFilterSwitcher(Switcher)
+ * @see CompiledTranslator#setValueFilterSwitcher(Switcher)
+ * @see CompiledTranslator#setFormatterSwitcher(Switcher)
+ * @see InterpretedTranslator#setTextFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setValueFilterSwitcher(Switcher)
+ * @see InterpretedTranslator#setFormatterSwitcher(Switcher)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setTextFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setValueFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.CompiledTranslator#setFormatterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setTextFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setValueFilterSwitcher(Switcher)
- * @see top.rxjava.apikit.httl.spi.translators.InterpretedTranslator#setFormatterSwitcher(Switcher)
  */
 public interface Switcher<T> {
 
-    /**
-     * Switch's locations.
-     * <p/>
-     * <pre>
-     * locations = ["&lt;script", "&lt;/script&gt;"]
-     * </pre>
-     *
-     * @return locations
-     */
-    List<String> locations();
+	/**
+	 * Switch's locations.
+	 * 
+	 * <pre>
+	 * locations = ["&lt;script", "&lt;script&gt;"]
+	 * </pre>
+	 * 
+	 * @return locations
+	 */
+	List<String> locations();
 
-    /**
-     * Enter the location.
-     * <p/>
-     * <pre>
-     * filter = switcher.switchover("&lt;script", defaultFilter); // return EscapeStringFilter
-     * &lt;script type="text/javascript"&gt;
-     * ...
-     * filter = switcher.switchover("&lt;/script&gt;", defaultFilter); // return defaultFilter
-     * &lt;/script&gt;
-     * </pre>
-     *
-     * @param location - the entered location
-     * @param origin   - the origin value
-     * @return the location value
-     */
-    T switchover(String location, T origin);
+	/**
+	 * Enter the location.
+	 * 
+	 * <pre>
+	 * filter = switcher.switchover("&lt;script", defaultFilter); // return EscapeStringFilter
+	 * &lt;script type="text/javascript"&gt;
+	 * ...
+	 * filter = switcher.switchover("&lt;/script&gt;", defaultFilter); // return defaultFilter
+	 * &lt;/script&gt;
+	 * </pre>
+	 * 
+	 * @param location - the entered location
+	 * @param origin - the origin value
+	 * @return the location value
+	 */
+	T switchover(String location, T origin);
 
 }

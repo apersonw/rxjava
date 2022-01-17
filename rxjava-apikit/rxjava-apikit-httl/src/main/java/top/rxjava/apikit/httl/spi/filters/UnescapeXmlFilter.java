@@ -15,18 +15,21 @@
  */
 package top.rxjava.apikit.httl.spi.filters;
 
+import top.rxjava.apikit.httl.spi.Filter;
 import top.rxjava.apikit.httl.util.StringUtils;
+import top.rxjava.apikit.httl.spi.parsers.ExpressionParser;
 
 /**
  * UnescapeXmlFilter. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see ExpressionParser#setExpressionFilter(Filter)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.parsers.ExpressionParser#setExpressionFilter(httl.spi.Filter)
  */
 public class UnescapeXmlFilter extends AbstractFilter {
 
-    public String filter(String key, String value) {
-        return StringUtils.unescapeXml(value);
-    }
+	public String filter(String key, String value) {
+		return StringUtils.unescapeXml(value);
+	}
 
 }

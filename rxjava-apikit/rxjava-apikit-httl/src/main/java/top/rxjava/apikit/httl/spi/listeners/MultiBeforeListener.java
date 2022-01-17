@@ -17,21 +17,23 @@ package top.rxjava.apikit.httl.spi.listeners;
 
 import top.rxjava.apikit.httl.spi.Listener;
 import top.rxjava.apikit.httl.util.Reqiured;
+import top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor;
 
 /**
  * MultiListener. (SPI, Singleton, ThreadSafe)
- *
+ * 
+ * @see ListenerInterceptor#setBeforeListener(Listener)
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
- * @see top.rxjava.apikit.httl.spi.interceptors.ListenerInterceptor#setBeforeListener(Listener)
  */
 public class MultiBeforeListener extends MultiListener {
 
-    /**
-     * httl.properties: before.listeners=httl.spi.listeners.ExtendsListener
-     */
-    @Reqiured
-    public void setBeforeListeners(Listener[] listeners) {
-        super.setListeners(listeners);
-    }
+	/**
+	 * httl.properties: before.listeners=httl.spi.listeners.ExtendsListener
+	 */
+	@Reqiured
+	public void setBeforeListeners(Listener[] listeners) {
+		super.setListeners(listeners);
+	}
 
 }

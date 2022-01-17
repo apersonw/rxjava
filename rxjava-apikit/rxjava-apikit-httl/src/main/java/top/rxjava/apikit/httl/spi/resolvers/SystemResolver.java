@@ -20,13 +20,13 @@ import top.rxjava.apikit.httl.util.StringUtils;
 
 /**
  * SystemResolver. (SPI, Singleton, ThreadSafe)
- *
+ * 
  * @author Liang Fei (liangfei0201 AT gmail DOT com)
  */
 public class SystemResolver implements Resolver {
 
-    public Object get(String key) {
-        return System.getProperty(StringUtils.splitCamelName(key, "."));
-    }
+	public Object get(String key) {
+		return System.getProperty(StringUtils.splitCamelName(key, "."));
+	}
 
 }

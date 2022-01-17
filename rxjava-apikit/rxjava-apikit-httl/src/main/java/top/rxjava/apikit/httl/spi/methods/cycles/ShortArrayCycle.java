@@ -22,48 +22,48 @@ package top.rxjava.apikit.httl.spi.methods.cycles;
  */
 public class ShortArrayCycle {
 
-    private final short[] values;
+	private final short[] values;
+	
+	private final int size;
 
-    private final int size;
+	private int index;
 
-    private int index;
+	public ShortArrayCycle(short[] values) {
+		if (values == null || values.length == 0) {
+			throw new IllegalArgumentException("cycle values == null");
+		}
+		this.values = values;
+		this.size = values.length;
+		this.index = -1;
+	}
 
-    public ShortArrayCycle(short[] values) {
-        if (values == null || values.length == 0) {
-            throw new IllegalArgumentException("cycle values == null");
-        }
-        this.values = values;
-        this.size = values.length;
-        this.index = -1;
-    }
+	public short getNext() {
+		index += 1;
+		if (index >= size)
+			index = 0;
+		return values[index];
+	}
 
-    public short getNext() {
-        index += 1;
-        if (index >= size)
-            index = 0;
-        return values[index];
-    }
+	public short getValue() {
+		if (index == -1)
+			return values[0];
+		return values[index];
+	}
 
-    public short getValue() {
-        if (index == -1)
-            return values[0];
-        return values[index];
-    }
+	public short[] getValues() {
+		return values;
+	}
 
-    public short[] getValues() {
-        return values;
-    }
+	public int getSize() {
+		return size;
+	}
 
-    public int getSize() {
-        return size;
-    }
+	public int getIndex() {
+		return index;
+	}
 
-    public int getIndex() {
-        return index;
-    }
-
-    public String toString() {
-        return String.valueOf(getNext());
-    }
+	public String toString() {
+		return String.valueOf(getNext());
+	}
 
 }
