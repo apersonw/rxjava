@@ -49,7 +49,6 @@ public class ApiGenerateManager {
      *
      * @param javaSourceDir 源码文件夹路径
      * @param rootPackage   java包路径
-     * @param reactive
      * @return api生成管理器
      */
     public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage) {
@@ -66,6 +65,6 @@ public class ApiGenerateManager {
     }
 
     public static void main(String[] args) {
-        // ApiGenerateManager.analyse("/Users/wugang/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java","top.rxjava");
+        ApiGenerateManager analyse = ApiGenerateManager.analyse("/Users/happy/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
     }
 }
