@@ -73,9 +73,8 @@ public class JdkCompiler extends AbstractCompiler {
         }
         ClassLoader loader = contextLoader;
         Set<File> files = new HashSet<File>();
-        while (loader instanceof URLClassLoader
-                && (!loader.getClass().getName().equals("sun.misc.Launcher$AppClassLoader"))) {
-            URLClassLoader urlClassLoader = (URLClassLoader) loader;
+        while (loader instanceof URLClassLoader urlClassLoader
+                && (!"sun.misc.Launcher$AppClassLoader".equals(loader.getClass().getName()))) {
             for (URL url : urlClassLoader.getURLs()) {
                 files.add(new File(url.getFile()));
             }
@@ -93,11 +92,7 @@ public class JdkCompiler extends AbstractCompiler {
             }
         }
         final ClassLoader parentLoader = contextLoader;
-        classLoader = AccessController.doPrivileged(new PrivilegedAction<ClassLoaderImpl>() {
-            public ClassLoaderImpl run() {
-                return new ClassLoaderImpl(parentLoader);
-            }
-        });
+        classLoader = AccessController.doPrivileged((PrivilegedAction<ClassLoaderImpl>) () -> new ClassLoaderImpl(parentLoader));
         javaFileManager = new JavaFileManagerImpl(standardJavaFileManager, classLoader);
         lintOptions.add("-Xlint:unchecked");
     }
