@@ -150,7 +150,7 @@ public abstract class AbstractCompiler implements Compiler {
             className = StringUtils.isNotEmpty(pkg) ? pkg + "." + classSimpleName : classSimpleName;
             VolatileReference<Class<?>> ref = CLASS_CACHE.get(className);
             if (ref == null) {
-                ref = new VolatileReference<Class<?>>();
+                ref = new VolatileReference<>();
                 VolatileReference<Class<?>> old = CLASS_CACHE.putIfAbsent(className, ref);
                 if (old != null) {
                     ref = old;

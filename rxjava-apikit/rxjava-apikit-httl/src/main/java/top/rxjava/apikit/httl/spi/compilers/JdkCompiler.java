@@ -73,8 +73,9 @@ public class JdkCompiler extends AbstractCompiler {
         }
         ClassLoader loader = contextLoader;
         Set<File> files = new HashSet<File>();
-        while (loader instanceof URLClassLoader urlClassLoader
-                && (!"sun.misc.Launcher$AppClassLoader".equals(loader.getClass().getName()))) {
+        while (loader instanceof URLClassLoader
+                && (!loader.getClass().getName().equals("sun.misc.Launcher$AppClassLoader"))) {
+            URLClassLoader urlClassLoader = (URLClassLoader) loader;
             for (URL url : urlClassLoader.getURLs()) {
                 files.add(new File(url.getFile()));
             }
