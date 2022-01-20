@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
+import top.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
+import top.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 
 /**
@@ -58,10 +60,14 @@ public class ApiGenerateManager {
 
         //分析控制器信息并保存到上下文
         ControllerAnalyse.create().analyse(manager.context);
+        //分析入参出参类信息并保存到上下文
+        ParamClassAnalyse.create().analyse(manager.context);
+        //分析枚举类型信息并保存到上下文
+        EnumClassAnalyse.create().analyse(manager.context);
         return manager;
     }
 
     public static void main(String[] args) {
-        ApiGenerateManager analyse = ApiGenerateManager.analyse("/Users/happy/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
+        ApiGenerateManager analyse = ApiGenerateManager.analyse("/Users/wugang/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
     }
 }

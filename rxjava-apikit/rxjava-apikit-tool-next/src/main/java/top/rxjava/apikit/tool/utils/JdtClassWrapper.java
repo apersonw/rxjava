@@ -22,7 +22,11 @@ public class JdtClassWrapper {
     /**
      * 类型声明
      */
-    private final AbstractTypeDeclaration typeDeclaration;
+    private AbstractTypeDeclaration typeDeclaration;
+
+    public static void main(String[] args) {
+        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/happy/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
+    }
 
     public JdtClassWrapper(String filePath, Class<?> cls) {
         this(Paths.get(filePath, cls.getPackage().getName().split("\\.")).resolve(cls.getSimpleName() + ".java"));

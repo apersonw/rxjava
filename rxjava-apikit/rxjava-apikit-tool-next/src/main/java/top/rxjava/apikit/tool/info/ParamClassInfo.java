@@ -61,12 +61,12 @@ public class ParamClassInfo extends CommonClassInfo {
             return null;
         }
         JavaDocInfo javadocInfo = new JavaDocInfo();
-        List<?> tags = javadoc.tags();
+        List tags = javadoc.tags();
         for (Object tag : tags) {
             TagElement tagElement = (TagElement) tag;
             String tagName = tagElement.getTagName();
 
-            List<?> fragments = tagElement.fragments();
+            List fragments = tagElement.fragments();
             ArrayList<String> fragmentsInfo = new ArrayList<>();
             for (Object fragment : fragments) {
                 if (fragment instanceof TextElement) {
