@@ -7,9 +7,6 @@ import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 
-import java.net.URL;
-import java.util.Objects;
-
 /**
  * @author happy
  * Api生成管理器
