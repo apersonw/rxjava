@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import top.rxjava.apikit.tool.generator.AbstractGenerator;
-import top.rxjava.apikit.tool.generator.Context;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.generator.Generator;
 
 import java.io.File;

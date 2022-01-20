@@ -3,7 +3,7 @@ package top.rxjava.apikit.tool.wrapper;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
-import top.rxjava.apikit.tool.generator.Context;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.info.ClassTypeInfo;
 import top.rxjava.apikit.tool.info.CommonClassInfo;
 

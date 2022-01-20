@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
 import top.rxjava.apikit.tool.generator.impl.DefaultPackageNameMapper;
 import top.rxjava.apikit.tool.generator.impl.PatternNameMaper;
@@ -140,7 +141,7 @@ public abstract class AbstractGenerator implements Generator {
         this.builderEnumWrappers = initEnumParamClassWrapper();
 
         //通过api类信息生成api
-        Collection<ApiClassInfo> values = context.apis.getValues();
+        Collection<ApiClassInfo> values = context.getApiClassInfoMultimap().values();
         for (ApiClassInfo apiInfo : values) {
             try {
                 generateApiFile(apiInfo);

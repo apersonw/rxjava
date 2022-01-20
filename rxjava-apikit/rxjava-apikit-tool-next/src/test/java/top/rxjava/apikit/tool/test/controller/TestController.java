@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @RequestMapping("test")
 public class TestController {
     @GetMapping("test")
-    public Mono<TestModel> test(@Valid TestForm testForm, @RequestParam String testParamId){
+    public Mono<TestModel> test(@Valid TestForm testForm,@RequestParam String testParamId){
         return Mono.empty();
     }
 }
