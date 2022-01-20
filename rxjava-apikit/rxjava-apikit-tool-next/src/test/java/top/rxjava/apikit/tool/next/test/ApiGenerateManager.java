@@ -1,11 +1,11 @@
-package top.rxjava.apikit.tool.next.test;
+package top.rxjava.apikit.tool.test;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import top.rxjava.apikit.tool.next.Context;
-import top.rxjava.apikit.tool.next.analyse.impl.ControllerAnalyse;
-import top.rxjava.apikit.tool.next.utils.LocalPathUtils;
+import top.rxjava.apikit.tool.Context;
+import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
+import top.rxjava.apikit.tool.utils.LocalPathUtils;
 
 import java.net.URL;
 import java.util.Objects;

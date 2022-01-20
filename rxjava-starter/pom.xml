@@ -16,6 +16,7 @@
         <module>rxjava-starter-jpa</module>
         <module>rxjava-starter-mongo-reactive</module>
         <module>rxjava-starter-redis-reactive</module>
+        <module>rxjava-starter-skywalking</module>
         <module>rxjava-starter-redis</module>
         <module>rxjava-starter-web</module>
     </modules>
