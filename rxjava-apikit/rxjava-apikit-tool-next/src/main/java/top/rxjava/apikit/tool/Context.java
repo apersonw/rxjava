@@ -29,6 +29,10 @@ public class Context {
     }
 
     /**
+     * 是否响应式项目
+     */
+    private boolean reactive = true;
+    /**
      * Api类信息Map，以包路径为key
      */
     private Multimap<String, ApiClassInfo> apiClassInfoMultimap = Multimaps.newListMultimap(

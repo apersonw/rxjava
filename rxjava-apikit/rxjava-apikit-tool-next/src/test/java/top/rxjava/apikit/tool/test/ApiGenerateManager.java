@@ -74,6 +74,7 @@ public class ApiGenerateManager {
         javaClientApiGenerator.setOutRootPackage(outRootPackage);
         javaClientApiGenerator.setArtifactId("rxjava-api-test");
         javaClientApiGenerator.setParentVersion("2.0.0-SNAPSHOT");
+        javaClientApiGenerator.setOutPath("/Users/wugang/RxjavaProjects/rxjava-api-test/src/main/java");
         manager.generate(javaClientApiGenerator);
         return manager;
     }
