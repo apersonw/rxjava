@@ -67,7 +67,6 @@ public class ApiGenerateManager {
         //分析枚举类型信息并保存到上下文
         EnumClassAnalyse.create().analyse(manager.context);
 
-
         JavaClientApiGenerator javaClientApiGenerator = new JavaClientApiGenerator();
         //设置生成的api根包路径
         String outRootPackage = "top.rxjava.test";
