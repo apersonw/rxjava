@@ -36,12 +36,12 @@
             <dependency>
                 <groupId>top.rxjava</groupId>
                 <artifactId>rxjava-starter-webflux</artifactId>
-                <version>2.0.0-SNAPSHOT</version>
+                <version>${project.parent.version}</version>
             </dependency>
             <dependency>
                 <groupId>top.rxjava</groupId>
                 <artifactId>rxjava-starter-redis-reactive</artifactId>
-                <version>2.0.0-SNAPSHOT</version>
+                <version>${project.parent.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
