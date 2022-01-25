@@ -22,7 +22,7 @@
         <spring-cloud-kubernetes.version>2.1.0</spring-cloud-kubernetes.version>
         <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2.2.7.RELEASE</spring-cloud-alibaba-dependencies.version>
-        <spring-boot.version>2.6.2</spring-boot.version>
+        <spring-boot.version>2.6.3</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <spring-cloud-starter-netflix-hystrix.version>2.2.10.RELEASE</spring-cloud-starter-netflix-hystrix.version>
         <com.google.guava.version>30.1.1-jre</com.google.guava.version>
