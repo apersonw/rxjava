@@ -626,6 +626,7 @@
                                 <jvmFlag>-Xms256M</jvmFlag>
                                 <jvmFlag>-Xmx256M</jvmFlag>
                                 <jvmFlag>-Duser.timezone=Asia/Shanghai</jvmFlag>
+                                <jvmFlag>-Djava.awt.headless=true</jvmFlag>
                             </jvmFlags>
                             <!--要暴露的端口-->
                             <ports>
