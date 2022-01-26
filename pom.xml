@@ -16,6 +16,8 @@
         <!--项目编译版本-->
         <java.encoding>UTF-8</java.encoding>
         <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
 
         <!--依赖版本-->
@@ -25,71 +27,67 @@
         <spring-boot.version>2.6.3</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <spring-cloud-starter-netflix-hystrix.version>2.2.10.RELEASE</spring-cloud-starter-netflix-hystrix.version>
-        <com.google.guava.version>30.1.1-jre</com.google.guava.version>
-        <lombok.version>1.18.20</lombok.version>
+        <com.google.guava.version>31.0.1-jre</com.google.guava.version>
+        <lombok.version>1.18.22</lombok.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-compress.version>1.20</commons-compress.version>
-        <commons-io.version>2.8.0</commons-io.version>
+        <commons-compress.version>1.21</commons-compress.version>
+        <commons-io.version>2.11.0</commons-io.version>
         <javassist.version>3.28.0-GA</javassist.version>
         <paranamer.version>2.8</paranamer.version>
-        <classgraph.version>4.8.86</classgraph.version>
-        <commons-text.version>1.8</commons-text.version>
-        <jackson.version>2.13.0</jackson.version>
+        <classgraph.version>4.8.138</classgraph.version>
+        <commons-text.version>1.9</commons-text.version>
+        <jackson.version>2.13.1</jackson.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
-        <alipay-sdk-java.version>4.10.29.ALL</alipay-sdk-java.version>
-        <zxing.version>3.4.0</zxing.version>
-        <springdoc.version>1.5.1</springdoc.version>
+        <alipay-sdk-java.version>4.22.30.ALL</alipay-sdk-java.version>
+        <zxing.version>3.4.1</zxing.version>
+        <springdoc.version>1.6.5</springdoc.version>
         <druid.version>1.2.8</druid.version>
-        <de.codecentric.version>2.5.4</de.codecentric.version>
+        <de.codecentric.version>2.6.2</de.codecentric.version>
 
 
         <!--插件版本-->
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-plugin-api.version>3.6.3</maven-plugin-api.version>
-        <maven-plugin-plugin.version>3.6.2</maven-plugin-plugin.version>
-        <asm.version>9.1</asm.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
+        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
+        <maven-plugin-api.version>3.8.4</maven-plugin-api.version>
+        <maven-plugin-plugin.version>3.6.4</maven-plugin-plugin.version>
+        <asm.version>9.2</asm.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
 
         <!--第三方依赖版本-->
-        <jedis.version>2.9.0</jedis.version>
+        <jedis.version>4.0.1</jedis.version>
         <jedis-lock.version>1.0.0</jedis-lock.version>
-        <jodd.version>5.0.13</jodd.version>
-        <okhttp.version>4.5.0</okhttp.version>
+        <jodd.version>6.0.8</jodd.version>
+        <okhttp.version>4.9.3</okhttp.version>
         <dom4j.version>2.1.3</dom4j.version>
-        <commons-codec.version>1.14</commons-codec.version>
-        <httpclient.version>4.5.10</httpclient.version>
-        <httpmime.version>4.5.12</httpmime.version>
-        <httpcore.version>4.4.1</httpcore.version>
-        <xstream.version>1.4.11.1</xstream.version>
-        <redisson.version>3.13.2</redisson.version>
-        <bouncycastle.version>1.69</bouncycastle.version>
-        <joda-time.version>2.10.6</joda-time.version>
+        <commons-codec.version>1.15</commons-codec.version>
+        <httpcomponents.version>4.5.13</httpcomponents.version>
+        <httpcore.version>4.4.15</httpcore.version>
+        <xstream.version>1.4.18</xstream.version>
+        <redisson.version>3.16.8.2</redisson.version>
+        <bouncycastle.version>1.70</bouncycastle.version>
+        <joda-time.version>2.10.13</joda-time.version>
         <jpa-spec.version>3.2.4</jpa-spec.version>
         <springfox.version>3.0.0</springfox.version>
-        <aliyun.sms.version>2.0.6</aliyun.sms.version>
-        <easyexcel.version>3.0.4</easyexcel.version>
-        <mybatis-plus.version>3.4.3</mybatis-plus.version>
-        <mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>
+        <aliyun.sms.version>2.0.9</aliyun.sms.version>
+        <easyexcel.version>3.0.5</easyexcel.version>
+        <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <freemarker.version>2.3.31</freemarker.version>
 
 
         <!--eclipse-begin-->
-        <org.eclipse.jgit.version>5.7.0.202003110725-r</org.eclipse.jgit.version>
-        <org.eclipse.jdt.core.version>3.26.0</org.eclipse.jdt.core.version>
-        <org.eclipse.equinox.registry.version>3.10.0</org.eclipse.equinox.registry.version>
-        <org.eclipse.osgi.version>3.16.100</org.eclipse.osgi.version>
-        <org.eclipse.equinox.preferences.version>3.8.100</org.eclipse.equinox.preferences.version>
-        <org.eclipse.core.filesystem.version>1.7.700</org.eclipse.core.filesystem.version>
-        <org.eclipse.core.runtime.version>3.20.0</org.eclipse.core.runtime.version>
-        <org.eclipse.equinox.common.version>3.14.0</org.eclipse.equinox.common.version>
+        <org.eclipse.jgit.version>5.13.0.202109080827-r</org.eclipse.jgit.version>
+        <org.eclipse.jdt.core.version>3.28.0</org.eclipse.jdt.core.version>
+        <org.eclipse.equinox.registry.version>3.11.100</org.eclipse.equinox.registry.version>
+        <org.eclipse.osgi.version>3.17.100</org.eclipse.osgi.version>
+        <org.eclipse.equinox.preferences.version>3.9.100</org.eclipse.equinox.preferences.version>
+        <org.eclipse.core.filesystem.version>1.9.200</org.eclipse.core.filesystem.version>
+        <org.eclipse.core.runtime.version>3.24.0</org.eclipse.core.runtime.version>
+        <org.eclipse.equinox.common.version>3.15.100</org.eclipse.equinox.common.version>
         <!--eclipse-end-->
 
         <!-- flowable-->
-        <flowable.version>6.7.1</flowable.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <flowable.version>6.7.2</flowable.version>
 
     </properties>
     <dependencies>
@@ -421,12 +419,12 @@
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
+                <version>${httpcomponents.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpmime</artifactId>
-                <version>${httpmime.version}</version>
+                <version>${httpcomponents.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
@@ -542,7 +540,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
-                <version>${mybatis-plus-generator.version}</version>
+                <version>${mybatis-plus.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.freemarker</groupId>
@@ -596,6 +594,11 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>1.2.17</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
