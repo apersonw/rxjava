@@ -13,7 +13,6 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
  * @author happy
  */
 @Configuration
-//@ComponentScan("top.rxjava.starter.redis.reactive.*")
 public class RedisReactiveConfiguration {
     /**
      * Redis Bean
