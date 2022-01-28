@@ -600,6 +600,12 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcutil-jdk15on</artifactId>
+                <version>1.70</version>
+                <type>jar</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
