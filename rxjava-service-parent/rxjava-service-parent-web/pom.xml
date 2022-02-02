@@ -46,11 +46,6 @@
                 <artifactId>rxjava-starter-web</artifactId>
                 <version>${project.parent.version}</version>
             </dependency>
-            <dependency>
-                <groupId>top.rxjava</groupId>
-                <artifactId>rxjava-starter-web-boot</artifactId>
-                <version>${project.parent.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author happy
  */
 @Slf4j
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class MessageReceiver {
 
     private final ObjectMapper objectMapper;
