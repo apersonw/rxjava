@@ -2,18 +2,21 @@ package top.rxjava.starter.bus.amqp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
+/**
+ * @author happy
+ */
 @Slf4j
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MessageReceiver {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private BusReceiver busReceiver;
+    private final ObjectMapper objectMapper;
+    private final BusReceiver busReceiver;
 
     public void receiveMessage(String json) throws IOException {
         try {

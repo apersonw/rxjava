@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  oap:
+    image: apache/skywalking-oap-server:8.9.1
+    container_name: oap
+    ports:
+      - "11800:11800"
+      - "12800:12800"
+    environment:
+      JAVA_OPTS: "-Xms2048m -Xmx2048m"
+
+  ui:
+    image: apache/skywalking-ui:8.9.1
+    container_name: ui
+    depends_on:
+      - oap
+    links:
+      - oap
+    ports:
+      - "8080:8080"
+    environment:
+      SW_OAP_ADDRESS: http://oap:12800

@@ -57,7 +57,7 @@ public class BusEmitter {
                         throw new RuntimeException(e);
                     }
                 })
-                .publishOn(Schedulers.elastic());
+                .publishOn(Schedulers.boundedElastic());
     }
 
     /**
@@ -101,6 +101,6 @@ public class BusEmitter {
                         throw new RuntimeException(e);
                     }
                 })
-                .publishOn(Schedulers.elastic());
+                .publishOn(Schedulers.boundedElastic());
     }
 }

@@ -1,5 +1,6 @@
 package top.rxjava.starter.bus.amqp;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
@@ -18,6 +19,8 @@ import java.util.Map;
 
 /**
  * 消息总线配置
+ *
+ * @author happy
  */
 @Configuration
 public class BusAmqpConfiguration {
@@ -98,8 +101,8 @@ public class BusAmqpConfiguration {
     @Bean
     @ConditionalOnBean(BusReceiver.class)
     @Qualifier("messageReceiver")
-    public MessageReceiver messageReceiver() {
-        return new MessageReceiver();
+    public MessageReceiver messageReceiver(ObjectMapper objectMapper, BusReceiver busReceiver) {
+        return new MessageReceiver(objectMapper, busReceiver);
     }
 
     /**
