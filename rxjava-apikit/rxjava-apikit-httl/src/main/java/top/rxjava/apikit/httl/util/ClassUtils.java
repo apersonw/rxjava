@@ -41,9 +41,9 @@ public class ClassUtils {
 
     public static final String JAVA_EXTENSION = ".java";
 
-    private static final ConcurrentMap<Class<?>, Map<String, Method>> GETTER_CACHE = new ConcurrentHashMap<Class<?>, Map<String, Method>>();
+    private static final ConcurrentMap<Class<?>, Map<String, Method>> GETTER_CACHE = new ConcurrentHashMap<>();
 
-    private static final ConcurrentMap<String, Class<?>> CLASS_CACHE = new ConcurrentHashMap<String, Class<?>>();
+    private static final ConcurrentMap<String, Class<?>> CLASS_CACHE = new ConcurrentHashMap<>();
     private static final int JIT_LIMIT = 5 * 1024;
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -126,10 +126,8 @@ public class ClassUtils {
 
     public static Object newInstance(String name) {
         try {
-            return forName(name).newInstance();
-        } catch (InstantiationException e) {
-            throw new IllegalStateException(e.getMessage(), e);
-        } catch (IllegalAccessException e) {
+            return forName(name).getDeclaredConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalStateException(e.getMessage(), e);
         }
     }
@@ -146,12 +144,12 @@ public class ClassUtils {
                     } else {
                         return _forName(pkg + classN);
                     }
-                } catch (ClassNotFoundException e2) {
+                } catch (ClassNotFoundException ignored) {
                 }
             }
             try {
                 return _forName("java.lang." + className);
-            } catch (ClassNotFoundException e2) {
+            } catch (ClassNotFoundException ignored) {
             }
         }
         try {
@@ -162,7 +160,7 @@ public class ClassUtils {
             if (i > 0 && i < className.length() - 1) {
                 try {
                     return _forName(className.substring(0, i) + "$" + className.substring(i + 1));
-                } catch (ClassNotFoundException e2) {
+                } catch (ClassNotFoundException ignored) {
                 }
             }
             throw new IllegalStateException(e.getMessage(), e);
@@ -260,35 +258,35 @@ public class ClassUtils {
     }
 
     public static Boolean boxed(boolean v) {
-        return Boolean.valueOf(v);
+        return v;
     }
 
     public static Character boxed(char v) {
-        return Character.valueOf(v);
+        return v;
     }
 
     public static Byte boxed(byte v) {
-        return Byte.valueOf(v);
+        return v;
     }
 
     public static Short boxed(short v) {
-        return Short.valueOf(v);
+        return v;
     }
 
     public static Integer boxed(int v) {
-        return Integer.valueOf(v);
+        return v;
     }
 
     public static Long boxed(long v) {
-        return Long.valueOf(v);
+        return v;
     }
 
     public static Float boxed(float v) {
-        return Float.valueOf(v);
+        return v;
     }
 
     public static Double boxed(double v) {
-        return Double.valueOf(v);
+        return v;
     }
 
     public static <T> T boxed(T v) {
@@ -296,35 +294,35 @@ public class ClassUtils {
     }
 
     public static boolean unboxed(Boolean v) {
-        return v == null ? false : v.booleanValue();
+        return v != null && v;
     }
 
     public static char unboxed(Character v) {
-        return v == null ? '\0' : v.charValue();
+        return v == null ? '\0' : v;
     }
 
     public static byte unboxed(Byte v) {
-        return v == null ? 0 : v.byteValue();
+        return v == null ? 0 : v;
     }
 
     public static short unboxed(Short v) {
-        return v == null ? 0 : v.shortValue();
+        return v == null ? 0 : v;
     }
 
     public static int unboxed(Integer v) {
-        return v == null ? 0 : v.intValue();
+        return v == null ? 0 : v;
     }
 
     public static long unboxed(Long v) {
-        return v == null ? 0 : v.longValue();
+        return v == null ? 0 : v;
     }
 
     public static float unboxed(Float v) {
-        return v == null ? 0 : v.floatValue();
+        return v == null ? 0 : v;
     }
 
     public static double unboxed(Double v) {
-        return v == null ? 0 : v.doubleValue();
+        return v == null ? 0 : v;
     }
 
     public static <T> T unboxed(T v) {
@@ -352,7 +350,7 @@ public class ClassUtils {
     }
 
     public static boolean isTrue(long object) {
-        return object != 0l;
+        return object != 0L;
     }
 
     public static boolean isTrue(float object) {
@@ -365,7 +363,7 @@ public class ClassUtils {
 
     public static boolean isTrue(Object object) {
         if (object instanceof Boolean) {
-            return ((Boolean) object).booleanValue();
+            return (Boolean) object;
         }
         return getSize(object) != 0;
     }
@@ -463,7 +461,7 @@ public class ClassUtils {
                     return (Class<?>) genericClass;
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         if (cls.getSuperclass() != null && cls.getSuperclass() != Object.class) {
             return getGenericClass(cls.getSuperclass(), i);
@@ -489,16 +487,14 @@ public class ClassUtils {
     public static String toString(Throwable e) {
         StringWriter w = new StringWriter();
         PrintWriter p = new PrintWriter(w);
-        p.print(e.getClass().getName() + ": ");
-        if (e.getMessage() != null) {
-            p.print(e.getMessage() + "\n");
-        }
-        p.println();
-        try {
+        try (p) {
+            p.print(e.getClass().getName() + ": ");
+            if (e.getMessage() != null) {
+                p.print(e.getMessage() + "\n");
+            }
+            p.println();
             e.printStackTrace(p);
             return w.toString();
-        } finally {
-            p.close();
         }
     }
 
@@ -512,7 +508,7 @@ public class ClassUtils {
         for (String sizer : sizers) {
             try {
                 return cls.getMethod(sizer, new Class<?>[0]).getName() + "()";
-            } catch (NoSuchMethodException e) {
+            } catch (NoSuchMethodException ignored) {
             }
         }
         return null;
@@ -531,7 +527,7 @@ public class ClassUtils {
                 if (type == boolean.class) {
                     def = "false";
                 } else if (type == char.class) {
-                    def = "\'\\0\'";
+                    def = "'\\0'";
                 } else if (type == byte.class
                         || type == short.class
                         || type == int.class
@@ -560,23 +556,22 @@ public class ClassUtils {
             try {
                 String getter = "get" + name.substring(0, 1).toUpperCase()
                         + name.substring(1);
-                Method method = leftClass.getMethod(getter,
-                        new Class<?>[0]);
+                Method method = leftClass.getMethod(getter);
                 if (!method.isAccessible()) {
                     method.setAccessible(true);
                 }
-                result = method.invoke(leftParameter, new Object[0]);
+                result = method.invoke(leftParameter);
             } catch (NoSuchMethodException e2) {
                 try {
                     String getter = "is"
                             + name.substring(0, 1).toUpperCase()
                             + name.substring(1);
-                    Method method = leftClass.getMethod(getter,
-                            new Class<?>[0]);
+                    Method method = leftClass.getMethod(getter
+                    );
                     if (!method.isAccessible()) {
                         method.setAccessible(true);
                     }
-                    result = method.invoke(leftParameter, new Object[0]);
+                    result = method.invoke(leftParameter);
                 } catch (NoSuchMethodException e3) {
                     Field field = leftClass.getField(name);
                     result = field.get(leftParameter);
@@ -617,7 +612,6 @@ public class ClassUtils {
                                     parameterType = ClassUtils.getBoxedClass(parameterType);
                                 }
                                 if (!type.isAssignableFrom(parameterType)) {
-                                    eq = false;
                                     like = false;
                                     break;
                                 }
@@ -684,7 +678,7 @@ public class ClassUtils {
         if (value instanceof Boolean) {
             return (Boolean) value;
         }
-        return value == null ? false : toBoolean(String.valueOf(value));
+        return value != null && toBoolean(String.valueOf(value));
     }
 
     public static char toChar(Object value) {
@@ -744,7 +738,7 @@ public class ClassUtils {
     }
 
     public static boolean toBoolean(String value) {
-        return StringUtils.isEmpty(value) ? false : Boolean.parseBoolean(value);
+        return !StringUtils.isEmpty(value) && Boolean.parseBoolean(value);
     }
 
     public static char toChar(String value) {
@@ -814,7 +808,7 @@ public class ClassUtils {
                 if (!getter.isAccessible()) {
                     getter.setAccessible(true);
                 }
-                return getter.invoke(bean, new Object[0]);
+                return getter.invoke(bean);
             }
             return null;
         } catch (Exception e) {
@@ -833,9 +827,9 @@ public class ClassUtils {
                 try {
                     Object value = properties.get(key);
                     if (value != null) {
-                        method.invoke(bean, new Object[]{convertCompatibleType(value, method.getParameterTypes()[0])});
+                        method.invoke(bean, convertCompatibleType(value, method.getParameterTypes()[0]));
                     }
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
         }
@@ -853,8 +847,8 @@ public class ClassUtils {
                 int i = name.startsWith("get") ? 3 : 2;
                 String key = name.substring(i, i + 1).toLowerCase() + name.substring(i + 1);
                 try {
-                    map.put(key, method.invoke(bean, new Object[0]));
-                } catch (Exception e) {
+                    map.put(key, method.invoke(bean));
+                } catch (Exception ignored) {
                 }
             }
         }
@@ -917,8 +911,7 @@ public class ClassUtils {
         if (value == null || type == null || type.isAssignableFrom(value.getClass())) {
             return value;
         }
-        if (value instanceof String) {
-            String string = (String) value;
+        if (value instanceof String string) {
             if (char.class.equals(type) || Character.class.equals(type)) {
                 if (string.length() != 1) {
                     throw new IllegalArgumentException(String.format("CAN NOT convert String(%s) to char!" +
@@ -954,8 +947,7 @@ public class ClassUtils {
             } else if (type == Class.class) {
                 return ClassUtils.forName((String) value);
             }
-        } else if (value instanceof Number) {
-            Number number = (Number) value;
+        } else if (value instanceof Number number) {
             if (type == byte.class || type == Byte.class) {
                 return number.byteValue();
             } else if (type == short.class || type == Short.class) {
@@ -975,8 +967,7 @@ public class ClassUtils {
             } else if (type == Date.class) {
                 return new Date(number.longValue());
             }
-        } else if (value instanceof Collection) {
-            Collection collection = (Collection) value;
+        } else if (value instanceof Collection collection) {
             if (type.isArray()) {
                 int length = collection.size();
                 Object array = Array.newInstance(type.getComponentType(), length);
@@ -990,7 +981,7 @@ public class ClassUtils {
                     Collection result = (Collection) type.newInstance();
                     result.addAll(collection);
                     return result;
-                } catch (Throwable e) {
+                } catch (Throwable ignored) {
                 }
             } else if (type == List.class) {
                 return new ArrayList<Object>(collection);
