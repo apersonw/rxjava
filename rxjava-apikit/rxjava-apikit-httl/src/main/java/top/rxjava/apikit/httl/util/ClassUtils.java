@@ -1,12 +1,12 @@
 /*
  * Copyright 2011-2013 HTTL Team.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -143,7 +143,7 @@ public class ClassUtils {
                     String classN = "." + className;
                     if (pkg.endsWith(classN)) {
                         return _forName(pkg);
-                    }else{
+                    } else {
                         return _forName(pkg + classN);
                     }
                 } catch (ClassNotFoundException e2) {
@@ -178,8 +178,9 @@ public class ClassUtils {
     }
 
     private static Class<?> _forName(String name) throws ClassNotFoundException {
-        if (StringUtils.isEmpty(name))
+        if (StringUtils.isEmpty(name)) {
             return null;
+        }
         String key = name;
         Class<?> clazz = CLASS_CACHE.get(key);
         if (clazz == null) {
@@ -188,28 +189,21 @@ public class ClassUtils {
                 int i = (name.length() - index) / 2;
                 name = name.substring(0, index);
                 StringBuilder sb = new StringBuilder();
-                while (i-- > 0)
+                while (i-- > 0) {
                     sb.append("["); // int[][]
-                if ("void".equals(name))
-                    sb.append("V");
-                else if ("boolean".equals(name))
-                    sb.append("Z");
-                else if ("byte".equals(name))
-                    sb.append("B");
-                else if ("char".equals(name))
-                    sb.append("C");
-                else if ("double".equals(name))
-                    sb.append("D");
-                else if ("float".equals(name))
-                    sb.append("F");
-                else if ("int".equals(name))
-                    sb.append("I");
-                else if ("long".equals(name))
-                    sb.append("J");
-                else if ("short".equals(name))
-                    sb.append("S");
-                else
-                    sb.append('L').append(name).append(';');
+                }
+                switch (name) {
+                    case "void" -> sb.append("V");
+                    case "boolean" -> sb.append("Z");
+                    case "byte" -> sb.append("B");
+                    case "char" -> sb.append("C");
+                    case "double" -> sb.append("D");
+                    case "float" -> sb.append("F");
+                    case "int" -> sb.append("I");
+                    case "long" -> sb.append("J");
+                    case "short" -> sb.append("S");
+                    default -> sb.append('L').append(name).append(';');
+                }
                 name = sb.toString();
             }
             clazz = Class.forName(name, true, getContextClassLoader());
@@ -938,19 +932,19 @@ public class ClassUtils {
             } else if (type == BigDecimal.class) {
                 return new BigDecimal(string);
             } else if (type == Short.class || type == short.class) {
-                return new Short(string);
+                return Short.parseShort(string);
             } else if (type == Integer.class || type == int.class) {
-                return new Integer(string);
+                return Integer.parseInt(string);
             } else if (type == Long.class || type == long.class) {
-                return new Long(string);
+                return Long.parseLong(string);
             } else if (type == Double.class || type == double.class) {
-                return new Double(string);
+                return Double.parseDouble(string);
             } else if (type == Float.class || type == float.class) {
-                return new Float(string);
+                return Float.parseFloat(string);
             } else if (type == Byte.class || type == byte.class) {
-                return new Byte(string);
+                return Byte.parseByte(string);
             } else if (type == Boolean.class || type == boolean.class) {
-                return new Boolean(string);
+                return Boolean.parseBoolean(string);
             } else if (type == Date.class) {
                 try {
                     return new SimpleDateFormat(DATE_FORMAT).parse((String) value);
