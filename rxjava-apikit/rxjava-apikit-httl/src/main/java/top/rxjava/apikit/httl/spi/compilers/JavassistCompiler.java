@@ -76,7 +76,7 @@ public class JavassistCompiler extends AbstractCompiler {
 	protected Class<?> doCompile(String name, String source) throws Exception {
 		synchronized (locker) {
 			try {
-				return pool.get(name).toClass();
+				return pool.get(name).toClass(this.getClass().getClassLoader(),null);
 			} catch (NotFoundException e) {
 				int i = name.lastIndexOf('.');
 				String className = i < 0 ? name : name.substring(i + 1);
@@ -145,7 +145,7 @@ public class JavassistCompiler extends AbstractCompiler {
 				if (compileDirectory != null) {
 					saveBytecode(name, cls.toBytecode());
 				}
-				return cls.toClass();
+				return cls.toClass(this.getClass().getClassLoader(),null);
 			}
 		}
 	}

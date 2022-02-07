@@ -15,7 +15,7 @@
     <properties>
         <!--项目编译版本-->
         <java.encoding>UTF-8</java.encoding>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
