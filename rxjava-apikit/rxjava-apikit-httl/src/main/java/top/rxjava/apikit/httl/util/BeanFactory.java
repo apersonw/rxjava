@@ -317,10 +317,11 @@ public class BeanFactory {
 			instances.put(property, instance);
 			return (T) instance;
 		} catch (Throwable e) {
-			if (e instanceof InvocationTargetException) {
-				e = e.getCause();
+			Throwable throwable = e;
+			if (throwable instanceof InvocationTargetException) {
+				throwable = throwable.getCause();
 			}
-			throw new IllegalStateException("Failed to init property value. key: " + key + ", value: " + value + ", cause: " + e.getMessage(), e);
+			throw new IllegalStateException("Failed to init property value. key: " + key + ", value: " + value + ", cause: " + throwable.getMessage(), throwable);
 		}
 	}
 
