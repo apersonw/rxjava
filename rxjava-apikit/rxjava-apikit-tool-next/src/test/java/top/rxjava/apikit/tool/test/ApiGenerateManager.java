@@ -3,6 +3,7 @@ package top.rxjava.apikit.tool.test;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.junit.Test;
 import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
@@ -82,7 +83,8 @@ public class ApiGenerateManager {
         generator.generate(context);
     }
 
-    public static void main(String[] args) throws Exception {
+    @Test
+    public void testhello() throws Exception {
         ApiGenerateManager analyse = ApiGenerateManager.analyse("/Users/wugang/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
     }
 }
