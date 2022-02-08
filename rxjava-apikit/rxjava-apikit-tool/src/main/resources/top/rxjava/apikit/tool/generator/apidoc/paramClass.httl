@@ -1,8 +1,0 @@
-<!--#set(ParamClassInfo classInfo)-->
-<!--#set(PropertyInfo property)-->
-$!{classInfo.name}
-##参数属性列表
-<!--#for(property : classInfo.properties)-->
-$!{property.name}
-<!--#end-->
-##循环结束
