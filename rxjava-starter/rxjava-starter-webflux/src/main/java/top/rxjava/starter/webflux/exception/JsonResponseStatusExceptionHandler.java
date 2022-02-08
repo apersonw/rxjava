@@ -135,7 +135,6 @@ public class JsonResponseStatusExceptionHandler extends WebFluxResponseStatusExc
         }
         errorMessage.setStatus(status.value());
         errorMessage.setTimestamp(LocalDateTime.now());
-
         errorMessage.setPath(request.getPath().pathWithinApplication().value());
 
         //处理消息国际化
