@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.ObjectUtils;
 import reactor.core.publisher.Flux;
 import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
@@ -125,6 +126,7 @@ public abstract class AbstractGenerator implements Generator {
 
                     return createEnumParamClassWarpper(classTypeInfo, distPackage, distName);
                 })
+                .filter(a-> !ObjectUtils.isEmpty(a))
                 .collect(Collectors.toList());
         builderWrappers.forEach(item -> enumParamClassInfoMap.put(item.getSourceFullName(), item));
         context.setEnumParamClassWrapperMap(enumParamClassInfoMap);
