@@ -17,6 +17,8 @@ public abstract class AbstractCommonGenerator extends AbstractHttlGenerator {
         String fullDistPackage = wrapper.getFullDistPackage();
         if ("d.ts".equals(suffix) || ("js".equals(suffix)) || ("ts".equals(suffix))) {
             fullDistPackage = "src/";
+        } else if ("md".equals(suffix)) {
+            fullDistPackage = "";
         }
         return LocalPathUtils.packToPath(outPath, fullDistPackage, wrapper.getDistClassName(), "." + suffix);
     }

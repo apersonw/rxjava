@@ -82,10 +82,8 @@ public class ApiGenerateManager {
 
         ApidocApiGenerator apidocApiGenerator = new ApidocApiGenerator();
         //设置生成的api根包路径
-        String outRootPackage = "top.rxjava.test";
-        apidocApiGenerator.setOutRootPackage(outRootPackage);
         apidocApiGenerator.setServiceId("");
-        apidocApiGenerator.setOutPath("/Users/wugang/RxjavaProjects/rxjava-api-test/src/main/java");
+        apidocApiGenerator.setOutPath("/Users/wugang/RxjavaProjects/rxjava-test-apidoc");
         manager.generate(apidocApiGenerator);
     }
 }

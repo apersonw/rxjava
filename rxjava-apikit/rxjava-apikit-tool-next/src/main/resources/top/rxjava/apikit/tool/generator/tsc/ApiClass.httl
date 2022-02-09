@@ -1,0 +1,75 @@
+<!--#set(ApiClassInfo classInfo)-->
+<!--#set(JavaScriptApiWrapper wrapper)-->
+<!--#set(ClassTypeInfo type)-->
+<!--#set(ApiMethodInfo method)-->
+<!--#set(ApiInputClassInfo param)-->
+import { CompactObj } from 'rxjava-api-core'
+import { stringify } from 'qs'
+$!{wrapper.imports}
+<!--#for(method : classInfo.apiMethodList)-->
+export interface $!{method.methodCaseName}Params {
+    <!--#for(param : method.params)-->
+        $!{param.fieldName}<!--#if(!param.isRequired())-->?<!--#end-->:$!{wrapper.paramType(param)}<!--#if(!for.last)-->,
+        <!--#end-->
+    <!--#end-->
+
+}
+
+<!--#end-->
+/**
+$!{wrapper.comment(" * ")}
+*/
+class $!{wrapper.getDistClassName()} extends AbstractApi {
+##异步方法
+<!--#for(method : classInfo.apiMethodList)-->
+   /**
+$!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
+     *
+$!{wrapper.requestComment(method,"     * ")}
+    */
+    $!{method.methodName} = ({$!{wrapper.inputParams(method)}}:$!{method.methodCaseName}Params):Promise<$!{wrapper.resultTypeString(method)}> => {
+
+        <!--#if("GET"==method.type.name)-->
+        let requestParam: any = {}
+
+            <!--#for(param : method.params)-->
+                <!--#if(param.isRequestParam())-->
+        requestParam.$!{param.fieldName} = $!{param.fieldName}
+                <!--#end-->
+            <!--#end-->
+        const reqObj = Object.assign({},requestParam,$!{wrapper.params(method)})
+        CompactObj.compact(reqObj)
+        let data = stringify(reqObj,{ allowDots: true })
+
+        <!--#else(method.jsonParams.size()>0)-->
+        let data = Object.assign({},$!{wrapper.params(method)})
+
+        <!--#else-->
+        let requestParam: any = {}
+            <!--#for(param : method.params)-->
+                <!--#if(param.isRequestParam())-->
+        requestParam.$!{param.fieldName} = $!{param.fieldName}
+                <!--#end-->
+            <!--#end-->
+        const reqObj = Object.assign({},requestParam,$!{wrapper.params(method)})
+        CompactObj.compact(reqObj)
+        let data = stringify(reqObj,{ allowDots: true })
+        <!--#end-->
+
+        return super._request({
+            serviceName: '$!{wrapper.serviceId}',
+            method: '$!{method.type.name()}',
+            path: <!--#if("GET"!=method.type.name&&method.params.size()>0&&method.jsonParams.size()<1)-->'$!{method.url}?'+data<!--#else-->'$!{method.url}'<!--#end-->,
+            data,
+            dataType: <!--#if(wrapper.returnTypeIsOther(method))-->'json'<!--#else-->'text'<!--#end-->,
+            responseType: <!--#if(wrapper.returnTypeIsOther(method))-->'json'<!--#else-->'text'<!--#end-->,
+            header: {'content-type':<!--#if("GET"==method.type.name||method.jsonParams.size()<1)-->'application/x-www-form-urlencoded'<!--#else-->'application/json'<!--#end-->},
+            login: $!{method.login}
+        })
+    };
+<!--#end-->
+##循环结束
+}
+
+const $!{wrapper.fieldName} = new $!{wrapper.getDistClassName()}();
+export default $!{wrapper.fieldName};
