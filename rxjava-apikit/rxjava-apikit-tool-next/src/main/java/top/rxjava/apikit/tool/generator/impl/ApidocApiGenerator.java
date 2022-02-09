@@ -14,13 +14,13 @@ import java.io.File;
  */
 public class ApidocApiGenerator extends AbstractCommonGenerator {
     @Override
-    public void generateBaseFile() throws Exception {
+    public void generateBaseFile() {
     }
 
     @Override
     public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
         ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
-        File apiFile = createApiFile(wrapper, "js");
+        File apiFile = createApiFile(wrapper, "md");
         executeModule(
                 wrapper,
                 getTemplateFile("api.httl"),
@@ -45,10 +45,10 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
     }
 
     @Override
-    public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) throws Exception {
+    public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) {
     }
 
     @Override
-    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) throws Exception {
+    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) {
     }
 }

@@ -20,9 +20,9 @@ abstract class AbstractHttlGenerator extends AbstractGenerator {
     /**
      * 执行模块文件生成
      */
-    void executeModule(BuilderWrapper wrapper, String httlPath, File file) throws Exception {
+    void executeModule(BuilderWrapper<?> wrapper, String httlPath, File file) throws Exception {
         log.info("开始生成文件:{}, httlPath:{}", file.getAbsolutePath(), httlPath);
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>(0);
         params.put("classInfo", wrapper.getClassInfo());
         params.put("wrapper", wrapper);
         HttlUtils.renderFile(file, params, httlPath);

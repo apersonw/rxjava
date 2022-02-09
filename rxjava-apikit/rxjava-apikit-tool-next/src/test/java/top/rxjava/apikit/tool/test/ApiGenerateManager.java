@@ -9,6 +9,7 @@ import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
 import top.rxjava.apikit.tool.generator.Generator;
+import top.rxjava.apikit.tool.generator.impl.ApidocApiGenerator;
 import top.rxjava.apikit.tool.generator.impl.JavaClientApiGenerator;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 
@@ -68,14 +69,6 @@ public class ApiGenerateManager {
         //分析枚举类型信息并保存到上下文
         EnumClassAnalyse.create().analyse(manager.context);
 
-        JavaClientApiGenerator javaClientApiGenerator = new JavaClientApiGenerator();
-        //设置生成的api根包路径
-        String outRootPackage = "top.rxjava.test";
-        javaClientApiGenerator.setOutRootPackage(outRootPackage);
-        javaClientApiGenerator.setArtifactId("rxjava-api-test");
-        javaClientApiGenerator.setParentVersion("2.0.0-SNAPSHOT");
-        javaClientApiGenerator.setOutPath("/Users/wugang/RxjavaProjects/rxjava-api-test/src/main/java");
-        manager.generate(javaClientApiGenerator);
         return manager;
     }
 
@@ -85,6 +78,14 @@ public class ApiGenerateManager {
 
     @Test
     public void testhello() throws Exception {
-        ApiGenerateManager analyse = ApiGenerateManager.analyse("/Users/wugang/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
+        ApiGenerateManager manager = ApiGenerateManager.analyse("/Users/wugang/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
+
+        ApidocApiGenerator apidocApiGenerator = new ApidocApiGenerator();
+        //设置生成的api根包路径
+        String outRootPackage = "top.rxjava.test";
+        apidocApiGenerator.setOutRootPackage(outRootPackage);
+        apidocApiGenerator.setServiceId("");
+        apidocApiGenerator.setOutPath("/Users/wugang/RxjavaProjects/rxjava-api-test/src/main/java");
+        manager.generate(apidocApiGenerator);
     }
 }
