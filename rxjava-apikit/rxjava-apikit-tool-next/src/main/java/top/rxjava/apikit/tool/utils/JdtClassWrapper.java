@@ -81,7 +81,7 @@ public class JdtClassWrapper {
 
     public JavaDocInfo getMethodComment(String name) {
         Optional<MethodDeclaration> methodDeclarationOptional = Arrays.stream(((TypeDeclaration) this.typeDeclaration).getMethods()).filter((methodDeclaration) -> Objects.equals(methodDeclaration.getName().getIdentifier(), name)).findFirst();
-        if (!methodDeclarationOptional.isPresent()) {
+        if (methodDeclarationOptional.isEmpty()) {
             throw new RuntimeException("没有在源文件中找到方法:" + name);
         } else {
             MethodDeclaration methodDeclaration = methodDeclarationOptional.get();
