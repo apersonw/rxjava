@@ -73,7 +73,7 @@ public class HttlUtils {
         FileUtils.writeStringToFile(file, data, HttlUtils.FILE_ENCODING);
     }
 
-    private static String renderToString(Map<String, Object> params, String templPath) throws IOException, ParseException {
+    public static String renderToString(Map<String, Object> params, String templPath) throws IOException, ParseException {
         StringBuilderWriter writer = new StringBuilderWriter();
         Template template = getEngine().getTemplate(templPath);
         template.render(params, writer);

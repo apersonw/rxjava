@@ -18,14 +18,17 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
     }
 
     @Override
-    public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
+    public void generateApiFile(ApiClassInfo apiInfo) {
         ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
-        File apiFile = createApiFile(wrapper, "md");
-        executeModule(
-                wrapper,
-                getTemplateFile("api.httl"),
-                apiFile
-        );
+
+        wrapper.getClassInfo().getApiMethodList().forEach(m -> {
+            try {
+                String content = executeApidocContent(m, getTemplateFile("ApidocMethod.httl"));
+                System.out.println(content);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private String getTemplateFile(String name) {

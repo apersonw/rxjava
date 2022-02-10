@@ -1,0 +1,4 @@
+<!--#set(ApiMethodInfo method)-->
+$!{method.url}
+$!{method.methodName}
+走一波

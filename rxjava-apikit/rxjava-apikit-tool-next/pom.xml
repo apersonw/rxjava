@@ -89,5 +89,9 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-parameter-names</artifactId>
         </dependency>
+        <dependency>
+            <groupId>top.rxjava</groupId>
+            <artifactId>rxjava-common-utils</artifactId>
+        </dependency>
     </dependencies>
 </project>
