@@ -1,13 +1,14 @@
 package top.rxjava.apikit.tool.generator.impl;
 
+import top.rxjava.apikit.tool.form.UploadToShowDocForm;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
+import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.wrapper.ApidocApiWrapper;
 import top.rxjava.apikit.tool.wrapper.ApidocParamClassWrapper;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
-
-import java.io.File;
+import top.rxjava.common.utils.JsonUtils;
 
 /**
  * @author happy 2019/9/29 03:28
@@ -21,14 +22,20 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
     public void generateApiFile(ApiClassInfo apiInfo) {
         ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
 
-        wrapper.getClassInfo().getApiMethodList().forEach(m -> {
+        ApiClassInfo classInfo = wrapper.getClassInfo();
+        for (ApiMethodInfo m : classInfo.getApiMethodList()) {
             try {
-                String content = executeApidocContent(m, getTemplateFile("ApidocMethod.httl"));
-                System.out.println(content);
+                String pageContent = executeApidocContent(wrapper, m, getTemplateFile("ApidocMethod.httl"));
+
+                UploadToShowDocForm form = new UploadToShowDocForm();
+                form.setCatName(classInfo.getJavaDocInfo().getFirstRow());
+                form.setPageContent(pageContent);
+                form.setPageTitle(m.getJavaDocInfo().getFirstRow());
+                System.out.println(JsonUtils.serialize(form));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
+        }
     }
 
     private String getTemplateFile(String name) {

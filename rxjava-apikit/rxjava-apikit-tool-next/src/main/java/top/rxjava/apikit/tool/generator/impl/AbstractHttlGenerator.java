@@ -3,8 +3,10 @@ package top.rxjava.apikit.tool.generator.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.rxjava.apikit.tool.generator.AbstractGenerator;
+import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import top.rxjava.apikit.tool.utils.HttlUtils;
+import top.rxjava.apikit.tool.wrapper.ApidocApiWrapper;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
 
 import java.io.File;
@@ -33,9 +35,11 @@ abstract class AbstractHttlGenerator extends AbstractGenerator {
     /**
      * 执行Apidoc文件生成
      */
-    String executeApidocContent(ApiMethodInfo apiMethodInfo, String httlPath) throws Exception {
+    String executeApidocContent(ApidocApiWrapper wrapper, ApiMethodInfo apiMethodInfo, String httlPath) throws Exception {
         log.info("开始生成字符串, httlPath:{}", httlPath);
         Map<String, Object> params = new HashMap<>(0);
+        params.put("classInfo", wrapper.getClassInfo());
+        params.put("wrapper", wrapper);
         params.put("method", apiMethodInfo);
         String content = HttlUtils.renderToString(params, httlPath);
         log.info("结束生成字符串:{}, httlPath:{}", content, httlPath);

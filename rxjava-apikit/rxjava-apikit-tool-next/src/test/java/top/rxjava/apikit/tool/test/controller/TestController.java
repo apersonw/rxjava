@@ -10,9 +10,18 @@ import top.rxjava.apikit.tool.test.model.TestModel;
 
 import javax.validation.Valid;
 
+// /**
+//  * 测试控制器
+//  */
 @RestController
 @RequestMapping("test")
 public class TestController {
+    /**
+     * 走一波测试
+     * @param testForm
+     * @param testParamId
+     * @return
+     */
     @GetMapping("test")
     public Mono<TestModel> test(@Valid TestForm testForm,@RequestParam String testParamId){
         return Mono.empty();

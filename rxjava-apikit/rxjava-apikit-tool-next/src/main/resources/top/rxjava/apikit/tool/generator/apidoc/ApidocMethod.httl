@@ -1,4 +1,9 @@
+<!--#set(ApiClassInfo classInfo)-->
+<!--#set(ApidocApiWrapper wrapper)-->
 <!--#set(ApiMethodInfo method)-->
 $!{method.url}
 $!{method.methodName}
 走一波
+$!{wrapper.formatBaseComment(method.javaDocInfo,"     * ")}
+
+$!{wrapper.requestComment(method,"     * ")}
