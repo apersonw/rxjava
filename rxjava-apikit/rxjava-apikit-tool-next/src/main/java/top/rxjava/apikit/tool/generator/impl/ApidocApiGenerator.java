@@ -1,10 +1,9 @@
 package top.rxjava.apikit.tool.generator.impl;
 
+import org.springframework.util.CollectionUtils;
 import top.rxjava.apikit.tool.form.UploadToShowDocForm;
-import top.rxjava.apikit.tool.info.ApiClassInfo;
-import top.rxjava.apikit.tool.info.ApiMethodInfo;
-import top.rxjava.apikit.tool.info.EnumParamClassInfo;
-import top.rxjava.apikit.tool.info.ParamClassInfo;
+import top.rxjava.apikit.tool.info.*;
+import top.rxjava.apikit.tool.utils.UploadToShowDocUtils;
 import top.rxjava.apikit.tool.wrapper.ApidocApiWrapper;
 import top.rxjava.apikit.tool.wrapper.ApidocParamClassWrapper;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
@@ -23,15 +22,17 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
         ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
 
         ApiClassInfo classInfo = wrapper.getClassInfo();
+        JavaDocInfo classJavaDocInfo = classInfo.getJavaDocInfo();
+        String catName = classJavaDocInfo.getTags().isEmpty() ? "未分类api" : classJavaDocInfo.getFirstRow();
         for (ApiMethodInfo m : classInfo.getApiMethodList()) {
             try {
                 String pageContent = executeApidocContent(wrapper, m, getTemplateFile("ApidocMethod.httl"));
 
                 UploadToShowDocForm form = new UploadToShowDocForm();
-                form.setCatName(classInfo.getJavaDocInfo().getFirstRow());
+                form.setCatName(catName);
                 form.setPageContent(pageContent);
                 form.setPageTitle(m.getJavaDocInfo().getFirstRow());
-                System.out.println(JsonUtils.serialize(form));
+                UploadToShowDocUtils.post(form);
             } catch (Exception e) {
                 e.printStackTrace();
             }

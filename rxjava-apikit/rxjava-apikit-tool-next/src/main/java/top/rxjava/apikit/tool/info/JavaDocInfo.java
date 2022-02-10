@@ -25,11 +25,11 @@ public class JavaDocInfo {
      */
     public String getFirstRow() {
         if (tags.isEmpty()) {
-            return "请设置控制器中文名";
+            return "tags为空,请设置控制器中文名";
         }
         List<List<String>> tagsList = tags.get(null);
         if (tagsList.isEmpty()) {
-            return "请设置控制器中文名";
+            return "tagsList为空，请设置控制器中文名";
         }
         List<String> tagValues = tagsList.get(0);
         return tagValues.get(0);

@@ -18,7 +18,6 @@ public class UploadToShowDocUtils {
         form.setApiToken("fd2df1ba07d73bebb483da11028d99a0772770510");
         String requestBodyStr = JsonUtils.serialize(form);
 
-        System.out.println(requestBodyStr);
         RequestBody body = RequestBody.create(requestBodyStr, mediaType);
         Request request = new Request.Builder()
                 .url("https://www.showdoc.cc/server/api/item/updateByApi")

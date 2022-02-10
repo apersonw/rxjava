@@ -10,9 +10,9 @@ import top.rxjava.apikit.tool.test.model.TestModel;
 
 import javax.validation.Valid;
 
-// /**
-//  * 测试控制器
-//  */
+/**
+ * 测试控制器
+ */
 @RestController
 @RequestMapping("test")
 public class TestController {
