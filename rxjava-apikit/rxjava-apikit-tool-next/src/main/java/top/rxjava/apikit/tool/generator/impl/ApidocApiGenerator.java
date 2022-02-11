@@ -23,7 +23,7 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
 
         ApiClassInfo classInfo = wrapper.getClassInfo();
         JavaDocInfo classJavaDocInfo = classInfo.getJavaDocInfo();
-        String catName = classJavaDocInfo.getTags().isEmpty() ? "未分类api" : classJavaDocInfo.getFirstRow();
+        String catName = classJavaDocInfo.getTags().isEmpty() ? "未分类api，勿看" : classJavaDocInfo.getFirstRow();
         for (ApiMethodInfo m : classInfo.getApiMethodList()) {
             try {
                 String pageContent = executeApidocContent(wrapper, m, getTemplateFile("ApidocMethod.httl"));

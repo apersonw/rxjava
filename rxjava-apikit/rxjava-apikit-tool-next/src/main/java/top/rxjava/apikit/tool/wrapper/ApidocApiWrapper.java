@@ -69,6 +69,10 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
         return sb.toString();
     }
 
+    public String paramType(ApiInputClassInfo apiInputClassInfo) {
+        return toTypeString(apiInputClassInfo.getClassTypeInfo());
+    }
+
     public String fieldName() {
         return NameUtils.toFieldName(getDistClassName());
     }
