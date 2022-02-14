@@ -30,6 +30,10 @@
             <groupId>top.rxjava</groupId>
             <artifactId>rxjava-starter-redis-reactive</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver-dns-native-macos</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
