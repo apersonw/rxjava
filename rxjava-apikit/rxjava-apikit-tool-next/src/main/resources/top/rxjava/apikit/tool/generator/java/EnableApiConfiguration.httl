@@ -1,0 +1,17 @@
+package top.rxjava.starter.redis;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+/**
+ * @author happy
+ */
+@Configuration
+public class RedisConfiguration {
+    @Bean
+    @Qualifier("payClientAdapter")
+    public ClientAdapter payClientAdapter(@Qualifier("webFluxConversionService") ConversionService conversionService, WebClient.Builder builder) {
+        return ReactiveHttpClientAdapter.build(conversionService, builder.filter(lbFunction), "gmrfid-service-pay");
+    }
+}
