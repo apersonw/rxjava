@@ -1,5 +1,6 @@
 package top.rxjava.starter.web.exception;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
@@ -23,11 +24,14 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Locale;
 
+/**
+ * @author wugang
+ */
 public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionResolver, MessageSourceAware {
     private MessageSourceAccessor messageAccessor;
 
     @Override
-    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+    public ModelAndView resolveException(@NotNull HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         try {
@@ -49,22 +53,17 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
 
         //参数异常错误
         if (exception instanceof WebExchangeBindException) {
-            WebExchangeBindException webExchangeBindException = (WebExchangeBindException) exception;
             status = HttpStatus.UNPROCESSABLE_ENTITY;
-        } else if (exception instanceof ErrorMessageException) {
-            ErrorMessageException errorMessageException = (ErrorMessageException) exception;
+        } else if (exception instanceof ErrorMessageException errorMessageException) {
             status = HttpStatus.UNPROCESSABLE_ENTITY;
             errorMessage = errorMessageException.getErrorMessage();
-        } else if (exception instanceof ResponseStatusException) {
-            ResponseStatusException responseStatusException = (ResponseStatusException) exception;
+        } else if (exception instanceof ResponseStatusException responseStatusException) {
             status = responseStatusException.getStatus();
             String errorMessageStr;
 
-            if (exception.getCause() instanceof TypeMismatchException) {
-                TypeMismatchException typeMismatchException = (TypeMismatchException) exception.getCause();
+            if (exception.getCause() instanceof TypeMismatchException typeMismatchException) {
                 errorMessageStr = typeMismatchException.getLocalizedMessage();
-            } else if (exception.getCause() instanceof DecodingException) {
-                DecodingException decodingException = (DecodingException) exception.getCause();
+            } else if (exception.getCause() instanceof DecodingException decodingException) {
                 errorMessageStr = decodingException.getMessage();
             } else {
                 errorMessageStr = responseStatusException.getReason();
@@ -92,7 +91,7 @@ public class WebJsonResponseStatusExceptionHandler implements HandlerExceptionRe
     }
 
     @Override
-    public void setMessageSource(MessageSource messageSource) {
+    public void setMessageSource(@NotNull MessageSource messageSource) {
         this.messageAccessor = new MessageSourceAccessor(messageSource, Locale.CHINA);
     }
 }
