@@ -78,12 +78,12 @@ public class ApiGenerateManager {
 
     @Test
     public void testhello() throws Exception {
-        ApiGenerateManager manager = ApiGenerateManager.analyse("/Users/wugang/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
+        ApiGenerateManager manager = ApiGenerateManager.analyse("/Users/happy/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
 
         ApidocApiGenerator apidocApiGenerator = new ApidocApiGenerator();
         //设置生成的api根包路径
         apidocApiGenerator.setServiceId("");
-        apidocApiGenerator.setOutPath("/Users/wugang/RxjavaProjects/rxjava-test-apidoc");
+        apidocApiGenerator.setOutPath("/Users/happy/RxjavaProjects/rxjava-test-apidoc");
         manager.generate(apidocApiGenerator);
     }
 }

@@ -1,40 +1,51 @@
 ## rxjava项目说明
-
+```text
+版本说明：
+jdk：17
+spring-boot: 2.6.3
+```
 ### 一、模块说明
 
 - [docker]：项目本地运行所需要的中间件
-- [rxjava-apikit](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit)：Api生成器(包括生成java客户端代码，JavaScript客户端代码)
-- [rxjava-common](https://mvnrepository.com/artifact/top.rxjava/rxjava-example)：例子工程
-- [rxjava-service-parent](https://mvnrepository.com/artifact/top.rxjava/rxjava-gateway)：网关项目pom
-- [rxjava-starter](https://mvnrepository.com/artifact/top.rxjava/rxjava-service)：微服务项目pom
+- [rxjava-apikit]：Api生成器(包括生成java客户端代码，JavaScript客户端代码，api文档)
+- [rxjava-common]：所有项目的通用部分
+- [rxjava-service-parent]：微服务父项目pom
+- [rxjava-starter]：spring-boot的各种starter
 
 ### 二、Api生成器说明
 
-- [rxjava-apikit-core](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit-core)：一些默认约定，如适配器
-- [rxjava-apikit-maven-plugin](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit-maven-plugin)：maven插件，可直接执行命令生成api
-- [rxjava-apikit-tool](https://mvnrepository.com/artifact/top.rxjava/rxjava-apikit-tool)：Api生成器实现代码
+- [rxjava-apikit-core]：一些默认约定，如适配器
+- [rxjava-apikit-httl]：因为httl模板引擎不支持jdk17，下载了源码，然后自己编译修改为可以支持jdk17的版本
+- [rxjava-apikit-maven-plugin]：maven插件，可直接执行命令生成api
+- [rxjava-apikit-tool]：Api生成器实现代码，不支持jdk15+
+- [rxjava-apikit-tool-next]：下一代Api生成器实现代码，支持了jdk17
 
 - api插件maven生成器命令：进入微服务目录，执行命令 mvn clean rxjava-apikit:apis
 
 #### ssh方式有时候会出现Auth fail问题，建议使用https方式
 
-### 五、微服务项目pom
+### 三、rxjava-starter
 
-- pom主要是整合依赖，并且演示了如何配置api生成器maven插件，以及一些包的命名规范
+- rxjava-starter-bus-amqp：整合了rabbitmq
+- rxjava-starter-jpa：整合了jpa
+- rxjava-starter-kafka：整合了kafka
+- rxjava-starter-mongo-reactive：整合了响应式的mongo
+- rxjava-starter-redis：整合了redis
+- rxjava-starter-redis-reactive：整合了响应式redis
+- rxjava-starter-skywalking：整合了skywalking分布式链路追踪
+- rxjava-starter-test-reactive：整合了junit测试
+- rxjava-starter-web：整合了web
+- rxjava-starter-webflux：整合了spring自动配置，时间格式统一处理，登陆请求拦截，异常统一处理
 
-### 六、rxjava-spring
-
-- rxjava-spring-boot-core：主要是一些注解，常用实体类，异常处理，包装了mongo分页，以及一些帮助类
-- rxjava-spring-boot-starter-service：整合了spring自动配置，时间格式统一处理，登陆请求拦截，异常统一处理
-- rxjava-spring-cloud-starter-bus：做了一些消息总线的基础约定
-- rxjava-spring-cloud-starter-gateway：做了一些网关的一些基础配置
-
-### 九、搭建mongodb副本集数据库
+### 四、如何本地搭建mongodb副本集数据库
+```text
+docker-compose.yml版本：https://docs.docker.com/compose/compose-file/compose-versioning/
+```
 
 一、创建docker-compose.yml文件
 
 ```yaml
-version: '3.7'
+version: '3.8'
 services:
   master-mongo:
     image: mongo
@@ -99,3 +110,4 @@ ReactiveMongoTransactionManager reactiveTransactionManager(ReactiveMongoDatabase
 ```text
 统一的异常处理
 ```
+
