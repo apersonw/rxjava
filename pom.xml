@@ -621,6 +621,11 @@
                 <!-- 注意这里是import -->
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.taobao.arthas</groupId>
+                <artifactId>arthas-spring-boot-starter</artifactId>
+                <version>3.5.5</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
