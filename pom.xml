@@ -21,13 +21,13 @@
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
 
         <!--依赖版本-->
-        <spring-cloud-kubernetes.version>2.1.0</spring-cloud-kubernetes.version>
+        <spring-cloud-kubernetes.version>2.1.1</spring-cloud-kubernetes.version>
         <spring-cloud-dependencies.version>2021.0.1</spring-cloud-dependencies.version>
-        <spring-cloud-alibaba-dependencies.version>2.2.7.RELEASE</spring-cloud-alibaba-dependencies.version>
-        <spring-boot.version>2.6.4</spring-boot.version>
+        <spring-cloud-alibaba-dependencies.version>2021.0.1.0</spring-cloud-alibaba-dependencies.version>
+        <spring-boot.version>2.6.6</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <spring-cloud-starter-netflix-hystrix.version>2.2.10.RELEASE</spring-cloud-starter-netflix-hystrix.version>
-        <com.google.guava.version>31.0.1-jre</com.google.guava.version>
+        <com.google.guava.version>31.1-jre</com.google.guava.version>
         <lombok.version>1.18.22</lombok.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -739,26 +739,26 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <repository>
-            <id>springsource-repos</id>
-            <url>https://repo.spring.io/release/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>springsnapshots-repos</id>
-            <url>https://repo.spring.io/snapshot/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+        <!--<repository>-->
+        <!--    <id>springsource-repos</id>-->
+        <!--    <url>https://repo.spring.io/release/</url>-->
+        <!--    <releases>-->
+        <!--        <enabled>true</enabled>-->
+        <!--    </releases>-->
+        <!--    <snapshots>-->
+        <!--        <enabled>false</enabled>-->
+        <!--    </snapshots>-->
+        <!--</repository>-->
+        <!--<repository>-->
+        <!--    <id>springsnapshots-repos</id>-->
+        <!--    <url>https://repo.spring.io/snapshot/</url>-->
+        <!--    <releases>-->
+        <!--        <enabled>false</enabled>-->
+        <!--    </releases>-->
+        <!--    <snapshots>-->
+        <!--        <enabled>true</enabled>-->
+        <!--    </snapshots>-->
+        <!--</repository>-->
     </repositories>
     <distributionManagement>
         <repository>
