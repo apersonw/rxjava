@@ -61,8 +61,7 @@ public class GenerateUtils {
                 String rootPackage = group.getRootPackage();
                 String apiType = group.getApiType();
 
-                if (task instanceof GitTask) {
-                    GitTask gitTask = (GitTask) task;
+                if (task instanceof GitTask gitTask) {
                     GitGenerator gitGenerator = new GitGenerator();
 
                     //设置git信息
@@ -74,7 +73,7 @@ public class GenerateUtils {
                     gitGenerator.setGitBranch(gitTask.getBranch());
 
                     //初始化api生成管理器
-                    ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourcePath, rootPackage, reactive);
+                    ApiGenerateManager manager = ApiGenerateManager.analyse(javaSourcePath, rootPackage);
                     Generator generator = createGenerator(gitTask.getTask(), apiType);
                     gitGenerator.setGenerator((AbstractGenerator) generator);
 
@@ -94,8 +93,7 @@ public class GenerateUtils {
     //根据任务类型创建生成器
     private static Generator createGenerator(Task task, String apiType) {
         //执行生成java客户端Api任务
-        if (task instanceof JavaClientTask) {
-            JavaClientTask javaClientTask = (JavaClientTask) task;
+        if (task instanceof JavaClientTask javaClientTask) {
             JavaClientApiGenerator javaClientApiGenerator = new JavaClientApiGenerator();
 
             String projectName = javaClientTask.getProjectName();
@@ -108,8 +106,7 @@ public class GenerateUtils {
             return javaClientApiGenerator;
         }
         //执行生成js客户端Api任务
-        if (task instanceof JavaScriptClientTask) {
-            JavaScriptClientTask javaClientTask = (JavaScriptClientTask) task;
+        if (task instanceof JavaScriptClientTask javaClientTask) {
             JavaScriptApiGenerator javaScriptApiGenerator = new JavaScriptApiGenerator();
 
             //设置生成的api根包路径

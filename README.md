@@ -2,7 +2,7 @@
 ```text
 版本说明：
 jdk：17
-spring-boot: 2.6.3
+spring-boot: 2.6.6
 ```
 ### 一、模块说明
 
@@ -20,6 +20,7 @@ spring-boot: 2.6.3
 - [rxjava-apikit-tool]：Api生成器实现代码，不支持jdk15+
 - [rxjava-apikit-tool-next]：下一代Api生成器实现代码，支持了jdk17
 
+- 注：此处需要配置环境变量MAVEN_OPTS="--add-opens java.base/java.lang=ALL-UNNAMED"
 - api插件maven生成器命令：进入微服务目录，执行命令 mvn clean rxjava-apikit:apis
 
 #### ssh方式有时候会出现Auth fail问题，建议使用https方式

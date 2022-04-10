@@ -1,16 +1,12 @@
-package top.rxjava.apikit.tool.test;
+package top.rxjava.apikit.tool;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.junit.Test;
-import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
 import top.rxjava.apikit.tool.generator.Generator;
-import top.rxjava.apikit.tool.generator.impl.ApidocApiGenerator;
-import top.rxjava.apikit.tool.generator.impl.JavaClientApiGenerator;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 
 /**
@@ -54,7 +50,7 @@ public class ApiGenerateManager {
      * @param rootPackage   java包路径
      * @return api生成管理器
      */
-    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage) throws Exception {
+    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage) {
         ApiGenerateManager manager = new ApiGenerateManager();
         manager.javaSourceDir = javaSourceDir;
         manager.rootPackage = rootPackage;
@@ -74,16 +70,5 @@ public class ApiGenerateManager {
 
     public void generate(Generator generator) throws Exception {
         generator.generate(context);
-    }
-
-    @Test
-    public void testhello() throws Exception {
-        ApiGenerateManager manager = ApiGenerateManager.analyse("/Users/happy/RxjavaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool-next/src/test/java", "top.rxjava");
-
-        ApidocApiGenerator apidocApiGenerator = new ApidocApiGenerator();
-        //设置生成的api根包路径
-        apidocApiGenerator.setServiceId("");
-        apidocApiGenerator.setOutPath("/Users/happy/RxjavaProjects/rxjava-test-apidoc");
-        manager.generate(apidocApiGenerator);
     }
 }

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>top.rxjava</groupId>
-            <artifactId>rxjava-apikit-tool</artifactId>
+            <artifactId>rxjava-apikit-tool-next</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
