@@ -4,6 +4,18 @@
 jdk：17
 spring-boot: 2.6.6
 ```
+
+### 微服务包说明
+```text
+entity：数据库实体对象
+property：属性实体对象
+form：入参对象
+model：出参对象
+repository：数据库操作层
+service：服务层
+provider：接口层
+```
+
 ### 一、模块说明
 
 - [docker]：项目本地运行所需要的中间件
