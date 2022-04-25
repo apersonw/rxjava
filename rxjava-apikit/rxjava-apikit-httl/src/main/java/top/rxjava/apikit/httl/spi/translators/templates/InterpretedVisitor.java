@@ -430,6 +430,7 @@ public class InterpretedVisitor extends AstVisitor {
 		parameterStack.push(Context.getContext().get(node.getName()));
 	}
 
+	@Override
 	public void visit(CastOperator node) throws IOException, ParseException {
 		Object parameter = parameterStack.pop();
 		Object result = parameter;
@@ -1238,7 +1239,6 @@ public class InterpretedVisitor extends AstVisitor {
 				} else {
 					args = new Object[] { rightParameter };
 				}
-				result = null;
 				boolean found = false;
 				if (importMethods != null && importMethods.size() > 0) {
 					Object[] staticArgs = new Object[args.length + 1];
@@ -1290,7 +1290,7 @@ public class InterpretedVisitor extends AstVisitor {
 								try {
 									result = ClassUtils.searchProperty(leftParameter, name);
 									found = true;
-								} catch (NoSuchFieldException e2) {
+								} catch (NoSuchFieldException ignored) {
 								}
 							}
 							if (! found) {

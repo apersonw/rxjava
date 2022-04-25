@@ -25,7 +25,7 @@ public class JdtClassWrapper {
     private final AbstractTypeDeclaration typeDeclaration;
 
     public static void main(String[] args) {
-        JdtClassWrapper jdtClassWrapper = new JdtClassWrapper("/Users/happy/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
+        new JdtClassWrapper("/Users/happy/IdeaProjects/rxjava/rxjava-apikit/rxjava-apikit-tool/src/main/java", OrderStatus.class);
     }
 
     public JdtClassWrapper(String filePath, Class<?> cls) {
@@ -47,7 +47,7 @@ public class JdtClassWrapper {
         //设置源码兼容模式为1.8
         options.put(JavaCore.COMPILER_SOURCE, "11");
 
-        ASTParser parser = ASTParser.newParser(AST.JLS11);
+        ASTParser parser = ASTParser.newParser(AST.getJLSLatest());
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
         parser.setSource(srcCode.toCharArray());
         parser.setCompilerOptions(options);
@@ -62,7 +62,7 @@ public class JdtClassWrapper {
                 )
                 .findFirst();
 
-        if (!first.isPresent()) {
+        if (first.isEmpty()) {
             throw new RuntimeException("未找到类:" + srcCode);
         } else {
             this.typeDeclaration = (AbstractTypeDeclaration) first.get();
@@ -80,7 +80,7 @@ public class JdtClassWrapper {
 
     public JavaDocInfo getMethodComment(String name) {
         Optional<MethodDeclaration> methodDeclarationOptional = Arrays.stream(((TypeDeclaration) this.typeDeclaration).getMethods()).filter((methodDeclaration) -> Objects.equals(methodDeclaration.getName().getIdentifier(), name)).findFirst();
-        if (!methodDeclarationOptional.isPresent()) {
+        if (methodDeclarationOptional.isEmpty()) {
             throw new RuntimeException("没有在源文件中找到方法:" + name);
         } else {
             MethodDeclaration methodDeclaration = methodDeclarationOptional.get();
@@ -101,8 +101,7 @@ public class JdtClassWrapper {
             List<?> fragments = tagElement.fragments();
             List<String> fragmentsInfo = new ArrayList<>();
             for (Object fragment : fragments) {
-                if (fragment instanceof TextElement) {
-                    TextElement textElement = (TextElement) fragment;
+                if (fragment instanceof TextElement textElement) {
                     fragmentsInfo.add(textElement.getText());
                 } else {
                     fragmentsInfo.add(fragment.toString());
