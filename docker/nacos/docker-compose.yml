@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  nacos:
+    image: nacos/nacos-server:latest
+    platform: linux/amd64
+    restart: always
+    environment:
+      MODE: standalone
+    ports:
+      - 8848:8848
+      - 9848:9848
