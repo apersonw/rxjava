@@ -2,7 +2,7 @@
 ```text
 版本说明：
 jdk：17
-spring-boot: 2.6.6
+spring-boot: 2.6.7
 ```
 
 ### 微服务包说明
