@@ -1,10 +1,10 @@
 package top.rxjava.apikit.tool.generator.impl;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import top.rxjava.apikit.tool.info.JavaScriptMethodInfo;
 import org.apache.commons.lang3.StringUtils;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
+import top.rxjava.apikit.tool.info.JavaScriptMethodInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.utils.JsonUtils;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
@@ -125,7 +125,7 @@ public class JavaScriptApiGenerator extends AbstractCommonGenerator {
     private void generateIndexFile() throws Exception {
         Map<String, Object> parameters = new HashMap<>();
 
-        List<Map.Entry<?, ?>> apis = context.getApis().getValues().stream().map(apiInfo -> {
+        List<Map.Entry<?, ?>> apis = context.getApiClassInfoMultimap().values().stream().map(apiInfo -> {
             JavaScriptApiWrapper wrapper = new JavaScriptApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
             String value = wrapper.getDistPackage().replace(".", "/") + '/' + wrapper.getDistClassName();
             String comment = wrapper.comment(" * ");

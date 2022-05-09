@@ -1,7 +1,7 @@
 package top.rxjava.apikit.tool.utils;
 
-import httl.Engine;
-import httl.Template;
+import top.rxjava.apikit.httl.Engine;
+import top.rxjava.apikit.httl.Template;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.StringBuilderWriter;
 import org.slf4j.Logger;
@@ -73,7 +73,7 @@ public class HttlUtils {
         FileUtils.writeStringToFile(file, data, HttlUtils.FILE_ENCODING);
     }
 
-    private static String renderToString(Map<String, Object> params, String templPath) throws IOException, ParseException {
+    public static String renderToString(Map<String, Object> params, String templPath) throws IOException, ParseException {
         StringBuilderWriter writer = new StringBuilderWriter();
         Template template = getEngine().getTemplate(templPath);
         template.render(params, writer);

@@ -1,6 +1,6 @@
 package top.rxjava.apikit.tool.wrapper;
 
-import top.rxjava.apikit.tool.generator.Context;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 
 /**

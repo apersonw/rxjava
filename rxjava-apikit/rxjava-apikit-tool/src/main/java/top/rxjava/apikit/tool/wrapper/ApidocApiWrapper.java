@@ -5,7 +5,8 @@ import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
-import top.rxjava.apikit.tool.generator.Context;
+import reactor.core.publisher.Flux;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.generator.NameMaper;
 import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.ApiInputClassInfo;
@@ -13,7 +14,6 @@ import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import top.rxjava.apikit.tool.info.ClassTypeInfo;
 import top.rxjava.apikit.tool.utils.CommentUtils;
 import top.rxjava.apikit.tool.utils.NameUtils;
-import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -67,6 +67,10 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
             }
         }
         return sb.toString();
+    }
+
+    public String paramType(ApiInputClassInfo apiInputClassInfo) {
+        return toTypeString(apiInputClassInfo.getClassTypeInfo());
     }
 
     public String fieldName() {
@@ -142,6 +146,92 @@ public class ApidocApiWrapper extends JavaScriptWrapper<ApiClassInfo> {
     }
 
     public String requestComment(ApiMethodInfo method, String start) {
+        StringBuilder sb = new StringBuilder(start);
+        sb.append("<div class='http-info'>http 说明")
+                .append("<ul>\n");
+
+        sb.append(start).append("<li><b>Uri:</b>").append(method.getUrl()).append("</li>\n");
+
+        Map<String, String> stringStringMap = CommentUtils.toMap(method.getJavaDocInfo());
+
+        List<ApiInputClassInfo> params = method.getParams();
+        for (ApiInputClassInfo attributeInfo : params) {
+            if (attributeInfo.isPathParam()) {
+                String name = attributeInfo.getFieldName();
+                String txt = stringStringMap.get(name);
+                sb.append(start).append("<li><b>PathVariable:</b> ")
+                        .append(
+                                StringEscapeUtils.escapeHtml4(
+                                        toTypeString(attributeInfo.getClassTypeInfo())
+                                )
+                        )
+                        .append(" ")
+                        .append(attributeInfo.getFieldName());
+
+                if (StringUtils.isNotEmpty(txt)) {
+                    sb.append(" ");
+                    sb.append("<span>");
+                    sb.append(txt);
+                    sb.append("</span>");
+                }
+                sb.append("</li>\n");
+            } else if (attributeInfo.isValidParam()) {
+                sb.append(start).append("<li><b>Form:</b>")
+                        .append(
+                                StringEscapeUtils.escapeHtml4(
+                                        toTypeString(attributeInfo.getClassTypeInfo())
+                                )
+                        )
+                        .append("")
+                        .append(method.getMethodName())
+                        .append("</li>\n");
+            }
+        }
+
+        String returnType = toTypeString(method.getReturnClass());
+
+        sb.append(start).append("<li><b>Model:</b> ").append("").append(
+                StringEscapeUtils.escapeHtml4(returnType)
+        ).append("").append("</li>\n");
+
+        if (method.isLogin()) {
+            sb.append(start).append("<li>需要登录</li>\n");
+        }
+
+        sb.append(start).append("</ul>\n").append(start).append("</div>\n");
+
+        Map<String, ApiInputClassInfo> paramMap = method
+                .getParams()
+                .stream()
+                .collect(Collectors.toMap(ApiInputClassInfo::getFieldName, r -> r));
+
+        if (method.getJavaDocInfo() != null) {
+            List<List<String>> param = method.getJavaDocInfo().get("@param");
+            if (CollectionUtils.isNotEmpty(param)) {
+                param.stream().filter(r -> r.size() > 1).forEach(list -> {
+                    ApiInputClassInfo methodParamInfo = paramMap.get(list.get(0));
+                    if (methodParamInfo != null) {
+                        sb.append(start).append("@param ")
+                                .append(list.get(0))
+                                .append(" ")
+                                .append(list.size() > 1 ? String.join(" ", list.subList(1, list.size())) : "")
+                                .append("\n");
+                    }
+                });
+            }
+        }
+
+        method.getAllTypes().forEach(typeInfo -> {
+            sb.append(start).append("@see ").append(
+                    StringEscapeUtils.escapeHtml4(
+                            toTypeString(typeInfo, false)
+                    )
+            ).append("\n");
+        });
+        return StringUtils.stripEnd(sb.toString(), null);
+    }
+
+    public String requestApidocComment(ApiMethodInfo method, String start) {
         StringBuilder sb = new StringBuilder(start);
         sb.append("<div class='http-info'>http 说明")
                 .append("<ul>\n");

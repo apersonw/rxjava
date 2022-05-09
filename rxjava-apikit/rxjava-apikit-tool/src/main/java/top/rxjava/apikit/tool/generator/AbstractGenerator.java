@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.ObjectUtils;
+import reactor.core.publisher.Flux;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.generator.impl.DefaultClassNameMapper;
 import top.rxjava.apikit.tool.generator.impl.DefaultPackageNameMapper;
 import top.rxjava.apikit.tool.generator.impl.PatternNameMaper;
@@ -11,7 +14,6 @@ import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
-import reactor.core.publisher.Flux;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -124,6 +126,7 @@ public abstract class AbstractGenerator implements Generator {
 
                     return createEnumParamClassWarpper(classTypeInfo, distPackage, distName);
                 })
+                .filter(a-> !ObjectUtils.isEmpty(a))
                 .collect(Collectors.toList());
         builderWrappers.forEach(item -> enumParamClassInfoMap.put(item.getSourceFullName(), item));
         context.setEnumParamClassWrapperMap(enumParamClassInfoMap);
@@ -140,7 +143,7 @@ public abstract class AbstractGenerator implements Generator {
         this.builderEnumWrappers = initEnumParamClassWrapper();
 
         //通过api类信息生成api
-        Collection<ApiClassInfo> values = context.apis.getValues();
+        Collection<ApiClassInfo> values = context.getApiClassInfoMultimap().values();
         for (ApiClassInfo apiInfo : values) {
             try {
                 generateApiFile(apiInfo);

@@ -2,8 +2,11 @@ package top.rxjava.apikit.tool.analyse.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import top.rxjava.apikit.tool.analyse.Analyse;
-import top.rxjava.apikit.tool.generator.Context;
-import top.rxjava.apikit.tool.info.*;
+import top.rxjava.apikit.tool.Context;
+import top.rxjava.apikit.tool.info.ClassTypeInfo;
+import top.rxjava.apikit.tool.info.CommonClassInfo;
+import top.rxjava.apikit.tool.info.EnumConstantInfo;
+import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.utils.JdtClassWrapper;
 
 import java.lang.reflect.Type;

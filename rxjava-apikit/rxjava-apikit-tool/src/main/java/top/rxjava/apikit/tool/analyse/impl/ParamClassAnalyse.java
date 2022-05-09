@@ -2,14 +2,14 @@ package top.rxjava.apikit.tool.analyse.impl;
 
 import com.google.common.collect.ImmutableSet;
 import org.apache.commons.collections4.CollectionUtils;
-import top.rxjava.apikit.tool.analyse.Analyse;
-import top.rxjava.apikit.tool.generator.Context;
-import top.rxjava.apikit.tool.info.*;
-import top.rxjava.apikit.tool.utils.JdtClassWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import reactor.core.publisher.Flux;
+import top.rxjava.apikit.tool.analyse.Analyse;
+import top.rxjava.apikit.tool.Context;
+import top.rxjava.apikit.tool.info.*;
+import top.rxjava.apikit.tool.utils.JdtClassWrapper;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
@@ -46,7 +46,7 @@ public class ParamClassAnalyse implements Analyse {
         //3、过滤掉集合类、泛型类、对象类、ObjectId类
         //4、转换为ClassInfo类型
         List<CommonClassInfo> classInfoList = Flux
-                .fromIterable(context.getApis().getValues())
+                .fromIterable(context.getApiClassInfoMultimap().values())
                 .flatMapIterable(ApiClassInfo::getApiMethodList)
                 .flatMapIterable(apiMethodInfo -> {
                     List<ClassTypeInfo> classTypeInfoList = new ArrayList<>();

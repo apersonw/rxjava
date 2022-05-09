@@ -6,7 +6,6 @@ import lombok.Setter;
 import top.rxjava.apikit.tool.analyse.impl.ControllerAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.EnumClassAnalyse;
 import top.rxjava.apikit.tool.analyse.impl.ParamClassAnalyse;
-import top.rxjava.apikit.tool.generator.Context;
 import top.rxjava.apikit.tool.generator.Generator;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 
@@ -44,31 +43,32 @@ public class ApiGenerateManager {
     private Context context;
     private String[] srcPaths;
 
-    public void generate(Generator generator) throws Exception {
-        generator.generate(context);
-    }
-
     /**
      * 开始分析指定文件夹指定包的api及param信息
      *
      * @param javaSourceDir 源码文件夹路径
      * @param rootPackage   java包路径
-     * @param reactive
      * @return api生成管理器
      */
-    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage, boolean reactive) {
+    public static ApiGenerateManager analyse(String javaSourceDir, String rootPackage) {
         ApiGenerateManager manager = new ApiGenerateManager();
         manager.javaSourceDir = javaSourceDir;
         manager.rootPackage = rootPackage;
         //获取java源码的文件夹路径
         manager.rootDirPath = LocalPathUtils.packToPath(javaSourceDir, rootPackage).getAbsolutePath();
-        manager.context = Context.create(rootPackage, javaSourceDir, reactive);
+        manager.context = Context.create(rootPackage, javaSourceDir);
+
         //分析控制器信息并保存到上下文
         ControllerAnalyse.create().analyse(manager.context);
-        //分析参数类型信息并保存到上下文
+        //分析入参出参类信息并保存到上下文
         ParamClassAnalyse.create().analyse(manager.context);
         //分析枚举类型信息并保存到上下文
         EnumClassAnalyse.create().analyse(manager.context);
+
         return manager;
+    }
+
+    public void generate(Generator generator) throws Exception {
+        generator.generate(context);
     }
 }

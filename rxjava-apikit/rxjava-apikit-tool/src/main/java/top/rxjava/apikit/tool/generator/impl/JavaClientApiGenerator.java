@@ -6,8 +6,11 @@ import top.rxjava.apikit.tool.info.ApiClassInfo;
 import top.rxjava.apikit.tool.info.EnumParamClassInfo;
 import top.rxjava.apikit.tool.info.ParamClassInfo;
 import top.rxjava.apikit.tool.info.ServiceInfo;
+import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
-import top.rxjava.apikit.tool.wrapper.*;
+import top.rxjava.apikit.tool.wrapper.JavaApiWrapper;
+import top.rxjava.apikit.tool.wrapper.JavaEnumParamClassWrapper;
+import top.rxjava.apikit.tool.wrapper.JavaParamClassWrapper;
 
 import java.io.File;
 import java.util.HashMap;

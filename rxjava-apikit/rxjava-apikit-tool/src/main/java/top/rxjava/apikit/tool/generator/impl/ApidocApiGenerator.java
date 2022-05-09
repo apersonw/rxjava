@@ -1,45 +1,42 @@
 package top.rxjava.apikit.tool.generator.impl;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.apache.commons.lang3.StringUtils;
-import top.rxjava.apikit.tool.info.ApiClassInfo;
-import top.rxjava.apikit.tool.info.EnumParamClassInfo;
-import top.rxjava.apikit.tool.info.ParamClassInfo;
-import top.rxjava.apikit.tool.utils.JsonUtils;
-import top.rxjava.apikit.tool.utils.LocalPathUtils;
+import org.springframework.util.CollectionUtils;
+import top.rxjava.apikit.tool.form.UploadToShowDocForm;
+import top.rxjava.apikit.tool.info.*;
+import top.rxjava.apikit.tool.utils.UploadToShowDocUtils;
 import top.rxjava.apikit.tool.wrapper.ApidocApiWrapper;
 import top.rxjava.apikit.tool.wrapper.ApidocParamClassWrapper;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
-import top.rxjava.apikit.tool.wrapper.JavaScriptApiWrapper;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import top.rxjava.common.utils.JsonUtils;
 
 /**
  * @author happy 2019/9/29 03:28
  */
 public class ApidocApiGenerator extends AbstractCommonGenerator {
     @Override
-    public void generateBaseFile() throws Exception {
-        generateIndexFile();
-        generatePackageFile();
+    public void generateBaseFile() {
     }
 
     @Override
-    public void generateApiFile(ApiClassInfo apiInfo) throws Exception {
+    public void generateApiFile(ApiClassInfo apiInfo) {
         ApidocApiWrapper wrapper = new ApidocApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
-        File apiFile = createApiFile(wrapper, "js");
-        executeModule(
-                wrapper,
-                getTemplateFile("api.httl"),
-                apiFile
-        );
+
+        ApiClassInfo classInfo = wrapper.getClassInfo();
+        JavaDocInfo classJavaDocInfo = classInfo.getJavaDocInfo();
+        String catName = classJavaDocInfo.getTags().isEmpty() ? "未分类api，勿看" : classJavaDocInfo.getFirstRow();
+        for (ApiMethodInfo m : classInfo.getApiMethodList()) {
+            try {
+                String pageContent = executeApidocContent(wrapper, m, getTemplateFile("ApidocMethod.httl"));
+
+                UploadToShowDocForm form = new UploadToShowDocForm();
+                form.setCatName(catName);
+                form.setPageContent(pageContent);
+                form.setPageTitle(m.getJavaDocInfo().getFirstRow());
+                UploadToShowDocUtils.post(form);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private String getTemplateFile(String name) {
@@ -55,76 +52,14 @@ public class ApidocApiGenerator extends AbstractCommonGenerator {
 
     @Override
     protected BuilderWrapper<EnumParamClassInfo> createEnumParamClassWarpper(EnumParamClassInfo paramClassInfo, String distPack, String distName) {
-        //todo:
         return null;
     }
 
     @Override
-    public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) throws Exception {
-        File paramClassFile = createParamClassFile(wrapper, "js");
-        executeModule(
-                wrapper,
-                getTemplateFile("paramClass.httl"),
-                paramClassFile
-        );
+    public void generateParamFile(BuilderWrapper<ParamClassInfo> wrapper) {
     }
 
     @Override
-    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) throws Exception {
-        //todo:
-    }
-
-    /**
-     * 生成index文件
-     */
-    private void generateIndexFile() throws Exception {
-        Map<String, Object> parameters = new HashMap<>();
-
-        List<Map.Entry<?, ?>> apis = context.getApis().getValues().stream().map(apiInfo -> {
-            JavaScriptApiWrapper wrapper = new JavaScriptApiWrapper(context, apiInfo, outRootPackage, apiNameMaper, serviceId);
-            String value = wrapper.getDistPackage().replace(".", "/") + '/' + wrapper.getDistClassName();
-            return new AbstractMap.SimpleImmutableEntry<>(wrapper.getDistClassName(), value);
-        }).collect(Collectors.toList());
-
-        parameters.put("apis", apis);
-
-        File indexFile = LocalPathUtils.packToPath(outPath, "", "index", ".html");
-
-        execute(
-                parameters,
-                getTemplateFile("index.httl"),
-                indexFile
-        );
-    }
-
-    /**
-     * 生成package文件
-     */
-    private void generatePackageFile() throws IOException {
-        File packageFile = LocalPathUtils.packToPath(outPath, "", "package", ".json");
-        ObjectNode packageJson;
-        if (packageFile.exists()) {
-            packageJson = (ObjectNode) JsonUtils.DEFAULT_MAPPER.readTree(packageFile);
-        } else {
-            try (InputStream inputStream = JavaScriptApiGenerator.class.getResourceAsStream(getTemplateFile("package.json"))) {
-                packageJson = (ObjectNode) JsonUtils.DEFAULT_MAPPER.readTree(inputStream);
-            }
-        }
-
-        String apiType = "";
-        if (StringUtils.isNotEmpty(this.apiType)) {
-            apiType = "-" + this.apiType;
-        }
-        packageJson.put("name", "rxjava-apis-" + serviceId + apiType);
-        if (this.version != null) {
-            String prevVersionText = packageJson.get("version").asText();
-            if (prevVersionText != null) {
-                prevVersionText = prevVersionText.replaceAll("([^.]+)\\.([^.]+)\\.([^.]+)", "$1.$2." + version);
-            } else {
-                prevVersionText = "1.0." + version;
-            }
-            packageJson.put("version", prevVersionText);
-        }
-        JsonUtils.DEFAULT_MAPPER.writerWithDefaultPrettyPrinter().writeValue(packageFile, packageJson);
+    public void generateEnumParamFile(BuilderWrapper<EnumParamClassInfo> builderWrapper) {
     }
 }

@@ -1,6 +1,6 @@
 package top.rxjava.apikit.tool.analyse;
 
-import top.rxjava.apikit.tool.generator.Context;
+import top.rxjava.apikit.tool.Context;
 
 /**
  * @author happy

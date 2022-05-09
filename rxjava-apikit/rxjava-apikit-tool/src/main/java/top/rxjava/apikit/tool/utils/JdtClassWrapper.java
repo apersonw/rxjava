@@ -1,6 +1,7 @@
 package top.rxjava.apikit.tool.utils;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
 import top.rxjava.apikit.tool.info.JavaDocInfo;
@@ -89,8 +90,8 @@ public class JdtClassWrapper {
     }
 
     private static JavaDocInfo transform(Javadoc javadoc) {
-        if (javadoc == null) {
-            return null;
+        if (ObjectUtils.isEmpty(javadoc)) {
+            return new JavaDocInfo();
         }
         JavaDocInfo javaDocInfo = new JavaDocInfo();
         List<?> tags = javadoc.tags();

@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import top.rxjava.apikit.tool.generator.Context;
+import top.rxjava.apikit.tool.Context;
 import top.rxjava.apikit.tool.info.ClassTypeInfo;
 import top.rxjava.apikit.tool.info.CommonClassInfo;
 import top.rxjava.apikit.tool.info.JavaDocInfo;

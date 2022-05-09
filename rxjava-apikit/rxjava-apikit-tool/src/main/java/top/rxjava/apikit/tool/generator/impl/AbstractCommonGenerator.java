@@ -1,5 +1,6 @@
 package top.rxjava.apikit.tool.generator.impl;
 
+import top.rxjava.apikit.tool.info.ApiMethodInfo;
 import top.rxjava.apikit.tool.utils.LocalPathUtils;
 import top.rxjava.apikit.tool.wrapper.BuilderWrapper;
 
@@ -17,8 +18,16 @@ public abstract class AbstractCommonGenerator extends AbstractHttlGenerator {
         String fullDistPackage = wrapper.getFullDistPackage();
         if ("d.ts".equals(suffix) || ("js".equals(suffix)) || ("ts".equals(suffix))) {
             fullDistPackage = "src/";
+        } else if ("md".equals(suffix)) {
+            fullDistPackage = "";
         }
         return LocalPathUtils.packToPath(outPath, fullDistPackage, wrapper.getDistClassName(), "." + suffix);
+    }
+    /**
+     * 创建Apidoc文件
+     */
+    File createApidocFile(ApiMethodInfo apiMethodInfo, String suffix) {
+        return LocalPathUtils.packToPath(outPath, "", apiMethodInfo.getMethodName(), "." + suffix);
     }
 
     /**
