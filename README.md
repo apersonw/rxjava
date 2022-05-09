@@ -29,8 +29,7 @@ provider：接口层
 - [rxjava-apikit-core]：一些默认约定，如适配器
 - [rxjava-apikit-httl]：因为httl模板引擎不支持jdk17，下载了源码，然后自己编译修改为可以支持jdk17的版本
 - [rxjava-apikit-maven-plugin]：maven插件，可直接执行命令生成api
-- [rxjava-apikit-tool]：Api生成器实现代码，不支持jdk15+
-- [rxjava-apikit-tool-next]：下一代Api生成器实现代码，支持了jdk17
+- [rxjava-apikit-tool]：Api生成器实现代码，当前已支持了jdk17
 
 - 注：此处需要配置环境变量MAVEN_OPTS="--add-opens java.base/java.lang=ALL-UNNAMED"
 - api插件maven生成器命令：进入微服务目录，执行命令 mvn clean rxjava-apikit:apis
