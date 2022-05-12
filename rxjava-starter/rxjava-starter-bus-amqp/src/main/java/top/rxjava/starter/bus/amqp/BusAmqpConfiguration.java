@@ -1,10 +1,7 @@
 package top.rxjava.starter.bus.amqp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -29,9 +26,13 @@ public class BusAmqpConfiguration {
      */
     static final String FANOUT_EXCHANGE = "rxjava-fanout-exchange";
     /**
+     * fanout交换机名称
+     */
+    static final String DELAY_EXCHANGE = "rxjava-delay-exchange";
+    /**
      * 队列名前缀
      */
-    private static final String QUEUE_NAME_PREFIX = "rxjava-queue.";
+    static final String QUEUE_NAME_PREFIX = "rxjava-queue.";
     /**
      * delay队列名前缀
      */
@@ -41,6 +42,18 @@ public class BusAmqpConfiguration {
      */
     @Value("${spring.application.name}")
     String applicationName;
+
+    /**
+     * 延迟交换机
+     */
+    @Bean
+    @Qualifier("customDelayExchange")
+    public CustomExchange customDelayExchange() {
+        Map<String, Object> args = new HashMap<>(1);
+        // 这里使用fanout方式的路由，如果想使用不同的路由行为，可以修改，如 topic,direct,fanout
+        args.put("x-delayed-type", "topic");
+        return new CustomExchange(DELAY_EXCHANGE, "x-delayed-message", true, false, args);
+    }
 
     /**
      * fanout交换机
@@ -61,17 +74,30 @@ public class BusAmqpConfiguration {
         return new Queue(QUEUE_NAME_PREFIX + applicationName, true);
     }
 
+    ///**
+    // * delay队列
+    // */
+    //@Bean
+    //@ConditionalOnBean(BusReceiver.class)
+    //@Qualifier("delayQueue")
+    //public Queue delayQueue() {
+    //    Map<String, Object> args = new HashMap<>();
+    //    args.put("x-dead-letter-exchange", FANOUT_EXCHANGE);
+    //    args.put("x-dead-letter-router-key", QUEUE_NAME_PREFIX + "#");
+    //    return new Queue(QUEUE_NAME_DELAY_PREFIX + applicationName, true, false, false, args);
+    //}
+
     /**
-     * delay队列
+     * 绑定延迟交换机和队列
      */
     @Bean
     @ConditionalOnBean(BusReceiver.class)
-    @Qualifier("delayQueue")
-    public Queue delayQueue() {
-        Map<String, Object> args = new HashMap<>();
-        args.put("x-dead-letter-exchange", FANOUT_EXCHANGE);
-        args.put("x-dead-letter-router-key", QUEUE_NAME_PREFIX + "#");
-        return new Queue(QUEUE_NAME_DELAY_PREFIX + applicationName, true, false, false, args);
+    @Qualifier("customDelayBinding")
+    public Binding customDelayBinding(
+            @Qualifier("customDelayExchange") CustomExchange customDelayExchange,
+            @Qualifier("queue") Queue queue
+    ) {
+        return BindingBuilder.bind(queue).to(customDelayExchange).with(QUEUE_NAME_PREFIX + applicationName).noargs();
     }
 
     /**

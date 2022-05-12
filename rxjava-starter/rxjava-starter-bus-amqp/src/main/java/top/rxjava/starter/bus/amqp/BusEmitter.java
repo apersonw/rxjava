@@ -85,13 +85,14 @@ public class BusEmitter {
                     try {
                         log.info("busEmitter:{}", busEvent);
                         amqpTemplate.convertAndSend(
-                                BusAmqpConfiguration.QUEUE_NAME_DELAY_PREFIX + applicationName,
+                                BusAmqpConfiguration.DELAY_EXCHANGE,
+                                BusAmqpConfiguration.QUEUE_NAME_PREFIX + applicationName,
                                 objectMapper.writeValueAsString(busEvent),
                                 message -> {
                                     MessageProperties messageProperties = message.getMessageProperties();
                                     if (secend > 0) {
                                         int expiratime = secend * 1000;
-                                        messageProperties.setExpiration(String.valueOf(expiratime));
+                                        messageProperties.setHeader("x-delay",String.valueOf(expiratime));
                                     }
                                     return message;
                                 }
