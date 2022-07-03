@@ -1,4 +1,4 @@
-package top.rxjava.starter.mongodb.status;
+package top.rxjava.common.core.status;
 
 /**
  * 实体生命周期状态
@@ -21,3 +21,4 @@ public enum EntityStatus {
      */
     DELETE
 }
+

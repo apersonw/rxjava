@@ -1,13 +1,13 @@
 package top.rxjava.starter.mongodb.entity;
 
 import org.springframework.data.annotation.*;
-import top.rxjava.starter.mongodb.status.EntityStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import top.rxjava.common.core.status.EntityStatus;
 
 import java.time.LocalDateTime;
 
