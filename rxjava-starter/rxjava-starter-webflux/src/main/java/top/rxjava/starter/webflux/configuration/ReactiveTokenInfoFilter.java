@@ -1,5 +1,6 @@
 package top.rxjava.starter.webflux.configuration;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.server.ServerWebExchange;
@@ -15,6 +16,7 @@ import static top.rxjava.starter.webflux.configuration.SecurityRequestMappingHan
  */
 public class ReactiveTokenInfoFilter implements WebFilter {
     private static final String TOKEN_USERID_INFO = "tokenUserId";
+
     @NotNull
     @Override
     public Mono<Void> filter(@NotNull ServerWebExchange exchange, WebFilterChain chain) {
@@ -22,8 +24,9 @@ public class ReactiveTokenInfoFilter implements WebFilter {
             String loginInfoJson = exchange.getRequest().getHeaders().getFirst(LOGIN_INFO);
             if (StringUtils.isNotBlank(loginInfoJson)) {
                 TokenInfo tokenInfo = SecurityRequestMappingHandlerAdapter.parseLoginJson(loginInfoJson);
-                assert tokenInfo != null;
-                return context.put(TOKEN_USERID_INFO, tokenInfo.getUserId());
+                if (ObjectUtils.isNotEmpty(tokenInfo)) {
+                    return context.put(TOKEN_USERID_INFO, tokenInfo.getUserId());
+                }
             }
             return context;
         });

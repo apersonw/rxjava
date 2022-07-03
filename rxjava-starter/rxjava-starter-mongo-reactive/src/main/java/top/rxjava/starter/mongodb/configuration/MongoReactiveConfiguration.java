@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.ReactiveAuditorAware;
 import org.springframework.data.mongodb.config.EnableReactiveMongoAuditing;
 import reactor.core.publisher.Mono;
-import reactor.util.context.ContextView;
-
-import java.util.function.Function;
 
 /**
  * @author happy
@@ -18,6 +15,8 @@ public class MongoReactiveConfiguration {
 
     @Bean
     ReactiveAuditorAware<ObjectId> reactiveAuditorAware() {
-        return () -> Mono.deferContextual((Function<ContextView, Mono<ObjectId>>) contextView -> Mono.justOrEmpty(contextView.getOrEmpty(TOKEN_USERID_INFO)));
+        return () -> Mono.deferContextual(contextView -> Mono
+                .justOrEmpty(contextView.getOrEmpty(TOKEN_USERID_INFO))
+        );
     }
 }
