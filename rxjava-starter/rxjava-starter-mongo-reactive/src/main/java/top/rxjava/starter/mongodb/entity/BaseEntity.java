@@ -39,12 +39,12 @@ public class BaseEntity {
      * 创建者用户Id
      */
     @CreatedBy
-    private ObjectId createByUserId;
+    private ObjectId createBy;
     /**
      * 最后修改者用户Id
      */
     @LastModifiedBy
-    private ObjectId lastModifiedByUserId;
+    private ObjectId lastModifiedBy;
     /**
      * 创建日期
      */
