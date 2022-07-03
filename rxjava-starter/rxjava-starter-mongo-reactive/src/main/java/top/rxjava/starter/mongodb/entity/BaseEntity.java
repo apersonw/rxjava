@@ -50,10 +50,10 @@ public class BaseEntity {
      */
     @CreatedDate
     @Indexed(direction = DESCENDING)
-    private LocalDateTime createDate;
+    private LocalDateTime createdDate;
     /**
      * 更新日期
      */
     @LastModifiedDate
-    private LocalDateTime updateDate;
+    private LocalDateTime lastModifiedDate;
 }
