@@ -31,7 +31,7 @@ import static top.rxjava.starter.webflux.configuration.LoginInfoArgumentResolver
  */
 public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerAdapter {
     private static final Logger log = LogManager.getLogger();
-    private static final String LOGIN_INFO = "loginInfo";
+    protected static final String LOGIN_INFO = "loginInfo";
 
     SecurityRequestMappingHandlerAdapter() {
         super();
@@ -83,7 +83,7 @@ public class SecurityRequestMappingHandlerAdapter extends RequestMappingHandlerA
     /**
      * 解析网关注入的登陆信息
      */
-    private TokenInfo parseLoginJson(String loginInfoJson) {
+    protected static TokenInfo parseLoginJson(String loginInfoJson) {
         if (StringUtils.isEmpty(loginInfoJson)) {
             return null;
         }

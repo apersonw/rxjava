@@ -1,14 +1,11 @@
 package top.rxjava.starter.mongodb.entity;
 
+import org.springframework.data.annotation.*;
 import top.rxjava.starter.mongodb.status.EntityStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.bson.types.ObjectId;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -38,6 +35,16 @@ public class BaseEntity {
      * 实体状态
      */
     private EntityStatus entityStatus = EntityStatus.NORMAL;
+    /**
+     * 创建者用户Id
+     */
+    @CreatedBy
+    private ObjectId createByUserId;
+    /**
+     * 最后修改者用户Id
+     */
+    @LastModifiedBy
+    private ObjectId lastModifiedByUserId;
     /**
      * 创建日期
      */

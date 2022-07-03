@@ -7,6 +7,7 @@
  import org.springframework.context.annotation.Import;
  import org.springframework.core.Ordered;
  import top.rxjava.common.utils.JsonUtils;
+ import top.rxjava.starter.webflux.configuration.ReactiveTokenInfoFilter;
  import top.rxjava.starter.webflux.configuration.RxjavaWebFluxConfigurer;
  import top.rxjava.starter.webflux.configuration.ServiceDelegatingWebFluxConfiguration;
 
@@ -16,7 +17,8 @@
  @Configuration
  @Import({
          ServiceDelegatingWebFluxConfiguration.class,
-         RxjavaWebFluxConfigurer.class
+         RxjavaWebFluxConfigurer.class,
+         ReactiveTokenInfoFilter.class
  })
  @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
  public class WebfluxAutoConfiguration {
