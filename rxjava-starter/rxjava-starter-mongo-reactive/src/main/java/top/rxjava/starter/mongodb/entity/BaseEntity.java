@@ -20,7 +20,7 @@ import static org.springframework.data.mongodb.core.index.IndexDirection.DESCEND
 @Setter
 @ToString
 @Document
-public class BaseEntity {
+public abstract class BaseEntity {
     /**
      * 实体Id
      */
