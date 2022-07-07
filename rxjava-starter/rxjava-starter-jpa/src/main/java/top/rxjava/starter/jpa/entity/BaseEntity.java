@@ -31,7 +31,7 @@ public abstract class BaseEntity {
      * 乐观锁
      */
     @Version
-    private long version;
+    private Long version;
 
     /**
      * 实体状态
